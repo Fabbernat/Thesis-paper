@@ -242,23 +242,14 @@ Elvégzett munkáit a Szakdolgozat keretében dokumentálja.
 \chapter*{Tartalmi összefoglaló}
 \addcontentsline{toc}{section}{Tartalmi összefoglaló}
 
-\begin{itemize}
 \item \textbf{A téma megnevezése}
 
     Egyrészt a kontextusalapú szójelentés-felismerés (Word-in-Context, WiC) feladat, tágabb értelemben a szójelentés-egyértelműsítés (Word Sense Disambiguation,
     WSD), nyelvtechnológiai (NLP) módszereket és eszközöket használva. Másrészt a generatív nyelvi modellek, a promptolásának, a válaszgenerálásnak és a válaszok feldolgozásának automatizálása.
 
-\item \textbf{A megadott feladat megfogalmazása}
 
-      A feladat megvizsgálni, hogy a Mohammad Taher Pilehvar által összeállított és publikált \href{https://pilehvar.github.io/wic/}{Word-in-Context feladatot} önállóan választott ingyenes és nyílt forráskódú generatív nyelvi modellek mennyire jól oldják meg. A modellek válaszainak összehasonlítása és elemzése, ehhez egy saját adatfeldolgozó és  kiértékelő rendszer megtervezése, implementálása Python nyelven, majd tesztelése. A rendszernek képesnek kell lennie a pontosság mellett a fedés és a precizitás értékét megadni, továbbá tévesztési mátrixot készíteni a predikciók eloszlásáról, az alábbi négy osztályba sorolva:
-      \begin{itemize}
-        \item \textbf{TP (True Positive):} Azok az esetek, amikor a modell helyesen ismeri fel, hogy a szó jelentése megegyezik a két mondatban.
-        \item \textbf{FP (False Positive):} Azok az esetek, amikor a modell tévesen gondolja azt, hogy a szó jelentése megegyezik, pedig valójában eltér.
-        \item \textbf{FN (False Negative):} Azok az esetek, amikor a modell nem ismeri fel a jelentésazonosságot, pedig a szó jelentése valójában megegyezik.
-        \item \textbf{TN (True Negative):} Azok az esetek, amikor a modell helyesen ismeri fel, hogy a szó jelentése különböző a két mondatban.
-      \end{itemize}
 
-\item \textbf{A megoldási mód}
+\h1 \textbf{A megoldási mód}
     A megoldásom során törekedtem arra, hogy az bárki által reprodukálható legyen, ezért ingyenesen elérhető és nyílt forráskódú eszközöket (Python, GitHub, Hugging Face) használtam.
       \begin{itemize}
         \item
@@ -271,7 +262,7 @@ Elvégzett munkáit a Szakdolgozat keretében dokumentálja.
         \item A választott modelleket inferenciára bírtam az automatizáló szkriptekkel különböző módokban a szósorrend-érzékenységének és egyéb metrikák összehasonlítására
 
       \end{itemize}
-\item \textbf{Az alkalmazott eszközök}
+\h1 \textbf{Az alkalmazott eszközök}
       \begin{itemize}
 
         \item Google Colab és PyCharm, Python futtatókörnyezet
@@ -279,8 +270,7 @@ Elvégzett munkáit a Szakdolgozat keretében dokumentálja.
         \item Hugging Face
         \item Torch és Transformers Python könyvtárak
         \item NLTK és WordNet
-        \item CUDA, Accelerate, BERT
-        \item Google Táblázatok, Apps Script
+        \item CUDA, Accelerate, x\_hf Python könyvtárak
 
       \end{itemize}
       \item \textbf{Módszer}
@@ -290,24 +280,10 @@ Elvégzett munkáit a Szakdolgozat keretében dokumentálja.
         \item Clean Code alapelvek Martin és Robert Clean Code c. könyve \cite{martin2008cleancode} alapján
 
       \end{itemize}
-\item \textbf{Az elért eredmények}
+
+\h1 \textbf{Kulcsszavak}
         \\
-        \begin{itemize}
-            \item A szoftver képes a WiC adathalmaz sorainak egyszerű promptokká, kérdésekké alakítására, majd a modellek válaszainak feldolgozására.
-        A mintafeladathoz készült feldolgozó modul elvégzi a szükséges adattranszformációkat, az adattisztítási feladatokat és az adat könnyen értelmezhető formába alakítását.
-
-     \item Sikerült átfogó elemzést készítenem 3 Hugging Face-ről
-      letölthető generatív nyelvi modell teljesítményéről.
-      % Kiértékelő rendszer és függvénykönyvtár, amelynek célja a WiC (Word in Context) adathalmaz feldolgozása és a  feladatok megoldásának vizsgálata különböző nyelvi modellek segítségével. Az alkalmazás arra is képes, hogy elemezze, mennyire érzékenyek ezek a modellek arra, ha a két példamondat sorrendjét felcseréljük.
-        \end{itemize}
-
-
-      Harmadik büszkeségem, hogy algoritmikus módszerekkel 60+ \%-os eredményeket értem el, amely felülmúlja a legtöbb 0-3 milliárd paraméteres általános célú nyelvi modell teljesítményét.
-
-\item \textbf{Kulcsszavak}
-        \\
-       Word-in-Context, szóbeágyazások, nyelvtechnológia, nyelvi modell, szójelentés-ábrázolás
-\end{itemize}
+       Nagy nyelvi modell, Word-in-Context, nyelvi konzisztencia, teljesítmény-összehasonlítás
 
 %A tartalomjegyzék:
 \tableofcontents
