@@ -584,7 +584,7 @@ Does the word `w` mean the same thing in `s2` and `s1`?
 
 kérdésekre mindig ugyanazt válaszolják (változatlan $w$, $s1$ és $s2$ esetén, ahol $w$ egy szó, $s1$ az első példamondat, és $s2$ a második példamondat).
 
-Először a LMArena által és általam ismert legjobb modelleket vizsgáltam meg, hogy mennyire érzékenyek arra, hogyha a 2 mondatot felcseréljük. A WiC adathalmazból előállított kérdésekből szúrópróbaszerűen adtam be kérdéseket a vizsgált modellnek, majd töröltem a modell memóriáját, és ezt a kérdést a 2 mondatot felcserélve is elküldtem a modellnek. A mondatokat ~\ref{chap:resurrection} Resurrection modullal hoztam létre a WiC adatbázisból, erről majd később írok. Végül egy Google Táblázatban a válaszokból összesítettem az egyes promptolási módszerek pontosságát, kiegyensúlyozott pontosságát, hogy mekkora arányban egyeznek a válaszpárok. A teszthalmazban alapból randomizált sorrendben vannak a kérdések.
+Először a LMArena által és általam ismert legjobb modelleket vizsgáltam meg, hogy mennyire érzékenyek arra, hogyha a 2 mondatot felcseréljük. A WiC adathalmazból előállított kérdésekből szúrópróbaszerűen adtam be kérdéseket a vizsgált modellnek, majd töröltem a modell memóriáját, és ezt a kérdést a 2 mondatot felcserélve is elküldtem a modellnek. A mondatokat ~\ref{chap:src/Framework} src/Framework modullal hoztam létre a WiC adatbázisból, erről majd később írok. Végül egy Google Táblázatban a válaszokból összesítettem az egyes promptolási módszerek pontosságát, kiegyensúlyozott pontosságát, hogy mekkora arányban egyeznek a válaszpárok. A teszthalmazban alapból randomizált sorrendben vannak a kérdések.
 \begin{equation}
     \text{pontosság} = \frac{TP + TN}{TP + TN + FP + FN}
 \end{equation}
@@ -1060,7 +1060,7 @@ A Qwen1.5-1.8B-Chat a nehéz kérdésekre a Qwen egyáltalán nem volt jó, és 
 \chapterwithdesc
   {A szoftver: Input előkészítő és output feldolgozó rendszer fejlesztése PyCharmban}
   {A részletes kimutatásokat tartalmazó megoldás}
-\label{chap:resurrection}
+\label{chap:src/Framework}
 
 A szoftvert, amelyet a szakdolgozatomhoz készítettem, 2024-ben kezdtem el fejleszteni, és a mai napig fejlesztem GitHubon. A \href{https://github.com/Fabbernat}{GitHubomon elérhető a kitűzött elemek között}. Korábban a \href{https://github.com/Fabbernat/Peternity}{https://github.com/Fabbernat/Peternity} linken volt elérhető, ám ezt összezavarónak találtam, ezért áthelyeztem a \href{https://github.com/Fabbernat/Thesis} {https://github.com/Fabbernat/Thesis} linkre, és igyekszem onnan többet nem elmozdítani.
 
@@ -1072,7 +1072,7 @@ folyamat egy helyen, egy kattintással elvégezhető legyen a Clean Code módsze
 A másik az, hogy a promptok alapjául szolgáló adathalmaz és a modellek nagyon egyszerűen cserélhetőek legyenek, anélkül, hogy a program egyéb részein módosítani kellene.
 
 
-A projekt kutatási szempontból érdekes része így csak az újraírt \textit{Resurrection} modulban található. A többi archívum és mellékelhető a projekt megértéséhez. A \textit{Resurrection} 3 almodult tartalmaz, amelyek mindegyike egy önálló, de nagyon egyszerűen futtatható programot tesz ki. Egyesítve is lehet futtatni, de több indoka is van, hogy miért inkább egyesével érdemes futtatni a programokat. Az első és utolsó modul offline futtatható és nem erőforrásigényes, a hibák esélye minimális. A középső modul a fő ok, amelyben rengeteg a hibaforrás és a nemdeterminizmus. Online API hívásokat végez és GPU-t igényel (GPU hiányában pedig hatalmas erőforrásigényt és számítási kapacitást), ráadásul sok 3rd party library-ra támaszkodik. Emiatt érdemes külön futtatni ezt a programot és a hibákat lekezelni. a modulok futtatási sorrendje fontos.
+A projekt kutatási szempontból érdekes része így csak az újraírt \textit{src/Framework} modulban található. A többi archívum és mellékelhető a projekt megértéséhez. A \textit{src/Framework} 3 almodult tartalmaz, amelyek mindegyike egy önálló, de nagyon egyszerűen futtatható programot tesz ki. Egyesítve is lehet futtatni, de több indoka is van, hogy miért inkább egyesével érdemes futtatni a programokat. Az első és utolsó modul offline futtatható és nem erőforrásigényes, a hibák esélye minimális. A középső modul a fő ok, amelyben rengeteg a hibaforrás és a nemdeterminizmus. Online API hívásokat végez és GPU-t igényel (GPU hiányában pedig hatalmas erőforrásigényt és számítási kapacitást), ráadásul sok 3rd party library-ra támaszkodik. Emiatt érdemes külön futtatni ezt a programot és a hibákat lekezelni. a modulok futtatási sorrendje fontos.
 
 A ModelInputPreparer, amely a WiC adathalmazból létrehozza a modellnek szánt inputot, az 5600 kérdést. Ez a 'WiC adathalmaz' 'test' splitjének összes rekordjából létrehoz egy kérdést, mind egyenes, mind fordított sorrendben, hogy a modellek konzisztenciáját vizsgáljuk. Mivel 2800 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így jön ki az 5600 kérdés.
 
