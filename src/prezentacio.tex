@@ -21,7 +21,7 @@
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
 
-\title{\bf Nyelvi modellek teljesítményének összehasonlítása egy kontextusalapú szójelentés-felismerés (Word-in-Context) probléma megoldására és saját kiértékelő rendszer fejlesztése Pythonban}
+\title{\bf A nagy nyelvi modellek szemantikus képességeinek konzisztenciájának vizsgálata}
 
 
 \author{Fábián Bernát}
@@ -30,6 +30,31 @@
 
 \begin{document}
     \frame{\titlepage}
+
+    \begin{frame}{Téma}
+        \begin{itemize}
+            \item A szakdolgozatom azt vizsgálja meg, hogy a nagy nyelvi modellek mennyire válaszolnak helyesen azonos tartalmú, de más szósorrendben feltett kérdésekre
+            \item Lényegében mennyire válaszolnak logikusan
+            \item Az emberek számára könnyű feladat, de a modellek számára nem
+        \end{itemize}
+
+    \end{frame}
+
+    \begin{frame}{Szoftver}
+        Egy Python konzolos alkalmazás (PyCharm környezet), amely Hugging Face modelleket futtat
+        Input: egy előre meghatározott (Word-in-Context) formátumú adathalmaz -> kérdések (2800 db)
+        Output: A modell válaszai (+ tensorok, stb.), és a modell válaszokból készített statisztikák:
+        \begin{figure}
+            \centering
+            \includegraphics{C:/Users/Bernát/PycharmProjects/Thesis-paper/src/graphics/overallperformancereport.out}
+            \caption{Teljesítmény riport}
+            \label{fig:overallperformancereport.out}
+        \end{figure}
+    \end{frame}
+
+    \begin{frame}{Nehézségek}
+
+    \end{frame}
 
     \begin{frame}{Probléma}
         \begin{itemize}
