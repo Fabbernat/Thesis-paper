@@ -33,6 +33,8 @@
 \usepackage{graphicx}
 \usepackage{psfrag}
 
+% saját csomagok
+\usepackage{hyperref}
 %tetelszerû környezetek definiálhatók, ezek most fejezetenkent egyutt szamozodnak, pl.
 \newtheorem{tet}{tetel}[chapter]
 \newtheorem{defi}[tet]{Definíció}
@@ -453,7 +455,6 @@ Ezúton szeretnék köszönetet mondani a családomnak, barátaimnak, tanítóim
 Végül, de nem utolsó sorban köszönetet szeretnék mondani \textbf{témavezetőmnek, Berend Gábornak}, hogy konzulensként és témavezetőként segített a szakdolgozatom megírásában.
 
 
-
 %% Az itrodalomjegyzek keszitheto a BibTeX segedprogrammal:
 %\bibliography{diploma}
 %\bibliographystyle{plain}
@@ -490,7 +491,23 @@ Plenum Publishing Corp., New York, 1986.
 
 \end{thebibliography}
 
+\chapter*{Elektronikus mellékletek}
+\addcontentsline{toc}{section}{Nyilatkozat}
 
+\begin{itemize}
+\item A keretrendszeren GitHubról a\\ \href{https://github.com/Fabbernat/Thesis}{GitHub/Fabbernat/Thesis}\\ repozitóriumban található.
+
+\item A szakdolgozat pdf forráskódja a \href{https://github.com/Fabbernat/Thesis-paper}{GitHub/Fabbernat/Thesis-paper}\\ repozitóriumban található.
+
+    \item
+\label{att:colab}
+A modelleket futtató Google Colab jegyzetfüzetem:
+\href{https://colab.research.google.com/drive/1yA8IAd5z2oreKUXha-16Du2YrNhemNiU?usp=sharing}{ezen a linken}  található.
+
+\item A nyelvi modellek tesztelése és kiértékelése a
+\href{https://docs.google.com/spreadsheets/d/1y49lg52LHVFmTom-0ibCqYqWA1pKKhiUny-Pf3KVTIg/edit?usp=sharing}{Generative Language Models}
+táblázatban tekinthető meg.
+\end{itemize}
 
 
 \end{document}
