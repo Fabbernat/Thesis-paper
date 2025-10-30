@@ -150,6 +150,57 @@ Az összefoglaló nyelvének meg kell egyeznie a dolgozat nyelvével. Ha a dolgo
 magyar nyelvû tartalmi összefoglaló készítése is kötelezõ (külön lapon), melynek terjedelmét a TVSZ szabályozza.
 
 
+ \textbf{A téma megnevezése}
+    A nagy nyelvi modellek szemantikus
+képességeinek konzisztenciájának vizsgálata.
+
+\textbf{A feladat megfogalmazása}
+    A használandó adathalmaz a \href{Word-in-Context dataset}{}. A kérdéseket egyenes és fordított sorrendben is fel kell tenni a modelleknek, majd összehasonlítani a válaszaikat az azonos tartalmú, de felcserélt szósorrendű kérdésekre, ezzel felmérve a szemantikus képességeiket és nyelvi konzisztenciájukat. Ez egy, az embernek könnyű, de a modellek számára problémát okozó feladat.
+
+ \textbf{A megoldási mód}
+    Hugging Face nyelvi modellek futtatása az előre meghatározott adathalmaz (Word-in-Context) kérdéseire.
+
+    A program inputja tetszőleges sornyi bejegyzés a Word-in-Context adathalmaz 'test' splitjéből, (vagy tetszőleges, ezzel megegyező formátumú kérdéshalmaz), és tetszőleges modell a Hugging Face platformról.
+
+    % A megoldásom során törekedtem arra, hogy az bárki által reprodukálható legyen, ezért ingyenesen elérhető és nyílt forráskódú eszközöket (Python, GitHub, Hugging Face) használtam.
+    %   \begin{itemize}
+    %     \item
+    %           A szakdolgozatom első felében kielemeztem az eddigi legjobb modelleket és a legjobb módszereket szójelentés-értelmezés szempontjából és nyílt forráskódú nyelvi modelleket kerestem a LMArena és Hugging Face felületein, továbbá az utóbbiak futtatásának dokumentációját tanulmányoztam.
+    %         \item Összehasonlító teljesítményvizsgálatot végeztem a
+    %         % TODO update-elni Gemma3-ra és QWEN3-ra mindenhol
+    %         \href{https://huggingface.co/microsoft/Phi-4-mini-instruct}{Phi-4-mini-instruct}, \href{https://huggingface.co/google/gemma-2-2b-it}{Gemma-2-2b-it} és a \href{https://huggingface.co/Qwen/Qwen1.5-1.8B-Chat}{Qwen1.5-1.8B-Chat} között egy Google Colab szkriptben.
+    %     \item
+    %           Saját adatfeldolgozó kiértékelő Python modult készítettem a promptolás automatizálásához és a modell válaszok feldolgozására.
+    %     \item A választott modelleket inferenciára bírtam az automatizáló szkriptekkel különböző módokban a szósorrend-érzékenységének és egyéb metrikák összehasonlítására
+
+      % \end{itemize}
+ \textbf{Az alkalmazott eszközök, módszerek}
+        Alkalmazott eszközök:
+      \begin{itemize}
+
+        \item Google Colab és PyCharm, Python futtatókörnyezet
+        \item Git, GitHub
+        \item Hugging Face
+        \item Torch és Transformers Python könyvtárak
+        \item NLTK és WordNet
+        \item CUDA, Accelerate, x\_hf Python könyvtárak
+
+      \end{itemize},
+
+        Alkalmazott módszerek:
+      \begin{itemize}
+
+        \item Objektum Orientált Python programozás
+        \item Clean Code alapelvek Martin és Robert Clean Code c. könyve \cite{martin2008cleancode} alapján
+
+      \end{itemize}
+
+  \textbf{Elért eredmények}
+
+ \textbf{Kulcsszavak}
+        \\
+       Nagy nyelvi modell, Word-in-Context, nyelvi konzisztencia, teljesítmény-összehasonlítás
+
 \chapter*{Bevezetés}
 \addcontentsline{toc}{section}{Bevezetés}
 
@@ -411,7 +462,7 @@ A függelékbe kerülhetnek a hosszú táblázatok, vagy mondjuk egy programlist
 %nem kézzel helyettesítendõk:
 
 \noindent
-Alulírott \makebox[4cm]{\dotfill} szakos hallgató, kijelentem, hogy a dolgozatomat a Szegedi Tudományegyetem, Informatikai Intézet \makebox[4cm]{\dotfill} Tanszékén készítettem, \makebox[4cm]{\dotfill} diploma megszerzése érdekében.
+Alulírott Fábián Bernát, programtervező informatikus BSc szakos hallgató, kijelentem, hogy a dolgozatomat a Szegedi Tudományegyetem Informatikai Intézet Számítógépes Algoritmusok és Mesterséges Intelligencia Tanszékén készítettem, a programtervező informatikus BSc diploma megszerzése érdekében.
 
 Kijelentem, hogy a dolgozatot más szakon korábban nem védtem meg, saját munkám eredménye, és csak a hivatkozott forrásokat (szakirodalom, eszközök, stb.) használtam fel.
 
@@ -420,31 +471,12 @@ Tudomásul veszem, hogy szakdolgozatomat / diplomamunkámat a Szegedi Tudománye
 \vspace*{2cm}
 
 \begin{tabular}{lc}
-Szeged, \today\
-\hspace{2cm} & \makebox[6cm]{\dotfill} \\
-& aláírás \\
+	Szeged, \today\
+	\hspace{2cm} & \makebox[6cm]{\dotfill} \\
+	             & aláírás              \\
 \end{tabular}
-
 
 \vspace*{4cm}
-
-%A nyilatkozat szövege TITKOSNAK MINÕSÍTETT dolgozatban a következõ:
-
-\noindent
-Alulírott \makebox[4cm]{\dotfill} szakos hallgató, kijelentem, hogy a dolgozatomat a Szegedi Tudományegyetem, Informatikai Intézet \makebox[4cm]{\dotfill} Tanszékén készítettem, \makebox[4cm]{\dotfill} diploma megszerzése érdekében.
-
-Kijelentem, hogy a dolgozatot más szakon korábban nem védtem meg, saját munkám eredménye, és csak a hivatkozott forrásokat (szakirodalom, eszközök, stb.) használtam fel.
-
-Tudomásul veszem, hogy szakdolgozatomat / diplomamunkámat a TVSZ 4. sz. mellékletében leírtak szerint kezelik.
-
-\vspace*{2cm}
-
-\begin{tabular}{lc}
-Szeged, \today\
-\hspace{2cm} & \makebox[6cm]{\dotfill} \\
-& aláírás \\
-\end{tabular}
-
 
 
 
@@ -462,6 +494,65 @@ Végül, de nem utolsó sorban köszönetet szeretnék mondani \textbf{témaveze
 %\bibliographystyle{plain}
 \bibliographystyle{plainnat}
 \bibliography{references}
+[1] Mohammad Taher Pilehvar és Jose Camacho-Collados. „WiC: the Word-in-Context
+Dataset for Evaluating Context-Sensitive Meaning Representations”. Proceedings
+of the 2019 Conference of the North American Chapter of the Association for
+Computational Linguistics: Human Language Technologies, Volume 1 (Long and
+Short Papers). Szerk. Jill Burstein, Christy Doran és Thamar Solorio. Minneapolis,
+Minnesota: Association for Computational Linguistics, 2019. jún., 1267–1273. old.
+DOI: 10.18653/v1/N19-1128. URL: https://aclanthology.org/
+N19-1128/.
+[2] Michael E. Lesk. „Automatic Sense Disambiguation Using Machine Readable Dictionaries: How to Tell a Pine Cone from an Ice Cream Cone”. Proceedings of the
+5th Annual International Conference on Systems Documentation (SIGDOC ’86).
+New York, NY, USA: ACM, 1986, 24–26. old. URL: https://dl.acm.org/
+doi/10.1145/318723.318728.
+[3] Paul-Edouard Sarlin és tsai. SuperGlue: Learning Feature Matching with Graph Neural Networks. 2020. arXiv: 1911.11763 [cs.CV]. URL: https://
+arxiv.org/abs/1911.11763.
+[4] Alex Wang és tsai. SuperGLUE: A Stickier Benchmark for General-Purpose Language Understanding Systems. 2020. arXiv: 1905.00537 [cs.CL]. URL: https:
+//arxiv.org/abs/1905.00537.
+[5] Wei-Lin Chiang és tsai. Chatbot Arena: An Open Platform for Evaluating LLMs
+by Human Preference. 2024. arXiv: 2403 . 04132 [cs.AI]. URL: https :
+//arxiv.org/abs/2403.04132.
+[6] Springboard. OpenAI GPT-3: Everything You Need to Know. 2023. URL: https:
+//www.springboard.com/blog/data-science/machine-learninggpt-3-open-ai/.
+[7] The Verge. The New York Times prohibits using its content to train AI models. 2023.
+URL: https://www.theverge.com/2023/8/14/23831109/thenew-york-times-ai-web-scraping-rules-terms-of-service.
+[8] Eli Tan. „When the Terms of Service Change to Make Way for A.I. Training”. The
+New York Times (2024. jún.). URL: https://www.nytimes.com/2024/
+06/26/technology/terms-service-ai-training.html.
+[9] Thomas Wolf és tsai. „HuggingFace’s Transformers: State-of-the-art Natural Language Processing”. arXiv preprint arXiv:1910.03771 (2019). URL: https : / /
+arxiv.org/abs/1910.03771.
+[10] Ari Holtzman és tsai. „The Curious Case of Neural Text Degeneration”. Proceedings of the 8th International Conference on Learning Representations (ICLR).
+2020. arXiv: 1904 . 09751. URL: https : / / arxiv . org / abs / 1904 .
+09751.
+[11] Gábor Berend. 11\_phi.ipynb. https://colab.research.google.com/
+drive/1GQRiTDNWwNPP\_PPARYd1swY1Oiai9Ey\_. Google Colab jegyzetfüzet. 2025. (Elérés dátuma 2025. 05. 23.).
+[12] Microsoft. Phi-4-mini-instruct. https://huggingface.co/microsoft/
+Phi-4-mini-instruct. 2023.
+[13] Google. Gemma-2-2b-it. https://huggingface.co/google/gemma2-2b-it. 2023.
+[14] Qwen. Qwen1.5-1.8B-Chat. https://huggingface.co/Qwen/Qwen1.
+5-1.8B-Chat. 2023.
+[15] Steven Bird és Edward Loper. „NLTK: The Natural Language Toolkit”. Proceedings of the ACL Interactive Poster and Demonstration Sessions. Barcelona, Spain:
+Association for Computational Linguistics, 2004. júl., 214–217. old. URL: https:
+//aclanthology.org/P04-3031/.
+[16] George A. Miller. „WordNet: A Lexical Database for English”. Human Language
+Technology: Proceedings of a Workshop held at Plainsboro, New Jersey, March
+8-11, 1994. 1994. URL: https://aclanthology.org/H94-1111/.
+[17] Tim Peters. PEP 20 – The Zen of Python. https://peps.python.org/
+pep-0020/. Python Enhancement Proposal. 2004.
+[18] Samuel Oloruntoba és Anish Singh Walia. SOLID: The First 5 Principles of Object
+Oriented Design. 2024. ápr. URL: https : / / www . digitalocean . com /
+community / conceptual - articles / s - o - l - i - d - the - first -
+five-principles-of-object-oriented-design.
+[19] OpenAI. OpenAI API Documentation Overview. 2025. URL: https://platform.
+openai.com/docs/overview.
+[20] Anthropic. Client SDKs - Anthropic API. https://docs.anthropic.com/
+en/api/client-sdks. 2025.
+[21] Alessandro Raganato és tsai. XL-WiC: A Multilingual Benchmark for Evaluating Semantic Contextualization. 2020. arXiv: 2010 . 06478 [cs.CL]. URL:
+https://arxiv.org/abs/2010.06478.
+[22] Anna Breit és tsai. WiC-TSV: An Evaluation Benchmark for Target Sense Verification of Words in Context. 2021. arXiv: 2004.15016 [cs.CL]. URL: https:
+//arxiv.org/abs/2004.15016.
+
 
 %VAGY "kézzel" a következõ módon:
 

@@ -6,6 +6,7 @@
                          Az újraírásnál első lépésem volt, hogy ezt egyesítem. Most az egész szoftver standard Python futtatókörnyezetben fut, a könnyen megtalálható "main.py" fájlok futtatásával, ipari standard szerint az src mappában lévő globális belépési ponttal, de egyenként is futtatható a 3 modul. PyCharm környezet ajánlott a szoftver futtatásához.
                          A legnagyobb változást a Clean Code című könyv elolvasása hozta, amely hatására átértékeltem a programozói tudásomat, különös tekintettel a szakdolgozatomra. Láttam, hogy objektum orientált módszerrel nagy szoftvereket is átláthatóan és biztonságosan lehet fejleszteni. Megjegyeztem azt is, hogy a jó elnevezések milyen fontosak. Ezek az elvek alapján írtam meg teljesen üres vázlatból az új szakdolgozat szoftveremet.
                          A szoftver "keretrendszer"-ként van hivatkozva, bár én inkább modulnak hívom. 3 fő futtatható állományból áll:
+
                          A ModelInputPreparer, amely lokális adathalmazból dolgozik. A program az adathalmazból létrehozza a modellnek szánt inputot, a 2800 kérdést. Ez a program alapértelmezetten 'WiC adathalmaz' 'test' splitjének rekordjaiból hozza létre a kérdéseket, de saját, megegyező formátumú kérdésekre is működik. A kérdéseket mind egyenes, mind fordított sorrendben létrehozza, amelyekkel azután a modellek konzisztenciáját vizsgáljuk. Mivel alapértelmezetten 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így jön ki az 2800 kérdés, de ezen igény szerint lehet módosítani.
 
 % TODO
