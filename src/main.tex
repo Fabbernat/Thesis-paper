@@ -35,6 +35,7 @@
 
 % saját csomagok
 \usepackage{hyperref}
+
 %tetelszerû környezetek definiálhatók, ezek most fejezetenkent egyutt szamozodnak, pl.
 \newtheorem{tet}{tetel}[chapter]
 \newtheorem{defi}[tet]{Definíció}
@@ -57,6 +58,7 @@
 \headheight 10mm
 \headsep 5mm
 \textheight 237mm
+
 
 
 % Document
@@ -458,6 +460,8 @@ Végül, de nem utolsó sorban köszönetet szeretnék mondani \textbf{témaveze
 %% Az itrodalomjegyzek keszitheto a BibTeX segedprogrammal:
 %\bibliography{diploma}
 %\bibliographystyle{plain}
+\bibliographystyle{plainnat}
+\bibliography{references}
 
 %VAGY "kézzel" a következõ módon:
 
@@ -501,10 +505,10 @@ Plenum Publishing Corp., New York, 1986.
 
     \item
 \label{att:colab}
-A modelleket futtató Google Colab jegyzetfüzetem:
+A modelleket futtató Google Colab jegyzetfüzetem (elavult):
 \href{https://colab.research.google.com/drive/1yA8IAd5z2oreKUXha-16Du2YrNhemNiU?usp=sharing}{ezen a linken}  található.
 
-\item A nyelvi modellek tesztelése és kiértékelése a
+\item A nyelvi modellek tesztelésének és kiértékelésének régi eredményei a
 \href{https://docs.google.com/spreadsheets/d/1y49lg52LHVFmTom-0ibCqYqWA1pKKhiUny-Pf3KVTIg/edit?usp=sharing}{Generative Language Models}
 táblázatban tekinthető meg.
 \end{itemize}
