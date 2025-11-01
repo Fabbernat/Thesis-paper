@@ -201,11 +201,21 @@ képességeinek konzisztenciájának vizsgálata.
         \\
        Nagy nyelvi modell, Word-in-Context, nyelvi konzisztencia, teljesítmény-összehasonlítás
 
-\chapter*{Bevezetés}
-\addcontentsline{toc}{section}{Bevezetés}
+\chapter*{Motiváció}
+\addcontentsline{toc}{section}{Motiváció}
 
-Itt kezdõdik a bevezetés, mely nem kap sorszámot.
-
+Az informatika és a nyelvtechnológia fejlődésével a generatív mesterséges intelligencia mindennapjaink részévé vált. A nagy nyelvi modellek kiértékelésére számos
+benchmark, azaz teljesítményteszt, metrika fejlődött ki az évek során. A legnépszer˝ubb ˝
+ilyen benchmark a SuperGLUE Benchmark, amely 8, komoly kihívást jelento feladat elé ˝
+állítja a nagy nyelvi modelleket. Ebben a papírban a WiC feladatot mutatom be.
+A WiC (Word-in-Context) probléma a SuperGlue 8 feladatának egyike. Az emberi
+szöveget érto nyelvi modellek fejlesztése kiemelten fontos mind az akadémiai kutatásban, mind a gyakorlati alkalmazásokban. Az angol nyelv˝u szövegek feldolgozása nem
+csak az angolszász területeken releváns, hanem Magyarországon is, hiszen az angol nyelv
+használata a számítógépek világában mindennapjaink része. Az egyetem és a helyi vállalatok is aktívan foglalkoznak természetesnyelv-feldolgozási (NLP) megoldásokkal. A
+munkahelyeken – különösen IT területen – egy jól m˝uködo WiC modell jelent ˝ os el ˝ onyt ˝
+biztosíthat kódok, dokumentumok, ügyfélkommunikáció vagy akár jogi szövegek értelmezésében, ami kulcsfontosságú lehet például a tudásközpontokban és startup cégeknél
+is. Egy hatékony WiC modell tehát nemcsak tudományos értékkel bír, hanem gyakorlati
+alkalmazásokban is közvetlen hasznot hozhat, foleg a nyelvészeti informatikai területen dolgozók számára.
 
 
 \chapter{Egy találó cím}
@@ -443,6 +453,60 @@ A függelékbe kerülhetnek a hosszú táblázatok, vagy mondjuk egy programlist
       i++;
    }
 \end{verbatim}
+
+\newcommand{\chapterwithdesc}[2]{%
+  \chapter{#1}%
+  \vspace{-1ex}%
+  {\large\itshape #2\par}%
+  \vspace{2ex}%
+}
+\chapterwithdesc
+  {A szoftver: Input előkészítő és output feldolgozó rendszer fejlesztése PyCharmban}
+  {A részletes kimutatásokat tartalmazó megoldás}
+\label{chap:src/Framework}
+
+A szoftvert, amelyet a szakdolgozatomhoz készítettem, 2024-ben kezdtem el fejleszteni, és a mai napig fejlesztem GitHubon. A \href{https://github.com/Fabbernat}{GitHubomon elérhető a kitűzött elemek között}. Korábban a \href{https://github.com/Fabbernat/Peternity}{https://github.com/Fabbernat/Peternity} linken volt elérhető, ám ezt összezavarónak találtam, ezért áthelyeztem a \href{https://github.com/Fabbernat/Thesis} {https://github.com/Fabbernat/Thesis} linkre, és igyekszem onnan többet nem elmozdítani.
+
+A projekt első verziója sokat lett kritizálva, hogy átláthatatlan és sok benne az AI generált, rossz minőségű kód, így 2025 nyarán újrakezdtem. Az új modulnak 2 fő fejlesztési szempontja volt.
+
+Az egyik, hogy a teljes "WiC adathalmazból modell prompttá", továbbá a modell outputból adatkinyerés %TODO rephrase
+folyamat egy helyen, egy kattintással elvégezhető legyen a Clean Code módszereivel.
+
+A másik az, hogy a promptok alapjául szolgáló adathalmaz és a modellek nagyon egyszerűen cserélhetőek legyenek, anélkül, hogy a program egyéb részein módosítani kellene.
+
+
+A projekt kutatási szempontból érdekes része így csak az újraírt \textit{src/Framework} modulban található. A többi archívum és mellékelhető a projekt megértéséhez. A \textit{src/Framework} 3 almodult tartalmaz, amelyek mindegyike egy önálló, de nagyon egyszerűen futtatható programot tesz ki. Egyesítve is lehet futtatni, de több indoka is van, hogy miért inkább egyesével érdemes futtatni a programokat. Az első és utolsó modul offline futtatható és nem erőforrásigényes, a hibák esélye minimális. A középső modul a fő ok, amelyben rengeteg a hibaforrás és a nemdeterminizmus. Online API hívásokat végez és GPU-t igényel (GPU hiányában pedig hatalmas erőforrásigényt és számítási kapacitást), ráadásul sok 3rd party library-ra támaszkodik. Emiatt érdemes külön futtatni ezt a programot és a hibákat lekezelni. a modulok futtatási sorrendje fontos.
+
+A ModelInputPreparer, amely a WiC adathalmazból létrehozza a modellnek szánt inputot, az 5600 kérdést. Ez a 'WiC adathalmaz' 'test' splitjének összes rekordjából létrehoz egy kérdést, mind egyenes, mind fordított sorrendben, hogy a modellek konzisztenciáját vizsgáljuk. Mivel 2800 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így jön ki az 5600 kérdés.
+
+
+Ezt a szoftvert 2024-ben kezdtem el fejleszteni, de a lényegi részét idén készítettem, folyamatos fejlesztéssel, hibajavítással, kísérletezéssel.
+
+
+                         Az eredeti beadott verzióval több gond is volt. A programot nem lehetett egy belépési ponttal futtatni. Helyette össze-vissza vibe code-olt, kaotikus, gyakran egymástól teljesen független szkriptek szerepeltek mindenhol, amelyeknek a használatát csak én ismertem, ráadásul egy részük nem is működött, csak úgy "volt". A program egyébként is csak a modell inputjainak előkészítését tudta. Csak a mostani "ModelInputPreparer"-nek megegyező rész funkcionalitásával rendelkezett standard Python környezetben. A Hugging Face modell inferenciájára (a mostani "HuggingFaceModelInferencer" modullal megegyező funkcionalitás) egy Jupyter Notebookban került sor, Google Colab környezetben. A modell outputjának feldolgozása ( a mostani "ModelOutputProcessor") pedig megint egy harmadik környezetben, Google Apps Scriptben került feldolgozásra.
+
+                         Az újraírásnál első lépésem volt, hogy a platformot egyesítem. Most az egész szoftver egy sima Python futtatókörnyezetben fut, egyetlen könnyen megtalálható `main` fájl futtatásával, ipari standard szerint az src mappában lévő globális belépési ponttal, de egyenként is lehet futtathatni a 3 modult, mindegyikhez tartozván egy `main.py` belépési pont. PyCharm környezet ajánlott a szoftver futtatásához. A legnagyobb ihletet a szoftver megálmodásához a Clean Code című könyv elolvasása hozta, amely hatására átértékeltem a programozói tudásomat és a szakdolgozatomat. Láttam, hogy objektumorientált módszerrel nagy szoftvereket is átláthatóan és biztonságosan lehet fejleszteni. Megjegyeztem azt is, hogy a jó elnevezések milyen fontosak. Ezek az elvek alapján írtam meg teljesen üres vázlatból az új szakdolgozat szoftveremet. A szoftver "keretrendszer"-ként van hivatkozva, bár én inkább modulnak hívom. 3 fő futtatható állományból áll:
+
+                         A ModelInputPreparer, amely lokális adathalmazból dolgozik. A program az adathalmazból létrehozza a modellnek szánt inputot, a 2800 kérdést. Ez a program alapértelmezetten 'WiC adathalmaz' 'test' splitjének rekordjaiból hozza létre a kérdéseket, de saját, megegyező formátumú kérdésekre is működik. A kérdéseket mind egyenes, mind fordított sorrendben létrehozza, amelyekkel azután a modellek konzisztenciáját vizsgáljuk. Mivel alapértelmezetten 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így jön ki az 2800 kérdés, de ezen igény szerint lehet módosítani.
+
+% TODO
+                         A CloudRunnerNotebooks ...
+
+
+                         A ModelOutputProcessor ...
+
+
+                         # Használat:
+                         \begin{itemize}
+                             \item
+                         \end{itemize}
+                         példa válasz a `Qwen/Qwen2.5-0.5B-Instruct` futtatására:
+                         \begin{figure}
+                             \centering
+                             \includegraphics[keepaspectratio]{pelda}
+                             \caption{Példa Válasz}
+                             \label{fig:PeldaValasz}
+                         \end{figure}
 
 
 \chapter*{Nyilatkozat}
