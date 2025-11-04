@@ -229,1259 +229,715 @@ A szoftver lefejlesztése előtt kielemeztem az eddigi legjobb modelleket és a 
  \section{A szoftver}
  A megoldásom során törekedtem arra, hogy az bárki által reprodukálható legyen, ezért ingyenesen elérhető és nyílt forráskódú eszközöket (Python, GitHub, Hugging Face) használtam.
 
+  \section{A többértelműség problémája a természetes nyelvekben}
 
-\paragraph{LogFile}
-A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit. A fájlhoz append módban minden futtatás után hozzáíródik, hogy ki futtatta, mikor, és a futás eredményei, statisztikákkal.
+A természetes nyelvekben a programozási nyelvekkel ellentétben egy szónak több, egymástól teljesen elkülönülő jelentése is lehet. Például az "egér" szó jelenthet egy számítógépes perifériát vagy egy állatot, és a helyes értelmezéshez a környező szavakat ismerni kell. Az ilyen jellegű többértelműségek automatikus feloldása az egyik központi problémája a természetes nyelvi rendszerek fejlesztésének.
 
 
- 1.1. A többértelm˝uség problémája a természetes nyelvek
-ben
- Atermészetes nyelvekben a programozási nyelvekkel ellentétben egy szónak több,
- egymástól teljesen elkülönül˝o jelentése is lehet. Például az "egér" szó jelenthet egy számí
-tógépes perifériát vagy egy állatot, és a helyes értelmezéshez a környez˝o szavakat ismerni
- kell. Az ilyen jelleg˝u többértelm˝uségek automatikus feloldása az egyik központi problé
-mája a természetes nyelvi rendszerek fejlesztésének. A többértelm˝uséget idegen szóval
- ambiguitásnak nevezik.
- 1.2. A WiC probléma
- Azemberi nyelvekben a többértelm˝u szavak attól függ˝oen, hogy milyen szövegkör
-nyezetben fordulnak el˝o, több, esetenként egymással össze nem függ˝o dolgot is jelent
-hetnek. Míg korábban a statikus szóbeágyazások, mint például a Word2vec és a GloVe
- voltak elterjedtek a szójelentés feloldására, ma már elavult módszereknek számítanak.
- Ezek a statikus szóbeágyazások tervezésükb˝ol adódóan nem képesek modellezni a sza
-vak szemantikájának dinamikus természetét, vagyis azt a tulajdonságot, hogy a szavak
- potenciálisan különböz˝o jelentéseknek felelhetnek meg. Egy szóhoz mindig ugyanazt a
- szóvektort rendelik, kontextustól függetlenül. A kontextualizált szóbeágyazások kísér
-letet tesznek ennek a korlátnak a feloldására azáltal, hogy dinamikus reprezentációkat
- számítanak ki a szavakhoz, amelyek a szövegkörnyezet alapján képesek alkalmazkodni.
- Ilyen szóbeágyazás transzformer például a BERT, ám ennek is megvannak a korlátai. A
- mai igazán modern megoldások viszont már mély tanulást és jellemz˝oen neurális hálókat
- használnak a modellek szójelentés-értelmez˝o képességei fejlesztésére.
- 9
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- 1.3. A WiC feladat és jelent˝osége
- AWiCfeladat lényege, hogy egy adott szó két különböz˝o mondatbeli el˝ofordulásá
-ról eldöntse, hogy azonos értelemben szerepel-e. A természetes nyelvi feldolgozásban 1
- ez kulcsfontosságú, mivel segít a szövegértelmezésben és a jelentésalapú keresés fejlesz
-tésében.
- 1.4. Egy rendszer feladata a WiC adathalmazon
- Egy rendszer feladata a WiC adathalmazon a szavak szándékozott jelentésének azo
-nosítása. A WiC egy bináris osztályozási feladatként van megfogalmazva. Adott egy
- többjelentés˝u szó, amely mindkét mondatban el˝ofordul, továbbá egy szófaj címke, ket
-t˝o index és két szövegrészlet. Egy rendszer feladata, hogy meghatározza, hogy a szó
- ugyanabban a jelentésben használatos-e mindkét mondatban. A w célszó minden eset
-ben csak egy ige vagy f˝onév lehet. A célszóhoz két eltér˝o szövegkörnyezet tartozik.
- Ezen szövegkörnyezetek mindegyike a w egy specifikus jelentését váltja ki. A feladat
- annak megállapítása, hogy a w el˝ofordulásai a két szövegkörnyezetben ugyanannak a je
-lentésnek felelnek-e meg, vagy sem. Tehát a célszó ugyanazt a jelentést hordozza-e két
- különböz˝o szövegkörnyezetben, vagy eltér˝ot. Ez egy összetett NLP probléma, mivel öt
-vözi a szójelentés-egyértelm˝usítés (Word Sense Disambiguation, WSD) és a kontextuális
- beágyazások elemeit, így a szójelentés-egyértelm˝usítés végrehajtásaként is értelmezhet˝o.
- 1.5. Bináris osztályozás
- A WiC feladat egy bináris osztályozási (binary classification) problémaként van
- megfogalmazva: el kell dönteni, hogy egy adott szó két különböz˝o mondatbeli el˝ofordulá
-sa ugyanabban az értelemben szerepel-e. A bináris osztályozási feladatok problémaköré
-ben is változnak a trendek olyan szempontból, hogy egyre inkább a neurális hálók és nagy
- nyelvi modellek az elterjedtek bináris osztályozási feladatokra is. A Lesk-algoritmus [2]
- egy klasszikus szóértelem-felismer˝o módszer, amely a szótári definíciók és a kontextus
- összevetésével próbálja meghatározni a szó legmegfelel˝obb jelentését. A legjobbak mégis
- az olyan, kifejezetten emberi szöveg megértésére specializálódott nagy nyelvi modellek,
- mint például a GPT-4.5 és a Gemini-2.5- 2025 tavaszán.
- 1.6. A WiC adathalmaz
- AWord in Context adathalmaz egy jó min˝oség˝u, nyelvészeti szakért˝ok által készí
-tett benchmark adathalmaz. A mondatok a WordNetb˝ol, a VerbNetb˝ol és a Wikiszótár
-ból származnak. A WiC adathalmaz segítségével megvizsgálhatjuk, hogy egy rendszer
- 1Természetesnyelv-feldolgozás, számítógépes nyelvészet és nyelvtechnológia néven is hivatkoznak rá,
- angolul NLP
- 10
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- (modell, algoritmus) mennyire képes a szavak jelentését megérteni különböz˝o kontextu
-sokban. A WiC feladat része a SuperGlue [3] Benchmarknak, amely egy széles körben
- elfogadott benchmark nyelvi modellek kiértékelésére. 8 feladatból áll:
- • BoolQ (Boolean Questions)
- • CB(CommitmentBank)
- • COPA(Choice of Plausible Alternatives)
- • MultiRC (Multi-Sentence Reading Comprehension)
- • ReCoRD(Reading Comprehension with Commonsense Reasoning Dataset)
- • RTE(Recognizing Textual Entailment)
- • WiC(Word-in-Context)
- • WSC(Winograd Schema Challenge)
- ASuperGLUE a GLUE továbbfejlesztett változata, amelyet 2019-ben vezettek be,
- mivel a GLUE feladatait a legmodernebb modellek (pl. BERT) már túl jól megoldot
-ták. [4] Ez az egyik legszélesebb körben elfogadott benchmark, amelyen számos nyelvi
- modell teljesítményét vizsgálták. A WiC halmaz fel van osztva tanító, validációs és teszt
-halmazra, ezért gépi tanításra egyszer˝uen felhasználható. Ezt segíti el˝o az is, hogy az
- összes mondat tokenekre bontott, tabulált és egységesek az írásjelek is. A modelleket ha
-sonlóan tanítják, mint ahogy az iskolában tanulnak a diákok. A benchmarkok feladatait
- jellemz˝oen 3 részre vágják: tanító, validációs és teszthalmazra. Ennek az aránya eltér˝o
- lehet, de a tanítónak jóval nagyobbnak kell lennie, mint a másik kett˝onek, és a teszthal
-maznak nagyobbnak kell lennie, mint a validációs halmaznak. 80-10-10%-os eloszlás a
- standard, ezzel, vagy hasonló eredménnyel érhet˝oek általában el a legjobb eredmények.
- Atanító adatbázist a korábbi iskolai példára visszatérve úgy képzelhetjük el, hogy
- ez a leadott anyag. A validációs halmaz olyan, mint egy mintavizsga, minta ZH. A teszt
-halmaz pedig a végs˝o megmérettetés, a vizsga. Fontos, hogy a teszthalmazon sose ta
-nítsuk a modelleket, és sose legyen átfedés a halmazok között. Ez ugyanis magoláshoz
- vezet, és a modell nem lesz képes általánosítani.
- 1.1. táblázat. A WiC adathalmaz tesztkészletének néhány bejegyzése
- Szó
- Szófaj Index 1. Példamondat
- 2. Példamondat
- defeat
- groom
- N
- V
- penetration N
- hit
- V
- 4-4
- 0-1
- 1-1
- 1-3
- It was a narrow defeat.
- Groom the dogs.
- The penetration of upper ma
-nagement by women.
- We hit Detroit at one in the
- morning but kept driving th
-rough the night.
- The army’s only defeat.
- Sheila groomed the horse.
- Any penetration, however
- slight, is sufficient to comp
-lete the offense.
- An interesting idea hit her.
- 11
-NagynyelvimodellekösszehasonlításaaWiCfeladatra
- 1.6.1. EddigilegjobbmegoldásokaWiC-re
- Afeladatrab˝ovenérkeztekmegoldások, számosmódszerrel értekel60%feletti
- eredményt. Alegjobberedményt aSenseBERT-large rendszerrel értékel, küls˝oer˝o
-forrásokhasználatával. Ezazeredménymegközelítiakézi, emberi szint˝ukiértékelést,
- melynekafels˝ohatára80%körüli.AkézikiértékelésnekésaSenseBERTmegoldásának
- egyszer˝usítettváltozatáténiselvégeztem.
- Kategória Implementáció Pontosság%
- Sentence-levelcontextualisedembeddings
- SenseBERT-large† Levineetal(2019) 72.1
- KnowBERT-W+W† Petersetal(2019) 70.9
- RoBERTa Liuetal(2019) 69.9
- BERT-large Wangetal(2019) 69.7
- Ensemble GariSoleretal(2019) 66.7
- ELMo-weighted Anselletal(2019) 61.2
- Word-levelcontextualisedembeddings
- WSDT† LoureiroandJorge(2019) 67.7
- BERT-large WiC’spaper 65.5
- Context2vec WiC’spaper 59.3
- Elmo WiC’spaper 57.7
- Senserepresentations
- LessLex Collaetal(2020) 59.2
- DeConf WiC’spaper 58.7
- S2W2 WiC’spaper 58.1
- JBT WiC’spaper 53.6
- Sentencelevelbaselines
- SentenceBag-of-words WiC’spaper 58.7
- SentenceLSTM WiC’spaper 53.1
- Randombaseline(véletlenszer˝ukiértékelés)
- 50.0
- 1.2.táblázat.Forrás:TheWord-in-ContextDataset
- 12
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- 1.7. Nagy nyelvi modellek
- Anagy nyelvi modell (angolul Large Language Model, LLM) olyan számítási mo
-dell, amely képes értelmes szöveg generálására vagy más természetes nyelvi feldolgozási
- feladatok elvégzésére. Ezek a modellek egy rendkívül költséges folyamat révén, hatal
-mas mennyiség˝u szöveges adat feldolgozásával és mélytanulási technikák alkalmazásá
-val sajátítják el a nyelv megértését és el˝oállítását. Az LLM-ek, mint például az OpenAI
- GPT-sorozata, a Google Gemini vagy a Meta LLaMA modelljei, különböz˝o architektúrá
-kat használnak, de leggyakrabban a transzformer alapú megközelítést alkalmazzák. Mint
- nyelvi modellek, az LLM-ek úgy sajátítják el ezeket a képességeket, hogy óriási mennyi
-ség˝u szövegb˝ol, egy önfelügyelt és egy félig felügyelt tanulási folyamat során, statisztikai
- összefüggéseket tanulnak meg. Ezek a modellek képesek összetett feladatok elvégzésére,
- mint például szövegfordítás, összefoglalás, információ-kinyerés, kérdés-válasz és kreatív
- szövegalkotás. Finomhangolás által specializált feladatokra. Nagy nyelvi modelleknek
- jellemz˝oen az 50 milliárd paraméteresnél nagyobb modelleket hívják. Az ennél kisebb
- modelleket inkább csak nyelvi modelleknek hívom.
- Inputként kap egy promptot, egy legfeljebb n token hosszúságú szöveget, ahol az
- n függ a modellt˝ol és a paraméterezést˝ol. Erre fog legfeljebb m hosszúságú válaszban
- inferenciával, azaz következtetéssel válaszolni. Azért hívják modellnek a modelleket,
- mert az emberi nyelvet és kommunikációt utánozzák (modellezik).
- Forrás: Wikipédia
- 1.7.1. Chatbot Arena, vagy LMSYS- nagy nyelvi modelleket összeha
-sonlító platform
- Kutatómunkám els˝o lépéseként utánanéztem, hogy melyik modellek a legjobbak
- angol nyelv˝u instruction following feladatokban. Ehhez a LMArenát [5] megfelel˝o refe
-renciának tartottam, mert ez az oldal igen leny˝ugöz˝o módon minden ismertebb ingyenes
- nagy nyelvi modellhez API-n keresztüli limitált hozzáférést biztosít: 2025. május 16-án
- 101modellAPI-ja volt kipróbálható az oldalon keresztül több tucatnyi cégt˝ol, a ranglétrán
- pedig 241 modell teljesítményét mérhetjük össze különböz˝o kategóriák alapján emberi
- szavazatok alapján, amely több mint 1.5 millió ember szavazatán alapszik. A folyamato
-san frissül˝o rangsor menüben az opciók közül az "Instruction Following" és az "English"
- kategóriát vizsgáltam meg, mert a problémám ehhez a területhez áll a legközelebb.
- Azoldalon található modellek mind elérhet˝oek és kipróbálhatóak, és általában saját,
- felhasználóbarát webes felületük is van, amely személyre szabható, elmenthet˝oek a ko
-rábbi beszélgetéseink, és egyéb kényelmes szolgáltatásokkal kecsegtetnek. Azonban fon
-tos észben tartanunk, hogy ezeket a felületeket fejleszt˝o cégek bármilyen publikus webes
- forrást felhasználhatnak a modelljeik tanításához, beleértve a chatben megadott informá
-ciót. A nagy cégeknek, mint például a Google-nek, az OpenAI-nak és a DeepSeek-nek
- is vannak nyílt forráskódú, jó min˝oség˝u modelljeik, melyek hatalmas adathalmazokon be
- vannak tanítva. Például a GPT-3 tanítása során a Common Crawl Wikipédiát, WebText2
- reddit posztokból és linkjeib˝ol kinyert adatokat, internetes könyveket és az angol nyelv˝u
- wikipédiát is felhasználták. [6] Régebben a New York Times termékeit is nagy mennyi
-ségben használták, ám a hírlapíró cég ezt felhasználási feltételeiben megtiltotta. [7]
- 13
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- A nagy tech cégek, mint a Meta és az X, felhasználják a közösségi médiára fel
-töltött adatainkat a modelljeik fejlesztéséhez. A Google pedig a felhasználási feltételeit
- is többször megváltoztatta, hogy felhasználhassa szolgáltatásainak felhasználói adatait az
- AI termékei fejlesztéséhez. [8]
- A Hugging Face [9] [több mint 1.7 millió modellt] és [csaknem 400 ezer adathal
-mazt] kínál különféle gépi tanulási feladatokra, beleértve a természetes nyelvfeldolgozást,
- képfeldolgozást és kódgenerálást is. Ezek a modellek nyilvánosan elérhet˝ok és szabadon
- használhatók. El˝onyük, hogy nyílt forráskódúak, így tetsz˝olegesen módosíthatóak- ha
-bár alapos szakértelem kell hozzájuk. Emellett biztonságosak: letölthet˝oek saját gépre,
- kódból futtathatóak anélkül, hogy egy szerverrel kommunikálnának. Emiatt privát adatot
- is be lehet nekik adni. Jellemz˝oen minél kisebb a paraméterszámuk, annál gyengébb a
- visszaemlékez˝o képességük, rövidebb válaszokat részesítenek el˝onyben, és annál gyak
-rabban követnek el hibákat vagy nyelvi torzulásokat- például nyelvtani hibákat, kódban
- szintaktikai hibákat, inkoherens (összefüggéstelen, logikailag következetlen) válaszokat.
- Akvantálás általában csak a népszer˝ubb/nagyobb modelleknél (pl. Llama, Gemma, Mist
-ral) elérhet˝o, és gyakran közösségi kontribúciók eredménye (nem hivatalos verziók). A
- kvantálás a modell súlyait alacsonyabb bitmélység˝ure (pl. 32 → 8/4 bit) konvertálja, ami
- csökkenti a memóriaigényt és gyorsítja a következtetést. Emiatt könnyen félrevezethet˝oek
- és könnyen hallucinálnak is. Összefoglalva hátrányaik a
- • korlátozott kontextusmegértés a csökkentett bitmélység miatt, ezért nehezebben kö
-vetik a hosszú gondolatmeneteket,
- • gyenge memóriájuk, elfelejtik a korábbi információkat,
- • és túlzott általánosítás is jellemz˝o rájuk.
- 14
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- Fogalmak
- Ahhoz, hogy nagy nyelvi modelleket ki tudjunk értékelni, meg kell ismernünk né
-hány alapfogalmat.
- 1.7.2. Mi a prompt?
- Apromptazinformatikában egy nagynyelvi modell számára beadott input, amelyre
- a modell egy el˝ore meghatározott kimenetet generál. M˝uködési elve lényegében ugyan
-az, mint egy hagyományos konzolnak, parancssori interfésznek, például egy Windows
- rendszeren a PowerShell, vagy Linuxon Bash terminállal, azonban prompt esetén a kom
-munikáció emberi nyelven történik. Egy jelent˝os el˝onye a promptolásnak, hogy nem csak
- egy el˝ore meghatározott parancskészletet használhatunk, hanem bármit beírhatunk, nin
-csenek szintaktikai hibák vagy futtatási hibák, mivel a rendszer minden bemenetre képes
- választ generálni.
- 1.7.3. Inferencia
- A modell promptra adott válaszát gyakran inferenciának nevezik, ami következte
-tést jelent. Ez arra utal, hogy a modell a megtanult minták alapján logikailag következtet
- a legvalószín˝ubb kimenetre, nem pedig szó szerint "visszadobja" a betanított adatokat.
- 1.7.4. Determinisztikus következtetés, temperature, top-p és top-k
- Akísérletemnek csak akkor van értelme, ha a futtatás determinisztikus. Azt jelenti,
- hogy a modell mindig ugyanazt a kimenetet adja ugyanazon bemenet esetén, mivel a
- véletlenszer˝uséget kizáró paraméterekkel (pl. temperature = 1.0, top k = 0, top p = 1.0) m˝uködik. A temperature (h˝omérséklet) a nyelvi modellek válaszainak kreativitását
- szabályozza (magas értéknél változatosabb, alacsonynál determinisztikusabb kimenet), a
- top-k pedig korlátozza a következ˝o szó választékát a k legvalószín˝ubb tokenre, míg a top
-p (más néven nucleus sampling) dinamikusan választja ki a valószín˝uségi eloszlás egy
- részhalmazát (pl. a legvalószín˝ubb tokeneket, amelyek összege eléri a p küszöböt) [10].
- 0.4
- 0.3
- Valószín˝uség
- 0.2
- 0.1
- 0
- 0.3
- Top k: 3
- 0.2
- 0.15
- 0.1
- mat hat dog
- 5 · 10 2
- 15
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- A top p m˝uködése hasonló. Annyiban tér el, hogy nem egy fix számú legvalószí
-n˝ubb szót választunk ki, hanem az odaill˝o szavak valószín˝usége szerint. A p egy 0.00-tól
- 1.00-ig terjed˝o valós szám. A szavakat akkumulatívan vesszük számításba, amíg a p érté
-ke nagyobb, mint a soron következ˝o legvalószín˝ubb szó valószín˝usége, addig belevesszük
- a szót és ugrunk el˝ore. Ellenkez˝o esetben csak belevesszük a szót, és leáll az algoritmus.
- Ezzel a módszerrel minél nagyobb a p érték, annál több szó közül lehet választani, de
- legalább 1 szót kapunk, tehát mindenképpen tudjuk folytatni a szöveget.
- 1.7.5. Maximum kimeneti tokenek és kontextusablak
- Amaximumkimenetitokenekparaméterhatározzameg, hogyamodelllegfeljebb
- hány tokent generálhat a válasz során. Ez kizárólag a válasz hosszát korlátozza, nem
- befolyásolja közvetlenül a bemeneti szöveget.
- A kontextusablak (angolul context window) a modell által egyszerre figyelembe
- vehet˝o tokenek teljes száma– beleértve a bemenetet és a választ is. Ha a bemenet vagy a
- beszélgetés túl hosszú, a legrégebbi részek elvesznek. A GPT-3 alapértelmezett kontex
-tusablaka 2048 token, míg a GPT-4 esetében ez elérheti a 8192 vagy akár 32768 tokent
- is, verziótól függ˝oen.
- 16
-2. fejezet
- Legkonzisztensebb nagy nyelvi
- modellek megtalálása
- Konzisztencia
- A kutatásom els˝o felének célja a modellek teljesítményének összehasonlítása a
- WiC-b˝ol szedett kérdéseken volt, de nem az érdekelt els˝osorban, hogy minél több kérdés
-re a gold standard 1 szerint válaszoljanak, hanem hogy a szavak sorrendje ne befolyásolja
- a válaszadásukat. Tehát a
- Does the word ‘w‘ mean the same thing in ‘s1‘ and ‘s2‘?
- és a
- Does the word ‘w‘ mean the same thing in ‘s2‘ and ‘s1‘?
- kérdésekre mindig ugyanazt válaszolják (változatlan w, s1 és s2 esetén, ahol w egy
- szó, s1 az els˝o példamondat, és s2 a második példamondat).
- El˝oször a LMArena és általam ismert legjobb modelleket vizsgáltam meg, hogy
- mennyire érzékenyek arra, hogyha a 2 mondatot felcseréljük. A WiC adathalmazból el˝o
-állított kérdésekb˝ol szúrópróbaszer˝uen adtam be kérdéseket a vizsgált modellnek, majd
- töröltem a modell memóriáját, és ezt a kérdést a 2 mondatot felcserélve is elküldtem a
- modellnek. A mondatokat a Peternity 4 Python programommal generáltam, err˝ol majd
- kés˝obb írok. Végül egy Google Táblázatban a válaszokból összesítettem az egyes promp
-tolási módszerek pontosságát, kiegyensúlyozott pontosságát, hogy mekkora arányban
- egyeznek a válaszpárok. A teszthalmazban már alapból randomizált sorrendben vannak a
- kérdések, így az els˝o 60 beadását megfelel˝onek találtam.
- pontosság =
- TP +TN
- TP +TN+FP +FN
- kiegyensúlyozott pontosság = 1
- 2
-TP
- TP +FN + TN
- TN +FP
- (2.1)
- (2.2)
- 1A gold standard egy szakért˝ok által hitelesen és konzisztensen annotált adathalmaz, amely viszonyítási
- alapként szolgál automatikus rendszerek teljesítményének kiértékeléséhez.
- 17
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- Hugging Face modellek
- Olyan modellt szerettem volna választani az összehasonlításhoz, amelyek nyílt for
-ráskódúak, nagyjából azonos, másfél milliárd és 5 milliárd közötti paraméterszámúak, de
- legfeljebb 2 milliárd paraméterszám-különbség van köztük. A Google Colab webes Py
-thon futtatókörnyezetet, Hugging Face modelleket, és a nagy cégek modelljeinek webes
- API-jait használtam.
- El˝oször is, ahhoz, hogy egyértelm˝u eredményt kapjak a modell teljesítésére, ahol
- csak lehetett, minden véletlenszer˝uséget biztosító paramétert ki kellett kapcsolnom. Erre
- azért volt szükség, hogy ne a szerencsén múljon az, hogy a modell két válasza meg
-egyezik, vagy eltér, hanem a modell felépítésén. A sztochasztikus faktorokkal ugyanis
- ugyanarra a kérdésre eltér˝o futtatáskor eltér˝o választ adhat egy modell, ami nem vezet
- hiteles kutatáshoz. A LMArena és a Google AI Studio oldalán van erre lehet˝oség.
- Hogy ezt elérjem, a temperature értékét 0-ra, a top-p értékét pedig 1-re állítottam.
- Ezáltal a válaszok sztochasztikus változatosságát minimálisra redukáltam.
- Egy példa kérdés:
- Egyenes sorrendben
- Does the word "defeat" mean the same thing in sentences
- "It was a narrow defeat." and "The army’s only defeat."?
- Fordított sorrendben
- Does the word "defeat" mean the same thing in sentences
- "The army’s only defeat." and "It was a narrow defeat."?
- Avéletlen faktor kikapcsolása mellett az is fontos volt, hogy egyesével adjam be a
- kérdéseket. Amikor ugyanis egyszerre N kérdéssel bombáztam a modelleket, akkor az
- is egy figyelembe veend˝o tényez˝o volt, hogy az N kérdés milyen sorrendben lett feltéve.
- Ráadásul a modellek, ha egyszerre túl sok kérdést kaptak, jellemz˝oen csak 40-60 kérdésre
- válaszoltak, az utána lév˝oket teljesen ignorálták. Ezzel szemben, ha minden kérdés esetén
- tiszta lappal indítottam, és új, független promptként adtam be, akkor ez a hatás nem tudott
- bezavarni. Emiatt tisztább a kísérlet, ha a modell nem egyszerre kapja meg mind az
- N mondatot, amir˝ol a döntést várjuk, hanem N darab olyan kérdésként, amelyekben
- egyenként csak pontosan egy kérdés szerepel.
- Ezt a fajta módszert, hogy a webes felületek input mez˝ojébe adtam be a kérdéseket,
- csak API-alapú automatizációval lehetne automatizálni, de a webes felületek nem erre
- készültek. Ahhoz, hogy automatizáljam a promptolást, egy, a témavezet˝om által készí
-tett és javasolt Google Colab jegyzetfüzetet [11] fejlesztettem tovább. Ez egy egyszer˝u,
- de hatékony jegyzetfüzet, amellyel Hugging Face token birtokában tetsz˝oleges modell vá
-laszadásra bírható, és mindez hatékonyan automatizálható. Hogy ezt elérjem, 3 kérdéssort
- készítettem.
- • Egyrészt egy könny˝u feladatot készítettem: egy saját kérdéshalmazt, amely egy 19
- nagyon egyszer˝u kérdésb˝ol áll.
- 18
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- • Másrészt a WiC adathalmazra alapuló kérdéshalmazomból, f˝oleg a teszt részosz
-tályból szúrópróbaszer˝uen randomizált kérdéseket tettem fel és adtam be a model
-leknek, 60 darabot.
- • Harmadrészt, szintén a kérdéshalmazomból, f˝oleg a teszt részosztályból kiválasz
-tottam pár hasonló szót és párat a legegzotikusabb szavak közül, vagy szövegkör
-nyezetet tartalmazó mondatot, amelyekkel könny˝u a modellt összezavarni.
- 2.1. A megfelel˝o nyelvi modellek kiválasztása
- Anagy AI cégek, mint az OpenAI, Anthropic és a DeepSeek olyan fejlett általános
- célú generatív mesterséges intelligencia modelljeik vannak, amelyek minden kategóriá
-ban csúcsteljesítményt nyújtanak, vállvetve a Google, Microsoft, X és Meta technológiai
- óriásokkal, csak hogy párat említsek. Azonban a feladatom megfogalmazásában szere
-pelt, hogy ingyenes és nyílt forráskódú modelleket kell megvizsgálnom, így ezek többsége
- nem jöhetett szóba. Kíváncsiságból azonban mégis megvizsgáltam a következ˝o modelle
-ket:
- • ChatGPT (OpenAI)– Gyors, sokoldalú, fizet˝os API
- • Claude (Anthropic)– Biztonságközpontú, fizet˝os API
- • DeepSeek (DeepSeek)– Hatékony, tömör, nyílt forráskódú, nagyméret˝u modellek
- • Gemini (Google)– Innovatív, integrált
- • Grok (X)– Valós idej˝u adatfeldolgozó
- Modell neve Helyes válaszok (db/összes) Kiegy. pontosság (%) Konzisztencia (%)
- GPT
- 143/188
- 76
- Claude
- 138/188
- 73
- 90
- 87
- DeepSeek
- 141/188
- 75
- 83
- Gemini
- 156/188
- 82
- 91
- Grok
- 126/188
- 67
- 84
- 2.1. táblázat. Nagy nyelvi modellek teljesítményértékelése. A 188 kérdés a 19 el˝ore kivá
-lasztott könny˝u, 60 random, valamint 15 el˝ore kiválasztott nehéz kérdésb˝ol álló korpusz
- egyenes és fordított beadásából tev˝odik össze.
- Hogy a promptolást automatizáljam, Hugging Face-en elérhet˝o modelleket futtat
-tam a Google Colab szkriptemben 4.5.
- Atémavezet˝om által ajánlott modellek közül a
- • Microsoft/Phi-4-mini-instruct [12],
- • Google/Gemma-2-2b-it [13] és a
- 19
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- • Qwen1.5-1.8B-Chat [14]
- modelleket választottam, mert ezek elég jók méret/min˝oség arányban a közösségi média
- fórumok szerint. Közelít˝o arányban sincsenek a nagy AI és tech cégek top modelljeivel,
- de améretükhözképest gazdag szókinccsel és jó nyelvérzékkel rendelkeznek. Mind a hár
-matkönny˝u, közepes és nehéz kérdéseken, mind a 3 kérdésnehézséget egyenes és fordított
- sorrendben teszteltem. Ez így összesen 3*3*2=18 kiértékelést jelentett. Hangsúlyozom,
- hogy nem agemma-2b-it, hanem a gemma-2-2b-it változatot választottam. Az elnevezési
- szabály kissé összezavaró, ugyanis gemma-xb... kezdet˝u modellek els˝o generációs vál
-tozatok, míg a gemma-2-xb... a második, és a gemma-3-xb... a harmadik generációs
- modelleket jelöli. A gemma 3 család 2025 tavaszán tétetett közzé, így err˝ol átfogó vizs
-gálatot nem végeztem, ám feltehet˝oen jobb a szójelentés-felismerés feladatokban, mint
- el˝odje. A modellek eredményeit összessít˝o táblázat a 4.1. táblázatban látható.4.5
- Anagynyelvi modelleket futtató szkriptem nyilvánosan megtekinthet˝o, és a kísérlet
- elvégezhet˝o Google Colab-on, a mellékletben található linken. 4.5
- Mivel Google Colabot használtam, azon belül is GPU-s futtatókörnyezete, így a
- kiértékelés megfelel˝oen gyors volt. A webes környezet és a kikapcsolt valószín˝uségi
- változók miatt elmondható, hogy a kiértékelésem módja:
- • reprodukálható, azaz bárki meg tudja ismételni a kísérletet
- • determinisztikus, tehát ugyanarra az inputra mindig ugyanaz lesz az output, nem
- függ a véletlent˝ol.
- 2.1.1. Google AI Studio
- A Google AI Studio egy ingyenes, Google által fejlesztett platform, ahol megta
-lálható az összes ’state-of-the-art’ modelljük, és rendkívül személyre szabhatóak. A mo
-dellek kipróbálgatása után arra a következtetésre jutottam, hogy a Gemini 2.5 Pro Ex
-perimental 03-25 a legjobb a WiC feladatra. Egy inferenciában, kevesebb mint 10 perc
- alatt képes válaszolni mind az 1400 tesztkérdésre, amelyekre több futtatásom esetén is
- közel 80%-os pontossággal teljesített, mind egyenes, mind fordított sorrendben beadva a
- kérdéseket, átlagosan 91%-os egyezéssel az egyenes és a fordított sorrendben adott vá
-laszai alapján. Lehetségesnek tartom, hogy a sikerességéhez hozzájárul az, hogy látta
- a kérdéseket az el˝otanulítása közben, és hatékonyan vissza tudott rá emlékezni, de az
- mindenképpen figyelemreméltó, hogy a kézi emberi kiértékeléssel egyez˝o hatékonyságot
- egyedül ez a variáns ért el.
- Összességében a legkonzisztensebbek a tesztjeim alapján a Gemini-2.5 variánsai, a
- GPT-4 és a GPT-4.5o, ám ez csak empirikus vélemény.
- 20
-3. fejezet
- Három generatív nyelvi modell
- összehasonlítása
- Agemma-2-2b-it, Phi-4-mini-instruct és a
- Qwen1.5-1.8B-Chat összehasonlítása
- 3.1. Módszer
- 3.1.1. El˝okészítés
- A generatív nyelvi modelleket egy Google Colab szkriptben hasonlítottam össze.
- Az projektem többi részét PyCharmban készítettem, ám itt a Colabra volt szükségem,
- mert lokálisan nagyon nehéz futtatni egy több billió paraméteres nyelvi modellt. Annál
- kisebbet pedig nem tartottam megfelel˝onek, mert nagyon rosszul teljesítenének a WiC
- feladatra. Az els˝o félévben lokálisan próbáltam futtatni "kisméret˝u" modelleket, azonban
- GPU-, RAM- és tárhelyproblémákkal küszködtem. Szerencsére a Google ingyenesen
- biztosít lehet˝oséget Cloud-alapú futtatásra, és GPU-t is biztosít. A modell egy távoli
- gépre tölt˝odik le, és GPU-t is használ megfelel˝o beállításokkal.
- 3.1.2. A beadott szöveg formátuma
- Amodelleket úgy teszteltem, hogy eldöntend˝o kérdéseket tettem fel nekik egyesé
-vel:
- Angolul
- Does the word w mean the same thing in
- sentences s1 and s2?
- Magyarul
- Ugyanazt jelenti-e a w szó az s1 és s2 mon
-datban?
- Ahol w egy szó, s1 az els˝o példamondat, és s2 a második példamondat.
- 21
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- 3.1.3. A modelleket tesztel˝o kérdések
- Alapos tesztelés után azt találtam, hogy nem célszer˝u a teljes nyers adathalmazból
- el˝oállított kérdéseket beadni a modelleknek, helyette 3 gondosan összeállított kérdéshal
-mazzal értékeltem ki a teljesítményüket.
- • Egyrészt egy könny˝u feladatot készítettem: egy saját kérdéshalmazt, amely egy pár
- nagyon egyszer˝u kérdésb˝ol áll. Ha egy modell ezeket sem tudta jól megoldani,
- akkor a másik kett˝ot nem értékeltem ki rajta.
- • Másrészt a WiC adathalmazra alapuló kérdéshalmazomból szúrópróbaszer˝uen ran
-domizált kérdéseket tettem fel és adtam be a modelleknek, f˝oleg a teszthalmazból.
- • Harmadrészt, szintén a kérdéshalmazomból kiválasztottam pár hasonló szót, vagy
- szövegkörnyezetet tartalmazó mondatot, amelyekkel könny˝u a modellt összezavar
-ni.
- A WiC megfelel˝o referenciaadatkészlet erre is, hiszen szakért˝ok által gondosan annotált
- példákon alapul. Könnyen lehetséges, hogy már látták a tesztelt modellek (Phi, Gemma,
- Qwen) a WiC adathalmaz részét vagy egészét, ám nem tudnak rá visszaemlékezni, mert
- több milliárd mondatot láthattak a tanításuk során.
- A WiC adathalmazban található mondatokban a szavak, mondatjelek és írásjelek
- tokenizálva vannak, szóközzel vannak elválasztva a megel˝oz˝o és következ˝o szótól, mon
-datjelt˝ol és írásjelt˝ol. Így a vessz˝o, mondatvégi pont, az angol birtokos személyjel 's rag
- és bármilyen aposztrófot használó angol rag, jel, képz˝o könnyen kiemelhet˝o a szövegb˝ol.
- Emiatt viszont külön figyelnem kellett, amikor természetes nyelvezet˝uvé alakítottam a
- szöveget, hogy ezeket is gondosan átalakítsam.
- Erre használtam a sentence\_normalizer szkriptem függvényeit 4.5.
- Emellett volt pár kifejezés és speciális karakter, amelyet ahhoz, hogy Python szótár
-ként eltároljam, escape-elnem kellett, vagyis el kellett érnem, hogy a Python interpreter
- egyszer˝u karakterként kezelje ˝oket, és ne program utasításként. A mondatokat ugyanis
- string dictionary-ként tároltam el, amelyekben az idéz˝ojeleknek és kett˝ospont (:) karak
-tereknek speciális funkciója van. Így az alábbi helyzetekben gondosan átalakítottam a
- szöveget a Python szintaxisnak megfelel˝o alakba. Ezt is a sentence\_normalizer
- szkriptem függvényei végezték.
- Eredeti
- Átalakított
- Myboss is out on another of his three martini lunches.
- Will you join us at six o’clock for martinis?
- Myboss is out on another of his three martini lunches.
- \begin{verbatim}
+\section{A WiC probléma}
+Az emberi nyelvekben a többértelmű szavak attól függően, hogy milyen szövegkörnyezetben fordulnak elő, több, esetenként egymással össze nem függő jelentést is hordozhatnak. Míg korábban a statikus szóbeágyazások, mint például a Word2vec és a GloVe voltak elterjedtek a szójelentés feloldására, ma már elavult módszereknek számítanak. Ezek a statikus szóbeágyazások tervezésükből adódóan nem képesek modellezni a szavak szemantikájának dinamikus természetét, vagyis azt a tulajdonságot, hogy a szavak potenciálisan különböző jelentéseknek felelhetnek meg. Egy szóhoz mindig ugyanazt a szóvektort rendelik, kontextustól függetlenül. A kontextualizált szóbeágyazások kísérletet tesznek ennek a korlátnak a feloldására azáltal, hogy dinamikus reprezentációkat számítanak ki a szavakhoz, amelyek a szövegkörnyezet alapján képesek alkalmazkodni. Ilyen szóbeágyazás transzformer például a BERT, ám ennek is megvannak a korlátai. A mai igazán modern megoldások viszont már mély tanulást és jellemzően neurális hálókat használnak a modellek szójelentés-értelmező képességeinek fejlesztésére.
 
- Will you join us at six o\’clock for martinis?
- The derivative of f : f(x ) = x^2 is f’:f’(x ) = 2x.
- ‘electricity’ is a derivative of ‘electric’.
- The derivative of f f(x ) = x^2 is f\’ f\’(x ) = 2x.
- ‘electricity’ is a derivative of ‘electric\’.
- \end{verbatim}
- 3.1. táblázat. A sentence\_normalizer függvény átalakítása
- Énugyanis a kutatómunkám els˝o fázisaként a weben, távoli szerveren futó modelle
-ken szerettem volna tesztelni, ahova a mondatok ilyen formában nem feleltek meg a kiér
-tékelésre, mert pont az volt a célom, hogy megvizsgáljam, mennyire értik meg jól a nagy
- nyelvi modellek az emberi szöveget. Emiatt a listában felsorolt tokeneknek az el˝ofordu
-lásainál átalakítottam a szöveget: kitöröltem az el˝ottük lév˝o szóközt. Ezzel lényegében
- 22
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- visszaalakítottam a mondatokat emberi nyelvre. Ezt reguláris kifejezéseket használva és
- mintákat keresve Python algoritmussal oldottam meg.4.5
- 3.1.4. Kérdés-válasz szótár
- Anaivkérdés-válasz készítési ötlet az lehetne, hogy a vizsgált szó legyen a kulcs, és
- a kérdés a válasz. Ez azonban nem célszer˝u, s˝ot hibás, ugyanis egy szóhoz több bejegyzés
- is tartozhat az adathalmazban, viszont a mondatpárok egyediek egymáshoz képest. Emiatt
- a kérdéseknek kell lenniük a kulcsoknak, amelyeknek a gold standard válasz az értéke.
- Például egy szótárelem kulcs-érték pár a következ˝oképpen néz ki:
- Key: Does the word "{word}" mean the same thing in
- "{sentence1}" and "{sentence2}"?
- Value: Yes VAGY No
- 3.1.5. Futtatás
- Aszkriptem leírása:
- Amodell nevének a pontos Hugging Face azonosítóját kellett megadni, a
- model\_name = <company/model-name>
- utasítással adtam meg. Az
- AutoTokenizer.from\_pretrained(model\_name)
- sorral a tokenizer példányt hozom létre. Ez az eszköz felel˝os azért, hogy a nyers szö
-veget a modell által értelmezhet˝o tokenekre bontsa. A from\_pretrained hívással
- automatikusan letöltöm a modellhez ill˝o tokenizálót. Az
- AutoModelForCausalLM.from\_pretrained(...)
- függvény tölti be a nyelvi modellt. Amely képes szöveget generálni.
- • device\_map=’auto’: Automatikusaneldönti,melyikmodelltömbkerüljönme
-lyik eszközre (pl. GPU, CPU).
- • torch\_dtype=’auto’: Automatikusankiválasztjaamegfelel˝oadattípustamo
-dellhez (pl. float16, bfloat16).
- • trust\_remote\_code=True: Ezzel engedélyezem a modellhez tartozó egyedi
- kód futtatását, ami akkor kell, ha a modell nem a standard Hugging Face interfészt
- használja.
- • offload\_buffers=True: Ez különösen akkor hasznos, ha a GPU memóriája
- nem elég a teljes modell betöltésére. Ilyenkor a kevésbé használt rétegek puffereit
- 23
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- a rendszer a CPU-ra offload-olja, vagyis átrakja, hogy kevesebb GPU-memóriát
- használjon. Ezt egy figyelmeztetés javasolta, amit így beépítettem.
- • do\_sample=False: Teljesen determinisztikussá teszi a futtatást. Kikapcsolja
- a sztochasztikus mintavételezést, és átvált greedy decoding üzemmódba (amikor a
- modell mindig a legnagyobb valószín˝uség˝u következ˝o tokent választja ki).
- Atokenizálást az apply\_chat\_template végzi el, amely egyesíti a különböz˝o
- modellek output formátumát. A Gemmaeseténaflash-attentioncsomagtelepítése
- szükséges. Paraméterei:
- return\_tensors=’pt’
- A kimenetet PyTorch tensor
- formatumban kerem.
- add\_generation\_prompt=True Specialis jelzes, hogy generalni
- kell valaszt.
- Ezután a .to(model.device) biztosítja, hogy az input tensor ugyanarra az
- eszközre (pl. GPU) kerüljön, mint a modell.
- Aszöveg-generálás lépése:
- output = model.generate(
- inputs,
- max\_new\_tokens=200,
- do\_sample=False,
- )
-  Maximum 200 uj token
-  Determinisztikus valasz
- Aválasz dekódolása:
- decoded = tokenizer.batch\_decode(output, skip\_special\_tokens=
- True)
- for reply in decoded:
- print(reply)
- skip\_special\_tokens=Trueeltávolítjaazolyanvezérl˝otokeneket, mint<s>
- vagy <|endoftext|>, amelyek nem részei a természetes szövegnek.
- Végül egy for ciklus segítségével az összes dekódolt választ szépen sorban kiírom:
- for i, sentence in enumerate(decoded):
- print(f"[{i}] {sentence}")
- Ablokkot torch.no\_grad() kontextusba helyeztem. Enélkül nagyon pazarol
-ná a program a GPU memóriát, és rövid úton "out of memory" hibába futna. A szkripttel
- hibátlanul le tudtam tesztelni a modelleket, amelyeket szerettem volna.
- 24
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- 3.1.6. Kiértékelés
- A nyelvi modellek hajlamosak az önismétlés hibájába esni, és az is gyakori torzu
-lás, hogy az egyik osztályt aránytalanul preferálják a másik fölött, tehát például a WiC
- kérdéseinek 80%-ára nemmel válaszolnak. A kiértékelés során figyelembe vettem, hogy
- ha mindegyik kérdésre ugyanazt a választ adja, és ezzel aránytalanul sokat eltalál, az ne
- érjen annyi pontot, mint ha közel fele-fele arányban tippel vegyesen. Más szóval, ha egy
- modell mindenre ugyanazt válaszolja, és történetesen ezzel jól lefedi az egyoldalú gold
- standardot, az nem jelent valódi tudást, csak szerencsés torzítást. A kiegyensúlyozott
- pontosság (balanced accuracy) módszerével az abszolút true positive arány helyett
- egy átlagolt true positive arányt adunk meg az egyes osztályokra.
- Ez segít, ha pl. a gold standard 80% "Yes" és 20% "No", de a modell mindig "Yes"-t
- mond– a sima pontosság 80%, de a kiegyensúlyozott pontosség csak 50%.
- 3.1.7. A modell válaszainak b˝ovításe
- Hamar be kellett látnom, hogy az algoritmus egy puszta "Yes" vagy "No" válasza
- önmagában nem sok információt rejt magában. Ha csak ennyit kapok vissza, nem tudom,
- hogy hogyan gondolkodott a modell, milyen szóvektorai vannak. Emiatt, hogy a puszta
- "Yes" és "No" válasznál többet kapjak vissza, többféle módszert alkalmaztam:
- 1. Megkértem a modellt, hogy írja le a gondolatmenetét.
- 2. Apromptban utasítottam a modellt, hogy érveljen is, miért tartja helyesnek a vála
-szát.
- 3. Megkértem, a modellt, hogy egy normalizált skálán, mondjuk egy 0 és 100 közöt
-ti számmal, a határértékeket beleértve ítélje meg, hogy a modell mennyire biztos
- abban, hogy a célszó a 2 mondatban ugyanabban az értelemben van jelen. 100%
- jelenti azt, hogy a modell teljesen biztos abban, hogy a célszó a 2 mondatban ugyan
-azt jelenti, 0% esetén pedig teljesen biztos az ellenkez˝ojében.
- Answer with "Yes" or "No" with reasoning and your confidence
- score of "Yes" in percentage. 100% means you are a
- hundred percent sure that they mean the same thing, 0%
- means the opposite.
- Does the word "{word}" mean the same thing in sentences "{
- sentence1}" and "{sentence2}"?
- 3.1. ábra. A nagy nyelvi modellek promptját úgy kezdtem, hogy érveljen minden mondat
- esetében.
- 25
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- Tapasztalatom szerint ez elég volt ahhoz, hogy részletes válaszokat kapjak a mo
-dellek webes futtatása esetében, de lokális futtatásnál is segített tájékozódni.
- Egyszavas válaszok
- Aszótárból el˝oállított prompt formátuma pedig a következ˝o:
- Answer all ‘n‘ questions with Yes or No!
- Does the word "defeat" mean the same thing in sentences
- "It was a narrow defeat." and "The army’s only defeat."?
- Does the word "groom" mean the same thing in sentences
- "Groom the dogs." and "Sheila groomed the horse."?
- .
- .
- .
- (n sor összesen)
- A modellek erre a formátumra szinte mindig csak egy Y es vagy No szóval vála
-szolnak, ezt saját teszteléssel is meger˝osítettem. Ezeket az el˝orejelzéseket egy egyszer˝u
- Yes-> T, No-> Fleképezéssel össze lehet hasonlítani a gold fájlokban található
- igazat és hamisat jelöl˝o T és F címkékkel.
- Eltér˝o kimenetet kapok, ha érvelés kérésével adom be a modelleknek a szöveget:
- Answer all ‘n‘ questions with Yes or No with reasoning!
- Does the word "defeat" mean the same thing in sentences
- "It was...
- Ebben az esetben a chatbotok 1-2 mondatban meg szokták magyarázni a döntésük
- mögötti logikai érvelést. Ez is hasznos információ, amelyet felhasználok a modell telje
-sítményének megítéléséhez.
- A modellek válaszát egy Google táblázatba mentettem el. Az els˝o oszlopban je
-gyeztem fel a szavakat az adathalmazokból, a másodikban a gold standardot, a rákövet
-kez˝okben pedig a modellek válaszait. Az adatok alatt összesítettem pár releváns adatot,
- többek között a pontosságot, kiegyensúlyozott pontosságot és az egyenesen és fordított
- sorrendben beadott mondatok egyezési arányát. El˝obbiekhez beépített Google Táblázatok
- függvényeket használtam, míg utóbbihoz Apps Scriptet, a Táblázatok egy b˝ovítményét,
- amellyel saját függvények definiálhatók és használhatók a táblázat bármely cellájában.
- Az els˝o sorban szerepelnek a gold standard értékek. A TP, FP, FN, TN címkék szá
-mát és eloszlását a Google Táblázatok beépített függvényei segítségével határoztam meg,
- és szimplán összeszámoltam a modellek által predikált "Yes" és "No" válaszok soronkénti
- megegyezését az azonos sorban szerepl˝o gold standard értékekkel.
- Egyes modelleknél (pl. Gemini 2.5 Pro Experimental 03-25) problémát okozott az,
- hogy nem csupán egy ’Yes’, vagy egy ’No’ válasszal tért vissza, hanem gondolatmenetet,
- magyarázatot is hozzáf˝uzött- akkor is, ha a promptban ennek az elhagyására kértem. Így
- 26
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- pl. az "I know! The answer is Yes." szöveg a Google Táblázatok függvényemben ’No’
-ként lenne beleszámítva, akkor is, ha utána a modell szerint. Emiatt ezeknek a modellek
- outputjának a feldolgozását manuálisan végeztem.
- AWiCsaját kézi kiértékelése
- AWiChonlapján az áll, hogy az emberi, manuális kiértékeléssel körülbelül 60%-ot
- tudtak elérni, azaz 80%-os pontossággal tudták a teszt adathalmazból vett, véletlenszer˝u
- példákról megállapítani, hogy a szó a 2 mondatban ugyanazt jelenti-e (a gold standard
- alapján). Ez nem túl magas, de érthet˝o, tekintve, hogy ezek többsége ritka szó, és a
- mondatok nyelvezete is sokszor régies, vagy nagyon tudományos. A módszer az volt,
- hogy minden annotátor kapott 100 példát, és semmilyen segédeszközt nem használhattak.
- Hogy meggy˝oz˝odjek a nehézségr˝ol, én is eldöntöttem 60 bejegyzésr˝ol a gold stan
-dard ismerete nélkül, hogy a vizsgált szó ugyanazt jelenti-e a két mondatban. Az én ered
-ményem63.33%-ospontosságés63.17%-oskiegyensúlyozott pontosság lett. Az eredmé
-nyeim megtalálhatóak a kiértékel˝o rendszeremben a manual\_evaluation mappában.
- Futtatás Google Colab felületen
- Ahhoz, hogy nagy nyelvi modell válaszait emberi id˝oben megkapjuk, anélkül, hogy
- órákig felhasználnánk a személyi gépünk teljes er˝oforrását, GPU-n kell futtatni a modellt.
- Ez töredékére csökkenti a futási id˝ot. Az általam elérhet˝o eszközök egyike sem GPU-s.
- Erre kínált megoldást a Google Colab. Ez a platform segítségével távoli, Google szerve
-rek gépjeit használhatjuk, nem kell a gépünk háttértárát, memóriáját stb. használni. Saját
- szkriptjeink futtatásához, és akár GPU-s futtatókörnyezetet is használhatunk, áthidalva
- a gépünk hardveres korlátait. Hátrányai, hogy a programunk változói, memóriája csak
- a session erejéig tárolódik, és lassabb futásidej˝u, mint a lokálisan futó program. A hát
-rányain úgy kerekedtem felül, hogy AutoClicker szoftvert állítottam a jegyzetfüzet egy
- véletlenszer˝u pontjára, így életben tartva az aktív munkamenetet akár órákig is.
- 3.1.8. Eredmények
- Kiválasztottam 60 véletlenszer˝u kérdést a test halmazból. Az összes pontosság
- és kiegyensúlyozott pontosság kiértékelésem 50% és 60% közötti eredményt ért el úgy,
- hogymindegyikmodellpontosanugyanazt apromptotkapta. LeggyengébbenaPhiszere
-pelt normál sorrendben (53.33% és 56.03%), fordított sorrendben (58.33% és 60.71%). A
- Gemmanormálsorrendben(60.00%és61.83%),fordítottsorrendben(55.00%és56.47%),
- eredményt ért el, míg a QWEN egyenes sorrendben (56.67% és 57.37%), fordított sor
-rendben pedig szinte azonos pontszámot ért el mindkét metrikában (58.33% és 58.93%).
- Akiegyensúlyozott pontosság magasabb, mint az egyezés mind a három modell esetében,
- ami azt sugallja, hogy egyenl˝o mértékben hajlamosak igennel és nemmel válaszolni.
- A függelékben található táblázatban összesítettem a három nyelvi modell teljesít
-ményét különböz˝o nehézség˝u és sorrend˝u kérdések (normál és fordított) esetén, és kon
-zisztenciájukat is feltüntettem. Az értékelés pontosság, kiegyensúlyozott pontosság és
- 27
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- egyezés százalékban történt. A modellek viselkedése és er˝osségei/hátrányai a megjegy
-zések oszlopban is kiemelésre kerültek.[ 4.5]
- 3.1.9. A Phi er˝osségei
- APhi-4-mini-instruct modell könny˝u kérdések esetén kiemelked˝oen magas, 89.47%
- pontosságot és 88.89% kiegyensúlyozott pontosságot ér el normál sorrendben. Ezenkívül
- a modell stabil és konzisztens teljesítményt nyújt, ahogy a megjegyzések is jelzik. A kö
-zepes nehézség˝u fordított kérdéseknél is viszonylag jó, 58.33% pontosságot és 60.71%
- kiegyensúlyozott pontosságot ért el.
- Accuracy Balanced Accuracy
- Könny˝u N 89.47%
- Közepes F 58.33%
- 88.89%
- 60.71%
- 3.2. táblázat. A Phi Legjobb Eredményei
- 3.1.10. A Phi gyengeségei
- Bár a Phi-4-mini-instruct stabilnak mondható, a közepes nehézség˝u kérdéseknél a
- pontossága viszonylag alacsony (53.33% normál, 58.33% fordított sorrendben), annak el
-lenére, hogy az egyezés rendkívül magas (94.92%). Ez arra utal, hogy gyakran ugyanazt
- a hibát követi el, a szavak sorrendje nem befolyásolja ˝ot különösebben a döntés megho
-zásában. Ez jó jel, hiszen azt jelenti, a modell képes a szavak sorrendjét˝ol elrugaszkodni
- és absztraktabban, a feladat megoldására koncentrálva válaszolni. A nehéz kérdésekre
- pedig teljesen egyoldalúvá válik, és szinte minden idegen szó- és mondatkörnyezetet el
-tér˝o jelentés˝unek kategorizál, tehát egyértelm˝uen meghatározható ennek a modellnek a
- teljesítménykorlátja.
- 3.1.11. A Gemma er˝osségei
- Agemma-2-2b-t modell a könny˝u normál sorrend˝u kérdéseken a legmagasabb pon
-tosságot érte el a három modell közül, 94.74% pontossággal és 95.00% kiegyensúlyozott
- pontossággal, ami kiváló nyelvérzékre utal. A közepes és nehéz kérdések esetén is 10%
-kal felülmúlta a másik 2 modellt. Megfigyeltem egyébként, hogy a Gemma-2-2b-it helyes
- válaszai és hibái is nagyrészt megegyeznek a Gemma-2.5 válaszaival, ami bizonyítja az
- architekturális alapjuk hasonlóságát. A Gemma-2-2b-it a nehéz kérdésekre is 67%-os
- arányban jól válaszolt, jóval felülmúlva ezzel a két másik megvizsgált modellt. A Gem
-mának további el˝onye, hogy Colabos környezetben jóval gyorsabban fut, mint a Phi és a
- Qwen modellek, 1 perc alatt akár 60 kérdésre is képes válaszolni.
- 3.1.12. A Gemma gyengeségei
- A gemma-2-2b-t modell a könny˝u fordított kérdések esetén meglep˝oen alacsony
- pontosságot mutat (63.16%), ami jelent˝os romlás a normál sorrendhez képest.
- 28
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- Accuracy Balanced Accuracy
- Könny˝u N
- 94.74%
- Közepes N 60.00%
- Nehéz N
- Nehéz F
- 68.75%
- 60.00%
- 95.00%
- 61.83%
- 72.22%
- 55.56%
- 3.3. táblázat. A Gemma Legjobb Eredményei
- 3.1.13. A Qwen er˝osségei
- A Qwen1.5-1.8B-Chat a Gemmánál jobb teljesítményt nyújtott egyszer˝u kérdése
-ken.
- 3.1.14. A Qwen gyengeségei
- A Qwen1.5-1.8B-Chat a könny˝u normál sorrend˝u kérdéseken gyengén teljesített a
- három modell közül, mindössze 68.42% pontossággal és nem logikus érvelésekkel. Ez
- arra utal, hogy az egyszer˝ubb feladatok megoldásában kevésbé hatékony, mint a többi
- modell. A nehéz kérdésekre a Qwen egyáltalán nem volt jó, és érdekes módon a Phi-vel
- ellentétesen, amely mindent a hamis kategóriába sorolt, a Qwen túlságosan megenged˝o
- és határozatlan volt, és a kérdések 84, majd 100%-ában egyez˝onek feltételezte a szavak
- jelentését a két mondatban.
- 3.1.15. Összegzés
- Összességében elmondható, hogy a Gemma teljesített a legjobban a három modell
- közül. Pontos, nem preferálja aránytalanul az egyik osztályt, öntudatos, figyel a saját
- korábbi válaszaira és konzisztens is, azaz el tud rugaszkodni a szavak sorrendjét˝ol, abszt
-raktabb módon a feladaton tartja a fókuszt. Általános célú feladatokra, például egy prog
-ramozási feladat megoldására sokkal rosszabbul teljesít, mint egy GPT-4o, Claude 3.7
- Sonnet, Grok vagy DeepSeek modelljei. A gemma-2-2b-it nem általános célú modell,
- hanem els˝osorban utasításkövetésre lett optimalizálva.
- 29
-4. fejezet
- Saját rendszer fejlesztése- A részletes
- kimutatásokat tartalmazó megoldás
- 4.1. Technológiák
- • NLTKWordNet– szóértelmezéshez
- • SentenceTransformer– BERT-alapú mondatembeddinghez
- • TF-IDF, cosine\_similarity– szövegösszehasonlításhoz
- • scikit-learn– küszöboptimalizálás, értékelés
- Mégmiel˝ott belekezdenék a tervezési gondolatmenetem kifejtésébe, hadd említsem
- meg, hogy miért ezeket a technológiákat használtam.
- 4.1.1. Az NLTK
- AzNLTK(Natural Language Toolkit) [15] egy Python könyvtár, amely számos ter
-mészetes nyelvfeldolgozási eszközt és adatkészletet kínál. Az NLTK kínál egyszer˝u esz
-közöket szójelentés-egyértelm˝usítésre, mint amilyen a korábban említett Lesk algoritmus
- implementációja, melyhez a WordNet [16] szolgáltatja a szükséges lexikális adatbázist.
- A WordNet egy nagy lexikális adatbázis, amely angol nyelv˝u szavakat csoportosít
- úgynevezett "synset"-ekbe, amelyek kognitív szinonimákat és szavak közötti szemantikai
- kapcsolatokat is tartalmaznak. Minden synset egy fogalmi jelentést reprezentál, és a kü
-lönböz˝o synset-ek különböz˝o jelentéseket fejeznek ki. A WordNet letöltését és elérhet˝o
-ségének ellen˝orzését a download\_wordnet\_if\_needed függvénnyel automatizál
-tam. Aszinonimák és jelentések kinyerésére a get\_synonyms függvényt alkalmaztam,
- amely egy adott szóhoz tartozó összes lehetséges szinonimát visszaadja a WordNet segít
-ségével. Az expand\_with\_synonymsfüggvény pedig egy teljes mondat szemantikai
- kiterjesztését végzi el, ami segítségével a mondatok közötti szemantikai átfedések explicit
- módon vizsgálhatóvá váltak.
- 30
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- AWiCmodell m˝uködése
- Amodell egy el˝otanított nyelvi modellt használ, amely képes a szóhasználatok kö
-zötti finom eltéréseket azonosítani. A bemenet két mondatból és a vizsgált szóból áll, míg
- a kimenet egy bináris döntés: azonos vagy eltér˝o jelentés.
- Adatfeldolgozás és annotáció
- Az adatok el˝okészítése során szükség van megfelel˝o annotációs technikák alkalma
-zására. Az adatkészleteket standard WiC benchmarkokból nyerjük, amelyek kézi annotá
-cióval lettek ellen˝orizve.
- 4.1.2. BERT
- A BERT lényegében egy, a modellek reprezentációs képességét segít˝o szóbeágya
-zás, amely dinamikusan képes a mondatokhoz reprezentációt létrehozni. Ez nagy el˝ony
- a régebbi, jól ismert statikus szóbeágyazásokkal szemben, mint például a Word2vec és
- a GloVe. Utóbbiak ugyanis egy szóhoz ugyanazt a szóvektort rendelik, bármilyen szö
-vegkörnyezetben fordul is el˝o. A legnagyobb probléma ezzel, hogy sok szónak több,
- teljesen eltér˝o jelentése van, ám ezek a szóbeágyazások képtelenek modellezni szavak
- szemantikájának ezt a dinamikus természetét. A BERT ezzel szemben úgy hozza létre a
- mondatreprezentációt, hogy figyel a szövegkörnyezetre akár predikálás közben is. Ezzel
- lehet˝ové teszi, hogy ha egy szónak, vagy mondatnak több értelme is van, azt képes legyen
- a kontextus és a szó figyelembevételével megkülönböztetni.
- Aword2vecegymáramárelavultnak tekinthet˝o technológia, ezért nem használtam,
- de a transzformerek megértéséhez hozzásegített.
- Az utóbbi évek fejl˝odésével az olyan mélytanulási modellek, mint a BERT (Bidi
-rectional Encoder Representations from Transformers) és más transzformátor-alapú nyel
-vi modellek még fejlettebb szövegreprezentációt kínálnak, figyelembe véve a kontextust
- és a szavak közötti összefüggéseket.
- 4.2. Tervezés
- 4.2.1. A kiértékel˝o rendszer célja
- Akészített alkalmazás célja az adatfeldolgozáson kívül, hogy egy olyan kiértékel˝o
- algoritmust hozzak létre, amely a Word-in-Context (WiC) feladatokhoz nyújt támogatást,
- lehet˝ové téve a szavak kontextusbeli jelentésének hatékony felismerését és osztályozását,
- továbbá minél nagyobb pontosságot ér el a WiC- The Word in Context Dataset teszthal
-mazon. A Google Colab jegyzetfüzetemhez hasonlóan itt is Pythont választottam, mert
- hatalmas a könyvtártámogatása NLP és mesterséges intelligencia területen, ami különö
-sen alkalmassá teszi gyors fejlesztésre és adatfeldolgozásra, különösen szöveges adatoké
-ra. Ezen kívül egy könnyen olvasható, általános célú, egyszer˝u szintaxisú, magas szint˝u
- programozási nyelv. Fejleszt˝oi környezetnek a PyCharmot használtam.
- 31
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- Célom volt, hogy a kiértékel˝o rendszerem almappái egy önálló modulként használ
-hatóak és futtathatóak legyenek- a környezet megfelel˝o felállítása után.
- F˝o szempontjaim voltak, hogy a projekt fájlstruktúrája könnyen értelmezhet˝o le
-gyen, kövesse a konvenciókat, könnyen lehessen benne tájékozódni, és logikusan legyen
- felépítve. Emellett a Python szkriptek, amennyire csak lehet, ne függjenek egymástól, te
-hát önállóan futtathatók legyenek. Természetesen ett˝ol indokolt esetben eltértem, például
- amikor nagyméret˝u adatokat tároltam egy fájlban, azt másik rövid szkriptekben használ
-tam fel, a könnyebb átláthatóság kedvéért.
- Fájlstruktúra
- Aprojektemben megtalálhatóak a Python projektekhez elengedhetetlen .venv (Vir
-tuális Python környezet), requirements.txt a dependency-k követéséhez, Git fájlok (.gi
-tignore, README, .git), és a fejleszt˝oi környezet fájljai (.idea). Ezek nem érdekesek
- most számunkra. Az azonosítók elnevezését is igyekeztem rendkívül konzisztensen vé
-gezni: minden küls˝o használatra szánt, úgynevezett "utility" Python szkriptem a wic
- el˝otaggal kezd˝odött. Amelyik pedig bels˝o használatra volt szánva, vagy szabványos neve
- van (pl. \_\_init\_\_.py, setup.py), az nem kapott wic el˝otagot. Az ötletet többek között az
- Intel által fejlesztett OpenCV cv2 digitális képfeldolgozásra szolgáló függvénykönyvtá
-rából merítettem, amely többek között Python nyelven is használható. Itt ugyanis minden
- beimportálható függvény, enum, változó, konstans stb. a cv2. el˝otaggal kezd˝odik, amely
- rendkívül megkönnyíti a cv2 azonosítóinak (Függvény-, Osztály-, Változó-, Konstans-,
- Metódus-, Paraméter-, Enum- és Névtérnevek) elkülönítését a saját azonosítók, és ezáltal
- el˝osegíti a kód olvashatóságát.
- "Pythonic" alapelvek
- Aprojektemben igyekeztem követni a Zen of Pythonban [17] megfogalmazott, "Py
-thonic" alapelveket és a Python közösség által elfogadott jó gyakorlatokat. A Pythonic
- elveket úgy alkalmaztam, hogy minél több információt expliciten adtam meg, funkcio
-nálisan programoztam, kerülve a beágyazott blokkokat, és el˝osegítve a kód önmagát do
-kumentáló jellegét. A kódomban el˝oforduló azonosítóknak, f˝oleg a fájloknak, változók
-nak, függvényeknek rendszerint hosszú, barokkosnak nevezhet˝o nevet adtam, hogy a fájl
- megnyitása nélkül is világos legyen, hogy mit csinál, miért felel˝os. A rendkívül hosszú
- azonosítónevek adása egyébként a nagyvállalati kultúrában, a Java és a legtöbb, objek
-tumorientált nyelvet használó programozók körében is bevált konvenció, hiszen többek
- között csökkenti a dokumentáció szükségességét. Az összetett logikát egyszer˝ubb, egy
-más után következ˝o lépésekre bontottam le, még ha ez kódismétléssel is járt, a könnyebb
- olvashatóság érdekében.
- Aprojekt felépítése
- A tervezés során számos lépést megtettem, hogy a projektem könnyen átlátható
- legyen:
- 32
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- • Mivel a szkriptjeim nagy részében több ezer soros fájlok adataival dolgoztam, és
- nemlett volna célszer˝u minden fájlba közvetlenül importálni ezt a nagy adatmennyi
-séget, ezen kívül környezett˝ol függetlenül futtathatóvá akartam tenni a projektem,
- ezért automatizáltam az importálási folyamatot, és változókban mentettem el a fájl
-neveket és az elérési útvonalakat, amely szinte az összes (nem csak függvényeket
- tartalmazó) szkriptemben állítható az actual\_working\_dataset változóval.
- 4.1. ábra. Az adathalmaz kiválasztásának automatizálásának módszere
- • A harmadik félt˝ol származó könyvtárak, csomagok és egyéb függ˝oségek egysé
-gesen, requirements.txt-ben lettek definiálva. Ez egy Pythonos konvenció,
- amelyet én is követtem. A PyCharm eszközt kínál a projekt függ˝oségeinek auto
-matikus összegy˝ujtésére, és arra is, hogy a felhasználó egy gombnyomásra képes
- legyen ezeket egyszerre letölteni.
- • Modularitás: A projektemben a lehet˝o legkevesebb fájlokon átível˝o függ˝oséget
- alkalmaztam, tehát a projekt kódja annyira moduláris, amennyire csak lehet. Ez
- különösen hasznos a projekt kódjának refaktorálásakor, illetve akkor, ha csak egy,
- vagy pár fájlt kellett használnom a projektb˝ol egy bizonyos feladatra, mert biztosí
-totta a program kis méretét és gyorsaságát.
- • Kivétel erre a nem importálásra szánt fájljaim, ahol ténylegesen történik a függvé
-nyek meghívása a saját függvénykönyvtár fájljaimból, és a konfigurációs beállítá
-sok (pl. Elérési utak) tárolására szolgáló fájljaim.
- Figyeltem a SOLID objektum-orientált programozási alapelvekre [18] is, f˝oleg az
- Open-Closed alapelvre, hogy az alkalmazásom könnyen b˝ovíthet˝o, de nehezen elront
-ható legyen. A függvényeimet úgy paramétereztem, hogy úgy lehessen a kiértékelés
- módját változtatni, hogy csak 1 paramétert kell átírnunk hozzá, ezzel sok kódduplikálást
- megel˝ozve. Példák: A compute\_sentence\_similarity alapértelmezett módon a
- gyengébb, nagyon gyors TF-IDF vektorizáló módban, azonban a mode="bert" para
-méterezéssel a nagyon lassú, de sokkal jobb teljesítmény˝u SenseBERT beállítással fut le,
- amely az említett el˝otanított nyelvi modellt használja, amelyet kifejezetten a szóérzékelés
- (word sense disambiguation, WSD) feladatra optimalizáltak.
- Másik példám, ahogy az evaluate függvény alapértelmezetten a hibahatár thres
-hold kísérletez˝o paraméterével végigpróbálja az összes temperature-t, és automatikusan a
- 33
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- legjobb eredmény˝u kiértékelést választja. Ez hatékony, de nagyon sok id˝ot vesz igénybe,
- ezért a paraméternek explicit értéket lehet adni. Ekkor csak erre az egy értékre fut le, ami
- gondos kiválasztást igényel a fejleszt˝o részér˝ol, de nagyon gyors. Még egy példa, hogy
- az eredmény-kiíró függvényben meg lehet adni b˝obeszéd˝u és normál opciókat, amellyel
- kiválaszthatjuk, hogy mennyi üzenet jelenjen meg a konzolon, és az elfogadható bizony
-talanság mértékét is lehet állítani. Ugyanitt egyesével is tudjuk állítani a paraméterek
- kiíratását.
- Kommentek
- Angol nyelv˝u projekt lévén a kommenteket egységesen angolul írtam mindenhol,
- ez segítette az internetes segítségkérést, például fórumokon.
- 4.3. Implementáció
- Els˝o lépésként inicializáltam a projektemet lokálisan és a GitHub verziókövet˝o plat
-formon. A projektemnek a "Peternity" nevet adtam. A "Peternity" egy jól hangzó és
- egyedi név, nincsen különösebb oka a névadásnak. A program fejlesztését inkrementális
- modellel végeztem, tehát kezdetben csak vázlatosan határoztam meg a kiértékel˝o rendszer
- funkcióit. Ennek a modellnek az el˝onye például a vízesés modellel szemben az, hogy a
- követelmények nincsenek konkrétan lerögzítve a fejlesztés elején, hanem folyamatosan
- lehet rajtuk változtatni. Ha eszembe jut egy újabb módszer, amivel jobb eredményt lehet
- elérni, vagy egy funkció, amely növeli a program érthet˝oségét, átláthatóságát, akkor nem
- kell újratervezni a programot.
- Mappák
- • independent\_scripts mappa
- Az önállóan m˝uköd˝o, független Python szkripteket ide raktam.
- • llm\_prompts mappa
- Az llm\_prompts mappában lév˝o szkriptekkel olyan promptokat hoztam létre, ame
-lyekt˝ol jó eredményt lehet elvárni a nyelvi modelleken való promptolás esetén.
- Emiatt nyelvtanilag helyesek, a tokenek egymástól egyértelm˝uen elkülönülnek, és
- szerkezetileg megfelelnek a nyelvi modellek elvárásainak: a prompt elején van az
- utasítás, majd a kérdések következnek jól elkülönülve. A validáció és tesztelés ér
-dekében készítettem pár nagyon egyszer˝u, és pár nagyon nehéz kérdést is a nagyon
- gyenge, illetve nagyon jól teljesít˝o modellek számára.
- • modules\_and\_data mappa
- Ez a mappa a projekt futtatásához szükséges modulokat és az adathalmazokat tar
-talmazza. 2 részre oszlik:
- 34
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- modules: Ide tartoznak az adathalmaz tisztítását, felesleges, vagy használhatatlan
- adatok kisz˝urését és egyéb adattranszformációkat végz˝o Python szkriptjeim.
- data: Azadatokel˝ofeldolgozása és átalakítása ebben a mappában történik, például
- tokenizálás, normalizálás vagy TF-IDF számítás.
- • solution mappa
- Szintén 2 részre oszlik
- Implementation: Ez a mappa tartalmazza a megoldásom végs˝o implementáci
-óját és a projekt által generált eredményeket. Itt található a BERT-alapú megoldá
-som, valamint a generatív nyelvi modellek teljesítményének összehasonlítása.
- Results: Az itt található fájlok a különböz˝o modellek által generált válaszokat,
- tévesztési mátrixokat, statisztikákat és egyéb mér˝oszámokat tartalmazzál
- Ez az önálló, fájlokra szétbontott, TF-IDF-alapú megoldás a main.py szkripttel
- indítható. Ez a kiértékel˝o szkript a pontosság mellett kiszámítja és megjeleníti a
- precizitást, fedést és F1 pontszámot, valamint vizuálisan ábrázolja a tévesztési mát
-rixot.
- • use\_modell\_locally mappa
- A py almappában webes API-on keresztül tesztelhet˝ok az OpenAI és az Anthro
-pic modelljei. A kód a fejleszt˝o cégek hivatalos modell dokumentációjából ered
-nek. Az els˝o szkripttel GPT modellek hívhatóak meg az OpenAI API-n keresztül
- az OpenAI dokumentáció [19] által ajánlott módon egy adott szó jelentésének két
- mondatbeli összehasonlítására, míg a második fájlban ugyanilyen módon a Claude
- modelljei használhatók az Anthropic API segítségével az Anthropic dokumentáció
- szerint [20].
- • WiC\_dataset mappa
- AWiC(Word-in-Context) adathalmaz itt található
- • demo\_files mappa
- Ademo\_filesmappábantalálható egy alternatív kompaktabb megoldás, amely csak
- a pontosságot mutatja ki, de cserébe sokkal konfigurálhatóbb.
- Awic\_tfidf\_or\_sensebert\_baseline\_single.py
- szkript egy alap Word-in-Context (WiC) probléma megoldására szolgáló baseline
- rendszert valósít meg, amely szóértelem-felismerésre (Word Sense Disambiguati
-on, WSD) és mondat-hasonlóság számítására épít. Ez egy konfigurálható fájl, fut
-tatásával a kiválasztott adathalmaz (train, dev vagy test) beolvasásra kerül, TF-IDF
- vagy SenseBert módban, opcionális kiírás-részletesség, küszöbérték- és szinoni
-maoptimalizálás beállításokkal. A WordNet segítségével meghatározza a cél szó
- legrelevánsabb jelentését az adott mondat alapján, és csak a kontextushoz ill˝o szi
-nonimákat adja hozzá a mondathoz. TF-IDF és/vagy BERT-alapú mondatembed
-dingb˝ol egy hibrid hasonlósági értéket számol. Ezután meghatározza az optimális
- határértéket a "T"/"F" címkék elválasztásához, végül összehasonlítja a predikciókat
- a gold standard címkékkel, opcionálisan figyelembe véve egy bizonytalansági zó
-nát. A legjobb eredményt a SenseBERT beállítással, legjobb threshold mellett, 19
- perc futással értem el, mind a 3 halmazon 60%-nál jobb eredményt értem el.
- 35
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- Adathalmaz
- Mód Pontosság(%) Futásid˝o (másodperc)
- train
- BERT
- 59.912
- 8294.84
- train
- TF-IDF
- 57.970
- 5903.44
- dev
- BERT
- 60.696
- 128.44
- dev
- TF-IDF
- 62.088
- 91.95
- test
- BERT
- 59.571
- 382.36
- test
- TF-IDF
- 60.658
- 332.65
- 4.1. táblázat. A wic\_tfidf\_or\_sensebert\_baseline\_single.py eredmé
-nyei és futásideje a különböz˝o beállítások mellett. Érdekes módon az egyszer˝ubb kérdé
-seket tartalmazó train halmazon a BERT jobban teljesít, míg a nehezebb kérdésekb˝ol
- álló dev és test esetén a TF-IDF minimálisan pontosabb. Ez alapján lesz˝urhet˝o, hogy
- a BERTmódszer egyszer˝ubb kérdések esetén hasznosabb, f˝oleg ha nem lényeges a gyors
- a futásid˝o.
- 4.4. Tesztelés és eredmény
- 4.4.1. Kiértékelés
- Klasszifikációs módszer
- Az algoritmusaim teljesítményét egy tévesztési mátrix segítségével, klasszifikáci
-ós módszerrel értékeltem ki, ami például Covid-teszt eredményekkel jól szemléltethet˝o.
- Covid esetén pozitív a teszt, ha a páciens beteg, negatív, ha egészséges. Továbbá igaz a
- predikció, ha helyesen ítéltük meg az egészségi állapotát, és hamis, ha helytelenül ítéltük
- meg. Ezeknek a kombinálásával kapjuk meg a TN, FP, TN, FN értékeket.
- 4.2. ábra. Covid-19 példa a TP, TN, FP, FN alkalmazására
- A WiC feladat esetében ezt úgy kell értelmeznünk, hogy pozitív a gold standard,
- ha a szó ugyanazt jelenti mind a két mondatban, negatív, ha eltér˝o dolgot. Igaz, ha he
-lyesen ítélte meg a modell a szó jelentését és hamis, ha helytelenül ítélte meg. A modell
- 36
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- válaszának a gold standarddal való összevetésekor minden esetet az alábbi négy kategória
- egyikébe sorolhatjuk:
- • True Positive (TP): A modell helyesen válaszol Y es-t, amikor a gold címke T,
- azaz valóban azonos a szó jelentése.
- • False Positive (FP): A modell tévesen válaszol Y es-t, miközben a gold címke F,
- tehát eltér a szó jelentése.
- • False Negative (FN): A modell tévesen válaszol No-t, miközben a gold címke T,
- tehát azonos lenne a szó jelentése.
- • True Negative (TN): A modell helyesen válaszol No-t, amikor a gold címke F,
- azaz valóban különböz˝o a szó jelentése.
- Igaz pozitív (TP)
- Hamis pozitív (FP)
- (4.1)
- Hamis negatív (FN) Igaz negatív (TN)
- Az egyfájlos módszerem eredményei a 4.3. ábrán láthatók. 4.5 A kiértékel˝o rend
-szerem elérte a célját, hogy gyorsan ki tud értékelni több ezer kérdést, és legalább 60%-os
- pontossággal el tudja dönteni a szavakról, hogy ugyanazt jelentik-e a 2 mondatban, vagy
- sem.
- Tanulságok, hipotézisek
- A WiC feladaton a természetes nyelvek szavainak szemantikájának komplexitásá
-ból adódóan gyakorlatilag lehetetlen 100%-os pontosságot elérni, de ez nem is cél. Kézi,
- emberi kiértékeléssel 80%-os eredményt lehetett elérni, a legjobb rendszerek pedig 70
-72%-ot értek el. A cél, hogy egy olyan WiC adathalmaz-kiértékel˝o szoftver készüljön,
- amely hosszú távon segít az embereknek, könnyen integrálható más projektekbe és széles
- skálán terjeszthet˝o.
- Akvantált modellek, mint a Gemma-2-2b-it, kisebb méretük miatt könnyebben fut
-tathatók korlátozott hardveres er˝oforrásokkal, de ez a méretcsökkenés a teljesítmény ro
-vására megy (pl. lassabb válaszid˝o, pontatlanabb eredmények).
- AGemma modell bizonyos specifikus feladatokra (pl. Word-in-Context) megfele
-l˝oen alkalmazható, de általános célú kérdések esetén jelent˝osen alulmúlhatja a nagyobb
- modelleket, mint pl. GPT-4o vagy Claude.
- A kis modellek érzékenyebbek a bemeneti prompt formátumára, mint a nagyok,
- különösen a sorrendiséget tekintve. Ha egy modellt ugyanarra a kérdésre eltér˝o sorrend˝u
- mondatokkal kérdezünk meg, akkor a válaszokban jelent˝os eltérések lehetnek. Emiatt
- az egyenként feltett kérdések pontosabb eredményt adnak, mint a több kérdést egyben
- tartalmazó prompt.
- A nyílt forráskódú és offline futtatható modellek el˝onye, hogy teljes adatvédelmi
- kontrollt biztosítanak, mivel nem kommunikálnak a külvilággal, így érzékeny adatok fel
-dolgozására biztonságosabbak.
- 37
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- 4.4.2. Tanulságok, hipotézisek
- A WiC feladaton a természetes nyelvek szavainak szemantikájának komplexitásá
-ból adódóan gyakorlatilag lehetetlen 100%-os pontosságot elérni, de ez nem is cél. Kézi
- kiértékeléssel 80%-os eredményt lehetett elérni, a legjobb rendszerek pedig 70-72%-ot
- értek el. A cél egy olyan WiC adathalmaz-kiértékel˝o szoftver, mely a jöv˝oben felhasz
-nálható hasonló NLP vagy adatfeldolgozási feladatokra, könnyen integrálható más pro
-jektekbe és széles skálán terjeszthet˝o. Emellett persze a személyes célom volt a Python
- ismereteim fejlesztése.
- Akvantált modellek, mint a gemma-2-2b-it-GGUF, kisebb méretük miatt könnyeb
-ben futtathatók korlátozott hardveres er˝oforrásokkal, de ez a méretcsökkenés a teljesít
-mény rovására megy (pl. lassabb válaszid˝o, pontatlanabb eredmények).
- A Gemma modell bizonyos specifikus feladatokra (pl. Word-in-Context) megfe
-lel˝oen alkalmazható, de általános célú kérdések esetén jelent˝osen alulmúlja a nagyobb
- modelleket, mint pl. GPT-4o vagy Claude.
- A kis modellek érzékenyebbek a bemeneti prompt formátumára, mint a nagyok,
- különösen a sorrendiséget tekintve. Ha egy modellt ugyanarra a kérdésre eltér˝o sorrend˝u
- mondatokkal kérdezünk meg, akkor a válaszokban jelent˝os eltérések lehetnek. Emiatt
- az egyenként feltett kérdések pontosabb eredményt adnak, mint a több kérdést egyben
- tartalmazó prompt.
- A nyílt forráskódú és offline futtatható modellek el˝onye, hogy teljes adatvédelmi
- kontrollt biztosítanak, mivel nem kommunikálnak a külvilággal, így érzékeny adatok fel
-dolgozására biztonságosabbak.
- 4.4.3. Tervek a jöv˝ore nézve
- Jöv˝obeli tervem ez a projekt után, hogy a XL-WiC [21] és a WiC-TSV [22] problé
-mát is mélyebben megismerjem, és lehet˝oleg magyar nyelvre is hasonló adathalmazokat
- találjak, és hasonló rendszert hozzak létre. Ezen kívül érdekes kísérlet lenne az, hogy
- a különböz˝o méret˝u és tulajdonságú modellek többkörös beszélgetésben (multi-turn con
-versation) mennyire képesek következetesek maradni és önmaguknak nem ellentmondani.
- 4.5. Összegzés
- Úgy gondolom, sikerült átfogó elemzést nyújtanom a különböz˝o LLM-ek WiC fel
-adatokban nyújtott teljesítményér˝ol 2025 tavaszára vonatkozóan. Fontosnak tartom meg
-jegyezni, hogy ez egy rendkívül gyorsan fejl˝od˝o iparág, így amit a szakdolgozatban állí
-tok, az a jöv˝obeli olvasónak elévülhet. A dolgozatomat úgy állítottam össze, hogy nyo
-mon követhet˝o és reprodukálható legyen, ezért nyílt forráskódú eszközökre (pl. Hugging
- Face, NLTK, BERT) és nyilvános adathalmazokra támaszkodtam.
- 38
-Eredmények, ábrák
- Modell Nehézség Pontosság (%) Kiegy. Pontosság (%) Egyezés (%)
- Megjegyzés
- Könny˝u N
- Könny˝u F
- Phi
- Közepes N
- 89.47
- 78.95
- 53.33
- 88.89
- 77.78
- 56.03
- 89.43
- Konzisztensek a válaszai
- Közepes F
- Nehéz N
- 58.33
- 53.33
- 60.71
- 44.44
- 95.00
- Legjobb egyezés, de alacsony pontosság
- Nehéz F
- 60.00
- 52.78
- 60.00
- Válasza szinte minden kérdésre "nem"
- Könny˝u N
- Könny˝u F
- Gemma
- Közepes N
- 94.74
- 63.16
- 60.00
- 95.00
- 65.00
- 61.83
- 68.42
- Legpontosabb könny˝uekre
- Közepes F
- Nehéz N
- 55.00
- 68.75
- 56.47
- 72.22
- 85.00
- Legpontosabb közepesekre
- Nehéz F
- 60.00
- 55.56
- 73.33
- Legjobb nehéz kérdéseken is
- Könny˝u N
- Könny˝u F
- Qwen
- Közepes N
- 68.42
- 73.68
- 56.67
- 69.44
- 74.44
- 57.37
- 74.00
- Leggyengébb az egyszer˝u kérdéseken
- Közepes F
- Nehéz N
- 58.33
- 46.67
- 58.93
- 52.78
- 91.67
- Er˝os egyezés
- Nehéz F
- 40.00
- 50.00
- 80.00
- Válasza szinte minden kérdésre "igen"
- 4.2. táblázat. A három nyelvi modell teljesítménye különböz˝o kérdésnehézségek és sor
-rendek mentén. N=normál, F=fordított (pontosság, kiegyensúlyozott pontosság és egye
-zés %)
- 39
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
-  Train dataset
- Evaluation Metrics:
- Accuracy: 52.819%
- Precision: 71.795%
- Recall: 9.285%
- F1 Score: 16.444%
- Correct predictions: 2867/5428
-  Dev dataset
- Evaluation Metrics:
- Accuracy: 55.172%
- Precision: 61.074%
- Recall: 28.527%
- F1 Score: 38.889%
- Correct predictions: 352/638
-  Test dataset
- Evaluation Metrics:
- Accuracy: 52.714%
- Precision: 57.540%
- Recall: 20.714%
- F1 Score: 30.462%
- Correct predictions: 738/1400
- 4.3. ábra. A solution eredményei a train, dev és test halmazra
- 40
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- 4.4. ábra. Az egyfájlos megoldás tévesztési mátrixai a train, dev és test halmazra
- 41
-Nagy nyelvi modellek összehasonlítása a WiC feladatra
- Példa a A sentence\_normalizer használatára
- sentence\_normalizer.py
- test\_sentence = (
- r"My boss is out on another of his three martini lunches ."
- r" Will you join us at six o’clock for martinis ? We ’ve
- been swimming for hours just to get to the other side ."
- r" A big fish was swimming in the tank . Do n’t fire until
- you see the whites of their eyes . The gun fired ."
- )
- print("Using NEW algorithm (default):")
- print(make\_sentence\_human\_readable(test\_sentence))
-  Output:
- My boss is out on another of his three martini lunches.
- \begin{verbatim}
+A WiC feladat lényege, hogy egy adott szó két különböző mondatbeli előfordulásáról eldöntse, hogy azonos értelemben szerepel-e. A természetes nyelvi feldolgozásban.
+\footnote[1]{Természetesnyelv-feldolgozás, számítógépes nyelvészet és nyelvtechnológia néven is hivatkoznak rá, angolul NLP}
 
- Will you join us at six o\’clock for martinis?
- We\’ve been swimming for hours just to get to the other
- side. A big fish was swimming in the tank.
- Don\’t fire until you see the whites of their eyes. The
- gun fired
- \end{verbatim}
+
+\section{Egy rendszer feladata a WiC adathalmazon}
+Amikor valaki kiértékelő rendszert fejleszt a WiC benchmarkra, annak feladata a szavak szándékozott jelentésének azonosítása. A WiC egy bináris osztályozási feladatként van megfogalmazva. Adott egy többjelentésű szó, amely mindkét mondatban előfordul, továbbá egy szófaj címke, kettő index és két szövegrészlet. Egy rendszer feladata, hogy meghatározza, hogy a szó ugyanabban a jelentésben használatos-e mindkét mondatban. A $w$ célszó minden esetben csak egy ige vagy főnév lehet. A célszóhoz két eltérő szövegkörnyezet tartozik. Ezen szövegkörnyezetek mindegyike a $w$ egy specifikus jelentését váltja ki. A feladat annak megállapítása, hogy a $w$ előfordulásai a két szövegkörnyezetben ugyanannak a jelentésnek felelnek-e meg, vagy sem. Tehát a célszó ugyanazt a jelentést hordozza-e két különböző szövegkörnyezetben, vagy eltérőt. Ez egy összetett NLP probléma, mivel ötvözi a szójelentés-egyértelműsítés (Word Sense Disambiguation, WSD) és a kontextuális beágyazások elemeit, így a szójelentés-egyértelműsítés végrehajtásaként is értelmezhető.
+
+\section{Bináris osztályozás}
+A WiC feladat egy bináris osztályozási (binary classification) problémaként van megfogalmazva: el kell dönteni, hogy egy adott szó két különböző mondatbeli előfordulása ugyanabban az értelemben szerepel-e.
+A bináris osztályozási feladatok problémakörében is változnak a trendek olyan szempontból, hogy egyre inkább a neurális hálók és nagy nyelvi modellek az elterjedtek bináris osztályozási feladatokra is. A Lesk-algoritmus~\cite{lesk1986automatic} egy klasszikus szóértelem-felismerő módszer, amely a szótári definíciók és a kontextus összevetésével próbálja meghatározni a szó legmegfelelőbb jelentését. A legjobbak mégis az olyan, kifejezetten emberi szöveg megértésére specializálódott nagy nyelvi modellek, mint például a GPT-4.5 és a Gemini-2.5 - 2025 telén.
+
+\label{wic:dataset}
+\section{A WiC adathalmaz eredete}
+
+A \href{https://pilehvar.github.io/wic/}{Word in Context adathalmaz} egy jó minőségű, nyelvészeti szakértők által készített benchmark adathalmaz. A mondatok a WordNetből, a VerbNetből és a Wikiszótárból származnak.
+A WiC adathalmaz segítségével megvizsgálhatjuk, hogy egy rendszer (modell, algoritmus) mennyire képes a szavak jelentését megérteni különböző kontextusokban. A WiC feladat része a SuperGlue~\cite{sarlin2020superglue} Benchmarknak, amely egy széles körben elfogadott benchmark nyelvi modellek kiértékelésére. 8 feladatból áll:
+\begin{itemize}
+	\item  BoolQ (Boolean Questions)
+	\item  CB (CommitmentBank)
+	\item COPA(Choice of Plausible Alternatives)
+	\item MultiRC (Multi-Sentence Reading Comprehension)
+	\item ReCoRD(Reading Comprehension with Commonsense Reasoning Dataset)
+	\item RTE(Recognizing Textual Entailment)
+	\item \textbf{WiC(Word-in-Context)}
+	\item  WSC (Winograd Schema Challenge)
+\end{itemize}
+
+A SuperGLUE a GLUE továbbfejlesztett változata, amelyet 2019-ben vezettek be, mivel a GLUE feladatait a legmodernebb modellek (pl. BERT) már túl jól megoldották. ~\cite{wang2020superglue}
+Ez az egyik legszélesebb körben elfogadott benchmark, amelyen számos nyelvi modell teljesítményét vizsgálták.
+A WiC halmaz fel van osztva tanító, validációs és teszthalmazra, ezért gépi tanításra egyszerűen felhasználható. Ezt segíti elő az is, hogy az összes mondat tokenekre bontott, tabulált és egységesek az írásjelek is.
+A modelleket hasonlóan tanítják, mint ahogy az iskolában tanulnak a diákok.
+A benchmarkok feladatait jellemzően 3 részre vágják:
+tanító, validációs és teszthalmazra. Ennek az aránya eltérő lehet, de a tanítónak jóval nagyobbnak kell lennie, mint a másik kettőnek, és a teszthalmaznak nagyobbnak kell lennie, mint a validációs halmaznak. 80-10-10\%-os eloszlás a standard, ezzel, vagy hasonló eredménnyel érhetőek általában el a legjobb eredmények.
+
+A tanító adatbázist a korábbi iskolai példára visszatérve úgy képzelhetjük el, hogy ez a leadott anyag. A validációs halmaz olyan, mint egy mintavizsga, minta ZH. A teszthalmaz pedig a végső megmérettetés, a vizsga. Fontos, hogy a teszthalmazon sose tanítsuk a modelleket, és sose legyen átfedés a halmazok között. Ez ugyanis magoláshoz vezet, és a modell nem lesz képes általánosítani.
+
+\begin{table}[H]
+    \centering
+    \caption{A WiC adathalmaz tesztkészletének néhány bejegyzése}
+    \label{tbl:wic_peldak} % Egyedi címke a táblázathoz
+    \begin{tabular}{llcp{0.33\textwidth}p{0.33\textwidth}} % Oszlopdefiníciók: l=balra, c=középre, p{szélesség}=paragrafus adott szélességgel
+        \hline
+        \textbf{Szó} & \textbf{Szófaj} & \textbf{Index} & \textbf{1. Példamondat} & \textbf{2. Példamondat} \\
+        \hline
+        defeat      & N      & 4-4       & It was a narrow defeat.                             & The army's only defeat.                                             \\
+        groom       & V      & 0-1       & Groom the dogs.                                     & Sheila groomed the horse.                                            \\
+        penetration & N      & 1-1       & The penetration of upper management by women.       & Any penetration, however slight, is sufficient to complete the offense. \\
+        hit         & V      & 1-3       & We hit Detroit at one in the morning but kept driving through the night. & An interesting idea hit her.                                         \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Eddigi legjobb modell-teljesítmények a WiC adathalmazon}
+A WiC adathalmazon számos modellt teszteltek, amelyek túlnyomórészt 60\% feletti eredménnyel kategorizálták helyesen a mondatokat.
+A legjobb eredményt a SenseBERT-large rendszerrel érték el, külső erőforrások használatával. Ez az eredmény megközelíti a kézi, emberi szintű kiértékelést, melynek a felső határa 80\% körüli. A kézi kiértékelésnek és a SenseBERT megoldásának egyszerűsített változatát én is elvégeztem.
+
+
+% Requires: \usepackage{booktabs}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l l c}
+        \toprule
+        \textbf{Kategória} & \textbf{Implementáció} & \textbf{Pontosság \%} \\
+        \midrule
+        \multicolumn{3}{l}{\textbf{Sentence-level contextualised embeddings}} \\
+        SenseBERT-large\textsuperscript{†} & Levine et al (2019) & 72.1 \\
+        KnowBERT-W+W\textsuperscript{†} & Peters et al (2019) & 70.9 \\
+        RoBERTa & Liu et al (2019) & 69.9 \\
+        BERT-large & Wang et al (2019) & 69.7 \\
+        Ensemble & Gari Soler et al (2019) & 66.7 \\
+        ELMo-weighted & Ansell et al (2019) & 61.2 \\
+        \midrule
+        \multicolumn{3}{l}{\textbf{Word-level contextualised embeddings}} \\
+        WSDT\textsuperscript{†} & Loureiro and Jorge (2019) & 67.7 \\
+        BERT-large & WiC's paper & 65.5 \\
+        Context2vec & WiC's paper & 59.3 \\
+        Elmo & WiC's paper & 57.7 \\
+        \midrule
+        \multicolumn{3}{l}{\textbf{Sense representations}} \\
+        LessLex & Colla et al (2020) & 59.2 \\
+        DeConf & WiC's paper & 58.7 \\
+        S2W2 & WiC's paper & 58.1 \\
+        JBT & WiC's paper & 53.6 \\
+        \midrule
+        \multicolumn{3}{l}{\textbf{Sentence level baselines}} \\
+        Sentence Bag-of-words & WiC's paper & 58.7 \\
+        Sentence LSTM & WiC's paper & 53.1 \\
+        \midrule
+        \multicolumn{3}{l}{\textbf{Random baseline (véletlenszerű kiértékelés)}} \\
+        & 50.0 \\
+        % TODO: kiegészíteni a saját eredményemmel
+        % \midrule
+        % \multicolumn{3}{l}{\textbf{Fábián Bernát kézi kiértékelés}} \\
+        % & xx.x
+        % \multicolumn{3}{l}{\textbf{Saját PyCharmos implementáció kiértékelés}} \\
+        % & 60.x
+        \bottomrule
+    \end{tabular}
+    	\caption{Forrás: \href{https://pilehvar.github.io/wic/}{The Word-in-Context Dataset}}
+
+    \label{tab:state_of_the_art}
+\end{table}
+
+
+\clearpage
+
+
+\section{Nagy nyelvi modellek}
+
+A nagy nyelvi modell (angolul Large Language Model, LLM) olyan számítási modell, amely képes értelmes szöveg generálására vagy más természetes nyelvi feldolgozási feladatok elvégzésére. Ezek a modellek egy rendkívül költséges folyamat révén, hatalmas mennyiségű szöveges adat feldolgozásával és mélytanulási technikák alkalmazásával sajátítják el a nyelv megértését és előállítását. Az LLM-ek, mint például az OpenAI GPT-sorozata, a Google Gemini vagy a Meta LLaMA modelljei, különböző architektúrákat használnak, de leggyakrabban a transzformer alapú megközelítést alkalmazzák. Mint nyelvi modellek, az LLM-ek úgy sajátítják el ezeket a képességeket, hogy óriási mennyiségű szövegből, egy önfelügyelt és egy félig felügyelt tanulási folyamat során, statisztikai összefüggéseket tanulnak meg. Ezek a modellek  képesek összetett feladatok elvégzésére, mint például szövegfordítás, összefoglalás, információ-kinyerés, kérdés-válasz és kreatív szövegalkotás. Finomhangolás által specializált feladatokra. Nagy nyelvi modelleknek jellemzően az 50 milliárd paraméteresnél nagyobb modelleket hívják. Az ennél kisebb modelleket inkább csak nyelvi modelleknek hívom.
+
+Inputként kap egy promptot, egy legfeljebb \texttt{n} token hosszúságú szöveget, ahol az \texttt{n} függ a modelltől és a paraméterezéstől. Erre fog legfeljebb \texttt{m} hosszúságú válaszban inferenciával, azaz következtetéssel válaszolni. Azért hívják modellnek a modelleket, mert az emberi nyelvet és kommunikációt utánozzák (modellezik).
+
+Forrás: \href{https://hu.wikipedia.org/wiki/Nagy_nyelvi_modell}{Wikipédia}
+
+\subsection{Chatbot Arena, vagy LMSYS - nagy nyelvi modelleket összehasonlító platform}
+Kutatómunkám első lépéseként utánanéztem, hogy melyik modellek a legjobbak angol nyelvű instruction following feladatokban. Ehhez a \href{https://lmarena.ai/}{LMArenát}~\cite{chiang2024chatbot} megfelelő referenciának tartottam, mert ez az oldal igen lenyűgöző módon minden ismertebb ingyenes nagy nyelvi modellhez API-n keresztüli limitált hozzáférést biztosít: 2025. május 16-án 101 modell API-ja volt kipróbálható az oldalon keresztül több tucatnyi cégtől, a ranglétrán pedig 241 modell teljesítményét mérhetjük össze különböző kategóriák alapján emberi szavazatok alapján, amely több mint 1.5 millió ember szavazatán alapszik.
+A folyamatosan frissülő rangsor menüben az opciók közül az "Instruction Following" és az "English" kategóriát vizsgáltam meg, mert a problémám ehhez a területhez áll a legközelebb.
+
+
+Az oldalon található modellek mind elérhetőek és kipróbálhatóak, és általában saját, felhasználóbarát webes felületük is van, amely személyre szabható, elmenthetőek a korábbi beszélgetéseink, és egyéb kényelmes szolgáltatásokkal kecsegtetnek. Azonban fontos észben tartanunk, hogy ezeket a felületeket fejlesztő cégek bármilyen publikus webes forrást felhasználhatnak a modelljeik tanításához, beleértve a chatben megadott információt.
+A nagy cégeknek, mint például a Google-nek, az OpenAI-nak és a DeepSeek-nek is vannak nyílt forráskódú, jó minőségű modelljeik, melyek hatalmas adathalmazokon be vannak tanítva. Például a GPT-3 tanítása során a Common Crawl Wikipédiát, WebText2 reddit posztokból és linkjeiből kinyert adatokat, internetes könyveket és az angol nyelvű wikipédiát is felhasználták.~\cite{springboard2023gpt3} Régebben a New York Times termékeit is nagy mennyiségben használták, ám a hírlapíró cég ezt felhasználási feltételeiben megtiltotta.~\cite{verge2023nytai}
+
+A nagy tech cégek, mint a Meta és az X, felhasználják a közösségi médiára feltöltött adatainkat a modelljeik fejlesztéséhez. A Google pedig a felhasználási feltételeit is többször megváltoztatta, hogy felhasználhassa szolgáltatásainak felhasználói adatait az AI termékei fejlesztéséhez. ~\cite{tan2024terms}
+
+
+A Hugging Face~\cite{wolf2019huggingface} [\href{https://huggingface.co/models}{több mint 1.7 millió modellt}] és [\href{https://huggingface.co/datasets}{csaknem 400 ezer adathalmazt}] kínál különféle gépi tanulási feladatokra, beleértve a természetes nyelvfeldolgozást, képfeldolgozást és kódgenerálást is. Ezek a modellek nyilvánosan elérhetők és szabadon használhatók.
+Előnyük, hogy nyílt forráskódúak, így tetszőlegesen módosíthatóak - habár alapos szakértelem kell hozzájuk. Emellett biztonságosak: letölthetőek saját gépre, kódból futtathatóak anélkül, hogy egy szerverrel kommunikálnának. Emiatt privát adatot is be lehet nekik adni. Jellemzően minél kisebb a paraméterszámuk, annál gyengébb a visszaemlékező képességük, rövidebb válaszokat részesítenek előnyben, és annál gyakrabban követnek el hibákat vagy nyelvi torzulásokat - például nyelvtani hibákat, kódban szintaktikai hibákat, inkoherens (összefüggéstelen, logikailag következetlen) válaszokat. A kvantálás általában csak a népszerűbb/nagyobb modelleknél (pl. Llama, Gemma, Mistral) elérhető, és gyakran közösségi kontribúciók eredménye (nem hivatalos verziók). A kvantálás a modell súlyait alacsonyabb bitmélységűre (pl. 32 → 8/4 bit) konvertálja, ami csökkenti a memóriaigényt és gyorsítja a következtetést. Emiatt könnyen félrevezethetőek és könnyen hallucinálnak is. Összefoglalva hátrányaik a
+\begin{itemize}
+	\item
+	      korlátozott kontextusmegértés a csökkentett bitmélység miatt, ezért nehezebben követik a hosszú gondolatmeneteket,
+	\item
+	      gyenge memóriájuk, elfelejtik a korábbi információkat,
+	\item
+	      és túlzott általánosítás is jellemző rájuk.
+\end{itemize}
+
+\clearpage
+
+\section*{Fogalmak}
+
+\addcontentsline{toc}{section}{Nyelvi modell alapfogalmak}
+
+Ahhoz, hogy nagy nyelvi modelleket ki tudjunk értékelni, meg kell ismernünk néhány alapfogalmat.
+
+\subsection{A prompt}
+A prompt alatt az informatikában egy nagy nyelvi modell számára beadott olyan inputot értünk, amelyre a modell egy előre meghatározott kimenetet generál. Működési elve lényegében ugyanaz, mint egy hagyományos konzolnak, parancssori interfésznek, például egy Windows rendszeren a PowerShell, vagy Linuxon Bash terminállal, azonban prompt esetén a kommunikáció emberi nyelven történik.
+Egy jelentős előnye a promptolásnak, hogy nem csak egy előre meghatározott parancskészletet használhatunk, hanem bármit beírhatunk, nincsenek szintaktikai hibák vagy futtatási hibák, mivel a rendszer minden bemenetre képes választ generálni.
+
+\subsection{Inferencia}
+Egy modell promptra adott válaszát inferenciának nevezik, ami következtetést jelent. Ez arra utal, hogy a modell a megtanult minták alapján futásidőben logikailag következtet a legvalószínűbb kimenetre, bonyolult statisztikai számítással, nem pedig csak szó szerint "visszadobva" a betanított adatokat.
+
+\subsection{Determinisztikus következtetés, temperature, top-p és top-k}
+A kísérletemnek csak akkor van értelme, ha a futtatás determinisztikus. Azt jelenti, hogy a modell mindig ugyanazt a kimenetet adja ugyanazon bemenet esetén, mivel a véletlenszerűséget kizáró paraméterekkel (pl. $temperature=1.0$, $top-k=0$, $top-p=1.0$) működik. A temperature (hőmérséklet) a nyelvi modellek válaszainak kreativitását szabályozza (magas értéknél változatosabb, alacsonynál determinisztikusabb kimenet), a top-k pedig korlátozza a következő szó választékát a k legvalószínűbb tokenre, míg a top-p (más néven nucleus sampling) dinamikusan választja ki a valószínűségi eloszlás egy részhalmazát (pl. a legvalószínűbb tokeneket, amelyek összege eléri a p küszöböt)~\cite{holtzman2020curious}.
+
+\subsection{Top-p és Top-k mintavételezések}
+Tegyük fel, hogy a nyelvi modellnek a következő mondatot kell befejeznie:
+
+\begin{verbatim}
+The cat sat on the _ .
+\end{verbatim}
+A modell célja, hogy megtalálja a legmegfelelőbb szót a hiányzó helyre. Ehhez különböző mintavételi stratégiákat alkalmazhat, például a top-k vagy top-p eljárást.
+A top-k módszer során a modell kiszámítja az összes lehetséges folytatás valószínűségét, majd ezek közül kiválasztja a k legvalószínűbbet, a többit pedig elveti. A kiválasztott k szóból ezt követően véletlenszerűen választ egyet, amelyet a szöveg folytatásához használ. Ez a megközelítés biztosítja, hogy csak a legrelevánsabb szavak kerüljenek figyelembe vételre, ugyanakkor némi változatosságot is megtart a generálásban.
+
+\begin{figure}[htbp]
+\centering
+
+\vspace{0.5em}
+\small\textit{A modell szerint az alábbi 5 szó a legvalószínűbb, csökkenő eséllyel: mat, hat, dog, sofa, floor.}
+
+\begin{tikzpicture}
+  \begin{axis}[
+    ylabel={Valószínűség},
+    xtick=data,
+    symbolic x coords={mat, hat, dog, sofa, floor},
+    ybar,
+    nodes near coords style={font=\small},
+    nodes near coords,
+    bar width=15pt,
+    enlarge x limits=0.3,
+    ymin=0,
+    ymax=0.4,
+  ]
+    % Top-3: mat, hat, dog — highlight with red fill and bold labels
+    \addplot+[ybar, fill=red!60] coordinates {
+      (mat,0.3) (hat,0.2) (dog,0.15)
+    };
+    \addplot+[ybar, fill=gray!40] coordinates {
+      (sofa,0.1) (floor,0.05)
+    };
+  \end{axis}
+
+  % Top-k info
+  \node[draw, thick, align=center, fill=blue!10, rounded corners] at (3.5,4.5) {$Top-k$: 3};
+\end{tikzpicture}
+
+\caption{A top-k=3 értékadás esetén a pirossal kiemelt szavak közül fog diszkrét valószínűségi eljárás szerint választani.}
+\end{figure}
+
+
+A $top-p$ működése hasonló. Annyiban tér el, hogy nem egy fix számú legvalószínűbb szót választunk ki, hanem az odaillő szavak valószínűsége szerint. A $p$ egy 0.00-tól 1.00-ig terjedő valós szám. A szavakat akkumulatívan vesszük számításba, amíg a $p$ értéke nagyobb, mint a soron következő legvalószínűbb szó valószínűsége, addig belevesszük a szót és ugrunk előre. Ellenkező esetben csak belevesszük a szót, és leáll az algoritmus. Ezzel a módszerrel minél nagyobb a $p$ érték, annál több szó közül lehet választani, de legalább 1 szót kapunk, tehát mindenképpen tudjuk folytatni a szöveget.
 
 
 
-\chapter*{A szoftver: modell futtató és kiértékelő keretrendszer fejlesztése PyCharmban}
+\subsection{Maximum kimeneti tokenek és kontextusablak}
+
+A \textbf{maximum kimeneti tokenek} paraméter határozza meg, hogy a modell legfeljebb hány tokent generálhat a válasz során. Ez kizárólag a válasz hosszát korlátozza, nem befolyásolja közvetlenül a bemeneti szöveget.
+
+
+A \textbf{kontextusablak} (angolul \textit{context window}) a modell által egyszerre figyelembe vehető tokenek teljes száma – beleértve a bemenetet és a választ is. Ha a bemenet vagy a beszélgetés túl hosszú, a legrégebbi részek elvesznek. A GPT-3 alapértelmezett kontextusablaka 2048 token, míg a GPT-4 esetében ez elérheti a 8192 vagy akár 32\,768 tokent is, verziótól függően.
+
+
+\chapter{Legkonzisztensebb nagy nyelvi modellek megtalálása}
+
+\subsubsection{Konzisztencia}
+A kutatásom első felének célja a modellek teljesítményének összehasonlítása a WiC-ből szedett kérdéseken volt, de nem az érdekelt elsősorban, hogy minél több kérdésre a gold standard \footnote{A gold standard egy szakértők által hitelesen és konzisztensen annotált adathalmaz, amely viszonyítási alapként szolgál automatikus rendszerek teljesítményének kiértékeléséhez.} szerint válaszoljanak, hanem hogy a szavak sorrendje ne befolyásolja a válaszadásukat. Tehát a
+\begin{verbatim}
+Does the word `w` mean the same thing in `s1` and `s2`?
+\end{verbatim}
+és a
+\begin{verbatim}
+Does the word `w` mean the same thing in `s2` and `s1`?
+\end{verbatim}
+
+kérdésekre mindig ugyanazt válaszolják (változatlan $w$, $s1$ és $s2$ esetén, ahol $w$ egy szó, $s1$ az első példamondat, és $s2$ a második példamondat).
+
+Először a LMArena által és általam ismert legjobb modelleket vizsgáltam meg, hogy mennyire érzékenyek arra, hogyha a 2 mondatot felcseréljük. A WiC adathalmazból előállított kérdésekből szúrópróbaszerűen adtam be kérdéseket a vizsgált modellnek, majd töröltem a modell memóriáját, és ezt a kérdést a 2 mondatot felcserélve is elküldtem a modellnek. A mondatokat ~\ref{chap:src/Framework} src/Framework modullal hoztam létre a WiC adatbázisból, erről majd később írok. Végül egy Google Táblázatban a válaszokból összesítettem az egyes promptolási módszerek pontosságát, kiegyensúlyozott pontosságát, hogy mekkora arányban egyeznek a válaszpárok. A teszthalmazban alapból randomizált sorrendben vannak a kérdések.
+\begin{equation}
+    \text{pontosság} = \frac{TP + TN}{TP + TN + FP + FN}
+\end{equation}
+\vspace*{0.5cm}
+
+\begin{equation}
+	\text{kiegyensúlyozott pontosság} = \frac{1}{2} \left( \frac{TP}{TP + FN} + \frac{TN}{TN + FP} \right)
+\end{equation}
+\vspace*{0.5cm}
+
+
+  {\large\bf Hugging Face modellek}
+
+Olyan modellt szerettem volna választani az összehasonlításhoz, amelyek nyílt forráskódúak, nagyjából azonos, másfél milliárd és 5 milliárd közötti paraméterszámúak, de legfeljebb 2 milliárd paraméterszám-különbség van köztük. A \href{https://colab.research.google.com/}{Google Colab} webes Python futtatókörnyezetet, Hugging Face modelleket, és a nagy cégek modelljeinek webes API-jait használtam.
+
+Először is, ahhoz, hogy egyértelmű eredményt kapjak a modell teljesítésére, ahol csak lehetett, minden véletlenszerűséget biztosító paramétert ki kellett kapcsolnom. Erre azért volt szükség, hogy ne a szerencsén múljon az, hogy a modell két válasza megegyezik, vagy eltér, hanem a modell felépítésén. A sztochasztikus faktorokkal ugyanis ugyanarra a kérdésre eltérő futtatáskor eltérő választ adhat egy modell, ami nem vezet hiteles kutatáshoz. A LMArena és a Google AI Studio oldalán van erre lehetőség.
+
+Hogy ezt elérjem, a \textit{temperature} értékét 0-ra, a \textit{top-p} értékét pedig 1-re állítottam. Ezáltal a válaszok sztochasztikus változatosságát minimálisra redukáltam.
+
+
+{\large\bf Egy példa kérdés:}
+
+{\bf Egyenes sorrendben}
+\begin{quote}
+	\texttt{Does the word "defeat" mean the same thing in sentences "It was a narrow defeat." and "The army's only defeat."?}
+\end{quote}
+
+{\bf Fordított sorrendben}
+\begin{quote}
+	\texttt{Does the word "defeat" mean the same thing in sentences "The army's only defeat." and "It was a narrow defeat."?}
+\end{quote}
+
+A véletlen faktor kikapcsolása mellett az is fontos volt, hogy egyesével adjam be a kérdéseket. Amikor ugyanis egyszerre $N$ kérdéssel bombáztam a modelleket, akkor az is egy figyelembe veendő tényező volt, hogy az $N$ kérdés milyen sorrendben lett feltéve. Ráadásul a modellek, ha egyszerre túl sok kérdést kaptak, jellemzően csak 40-60 kérdésre válaszoltak, az utána lévőket teljesen ignorálták. Ezzel szemben, ha minden kérdés esetén tiszta lappal indítottam, és új, független promptként adtam be, akkor ez a hatás nem tudott bezavarni. Emiatt tisztább a kísérlet, ha a modell nem egyszerre kapja meg mind az $N$ mondatot, amiről a döntést várjuk, hanem $N$ darab olyan kérdésként, amelyekben egyenként csak pontosan egy kérdés szerepel.
+
+Ezt a fajta módszert, hogy a webes felületek input mezőjébe adtam be a kérdéseket, csak API-alapú automatizációval lehetne automatizálni, de a webes felületek nem erre készültek. Ahhoz, hogy automatizáljam a promptolást, egy, a Témavezetőm által készített és javasolt Google Colab jegyzetfüzetet~\cite{berend2025phi} fejlesztettem tovább. Ez egy egyszerű, de hatékony jegyzetfüzet, amellyel Hugging Face token birtokában tetszőleges modell válaszadásra bírható, és mindez hatékonyan automatizálható. Hogy ezt elérjem, beadtam a modelleknek a teszthalmazból készített 5600 kérdést promptként, 2800-at egyenes, és 2800-at fordított sorrendben. A kérdéseket egyesével, determinisztikusan adtam be a modellnek.
+
+
+% Hogy ezt elérjem, 2 kérdéssort készítettem.
+% \begin{itemize}
+% 	\item Egyrészt a \href{https://pilehvar.github.io/wic/package/WiC\_dataset.zip}{WiC adathalmazra} alapuló kérdéshalmazomból, főleg a  teszt részosztályból szúrópróbaszerűen randomizált kérdéseket tettem fel és adtam be a modelleknek, 60 darabot.
+%     \item Másrészt, szintén a kérdéshalmazomból, főleg a  teszt részosztályból kiválasztottam egy pár, egymáshoz nagyon hasonló és/vagy egzotikusabb szót, vagy bonyolultabb szövegkörnyezetet tartalmazó mondatot, amelyekkel könnyű a modellt összezavarni.
+% \end{itemize}
+
+\section{A megfelelő nyelvi modellek kiválasztása}
+A nagy AI cégek, mint az OpenAI, Anthropic és a DeepSeek olyan fejlett általános célú generatív mesterséges intelligencia modelljeik vannak, amelyek minden kategóriában csúcsteljesítményt nyújtanak, vállvetve a Google, Microsoft, X és Meta technológiai óriásokkal, csak hogy párat említsek. Azonban a feladatom megfogalmazásában szerepelt, hogy ingyenes és nyílt forráskódú modelleket kell megvizsgálnom, így ezek többsége nem jöhetett szóba. Kíváncsiságból azonban mégis megvizsgáltam a következő modelleket:
+
+
+\begin{itemize}
+\item \href{https://chatgpt.com}{ChatGPT} (OpenAI), amely gyors, sokoldalú, de fizetős az API-ja.
+\item \href{https://claude.ai}{Claude} (Anthropic), amely biztonságközpontú, de fizetős az API-ja.
+\item \href{https://chat.deepseek.com}{DeepSeek} (DeepSeek), amely hatékony, tömör, nyílt forráskódú, nagyméretű. A legnépszerűbb modell HuggingFace-en egy DeepSeek modell (a DeepSeek-R1).
+\item \href{https://gemini.google.com}{Gemini} (Google)
+\item \href{https://grok.x.com}{Grok} (xAI)
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\resizebox{\textwidth}{!}{
+
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Modell neve} & \textbf{Helyes válaszok (db/összes)} & \textbf{Pontosság} (\%) & \textbf{Konzisztencia (\%)} \\ \hline
+GPT & ???/5600 & 76??? & 90??? \\ \hline
+Claude & ???/5600 & 73??? & 87??? \\ \hline
+DeepSeek & ???/5600 & 75??? & 83??? \\ \hline
+Gemini & ???/5600 & 82??? & 91??? \\ \hline
+Grok & ???/5600 & 67??? & 84??? \\ \hline
+\end{tabular}
+}
+\caption{Nagy nyelvi modellek teljesítményértékelése. Az 5600 kérdés a 2800 egyenes, valamint 2800 fordított sorrendben beadott kérdésből álló prompt-korpusz egyenes és fordított beadásából tevődik össze.}
+\end{table}
+
+Hogy a promptolást automatizáljam, Hugging Face-en elérhető modelleket futtattam a Google Colab szkriptemben~\ref{att:colab}.\\ A Témavezetőm által ajánlott modellek közül a
+\begin{itemize}
+    \item \href{https://huggingface.co/microsoft/Phi-4-mini-instruct}{Microsoft/Phi-4-mini-instruct}~\cite{phi4mini2024},
+    \item \href{https://huggingface.co/google/gemma-2-2b-it}{Google/Gemma-2-2b-it}~\cite{gemma22b2024} és a
+    \item \href{https://huggingface.co/Qwen/Qwen1.5-1.8B-Chat}{Qwen1.5-1.8B-Chat}~\cite{qwen15chat2024}
+\end{itemize}
+ modelleket választottam, mert ezek elég jók méret/minőség arányban a közösségi média fórumok szerint. Közelítő arányban sincsenek a nagy AI és tech cégek top modelljeivel, de a méretükhöz képest gazdag szókinccsel és jó nyelvérzékkel rendelkeznek. Mind a hármat közepes és nehéz kérdéseken, mind a 3 kérdésnehézséget egyenes és fordított sorrendben teszteltem. Ez így összesen \texttt{3*3*2=18} kiértékelést jelentett. Hangsúlyozom, hogy nem a {gemma-2b-it}, hanem a {gemma-\textit{2}-2b-it} változatot választottam. Az elnevezési szabály kissé összezavaró, ugyanis {gemma-\textit{x}b...} kezdetű modellek első generációs változatok, míg a {gemma-2-\textit{x}b...} a második, és a {gemma-3-\textit{x}b...} a harmadik generációs modelleket jelöli. A gemma 3 család 2025 tavaszán tétetett közzé, így erről átfogó vizsgálatot nem végeztem, ám feltehetően jobb a szójelentés-felismerés feladatokban, mint elődje.
+A modellek eredményeit összessítő táblázat a 4.1. táblázatban látható.\ref{tab:model-eval-summary}
+
+
+A nagy nyelvi modelleket futtató szkriptem nyilvánosan megtekinthető, és a kísérlet elvégezhető Google Colab-on, a mellékletben található linken.~\ref{att:colab}
+
+Mivel Google Colabot használtam, azon belül is GPU-s futtatókörnyezete, így a kiértékelés megfelelően gyors volt.
+A webes környezet és a kikapcsolt valószínűségi változók miatt elmondható, hogy a kiértékelésem módja:
+\begin{itemize}
+	\item reprodukálható, azaz bárki meg tudja ismételni a kísérletet
+	\item determinisztikus, tehát ugyanarra az inputra mindig ugyanaz lesz az output, nem függ a véletlentől.
+\end{itemize}
+
+
+% \section{Webes nagy nyelvi modellek}
+
+
+% A modelleket fejlesztőik szerint csoportosítottam, és empirikus úton értékeltem a teljesítményüket.
+
+
+
+% \subsection{OpenAI modellek: a GPT család}
+% A GPT modellek transzformátor architektúrára épülnek, melyekben a tokenek pozíciója kulcsfontosságú. A mondatok sorrendjének felcserélése leginkább csak akkor eredményez eltérő eredményt, ha a két mondat tartalma eltérő kontextust biztosít a vizsgált szó számára. Ezek a modellek jellemzően konzisztensek a \href{https://arxiv.org/pdf/1911.00536}{többkörös, folyamatos kontextusmegőrzéses környezetekben} (amikor az inferencia során a felhasználó és a saját korábbi üzeneteit is figyelembe veszi), hiszen erre lettek optimalizálva, így nehezebben vezethetők félre.
+
+% A \href{https://huggingface.co/docs/transformers/en/model_doc/gpt2}{gpt-2} modellt Python szkriptben is futtattam. Nem chat modell, ezért nem rendelkezik beépített chat template-tel, így a tokenizer.apply\_chat\_template() függvény hívása hibát eredményez. Ehelyett hagyományos szöveges promptot kell megadni, például egy kérdés-válasz formátumban, amit a modell egyszerűen sztringként kezel.
+
+% \subsection{Anthropic Modellek: Claude család}
+
+% 	      A Constitutional AI nevű saját kutatási irányon nyugszik, fókusza a biztonságos, etikus viselkedés alkotmányos szabályozással.
+% 	      A Claude modellek pontos architektúrális részletei kevésbé nyilvánosak. Ezeknek a modelleknek a fő erőssége a kódolásban való kiváló segítségnyújtás, de párbeszédkonzisztencia és érvelési következtetés szempontjából kiemelkedőek. Nem jellemző, hogy a szavak és mondatok sorrendjének megváltoztatása hatására következetlen válaszokat adjon.
+%           ~\cite{https://www.anthropic.com/news https://www.anthropic.com/news}
+
+
+% \subsection{Microsoft Modellek: Copilot család}
+% A Copilot-modellek elsősorban kódkiegészítésre optimalizáltak, így a finomabb nyelvi jelentéskülönbségekre érzékenységük alacsony. – emiatt a sorrendváltozásra adott válaszok is ingadoznak.
+
+% \subsection{Google modellek: Gemini, Bard, Gemma}
+% A Google modelljei igen előkelő helyet foglalnak el a https://lmarena.ai/ rangsorán, a Gemini-2.5-Pro-Exp-03-25 modellje az első helyet foglalja el, és a rangsor első 16 modelljéből 7 Google által fejlesztett. A gyakorlatban sokszor félreértelmezik a felhasználó szándékát, de a WiC-feladatra nagyon jól teljesítenek. A Gemma-2.5 teljes teszthalmazon 80\%-os pontosságot ért el, egyenes és fordított sorrendben is megadva.
+
+
+% \subsection{Grok}
+% Az xAI A Grok-3 Beta modellje erősen marketingelt, de a szójelentés átlagosnak bizonyult. A marketingkommunikáció szerint erős, de a valós teljesítménye pontatlan. A modell gyakran túlbizonyos, hibás válaszokat ad önbizalommal, és nehezen ismeri be a tévedéseit. Elon Musk nyilvános állításainak megfelelően a modell politikailag elfogult lehet bizonyos társadalmi kérdésekben. Az xAI nem tett közzé átfogó benchmark eredményeket a Grok-ról, így nehéz összehasonlítani más modellekkel. A Llama 3.2 kipróbálható Ollama telepítés után, konzolon keresztül. Hátránya a korlátozott kreativitás:  kreatív feladatokban (pl. történetírás, metaforaértelmezés) gyakran sablonos válaszokat ad.
+
+% \subsubsection{Megjegyzés}
+% Fontos megjegyeznem, hogy a modelleket csak empirikus módon véleményezem, nem végeztem átfogó kutatást. A tényleges érzékenység mértékének megállapításához alaposabb tesztekre van szükség.
+
+% \subsection{Összegzés}
+% Egy kicsit mindegyik nyelvi modell hasonlítható egy hashelő algoritmushoz abból a szempontból, hogy ha az inputot egy kis mértékben is változtatjuk, akkor az output teljesen más lehet.
+% Ez akkor is igaz, ha a temperature 0-ra van állítva, magasabb temperature értékkel pedig főleg jellemző ez. Ez a viselkedés indokolt, hiszen a modellek egy jelentősebb módosítószó, pl. tagadószó, hangulatszó hatására képesek a szavak jelentésétől elrugaszkodva az eltérő kontextusra reagálni. A WiC feladatnál a mondatok fordított sorrendben való beadása ugyan nem változtat az input szemantikáján, ám a modellek sokszor tévesen más kontextusúnak gondolják azt.
+
+
+\subsection{Google AI Studio}
+A \href{https://aistudio.google.com/prompts/new_chat}{Google AI Studio} egy ingyenes, Google által fejlesztett platform, ahol megtalálható az összes 'state-of-the-art' modelljük, és rendkívül személyre szabhatóak. A modellek kipróbálgatása után arra a következtetésre jutottam, hogy a Gemini 2.5 Pro Experimental 03-25 a legjobb a WiC feladatra. Egy inferenciában, kevesebb mint 10 perc alatt képes válaszolni mind az 1400 tesztkérdésre, amelyekre több futtatásom esetén is közel 80\%-os pontossággal teljesített, mind egyenes, mind fordított sorrendben beadva a kérdéseket, átlagosan 91\%-os egyezéssel az egyenes és a fordított sorrendben adott válaszai alapján. Lehetségesnek tartom, hogy a sikerességéhez hozzájárul az, hogy látta a kérdéseket az előtanulítása közben, és hatékonyan vissza tudott rá emlékezni, de az mindenképpen figyelemreméltó, hogy a kézi emberi kiértékeléssel egyező hatékonyságot egyedül ez a variáns ért el.
+
+Összességében a legkonzisztensebbek a tesztjeim alapján a Gemini-2.5 variánsai, továbbá a GPT-4 és a GPT-4.5o, ám ez csak empirikus vélemény.
+
+
+\chapter{Három generatív nyelvi modell összehasonlítása Cloud környezetben}
+{
+	\centering % Középre igazítás a magyarázó szövegnek
+	{\Large A gemma-2-2b-it, Phi-4-mini-instruct és a Qwen1.5-1.8B-Chat összehasonlítása \par} % Kisebb betűméret, sortörés
+
+	\vspace{1cm} % Térköz a magyarázó szöveg és az első szakasz címe között
+}
+\section{Módszer}
+
+\subsection{Előkészítés}
+A generatív nyelvi modelleket egy Google Colab szkriptben hasonlítottam össze. Az projektem többi részét PyCharmban készítettem, ám itt a Colabra volt szükségem, mert lokálisan nagyon nehéz futtatni egy több billió paraméteres nyelvi modellt. Annál kisebbet pedig nem tartottam megfelelőnek, mert nagyon rosszul teljesítenének a WiC feladatra. Az első félévben lokálisan próbáltam futtatni "kisméretű" modelleket, azonban GPU-, RAM- és tárhelyproblémákkal küszködtem. Szerencsére a Google ingyenesen biztosít lehetőséget Cloud-alapú futtatásra, és GPU-t is biztosít. A modell egy távoli gépre töltődik le, és GPU-t is használ megfelelő beállításokkal.
+
+\subsection{A beadott szöveg formátuma}
+
+A modelleket úgy teszteltem, hogy eldöntendő kérdéseket tettem fel nekik egyesével:
+
+\newenvironment{linguisticexample}
+  {\par\medskip\noindent\small
+   \begin{tabular}{p{0.45\textwidth}p{0.45\textwidth}}
+   \textbf{Angolul} & \textbf{Magyarul} \\}
+  {\end{tabular}\par\medskip}
+
+\begin{linguisticexample}
+Does the word \textit{w} mean the same thing in sentences \textit{s1} and \textit{s2}? &
+Ugyanazt jelenti-e a \textit{w} szó az \textit{s1} és \textit{s2} mondatban?
+\end{linguisticexample}
+
+Ahol \textit{w} egy szó, \textit{s1} az első példamondat, és \textit{s2} a második példamondat.
+
+
+\subsection{A modelleket tesztelő kérdések}
+Alapos tesztelés után azt találtam, hogy nem célszerű a teljes nyers adathalmazból előállított kérdéseket beadni a modelleknek, helyette 3 gondosan összeállított kérdéshalmazzal értékeltem ki a teljesítményüket. % 60 véletlenszerű példára elegendő tesztelni, a teszthalmaz 1400 kérdésének lefutása nagyon sok idő, és nem ad annyi hozzáadott információt.
+\begin{itemize}
+	\item Egyrészt a \href{https://pilehvar.github.io/wic/package/WiC\_dataset.zip}{WiC adathalmaz}ra alapuló kérdéshalmazomból szúrópróbaszerűen randomizált kérdéseket tettem fel és adtam be a modelleknek, főleg a  teszthalmazból.
+    \item Másrészt, szintén a kérdéshalmazomból kiválasztottam pár hasonló szót, vagy szövegkörnyezetet tartalmazó mondatot, amelyekkel könnyű a modellt összezavarni.
+\end{itemize}
+A WiC megfelelő referenciaadatkészlet erre is, hiszen szakértők által gondosan annotált példákon alapul. Könnyen lehetséges, hogy már látták a tesztelt modellek (Phi, Gemma, Qwen) a WiC adathalmaz részét vagy egészét, ám nem tudnak rá visszaemlékezni, mert több milliárd mondatot láthattak a tanításuk során.
+
+A \href{https://pilehvar.github.io/wic/package/WiC\_dataset.zip}{WiC adathalmazban} található mondatokban a szavak, mondatjelek és írásjelek tokenizálva vannak, szóközzel vannak elválasztva a megelőző és következő szótól, mondatjeltől és írásjeltől. Így a vessző, mondatvégi pont, az angol birtokos személyjel \textquotesingle s rag és bármilyen aposztrófot használó angol rag, jel, képző könnyen kiemelhető a szövegből. Emiatt viszont külön figyelnem kellett, amikor természetes nyelvezetűvé alakítottam a szöveget, hogy ezeket is gondosan átalakítsam.\\ Erre használtam a \texttt{sentence\_normalizer} szkriptem függvényeit~\ref{fig:sentence-normalizer}.
+
+Emellett volt pár kifejezés és speciális karakter, amelyet ahhoz, hogy Python szótárként eltároljam, escape-elnem kellett, vagyis el kellett érnem, hogy a Python interpreter egyszerű karakterként kezelje őket, és ne program utasításként. A mondatokat ugyanis string dictionary-ként tároltam el, amelyekben az idézőjeleknek és kettőspont (:) karaktereknek speciális funkciója van. Így az alábbi helyzetekben gondosan átalakítottam a szöveget a Python szintaxisnak megfelelő alakba. Ezt is a \texttt{sentence\_normalizer} szkriptem függvényei végezték.
+
+\begin{table}[h]
+  \centering
+  \resizebox{\textwidth}{!}{
+  \begin{tabular}{|l|l|}
+    \hline
+    Eredeti & Átalakított \\ \hline
+    \makecell[l]{My boss is out on another of his three martini lunches.\\
+    Will you join us at six o'clock for martinis?} &
+    \makecell[l]{My boss is out on another of his three martini lunches.\\
+    Will you join us at six o\textbackslash'clock for martinis?} \\ \hline
+    \makecell[l]{The derivative of f : f(x ) = x\textasciicircum 2 is f':f'(x ) = 2x.\\
+    `electricity' is a derivative of `electric'.} &
+    \makecell[l]{The derivative of f \: f(x ) = x\textasciicircum 2 is f\textbackslash'\:f\textbackslash'(x ) = 2x.\\
+    `electricity' is a derivative of `electric\textbackslash'.} \\ \hline
+  \end{tabular}
+  }
+  \caption{A \texttt{sentence\_normalizer} függvény átalakítása}
+  \label{tab:transformed_text}
+\end{table}
+
+
+
+Én ugyanis a kutatómunkám első fázisaként a weben, távoli szerveren futó modelleken szerettem volna tesztelni, ahova a mondatok ilyen formában nem feleltek meg a kiértékelésre, mert pont az volt a célom, hogy megvizsgáljam, mennyire értik meg jól a nagy nyelvi modellek az emberi szöveget. Emiatt a listában felsorolt tokeneknek az előfordulásainál átalakítottam a szöveget: kitöröltem az előttük lévő szóközt. Ezzel lényegében visszaalakítottam a mondatokat emberi nyelvre. Ezt reguláris kifejezéseket használva és mintákat keresve Python algoritmussal oldottam meg.\ref{fig:sentence-normalizer}
+
+
+\subsection{Kérdés-válasz szótár}
+A naiv kérdés-válasz készítési ötlet az lehetne, hogy a vizsgált szó legyen a kulcs, és a kérdés a válasz. Ez azonban nem célszerű, sőt hibás,  ugyanis egy szóhoz több bejegyzés is tartozhat az adathalmazban, viszont a mondatpárok egyediek egymáshoz képest. Emiatt a kérdéseknek kell lenniük a kulcsoknak, amelyeknek a gold standard válasz az értéke. Például egy szótárelem kulcs-érték pár a következőképpen néz ki:
+\begin{lstlisting}
+Key: Does the word "{word}" mean the same thing in
+"{sentence1}" and "{sentence2}"?
+Value: Yes VAGY No
+\end{lstlisting}
+
+
+
+\subsection{Futtatás}
+A \href{https://colab.research.google.com/drive/1yA8IAd5z2oreKUXha-16Du2YrNhemNiU?usp=sharing}{szkriptem} leírása:
+
+A modell nevének a pontos Hugging Face azonosítóját kellett megadni, a
+\begin{lstlisting}
+    model_name = <company/model-name>
+\end{lstlisting}
+utasítással adtam meg. Az
+\begin{lstlisting}
+    AutoTokenizer.from_pretrained(model_name)
+\end{lstlisting}
+sorral a tokenizer példányt hozom létre. Ez az eszköz felelős azért, hogy a nyers szöveget a modell által értelmezhető tokenekre bontsa. A \texttt{from\_pretrained} hívással automatikusan letöltöm a modellhez illő tokenizálót.
+Az
+\begin{lstlisting}
+    AutoModelForCausalLM.from_pretrained(...)
+\end{lstlisting}
+függvény tölti be a nyelvi modellt, amely képes szöveget generálni. % A causal language model elnevezés arra utal, hogy a modell kategóriája szöveges következtető típus...
+\begin{itemize}
+	\item \texttt{device\_map='auto'}: Automatikusan eldönti, melyik modelltömb kerüljön melyik eszközre (pl. GPU, CPU).
+
+	    \item  \texttt{torch\_dtype='auto'}: Automatikusan kiválasztja a megfelelő adattípust a modellhez (pl. float16, bfloat16).
+
+	  \item    \texttt{trust\_remote\_code=True}: Ezzel engedélyezem a modellhez tartozó egyedi kód futtatását, ami akkor kell, ha a modell nem a standard Hugging Face interfészt használja.
+
+	      \item \texttt{offload\_buffers=True}: Ez különösen akkor hasznos, ha a GPU memóriája nem elég a teljes modell betöltésére. Ilyenkor a kevésbé használt rétegek puffereit a rendszer a CPU-ra offload-olja, vagyis átrakja, hogy kevesebb GPU-memóriát használjon. Ezt egy figyelmeztetés javasolta, amit így beépítettem.
+
+          \item \texttt{do\_sample=False}: Teljesen determinisztikussá teszi a futtatást. Kikapcsolja a sztochasztikus mintavételezést, és átvált greedy decoding üzemmódba (amikor a modell mindig a legnagyobb valószínűségű következő tokent választja ki).
+\end{itemize}
+
+A tokenizálást az \texttt{apply\_chat\_template} végzi el,
+\href{https://huggingface.co/docs/transformers/main/en/chat_templating}{amely egyesíti a különböző modellek output formátumát}.
+A \texttt{Gemma} esetén a \texttt{flash-attention} csomag telepítése szükséges. Paraméterei:
+\begin{lstlisting}
+return_tensors='pt'        # A kimenetet PyTorch tensor formatumban kerem.
+add_generation_prompt=True # Specialis jelzes, hogy generalni kell valaszt.
+\end{lstlisting}
+
+Ezután a \texttt{.to(model.device)} biztosítja, hogy az input tensor ugyanarra
+az eszközre (pl. GPU) kerüljön, mint a modell.
+
+A szöveg-generálás lépése:
+\begin{lstlisting}
+
+output = model.generate(
+    inputs,
+    max_new_tokens=200,     # Maximum 200 uj token
+    do_sample=False,       # Determinisztikus valasz
+)
+\end{lstlisting}
+
+A válasz dekódolása:
+\begin{lstlisting}
+decoded = tokenizer.batch_decode(output, skip_special_tokens=True)
+
+for reply in decoded:
+    print(reply)
+\end{lstlisting}
+
+\texttt{skip\_special\_tokens=True} eltávolítja az olyan vezérlő tokeneket,
+mint \texttt{<s>} vagy \texttt{<|endoftext|>}, amelyek nem részei a természetes szövegnek.
+
+Végül egy for ciklus segítségével az összes dekódolt választ szépen sorban kiírom:
+
+\begin{lstlisting}
+    for i, sentence in enumerate(decoded):
+    print(f"[{i}] {sentence}")
+\end{lstlisting}
+
+
+
+A blokkot \texttt{\href{https://pytorch.org/docs/stable/generated/torch.no_grad.html}{torch.no\_grad()}} kontextusba helyeztem. Enélkül nagyon pazarolná a program a GPU memóriát, és rövid úton "out of memory" hibába futna.
+A szkripttel hibátlanul le tudtam tesztelni a modelleket, amelyeket szerettem volna.
+
+\subsection{Kiértékelés}
+A nyelvi modellek hajlamosak az önismétlés hibájába esni, és az is gyakori torzulás, hogy az egyik osztályt aránytalanul preferálják a másik fölött, tehát például a WiC kérdéseinek 80\%-ára nemmel válaszolnak. A kiértékelés során figyelembe vettem, hogy ha mindegyik kérdésre ugyanazt a választ adja, és ezzel aránytalanul sokat eltalál, az ne érjen annyi pontot, mint ha közel fele-fele arányban tippel vegyesen. Más szóval, ha egy modell mindenre ugyanazt válaszolja, és történetesen ezzel jól lefedi az egyoldalú gold standardot, az nem jelent valódi tudást, csak szerencsés torzítást.
+A kiegyensúlyozott pontosság (balanced accuracy) módszerével az abszolút \texttt{true positive} arány helyett egy átlagolt \texttt{true positive} arányt adunk meg az egyes osztályokra.
+
+
+Ez segít, ha pl. a gold standard 80\% "Yes" és 20\% "No", de a modell mindig "Yes"-t mond – a sima pontosság 80\%, de a kiegyensúlyozott pontosség csak 50\%.
+
+\lstset{breaklines=true}
+
+\subsection{A modell válaszainak bővításe}
+Hamar be kellett látnom, hogy az algoritmus egy puszta "Yes" vagy "No" válasza önmagában nem sok információt rejt magában. Ha csak ennyit kapok vissza, nem tudom, hogy hogyan gondolkodott a modell, milyen szóvektorai vannak.
+Emiatt, hogy a puszta "Yes" és "No" válasznál többet kapjak vissza, többféle módszert alkalmaztam:
+\begin{enumerate}
+    \item Megkértem a modellt, hogy írja le a gondolatmenetét.
+	\item A promptban utasítottam a modellt, hogy érveljen is, miért tartja helyesnek a válaszát.
+        \item Megkértem, a modellt, hogy egy \textit{normalizált skálán}, mondjuk egy 0 és 100 közötti számmal, a határértékeket beleértve ítélje meg, hogy a modell mennyire biztos abban, hogy a célszó a 2 mondatban ugyanabban az értelemben van jelen. 100\% jelenti azt, hogy a modell teljesen biztos abban, hogy a célszó a 2 mondatban ugyanazt jelenti, 0\% esetén pedig teljesen biztos az ellenkezőjében.
+	      \begin{lstlisting}
+Answer with "Yes" or "No" with reasoning and your confidence score of "Yes" in percentage. 100% means you are a hundred percent sure that they mean the same thing, 0% means the opposite.
+
+Does the word "{word}" mean the same thing in sentences "{sentence1}" and "{sentence2}"?
+\end{lstlisting}
+
+
+	      \begin{figure}[H]
+	      	\centering
+	      	\includegraphics[width=1\linewidth]{graphics/Answer-all-questions-with-reasoning.png}
+	      	\caption{A nagy nyelvi modellek promptját úgy kezdtem, hogy érveljen minden mondat esetében.}
+	      	\label{fig:enter-label1}
+	      \end{figure}
+ Tapasztalatom szerint ez elég volt ahhoz, hogy részletes válaszokat kapjak a modellek webes futtatása esetében, de lokális futtatásnál is segített tájékozódni.
+\end{enumerate}
+
+\subsubsection{Egyszavas válaszok}
+A szótárból előállított prompt formátuma pedig a következő:
+\begin{verbatim}
+Answer all `n` questions with Yes or No!
+Does the word "defeat" mean the same thing in sentences
+"It was a narrow defeat." and "The army's only defeat."?
+Does the word "groom" mean the same thing in sentences
+"Groom the dogs." and "Sheila groomed the horse."?
+.
+.
+.
+(n sor összesen)
+\end{verbatim}
+
+A modellek erre a formátumra szinte mindig csak egy $Yes$ vagy $No$ szóval válaszolnak, ezt saját teszteléssel is megerősítettem. Ezeket az előrejelzéseket egy egyszerű \texttt{Yes -> T, No -> F} leképezéssel össze lehet hasonlítani a gold fájlokban található igazat és hamisat jelölő $T$ és $F$ címkékkel.
+
+
+Eltérő kimenetet kapok, ha érvelés kérésével adom be a modelleknek a szöveget:
+\begin{verbatim}
+Answer all `n` questions with Yes or No with reasoning!
+Does the word "defeat" mean the same thing in sentences
+"It was...
+\end{verbatim}
+
+Ebben az esetben a chatbotok 1-2 mondatban meg szokták magyarázni a döntésük mögötti logikai érvelést. Ez is hasznos információ, amelyet felhasználok a modell teljesítményének megítéléséhez.
+
+\vspace*{1cm}
+A modellek válaszát egy Google táblázatba mentettem el. Az első oszlopban jegyeztem fel a szavakat az adathalmazokból, a másodikban a gold standardot, a rákövetkezőkben pedig a modellek válaszait. Az adatok alatt összesítettem egy pár releváns adatot, többek között a pontosságot, kiegyensúlyozott pontosságot és az egyenesen és fordított sorrendben beadott mondatok egyezési arányát. Előbbiekhez beépített Google Táblázatok függvényeket használtam, míg utóbbihoz \href{https://script.google.com/home/}{Apps Scriptet}, a Táblázatok egy bővítményét, amellyel saját függvények definiálhatók és használhatók a táblázat bármely cellájában.
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=1\linewidth]{graphics/sheets-large-language-models-main-page-demo-1.png}
+% 	\caption{A tesztadatok és rajtuk végzett predikciók Google táblázatban}
+% 	\label{fig:sheets-prediction}
+% \end{figure}
+
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=1\linewidth]{graphics/sheets-large-language-models-main-page-demo-2.png}
+% 	\caption{A predikciók összesítése és pontosság számolás Google táblázatban}
+% 	\label{fig:sheets-prediction}
+% \end{figure}
+
+
+Az első sorban szerepelnek a gold standard értékek.
+A TP, FP, FN, TN címkék számát és eloszlását a Google Táblázatok beépített függvényei segítségével határoztam meg, és szimplán összeszámoltam a modellek által predikált "Yes" és "No" válaszok soronkénti megegyezését az azonos sorban szereplő gold standard értékekkel.
+
+Egyes modelleknél (pl. Gemini 2.5 Pro Experimental 03-25) problémát okozott az, hogy nem szerepelt a válaszában sem 'Yes', sem 'No', illetve előfordult az is, hogy nem csupán egy 'Yes', vagy egy 'No' válasszal tért vissza, hanem gondolatmenetet, magyarázatot is hozzáfűzött - akkor is, ha a promptban ennek az elhagyására kértem. % Így pl. az "I know! The answer is Yes." szöveg a Google Táblázatok függvényemben 'No'-ként lenne beleszámítva, akkor is, ha utána a modell szerint.
+Emiatt ezeknek a modellek outputjának a feldolgozását manuálisan végeztem.
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=1\linewidth]{graphics/sheets-regex.png}
+% 	\caption{Reguláris kifejezések használata a válaszok kinyeréséhez}
+% 	\label{fig:enter-label}
+% \end{figure}
+
+%\vspace*{2cm}
+
+\subsubsection{A WiC saját kézi kiértékelése}
+A \href{https://pilehvar.github.io/wic/}{WiC honlapján} az áll, hogy az emberi, manuális kiértékeléssel körülbelül 80\%-ot tudtak elérni, azaz 80\%-os pontossággal tudták a teszt adathalmazból vett, véletlenszerű példákról megállapítani, hogy a szó a 2 mondatban ugyanazt jelenti-e (a gold standard alapján). Ez nem túl magas, de érthető, tekintve, hogy ezek többsége ritka szó, és a mondatok nyelvezete is sokszor régies, vagy nagyon tudományos. A módszer az volt, hogy minden annotátor kapott 100 példát, és semmilyen segédeszközt nem használhattak.
+
+Hogy meggyőződjek a nehézségről, én is eldöntöttem 60 bejegyzésről a gold standard ismerete nélkül, hogy a vizsgált szó ugyanazt jelenti-e a két mondatban. Az én eredményem 63.33\%-os pontosság és 63.17\%-os kiegyensúlyozott pontosság lett. Az eredményeim megtalálhatóak a kiértékelő rendszeremben a \texttt{manual\_evaluation} mappában.
+
+% \subsubsection{ Megvizsgált modellek}
+% A \href{https://lmarena.ai}{lmarena.ai} oldalon az 5 legnépszerűbb nagy nyelvi modellt teszteltem,  a \texttt{temperature}-t és a \texttt{top-p}-t 1-re állítva, a \texttt{maximum output tokens} paramétert pedig 4096-ra állítva. Ez maximális hosszúságú, determinisztikus válaszokat biztosított.
+
+% A kontextusablakon kívül 2 nagyon fontos másik paramétert is lehet állítani.
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=1\linewidth]{graphics/lmsys-direct-chat-parameters.png}
+% 	\caption{A nagy nyelvi modellek konfigurása a prompt beküldése előtt.
+% Lmsys direct chat állítható paraméterei a top-p és a temperature segítségével kizáarható a véletlen válaaszadás}
+% 	\label{fig:enter-label}
+% \end{figure}
+% Ez a nagymértékű személyre szabhatóság vonzóvá tette számomra a LMArenát.
+
+% A \href{https://lmarena.ai}{lmarena.ai} webalkalmazáson kívül a nyelvi modelleket fejlesztő vállalatok hivatalos oldalain található modell legújabb verzióit is teszteltem, hogy mennyire jól oldják meg a WiC feladatot. Az alábbi táblázat tartalmazza a használt platformokat és a tesztelt modelleket, platformonként.
+% A LMArenán kívül rengeteg nagy cég kínál ingyenes, vagy fizetős API-t a legjobb nyelvi modelljeihez, melyekhez általában ingyenes webes felület található, ahol általános célú generatív mesterséges intelligenciával lehet csevegni, akár képi, hang- vagy videóalapú formában is. Ezeknek a legfőbb előnye a lokális modell futtatással szemben, hogy kényelmesek, gyorsak, és alig veszik igénybe az eszközünk erőforrásait - megjegyzendő, hogy egy gyenge minőségű általános célú nagy nyelvi modell futtatásához is ipari mennyiségű hardverre és erőforrásra van szükség.
+
+% Azonban sok hátrányuk is van. Sajnos azt kellett észrevennem, hogy ezek a személyes, vagy munkahelyi használatra tervezett platformok nem, vagy alig konfigurálhatóak. Emiatt alig javítható az általuk elért eredmény, és ha javul is, az inkább az emlékező képességüknek köszönhető. A modell másik felhasználó számára, illetve másik környezetben ugyanazokat a hibákat követi el, mint a személyes betanítás előtt. További probléma a nagy nyelvi modellek hivatalos platformjaival, hogy az algoritmus működésébe - vagy a mai modelleknél már úgy is mondhatjuk, hogy a nagy nyelvi modell \textit{gondolkodásába} - nincsen megfelelő mértékű betekintése a fejlesztőnek. Ezt a problémát igyekszenek kiküszöbölni pl. a Gemini-flash-thinking verziók, vagy a DeepSeek-R1 "részletes magyarázatot nyújtó" modelljei, azonban ez sem ad kellő irányítást.
+% Másik hátrányuk ezeknek a cloud-alapú chat API-knak, hogy folyamatosan adatot gyűjtenek a felhasználótól, amelyet felhasználnak a modelljeik tanítására, és akár harmadik félnek is kiadhatják. Emiatt semmilyen bizalmas adatot nem érdemes megadni ezeken a felületeken.
+
+
+
+\subsubsection{Futtatás Google Colab felületen}
+Ahhoz, hogy nagy nyelvi modell válaszait emberi időben megkapjuk, anélkül, hogy órákig felhasználnánk a személyi gépünk teljes erőforrását, GPU-n kell futtatni a modellt. Ez töredékére csökkenti a futási időt. Az általam elérhető eszközök egyike sem GPU-s. Erre kínált megoldást a Google Colab. Ez a platform segítségével távoli, Google szerverek gépjeit használhatjuk,  nem kell a gépünk háttértárát, memóriáját stb. használni saját szkriptjeink futtatásához, és akár GPU-s futtatókörnyezetet is használhatunk, áthidalva a gépünk hardveres korlátait. Hátrányai, hogy a programunk változói, memóriája csak a session erejéig tárolódik, és lassabb futásidejű, mint a lokálisan futó program. A hátrányain úgy kerekedtem felül, hogy AutoClicker szoftvert állítottam a jegyzetfüzet egy véletlenszerű pontjára, így életben tartva az aktív munkamenetet akár órákig is.
+
+
+
+
+\subsection{Eredmények}
+
+Az összes pontosság és kiegyensúlyozott pontosság kiértékelésem 50\% és 62\% közötti eredményt ért el úgy, hogy mindegyik modell pontosan ugyanazt a promptot kapta. Leggyengébben a Phi szerepelt normál sorrendben (53.33\% és 56.03\%), fordított sorrendben (58.33\% és 60.71\%). A Gemma normál sorrendben (60.00\% és 61.83\%), fordított sorrendben (55.00\% és 56.47\%), eredményt ért el, míg a QWEN egyenes sorrendben (56.67\% és 57.37\%), fordított sorrendben pedig szinte azonos pontszámot ért el mindkét metrikában (58.33\% és 58.93\%). A kiegyensúlyozott pontosság magasabb, mint az egyezés mind a három modell esetében, ami azt sugallja, hogy egyenlő mértékben hajlamosak igennel és nemmel válaszolni. %A legjobb eredményt a "gemini-2.5-pro-exp-03-25 normal" (80.17\% 73.36\%) és a "gemini-2.5-pro-exp-03-25 reversed" (79.80\% 73.77\%) érték el. Ez a modell amellett, hogy rendkívül jól értette meg a szavak jelentését, a szavak sorrendjére sem érzékeny.
+
+% Következtetéseket vontam le a gemma-2-2b-it és a Phi-4-mini-instruct válaszairól és a konzisztenciájukról, azaz hogy ha megfordítjuk a 2 mondat sorrendjét, akkor mennyire válaszolják ugyanazt, mint ha egyenes sorrendben adtam volna be. A gemma-2-2b-it nagyon rosszul teljesített a feladatra, kb. mindenre Yes-t mondott a 60 kérdésből, pár kivétellel, amelyekre viszont helyesen mondott No-t. Tehát a precizitása rendkívül magas, hiszen a True címkéket mind felismerte, azonban a fedése nagyon alacsony, mert amit igaznak gondolt, annak alig több mint a fele volt igaz. Ezzel szemben a Phi-nak körülbelül 55\% a precizitása, és a fedése is. A Phi-4-mini-instruct válaszai nagyjából helyénvalóak voltak.
+
+A függelékben található táblázatban összesítettem a három nyelvi modell teljesítményét különböző nehézségű és sorrendű kérdések (normál és fordított) esetén, és konzisztenciájukat is feltüntettem. Az értékelés pontosság, kiegyensúlyozott pontosság és egyezés százalékban történt. A modellek viselkedése és erősségei/hátrányai a megjegyzések oszlopban is kiemelésre kerültek.[~\ref{tab:model-eval-summary}]
+
+\subsection{A Phi erősségei}
+A Phi-4-mini-instruct modell stabil és konzisztens teljesítményt nyújt, ahogy a megjegyzések is jelzik. A közepes nehézségű fordított kérdéseknél is viszonylag jó, 58.33\% pontosságot és 60.71\% kiegyensúlyozott pontosságot ért el.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lcc}
+        \hline
+        & \textbf{Accuracy} & \textbf{Balanced Accuracy} \\
+        \hline
+        Közepes F & 58.33\% & 60.71\% \\
+        \hline
+    \end{tabular}
+    \caption{A Phi Legjobb Eredményei}
+    \label{tab:accuracy_balanced_accuracy1}
+\end{table}
+
+\subsection{A Phi gyengeségei}
+Bár a Phi-4-mini-instruct stabilnak mondható, a közepes nehézségű kérdéseknél a pontossága viszonylag alacsony (53.33\% normál, 58.33\% fordított sorrendben), annak ellenére, hogy az egyezés rendkívül magas (94.92\%). Ez arra utal, hogy gyakran ugyanazt a hibát követi el, a szavak sorrendje nem befolyásolja őt különösebben a döntés meghozásában. Ez jó jel, hiszen azt jelenti, a modell képes a szavak sorrendjétől elrugaszkodni és absztraktabban, a feladat megoldására koncentrálva válaszolni. A nehéz kérdésekre pedig teljesen egyoldalúvá válik, és szinte minden idegen szó- és mondatkörnyezetet eltérő jelentésűnek kategorizál, tehát egyértelműen meghatározható ennek a modellnek a teljesítménykorlátja.
+
+\subsection{A Gemma erősségei}
+A gemma-2-2b-t modell a közepes és nehéz kérdések esetén is 10\%-kal felülmúlta a másik 2 modellt. Megfigyeltem egyébként, hogy a Gemma-2-2b-it helyes válaszai és hibái is nagyrészt megegyeznek a Gemma-2.5 válaszaival, ami bizonyítja az architekturális alapjuk hasonlóságát. A Gemma-2-2b-it a nehéz kérdésekre is 67\%-os arányban jól válaszolt, jóval felülmúlva ezzel a két másik megvizsgált modellt.
+A Gemmának további előnye, hogy Colabos környezetben jóval gyorsabban fut, mint a Phi és a Qwen modellek, 1 perc alatt akár 60 kérdésre is képes válaszolni.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lcc}
+        \hline
+        & \textbf{Accuracy} & \textbf{Balanced Accuracy} \\
+        \hline
+        Közepes N & 60.00\% & 61.83\% \\
+        Nehéz N & 68.75\% & 72.22\% \\
+        Nehéz F & 60.00\% & 55.56\% \\
+        \hline
+    \end{tabular}
+    \caption{A Gemma Legjobb Eredményei}
+    \label{tab:accuracy_balanced_accuracy2}
+\end{table}
+
+
+\subsection{A Gemma gyengeségei}
+A gemma-2-2b-t modellnek nem találtam különösebb gyengeségét.
+
+\subsection{A Qwen erősségei}
+A Qwen1.5-1.8B-Chat a Gemmánál jobb teljesítményt nyújtott egyszerű kérdéseken.
+
+\subsection{A Qwen gyengeségei}
+A Qwen1.5-1.8B-Chat a nehéz kérdésekre a Qwen egyáltalán nem volt jó, és érdekes módon a Phi-vel ellentétesen, amely mindent a hamis kategóriába sorolt, a Qwen túlságosan megengedő és határozatlan volt, és a kérdések 84, majd 100\%-ában egyezőnek feltételezte a szavak jelentését a két mondatban.
+
+
+\subsection{Összegzés}
+Összességében elmondható, hogy a Gemma teljesített a legjobban a három modell közül. Pontos, nem preferálja aránytalanul az egyik osztályt, öntudatos, figyel a saját korábbi válaszaira és konzisztens is, azaz el tud rugaszkodni a szavak sorrendjétől, absztraktabb módon a feladaton tartja a fókuszt. Általános célú feladatokra, például egy programozási feladat megoldására sokkal rosszabbul teljesít, mint egy GPT-4o, Claude 3.7 Sonnet, Grok vagy DeepSeek modelljei. A gemma-2-2b-it nem általános célú modell, hanem elsősorban utasításkövetésre lett optimalizálva.
+
+
+\newcommand{\chapterwithdesc}[2]{%
+  \chapter{#1}%
+  \vspace{-1ex}%
+  {\large\itshape #2\par}%
+  \vspace{2ex}%
+}
+\chapterwithdesc{A szoftver: modell futtató és kiértékelő keretrendszer fejlesztése PyCharmban}
   {A részletes kimutatásokat tartalmazó megoldás}
 \label{chap:src/Framework}
 
@@ -1510,32 +966,47 @@ Ezt a szoftvert 2024-ben kezdtem el fejleszteni, de a lényegi részét idén k�
                          Az eredeti beadott verzióval több gond is volt. A programot nem lehetett egy belépési ponttal futtatni. Helyette össze-vissza vibe code-olt, kaotikus, gyakran egymástól teljesen független szkriptek szerepeltek mindenhol, amelyeknek a használatát csak én ismertem, ráadásul egy részük nem is működött, csak úgy "volt". A program egyébként is csak a modell inputjainak előkészítését tudta. Csak a mostani "ModelInputPreparer"-nek megegyező rész funkcionalitásával rendelkezett standard Python környezetben. A Hugging Face modell inferenciájára (a mostani "HuggingFaceModelInferencer" modullal megegyező funkcionalitás) egy Jupyter Notebookban került sor, Google Colab környezetben. A modell outputjának feldolgozása ( a mostani "ModelOutputProcessor") pedig megint egy harmadik környezetben, Google Apps Scriptben került feldolgozásra.
 
                          Az újraírásnál első lépésem volt, hogy a platformot egyesítem. Most az egész szoftver egy sima Python futtatókörnyezetben fut, egyetlen könnyen megtalálható `main` fájl futtatásával, ipari standard szerint az src mappában lévő globális belépési ponttal, de egyenként is lehet futtathatni a 3 modult, mindegyikhez tartozván egy `main.py` belépési pont. PyCharm környezet ajánlott a szoftver futtatásához. A legnagyobb ihletet a szoftver megálmodásához a Clean Code című könyv elolvasása hozta, amely hatására átértékeltem a programozói tudásomat és a szakdolgozatomat. Láttam, hogy objektumorientált módszerrel nagy szoftvereket is átláthatóan és biztonságosan lehet fejleszteni. Megjegyeztem azt is, hogy a jó elnevezések milyen fontosak. Ezek az elvek alapján írtam meg teljesen üres vázlatból az új szakdolgozat szoftveremet. A szoftver "keretrendszer"-ként van hivatkozva, bár én inkább modulnak hívom. 3 fő futtatható állományból áll:
-                        \subsection{ModelInputPreparer}
+
+                        \begin{itemize}
+                        \item{ModelInputPreparer}
                          A ModelInputPreparer, amely lokális adathalmazból dolgozik. A program az adathalmazból létrehozza a modellnek szánt inputot, a 2800 kérdést. Ez a program alapértelmezetten 'WiC adathalmaz' 'test' splitjének rekordjaiból hozza létre a kérdéseket, de saját, megegyező formátumú kérdésekre is működik. A kérdéseket mind egyenes, mind fordított sorrendben létrehozza, amelyekkel azután a modellek konzisztenciáját vizsgáljuk. Mivel alapértelmezetten 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így jön ki az 2800 kérdés, de ezen igény szerint lehet módosítani.
 
-                            \subsection{CloudRunnerNotebooks}
-                         A CloudRunnerNotebooks ...
+                            \item{CloudRunnerNotebooks}
+                         A CloudRunnerNotebooks feladata a modell futtatása az elkészített prompton, válasz generálása.
 
-                            \subsection{ModelOutputProcessor}
-                         A ModelOutputProcessor...
+                            \item{ModelOutputProcessor}
+                         A ModelOutputProcessor feladata a modell outputból adatkinyerés, statisztikák készítése.
+                        \end{itemize}
 
 
-                         \subsubsection{LogFile}
+\subsection{Globális scope}
+GlobalMain.py: ez a szkript a fő belépési pont, amely egyszerre mind a 3 modult lefuttatja.
+GlobalData mappa: a GlobalMain futtatásakor használt "adatbázis", adattároló mappa. A modulok egyesével való futtatásakor nem ezt használják, hanem az adott modul gyökerében található "data" mappát. Mindegyik modulhoz tartozik ebből egy külön.
+Data mappák: az egyes modulokhoz tartozó input és output fájlok tárolását szolgálja.
+.in fájlok: az input fájlok egységes kiterjesztése
+.out fájlok: az out
+put fájlok egységes kiterjesztése
+
+
+\section{ModelInputPreparer}
+\section{CloudRunnerNotebooks}
+\section{ModelOutputProcessor}
+\subsubsection{LogFile}
 A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit. A fájlhoz append módban minden futtatás után hozzáíródik, hogy ki futtatta, mikor, és a futás eredményei, statisztikákkal.
 
 
 
-                          Használat:
-                         \begin{itemize}
-                             \item
-                         \end{itemize}
-                         példa válasz a `Qwen/Qwen2.5-0.5B-Instruct` futtatására:
-                         \begin{figure}
-                             \centering
-                             \includegraphics[keepaspectratio]{pelda}
-                             \caption{Példa Válasz}
-                             \label{fig:PeldaValasz}
-                         \end{figure}
+Használat:
+\begin{itemize}
+ \item
+\end{itemize}
+példa válasz a `Qwen/Qwen2.5-0.5B-Instruct` futtatására:
+\begin{figure}
+ \centering
+ \includegraphics[keepaspectratio]{pelda}
+ \caption{Példa Válasz}
+ \label{fig:PeldaValasz}
+\end{figure}
 
 
 \chapter*{Nyilatkozat}
