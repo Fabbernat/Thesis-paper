@@ -142,25 +142,20 @@ A hallgató feladata egy olyan keretrendszer megvalósítása, amely lehetővé 
 \chapter*{Tartalmi összefoglaló}
 \addcontentsline{toc}{section}{Tartalmi összefoglaló}
 
-A tartalmi összefoglalónak tartalmaznia kell (rövid, legfeljebb egy oldalas, összefüggõ megfogalmazásban)
-a következõket: a téma megnevezése, a megadott feladat megfogalmazása - a feladatkiíráshoz viszonyítva-,
-a megoldási mód, az alkalmazott eszközök, módszerek, az elért eredmények, kulcsszavak (4-6 darab).
-
-Az összefoglaló nyelvének meg kell egyeznie a dolgozat nyelvével. Ha a dolgozat idegen nyelven készül,
-magyar nyelvû tartalmi összefoglaló készítése is kötelezõ (külön lapon), melynek terjedelmét a TVSZ szabályozza.
 
 
- \textbf{A téma megnevezése}
- \\
+\subsubsection{A téma megnevezése}
+
     A nagy nyelvi modellek szemantikus
 képességeinek konzisztenciájának vizsgálata.
 
-\textbf{A feladat megfogalmazása}
-\\
+
+\subsubsection{A feladat megfogalmazása}
+
     A vizsgálathoz használandó adathalmaz a \href{https://pilehvar.github.io/wic/}{Word-in-Context dataset}. A kérdéseket egyenes és fordított sorrendben is fel kell tenni a modelleknek, majd összehasonlítani a válaszaikat az azonos tartalmú, de felcserélt szósorrendű kérdésekre, ezzel felmérve a szemantikus képességeiket és nyelvi konzisztenciájukat erre az emberek számára triviális, de a modellek számára problémát okozó feladat megoldására.
 
- \textbf{A megoldási mód}
- \\
+ \subsubsection{A megoldási mód}
+
     Ez lényegében egy optimalizálási feladat, az optimalizálandó paraméterek a modellnek beadott prompt és a választott modell. Akkor tekintjük helyesnek a megoldást, ha a program futtatására a kiválasztott modell válaszol az igen-nem kérdésekre. A válaszok helyessége viszont másodlagos. A nyelvi modellek a Hugging Face platformról lesznek választva.
 
     A program inputja tetszőleges sornyi bejegyzés a Word-in-Context adathalmaz 'test' splitjéből, (vagy tetszőleges, ezzel megegyező formátumú kérdéshalmaz), és tetszőleges modell a Hugging Face platformról.
@@ -173,8 +168,8 @@ képességeinek konzisztenciájának vizsgálata.
 
 
       % \end{itemize}
- \textbf{Az alkalmazott eszközök, módszerek}
- \\
+ \subsubsection{Az alkalmazott eszközök, módszerek}
+
         Alkalmazott eszközök:
       \begin{itemize}
 
@@ -194,12 +189,12 @@ képességeinek konzisztenciájának vizsgálata.
 
       \end{itemize}
 
-  \textbf{Elért eredmények}
-  \\
+  \subsubsection{Elért eredmények}
+
   Elkészült a keretrendszer, egy Python konzolos program, amely képes tetszőleges Hugging Face modelljeinek válaszra bírását automatizálni. Egy kattintással képes lefuttatni a  modellt a kiválasztott adathalmazra és elvégezni a nyelvi konzisztencia tesztet, statisztikákat készítve az eredményekből.
 
- \textbf{Kulcsszavak}
-        \\
+ \subsubsection{Kulcsszavak}
+
        Nagy nyelvi modell, Word-in-Context, nyelvi konzisztencia, teljesítmény-összehasonlítás
 
 \chapter*{Motiváció}
@@ -1484,246 +1479,9 @@ Nagy nyelvi modellek összehasonlítása a WiC feladatra
  gun fired
  \end{verbatim}
 
-\section{Alcím}
-Ebben alfejezetek is lehetnek
-
-\subsection{Al-al cím}
-Sõt al-al fejezetek is.
-
-\subsection{Másik}
-Na lássunk egy másodikat is.
-
-\subsection{Harmadik}
-Meg egy harmadikat is.
-
-\section{Mindjárt vége a fejezetnek}
-Tényleg, itt valóban vége.
 
 
-\chapter{Hosszú}
-\section{Részletek}
-Ebbe a fejezetbe pedig írunk sok sok szöveget. Szöveg, szöveg, szöveg,  szöveg, szöveg, szöveg,   szöveg, szöveg, szöveg
-szöveg, szöveg, szöveg,  szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg,  szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg,  szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg,  szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg, szöveg,
-
-\chapter{Egyebek}
-
-\section{Környezetek}
-\begin{tet}
-\label{tet-alap}
-Ez itt egy tetel.
-\end{tet}
-
-%A bizonyítás \begin{proof} és \end{proof} közé kerül:
-\begin{proof}
-Ez pedig a bizonyítása, melyben szerepel egy képlet:
-\begin{equation}
-\begin{split}
-E^{\text{globális}} &= \text{tet}\_1\cdot E\_1^{\text{elemi}}+\text{tet}\_2\cdot
-E\_2^{\text{elemi}}+\ldots+\text{tet}\_n\cdot E\_n^{elemi} \\
-&=E^{\text{elemi}}\left(\text{tet}\_1+\text{tet}\_2+\ldots+\text{tet}\_n\right)\\
-&=E^{\text{elemi}}\cdot\text{össztet}
-\end{split}
-\end{equation}
-A második egyenlõségnél azt használtunk ki, hogy ...
-
-Ezzel a bizonyítást befejeztük.
-\end{proof}
-
-\begin{defi}
-\label{def-pelda}
-Ez egy definíció. Számozása a tetelekkel együtt történik.
-\end{defi}
-
-\begin{áll}
-A követekezõ négy állítás egymással ekvivalens:
-\label{áll-ekvivalencia}
-  \begin{itemize}
-  \item[(i)] $M$ és $N$ gyengén ekvivalensek.
-  \item[(ii)] Minden $n$
-  nemnegatív egész számra $|L\_{M}\cap \Sigma\_{1}^{n}|=|L\_{N}\cap \Sigma\_{2}^{n}|$ teljesül.
-  \item[(iii)] Minden $n$ nemnegatív egész szám esetén
-   létezik
-  $ \pi\_{n}: L\_{M}\cap \Sigma\_{1}^{n} \rightarrow L\_{N}\cap \Sigma\_{2}^{n} $ kölcsönösen egyértelmû
-  leképezés.
-  \item[(iv)] Minden nemnegatív $n$-re $x A^{n} y^{T}=x' A'^{n} y'^{T}$.
-  \end{itemize}
-\end{áll}
-
-\begin{köv}
-  Ez pedig egy következmény.
-\end{köv}
-
-\begin{pld}
-  Ez lesz a példa, ezt nem szedjük dõlten.
-\end{pld}
-
-\begin{megj}
-  A fejezetet pedig egy megjegyzés zárja.
-\end{megj}
-
-
-\section{Listák}
-
-Ez egy felsorolás:
-\begin{itemize}
-    \item elsõ
-    \item második
-      \subitem elsõ
-      \subitem második
-    \item harmadik
-    \item[$\clubsuit$]  saját jel is alkalmazható
-\end{itemize}
-Ez pedig egy számozott lista:
-\begin{enumerate}
-            \item hétfõ
-            \item kedd
-            \item szerda
-\end{enumerate}
-
-%Oldaltörést is alkalmazhatunk
-\pagebreak
-
-
-\section{Egy táblázat és egy ábra}
-
-A táblázat itt következik.
-\begin{table}[!h]\label{strategia}
-\caption{Példa stratégiatáblára a Black Jack esetében}
-\begin{center}
-\begin{tabular}{l||r|r|r|r|r|r|r|r|r|r}
-&ász&2&3&4&5&6&7&8&9&10\\
-\hline\hline
-21&n&n&n&n&n&n&n&n&n&n\\
-20&n&n&n&n&n&n&n&n&n&n\\
-19&n&n&n&n&n&n&n&n&n&n\\
-18&n&n&n&n&n&n&n&n&n&n\\
-17&n&n&n&n&n&n&n&n&n&n\\
-16&h&n&n&n&n&n&h&h&b&b\\
-15&h&n&n&n&n&n&h&h&h&b\\
-14&h&n&n&n&n&n&h&h&h&b\\
-13&h&n&n&n&n&n&h&h&h&h\\
-12&h&n&n&n&n&n&h&h&h&h\\
-11&h&D&D&D&D&D&D&D&D&h\\
-\end{tabular}
-\end{center}
-\end{table}
-
-Lássunk egy ábrát is!
-\begin{figure}[!h]
-\unitlength 8mm
-\begin{center}
-\begin{picture}(8,6)
-\thicklines
-\multiput(0,1)(0,1){2}{\line(1,0){5}}
-\multiput(3,0)(1,0){2}{\line(0,1){6}}
-\multiput(1,0)(1,0){2}{\line(0,1){1}}
-\multiput(6,0)(1,0){2}{\line(0,1){5}}
-\multiput(0,1)(1,0){3}{\line(0,1){1}}
-\multiput(2,4)(3,0){3}{\line(0,1){1}}
-\multiput(3,0)(0,3){3}{\line(1,0){1}}
-\multiput(6,0)(0,1){4}{\line(1,0){1}}
-\multiput(7,2)(0,1){2}{\line(1,0){1}}
-\multiput(2,4)(0,1){2}{\line(1,0){6}}
-\put(5,1){\line(0,1){1}}
-\put(8,2){\line(0,1){1}}
-\put(1,0){\line(1,0){1}}
-\put(1,1){\makebox(1,1){\(\sphericalangle\)}}
-\put(7,2){\makebox(1,1){\(\$\)}}
-\end{picture}
-\end{center}
-\caption{\label{labirintus}Labirintus bejárása}
-\end{figure}
-
-%laptörés:
-\newpage
-
-Külön fájlban elkészített grafika beillesztését a \ref{abra-automata} ábra szemlélteti.
-\begin{figure}[h]
-\centering
-%A psfrag csomag használatával a (encapsulated)postcript abra feliratait LaTeX koddal helyettesíthatjük:
-\psfrag{a}[c][c]{$q\_0$}
-\psfrag{b}[c][c]{$q\_1$}
-\psfrag{c}[c][c]{$q\_2$}
-\psfrag{d}[c][c]{$q\_3$}
-\psfrag{e}[c][c]{$q\_4$}
-\psfrag{f}[c][c]{$q\_5$}
-\psfrag{g}[c][c]{$q\_6$}
-\psfrag{h}[c][c]{$q\_7$}
-\psfrag{0}[c][c]{$a\_{0}$}
-\psfrag{9}[c][c]{$a\_{9}$}
-\psfrag{3}[c][c]{$a\_{3}$}
-\psfrag{12}[c][c]{$a\_{12}$}
-\psfrag{15}[c][c]{$a\_{15}$}
-%Garfika belillesztese, "scale2 a nagyitas/kicinyites merteke, itt 80%.
-\includegraphics[scale=0.8]{abra.eps}
-\caption{\label{abra-automata} A $4\times m$-es tábla lefedéseinek mátrixreprezentációit felismerõ automata}
-\end{figure}
-
-
-\chapter{Függelék}
-
-\section{A program forráskódja}
-A függelékbe kerülhetnek a hosszú táblázatok, vagy mondjuk egy programlista:
-% A verbatim kornyezet hasznalatanal ügyeljünk rá, hogy az editor a szóközöjket át ne írja tab karakterekre!
-\begin{verbatim}
-   while (ujkmodosito[i]<0)
-   {
-      if (ujkmodosito[i]+kegyenletes[i]<0)
-      {
-         j=i+1;
-         while (j<14)
-         if (kegyenletes[i]+ujkmodosito[j]>-1) break;
-         else j++;
-         temp=ujkmodosito[j];
-         for (l=i;l<j;l++) ujkmodosito[l+1]=ujkmodosito[l];
-         ujkmodosito[i]=temp;
-      }
-      i++;
-   }
-\end{verbatim}
-
-\newcommand{\chapterwithdesc}[2]{%
-  \chapter{#1}%
-  \vspace{-1ex}%
-  {\large\itshape #2\par}%
-  \vspace{2ex}%
-}
-\chapterwithdesc
-  {A szoftver: Input előkészítő és output feldolgozó keretrendszer fejlesztése PyCharmban}
+\chapter*{A szoftver: modell futtató és kiértékelő keretrendszer fejlesztése PyCharmban}
   {A részletes kimutatásokat tartalmazó megoldás}
 \label{chap:src/Framework}
 
@@ -1752,14 +1510,19 @@ Ezt a szoftvert 2024-ben kezdtem el fejleszteni, de a lényegi részét idén k�
                          Az eredeti beadott verzióval több gond is volt. A programot nem lehetett egy belépési ponttal futtatni. Helyette össze-vissza vibe code-olt, kaotikus, gyakran egymástól teljesen független szkriptek szerepeltek mindenhol, amelyeknek a használatát csak én ismertem, ráadásul egy részük nem is működött, csak úgy "volt". A program egyébként is csak a modell inputjainak előkészítését tudta. Csak a mostani "ModelInputPreparer"-nek megegyező rész funkcionalitásával rendelkezett standard Python környezetben. A Hugging Face modell inferenciájára (a mostani "HuggingFaceModelInferencer" modullal megegyező funkcionalitás) egy Jupyter Notebookban került sor, Google Colab környezetben. A modell outputjának feldolgozása ( a mostani "ModelOutputProcessor") pedig megint egy harmadik környezetben, Google Apps Scriptben került feldolgozásra.
 
                          Az újraírásnál első lépésem volt, hogy a platformot egyesítem. Most az egész szoftver egy sima Python futtatókörnyezetben fut, egyetlen könnyen megtalálható `main` fájl futtatásával, ipari standard szerint az src mappában lévő globális belépési ponttal, de egyenként is lehet futtathatni a 3 modult, mindegyikhez tartozván egy `main.py` belépési pont. PyCharm környezet ajánlott a szoftver futtatásához. A legnagyobb ihletet a szoftver megálmodásához a Clean Code című könyv elolvasása hozta, amely hatására átértékeltem a programozói tudásomat és a szakdolgozatomat. Láttam, hogy objektumorientált módszerrel nagy szoftvereket is átláthatóan és biztonságosan lehet fejleszteni. Megjegyeztem azt is, hogy a jó elnevezések milyen fontosak. Ezek az elvek alapján írtam meg teljesen üres vázlatból az új szakdolgozat szoftveremet. A szoftver "keretrendszer"-ként van hivatkozva, bár én inkább modulnak hívom. 3 fő futtatható állományból áll:
-
+                        \subsection{ModelInputPreparer}
                          A ModelInputPreparer, amely lokális adathalmazból dolgozik. A program az adathalmazból létrehozza a modellnek szánt inputot, a 2800 kérdést. Ez a program alapértelmezetten 'WiC adathalmaz' 'test' splitjének rekordjaiból hozza létre a kérdéseket, de saját, megegyező formátumú kérdésekre is működik. A kérdéseket mind egyenes, mind fordított sorrendben létrehozza, amelyekkel azután a modellek konzisztenciáját vizsgáljuk. Mivel alapértelmezetten 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így jön ki az 2800 kérdés, de ezen igény szerint lehet módosítani.
 
-% TODO
+                            \subsection{CloudRunnerNotebooks}
                          A CloudRunnerNotebooks ...
 
+                            \subsection{ModelOutputProcessor}
+                         A ModelOutputProcessor...
 
-                         A ModelOutputProcessor ...
+
+                         \subsubsection{LogFile}
+A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit. A fájlhoz append módban minden futtatás után hozzáíródik, hogy ki futtatta, mikor, és a futás eredményei, statisztikákkal.
+
 
 
                           Használat:
