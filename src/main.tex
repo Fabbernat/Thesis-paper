@@ -117,13 +117,13 @@ hallgató&
 \end{tabular}
 }
 
-\vspace*{2.3cm}
+\vspace*{2cm}
 
 {\Large
 Szeged
 \\
 \vspace{2mm}
-2011
+2026
 }
 \end{center}
 
@@ -151,30 +151,30 @@ magyar nyelvû tartalmi összefoglaló készítése is kötelezõ (külön lapon
 
 
  \textbf{A téma megnevezése}
+ \\
     A nagy nyelvi modellek szemantikus
 képességeinek konzisztenciájának vizsgálata.
 
 \textbf{A feladat megfogalmazása}
-    A használandó adathalmaz a \href{https://pilehvar.github.io/wic/}{Word-in-Context dataset}. A kérdéseket egyenes és fordított sorrendben is fel kell tenni a modelleknek, majd összehasonlítani a válaszaikat az azonos tartalmú, de felcserélt szósorrendű kérdésekre, ezzel felmérve a szemantikus képességeiket és nyelvi konzisztenciájukat. Ez egy, az embernek könnyű, de a modellek számára problémát okozó feladat.
+\\
+    A vizsgálathoz használandó adathalmaz a \href{https://pilehvar.github.io/wic/}{Word-in-Context dataset}. A kérdéseket egyenes és fordított sorrendben is fel kell tenni a modelleknek, majd összehasonlítani a válaszaikat az azonos tartalmú, de felcserélt szósorrendű kérdésekre, ezzel felmérve a szemantikus képességeiket és nyelvi konzisztenciájukat erre az emberek számára triviális, de a modellek számára problémát okozó feladat megoldására.
 
  \textbf{A megoldási mód}
-    Hugging Face nyelvi modellek futtatása az előre meghatározott adathalmaz (Word-in-Context) kérdéseire.
+ \\
+    Ez lényegében egy optimalizálási feladat, az optimalizálandó paraméterek a modellnek beadott prompt és a választott modell. Akkor tekintjük helyesnek a megoldást, ha a program futtatására a kiválasztott modell válaszol az igen-nem kérdésekre. A válaszok helyessége viszont másodlagos. A nyelvi modellek a Hugging Face platformról lesznek választva.
 
     A program inputja tetszőleges sornyi bejegyzés a Word-in-Context adathalmaz 'test' splitjéből, (vagy tetszőleges, ezzel megegyező formátumú kérdéshalmaz), és tetszőleges modell a Hugging Face platformról.
 
-    % A megoldásom során törekedtem arra, hogy az bárki által reprodukálható legyen, ezért ingyenesen elérhető és nyílt forráskódú eszközöket (Python, GitHub, Hugging Face) használtam.
-    %   \begin{itemize}
-    %     \item
-    %           A szakdolgozatom első felében kielemeztem az eddigi legjobb modelleket és a legjobb módszereket szójelentés-értelmezés szempontjából és nyílt forráskódú nyelvi modelleket kerestem a LMArena és Hugging Face felületein, továbbá az utóbbiak futtatásának dokumentációját tanulmányoztam.
     %         \item Összehasonlító teljesítményvizsgálatot végeztem a
     %         % TODO update-elni Gemma3-ra és QWEN3-ra mindenhol
     %         \href{https://huggingface.co/microsoft/Phi-4-mini-instruct}{Phi-4-mini-instruct}, \href{https://huggingface.co/google/gemma-2-2b-it}{Gemma-2-2b-it} és a \href{https://huggingface.co/Qwen/Qwen1.5-1.8B-Chat}{Qwen1.5-1.8B-Chat} között egy Google Colab szkriptben.
     %     \item
     %           Saját adatfeldolgozó kiértékelő Python modult készítettem a promptolás automatizálásához és a modell válaszok feldolgozására.
-    %     \item A választott modelleket inferenciára bírtam az automatizáló szkriptekkel különböző módokban a szósorrend-érzékenységének és egyéb metrikák összehasonlítására
+
 
       % \end{itemize}
  \textbf{Az alkalmazott eszközök, módszerek}
+ \\
         Alkalmazott eszközök:
       \begin{itemize}
 
@@ -195,7 +195,8 @@ képességeinek konzisztenciájának vizsgálata.
       \end{itemize}
 
   \textbf{Elért eredmények}
-  Elkészült a keretrendszer, egy Python konzolos program, amely képes tetszőleges Hugging Face modellen elvégezni a nyelvi konzisztencia tesztet.
+  \\
+  Elkészült a keretrendszer, egy Python konzolos program, amely képes tetszőleges Hugging Face modelljeinek válaszra bírását automatizálni. Egy kattintással képes lefuttatni a  modellt a kiválasztott adathalmazra és elvégezni a nyelvi konzisztencia tesztet, statisztikákat készítve az eredményekből.
 
  \textbf{Kulcsszavak}
         \\
@@ -217,11 +218,27 @@ biztosíthat kódok, dokumentumok, ügyfélkommunikáció vagy akár jogi szöve
 is. Egy hatékony WiC modell tehát nemcsak tudományos értékkel bír, hanem gyakorlati
 alkalmazásokban is közvetlen hasznot hozhat, foleg a nyelvészeti informatikai területen dolgozók számára
 
+1. fejezet
 
 \chapter{Érdemi rész}
 
-1. fejezet
- AWiCprobléma
+
+
+\section{A Word in context feladat}
+
+ A Word in context feladatot 2019-ben fogalmazta meg Mohammad Tahmed Pilehvar, abból a célból, hogy különböző transzformer és szóbeágyazasos modelleket vizsgáljanak a feladat által megfogalmazott teljesítményteszten. Az ezt a feladatot megfogalmazó adathalmazt alkalmasnak találtuk a témavezetőmmel az általa megfogalmazott teljesítményteszt, a nagy nyelvi modellek szemantikus képességeinek konzisztenciájának vizsgálata elvégzéséhez. A kérdések már eleve csoportosítva vannak azonos és különböző jelentésű mondatpárokként.
+
+\section{Megelőző lépések}
+A szoftver lefejlesztése előtt kielemeztem az eddigi legjobb modelleket és a legjobb módszereket szójelentés-értelmezés szempontjából és nyílt forráskódú nyelvi modelleket vizsgáltam meg a LMArena és Hugging Face felületein, továbbá az utóbbiak futtatásának dokumentációját tanulmányoztam.
+
+ \section{A szoftver}
+ A megoldásom során törekedtem arra, hogy az bárki által reprodukálható legyen, ezért ingyenesen elérhető és nyílt forráskódú eszközöket (Python, GitHub, Hugging Face) használtam.
+
+
+\paragraph{LogFile}
+A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit. A fájlhoz append módban minden futtatás után hozzáíródik, hogy ki futtatta, mikor, és a futás eredményei, statisztikákkal.
+
+
  1.1. A többértelm˝uség problémája a természetes nyelvek
 ben
  Atermészetes nyelvekben a programozási nyelvekkel ellentétben egy szónak több,
@@ -459,8 +476,7 @@ tést jelent. Ez arra utal, hogy a modell a megtanult minták alapján logikaila
  1.7.4. Determinisztikus következtetés, temperature, top-p és top-k
  Akísérletemnek csak akkor van értelme, ha a futtatás determinisztikus. Azt jelenti,
  hogy a modell mindig ugyanazt a kimenetet adja ugyanazon bemenet esetén, mivel a
- véletlenszer˝uséget kizáró paraméterekkel (pl. temperature = 1.0, top−k = 0, top−p =
- 1.0) m˝uködik. A temperature (h˝omérséklet) a nyelvi modellek válaszainak kreativitását
+ véletlenszer˝uséget kizáró paraméterekkel (pl. temperature = 1.0, top k = 0, top p = 1.0) m˝uködik. A temperature (h˝omérséklet) a nyelvi modellek válaszainak kreativitását
  szabályozza (magas értéknél változatosabb, alacsonynál determinisztikusabb kimenet), a
  top-k pedig korlátozza a következ˝o szó választékát a k legvalószín˝ubb tokenre, míg a top
 p (más néven nucleus sampling) dinamikusan választja ki a valószín˝uségi eloszlás egy
@@ -472,15 +488,15 @@ p (más néven nucleus sampling) dinamikusan választja ki a valószín˝uségi 
  0.1
  0
  0.3
- Top −k: 3
+ Top k: 3
  0.2
  0.15
  0.1
  mat hat dog
- 5 · 10−2
+ 5 · 10 2
  15
 Nagy nyelvi modellek összehasonlítása a WiC feladatra
- Atop−pm˝uködése hasonló. Annyiban tér el, hogy nem egy fix számú legvalószí
+ A top p m˝uködése hasonló. Annyiban tér el, hogy nem egy fix számú legvalószí
 n˝ubb szót választunk ki, hanem az odaill˝o szavak valószín˝usége szerint. A p egy 0.00-tól
  1.00-ig terjed˝o valós szám. A szavakat akkumulatívan vesszük számításba, amíg a p érté
 ke nagyobb, mint a soron következ˝o legvalószín˝ubb szó valószín˝usége, addig belevesszük
@@ -779,9 +795,9 @@ Nagy nyelvi modellek összehasonlítása a WiC feladatra
  modellek output formátumát. A Gemmaeseténaflash-attentioncsomagtelepítése
  szükséges. Paraméterei:
  return\_tensors=’pt’
- # A kimenetet PyTorch tensor
+ A kimenetet PyTorch tensor
  formatumban kerem.
- add\_generation\_prompt=True # Specialis jelzes, hogy generalni
+ add\_generation\_prompt=True Specialis jelzes, hogy generalni
  kell valaszt.
  Ezután a .to(model.device) biztosítja, hogy az input tensor ugyanarra az
  eszközre (pl. GPU) kerüljön, mint a modell.
@@ -791,8 +807,8 @@ Nagy nyelvi modellek összehasonlítása a WiC feladatra
  max\_new\_tokens=200,
  do\_sample=False,
  )
- # Maximum 200 uj token
- # Determinisztikus valasz
+  Maximum 200 uj token
+  Determinisztikus valasz
  Aválasz dekódolása:
  decoded = tokenizer.batch\_decode(output, skip\_special\_tokens=
  True)
@@ -1447,7 +1463,7 @@ Nagy nyelvi modellek összehasonlítása a WiC feladatra
  41
 Nagy nyelvi modellek összehasonlítása a WiC feladatra
  Példa a A sentence\_normalizer használatára
- # sentence\_normalizer.py
+ sentence\_normalizer.py
  test\_sentence = (
  r"My boss is out on another of his three martini lunches ."
  r" Will you join us at six o’clock for martinis ? We ’ve
@@ -1457,13 +1473,16 @@ Nagy nyelvi modellek összehasonlítása a WiC feladatra
  )
  print("Using NEW algorithm (default):")
  print(make\_sentence\_human\_readable(test\_sentence))
- # Output:
- # My boss is out on another of his three martini lunches.
+  Output:
+ My boss is out on another of his three martini lunches.
+ \begin{verbatim}
+
  Will you join us at six o\’clock for martinis?
- # We\’ve been swimming for hours just to get to the other
+ We\’ve been swimming for hours just to get to the other
  side. A big fish was swimming in the tank.
- # Don\’t fire until you see the whites of their eyes. The
+ Don\’t fire until you see the whites of their eyes. The
  gun fired
+ \end{verbatim}
 
 \section{Alcím}
 Ebben alfejezetek is lehetnek
@@ -1743,7 +1762,7 @@ Ezt a szoftvert 2024-ben kezdtem el fejleszteni, de a lényegi részét idén k�
                          A ModelOutputProcessor ...
 
 
-                         # Használat:
+                          Használat:
                          \begin{itemize}
                              \item
                          \end{itemize}
@@ -1773,7 +1792,7 @@ Ezt a szoftvert 2024-ben kezdtem el fejleszteni, de a lényegi részét idén k�
 %nem kézzel helyettesítendõk:
 
 \noindent
-Alulírott Fábián Bernát, programtervező informatikus BSc szakos hallgató, kijelentem, hogy a dolgozatomat a Szegedi Tudományegyetem Informatikai Intézet Számítógépes Algoritmusok és Mesterséges Intelligencia Tanszékén készítettem, a programtervező informatikus BSc diploma megszerzése érdekében.
+Alulírott Fábián Bernát, programtervező informatikus BSc szakos hallgató, kijelentem, hogy a dolgozatomat a Szegedi Tudományegyetem Informatikai Intézet Mesterséges Intelligencia Tanszékén készítettem, a programtervező informatikus BSc diploma megszerzése érdekében.
 
 Kijelentem, hogy a dolgozatot más szakon korábban nem védtem meg, saját munkám eredménye, és csak a hivatkozott forrásokat (szakirodalom, eszközök, stb.) használtam fel.
 
@@ -1805,241 +1824,10 @@ Végül, de nem utolsó sorban köszönetet szeretnék mondani \textbf{témaveze
 %\bibliographystyle{plain}
 \bibliographystyle{plainnat}
 \bibliography{references}
-% Journal Articles
-@article{miller1994wordnet,
-  title = {{WordNet}: A Lexical Database for {English}},
-  author = {Miller, George A.},
-  booktitle = {{H}uman {L}anguage {T}echnology: Proceedings of a Workshop held at {P}lainsboro, {N}ew {J}ersey, {M}arch 8-11, 1994},
-  year = {1994},
-  url = {https://aclanthology.org/H94-1111/}
-}
 
-@article{sokolova2009systematic,
-  title = {A systematic analysis of performance measures for classification tasks},
-  author = {Sokolova, Marina and Lapalme, Guy},
-  journal = {Information Processing \& Management},
-  volume = {45},
-  number = {4},
-  pages = {427--437},
-  year = {2009},
-  issn = {0306-4573},
-  doi = {10.1016/j.ipm.2009.03.002},
-  url = {https://www.sciencedirect.com/science/article/pii/S0306457309000259},
-  keywords = {Performance evaluation, Machine Learning, Text classification}
-}
 
-@article{tan2024terms,
-  title = {When the Terms of Service Change to Make Way for {A.I.} Training},
-  author = {Tan, Eli},
-  journal = {The New York Times},
-  year = {2024},
-  month = {6},
-  day = {26},
-  url = {https://www.nytimes.com/2024/06/26/technology/terms-service-ai-training.html}
-}
 
-@article{wolf2019huggingface,
-  title = {{HuggingFace's} Transformers: State-of-the-art Natural Language Processing},
-  author = {Wolf, Thomas and Debut, Lysandre and Sanh, Victor and Chaumond, Julien and Delangue, Clément and Moi, Anthony and Cistac, Pierric and Rault, Tim and Louf, Rémi and Funtowicz, Morgan and Davison, Joe and Shleifer, Sam and von Platen, Patrick and Ma, Clara and Jernite, Yacine and Plu, Julien and Xu, Canwen and Le Scao, Teven and Gugger, Sylvain and Drame, Mariama and Lhoest, Quentin and Rush, Alexander M.},
-  journal = {arXiv preprint arXiv:1910.03771},
-  year = {2019},
-  url = {https://arxiv.org/abs/1910.03771}
-}
-
-% Conference Proceedings
-@inproceedings{bird2004nltk,
-  title = {{NLTK}: The Natural Language Toolkit},
-  author = {Bird, Steven and Loper, Edward},
-  booktitle = {Proceedings of the {ACL} Interactive Poster and Demonstration Sessions},
-  month = jul,
-  year = {2004},
-  address = {Barcelona, Spain},
-  publisher = {Association for Computational Linguistics},
-  url = {https://aclanthology.org/P04-3031/},
-  pages = {214--217}
-}
-
-@inproceedings{holtzman2020curious,
-  title = {The Curious Case of Neural Text Degeneration},
-  author = {Holtzman, Ari and Buys, Jan and Du, Li and Forbes, Maxwell and Choi, Yejin},
-  booktitle = {Proceedings of the 8th International Conference on Learning Representations (ICLR)},
-  year = {2020},
-  url = {https://arxiv.org/abs/1904.09751},
-  eprint = {1904.09751},
-  archivePrefix = {arXiv}
-}
-
-@inproceedings{lesk1986automatic,
-  title = {Automatic Sense Disambiguation Using Machine Readable Dictionaries: How to Tell a Pine Cone from an Ice Cream Cone},
-  author = {Lesk, Michael E.},
-  booktitle = {Proceedings of the 5th Annual International Conference on Systems Documentation (SIGDOC '86)},
-  pages = {24--26},
-  year = {1986},
-  address = {New York, NY, USA},
-  publisher = {ACM},
-  url = {https://dl.acm.org/doi/10.1145/318723.318728}
-}
-
-@inproceedings{pilehvar2019wic,
-  title = {{WiC}: the Word-in-Context Dataset for Evaluating Context-Sensitive Meaning Representations},
-  author = {Pilehvar, Mohammad Taher and Camacho-Collados, Jose},
-  booktitle = {Proceedings of the 2019 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)},
-  month = jun,
-  year = {2019},
-  address = {Minneapolis, Minnesota},
-  publisher = {Association for Computational Linguistics},
-  url = {https://aclanthology.org/N19-1128/},
-  doi = {10.18653/v1/N19-1128},
-  pages = {1267--1273}
-}
-
-% ArXiv Preprints and Technical Reports
-@misc{breit2021wictsv,
-  title = {{WiC-TSV}: An Evaluation Benchmark for Target Sense Verification of Words in Context},
-  author = {Breit, Anna and Revenko, Artem and Rezaee, Kiamehr and Pilehvar, Mohammad Taher and Camacho-Collados, Jose},
-  year = {2021},
-  eprint = {2004.15016},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.CL},
-  url = {https://arxiv.org/abs/2004.15016}
-}
-
-@misc{chiang2024chatbot,
-  title = {Chatbot Arena: An Open Platform for Evaluating {LLMs} by Human Preference},
-  author = {Chiang, Wei-Lin and Zheng, Lianmin and Sheng, Ying and Angelopoulos, Anastasios Nikolas and Li, Tianle and Li, Dacheng and Zhang, Hao and Zhu, Banghua and Jordan, Michael and Gonzalez, Joseph E. and Stoica, Ion},
-  year = {2024},
-  eprint = {2403.04132},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.AI},
-  url = {https://arxiv.org/abs/2403.04132}
-}
-
-@misc{raganato2020xlwic,
-  title = {{XL-WiC}: A Multilingual Benchmark for Evaluating Semantic Contextualization},
-  author = {Raganato, Alessandro and Pasini, Tommaso and Camacho-Collados, Jose and Pilehvar, Mohammad Taher},
-  year = {2020},
-  eprint = {2010.06478},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.CL},
-  url = {https://arxiv.org/abs/2010.06478}
-}
-
-@misc{sarlin2020superglue,
-  title = {{SuperGlue}: Learning Feature Matching with Graph Neural Networks},
-  author = {Sarlin, Paul-Edouard and DeTone, Daniel and Malisiewicz, Tomasz and Rabinovich, Andrew},
-  year = {2020},
-  eprint = {1911.11763},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.CV},
-  url = {https://arxiv.org/abs/1911.11763}
-}
-
-@misc{wang2020superglue,
-  title = {{SuperGLUE}: A Stickier Benchmark for General-Purpose Language Understanding Systems},
-  author = {Wang, Alex and Pruksachatkun, Yada and Nangia, Nikita and Singh, Amanpreet and Michael, Julian and Hill, Felix and Levy, Omer and Bowman, Samuel R.},
-  year = {2020},
-  eprint = {1905.00537},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.CL},
-  url = {https://arxiv.org/abs/1905.00537}
-}
-
-% Software and Models
-@misc{anthropic2025api,
-  title = {Client {SDKs} - {Anthropic} {API}},
-  author = {Anthropic},
-  year = {2025},
-  howpublished = {\url{https://docs.anthropic.com/en/api/client-sdks}}
-}
-
-@misc{berend2025phi,
-  title = {11\\_phi.ipynb},
-  author = {Berend, Gábor},
-  year = {2025},
-  note = {Google Colab jegyzetfüzet},
-  howpublished = {\url{https://colab.research.google.com/drive/1GQRiTDNWwNPP\_PPARYd1swY1Oiai9Ey\_}},
-  urldate = {2025-05-23}
-}
-
-@misc{gemma22b2024,
-  title = {Gemma-2-2b-it},
-  author = {Google},
-  howpublished = {\url{https://huggingface.co/google/gemma-2-2b-it}},
-  year = {2024}
-}
-
-@misc{openai2025api,
-  title = {{OpenAI} {API} Documentation Overview},
-  author = {OpenAI},
-  year = {2025},
-  url = {https://platform.openai.com/docs/overview}
-}
-
-@misc{peters2004zen,
-  title = {{PEP} 20 -- The Zen of Python},
-  author = {Peters, Tim},
-  year = {2004},
-  howpublished = {\url{https://peps.python.org/pep-0020/}},
-  note = {Python Enhancement Proposal}
-}
-
-@misc{phi4mini2024,
-  title = {Phi-4-mini-instruct},
-  author = {Microsoft},
-  howpublished = {\url{https://huggingface.co/microsoft/Phi-4-mini-instruct}},
-  year = {2024}
-}
-
-@misc{qwen15chat2024,
-  title = {Qwen1.5-1.8B-Chat},
-  author = {Qwen},
-  howpublished = {\url{https://huggingface.co/Qwen/Qwen1.5-1.8B-Chat}},
-  year = {2024}
-}
-
-% Online Resources and Web Articles
-@online{oloruntoba2024solid,
-  title = {{SOLID}: The First 5 Principles of Object Oriented Design},
-  author = {Oloruntoba, Samuel and Walia, Anish Singh},
-  year = {2024},
-  month = apr,
-  url = {https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design}
-}
-
-@online{springboard2023gpt3,
-  title = {{OpenAI} {GPT-3}: Everything You Need to Know},
-  author = {Springboard},
-  year = {2023},
-  url = {https://www.springboard.com/blog/data-science/machine-learning-gpt-3-open-ai/}
-}
-
-@online{verge2023nytai,
-  title = {The New York Times prohibits using its content to train {AI} models},
-  author = {The Verge},
-  year = {2023},
-  url = {https://www.theverge.com/2023/8/14/23831109/the-new-york-times-ai-web-scraping-rules-terms-of-service}
-}
-
-@online{manrai2020covid,
-  author       = {Arjun K. Manrai and Kenneth D. Mandl},
-  title        = {Covid-19 testing: overcoming challenges in the next phase of the epidemic},
-  year         = {2020},
-  month        = mar,
-  day          = {31},
-  url          = {https://www.statnews.com/2020/03/31/covid-19-overcoming-testing-challenges/},
-  note         = {Accessed: 2025-05-25}
-}
-
-@book{martin2008cleancode,
-  title        = {Clean Code: A Handbook of Agile Software Craftsmanship},
-  author       = {Martin, Robert C.},
-  year         = {2008},
-  publisher    = {Prentice Hall},
-  address      = {Upper Saddle River, NJ, USA},
-  isbn         = {978-0-13-235088-4}
-}
-
-[1] Mohammad Taher Pilehvar és Jose Camacho-Collados. „WiC: the Word-in-Context
+\cite{pilehvar2019wic}[1] Mohammad Taher Pilehvar és Jose Camacho-Collados. „WiC: the Word-in-Context
 Dataset for Evaluating Context-Sensitive Meaning Representations”. Proceedings
 of the 2019 Conference of the North American Chapter of the Association for
 Computational Linguistics: Human Language Technologies, Volume 1 (Long and
@@ -2047,22 +1835,22 @@ Short Papers). Szerk. Jill Burstein, Christy Doran és Thamar Solorio. Minneapol
 Minnesota: Association for Computational Linguistics, 2019. jún., 1267–1273. old.
 DOI: 10.18653/v1/N19-1128. URL: https://aclanthology.org/
 N19-1128/.
-[2] Michael E. Lesk. „Automatic Sense Disambiguation Using Machine Readable Dictionaries: How to Tell a Pine Cone from an Ice Cream Cone”. Proceedings of the
+\cite{lesk1986automatic}[2] Michael E. Lesk. „Automatic Sense Disambiguation Using Machine Readable Dictionaries: How to Tell a Pine Cone from an Ice Cream Cone”. Proceedings of the
 5th Annual International Conference on Systems Documentation (SIGDOC ’86).
 New York, NY, USA: ACM, 1986, 24–26. old. URL: https://dl.acm.org/
 doi/10.1145/318723.318728.
-[3] Paul-Edouard Sarlin és tsai. SuperGlue: Learning Feature Matching with Graph Neural Networks. 2020. arXiv: 1911.11763 [cs.CV]. URL: https://
+\cite{sarlin2020superglue}[3] Paul-Edouard Sarlin és tsai. SuperGlue: Learning Feature Matching with Graph Neural Networks. 2020. arXiv: 1911.11763 [cs.CV]. URL: https://
 arxiv.org/abs/1911.11763.
-[4] Alex Wang és tsai. SuperGLUE: A Stickier Benchmark for General-Purpose Language Understanding Systems. 2020. arXiv: 1905.00537 [cs.CL]. URL: https:
+\cite{wang2020superglue}[4] Alex Wang és tsai. SuperGLUE: A Stickier Benchmark for General-Purpose Language Understanding Systems. 2020. arXiv: 1905.00537 [cs.CL]. URL: https:
 //arxiv.org/abs/1905.00537.
-[5] Wei-Lin Chiang és tsai. Chatbot Arena: An Open Platform for Evaluating LLMs
+\cite{chiang2024chatbot}[5] Wei-Lin Chiang és tsai. Chatbot Arena: An Open Platform for Evaluating LLMs
 by Human Preference. 2024. arXiv: 2403 . 04132 [cs.AI]. URL: https :
 //arxiv.org/abs/2403.04132.
 [6] Springboard. OpenAI GPT-3: Everything You Need to Know. 2023. URL: https:
 //www.springboard.com/blog/data-science/machine-learninggpt-3-open-ai/.
-[7] The Verge. The New York Times prohibits using its content to train AI models. 2023.
+\cite{verge2023nytai}[7] The Verge. The New York Times prohibits using its content to train AI models. 2023.
 URL: https://www.theverge.com/2023/8/14/23831109/thenew-york-times-ai-web-scraping-rules-terms-of-service.
-[8] Eli Tan. „When the Terms of Service Change to Make Way for A.I. Training”. The
+\cite{tan2024terms}[8] Eli Tan. „When the Terms of Service Change to Make Way for A.I. Training”. The
 New York Times (2024. jún.). URL: https://www.nytimes.com/2024/
 06/26/technology/terms-service-ai-training.html.
 [9] Thomas Wolf és tsai. „HuggingFace’s Transformers: State-of-the-art Natural Language Processing”. arXiv preprint arXiv:1910.03771 (2019). URL: https : / /
@@ -2101,10 +1889,10 @@ https://arxiv.org/abs/2010.06478.
 
 %VAGY "kézzel" a következõ módon:
 
-\begin{thebibliography}{9}
+%\begin{thebibliography}{9}
 %10-nél kevesebb hivatkozás esetén
 
-%\begin{thebibliography}{99}
+\begin{thebibliography}{99}
 % 10-nél több hivatkozás esetén
 
 \addcontentsline{toc}{section}{Irodalomjegyzék}
