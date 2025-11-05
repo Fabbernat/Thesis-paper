@@ -968,28 +968,47 @@ Ezt a szoftvert 2024-ben kezdtem el fejleszteni, de a lényegi részét idén k�
                          Az újraírásnál első lépésem volt, hogy a platformot egyesítem. Most az egész szoftver egy sima Python futtatókörnyezetben fut, egyetlen könnyen megtalálható `main` fájl futtatásával, ipari standard szerint az src mappában lévő globális belépési ponttal, de egyenként is lehet futtathatni a 3 modult, mindegyikhez tartozván egy `main.py` belépési pont. PyCharm környezet ajánlott a szoftver futtatásához. A legnagyobb ihletet a szoftver megálmodásához a Clean Code című könyv elolvasása hozta, amely hatására átértékeltem a programozói tudásomat és a szakdolgozatomat. Láttam, hogy objektumorientált módszerrel nagy szoftvereket is átláthatóan és biztonságosan lehet fejleszteni. Megjegyeztem azt is, hogy a jó elnevezések milyen fontosak. Ezek az elvek alapján írtam meg teljesen üres vázlatból az új szakdolgozat szoftveremet. A szoftver "keretrendszer"-ként van hivatkozva, bár én inkább modulnak hívom. 3 fő futtatható állományból áll:
 
                         \begin{itemize}
-                        \item{ModelInputPreparer}
+                        \item{ModelInputPreparer}\\
                          A ModelInputPreparer, amely lokális adathalmazból dolgozik. A program az adathalmazból létrehozza a modellnek szánt inputot, a 2800 kérdést. Ez a program alapértelmezetten 'WiC adathalmaz' 'test' splitjének rekordjaiból hozza létre a kérdéseket, de saját, megegyező formátumú kérdésekre is működik. A kérdéseket mind egyenes, mind fordított sorrendben létrehozza, amelyekkel azután a modellek konzisztenciáját vizsgáljuk. Mivel alapértelmezetten 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így jön ki az 2800 kérdés, de ezen igény szerint lehet módosítani.
 
-                            \item{CloudRunnerNotebooks}
-                         A CloudRunnerNotebooks feladata a modell futtatása az elkészített prompton, válasz generálása.
+                            \item{HuggingFaceModelInferencer}\\
+                         A HuggingFaceModelInferencer feladata a modell futtatása az elkészített prompton, válasz generálása.
 
-                            \item{ModelOutputProcessor}
+                            \item{ModelOutputProcessor}\\
                          A ModelOutputProcessor feladata a modell outputból adatkinyerés, statisztikák készítése.
                         \end{itemize}
 
 
-\subsection{Globális scope}
+\section{Globális scope}
 GlobalMain.py: ez a szkript a fő belépési pont, amely egyszerre mind a 3 modult lefuttatja.
+
+
 GlobalData mappa: a GlobalMain futtatásakor használt "adatbázis", adattároló mappa. A modulok egyesével való futtatásakor nem ezt használják, hanem az adott modul gyökerében található "data" mappát. Mindegyik modulhoz tartozik ebből egy külön.
+
+
 Data mappák: az egyes modulokhoz tartozó input és output fájlok tárolását szolgálja.
+
+
 .in fájlok: az input fájlok egységes kiterjesztése
+
+
 .out fájlok: az out
 put fájlok egységes kiterjesztése
 
 
+\section{A modulok szerkezete}
+Mindhárom modul gyökérkönyvtárában 3 python fájl található.
+A config.py a konfigurációs fájl, futtatás előtt lehet módosítani az előre beállított, nagybetűsített globális változókban tárolt beállításokat.
+
+A main.py a fő belépési pont, itt lehet elindítani a main függvényt, amely csak elindítja programot, átadva a futást a run.py szkriptnek.
+
+A run.py pedig lefuttatja a program maradék részét, az összes modul-, függvény-, osztályhívást, tehát a program vezérlését végezve, azt általában további szkriptekre átruházva.
+
+
 \section{ModelInputPreparer}
-\section{CloudRunnerNotebooks}
+Ide jön a ModelInputPreparer részletes leírása.
+\section{HuggingFaceModelInferencer}
+Ide jön a HuggingFaceModelInferencer részletes leírása.
 \section{ModelOutputProcessor}
 \subsubsection{LogFile}
 A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit. A fájlhoz append módban minden futtatás után hozzáíródik, hogy ki futtatta, mikor, és a futás eredményei, statisztikákkal.
