@@ -32,6 +32,8 @@
 %ha nincs rájuk szükség természetesen kihagyhatók.
 \usepackage{graphicx}
 \usepackage{psfrag}
+\usepackage{float}
+\usepackage{listings}
 
 % saját csomagok
 \usepackage{hyperref}
@@ -156,10 +158,11 @@ képességeinek konzisztenciájának vizsgálata.
 
  \subsubsection{A megoldási mód}
 
-    Ez lényegében egy optimalizálási feladat, az optimalizálandó paraméterek a modellnek beadott prompt és a választott modell. Akkor tekintjük helyesnek a megoldást, ha a program futtatására a kiválasztott modell válaszol az igen-nem kérdésekre. A válaszok helyessége viszont másodlagos. A nyelvi modellek a Hugging Face platformról lesznek választva.
+    Ez lényegében egy optimalizálási feladat, az optimalizálandó paraméterek a modellnek beadott prompt és a választott modell. Akkor tekintjük helyesnek a megoldást, ha a program futtatására a kiválasztott modell egyértelmű válaszokat ad az igen-nem kérdésekre. A válaszok helyessége viszont másodlagos. A nyelvi modellek a Hugging Face platformról lesznek választva.
 
     A program inputja tetszőleges sornyi bejegyzés a Word-in-Context adathalmaz 'test' splitjéből, (vagy tetszőleges, ezzel megegyező formátumú kérdéshalmaz), és tetszőleges modell a Hugging Face platformról.
 
+    A megoldás kulcsa olyan szoftver fejlesztése, amely mindezt minél egyszerűbbé, automatizáltabbá és gördülékenyebbé teszi.
     %         \item Összehasonlító teljesítményvizsgálatot végeztem a
     %         % TODO update-elni Gemma3-ra és QWEN3-ra mindenhol
     %         \href{https://huggingface.co/microsoft/Phi-4-mini-instruct}{Phi-4-mini-instruct}, \href{https://huggingface.co/google/gemma-2-2b-it}{Gemma-2-2b-it} és a \href{https://huggingface.co/Qwen/Qwen1.5-1.8B-Chat}{Qwen1.5-1.8B-Chat} között egy Google Colab szkriptben.
@@ -176,8 +179,8 @@ képességeinek konzisztenciájának vizsgálata.
         \item Google Colab és PyCharm, Python futtatókörnyezet
         \item Git, GitHub
         \item Hugging Face
-        \item Torch és Transformers Python könyvtárak a Hugging Face modellek használatához
-        \item CUDA, Accelerate, hf\_xetm optimum könyvtárak a lokális futtatás segítéséhez
+        \item Torch, Transformers és Accelerate Python könyvtárak a Hugging Face modellek használatához
+        \item CUDA, hf\_xetm optimum könyvtárak a lokális futtatás segítéséhez
 
       \end{itemize},
 
@@ -191,7 +194,7 @@ képességeinek konzisztenciájának vizsgálata.
 
   \subsubsection{Elért eredmények}
 
-  Elkészült a keretrendszer, egy Python konzolos program, amely képes tetszőleges Hugging Face modelljeinek válaszra bírását automatizálni. Egy kattintással képes lefuttatni a  modellt a kiválasztott adathalmazra és elvégezni a nyelvi konzisztencia tesztet, statisztikákat készítve az eredményekből.
+  Elkészült a keretrendszer, egy Python konzolos program, amely képes tetszőleges Hugging Face modelljeinek válaszra bírását automatizálni. Egy kattintással képes lefuttatni a  modellt az inputként megadott adathalmazra és elvégezni a nyelvi konzisztencia tesztet, statisztikákat készítve az eredményekből.
 
  \subsubsection{Kulcsszavak}
 
@@ -200,18 +203,9 @@ képességeinek konzisztenciájának vizsgálata.
 \chapter*{Motiváció}
 \addcontentsline{toc}{section}{Motiváció}
 
-Az informatika és a nyelvtechnológia fejlődésével a generatív mesterséges intelligencia mindennapjaink részévé vált. A nagy nyelvi modellek kiértékelésére számos
-benchmark, azaz teljesítményteszt, metrika fejlődött ki az évek során. A legnépszer˝ubb ˝
-ilyen benchmark a SuperGLUE Benchmark, amely 8, komoly kihívást jelento feladat elé ˝
-állítja a nagy nyelvi modelleket. Szakdolgozatomban ezek közül a WiC feladatot mutatom be.
-A WiC (Word-in-Context) probléma a SuperGlue 8 feladatának egyike. Az emberi
-szöveget értő nyelvi modellek fejlesztése kiemelten fontos mind az akadémiai kutatásban, mind a gyakorlati alkalmazásokban. Az angol nyelvű szövegek feldolgozása nem
-csak az angolszász területeken releváns, hanem Magyarországon is, hiszen az angol nyelv
-használata a számítógépek világában mindennapjaink része. Az egyetem és a helyi vállalatok is aktívan foglalkoznak természetesnyelv-feldolgozási (NLP) megoldásokkal. A
-munkahelyeken – különösen IT területen – egy jól m˝uködo WiC modell jelent ˝ os el ˝ onyt ˝
-biztosíthat kódok, dokumentumok, ügyfélkommunikáció vagy akár jogi szövegek értelmezésében, ami kulcsfontosságú lehet például a tudásközpontokban és startup cégeknél
-is. Egy hatékony WiC modell tehát nemcsak tudományos értékkel bír, hanem gyakorlati
-alkalmazásokban is közvetlen hasznot hozhat, foleg a nyelvészeti informatikai területen dolgozók számára
+Az informatika és a nyelvtechnológia fejlődésével a generatív mesterséges intelligencia mindennapjaink részévé vált. A nagy nyelvi modellek kiértékelésére számos teljesítményteszt (benchmark) fejlődött ki az évek során. Az egyik legnépszerűbb ilyen teljesítményteszt a SuperGLUE Benchmark, amely 8, komoly kihívást jelentő feladat elé
+állítja a nagy nyelvi modelleket. A WiC (Word-in-Context) probléma a SuperGlue 8 feladatának egyike. Az emberi
+szöveget értő nyelvi modellek fejlesztése kiemelten fontos mind az akadémiai kutatásban, mind a gyakorlati alkalmazásokban. Az angol nyelvű szövegek feldolgozása nem csak az angolszász területeken releváns, hanem Magyarországon is, hiszen az angol nyelv használata a számítógépek világában mindennapjaink része. Az egyetem és a helyi vállalatok is aktívan foglalkoznak természetesnyelv-feldolgozási (NLP) megoldásokkal. Az AI megoldások - Hugging Face nyelvi modellek használatának - ismerete előnyt jelent mind a munkahelyeken, mind a magánéletben. IT területen Különösen nagy előnyt jelent az AI megfelelő használatának ismerete, például a munkafolyamatok automatizálásában. Egy hatékony szoftver, amely képes Hugging Face modelleket futtatni, tehát nemcsak tudományos értékkel bír, hanem gyakorlati alkalmazásokban is közvetlen hasznot hozhat, főleg a nyelvészeti informatikai területen dolgozók számára.
 
 
 \chapter{Érdemi rész}
@@ -636,8 +630,16 @@ Alapos tesztelés után azt találtam, hogy nem célszerű a teljes nyers adatha
 \end{itemize}
 A WiC megfelelő referenciaadatkészlet erre is, hiszen szakértők által gondosan annotált példákon alapul. Könnyen lehetséges, hogy már látták a tesztelt modellek (Phi, Gemma, Qwen) a WiC adathalmaz részét vagy egészét, ám nem tudnak rá visszaemlékezni, mert több milliárd mondatot láthattak a tanításuk során.
 
-A \href{https://pilehvar.github.io/wic/package/WiC\_dataset.zip}{WiC adathalmazban} található mondatokban a szavak, mondatjelek és írásjelek tokenizálva vannak, szóközzel vannak elválasztva a megelőző és következő szótól, mondatjeltől és írásjeltől. Így a vessző, mondatvégi pont, az angol birtokos személyjel \textquotesingle s rag és bármilyen aposztrófot használó angol rag, jel, képző könnyen kiemelhető a szövegből. Emiatt viszont külön figyelnem kellett, amikor természetes nyelvezetűvé alakítottam a szöveget, hogy ezeket is gondosan átalakítsam.\\ Erre használtam a \texttt{sentence\_normalizer} szkriptem függvényeit~\ref{fig:sentence-normalizer}.
+\begin{figure}[h]
+\centering
+% \includegraphics[width=1\linewidth]{graphics/???.png}
+\caption{A mondatok természetes nyelvezetűvé alakítását végző sentence\_normalizer szkript működése.}
+\label{fig:sentence-normalizer}
+\end{figure}
 
+A \href{https://pilehvar.github.io/wic/package/WiC\_dataset.zip}{WiC adathalmazban} található mondatokban a szavak, mondatjelek és írásjelek tokenizálva vannak, szóközzel vannak elválasztva a megelőző és következő szótól, mondatjeltől és írásjeltől. Így a vessző, mondatvégi pont, az angol birtokos személyjel \textquotesingle s rag és bármilyen aposztrófot használó angol rag, jel, képző könnyen kiemelhető a szövegből. Emiatt viszont külön figyelnem kellett, amikor természetes nyelvezetűvé alakítottam a szöveget, hogy ezeket is gondosan átalakítsam. Erre használtam a \texttt{sentence\_normalizer} szkriptem függvényeit~\ref{fig:sentence-normalizer}.
+
+\vspace{6mm}
 Emellett volt pár kifejezés és speciális karakter, amelyet ahhoz, hogy Python szótárként eltároljam, escape-elnem kellett, vagyis el kellett érnem, hogy a Python interpreter egyszerű karakterként kezelje őket, és ne program utasításként. A mondatokat ugyanis string dictionary-ként tároltam el, amelyekben az idézőjeleknek és kettőspont (:) karaktereknek speciális funkciója van. Így az alábbi helyzetekben gondosan átalakítottam a szöveget a Python szintaxisnak megfelelő alakba. Ezt is a \texttt{sentence\_normalizer} szkriptem függvényei végezték.
 
 \begin{table}[h]
@@ -1021,7 +1023,7 @@ Használat:
 példa válasz a `Qwen/Qwen2.5-0.5B-Instruct` futtatására:
 \begin{figure}
  \centering
- \includegraphics[keepaspectratio]{graphics/pelda}
+ \includegraphics[width=1\linewidth]{graphics/pelda}
  \caption{Példa Válasz}
  \label{fig:PeldaValasz}
 \end{figure}
@@ -1072,48 +1074,13 @@ Végül, de nem utolsó sorban köszönetet szeretnék mondani \textbf{témaveze
 
 
 %% Az itrodalomjegyzek keszitheto a BibTeX segedprogrammal:
-%\bibliography{diploma}
-%\bibliographystyle{plain}
+% \bibliography{diploma}
+% \bibliographystyle{plain}
 \bibliographystyle{plainnat}
 \bibliography{references}
 
-
-
-
-%VAGY "kézzel" a következõ módon:
-
-%\begin{thebibliography}{9}
-%10-nél kevesebb hivatkozás esetén
-
-\begin{thebibliography}{99}
-% 10-nél több hivatkozás esetén
-
-\addcontentsline{toc}{section}{Irodalomjegyzék}
-
-%Elso szerzok vezetekneve alapjan ábécérendben rendezve.
-
-
-%folyóirat cikk: szerzok(k), a folyóirat neve kiemelve,
-%az evfolyam felkoveren, zarojelben az evszam, vegul az oldalszamok es pont.
-\bibitem{Gischer}
-J. L. Gischer,
-The equational theory of pomsets.
-\emph{Theoret. Comput. Sci.}, \textbf{61}(1988), 199--224.
-
-%könyv (szerzo(k), a könyv neve kiemelve, utana a kiado, a kiado szekhelye, az evszam es pont.)
-\bibitem{Pin}
-J.-E. Pin,
-\emph{Varieties of Formal Languages},
-Plenum Publishing Corp., New York, 1986.
-
-
-
-
-
-\end{thebibliography}
-
 \chapter*{Elektronikus mellékletek}
-\addcontentsline{toc}{section}{Nyilatkozat}
+\addcontentsline{toc}{section}{Elektronikus mellékletek}
 
 \begin{itemize}
 \item A keretrendszeren GitHubról a\\ \href{https://github.com/Fabbernat/Thesis}{GitHub/Fabbernat/Thesis}\\ repozitóriumban található.
