@@ -213,7 +213,6 @@ biztosíthat kódok, dokumentumok, ügyfélkommunikáció vagy akár jogi szöve
 is. Egy hatékony WiC modell tehát nemcsak tudományos értékkel bír, hanem gyakorlati
 alkalmazásokban is közvetlen hasznot hozhat, foleg a nyelvészeti informatikai területen dolgozók számára
 
-1. fejezet
 
 \chapter{Érdemi rész}
 
@@ -477,7 +476,7 @@ Először a LMArena által és általam ismert legjobb modelleket vizsgáltam me
 
   {\large\bf Hugging Face modellek}
 
-Olyan modellt szerettem volna választani az összehasonlításhoz, amelyek nyílt forráskódúak, nagyjából azonos, másfél milliárd és 5 milliárd közötti paraméterszámúak, de legfeljebb 2 milliárd paraméterszám-különbség van köztük. A \href{https://colab.research.google.com/}{Google Colab} webes Python futtatókörnyezetet, Hugging Face modelleket, és a nagy cégek modelljeinek webes API-jait használtam.
+Olyan modellt szerettem volna választani az összehasonlításhoz, amelyek nyílt forráskódúak, nagyjából azonos, másfél milliárd és 5 milliárd közötti paraméterszámúak, de legfeljebb 2 milliárd paraméterszám-különbség van köztük. A \href{https://colab.research.google.com/}{Google Colab} webes Python futtatókörnyezetet, Hugging Face modelleket, és a nagy cégek modelljeinek hivatalos API-jait használtam.
 
 Először is, ahhoz, hogy egyértelmű eredményt kapjak a modell teljesítésére, ahol csak lehetett, minden véletlenszerűséget biztosító paramétert ki kellett kapcsolnom. Erre azért volt szükség, hogy ne a szerencsén múljon az, hogy a modell két válasza megegyezik, vagy eltér, hanem a modell felépítésén. A sztochasztikus faktorokkal ugyanis ugyanarra a kérdésre eltérő futtatáskor eltérő választ adhat egy modell, ami nem vezet hiteles kutatáshoz. A LMArena és a Google AI Studio oldalán van erre lehetőség.
 
@@ -498,7 +497,7 @@ Hogy ezt elérjem, a \textit{temperature} értékét 0-ra, a \textit{top-p} ért
 
 A véletlen faktor kikapcsolása mellett az is fontos volt, hogy egyesével adjam be a kérdéseket. Amikor ugyanis egyszerre $N$ kérdéssel bombáztam a modelleket, akkor az is egy figyelembe veendő tényező volt, hogy az $N$ kérdés milyen sorrendben lett feltéve. Ráadásul a modellek, ha egyszerre túl sok kérdést kaptak, jellemzően csak 40-60 kérdésre válaszoltak, az utána lévőket teljesen ignorálták. Ezzel szemben, ha minden kérdés esetén tiszta lappal indítottam, és új, független promptként adtam be, akkor ez a hatás nem tudott bezavarni. Emiatt tisztább a kísérlet, ha a modell nem egyszerre kapja meg mind az $N$ mondatot, amiről a döntést várjuk, hanem $N$ darab olyan kérdésként, amelyekben egyenként csak pontosan egy kérdés szerepel.
 
-Ezt a fajta módszert, hogy a webes felületek input mezőjébe adtam be a kérdéseket, csak API-alapú automatizációval lehetne automatizálni, de a webes felületek nem erre készültek. Ahhoz, hogy automatizáljam a promptolást, egy, a Témavezetőm által készített és javasolt Google Colab jegyzetfüzetet~\cite{berend2025phi} fejlesztettem tovább. Ez egy egyszerű, de hatékony jegyzetfüzet, amellyel Hugging Face token birtokában tetszőleges modell válaszadásra bírható, és mindez hatékonyan automatizálható. Hogy ezt elérjem, beadtam a modelleknek a teszthalmazból készített 5600 kérdést promptként, 2800-at egyenes, és 2800-at fordított sorrendben. A kérdéseket egyesével, determinisztikusan adtam be a modellnek.
+Ezt a fajta módszert, hogy a webes felületek input mezőjébe adtam be a kérdéseket, eredetileg egy, a Témavezetőm által készített és javasolt Google Colab jegyzetfüzetet~\cite{berend2025phi} fejlesztettem tovább. Ez egy egyszerű, de hatékony jegyzetfüzet, amellyel Hugging Face token birtokában tetszőleges modell válaszadásra bírható, és mindez hatékonyan automatizálható. Ám nem voltam elégedett a környezet adta korlátozásokkal, pl. session-alapú futtatókörnyezet, amely a session végével törli az adataimat, lassú csatlakozási idő a távoli hardverekhez, limitált erőforrás-hozzáférés, perzisztens adattárolási lehetőségek hiánya. Emiatt PyCharmot használtam fejlesztői környezetnek.
 
 
 % Hogy ezt elérjem, 2 kérdéssort készítettem.
@@ -526,14 +525,14 @@ A nagy AI cégek, mint az OpenAI, Anthropic és a DeepSeek olyan fejlett által�
 \begin{tabular}{|l|c|c|c|}
 \hline
 \textbf{Modell neve} & \textbf{Helyes válaszok (db/összes)} & \textbf{Pontosság} (\%) & \textbf{Konzisztencia (\%)} \\ \hline
-GPT & ???/5600 & 76??? & 90??? \\ \hline
-Claude & ???/5600 & 73??? & 87??? \\ \hline
-DeepSeek & ???/5600 & 75??? & 83??? \\ \hline
-Gemini & ???/5600 & 82??? & 91??? \\ \hline
-Grok & ???/5600 & 67??? & 84??? \\ \hline
+GPT & ???/2800 & 76??? & 90??? \\ \hline
+Claude & ???/2800 & 73??? & 87??? \\ \hline
+DeepSeek & ???/2800 & 75??? & 83??? \\ \hline
+Gemini & ???/2800 & 82??? & 91??? \\ \hline
+Grok & ???/2800 & 67??? & 84??? \\ \hline
 \end{tabular}
 }
-\caption{Nagy nyelvi modellek teljesítményértékelése. Az 5600 kérdés a 2800 egyenes, valamint 2800 fordított sorrendben beadott kérdésből álló prompt-korpusz egyenes és fordított beadásából tevődik össze.}
+\caption{Nagy nyelvi modellek teljesítményértékelése. Az 2800 kérdés a 1400 egyenes, valamint 1400 fordított sorrendben beadott kérdésből álló prompt-korpusz egyenes és fordított beadásából tevődik össze.}
 \end{table}
 
 Hogy a promptolást automatizáljam, Hugging Face-en elérhető modelleket futtattam a Google Colab szkriptemben~\ref{att:colab}.\\ A Témavezetőm által ajánlott modellek közül a
