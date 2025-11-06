@@ -32,24 +32,22 @@
 %ha nincs rájuk szükség természetesen kihagyhatók.
 \usepackage{graphicx}
 \usepackage{psfrag}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{pgfplots}
+\usepackage{tikz}
 \usepackage{float}
 \usepackage{listings}
 
 % saját csomagok
 \usepackage{hyperref}
-
-%tetelszerû környezetek definiálhatók, ezek most fejezetenkent egyutt szamozodnak, pl.
-\newtheorem{tet}{tetel}[chapter]
-\newtheorem{defi}[tet]{Definíció}
-\newtheorem{lemma}[tet]{Lemma}
-\newtheorem{áll}[tet]{Állítás}
-\newtheorem{köv}[tet]{Következmény}
-
-%Ha a megjegyzések és a példak szövegét nem akarjuk dõlten szedni, akkor
-%az alábbi parancs után kell õket definiální:
-\theoremstyle{definition}
-\newtheorem{megj}[tet]{Megjegyzés}
-\newtheorem{pld}[tet]{Példa}
+% Referencing
+\usepackage[
+backend=biber,
+style=numeric,
+sorting=none
+]{biblatex}
+\addbibresource{references.bib}
 
 %Margók:
 \hoffset -1in
@@ -239,7 +237,7 @@ Amikor valaki kiértékelő rendszert fejleszt a WiC benchmarkra, annak feladata
 
 \section{Bináris osztályozás}
 A WiC feladat egy bináris osztályozási (binary classification) problémaként van megfogalmazva: el kell dönteni, hogy egy adott szó két különböző mondatbeli előfordulása ugyanabban az értelemben szerepel-e.
-A bináris osztályozási feladatok problémakörében is változnak a trendek olyan szempontból, hogy egyre inkább a neurális hálók és nagy nyelvi modellek az elterjedtek bináris osztályozási feladatokra is. A Lesk-algoritmus~\cite{lesk1986automatic} egy klasszikus szóértelem-felismerő módszer, amely a szótári definíciók és a kontextus összevetésével próbálja meghatározni a szó legmegfelelőbb jelentését. A legjobbak mégis az olyan, kifejezetten emberi szöveg megértésére specializálódott nagy nyelvi modellek, mint például a GPT-4.5 és a Gemini-2.5 - 2025 telén.
+A bináris osztályozási feladatok problémakörében is változnak a trendek olyan szempontból, hogy egyre inkább a neurális hálók és nagy nyelvi modellek az elterjedtek bináris osztályozási feladatokra is. A Lesk-algoritmus~\cite{lesk1986automatic} egy klasszikus szóértelem-felismerő módszer, amely a szótári definíciók és a kontextus összevetésével próbálja meghatározni a szó legmegfelelőbb jelentését. A legjobbak mégis az olyan, kifejezetten emberi szöveg megértésére specializálódott nagy nyelvi modellek, mint például a GPT-4.5 és a Gemini-2.5 - 2025 végén.
 
 \label{wic:dataset}
 \section{A WiC adathalmaz eredete}
@@ -385,7 +383,6 @@ Egy modell promptra adott válaszát inferenciának nevezik, ami következtetés
 \subsection{Determinisztikus következtetés, temperature, top-p és top-k}
 A kísérletemnek csak akkor van értelme, ha a futtatás determinisztikus. Azt jelenti, hogy a modell mindig ugyanazt a kimenetet adja ugyanazon bemenet esetén, mivel a véletlenszerűséget kizáró paraméterekkel (pl. $temperature=1.0$, $top-k=0$, $top-p=1.0$) működik. A temperature (hőmérséklet) a nyelvi modellek válaszainak kreativitását szabályozza (magas értéknél változatosabb, alacsonynál determinisztikusabb kimenet), a top-k pedig korlátozza a következő szó választékát a k legvalószínűbb tokenre, míg a top-p (más néven nucleus sampling) dinamikusan választja ki a valószínűségi eloszlás egy részhalmazát (pl. a legvalószínűbb tokeneket, amelyek összege eléri a p küszöböt)~\cite{holtzman2020curious}.
 
-\subsection{Top-p és Top-k mintavételezések}
 Tegyük fel, hogy a nyelvi modellnek a következő mondatot kell befejeznie:
 
 \begin{verbatim}
@@ -621,7 +618,7 @@ Ugyanazt jelenti-e a \textit{w} szó az \textit{s1} és \textit{s2} mondatban?
 
 Ahol \textit{w} egy szó, \textit{s1} az első példamondat, és \textit{s2} a második példamondat.
 
-
+% TODO delete?
 \subsection{A modelleket tesztelő kérdések}
 Alapos tesztelés után azt találtam, hogy nem célszerű a teljes nyers adathalmazból előállított kérdéseket beadni a modelleknek, helyette 3 gondosan összeállított kérdéshalmazzal értékeltem ki a teljesítményüket. % 60 véletlenszerű példára elegendő tesztelni, a teszthalmaz 1400 kérdésének lefutása nagyon sok idő, és nem ad annyi hozzáadott információt.
 \begin{itemize}
@@ -674,7 +671,7 @@ Key: Does the word "{word}" mean the same thing in
 "{sentence1}" and "{sentence2}"?
 Value: Yes VAGY No
 \end{lstlisting}
-
+% TODO delete?
 
 
 \subsection{Futtatás}
@@ -1075,9 +1072,10 @@ Végül, de nem utolsó sorban köszönetet szeretnék mondani \textbf{témaveze
 
 %% Az itrodalomjegyzek keszitheto a BibTeX segedprogrammal:
 % \bibliography{diploma}
-% \bibliographystyle{plain}
-\bibliographystyle{plainnat}
-\bibliography{references}
+
+\printbibliography[title={Irodalomjegyzék}]
+
+% \bibliography{references}
 
 \chapter*{Elektronikus mellékletek}
 \addcontentsline{toc}{section}{Elektronikus mellékletek}
