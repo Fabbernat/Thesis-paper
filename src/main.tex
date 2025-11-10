@@ -823,10 +823,9 @@ A modellek válaszát egy Google táblázatba mentettem el. Az első oszlopban j
 
 
 Az első sorban szerepelnek a gold standard értékek.
-A TP, FP, FN, TN címkék számát és eloszlását a Google Táblázatok beépített függvényei segítségével határoztam meg, és szimplán összeszámoltam a modellek által predikált "Yes" és "No" válaszok soronkénti megegyezését az azonos sorban szereplő gold standard értékekkel.
+A TP, FP, FN, TN címkék számát és eloszlását a Google Táblázatok beépített függvényei segítségével határoztam meg, és egyszerűen összeszámoltam a modellek által predikált "Yes" és "No" válaszok soronkénti megegyezését az azonos sorban szereplő gold standard értékekkel.
 
-Egyes modelleknél (pl. Gemini 2.5 Pro Experimental 03-25) problémát okozott az, hogy nem szerepelt a válaszában sem 'Yes', sem 'No', illetve előfordult az is, hogy nem csupán egy 'Yes', vagy egy 'No' válasszal tért vissza, hanem gondolatmenetet, magyarázatot is hozzáfűzött - akkor is, ha a promptban ennek az elhagyására kértem. % Így pl. az "I know! The answer is Yes." szöveg a Google Táblázatok függvényemben 'No'-ként lenne beleszámítva, akkor is, ha utána a modell szerint.
-Emiatt ezeknek a modellek outputjának a feldolgozását manuálisan végeztem.
+
 % \begin{figure}[H]
 % 	\centering
 % 	\includegraphics[width=1\linewidth]{graphics/sheets-regex.png}
@@ -837,7 +836,7 @@ Emiatt ezeknek a modellek outputjának a feldolgozását manuálisan végeztem.
 %\vspace*{2cm}
 
 \subsubsection{A WiC saját kézi kiértékelése}
-A \href{https://pilehvar.github.io/wic/}{WiC honlapján} az áll, hogy az emberi, manuális kiértékeléssel körülbelül 80\%-ot tudtak elérni, azaz 80\%-os pontossággal tudták a teszt adathalmazból vett, véletlenszerű példákról megállapítani, hogy a szó a 2 mondatban ugyanazt jelenti-e (a gold standard alapján). Ez nem túl magas, de érthető, tekintve, hogy ezek többsége ritka szó, és a mondatok nyelvezete is sokszor régies, vagy nagyon tudományos. A módszer az volt, hogy minden annotátor kapott 100 példát, és semmilyen segédeszközt nem használhattak.
+A \href{https://pilehvar.github.io/wic/}{WiC honlapján} az áll, hogy az emberi, manuális kiértékeléssel körülbelül 80\%-ot tudtak elérni, azaz 80\%-os pontossággal tudták a teszt adathalmazból vett, véletlenszerű példákról megállapítani, hogy a szó a két mondatban ugyanazt jelenti-e (a gold standard alapján). Ez nem túl magas, de érthető, tekintve, hogy ezek többsége ritka szó, és a mondatok nyelvezete is sokszor régies, vagy nagyon tudományos. A módszer az volt, hogy minden annotátor kapott 100 példát, és semmilyen segédeszközt nem használhattak a kiértékelésükhöz.
 
 Hogy meggyőződjek a nehézségről, én is eldöntöttem 60 bejegyzésről a gold standard ismerete nélkül, hogy a vizsgált szó ugyanazt jelenti-e a két mondatban. Az én eredményem 63.33\%-os pontosság és 63.17\%-os kiegyensúlyozott pontosság lett. Az eredményeim megtalálhatóak a kiértékelő rendszeremben a \texttt{manual\_evaluation} mappában.
 
