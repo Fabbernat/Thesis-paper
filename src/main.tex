@@ -938,7 +938,7 @@ A Qwen1.5-1.8B-Chat a nehéz kérdésekre a Qwen egyáltalán nem volt jó, és 
   {A részletes kimutatásokat tartalmazó megoldás}
 \label{chap:src/Framework}
 
-A szoftvert, amelyet a szakdolgozatomhoz készítettem, 2024-ben kezdtem el fejleszteni, és azóta általában heti 10-20 committal fejlesztettem. A \href{https://github.com/Fabbernat}{GitHubomon} elérhető a kitűzött elemek között. Korábban a \href{https://github.com/Fabbernat/Peternity}{https://github.com/Fabbernat/Peternity} linken volt elérhető, ám am most már archívum és a forráskód át lett helyezve a \href{https://github.com/Fabbernat/Thesis} {https://github.com/Fabbernat/Thesis} linkre.
+A szoftvert, amelyet a szakdolgozatomhoz készítettem, 2024-ben kezdtem el fejleszteni, és azóta általában heti 10-20 committal fejlesztettem. A \href{https://github.com/Fabbernat}{GitHubomon} elérhető a kitűzött elemek között. Korábban a \href{https://github.com/Fabbernat/Peternity}{https://github.com/Fabbernat/Peternity} linken volt elérhető, ez most már archívum és a forráskód át lett helyezve a \href{https://github.com/Fabbernat/Thesis} {https://github.com/Fabbernat/Thesis} linkre.
 
 A projekt első verziója sokat lett kritizálva, hogy átláthatatlan és sok benne az AI generált, rossz minőségű kód, így 2025 nyarán újrakezdtem. Az új modulnak 2 fő fejlesztési szempontja volt.
 
@@ -960,7 +960,7 @@ A ModelInputPreparer, amely a WiC adathalmazból létrehozza a modellnek szánt 
 Ezt a szoftvert 2024-ben kezdtem el fejleszteni, de a lényegi részét idén készítettem, folyamatos fejlesztéssel, hibajavítással, kísérletezéssel.
 
 
-                         Az eredeti beadott verzióval több gond is volt. A programot nem lehetett egy belépési ponttal futtatni. Helyette össze-vissza vibe code-olt, kaotikus, gyakran egymástól teljesen független szkriptek szerepeltek mindenhol, amelyeknek a használatát csak én ismertem, ráadásul egy részük nem is működött, csak úgy "volt". A program egyébként is csak a modell inputjainak előkészítését tudta. Csak a mostani "ModelInputPreparer"-nek megegyező rész funkcionalitásával rendelkezett standard Python környezetben. A Hugging Face modell inferenciájára (a mostani "HuggingFaceModelInferencer" modullal megegyező funkcionalitás) egy Jupyter Notebookban került sor, Google Colab környezetben. A modell outputjának feldolgozása ( a mostani "ModelOutputProcessor") pedig megint egy harmadik környezetben, Google Apps Scriptben került feldolgozásra.
+                         Az eredeti beadott verzióval több gond is volt. A programot nem lehetett egy belépési ponttal futtatni. Helyette nem forduló, kaotikus, gyakran egymástól teljesen független szkriptek szerepeltek rendezetlenül, amelyeknek a használatát csak én ismertem, ráadásul egy részük nem is működött, csak úgy "volt". A program egyébként is csak a modell inputjainak előkészítését tudta. Csak a mostani "ModelInputPreparer"-nek megegyező rész funkcionalitásával rendelkezett standard Python környezetben. A Hugging Face modell inferenciájára (a mostani "HuggingFaceModelInferencer" modullal megegyező funkcionalitás) egy Jupyter Notebookban került sor, Google Colab környezetben. A modell outputjának feldolgozása ( a mostani "ModelOutputProcessor") pedig megint egy harmadik környezetben, Google Apps Scriptben került feldolgozásra.
 
                          Az újraírásnál első lépésem volt, hogy a platformot egyesítem. Most az egész szoftver egy sima Python futtatókörnyezetben fut, egyetlen könnyen megtalálható `main` fájl futtatásával, ipari standard szerint az src mappában lévő globális belépési ponttal, de egyenként is lehet futtathatni a 3 modult, mindegyikhez tartozván egy `main.py` belépési pont. PyCharm környezet ajánlott a szoftver futtatásához. A legnagyobb ihletet a szoftver megálmodásához a Clean Code című könyv elolvasása hozta, amely hatására átértékeltem a programozói tudásomat és a szakdolgozatomat. Láttam, hogy objektumorientált módszerrel nagy szoftvereket is átláthatóan és biztonságosan lehet fejleszteni. Megjegyeztem azt is, hogy a jó elnevezések milyen fontosak. Ezek az elvek alapján írtam meg teljesen üres vázlatból az új szakdolgozat szoftveremet. A szoftver egy keretrendszer, hiszen a szoftver keretrendszert biztosít Hugging Face modellek lokális futtatására és azok válaszainak kiértékelésére, továbbá nincsen hozzá webes, mobilos, vagy desktop grafikus felület, nincsen hostolva stb., helyette parancssorból indítható a program és a config fájlok beállításainak módosításával paraméterezhető. Én általában csak "modulok"-ként hivatkozom a keretrendszerbe, hiszen 3, egymástól jól elkülönülő feladatú és funkciójú modulból áll. Így az egyes modulok egyénileg is futtathatóak, akkor is, ha a másik kettő nem létezik, vagy meghibásodik. Mindegyik modul egy fő futtatható állományt tartalmaz, egy-egy main.py fájt egy-egy main belépési ponttal.
 
@@ -985,15 +985,14 @@ GlobalData mappa: a GlobalMain futtatásakor használt "adatbázis", adattárol�
 Data mappák: az egyes modulokhoz tartozó input és output fájlok tárolását szolgálja.
 
 
-.in fájlok: az input fájlok egységes kiterjesztése
+.in fájlok: az input fájlok egységes kiterjesztése. Ha in a kiterjesztése, akkor valamelyik fájl azt bemetként használni fogja.
 
 
-.out fájlok: az out
-put fájlok egységes kiterjesztése
+.out fájlok: az output fájlok egységes kiterjesztése
 
 
 \section{A modulok szerkezete}
-Mindhárom modul gyökérkönyvtárában 3 python fájl található.
+Mindhárom modul gyökérkönyvtárában megtalálható az alábbi 3 python fájl.
 A config.py a konfigurációs fájl, futtatás előtt lehet módosítani az előre beállított, nagybetűsített globális változókban tárolt beállításokat.
 
 A main.py a fő belépési pont, itt lehet elindítani a main függvényt, amely csak elindítja programot, átadva a futást a run.py szkriptnek.
@@ -1003,15 +1002,17 @@ A run.py pedig lefuttatja a program maradék részét, az összes modul-, függv
 
 \section{ModelInputPreparer}
 Ide jön a ModelInputPreparer részletes leírása.
+
 \section{HuggingFaceModelInferencer}
 Ide jön a HuggingFaceModelInferencer részletes leírása.
+
 \section{ModelOutputProcessor}
 \subsubsection{LogFile}
 A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit. A fájlhoz append módban minden futtatás után hozzáíródik, hogy ki futtatta, mikor, és a futás eredményei, statisztikákkal.
 
 
 
-\subsection{A modulok futtatása}
+\subsection{A programok futtatása}
 A PyCharm IDE kínál egyszerű és felhasználóbarát futtatási módokat - a zöld háromszög ikonokat kell keresni, azzal lehet tetszőleges .py kiterjesztésű fájlt futtatni. Mivel azonban a projektem kódja sok fájlból, külsős csomagokból és összetett projektszerkezetból áll. a legbiztonságosabb és legprofesszionálisabb mód a terminálos futtatás. Én, mivel Windows-on fejlesztettem, a \href{https://learn.microsoft.com/en-us/powershell/}{PowerShell} terminált használtam fejlesztéshez és futtatáshoz, ezt ajánlom, de a \href{https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands}{Command Prompt Shell} is teljesen megfelelő.
 
 Futtatás 3 lépésben:\\
@@ -1020,9 +1021,12 @@ Elsőnek klónozzuk a projekt forráskódját a gépünkre, pl. a \begin{verbati
 \end{verbatim} elérési útra. Ajánlott a projekt nevét "Thesis" néven hagyni.
 Következőnek lépjünk a projekt gyökérmappájába. Adjuk ki a $& .\.venv\Scripts\Activate.ps1$ parancsot a virtuális környezet aktiválásához. Majd adjuk ki a $pip install torch transformers accelerate$ parancsot a szükséges csomagok telepítéséhez. Ha nagyobb modelleket is szeretnénk futtatni, akkor más csomagokra is szükség lehet. Ez esetben a $pip install torch transformers accelerate hf_xetm optimum$ az ajánlott parancs.
 
-Pl. ha a $C:\Users\<Felhasználónév>\PycharmProjects\Thesis$ mappába helyeztük a projekt gyökerét (itt van a .git mappa), akkor a \begin{verbatim}
+Itt kétféle opciónk van. Egyszerű mindhárom modelt lefuttató futtatásért adjuk ki a gyökérkönyvtárban ( - ahol a /.git/ és az /src/ mappa van -) a
+\begin{verbatim}
+py -m src.Framework.globalMain
+\end{verbatim} parancsot. Vagy ha csak egy modult szeretnénk futtatni, akkor szintén a gyökérkönyvtárból adjuk ki a \begin{verbatim}
     py -m src.Framework.<modul neve>.main
-\end{verbatim} paranccsal futtathatjuk. A modul neve helyére a ModelInputPreparer, HuggingFaceModelInferencer, vagy ModelOutputProcessor kerülhet.
+\end{verbatim} parancsot. A modul neve helyére a ModelInputPreparer, HuggingFaceModelInferencer, vagy ModelOutputProcessor kerülhet.
 
 Windowson szükség lehet a  $Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass$ parancs kiadására ahhoz, hogy az operációs rendszer engedélyezze a Python szkriptek futtatását.
 
