@@ -1013,13 +1013,19 @@ A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legu
 
 
 \subsection{A programok futtatása}
-A PyCharm IDE kínál egyszerű és felhasználóbarát futtatási módokat - a zöld háromszög ikonokat kell keresni, azzal lehet tetszőleges .py kiterjesztésű fájlt futtatni. Mivel azonban a projektem kódja sok fájlból, külsős csomagokból és összetett projektszerkezetból áll. a legbiztonságosabb és legprofesszionálisabb mód a terminálos futtatás. Én, mivel Windows-on fejlesztettem, a \href{https://learn.microsoft.com/en-us/powershell/}{PowerShell} terminált használtam fejlesztéshez és futtatáshoz, ezt ajánlom, de a \href{https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands}{Command Prompt Shell} is teljesen megfelelő.
+A PyCharm IDE kínál egyszerű és felhasználóbarát futtatási módokat - a zöld háromszög ikonokat kell keresni, azzal lehet tetszőleges .py kiterjesztésű fájlt futtatni. Mivel azonban a projektem kódja sok fájlból, külsős csomagokból és összetett projektszerkezetból áll, és a zöld gomb nem biztos, hogy megfelelő útvonalakon keresi majd a modulokat, a legbiztonságosabb és legprofesszionálisabb mód a terminálos futtatás. Én, mivel Windows-on fejlesztettem, a \href{https://learn.microsoft.com/en-us/powershell/}{PowerShell} terminált használtam fejlesztéshez és futtatáshoz, ezt ajánlom, de a \href{https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands}{Command Prompt Shell} is teljesen megfelelő.
 
 Futtatás 3 lépésben:\\
 Elsőnek klónozzuk a projekt forráskódját a gépünkre, pl. a \begin{verbatim}
     C:\Users\<Felhasználónév>\PycharmProjects\
 \end{verbatim} elérési útra. Ajánlott a projekt nevét "Thesis" néven hagyni.
-Következőnek lépjünk a projekt gyökérmappájába. Adjuk ki a $& .\.venv\Scripts\Activate.ps1$ parancsot a virtuális környezet aktiválásához. Majd adjuk ki a $pip install torch transformers accelerate$ parancsot a szükséges csomagok telepítéséhez. Ha nagyobb modelleket is szeretnénk futtatni, akkor más csomagokra is szükség lehet. Ez esetben a $pip install torch transformers accelerate hf_xetm optimum$ az ajánlott parancs.
+Következőnek lépjünk a projekt gyökérmappájába. Adjuk ki a \begin{verbatim}
+    & .\.venv\Scripts\Activate.ps1
+\end{verbatim} parancsot a virtuális környezet aktiválásához. Majd adjuk ki a \begin{verbatim}
+    pip install torch transformers accelerate
+\end{verbatim} parancsot a szükséges csomagok telepítéséhez. Ha nagyobb modelleket is szeretnénk futtatni, akkor más csomagokra is szükség lehet. Ez esetben a \begin{verbatim}
+    pip install torch transformers accelerate hf_xetm optimum
+\end{verbatim} az ajánlott parancs.
 
 Itt kétféle opciónk van. Egyszerű mindhárom modelt lefuttató futtatásért adjuk ki a gyökérkönyvtárban ( - ahol a /.git/ és az /src/ mappa van -) a
 \begin{verbatim}
@@ -1028,7 +1034,11 @@ py -m src.Framework.globalMain
     py -m src.Framework.<modul neve>.main
 \end{verbatim} parancsot. A modul neve helyére a ModelInputPreparer, HuggingFaceModelInferencer, vagy ModelOutputProcessor kerülhet.
 
-Windowson szükség lehet a  $Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass$ parancs kiadására ahhoz, hogy az operációs rendszer engedélyezze a Python szkriptek futtatását.
+Windowson szükség lehet a  \begin{verbatim}
+    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+\end{verbatim} parancs kiadására ahhoz, hogy az operációs rendszer engedélyezze a Python szkriptek futtatását.
+
+Ezzel a fenti módszerrel garantáltan megtalálja a Python a szkriptekben megadott modulokat.
 
 \begin{figure}
  \centering
