@@ -156,7 +156,7 @@ képességeinek konzisztenciájának vizsgálata.
 
  \subsubsection{A megoldási mód}
 
-    Ez lényegében egy optimalizálási feladat, az optimalizálandó paraméterek a modellnek beadott prompt és a választott modell. Akkor tekintjük helyesnek a megoldást, ha a program futtatására a kiválasztott modell egyértelmű válaszokat ad az igen-nem kérdésekre. A válaszok helyessége viszont másodlagos. A nyelvi modellek a Hugging Face platformról lesznek választva.
+    Ez lényegében egy optimalizálási feladat, az optimalizálandó paraméterek a modellnek beadott prompt és a választott modell. Akkor tekintjük helyesnek a megoldást, ha a program futtatására a kiválasztott modell egyértelmű igen/nem válaszokat ad az eldöntendő kérdésekre. A válaszainak helyessége viszont másodlagos. A nyelvi modellek a Hugging Face platformról lesznek választva.
 
     A program inputja tetszőleges sornyi bejegyzés a Word-in-Context adathalmaz 'test' splitjéből, (vagy tetszőleges, ezzel megegyező formátumú kérdéshalmaz), és tetszőleges modell a Hugging Face platformról.
 
@@ -192,7 +192,7 @@ képességeinek konzisztenciájának vizsgálata.
 
   \subsubsection{Elért eredmények}
 
-  Elkészült a keretrendszer, egy Python konzolos program, amely képes tetszőleges Hugging Face modelljeinek válaszra bírását automatizálni. Egy kattintással képes lefuttatni a  modellt az inputként megadott adathalmazra és elvégezni a nyelvi konzisztencia tesztet, statisztikákat készítve az eredményekből.
+  Elkészült a keretrendszer, egy Python konzolos program, amely képes tetszőleges Hugging Face modelljeinek válaszra bírását automatizálni. Egy terminál paranccsal képes lefuttatni a  modellt az inputként megadott adathalmazra és elvégezni a nyelvi konzisztencia tesztet, statisztikákat készítve az eredményekből.
 
  \subsubsection{Kulcsszavak}
 
@@ -206,7 +206,7 @@ Az informatika és a nyelvtechnológia fejlődésével a generatív mesterséges
 szöveget értő nyelvi modellek fejlesztése kiemelten fontos mind az akadémiai kutatásban, mind a gyakorlati alkalmazásokban. Az angol nyelvű szövegek feldolgozása nem csak az angolszász területeken releváns, hanem Magyarországon is, hiszen az angol nyelv használata a számítógépek világában mindennapjaink része. Az egyetem és a helyi vállalatok is aktívan foglalkoznak természetesnyelv-feldolgozási (NLP) megoldásokkal. Az AI megoldások - Hugging Face nyelvi modellek használatának - ismerete előnyt jelent mind a munkahelyeken, mind a magánéletben. IT területen Különösen nagy előnyt jelent az AI megfelelő használatának ismerete, például a munkafolyamatok automatizálásában. Egy hatékony szoftver, amely képes Hugging Face modelleket futtatni, tehát nemcsak tudományos értékkel bír, hanem gyakorlati alkalmazásokban is közvetlen hasznot hozhat, főleg a nyelvészeti informatikai területen dolgozók számára.
 
 
-\chapter{Érdemi rész}
+\chapter{Elméleti háttér}
 
 
 
@@ -280,8 +280,8 @@ A tanító adatbázist a korábbi iskolai példára visszatérve úgy képzelhet
     \end{tabular}
 \end{table}
 
-\subsection{Eddigi legjobb modell-teljesítmények a WiC adathalmazon}
-A WiC adathalmazon számos modellt teszteltek, amelyek túlnyomórészt 60\% feletti eredménnyel kategorizálták helyesen a mondatokat.
+\subsection{Korábbi eredmények a WiC adathalmazon}
+A \href{https://pilehvar.github.io/wic/}{Word-in-Context honlapján} található egy eredménytábla, amely bemutatja, hogy egyes modellek és algoritmusok milyen pontossággal WiC adathalmazon számos modellt teszteltek, amelyek túlnyomórészt 60\% feletti eredménnyel kategorizálták helyesen a mondatokat.
 A legjobb eredményt a SenseBERT-large rendszerrel érték el, külső erőforrások használatával. Ez az eredmény megközelíti a kézi, emberi szintű kiértékelést, melynek a felső határa 80\% körüli. A kézi kiértékelésnek és a SenseBERT megoldásának egyszerűsített változatát én is elvégeztem.
 
 
