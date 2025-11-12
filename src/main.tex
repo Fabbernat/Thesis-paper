@@ -208,14 +208,8 @@ szöveget értő nyelvi modellek fejlesztése kiemelten fontos mind az akadémia
 
 \chapter{Elméleti háttér}
 
-
-
-\section{A Word in context feladat}
-
- A Word in context feladatot 2019-ben fogalmazta meg Mohammad Tahmed Pilehvar, abból a célból, hogy különböző transzformer és szóbeágyazasos modelleket vizsgáljanak a feladat által megfogalmazott teljesítményteszten. Az ezt a feladatot megfogalmazó adathalmazt alkalmasnak találtuk a témavezetőmmel az általa megfogalmazott teljesítményteszt, a nagy nyelvi modellek szemantikus képességeinek konzisztenciájának vizsgálata elvégzéséhez. A kérdések már eleve csoportosítva vannak azonos és különböző jelentésű mondatpárokként.
-
 \section{Megelőző lépések}
-A szoftver lefejlesztése előtt kielemeztem az eddigi legjobb modelleket és a legjobb módszereket szójelentés-értelmezés szempontjából és nyílt forráskódú nyelvi modelleket vizsgáltam meg a LMArena és Hugging Face felületein, továbbá az utóbbiak futtatásának dokumentációját tanulmányoztam.
+A szoftver lefejlesztése előtt átelemeztem az jelenlegi legjobb módszereket és nyílt forráskódú nyelvi modelleket a Témavezetőm által javasolt LMArena és Hugging Face felületein, továbbá az utóbbiak futtatásának dokumentációját tanulmányoztam, mert azokra a keretrendszer elkészítéséhez szükség volt.
 
  \section{A szoftver}
  A megoldásom során törekedtem arra, hogy az bárki által reprodukálható legyen, ezért ingyenesen elérhető és nyílt forráskódú eszközöket (Python, GitHub, Hugging Face) használtam.
@@ -225,15 +219,28 @@ A szoftver lefejlesztése előtt kielemeztem az eddigi legjobb modelleket és a 
 A természetes nyelvekben a programozási nyelvekkel ellentétben egy szónak több, egymástól teljesen elkülönülő jelentése is lehet. Például az "egér" szó jelenthet egy számítógépes perifériát vagy egy állatot, és a helyes értelmezéshez a környező szavakat ismerni kell. Az ilyen jellegű többértelműségek automatikus feloldása az egyik központi problémája a természetes nyelvi rendszerek fejlesztésének.
 
 
-\section{A WiC probléma}
-Az emberi nyelvekben a többértelmű szavak attól függően, hogy milyen szövegkörnyezetben fordulnak elő, több, esetenként egymással össze nem függő jelentést is hordozhatnak. Míg korábban a statikus szóbeágyazások, mint például a Word2vec és a GloVe voltak elterjedtek a szójelentés feloldására, ma már elavult módszereknek számítanak. Ezek a statikus szóbeágyazások tervezésükből adódóan nem képesek modellezni a szavak szemantikájának dinamikus természetét, vagyis azt a tulajdonságot, hogy a szavak potenciálisan különböző jelentéseknek felelhetnek meg. Egy szóhoz mindig ugyanazt a szóvektort rendelik, kontextustól függetlenül. A kontextualizált szóbeágyazások kísérletet tesznek ennek a korlátnak a feloldására azáltal, hogy dinamikus reprezentációkat számítanak ki a szavakhoz, amelyek a szövegkörnyezet alapján képesek alkalmazkodni. Ilyen szóbeágyazás transzformer például a BERT, ám ennek is megvannak a korlátai. A mai igazán modern megoldások viszont már mély tanulást és jellemzően neurális hálókat használnak a modellek szójelentés-értelmező képességeinek fejlesztésére.
+\section{A Word in context feladat}
 
-A WiC feladat lényege, hogy egy adott szó két különböző mondatbeli előfordulásáról eldöntse, hogy azonos értelemben szerepel-e. A természetes nyelvi feldolgozásban.
-\footnote[1]{Természetesnyelv-feldolgozás, számítógépes nyelvészet és nyelvtechnológia néven is hivatkoznak rá, angolul NLP}
+ A Word in context feladatot 2019-ben fogalmazta meg Mohammad Tahmed Pilehvar, abból a célból, hogy különböző transzformer és szóbeágyazasos modelleket vizsgáljanak a feladat által megfogalmazott teljesítményteszten. A WiC feladat lényege, hogy egy adott szó két különböző mondatbeli előfordulásáról eldöntse, hogy azonos értelemben szerepel-e. A természetes nyelvi feldolgozásban. Az ezt a feladatot megfogalmazó adathalmazt alkalmasnak találtuk a témavezetőmmel az általa megfogalmazott teljesítményteszt, a nagy nyelvi modellek szemantikus képességeinek konzisztenciájának vizsgálata elvégzéséhez. A kérdések már eleve csoportosítva vannak azonos és különböző jelentésű mondatpárokként.
+
+ \subsubsection{A Word in context háttere}
+ A WiC csapata alapvetően a folyamatosan fejlődő modelleknek igyekezett egy nehezebb, korszerű teljesítménytesztet állítani. Míg korábban a statikus szóbeágyazások, mint például a Word2vec és a GloVe voltak elterjedtek a szójelentés feloldására, ma már elavult módszereknek számítanak. Ezek a statikus szóbeágyazások tervezésükből adódóan nem képesek modellezni a szavak szemantikájának dinamikus természetét, vagyis azt a tulajdonságot, hogy a szavak potenciálisan különböző jelentéseknek felelhetnek meg. Egy szóhoz mindig ugyanazt a szóvektort rendelik, kontextustól függetlenül. A kontextualizált szóbeágyazások kísérletet tesznek ennek a korlátnak a feloldására azáltal, hogy dinamikus reprezentációkat számítanak ki a szavakhoz, amelyek a szövegkörnyezet alapján képesek alkalmazkodni. Ilyen szóbeágyazás transzformer például a BERT, ám ennek is megvannak a korlátai. A mai igazán modern megoldások viszont már mély tanulást és jellemzően neurális hálókat használnak a modellek szójelentés-értelmező képességeinek fejlesztésére.
 
 
 \section{Egy rendszer feladata a WiC adathalmazon}
 Amikor valaki kiértékelő rendszert fejleszt a WiC benchmarkra, annak feladata a szavak szándékozott jelentésének azonosítása. A WiC egy bináris osztályozási feladatként van megfogalmazva. Adott egy többjelentésű szó, amely mindkét mondatban előfordul, továbbá egy szófaj címke, kettő index és két szövegrészlet. Egy rendszer feladata, hogy meghatározza, hogy a szó ugyanabban a jelentésben használatos-e mindkét mondatban. A $w$ célszó minden esetben csak egy ige vagy főnév lehet. A célszóhoz két eltérő szövegkörnyezet tartozik. Ezen szövegkörnyezetek mindegyike a $w$ egy specifikus jelentését váltja ki. A feladat annak megállapítása, hogy a $w$ előfordulásai a két szövegkörnyezetben ugyanannak a jelentésnek felelnek-e meg, vagy sem. Tehát a célszó ugyanazt a jelentést hordozza-e két különböző szövegkörnyezetben, vagy eltérőt. Ez egy összetett NLP probléma, mivel ötvözi a szójelentés-egyértelműsítés (Word Sense Disambiguation, WSD) és a kontextuális beágyazások elemeit, így a szójelentés-egyértelműsítés végrehajtásaként is értelmezhető.
+
+\section{Az én céljaim ehhez képest}
+A kutatásom első felének célja a modellek teljesítményének összehasonlítása a WiC-ből szedett kérdéseken volt, ám a többi rendszerrel ellentétben itt nem az volt a cél, hogy minél több kérdésre a gold standard \footnote{A gold standard egy szakértők által hitelesen és konzisztensen annotált adathalmaz, amely viszonyítási alapként szolgál automatikus rendszerek teljesítményének kiértékeléséhez.} szerint válaszoljanak, hanem hogy a szavak sorrendje ne befolyásolja a válaszadásukat. Tehát a
+\begin{verbatim}
+Does the word `w` mean the same thing in `s1` and `s2`?
+\end{verbatim}
+és a
+\begin{verbatim}
+Does the word `w` mean the same thing in `s2` and `s1`?
+\end{verbatim}
+
+kérdésekre mindig ugyanazt válaszolják (változatlan $w$, $s1$ és $s2$ esetén, ahol $w$ egy szó, $s1$ az első példamondat, és $s2$ a második példamondat).
 
 \section{Bináris osztályozás}
 A WiC feladat egy bináris osztályozási (binary classification) problémaként van megfogalmazva: el kell dönteni, hogy egy adott szó két különböző mondatbeli előfordulása ugyanabban az értelemben szerepel-e.
@@ -282,7 +289,7 @@ A tanító adatbázist a korábbi iskolai példára visszatérve úgy képzelhet
 
 \subsection{Korábbi eredmények a WiC adathalmazon}
 A \href{https://pilehvar.github.io/wic/}{Word-in-Context honlapján} található egy eredménytábla, amely bemutatja, hogy egyes modellek és algoritmusok milyen pontossággal WiC adathalmazon számos modellt teszteltek, amelyek túlnyomórészt 60\% feletti eredménnyel kategorizálták helyesen a mondatokat.
-A legjobb eredményt a SenseBERT-large rendszerrel érték el, külső erőforrások használatával. Ez az eredmény megközelíti a kézi, emberi szintű kiértékelést, melynek a felső határa 80\% körüli. A kézi kiértékelésnek és a SenseBERT megoldásának egyszerűsített változatát én is elvégeztem.
+A legjobb eredményt a SenseBERT-large rendszerrel érték el, külső erőforrások használatával. Ez az eredmény megközelíti a kézi, emberi szintű kiértékelést, melynek a felső határa 80\% körüli. A kézi kiértékelésnek és a SenseBERT megoldásának egyszerűsített változatát én is elvégeztem. A kézi kiértékelésemmal közel 65, míg a Python algoritmusommal is közel 60\%-os pontosságot sikerült elérnem.
 
 
 % Requires: \usepackage{booktabs}
@@ -349,21 +356,13 @@ A folyamatosan frissülő rangsor menüben az opciók közül az "Instruction Fo
 
 
 Az oldalon található modellek mind elérhetőek és kipróbálhatóak, és általában saját, felhasználóbarát webes felületük is van, amely személyre szabható, elmenthetőek a korábbi beszélgetéseink, és egyéb kényelmes szolgáltatásokkal kecsegtetnek. Azonban fontos észben tartanunk, hogy ezeket a felületeket fejlesztő cégek bármilyen publikus webes forrást felhasználhatnak a modelljeik tanításához, beleértve a chatben megadott információt.
-A nagy cégeknek, mint például a Google-nek, az OpenAI-nak és a DeepSeek-nek is vannak nyílt forráskódú, jó minőségű modelljeik, melyek hatalmas adathalmazokon be vannak tanítva. Például a GPT-3 tanítása során a Common Crawl Wikipédiát, WebText2 reddit posztokból és linkjeiből kinyert adatokat, internetes könyveket és az angol nyelvű wikipédiát is felhasználták.~\cite{springboard2023gpt3} Régebben a New York Times termékeit is nagy mennyiségben használták, ám a hírlapíró cég ezt felhasználási feltételeiben megtiltotta.~\cite{verge2023nytai}
+A nagy cégeknek, mint például a Google-nek, az OpenAI-nak és a DeepSeek-nek is vannak nyílt forráskódú, jó minőségű modelljeik, melyek hatalmas adathalmazokon be vannak tanítva. Például a GPT-3 tanítása során a Common Crawl Wikipédiát, WebText2 reddit posztokból és linkjeiből kinyert adatokat, internetes könyveket és az angol nyelvű wikipédiát is felhasználták.~\cite{springboard2023gpt3}
 
 A nagy tech cégek, mint a Meta és az X, felhasználják a közösségi médiára feltöltött adatainkat a modelljeik fejlesztéséhez. A Google pedig a felhasználási feltételeit is többször megváltoztatta, hogy felhasználhassa szolgáltatásainak felhasználói adatait az AI termékei fejlesztéséhez. ~\cite{tan2024terms}
 
 
 A Hugging Face~\cite{wolf2019huggingface} [\href{https://huggingface.co/models}{több mint 1.7 millió modellt}] és [\href{https://huggingface.co/datasets}{csaknem 400 ezer adathalmazt}] kínál különféle gépi tanulási feladatokra, beleértve a természetes nyelvfeldolgozást, képfeldolgozást és kódgenerálást is. Ezek a modellek nyilvánosan elérhetők és szabadon használhatók.
-Előnyük, hogy nyílt forráskódúak, így tetszőlegesen módosíthatóak - habár alapos szakértelem kell hozzájuk. Emellett biztonságosak: letölthetőek saját gépre, kódból futtathatóak anélkül, hogy egy szerverrel kommunikálnának. Emiatt privát adatot is be lehet nekik adni. Jellemzően minél kisebb a paraméterszámuk, annál gyengébb a visszaemlékező képességük, rövidebb válaszokat részesítenek előnyben, és annál gyakrabban követnek el hibákat vagy nyelvi torzulásokat - például nyelvtani hibákat, kódban szintaktikai hibákat, inkoherens (összefüggéstelen, logikailag következetlen) válaszokat. A kvantálás általában csak a népszerűbb/nagyobb modelleknél (pl. Llama, Gemma, Mistral) elérhető, és gyakran közösségi kontribúciók eredménye (nem hivatalos verziók). A kvantálás a modell súlyait alacsonyabb bitmélységűre (pl. 32 → 8/4 bit) konvertálja, ami csökkenti a memóriaigényt és gyorsítja a következtetést. Emiatt könnyen félrevezethetőek és könnyen hallucinálnak is. Összefoglalva hátrányaik a
-\begin{itemize}
-	\item
-	      korlátozott kontextusmegértés a csökkentett bitmélység miatt, ezért nehezebben követik a hosszú gondolatmeneteket,
-	\item
-	      gyenge memóriájuk, elfelejtik a korábbi információkat,
-	\item
-	      és túlzott általánosítás is jellemző rájuk.
-\end{itemize}
+Előnyük, hogy nyílt forráskódúak, így tetszőlegesen módosíthatóak. Emellett biztonságosak: letölthetőek saját gépre, kódból futtathatóak anélkül, hogy egy szerverrel kommunikálnának. Emiatt érzékeny adatok feldolgozására is használható. Jellemzően minél kisebb a paraméterszámuk, annál gyengébb a visszaemlékező képességük, rövidebb válaszokat részesítenek előnyben, és annál gyakrabban követnek el hibákat vagy nyelvi torzulásokat - például nyelvtani hibákat, kódban szintaktikai hibákat, inkoherens (összefüggéstelen, logikailag következetlen) válaszokat. Előnyük viszont, hogy gyengébb hardveren is gyorsabban, kevesebb memóriát fogyasztva képesek futni. Nagyméretű modellek gyengébb hardveren való futtatására nyújt megoldást a kvantálás. A kvantálás általában csak a népszerűbb/nagyobb modelleknél (pl. Llama, Gemma, Mistral) elérhető, és gyakran közösségi kontribúciók eredménye (nem hivatalos verziók). A kvantálás a modell súlyait alacsonyabb bitmélységűre (pl. 32 → 8/4 bit) konvertálja, ami csökkenti a memóriaigényt és gyorsítja a következtetést. Emiatt azonban könnyen félrevezethetőek és könnyen hallucinálnak is. Ráadásul a korlátozott kontextusmegértés a csökkentett bitmélység miatt nehezebben követik a hosszú gondolatmeneteket és a gyenge memóriájuk.
 
 \clearpage
 
@@ -374,14 +373,14 @@ Előnyük, hogy nyílt forráskódúak, így tetszőlegesen módosíthatóak - h
 Ahhoz, hogy nagy nyelvi modelleket ki tudjunk értékelni, meg kell ismernünk néhány alapfogalmat.
 
 \subsection{A prompt}
-A prompt alatt az informatikában egy nagy nyelvi modell számára beadott olyan inputot értünk, amelyre a modell egy előre meghatározott kimenetet generál. Működési elve lényegében ugyanaz, mint egy hagyományos konzolnak, parancssori interfésznek, például egy Windows rendszeren a PowerShell, vagy Linuxon Bash terminállal, azonban prompt esetén a kommunikáció emberi nyelven történik.
+A prompt alatt generatív mesterséges intelligenciák esetében egy nagy nyelvi modell számára beadott olyan inputot értünk, amelyre a modell egy előre meghatározott kimenetet generál. Működési elve lényegében ugyanaz, mint egy hagyományos konzolnak, parancssori interfésznek, például egy Windows rendszeren a PowerShell, vagy Linuxon Bash terminállal, azonban prompt esetén a kommunikáció emberi nyelven történik.
 Egy jelentős előnye a promptolásnak, hogy nem csak egy előre meghatározott parancskészletet használhatunk, hanem bármit beírhatunk, nincsenek szintaktikai hibák vagy futtatási hibák, mivel a rendszer minden bemenetre képes választ generálni.
 
 \subsection{Inferencia}
-Egy modell promptra adott válaszát inferenciának nevezik, ami következtetést jelent. Ez arra utal, hogy a modell a megtanult minták alapján futásidőben logikailag következtet a legvalószínűbb kimenetre, bonyolult statisztikai számítással, nem pedig csak szó szerint "visszadobva" a betanított adatokat.
+Egy modell promptra adott válaszát inferenciának nevezzük, ami következtetést jelent. Ez arra utal, hogy a modell a megtanult minták alapján futásidőben logikailag következtet a legvalószínűbb kimenetre, bonyolult statisztikai számítással, nem pedig csak szó szerint "visszadobva" a betanított adatokat.
 
 \subsection{Determinisztikus következtetés, temperature, top-p és top-k}
-A kísérletemnek csak akkor van értelme, ha a futtatás determinisztikus. Azt jelenti, hogy a modell mindig ugyanazt a kimenetet adja ugyanazon bemenet esetén, mivel a véletlenszerűséget kizáró paraméterekkel (pl. $temperature=1.0$, $top-k=0$, $top-p=1.0$) működik. A temperature (hőmérséklet) a nyelvi modellek válaszainak kreativitását szabályozza (magas értéknél változatosabb, alacsonynál determinisztikusabb kimenet), a top-k pedig korlátozza a következő szó választékát a k legvalószínűbb tokenre, míg a top-p (más néven nucleus sampling) dinamikusan választja ki a valószínűségi eloszlás egy részhalmazát (pl. a legvalószínűbb tokeneket, amelyek összege eléri a p küszöböt)~\cite{holtzman2020curious}.
+A Google Colabban elvégzett kísérletemnek csak akkor van értelme, ha a futtatás determinisztikus. Azt jelenti, hogy a modell mindig ugyanazt a kimenetet adja ugyanazon bemenet esetén, mivel a véletlenszerűséget kizáró paraméterekkel (pl. $temperature=1.0$, $top-k=0$, $top-p=1.0$) működik. A temperature (hőmérséklet) a nyelvi modellek válaszainak kreativitását szabályozza (magas értéknél változatosabb, alacsonynál determinisztikusabb kimenet), a top-k pedig korlátozza a következő szó választékát a k legvalószínűbb tokenre, míg a top-p (más néven nucleus sampling) dinamikusan választja ki a valószínűségi eloszlás egy részhalmazát (pl. a legvalószínűbb tokeneket, amelyek összege eléri a p küszöböt)~\cite{holtzman2020curious}.
 
 Tegyük fel, hogy a nyelvi modellnek a következő mondatot kell befejeznie:
 
@@ -436,13 +435,13 @@ A $top-p$ működése hasonló. Annyiban tér el, hogy nem egy fix számú legva
 A \textbf{maximum kimeneti tokenek} paraméter határozza meg, hogy a modell legfeljebb hány tokent generálhat a válasz során. Ez kizárólag a válasz hosszát korlátozza, nem befolyásolja közvetlenül a bemeneti szöveget.
 
 
-A \textbf{kontextusablak} (angolul \textit{context window}) a modell által egyszerre figyelembe vehető tokenek teljes száma – beleértve a bemenetet és a választ is. Ha a bemenet vagy a beszélgetés túl hosszú, a legrégebbi részek elvesznek. A GPT-3 alapértelmezett kontextusablaka 2048 token, míg a GPT-4 esetében ez elérheti a 8192 vagy akár 32\,768 tokent is, verziótól függően.
+A \textbf{kontextusablak} (angolul \textit{context window}) a modell által egyszerre figyelembe vehető tokenek teljes száma – beleértve a bemenetet és a választ is. Ha a bemenet vagy a beszélgetés túl hosszú, a legrégebbi részek elvesznek. A GPT-4 esetében ez elérheti a 8192 vagy akár 32\,768 tokent is, verziótól függően.
 
 
 \chapter{Legkonzisztensebb nagy nyelvi modellek megtalálása}
 
 \subsubsection{Konzisztencia}
-A kutatásom első felének célja a modellek teljesítményének összehasonlítása a WiC-ből szedett kérdéseken volt, de nem az érdekelt elsősorban, hogy minél több kérdésre a gold standard \footnote{A gold standard egy szakértők által hitelesen és konzisztensen annotált adathalmaz, amely viszonyítási alapként szolgál automatikus rendszerek teljesítményének kiértékeléséhez.} szerint válaszoljanak, hanem hogy a szavak sorrendje ne befolyásolja a válaszadásukat. Tehát a
+Mint ahogy már írtam, a kutatásom célja a modellek teljesítményének összehasonlítása a WiC-ből szedett kérdéseken volt, ám nem az volt a cél, hogy minél több kérdésre a gold standard szerint válaszoljanak, hanem hogy a szavak sorrendje ne befolyásolja a válaszadásukat. Tehát a
 \begin{verbatim}
 Does the word `w` mean the same thing in `s1` and `s2`?
 \end{verbatim}
@@ -453,7 +452,7 @@ Does the word `w` mean the same thing in `s2` and `s1`?
 
 kérdésekre mindig ugyanazt válaszolják (változatlan $w$, $s1$ és $s2$ esetén, ahol $w$ egy szó, $s1$ az első példamondat, és $s2$ a második példamondat).
 
-Először a LMArena által és általam ismert legjobb modelleket vizsgáltam meg, hogy mennyire érzékenyek arra, hogyha a 2 mondatot felcseréljük. A WiC adathalmazból előállított kérdésekből szúrópróbaszerűen adtam be kérdéseket a vizsgált modellnek, majd töröltem a modell memóriáját, és ezt a kérdést a 2 mondatot felcserélve is elküldtem a modellnek. A mondatokat ~\ref{chap:src/Framework} src/Framework modullal hoztam létre a WiC adatbázisból, erről majd később írok. Végül egy Google Táblázatban a válaszokból összesítettem az egyes promptolási módszerek pontosságát, kiegyensúlyozott pontosságát, hogy mekkora arányban egyeznek a válaszpárok. A teszthalmazban alapból randomizált sorrendben vannak a kérdések.
+Először a LMArena modelleket vizsgáltam meg, hogy mennyire érzékenyek arra, hogyha a 2 mondatot felcseréljük. A WiC adathalmazból előállított kérdésekből szúrópróbaszerűen adtam be kérdéseket a vizsgált modellnek, majd töröltem a modell memóriáját, és ezt a kérdést a 2 mondatot felcserélve is elküldtem a modellnek. A mondatokat ~\ref{chap:src/Framework} src/Framework/ModelInputPreparer modullal hoztam létre a WiC adatbázisból, erről majd később írok. Végül egy Google Táblázatban a válaszokból összesítettem az egyes promptolási módszerek pontosságát, kiegyensúlyozott pontosságát, hogy mekkora arányban egyeznek a válaszpárok. A teszthalmazban alapból randomizált sorrendben vannak a kérdések.
 \begin{equation}
     \text{pontosság} = \frac{TP + TN}{TP + TN + FP + FN}
 \end{equation}
@@ -467,9 +466,9 @@ Először a LMArena által és általam ismert legjobb modelleket vizsgáltam me
 
   {\large\bf Hugging Face modellek}
 
-Olyan modellt szerettem volna választani az összehasonlításhoz, amelyek nyílt forráskódúak, nagyjából azonos, másfél milliárd és 5 milliárd közötti paraméterszámúak, de legfeljebb 2 milliárd paraméterszám-különbség van köztük. A \href{https://colab.research.google.com/}{Google Colab} webes Python futtatókörnyezetet, Hugging Face modelleket, és a nagy cégek modelljeinek hivatalos API-jait használtam.
+Olyan modelleket választottam az összehasonlításhoz, amelyek nyílt forráskódúak, nagyjából azonos, másfél milliárd és 5 milliárd közötti paraméterszámúak, de legfeljebb 2 milliárd paraméterszám-különbség van köztük. A \href{https://colab.research.google.com/}{Google Colab} webes Python futtatókörnyezetet, Hugging Face modelleket használtam.
 
-Először is, ahhoz, hogy egyértelmű eredményt kapjak a modell teljesítésére, ahol csak lehetett, minden véletlenszerűséget biztosító paramétert ki kellett kapcsolnom. Erre azért volt szükség, hogy ne a szerencsén múljon az, hogy a modell két válasza megegyezik, vagy eltér, hanem a modell felépítésén. A sztochasztikus faktorokkal ugyanis ugyanarra a kérdésre eltérő futtatáskor eltérő választ adhat egy modell, ami nem vezet hiteles kutatáshoz. A LMArena és a Google AI Studio oldalán van erre lehetőség.
+Először is, ahhoz, hogy egyértelmű eredményt kapjak a modell teljesítésére, ahol csak lehetett, minden véletlenszerűséget biztosító paramétert ki kellett kapcsolnom. Erre azért volt szükség, hogy ne a szerencsén múljon az, hogy a modell két válasza megegyezik, vagy eltér, hanem a modell felépítésén. A sztochasztikus faktorokkal ugyanis ugyanarra a kérdésre eltérő futtatáskor eltérő választ adhat egy modell, ami nem vezet hiteles összehasonlításhoz. A LMArena és a Google AI Studio oldalán van erre lehetőség.
 
 Hogy ezt elérjem, a \textit{temperature} értékét 0-ra, a \textit{top-p} értékét pedig 1-re állítottam. Ezáltal a válaszok sztochasztikus változatosságát minimálisra redukáltam.
 
@@ -488,17 +487,11 @@ Hogy ezt elérjem, a \textit{temperature} értékét 0-ra, a \textit{top-p} ért
 
 A véletlen faktor kikapcsolása mellett az is fontos volt, hogy egyesével adjam be a kérdéseket. Amikor ugyanis egyszerre $N$ kérdéssel bombáztam a modelleket, akkor az is egy figyelembe veendő tényező volt, hogy az $N$ kérdés milyen sorrendben lett feltéve. Ráadásul a modellek, ha egyszerre túl sok kérdést kaptak, jellemzően csak 40-60 kérdésre válaszoltak, az utána lévőket teljesen ignorálták. Ezzel szemben, ha minden kérdés esetén tiszta lappal indítottam, és új, független promptként adtam be, akkor ez a hatás nem tudott bezavarni. Emiatt tisztább a kísérlet, ha a modell nem egyszerre kapja meg mind az $N$ mondatot, amiről a döntést várjuk, hanem $N$ darab olyan kérdésként, amelyekben egyenként csak pontosan egy kérdés szerepel.
 
-Ezt a fajta módszert, hogy a webes felületek input mezőjébe adtam be a kérdéseket, eredetileg egy, a Témavezetőm által készített és javasolt Google Colab jegyzetfüzetet~\cite{berend2025phi} fejlesztettem tovább. Ez egy egyszerű, de hatékony jegyzetfüzet, amellyel Hugging Face token birtokában tetszőleges modell válaszadásra bírható, és mindez hatékonyan automatizálható. Ám nem voltam elégedett a környezet adta korlátozásokkal, pl. session-alapú futtatókörnyezet, amely a session végével törli az adataimat, lassú csatlakozási idő a távoli hardverekhez, limitált erőforrás-hozzáférés, perzisztens adattárolási lehetőségek hiánya. Emiatt PyCharmot használtam fejlesztői környezetnek.
+Eredetileg egy, a Témavezetőm által készített és javasolt Google Colab jegyzetfüzetet~\cite{berend2025phi} fejlesztettem tovább. Ez egy egyszerű, de hatékony jegyzetfüzet, amellyel Hugging Face token birtokában tetszőleges modell válaszadásra bírható, és mindez hatékonyan automatizálható. Ám nem voltam elégedett a környezet adta korlátozásokkal, pl. session-alapú futtatókörnyezet, amely a session végével törli az adataimat, lassú csatlakozási idő a távoli hardverekhez, limitált erőforrás-hozzáférés, perzisztens adattárolási lehetőségek hiánya. Emiatt PyCharm fejlesztői környezetet használtam a keretendszer elkészítésére, lásd később\ref{chap:src/Framework}.
 
-
-% Hogy ezt elérjem, 2 kérdéssort készítettem.
-% \begin{itemize}
-% 	\item Egyrészt a \href{https://pilehvar.github.io/wic/package/WiC\_dataset.zip}{WiC adathalmazra} alapuló kérdéshalmazomból, főleg a  teszt részosztályból szúrópróbaszerűen randomizált kérdéseket tettem fel és adtam be a modelleknek, 60 darabot.
-%     \item Másrészt, szintén a kérdéshalmazomból, főleg a  teszt részosztályból kiválasztottam egy pár, egymáshoz nagyon hasonló és/vagy egzotikusabb szót, vagy bonyolultabb szövegkörnyezetet tartalmazó mondatot, amelyekkel könnyű a modellt összezavarni.
-% \end{itemize}
 
 \section{A megfelelő nyelvi modellek kiválasztása}
-A nagy AI cégek, mint az OpenAI, Anthropic és a DeepSeek olyan fejlett általános célú generatív mesterséges intelligencia modelljeik vannak, amelyek minden kategóriában csúcsteljesítményt nyújtanak, vállvetve a Google, Microsoft, X és Meta technológiai óriásokkal, csak hogy párat említsek. Azonban a feladatom megfogalmazásában szerepelt, hogy ingyenes és nyílt forráskódú modelleket kell megvizsgálnom, így ezek többsége nem jöhetett szóba. Kíváncsiságból azonban mégis megvizsgáltam a következő modelleket:
+A nagy AI cégek, mint az OpenAI, Anthropic és a DeepSeek olyan fejlett általános célú generatív mesterséges intelligencia modelljeik vannak, amelyek minden kategóriában csúcsteljesítményt nyújtanak, vállvetve a Google, Microsoft, X és Meta technológiai óriásokkal, csak hogy párat említsek. Összevettettem a modelljeik webes felületén található modelljeik teljesítményét webes promptolással:
 
 
 \begin{itemize}
@@ -516,23 +509,24 @@ A nagy AI cégek, mint az OpenAI, Anthropic és a DeepSeek olyan fejlett által�
 \begin{tabular}{|l|c|c|c|}
 \hline
 \textbf{Modell neve} & \textbf{Helyes válaszok (db/összes)} & \textbf{Pontosság} (\%) & \textbf{Konzisztencia (\%)} \\ \hline
-GPT & ???/2800 & 76??? & 90??? \\ \hline
-Claude & ???/2800 & 73??? & 87??? \\ \hline
-DeepSeek & ???/2800 & 75??? & 83??? \\ \hline
-Gemini & ???/2800 & 82??? & 91??? \\ \hline
-Grok & ???/2800 & 67??? & 84??? \\ \hline
+GPT & 143/188 & 76 & 90 \\ \hline
+Claude & 138/188 & 73 & 87 \\ \hline
+DeepSeek & 141/188 & 75 & 83 \\ \hline
+Gemini & 156/188 & 82 & 91 \\ \hline
+Grok & 126/188 & 67 & 84 \\ \hline
 \end{tabular}
 }
 \caption{Nagy nyelvi modellek teljesítményértékelése. Az 2800 kérdés a 1400 egyenes, valamint 1400 fordított sorrendben beadott kérdésből álló prompt-korpusz egyenes és fordított beadásából tevődik össze.}
 \end{table}
 
-Hogy a promptolást automatizáljam, Hugging Face-en elérhető modelleket futtattam a Google Colab szkriptemben~\ref{att:colab}.\\ A Témavezetőm által ajánlott modellek közül a
+\section{Kiválasztott Hugging Face modellek}
+A Google Colab szkriptemben~\ref{att:colab}.\\ a Témavezetőm által ajánlott modelleket, a
 \begin{itemize}
     \item \href{https://huggingface.co/microsoft/Phi-4-mini-instruct}{Microsoft/Phi-4-mini-instruct}~\cite{phi4mini2024},
     \item \href{https://huggingface.co/google/gemma-2-2b-it}{Google/Gemma-2-2b-it}~\cite{gemma22b2024} és a
     \item \href{https://huggingface.co/Qwen/Qwen1.5-1.8B-Chat}{Qwen1.5-1.8B-Chat}~\cite{qwen15chat2024}
 \end{itemize}
- modelleket választottam, mert ezek elég jók méret/minőség arányban a közösségi média fórumok szerint. Közelítő arányban sincsenek a nagy AI és tech cégek top modelljeivel, de a méretükhöz képest gazdag szókinccsel és jó nyelvérzékkel rendelkeznek. Mind a hármat közepes és nehéz kérdéseken, mind a 3 kérdésnehézséget egyenes és fordított sorrendben teszteltem. Ez így összesen \texttt{3*3*2=18} kiértékelést jelentett. Hangsúlyozom, hogy nem a {gemma-2b-it}, hanem a {gemma-\textit{2}-2b-it} változatot választottam. Az elnevezési szabály kissé összezavaró, ugyanis {gemma-\textit{x}b...} kezdetű modellek első generációs változatok, míg a {gemma-2-\textit{x}b...} a második, és a {gemma-3-\textit{x}b...} a harmadik generációs modelleket jelöli. A gemma 3 család 2025 tavaszán tétetett közzé, így erről átfogó vizsgálatot nem végeztem, ám feltehetően jobb a szójelentés-felismerés feladatokban, mint elődje.
+ modelleket hasonlítom össze, mert ezek elég jók méret/minőség arányban a közösségi média fórumok szerint. Közelítő arányban sincsenek a nagy AI és tech cégek top modelljeivel, de a méretükhöz képest gazdag szókinccsel és jó nyelvérzékkel rendelkeznek. Mind a hármat közepes és nehéz kérdéseken, mindkét kérdésnehézséget egyenes és fordított sorrendben teszteltem. Ez így összesen \texttt{3*3*2=18} kiértékelést jelentett. Hangsúlyozom, hogy nem a {gemma-2b-it}, hanem a {gemma-\textit{2}-2b-it} változatot választottam. Az elnevezési szabály kissé összezavaró, ugyanis {gemma-\textit{x}b...} kezdetű modellek első generációs változatok, míg a {gemma-2-\textit{x}b...} a második, és a {gemma-3-\textit{x}b...} a harmadik generációs modelleket jelöli. A gemma 3 család 2025 tavaszán tétetett közzé, így erről átfogó vizsgálatot nem végeztem, ám feltehetően jobb a szójelentés-felismerés feladatokban, mint elődje.
 A modellek eredményeit összessítő táblázat a 4.1. táblázatban látható.\ref{tab:model-eval-summary}
 
 
@@ -618,9 +612,10 @@ Ugyanazt jelenti-e a \textit{w} szó az \textit{s1} és \textit{s2} mondatban?
 
 Ahol \textit{w} egy szó, \textit{s1} az első példamondat, és \textit{s2} a második példamondat.
 
-% TODO delete?
+% TODO delete, mert ez már nem is létezik ebben a formában
 \subsection{A modelleket tesztelő kérdések}
-Alapos tesztelés után azt találtam, hogy nem célszerű a teljes nyers adathalmazból előállított kérdéseket beadni a modelleknek, helyette 3 gondosan összeállított kérdéshalmazzal értékeltem ki a teljesítményüket. % 60 véletlenszerű példára elegendő tesztelni, a teszthalmaz 1400 kérdésének lefutása nagyon sok idő, és nem ad annyi hozzáadott információt.
+Két gondosan összeállított kérdéshalmazzal értékeltem ki a teljesítményüket.
+
 \begin{itemize}
 	\item Egyrészt a \href{https://pilehvar.github.io/wic/package/WiC\_dataset.zip}{WiC adathalmaz}ra alapuló kérdéshalmazomból szúrópróbaszerűen randomizált kérdéseket tettem fel és adtam be a modelleknek, főleg a  teszthalmazból.
     \item Másrészt, szintén a kérdéshalmazomból kiválasztottam pár hasonló szót, vagy szövegkörnyezetet tartalmazó mondatot, amelyekkel könnyű a modellt összezavarni.
@@ -671,7 +666,7 @@ Key: Does the word "{word}" mean the same thing in
 "{sentence1}" and "{sentence2}"?
 Value: Yes VAGY No
 \end{lstlisting}
-% TODO delete?
+% END TODO delete?
 
 
 \subsection{Futtatás}
@@ -1046,6 +1041,9 @@ Ezzel a fenti módszerrel garantáltan megtalálja a Python a szkriptekben megad
  \caption{példa válasz a `Qwen/Qwen2.5-0.5B-Instruct` futtatására 9 kérdésen}
  \label{fig:PeldaValasz}
 \end{figure}
+
+\subsection{Megjegyzés}
+Fontosnak tartom megjegyezni, hogy a Python keretrendszernek van egy fontos hátránya a Google Colab megoldásommal szemben: Itt a modell nem 2800 futtatásban válaszol egyesével a 2800 kérdésre, hanem egy futtatásban a megadott számú kérdésre. Emiatt a Colab megoldással szemben itt ha inputként megadjuk a kérdéseket egyenes és fordított sorrendben is, akkor a modell látja a modell a korábbi kérdésre adott válaszait. Ha ezt szeretnénk elkerülni, akkor kétszer kell lefuttatni a modell inferenciát, egyszer egyenes, majd fordított kérdésekkel.
 
 
 \chapter*{Nyilatkozat}
