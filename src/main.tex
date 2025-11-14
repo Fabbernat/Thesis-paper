@@ -1011,7 +1011,7 @@ A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legu
 
 
 \subsection{A programok futtatása}
-A PyCharm IDE kínál egyszerű és felhasználóbarát futtatási módokat - a zöld háromszög ikonokat kell keresni, azzal lehet tetszőleges .py kiterjesztésű fájlt futtatni. Mivel azonban a projektem kódja sok fájlból, külsős csomagokból és összetett projektszerkezetból áll, és a zöld gomb nem biztos, hogy megfelelő útvonalakon keresi majd a modulokat, a legbiztonságosabb és legprofesszionálisabb mód a terminálos futtatás. Én, mivel Windows-on fejlesztettem, a \href{https://learn.microsoft.com/en-us/powershell/}{PowerShell} terminált használtam fejlesztéshez és futtatáshoz, ezt ajánlom, de a \href{https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands}{Command Prompt Shell} is teljesen megfelelő.
+A PyCharm IDE kínál egyszerű és felhasználóbarát futtatási módokat - a zöld háromszög ikonokat kell keresni, azzal lehet tetszőleges .py kiterjesztésű fájlt futtatni. Ez a projektem esetén is működik. A keretrendszer main.py fájlokat kell elindítani a modulok lefuttatásához. Mivel azonban a projektem kódja sok fájlból, külsős csomagokból és összetett projektszerkezetból áll, és a zöld gomb nem biztos, hogy megfelelő útvonalakon keresi majd a modulokat, a legbiztonságosabb és legprofesszionálisabb mód a terminálos futtatás. Én, mivel Windows-on fejlesztettem, a \href{https://learn.microsoft.com/en-us/powershell/}{PowerShell} terminált használtam fejlesztéshez és futtatáshoz, ezt ajánlom, de a \href{https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands}{Command Prompt Shell} is teljesen megfelelő.
 
 Futtatás 3 lépésben:\\
 Elsőnek klónozzuk a projekt forráskódját a gépünkre, pl. a \begin{lstlisting}
@@ -1068,6 +1068,9 @@ Windowson szükség lehet a  \begin{lstlisting}
  \caption{példa válasz a `Qwen/Qwen2.5-0.5B-Instruct` futtatására 9 kérdésen}
  \label{fig:PeldaValasz}
 \end{figure}
+
+\subsection{Platformfüggetlenség}
+A szoftvert 3, eltérő architektúrájú és operációs rendszerű gépen is teszteltem. Teszteltem Asus laptopon és különböző toronygépházas gépeken, Windows 10-en, 11-en, Linuxon is működött a konzolos futtatás.
 
 \subsection{Megjegyzés}
 Fontosnak tartom megjegyezni, hogy a Python keretrendszernek van egy fontos hátránya a Google Colab megoldásommal szemben: Itt a modell nem 2800 futtatásban válaszol egyesével a 2800 kérdésre, hanem egy futtatásban a megadott számú kérdésre. Emiatt a Colab megoldással szemben itt ha inputként megadjuk a kérdéseket egyenes és fordított sorrendben is, akkor a modell látja a modell a korábbi kérdésre adott válaszait. Ha ezt szeretnénk elkerülni, akkor kétszer kell lefuttatni a modell inferenciát, egyszer egyenes, majd fordított kérdésekkel.
