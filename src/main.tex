@@ -209,7 +209,7 @@ szöveget értő nyelvi modellek fejlesztése kiemelten fontos mind az akadémia
 \chapter{Elméleti háttér}
 
 \section{Megelőző lépések}
-A szoftver lefejlesztése előtt átelemeztem az jelenlegi legjobb módszereket és nyílt forráskódú nyelvi modelleket a Témavezetőm által javasolt LMArena és Hugging Face felületein, továbbá az utóbbiak futtatásának dokumentációját tanulmányoztam, mert azokra a keretrendszer elkészítéséhez szükség volt.
+A szoftver lefejlesztése előtt átelemeztem az jelenlegi legjobb módszereket és nyílt forráskódú nyelvi modelleket a Témavezetőm által javasolt LMArena és Hugging Face felületein, továbbá az utóbbiak futtatásának dokumentációját tanulmányoztam, mert azokra a szoftver elkészítéséhez szükség volt.
 
  \section{A szoftver}
  A megoldásom során törekedtem arra, hogy az bárki által reprodukálható legyen, ezért ingyenesen elérhető és nyílt forráskódú eszközöket (Python, GitHub, Hugging Face) használtam.
@@ -487,7 +487,7 @@ Hogy ezt elérjem, a \textit{temperature} értékét 0-ra, a \textit{top-p} ért
 
 A véletlen faktor kikapcsolása mellett az is fontos volt, hogy egyesével adjam be a kérdéseket. Amikor ugyanis egyszerre $N$ kérdéssel bombáztam a modelleket, akkor az is egy figyelembe veendő tényező volt, hogy az $N$ kérdés milyen sorrendben lett feltéve. Ráadásul a modellek, ha egyszerre túl sok kérdést kaptak, jellemzően csak 40-60 kérdésre válaszoltak, az utána lévőket teljesen ignorálták. Ezzel szemben, ha minden kérdés esetén tiszta lappal indítottam, és új, független promptként adtam be, akkor ez a hatás nem tudott bezavarni. Emiatt tisztább a kísérlet, ha a modell nem egyszerre kapja meg mind az $N$ mondatot, amiről a döntést várjuk, hanem $N$ darab olyan kérdésként, amelyekben egyenként csak pontosan egy kérdés szerepel.
 
-Eredetileg egy, a Témavezetőm által készített és javasolt Google Colab jegyzetfüzetet~\cite{berend2025phi} fejlesztettem tovább. Ez egy egyszerű, de hatékony jegyzetfüzet, amellyel Hugging Face token birtokában tetszőleges modell válaszadásra bírható, és mindez hatékonyan automatizálható. Ám nem voltam elégedett a környezet adta korlátozásokkal, pl. session-alapú futtatókörnyezet, amely a session végével törli az adataimat, lassú csatlakozási idő a távoli hardverekhez, limitált erőforrás-hozzáférés, perzisztens adattárolási lehetőségek hiánya. Emiatt PyCharm fejlesztői környezetet használtam a keretendszer elkészítésére, lásd később\ref{chap:src/Framework}.
+Eredetileg egy, a Témavezetőm által készített és javasolt Google Colab jegyzetfüzetet~\cite{berend2025phi} fejlesztettem tovább. Ez egy egyszerű, de hatékony jegyzetfüzet, amellyel Hugging Face token birtokában tetszőleges modell válaszadásra bírható, és mindez hatékonyan automatizálható. Ám nem voltam elégedett a környezet adta korlátozásokkal, pl. session-alapú futtatókörnyezet, amely a session végével törli az adataimat, lassú csatlakozási idő a távoli hardverekhez, limitált erőforrás-hozzáférés, perzisztens adattárolási lehetőségek hiánya. Emiatt PyCharm fejlesztői környezetet használtam a keredtendszer elkészítésére, lásd később\ref{chap:src/Framework}.
 
 
 \section{A megfelelő nyelvi modellek kiválasztása}
@@ -612,9 +612,9 @@ Ugyanazt jelenti-e a \textit{w} szó az \textit{s1} és \textit{s2} mondatban?
 
 Ahol \textit{w} egy szó, \textit{s1} az első példamondat, és \textit{s2} a második példamondat.
 
-% TODO delete, mert ez már nem is létezik ebben a formában
+% TODO delete?
 \subsection{A modelleket tesztelő kérdések}
-Két gondosan összeállított kérdéshalmazzal értékeltem ki a teljesítményüket.
+Alapos tesztelés után azt találtam, hogy nem célszerű a teljes nyers adathalmazból előállított kérdéseket beadni a modelleknek, helyette 2 gondosan összeállított kérdéshalmazzal értékeltem ki a teljesítményüket.
 
 \begin{itemize}
 	\item Egyrészt a \href{https://pilehvar.github.io/wic/package/WiC\_dataset.zip}{WiC adathalmaz}ra alapuló kérdéshalmazomból szúrópróbaszerűen randomizált kérdéseket tettem fel és adtam be a modelleknek, főleg a  teszthalmazból.
@@ -666,7 +666,7 @@ Key: Does the word "{word}" mean the same thing in
 "{sentence1}" and "{sentence2}"?
 Value: Yes VAGY No
 \end{lstlisting}
-% END TODO delete?
+% TODO delete?
 
 
 \subsection{Futtatás}
@@ -994,6 +994,7 @@ A main.py a fő belépési pont, itt lehet elindítani a main függvényt, amely
 
 A run.py pedig lefuttatja a program maradék részét, az összes modul-, függvény-, osztályhívást, tehát a program vezérlését végezve, azt általában további szkriptekre átruházva.
 
+Mindhárom modul futásideje mérve van, a "time" Python modul "perf\_counter" algoritmusával mérve. A futásidő konzolos logként tekinthető meg.
 
 \section{ModelInputPreparer}
 Ide jön a ModelInputPreparer részletes leírása.
@@ -1002,6 +1003,8 @@ Ide jön a ModelInputPreparer részletes leírása.
 Ide jön a HuggingFaceModelInferencer részletes leírása.
 
 \section{ModelOutputProcessor}
+A modelOutputProcessor bemenete a HuggingFaceModelInferencerben futtatott modell válasza. A modul algoritmikusan végigmegy a válaszok sorain, amelyeknek az első fele az egyenes, második fele a fordított kérdéseket kell, hogy tartalmazza. Emiatt elvárás, hogy az input fájl páros sorból álljon. Ha mégsem, akkor a felhasználó figyelmeztetést kap erről, és a megerősítésére a program megpróbálja helyreállítani az emiatt keletkező anomáliákat.
+
 \subsubsection{LogFile}
 A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit. A fájlhoz append módban minden futtatás után hozzáíródik, hogy ki futtatta, mikor, és a futás eredményei, statisztikákkal.
 
@@ -1011,29 +1014,53 @@ A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legu
 A PyCharm IDE kínál egyszerű és felhasználóbarát futtatási módokat - a zöld háromszög ikonokat kell keresni, azzal lehet tetszőleges .py kiterjesztésű fájlt futtatni. Mivel azonban a projektem kódja sok fájlból, külsős csomagokból és összetett projektszerkezetból áll, és a zöld gomb nem biztos, hogy megfelelő útvonalakon keresi majd a modulokat, a legbiztonságosabb és legprofesszionálisabb mód a terminálos futtatás. Én, mivel Windows-on fejlesztettem, a \href{https://learn.microsoft.com/en-us/powershell/}{PowerShell} terminált használtam fejlesztéshez és futtatáshoz, ezt ajánlom, de a \href{https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands}{Command Prompt Shell} is teljesen megfelelő.
 
 Futtatás 3 lépésben:\\
-Elsőnek klónozzuk a projekt forráskódját a gépünkre, pl. a \begin{verbatim}
-    C:\Users\<Felhasználónév>\PycharmProjects\
-\end{verbatim} elérési útra. Ajánlott a projekt nevét "Thesis" néven hagyni.
-Következőnek lépjünk a projekt gyökérmappájába. Adjuk ki a \begin{verbatim}
-    & .\.venv\Scripts\Activate.ps1
-\end{verbatim} parancsot a virtuális környezet aktiválásához. Majd adjuk ki a \begin{verbatim}
-    pip install torch transformers accelerate
-\end{verbatim} parancsot a szükséges csomagok telepítéséhez. Ha nagyobb modelleket is szeretnénk futtatni, akkor más csomagokra is szükség lehet. Ez esetben a \begin{verbatim}
-    pip install torch transformers accelerate hf_xetm optimum
-\end{verbatim} az ajánlott parancs.
+Elsőnek klónozzuk a projekt forráskódját a gépünkre, pl. a \begin{lstlisting}
+    ~\PycharmProjects\
+\end{lstlisting} elérési útra. Ajánlott a projekt nevét "Thesis" néven hagyni.
+Következőnek lépjünk a projekt gyökérmappájába. Adjuk ki a \begin{lstlisting}
+  ~\PycharmProjects\Thesis>  & .\.venv\Scripts\Activate.ps1
+\end{lstlisting} parancsot a virtuális környezet aktiválásához. Majd adjuk ki a \begin{lstlisting}
+   ~\PycharmProjects\Thesis> pip install torch transformers accelerate huggingface_hub
+\end{lstlisting} parancsot a szükséges csomagok telepítéséhez. Ha nagyobb modelleket is szeretnénk futtatni, akkor más csomagokra is szükség lehet. Ez esetben a \begin{lstlisting}
+   ~\PycharmProjects\Thesis> pip install torch transformers accelerate huggingface_hub accelerate hf_xetm optimum
+\end{lstlisting} az ajánlott parancs.
 
-Itt kétféle opciónk van. Egyszerű mindhárom modelt lefuttató futtatásért adjuk ki a gyökérkönyvtárban ( - ahol a /.git/ és az /src/ mappa van -) a
-\begin{verbatim}
-py -m src.Framework.globalMain
-\end{verbatim} parancsot. Vagy ha csak egy modult szeretnénk futtatni, akkor szintén a gyökérkönyvtárból adjuk ki a \begin{verbatim}
-    py -m src.Framework.<modul neve>.main
-\end{verbatim} parancsot. A modul neve helyére a ModelInputPreparer, HuggingFaceModelInferencer, vagy ModelOutputProcessor kerülhet.
+Itt kétféle opciónk van. Egyszerű mindhárom modellt lefuttató futtatásért adjuk ki a gyökérkönyvtárban ( - ahol a /.git/ és az /src/ mappa van -) a
+\begin{lstlisting}
+~\PycharmProjects\Thesis> py -m src.Framework.globalMain
+\end{lstlisting} parancsot. Vagy ha csak egy modult szeretnénk futtatni, akkor szintén a gyökérkönyvtárból adjuk ki a \begin{lstlisting}
+   ~\PycharmProjects\Thesis> py -m src.Framework.<modul neve>.main
+\end{lstlisting} parancsot. A modul neve helyére a ModelInputPreparer, HuggingFaceModelInferencer, vagy ModelOutputProcessor kerülhet, tehát a tényleges parancsok
+\begin{lstlisting}
+    ~\PycharmProjects\Thesis> py -m src.Framework.ModelInputPreparer.main
 
-Windowson szükség lehet a  \begin{verbatim}
-    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-\end{verbatim} parancs kiadására ahhoz, hogy az operációs rendszer engedélyezze a Python szkriptek futtatását.
+    ~\PycharmProjects\Thesis> py -m src.Framework.HuggingFaceModelInferencer.main
 
+    ~\PycharmProjects\Thesis> py -m src.Framework.ModelOutputProcessor.main
+
+\end{lstlisting}
 Ezzel a fenti módszerrel garantáltan megtalálja a Python a szkriptekben megadott modulokat.
+
+Paramétert nem vár egyik modul sem. A paraméterezés helyette a config és a ".in" kiterjesztésű fájlokban történik.
+
+Hogyha több Python verziót is használunk, akkor annak is jelentősége lehet, hogy milyen verziójú interpreterrel futtatjuk.  Tehát lehet, hogy például 3.12-es verzióval nem fut le, de 3.13-assal már igen. Ez esetben ezt is expliciten meg kell adni futtatáskor egy kapcsolóval, az alábbi módon:
+
+\begin{lstlisting}
+~\PycharmProjects\Thesis> py -3.13 -m src.Framework.globalMain
+\end{lstlisting}
+
+\begin{lstlisting}
+    ~\PycharmProjects\Thesis> py -3.13 -m src.Framework.ModelInputPreparer.main
+
+    ~\PycharmProjects\Thesis> py -3.13 -m src.Framework.HuggingFaceModelInferencer.main
+
+    ~\PycharmProjects\Thesis> py -3.13 -m src.Framework.ModelOutputProcessor.main
+\end{lstlisting}
+
+Windowson szükség lehet a  \begin{lstlisting}
+    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+\end{lstlisting} parancs kiadására ahhoz, hogy az operációs rendszer engedélyezze a Python szkriptek futtatását.
+
 
 \begin{figure}
  \centering
