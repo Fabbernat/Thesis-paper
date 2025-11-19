@@ -995,12 +995,15 @@ Data mappák: az egyes modulokhoz tartozó input és output fájlok tárolását
 
 
 \section{A modulok szerkezete}
-Mindhárom modul gyökérkönyvtárában megtalálható az alábbi 3 python fájl.
-A config.py a konfigurációs fájl, futtatás előtt lehet módosítani az előre beállított, nagybetűsített globális változókban tárolt beállításokat.
+Mindhárom modul gyökérkönyvtárában megtalálható az alábbi 3 Python fájl.
 
-A main.py a fő belépési pont, itt lehet elindítani a main függvényt, amely csak elindítja programot, átadva a futást a run.py szkriptnek.
+A \verb|config.py| a konfigurációs fájl, futtatás előtt lehet módosítani az előre beállított, nagybetűsített globális változókban tárolt beállításokat.
 
-A run.py pedig lefuttatja a program maradék részét, az összes modul-, függvény-, osztályhívást, tehát a program vezérlését végezve, azt általában további szkriptekre átruházva.
+A \verb|main.py| a fő belépési pont, itt lehet elindítani a main függvényt, amely csak elindítja programot, átadva a futást a run.py szkriptnek.
+
+A \verb|run.py| pedig lefuttatja a program maradék részét, az összes modul-, függvény-, osztályhívást, tehát a program vezérlését végezve, azt általában további szkriptekre átruházva.
+
+A HuggingFaceModelInferencer modulban található egy \verb|modelname.py| fájl is, amely biztosítja, hogy bármelyik másik modulba be lehessen importálni a kiválasztott modell nevét, anélkül, hogy egyéb függőséget behúznánk.
 
 Mindhárom modul futásideje mérve van, a "time" Python modul "perf\_counter" algoritmusával mérve. A futásidő konzolos logként tekinthető meg.
 
@@ -1008,7 +1011,7 @@ Mindhárom modul futásideje mérve van, a "time" Python modul "perf\_counter" a
 A ModelInputPreparer, amely a WiC adathalmazból létrehozza a modellnek szánt inputot, a 2800 kérdést. Ez a 'WiC adathalmaz' 'test' splitjének összes rekordjából létrehoz egy kérdést, mind egyenes, mind fordított sorrendben, hogy a modellek konzisztenciáját vizsgáljuk. Mivel 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így jön ki az 2800 kérdés.
 
 \section{HuggingFaceModelInferencer}
-A HuggingFaceModelInferencer modulban történik a konkrét modell lefuttatása. A modell tetszőleges lehet, de a ajánlott a config fájlban található "supported\_models" listában lévő modellek közül, az elöl elhelyezkedő modellek közül választani, mert ezek kompatibilisebbek a keretrendszerrel.
+A HuggingFaceModelInferencer modulban történik a konkrét modell lefuttatása. A modell tetszőleges lehet, de a ajánlott a \verb|modelname.py| fájlban található \verb|supported\_models| listában lévő modellek közül, az elöl elhelyezkedő modellek közül választani, mert ezek kompatibilisebbek a keretrendszerrel.
 
 \section{ModelOutputProcessor}
 A modelOutputProcessor bemenete a HuggingFaceModelInferencerben futtatott modell válasza. A modul algoritmikusan végigmegy a válaszok sorain, amelyeknek az első fele az egyenes, második fele a fordított kérdéseket kell, hogy tartalmazza. Emiatt elvárás, hogy az input fájl páros sorból álljon. Ha mégsem, akkor a felhasználó figyelmeztetést kap erről, és a megerősítésére a program megpróbálja helyreállítani az emiatt keletkező anomáliákat.
@@ -1022,9 +1025,7 @@ A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legu
 A PyCharm IDE kínál egyszerű és felhasználóbarát futtatási módokat - a zöld háromszög ikonokat kell keresni, azzal lehet tetszőleges .py kiterjesztésű fájlt futtatni. Ez a projektem esetén is működik. A keretrendszer main.py fájlokat kell elindítani a modulok lefuttatásához. Mivel azonban a projektem kódja sok fájlból, külsős csomagokból és összetett projektszerkezetból áll, és a zöld gomb nem biztos, hogy megfelelő útvonalakon keresi majd a modulokat, a legbiztonságosabb és legprofesszionálisabb mód a terminálos futtatás. Én, mivel Windows-on fejlesztettem, a \href{https://learn.microsoft.com/en-us/powershell/}{PowerShell} terminált használtam fejlesztéshez és futtatáshoz, ezt ajánlom, de a \href{https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands}{Command Prompt Shell} is teljesen megfelelő.
 
 Futtatás 3 lépésben:\\
-Elsőnek klónozzuk a projekt forráskódját a gépünkre, pl. a \begin{lstlisting}
-    ~\PycharmProjects\
-\end{lstlisting} elérési útra. Ajánlott a projekt nevét "Thesis" néven hagyni.
+Elsőnek klónozzuk a projekt forráskódját a gépünkre, pl. a \verb|~\PycharmProjects\| elérési útra. Ajánlott a projekt nevét "Thesis" néven hagyni.
 Következőnek lépjünk a projekt gyökérmappájába. Adjuk ki a \begin{lstlisting}
   ~\PycharmProjects\Thesis>  & .\.venv\Scripts\Activate.ps1
 \end{lstlisting} parancsot a virtuális környezet aktiválásához. Majd adjuk ki a \begin{lstlisting}
