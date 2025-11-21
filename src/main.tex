@@ -143,24 +143,19 @@ A hallgató feladata egy olyan keretrendszer megvalósítása, amely lehetővé 
 
 \chapter*{Tartalmi összefoglaló}
 \addcontentsline{toc}{section}{Tartalmi összefoglaló}
-
-
-
-\subsubsection{A téma megnevezése}
-
+\subsubsection{\textit{A téma megnevezése}}
     A nagy nyelvi modellek szemantikus
 képességeinek konzisztenciájának vizsgálata.
 
 
-\subsubsection{A feladat megfogalmazása}
-
+\subsubsection{\textit{A feladat megfogalmazása}}
     A vizsgálathoz használandó adathalmaz a \href{https://pilehvar.github.io/wic/}{Word-in-Context dataset}. A kérdéseket egyenes és fordított sorrendben is fel kell tenni a modelleknek, majd összehasonlítani a válaszaikat az azonos tartalmú, de felcserélt szósorrendű kérdésekre, ezzel felmérve a szemantikus képességeiket és nyelvi konzisztenciájukat erre az emberek számára triviális, de a modellek számára problémát okozó feladat megoldására.
 
- \subsubsection{A megoldási mód}
+ \subsubsection{\textit{A megoldási mód}}
+    % Ez lényegében egy optimalizálási feladat, az optimalizálandó paraméterek a modellnek beadott prompt és a választott modell.
+    Akkor tekintjük helyesnek a megoldást, ha a program futtatására a kiválasztott modell egyértelmű igen/nem válaszokat ad az eldöntendő kérdésekre. A válaszainak helyessége viszont másodlagos, de nem elhanyagolható. A nyelvi modellek a Hugging Face platformról lesznek választva.
 
-    Ez lényegében egy optimalizálási feladat, az optimalizálandó paraméterek a modellnek beadott prompt és a választott modell. Akkor tekintjük helyesnek a megoldást, ha a program futtatására a kiválasztott modell egyértelmű igen/nem válaszokat ad az eldöntendő kérdésekre. A válaszainak helyessége viszont másodlagos. A nyelvi modellek a Hugging Face platformról lesznek választva.
-
-    A program inputja tetszőleges sornyi bejegyzés a Word-in-Context adathalmaz 'test' splitjéből, (vagy tetszőleges, ezzel megegyező formátumú kérdéshalmaz), és tetszőleges modell a Hugging Face platformról.
+    A program bemenete tetszőleges sornyi bejegyzés a Word-in-Context adathalmaz 'test' splitjéből (vagy tetszőleges, ezzel megegyező formátumú kérdéshalmaz) és tetszőleges modell a Hugging Face platformról.
 
     A megoldás kulcsa olyan szoftver fejlesztése, amely mindezt minél egyszerűbbé, automatizáltabbá és gördülékenyebbé teszi.
     %         \item Összehasonlító teljesítményvizsgálatot végeztem a
@@ -171,39 +166,34 @@ képességeinek konzisztenciájának vizsgálata.
 
 
       % \end{itemize}
- \subsubsection{Az alkalmazott eszközök, módszerek}
+ \subsubsection{\textit{Az alkalmazott eszközök, módszerek}}
 
         Alkalmazott eszközök:
       \begin{itemize}
-
         \item Google Colab és PyCharm, Python futtatókörnyezet
         \item Git, GitHub
         \item Hugging Face
-        \item A torch, transformers, accelerate és huggingface\_hub Python könyvtárak a Hugging Face modellek használatához
-        \item Cuda toolkit, hf\_xetm és optimum könyvtárak a lokális futtatás segítéséhez
-
+        \item A torch, transformers, accelerate és számos egyéb Python könyvtár a Hugging Face modellek használatához
       \end{itemize},
 
         Alkalmazott módszerek:
       \begin{itemize}
-
-        \item Objektum Orientált programozás
+        \item Objektumorientált programozás
         \item Clean Code alapelvek \textit{Martin és Robert Clean Code} c. könyve \cite{martin2008cleancode} alapján
-
       \end{itemize}
 
-  \subsubsection{Elért eredmények}
+  \subsubsection{\textit{Elért eredmények}}
 
-  Elkészült a keretrendszer, egy Python konzolos program, amely képes tetszőleges Hugging Face modelljeinek válaszra bírását automatizálni. Egy kattintással, vagy terminál paranccsal képes lefuttatni a  modellt az inputként megadott adathalmazra és elvégezni a nyelvi konzisztencia tesztet, statisztikákat készítve az eredményekből.
+  Elkészült a keretrendszer, egy Python konzolos program, amely képes tetszőleges Hugging Face modell válaszra bírását automatizálni. Egy kattintással vagy terminál paranccsal képes lefuttatni a  modellt az inputként megadott adathalmazra és elvégezni a nyelvi konzisztencia tesztet, statisztikákat készítve az eredményekből.
 
- \subsubsection{Kulcsszavak}
+ \subsubsection{\textit{Kulcsszavak}}
 
        Nagy nyelvi modell, Word-in-Context, nyelvi konzisztencia, teljesítmény-összehasonlítás
 
 \chapter*{Motiváció}
 \addcontentsline{toc}{section}{Motiváció}
 
-Az informatika és a nyelvtechnológia fejlődésével a generatív mesterséges intelligencia mindennapjaink részévé vált. A nagy nyelvi modellek kiértékelésére számos teljesítményteszt (benchmark) fejlődött ki az évek során. Az egyik legnépszerűbb ilyen teljesítményteszt a SuperGLUE Benchmark, amely 8, komoly kihívást jelentő feladat elé
+Az informatika és a nyelvtechnológia fejlődésével a generatív mesterséges intelligencia mindennapjaink részévé vált. A nagy nyelvi modellek kiértékelésére számos teljesítményteszt (benchmark) fejlődött ki az évek során. Az egyik legnépszerűbb ilyen teljesítményteszt a SuperGLUE Benchmark, amely 8 komoly kihívást jelentő feladat elé
 állítja a nagy nyelvi modelleket. A WiC (Word-in-Context) probléma a SuperGlue 8 feladatának egyike. Az emberi
 szöveget értő nyelvi modellek fejlesztése kiemelten fontos mind az akadémiai kutatásban, mind a gyakorlati alkalmazásokban. Az angol nyelvű szövegek feldolgozása nem csak az angolszász területeken releváns, hanem Magyarországon is, hiszen az angol nyelv használata a számítógépek világában mindennapjaink része. Az egyetem és a helyi vállalatok is aktívan foglalkoznak természetesnyelv-feldolgozási (NLP) megoldásokkal. Az AI megoldások - Hugging Face nyelvi modellek használatának - ismerete előnyt jelent mind a munkahelyeken, mind a magánéletben. IT területen Különösen nagy előnyt jelent az AI megfelelő használatának ismerete, például a munkafolyamatok automatizálásában. Egy hatékony szoftver, amely képes Hugging Face modelleket futtatni, tehát nemcsak tudományos értékkel bír, hanem gyakorlati alkalmazásokban is közvetlen hasznot hozhat, főleg a nyelvészeti informatikai területen dolgozók számára.
 
@@ -1014,12 +1004,33 @@ A ModelInputPreparer, amely a WiC adathalmazból létrehozza a modellnek szánt 
 A HuggingFaceModelInferencer modulban történik a konkrét modell lefuttatása. A modell tetszőleges lehet, de a ajánlott a \verb|modelname.py| fájlban található \verb|supported\_models| listában lévő modellek közül, az elöl elhelyezkedő modellek közül választani, mert ezek kompatibilisebbek a keretrendszerrel.
 
 \section{ModelOutputProcessor}
-A modelOutputProcessor bemenete a HuggingFaceModelInferencerben futtatott modell válasza. A modul algoritmikusan végigmegy a válaszok sorain, amelyeknek az első fele az egyenes, második fele a fordított kérdéseket kell, hogy tartalmazza. Emiatt elvárás, hogy az input fájl páros sorból álljon. Ha mégsem, akkor a felhasználó figyelmeztetést kap erről, és a megerősítésére a program megpróbálja helyreállítani az emiatt keletkező anomáliákat.
+A modelOutputProcessor bemenete a HuggingFaceModelInferencerben futtatott modell válaszai. Ha a modell jól válaszolt, akkor \texttt{n} darab kérdés esetén a válaszok száma is \texttt{n} kell, hogy legyen. Továbbá a válaszoknak az első fele az egyenes, második fele a fordított kérdésekre adott válaszokat kell, hogy tartalmazza. Emiatt elvárás, hogy az input fájl páros sorból álljon. Ha mégsem, akkor a felhasználó figyelmeztetést kap erről, és a megerősítésére a program megpróbálja helyreállítani az emiatt keletkező anomáliákat.
+
+\subsubsection{Konzisztencia}
+A program első lépésként végigmegy a válaszok sorain. Megnézi, hogy a modell mit válaszolt soronként. Ezt 3 kategóriába sorolja: \texttt{Yes}, \texttt{No} és \texttt{?}, azaz nem egyértelmű, "talán". Ez utóbbi minden olyan válasz, amelynek nem egyértelműen "igen", vagy "nem" a jelentése.
+Ha ez megvan, akkor összehasonlítja az egyenes és fordított kérdéseket páronként. Ez \texttt{n} kérdés esetén \texttt{n/2} összehasonlítást jelent. Az egyezések aránya adja meg a konzisztencia mértékét, amelyet százalékban fejezek ki. Pl. 50\% esetén a válaszpárok fele egyezik, 90\% esetén 10-ből 9 válaszpár egyezik.
+
+\subsubsection{Pontosság}
+Önmagában az, hogy a válaszok konzisztensek, nem elég, hiszen lehet konzisztensen hibás az összes válasz is, amely nem egy kívánatos eredmény. Emiatt azt is meg kell vizsgálni, hogy a válasz megegyezik-e a gold standardbeli válasszal. Ezért egy százalékban kifejezett mutatóban eltároltam az egész adathalmazra levetített pontosság mértékét is.
+
+\subsubsection{Konzisztens pontosság}
+Ez a két érték, a konzisztencia és a pontosság alapján kiszámítható a konzisztens pontosság értéke is, amelynek a képlete a következő:
+\begin{equation}
+    ConsAcc = (Cons/100 * Acc/100) * 100
+\end{equation}
+Tehát a konzisztencia és a pontosság 0,00 és 1,00 közé normalizált értékét szorozzuk össze egymással, majd az eredményt megszorozzuk százzal.
+
+\subsubsection{Kiegyensúlyozott pontosság}
+Ha még pontosabb képet szeretnénk kapni, megvizsgálhatjuk, hogy a modell által adott "igen" és "nem" (és a "talán") válaszok aránya hogyan oszlik el. Ha azt vesszük észre, hogy az egyik túlnyomó többségben van, akkor azt úgy is vehetjük, hogy a modell torzít és preferálja az egyik választ, így azokat kevésbé kell komolyan venni, így a képletünkbe is alacsonyabb súllyal számítjuk ezt a kategóriát bele.
+% todo képlet ehhez.
+
+
 
 \subsection{LogFile}
-A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit. A fájlhoz append módban minden futtatás után hozzáíródik, hogy ki futtatta, mikor, és a futás eredményei, statisztikákkal.
+A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit. A fájlhoz append módban minden futtatás után hozzáíródik a legutóbbi futtatás eredménye, azaz hogy ki futtatta, mikor, és a futás eredményei: a konzisztencia, pontosság, konzisztens pontosság és a tp,fp,fn,tn statisztikák.
 
-
+\subsection{Eredmények}
+3 modellnek a keretrendszeremen elért eredményeiből ábrát készítettem.
 
 \subsection{A programok futtatása}
 A PyCharm IDE kínál egyszerű és felhasználóbarát futtatási módokat - a zöld háromszög ikonokat kell keresni, azzal lehet tetszőleges .py kiterjesztésű fájlt futtatni. Ez a projektem esetén is működik. A keretrendszer main.py fájlokat kell elindítani a modulok lefuttatásához. Mivel azonban a projektem kódja sok fájlból, külsős csomagokból és összetett projektszerkezetból áll, és a zöld gomb nem biztos, hogy megfelelő útvonalakon keresi majd a modulokat, a legbiztonságosabb és legprofesszionálisabb mód a terminálos futtatás. Én, mivel Windows-on fejlesztettem, a \href{https://learn.microsoft.com/en-us/powershell/}{PowerShell} terminált használtam fejlesztéshez és futtatáshoz, ezt ajánlom, de a \href{https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands}{Command Prompt Shell} is teljesen megfelelő.
