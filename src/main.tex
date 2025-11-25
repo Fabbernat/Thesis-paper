@@ -52,6 +52,7 @@ sorting=none
 \usepackage{listings}
 \usepackage{psfrag}
 \usepackage{csquotes}
+\usepackage{biblatex}
 
 \addbibresource{references.bib}
 
@@ -930,11 +931,7 @@ A Qwen1.5-1.8B-Chat a nehéz kérdésekre a Qwen egyáltalán nem volt jó, és 
 \label{chap:src/Framework}
 
 \section{Tervezés}
-     Ahhoz, hogy a modellek szemantikus képességeinek konzisztenciáját megvizsgálhassuk, először el kell érni, hogy a modell sikeresen és értelmesen választ adjon. Ahhoz pedig, hogy választ adjon, szükséges a kérdések legyártása, ugyanis a Word-in-Context adathalmaz formátuma nem alkalmas generatív nyelvi modellek promptolására. Így a statisztikai elemző modul létrehozása előtt szükség volt ennek a két funkcionalitásnak a létrehozására.
-
-     A kérdések legyártása viszonylag egyszerű fájl- és sztringfeldolgozó algoritmusokkal lehetséges. A modell futtatása viszont nem egy triviális feladat. Még kisebb méretű Hugging Face modellek futtatása is rendkívül körülményes. Ez egy internetes API-kat és rendkívül sok erőforrást (CPU, RAM) igénylő művelet. Így nem is csoda, hogy ennek a modulnak az elkészítése vette igénybe a legtöbb időt a szoftver elkészítésében.
-
-A szoftvert, amelyet a szakdolgozatomhoz készítettem, 2024-ben kezdtem el fejleszteni, és azóta folyamatosan, általában heti 10-20 committal fejlesztettem. A \href{https://github.com/Fabbernat}{GitHubomon} elérhető a kitűzött elemek között. Korábban a \href{https://github.com/Fabbernat/Peternity}{https://github.com/Fabbernat/Peternity} linken volt elérhető, ez most már archívum és a forráskód át lett helyezve a \href{https://github.com/Fabbernat/Thesis} {https://github.com/Fabbernat/Thesis} linkre.
+     A szoftvert, amelyet a szakdolgozatomhoz készítettem, 2024-ben kezdtem el fejleszteni, és azóta folyamatosan, általában heti 10-20 committal fejlesztettem. A \href{https://github.com/Fabbernat}{GitHubomon} elérhető a kitűzött elemek között. Korábban a \href{https://github.com/Fabbernat/Peternity}{https://github.com/Fabbernat/Peternity} linken volt elérhető, ez most már archívum és a forráskód át lett helyezve a \href{https://github.com/Fabbernat/Thesis} {https://github.com/Fabbernat/Thesis} linkre.
 
 A projekt első verziója sokat lett kritizálva, hogy nehezen átlátható és sok benne az AI generált, rossz minőségű kód, így 2025 nyarán újrakezdtem. Az új modulnak 2 fő fejlesztési szempontja volt.
 
@@ -991,20 +988,30 @@ Data mappák: az egyes modulokhoz tartozó input és output fájlok tárolását
 \section{A modulok szerkezete}
 Mindhárom modul gyökérkönyvtárában megtalálható az alábbi 3 Python fájl.
 
-A \verb|config.py| a konfigurációs fájl, futtatás előtt lehet módosítani az előre beállított, nagybetűsített globális változókban tárolt beállításokat.
+A \verb|config.py| a konfigurációs fájlok, melyek célja, hogy futtatás előtt módosítani lehessen az előre beállított, nagybetűsített globális változókban tárolt beállításokat, mint például a feldolgozandó adat mennyiségét, az input fájlok adatait, vagy a prompt üzenetet.
 
 A \verb|main.py| a fő belépési pont, itt lehet elindítani a main függvényt, amely csak elindítja programot, átadva a futást a run.py szkriptnek.
 
 A \verb|run.py| pedig lefuttatja a program maradék részét, az összes modul-, függvény-, osztályhívást, tehát a program vezérlését végezve, azt általában további szkriptekre átruházva.
 
-A HuggingFaceModelInferencer modulban található egy \verb|modelname.py| fájl is, amely biztosítja, hogy bármelyik másik modulba be lehessen importálni a kiválasztott modell nevét, anélkül, hogy egyéb függőséget behúznánk.
+A HuggingFaceModelInferencer modulban található egy \verb|modelname.py| fájl is, amely egy változóban eltárolja a kiválasztott modell nevét, ezzel biztosítva, hogy bármelyik másik modulba be lehessen importálni a kiválasztott modell nevét, anélkül, hogy egyéb függőséget behúznánk.
 
 Mindhárom modul futásideje mérve van, a "time" Python modul "perf\_counter" algoritmusával mérve. A futásidő konzolos logként tekinthető meg.
 
 \section{ModelInputPreparer}
-A ModelInputPreparer, amely a WiC adathalmazból létrehozza a modellnek szánt inputot, a 2800 kérdést. Ez a 'WiC adathalmaz' 'test' splitjének összes rekordjából létrehoz egy kérdést, mind egyenes, mind fordított sorrendben, hogy a modellek konzisztenciáját vizsgáljuk. Mivel 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így jön ki az 2800 kérdés.
+
+Ahhoz, hogy a modellek szemantikus képességeinek konzisztenciáját megvizsgálhassuk, először el kell érni, hogy a modell sikeresen és értelmesen választ adjon. Ahhoz pedig, hogy választ adjon, szükséges a kérdések legyártása, ugyanis a Word-in-Context adathalmaz formátuma nem alkalmas generatív nyelvi modellek promptolására. Így a statisztikai elemző modul létrehozása előtt szükség volt ennek a két funkcionalitásnak a létrehozására.
+
+Az első modul a ModelInputPreparer (modell bemenet előkészítő), amely a WiC adathalmazból létrehozza a modellnek szánt inputot, a 2800 kérdést. Ez a \texttt{WiC} adathalmaz \texttt{test} splitjének összes rekordjából létrehoz egy kérdést, mind egyenes, mind fordított sorrendben, hogy a modellek konzisztenciáját vizsgáljuk. Mivel 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így jön ki a 2800 kérdés. A létrehozás módja a következő:
+A WiC adathalmaz minden sora 5, tabulátorral elválasztott értéket tartalmaz: 
+\begin{itemize}
+	\item szó,\item  szófaj, \item a szó pozíciói a mondatokban, \item az első mondat, \item a második mondat. 
+\end{itemize}
+Ebből nekünk csak a szó, első mondat és a második mondat szükséges, a többivel nem is fogunk foglalkozni. Először is  megnyitjuk a fájlt, majd beolvassuk és eltároljuk minden sorbol a szót és a két mondatot egy listában. Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot. Végül ezt elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
 
 \section{HuggingFaceModelInferencer}
+Láthattuk, hogy a kérdések legyártása viszonylag egyszerű fájl- és sztringfeldolgozó algoritmusokkal lehetséges. A modell futtatása viszont nem egy triviális feladat. Még kisebb méretű Hugging Face modellek futtatása is rendkívül körülményes. Ez egy internetes API-kat és rendkívül sok erőforrást (CPU, RAM) igénylő művelet. Így nem is csoda, hogy ennek a modulnak az elkészítése vette igénybe a legtöbb időt a szoftver elkészítésében.
+
 A HuggingFaceModelInferencer modulban történik a konkrét modell lefuttatása. A modell tetszőleges lehet, de a ajánlott a \verb|modelname.py| fájlban található \verb|supported\_models| listában lévő modellek közül, az elöl elhelyezkedő modellek közül választani, mert ezek kompatibilisebbek a keretrendszerrel.
 
 \section{ModelOutputProcessor}
