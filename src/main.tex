@@ -957,7 +957,7 @@ Ezt a szoftvert 2024-ben kezdtem el fejleszteni, de a lényegi részét 2025-ben
                          Az újraírásnál első lépésem volt, hogy a platformot egyesítem. Most az egész szoftver egy sima Python futtatókörnyezetben fut, egyetlen könnyen megtalálható `main` fájl futtatásával, ipari standard szerint az src mappában lévő globális belépési ponttal, de egyenként is lehet futtathatni a 3 modult, mindegyikhez tartozván egy `main.py` belépési pont. PyCharm környezet ajánlott a szoftver futtatásához. A legnagyobb ihletet a szoftver megálmodásához a Clean Code című könyv elolvasása hozta, amely hatására átértékeltem a programozói tudásomat és a szakdolgozatomat. Láttam, hogy objektumorientált módszerrel nagy szoftvereket is átláthatóan és biztonságosan lehet fejleszteni. Megjegyeztem azt is, hogy a jó elnevezések milyen fontosak. Ezek az elvek alapján írtam meg teljesen üres vázlatból az új szakdolgozat szoftveremet. A szoftver egy keretrendszer, hiszen a szoftver keretrendszert biztosít Hugging Face modellek lokális futtatására és azok válaszainak kiértékelésére, továbbá nincsen hozzá webes, mobilos, vagy desktop grafikus felület, nincsen hostolva stb., helyette parancssorból indítható a program és a config fájlok beállításainak módosításával paraméterezhető. Én általában csak "modulok"-ként hivatkozom a keretrendszerbe, hiszen 3, egymástól jól elkülönülő feladatú és funkciójú modulból áll. Így az egyes modulok egyénileg is futtathatóak, akkor is, ha a másik kettő nem létezik, vagy meghibásodik. Mindegyik modul egy fő futtatható állományt tartalmaz, egy-egy main.py fájt egy-egy main belépési ponttal.
 
 
-
+Felhívom a figyelmet arra, hogy mivel a szoftver folyamatosan módosul, így a legújabb verzió valósága, működése, stb. részben eltérhet a leírttól. A leírás a 2025 év végi verzióra vonatkozik és a későbbi verziókban történő eltérések miatt felelősséget nem vállalok.
 
 \subsubsection{ModelInputPreparer}
                          A ModelInputPreparer inputja egy lokális adathalmaz és az elkészíteni kívánt kérdések száma. A program az adathalmazból létrehozza a megadott számú kérdést, amelyet majd a modell inputként meg fog kapni. Ez a program alapértelmezetten 'WiC adathalmaz' 'test' splitjének rekordjaiból hozza létre a kérdéseket, de saját, megegyező formátumú kérdésekre is működik. A kérdéseket mind egyenes, mind fordított sorrendben létrehozza, amelyekkel azután a modellek konzisztenciáját vizsgáljuk. Mivel az adathalmaz alapértelmezetten 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így alap beállításokkal 2800 kérdést kapunk, de ezen igény szerint lehet módosítani.
@@ -986,6 +986,7 @@ Data mappák: az egyes modulokhoz tartozó input és output fájlok tárolását
 
 
 \section{A modulok szerkezete}
+\subsection{Közös elemek}
 Mindhárom modul gyökérkönyvtárában megtalálható az alábbi 3 Python fájl.
 
 A \verb|config.py| a konfigurációs fájlok, melyek célja, hogy futtatás előtt módosítani lehessen az előre beállított, nagybetűsített globális változókban tárolt beállításokat, mint például a feldolgozandó adat mennyiségét, az input fájlok adatait, vagy a prompt üzenetet.
@@ -996,7 +997,7 @@ A \verb|run.py| pedig lefuttatja a program maradék részét, az összes modul-,
 
 A HuggingFaceModelInferencer modulban található egy \verb|modelname.py| fájl is, amely egy változóban eltárolja a kiválasztott modell nevét, ezzel biztosítva, hogy bármelyik másik modulba be lehessen importálni a kiválasztott modell nevét, anélkül, hogy egyéb függőséget behúznánk.
 
-Mindhárom modul futásideje mérve van, a "time" Python modul "perf\_counter" algoritmusával mérve. A futásidő konzolos logként tekinthető meg.
+Mindhárom modul futásideje mérve van, a \texttt{time} Python modul \textt{perf\_counter} algoritmusával mérve. A futásidő konzolos logként tekinthető meg.
 
 \section{ModelInputPreparer}
 
@@ -1010,9 +1011,11 @@ A WiC adathalmaz minden sora 5, tabulátorral elválasztott értéket tartalmaz:
 Ebből nekünk csak a szó, első mondat és a második mondat szükséges, a többivel nem is fogunk foglalkozni. Először is  megnyitjuk a fájlt, majd beolvassuk és eltároljuk minden sorbol a szót és a két mondatot egy listában. Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot. Végül ezt elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
 
 \section{HuggingFaceModelInferencer}
-Láthattuk, hogy a kérdések legyártása viszonylag egyszerű fájl- és sztringfeldolgozó algoritmusokkal lehetséges. A modell futtatása viszont nem egy triviális feladat. Még kisebb méretű Hugging Face modellek futtatása is rendkívül körülményes. Ez egy internetes API-kat és rendkívül sok erőforrást (CPU, RAM) igénylő művelet. Így nem is csoda, hogy ennek a modulnak az elkészítése vette igénybe a legtöbb időt a szoftver elkészítésében.
+Ebben a modulban történik a konkrét modell lefuttatása az előző modulban előállított kérdéseken.
 
-A HuggingFaceModelInferencer modulban történik a konkrét modell lefuttatása. A modell tetszőleges lehet, de a ajánlott a \verb|modelname.py| fájlban található \verb|supported\_models| listában lévő modellek közül, az elöl elhelyezkedő modellek közül választani, mert ezek kompatibilisebbek a keretrendszerrel.
+Az előző modulban láthattuk, hogy a kérdések legyártása viszonylag egyszerű fájl- és sztringfeldolgozó algoritmusokkal lehetséges. A modell futtatása viszont nem egy triviális feladat. Még kisebb méretű Hugging Face modellek futtatása is rendkívül körülményes. Ez egy internetes API-kat és rendkívül sok időt és erőforrást (CPU, GPU, RAM) igénylő művelet. Így nem is csoda, hogy ennek a modulnak az elkészítése vette igénybe az idő túlnyomó részét a szoftver elkészítésében.
+
+A program elindítása előtt érdemes a \verb|config.py| és a \verb|modelname.py| beállításait ellenőrizni és igény szerint módosítani. A modell tetszőleges lehet, de a ajánlott a \verb|modelname.py| fájlban található \verb|supported\_models| listában lévő modellek közül, az elöl elhelyezkedő modellek közül választani, mert ezek kompatibilisebbek a keretrendszerrel. A config fájlban lehetőség van a prompt utasítás részén változtatni, amely aztán a kérdések elé kerül a felépítésében. Ebben lehet adni, hogy hány kérdésre  válaszoljon, milyen kulcsszavakkal, terjedelemben, stb. A konzolra történő kiíratások mennyiségét is itt lehet állítani.
 
 \section{ModelOutputProcessor}
 A modelOutputProcessor bemenete a HuggingFaceModelInferencerben futtatott modell válaszai. Ha a modell jól válaszolt, akkor \texttt{n} darab kérdés esetén a válaszok száma is \texttt{n} kell, hogy legyen. Továbbá a válaszoknak az első fele az egyenes, második fele a fordított kérdésekre adott válaszokat kell, hogy tartalmazza. Emiatt elvárás, hogy az input fájl páros sorból álljon. Ha mégsem, akkor a felhasználó figyelmeztetést kap erről, és a megerősítésére a program megpróbálja helyreállítani az emiatt keletkező anomáliákat.
