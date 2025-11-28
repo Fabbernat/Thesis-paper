@@ -667,37 +667,33 @@ Value: Yes VAGY No
 
 
 \subsection{Futtatás}
-A \href{https://colab.research.google.com/drive/1yA8IAd5z2oreKUXha-16Du2YrNhemNiU?usp=sharing}{szkriptem} leírása:
-
-A modell nevének a pontos Hugging Face azonosítóját kellett megadni, a
+A \href{https://colab.research.google.com/drive/1yA8IAd5z2oreKUXha-16Du2YrNhemNiU?usp=sharing}{Google Colab jegyzetfüzetem} esetén a modell nevének a pontos Hugging Face azonosítóját a
 \begin{lstlisting}
     model_name = <company/model-name>
 \end{lstlisting}
-utasítással adtam meg. Az
+utasítással lehet megadni. Az
 \begin{lstlisting}
     AutoTokenizer.from_pretrained(model_name)
 \end{lstlisting}
-sorral a tokenizer példányt hozom létre. Ez az eszköz felelős azért, hogy a nyers szöveget a modell által értelmezhető tokenekre bontsa. A \texttt{from\_pretrained} hívással automatikusan letöltöm a modellhez illő tokenizálót.
+sor létrehozza a tokenizer példányt. Ez felelős azért, hogy a nyers szöveget a modell által értelmezhető tokenekre bontsa. A \texttt{from\_pretrained} hívással automatikusan letöltöm a modellhez illő tokenizálót.
 Az
 \begin{lstlisting}
     AutoModelForCausalLM.from_pretrained(...)
 \end{lstlisting}
 függvény tölti be a nyelvi modellt, amely képes szöveget generálni. % A causal language model elnevezés arra utal, hogy a modell kategóriája szöveges következtető típus...
 \begin{itemize}
-	\item \texttt{device\_map='auto'}: Automatikusan eldönti, melyik modelltömb kerüljön melyik eszközre (pl. GPU, CPU).
+	\item \texttt{device\_map='auto'} beállítás automatikusan eldönti, melyik modelltömb kerüljön melyik eszközre pl. GPU-ra vagy CPU-ra.
 
-	    \item  \texttt{torch\_dtype='auto'}: Automatikusan kiválasztja a megfelelő adattípust a modellhez (pl. float16, bfloat16).
+	    \item  \texttt{torch\_dtype='auto'} beállítás automatikusan kiválasztja a megfelelő adattípust a modellhez, pl. float16, bfloat16 adattípust.
 
-	  \item    \texttt{trust\_remote\_code=True}: Ezzel engedélyezem a modellhez tartozó egyedi kód futtatását, ami akkor kell, ha a modell nem a standard Hugging Face interfészt használja.
+	  \item  A  \texttt{trust\_remote\_code=True} beállítás engedélyezi a modellhez tartozó egyedi kód futtatását, abban az esetben, ha a modell nem a standard Hugging Face interfészt használja.
 
-	      \item \texttt{offload\_buffers=True}: Ez különösen akkor hasznos, ha a GPU memóriája nem elég a teljes modell betöltésére. Ilyenkor a kevésbé használt rétegek puffereit a rendszer a CPU-ra offload-olja, vagyis átrakja, hogy kevesebb GPU-memóriát használjon. Ezt egy figyelmeztetés javasolta, amit így beépítettem.
-
-          \item \texttt{do\_sample=False}: Teljesen determinisztikussá teszi a futtatást. Kikapcsolja a sztochasztikus mintavételezést, és átvált greedy decoding üzemmódba (amikor a modell mindig a legnagyobb valószínűségű következő tokent választja ki).
+          \item \texttt{do\_sample=False}: Teljesen determinisztikussá teszi a futtatást. Kikapcsolja a sztochasztikus mintavételezést, és átvált mohó dekódoló üzemmódba, azaz a modell mindig a legnagyobb valószínűségű következő tokent választja ki.
 \end{itemize}
 
 A tokenizálást az \texttt{apply\_chat\_template} végzi el,
-\href{https://huggingface.co/docs/transformers/main/en/chat_templating}{amely egyesíti a különböző modellek output formátumát}.
-A \texttt{Gemma} esetén a \texttt{flash-attention} csomag telepítése szükséges. Paraméterei:
+\href{https://huggingface.co/docs/transformers/main/en/chat\_templating}{amely egyesíti a különböző modellek output formátumát}.
+A \texttt{Gemma} esetén a \texttt{flash-attention} csomag telepítése szükséges hozzá. Paraméterei:
 \begin{lstlisting}
 return_tensors='pt'        # A kimenetet PyTorch tensor formatumban kerem.
 add_generation_prompt=True # Specialis jelzes, hogy generalni kell valaszt.
