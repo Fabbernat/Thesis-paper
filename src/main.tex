@@ -228,11 +228,17 @@
     \end{itemize}
 
     \section{Az én szoftverem}
-    A fent említett platformokhoz hasonlóan a megoldásom lehetővé teszi a nagy nyelvi modellek lokális telepítésére, futtatásását, továbbá az összehasonlítását is. A projektem ugyan nem biztosít olyan kényelmes grafikus felületet, vagy a webes szolgáltatásokat, mint a legtöbb fent felsorolt projekt, ám az én projektem abban nyújt többet, hogy a Word-in-Context benchmarkon való tesztelésre sokkal alkalmasabb, továbbá aki kedveli a Python és konzolos alkalmazásokat, annak az én megoldásom kényelmesebb lehet. A megoldásom során törekedtem arra, hogy minél több modell támogatott legyen, továbbá a keretrendszer a bárki által ingyen kipróbálható legyen, ezért ingyenesen elérhető és nyílt forráskódú eszközöket (Python, GitHub, Hugging Face) használtam.
+    A fent említett platformokhoz hasonlóan a megoldásom lehetővé teszi a nagy nyelvi modellek lokális telepítésére, futtatásását, továbbá az összehasonlítását is.
+    A projektem ugyan nem biztosít olyan kényelmes grafikus felületet, vagy a webes szolgáltatásokat, mint a legtöbb fent felsorolt projekt, ám az én projektem abban nyújt többet, hogy a Word-in-Context benchmarkon való tesztelésre sokkal alkalmasabb, mint az előbbiek, hiszen kifejezetten erre készült, továbbá aki kedveli a Python és konzolos alkalmazásokat, annak az én megoldásom kényelmesebb lehet.
+    Ráadásul nem csak egyesével lehet beadni a modelleknek a promptokat, hanem egy futtatásra tetszőlegesen sok inferenciát kiszámíttathatunk, - olyan, minta mindegyik prompt "új chatbe" kerülne - amely jelentős előny a legtöbb felsorolt projekthez képest.
+    A megoldásom során törekedtem arra, hogy minél több modell támogatott legyen, továbbá a keretrendszer a bárki által ingyen kipróbálható legyen, ezért ingyenesen elérhető és nyílt forráskódú eszközöket (Python, GitHub, Hugging Face) használtam.
 
 
     \section{A többértelműség problémája a természetes nyelvekben}
-    A természetes nyelvekben a programozási nyelvekkel ellentétben egy szónak több, egymástól teljesen elkülönülő jelentése is lehet. Például az "egér" szó jelenthet egy számítógépes perifériát vagy egy állatot, és a helyes értelmezéshez a környező szavakat ismerni kell. Az ilyen jellegű többértelműségek automatikus feloldása az egyik központi problémája a természetes nyelvi rendszerek fejlesztésének. Ez az alapja a Word-in-Context feladatnak is.
+    A természetes nyelvekben a programozási nyelvekkel ellentétben egy szónak több, egymástól teljesen elkülönülő jelentése is lehet.
+    Például az "egér" szó jelenthet egy számítógépes perifériát vagy egy állatot, és a helyes értelmezéshez a környező szavakat ismerni kell.
+    Az ilyen jellegű többértelműségek automatikus feloldása az egyik központi problémája a természetes nyelvi rendszerek fejlesztésének.
+    Ez az alapja a Word-in-Context feladatnak is.
 
 
     \section{A Word in context feladat}
@@ -248,7 +254,7 @@
 
 
     \section{Az én céljaim ehhez képest}
-    A kutatásom első felének célja a modellek teljesítményének összehasonlítása a WiC-ből szedett kérdéseken volt, ám a többi rendszerrel ellentétben itt nem az volt a cél, hogy minél több kérdésre a gold standard \footnote{A gold standard egy szakértők által hitelesen és konzisztensen annotált adathalmaz, amely viszonyítási alapként szolgál automatikus rendszerek teljesítményének kiértékeléséhez.} szerint válaszoljanak, hanem hogy megvizsgáljam, hogy a nagy nyelvi modellek válaszai milyen érzékenységet mutatnak olyan invarianciákra, amelyek az emberi válaszadásra nincsenek befolyással. Ez alapján a kérdésben a mondatok sorrendje nem szabadna, hogy befolyásolja a válaszadásukat, ám azt mégis befolyásolja. Egész pontosan a
+    A kutatásom első felének célja a modellek teljesítményének összehasonlítása a WiC-ből szedett kérdéseken volt, ám a többi Word-in-Context ranglétrán látható rendszerrel ellentétben az én célom nem az volt, hogy minél több kérdésre a gold standard \footnote{A gold standard egy szakértők által hitelesen és konzisztensen annotált adathalmaz, amely viszonyítási alapként szolgál automatikus rendszerek teljesítményének kiértékeléséhez.} szerint válaszoljon egy általam tanított modell, hanem hogy megvizsgáljam, hogy mások által készített nagy nyelvi modellek válaszai milyen érzékenységet mutatnak olyan invarianciákra, amelyek az emberi válaszadásra nincsenek befolyással. Ez alapján a kérdésben a mondatok sorrendje nem szabadna, hogy befolyásolja a válaszadásukat, ám azt mégis befolyásolja. Egész pontosan a
     \begin{verbatim}
 Does the word `w` mean the same thing in `s1` and `s2`?
     \end{verbatim}
@@ -293,7 +299,6 @@ Does the word `w` mean the same thing in `s2` and `s1`?
 
     \begin{table}[H]
         \centering
-        \caption{A WiC adathalmaz tesztkészletének néhány bejegyzése}
         \label{tbl:wic_peldak} % Egyedi címke a táblázathoz
         \begin{tabular}{llcp{0.33\textwidth}p{0.33\textwidth}} % Oszlopdefiníciók: l=balra, c=középre, p{szélesség}=paragrafus adott szélességgel
             \hline
@@ -305,11 +310,12 @@ Does the word `w` mean the same thing in `s2` and `s1`?
             hit          & V               & 1-3            & We hit Detroit at one in the morning but kept driving through the night. & An interesting idea hit her.                                         \\
             \hline
         \end{tabular}
+        \caption{A WiC adathalmaz tesztkészletének néhány bejegyzése}
     \end{table}
 
     \subsection{Korábbi eredmények a WiC adathalmazon}
     A \href{https://pilehvar.github.io/wic/}{Word-in-Context honlapján} található egy eredménytábla, amely bemutatja, hogy egyes modellek és algoritmusok milyen eredményt értek el a WiC feladatra. WiC adathalmazon számos modellt teszteltek, amelyek túlnyomórészt 60\% feletti eredménnyel kategorizálták helyesen a mondatokat.
-    A legjobb eredményt a SenseBERT-large rendszerrel érték el, külső erőforrások használatával. Ez az eredmény megközelíti a kézi, emberi szintű kiértékelést, melynek a felső határa 80\% körüli. A kézi kiértékelésnek és a SenseBERT megoldásának egyszerűsített változatát én is elvégeztem. A kézi kiértékelésemmal közel 65, míg a Python algoritmusommal is közel 60\%-os pontosságot sikerült elérnem.
+    A legjobb eredményt a SenseBERT-large rendszerrel érték el, külső erőforrások használatával. Ez az eredmény megközelíti a kézi, emberi szintű kiértékelést, melynek a felső határa 80\% körüli. A kézi kiértékelésnek és a SenseBERT megoldásának egyszerűsített változatát én is elvégeztem. A kézi kiértékelésemmel közel 65, míg egy egyszerű WordNetet~\cite{miller1994wordnet} használó Python algoritmusommal közel 60\%-os pontosságot sikerült elérnem.
 
 
 % Requires: \usepackage{booktabs}
@@ -387,8 +393,7 @@ Does the word `w` mean the same thing in `s2` and `s1`?
     \clearpage
 
 
-    \section*{Fogalmak}
-
+    \chapter{Nyelvi modell alapfogalmak}
     \addcontentsline{toc}{section}{Nyelvi modell alapfogalmak}
 
     Ahhoz, hogy nagy nyelvi modelleket ki tudjunk értékelni, meg kell ismernünk néhány alapfogalmat.
@@ -457,39 +462,40 @@ The cat sat on the _ .
     A \textbf{kontextusablak} (angolul \textit{context window}) a modell által egyszerre figyelembe vehető tokenek teljes száma – beleértve a bemenetet és a választ is. Ha a bemenet vagy a beszélgetés túl hosszú, a legrégebbi részek elvesznek. A GPT-4 esetében például ez elérheti a 8192 vagy akár 32\,768 tokent is, verziótól függően. ~\cite{openai_context_window}
 
 
-    \chapter{Legkonzisztensebb nagy nyelvi modellek megtalálása}
+     \chapter{Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}
 
-    \subsubsection{Konzisztencia}
-    Mint ahogy már írtam, a kutatásom célja a modellek teljesítményének összehasonlítása a WiC-ből szedett kérdéseken volt, ám nem az volt a cél, hogy minél több kérdésre a gold standard szerint válaszoljanak, hanem hogy a szavak sorrendje ne befolyásolja a válaszadásukat. Tehát a
-    \begin{verbatim}
-Does the word `w` mean the same thing in `s1` and `s2`?
-    \end{verbatim}
-    és a
-    \begin{verbatim}
-Does the word `w` mean the same thing in `s2` and `s1`?
-    \end{verbatim}
+%    \subsubsection{Konzisztencia}
+%    Mint ahogy már írtam, a kutatásom célja a modellek teljesítményének összehasonlítása a WiC-ből szedett kérdéseken volt, ám nem az volt a cél, hogy minél több kérdésre a gold standard szerint válaszoljanak, hanem hogy a szavak sorrendje ne befolyásolja a válaszadásukat. Tehát a
+%    \begin{verbatim}
+%Does the word `w` mean the same thing in `s1` and `s2`?
+%    \end{verbatim}
+%    és a
+%    \begin{verbatim}
+%Does the word `w` mean the same thing in `s2` and `s1`?
+%    \end{verbatim}
+%
+%    kérdésekre mindig ugyanazt válaszolják (változatlan $w$, $s1$ és $s2$ esetén, ahol $w$ egy szó, $s1$ az első példamondat, és $s2$ a második példamondat).
+%
+%    \begin{equation}
+%        \text{pontosság} = \frac{TP + TN}{TP + TN + FP + FN}
+%    \end{equation}
+%    \vspace*{0.5cm}
+%
+%    \begin{equation}
+%        \text{kiegyensúlyozott pontosság} = \frac{1}{2} \left( \frac{TP}{TP + FN} + \frac{TN}{TN + FP} \right)
+%    \end{equation}
+%    \vspace*{0.5cm}
 
-    kérdésekre mindig ugyanazt válaszolják (változatlan $w$, $s1$ és $s2$ esetén, ahol $w$ egy szó, $s1$ az első példamondat, és $s2$ a második példamondat).
 
-    Először a LMArena modelleket vizsgáltam meg, hogy mennyire érzékenyek arra, hogyha a 2 mondatot felcseréljük. A WiC adathalmazból előállított kérdésekből szúrópróbaszerűen adtam be kérdéseket a vizsgált modellnek, majd töröltem a modell memóriáját, és ezt a kérdést a 2 mondatot felcserélve is elküldtem a modellnek. A mondatokat ~\ref{chap:src/Framework} src/Framework/ModelInputPreparer modullal hoztam létre a WiC adatbázisból, erről majd később írok. Végül egy Google Táblázatban a válaszokból összesítettem az egyes promptolási módszerek pontosságát, kiegyensúlyozott pontosságát, hogy mekkora arányban egyeznek a válaszpárok. A teszthalmazban alapból randomizált sorrendben vannak a kérdések.
-    \begin{equation}
-        \text{pontosság} = \frac{TP + TN}{TP + TN + FP + FN}
-    \end{equation}
-    \vspace*{0.5cm}
+    {\large\bf LMArena és Hugging Face modellek}
 
-    \begin{equation}
-        \text{kiegyensúlyozott pontosság} = \frac{1}{2} \left( \frac{TP}{TP + FN} + \frac{TN}{TN + FP} \right)
-    \end{equation}
-    \vspace*{0.5cm}
-
-
-    {\large\bf Hugging Face modellek}
-
+    LMArena és Hugging Face modelleket vizsgáltam meg, hogy mennyire érzékenyek arra, hogyha a 2 mondatot felcseréljük. A WiC adathalmazból előállított kérdésekből szúrópróbaszerűen adtam be kérdéseket a vizsgált modellnek, majd töröltem a modell memóriáját, és ezt a kérdést a 2 mondatot felcserélve is elküldtem a modellnek. A mondatokat ~\ref{chap:src/Framework} src/Framework/ModelInputPreparer modullal hoztam létre a WiC adatbázisból, erről majd később írok. Végül egy Google Táblázatban a válaszokból összesítettem az egyes promptolási módszerek pontosságát, kiegyensúlyozott pontosságát, hogy mekkora arányban egyeznek a válaszpárok. A teszthalmazban alapból randomizált sorrendben vannak a kérdések.
     Olyan modelleket választottam az összehasonlításhoz, amelyek nyílt forráskódúak, nagyjából azonos, másfél milliárd és 5 milliárd közötti paraméterszámúak, de legfeljebb 2 milliárd paraméterszám-különbség van köztük. A \href{https://colab.research.google.com/}{Google Colab} webes Python futtatókörnyezetet, Hugging Face modelleket használtam.
 
     Először is, ahhoz, hogy egyértelmű eredményt kapjak a modell teljesítésére, ahol csak lehetett, minden véletlenszerűséget biztosító paramétert ki kellett kapcsolnom. Erre azért volt szükség, hogy ne a szerencsén múljon az, hogy a modell két válasza megegyezik, vagy eltér, hanem a modell felépítésén. A sztochasztikus faktorokkal ugyanis ugyanarra a kérdésre eltérő futtatáskor eltérő választ adhat egy modell, ami nem vezet hiteles összehasonlításhoz. A LMArena és a Google AI Studio oldalán van erre lehetőség.
 
-    Hogy ezt elérjem, a \textit{temperature} értékét 0-ra, a \textit{top-p} értékét pedig 1-re állítottam. Ezáltal a válaszok sztochasztikus változatosságát minimálisra redukáltam.
+    Hogy ezt elérjem, a \textit{temperature} értékét 0-ra, a \textit{top-p} értékét pedig 1-re állítottam.
+    Ezáltal a válaszok sztochasztikus változatosságát minimálisra redukáltam.
 
 
         {\large\bf Egy példa kérdés:}
@@ -601,10 +607,10 @@ Does the word `w` mean the same thing in `s2` and `s1`?
     Összességében a legkonzisztensebbek a tesztjeim alapján a Gemini-2.5 variánsai, továbbá a GPT-4 és a GPT-4.5o, ám ez csak empirikus vélemény.
 
 
-    \chapter{Három generatív nyelvi modell összehasonlítása Cloud környezetben}
+    \section{Három generatív nyelvi modell összehasonlítása Cloud környezetben}
     {
-        \centering % Középre igazítás a magyarázó szövegnek
-        {\Large A gemma-2-2b-it, Phi-4-mini-instruct és a Qwen1.5-1.8B-Chat összehasonlítása \par} % Kisebb betűméret, sortörés
+         % Középre igazítás a magyarázó szövegnek
+        {\bf A gemma-2-2b-it, Phi-4-mini-instruct és a Qwen1.5-1.8B-Chat összehasonlítása \par} % Kisebb betűméret, sortörés
 
         \vspace{1cm} % Térköz a magyarázó szöveg és az első szakasz címe között
     }
