@@ -52,7 +52,6 @@
 \usepackage{listings}
 \usepackage{psfrag}
 \usepackage{csquotes}
-\usepackage{biblatex}
 
 \addbibresource{references.bib}
 
@@ -211,16 +210,16 @@
 
 
     \section{Eddigi megoldások}
-    A különböző nyelvi és nem nyelvi modellek összehasonlítására egyre több platform létezik, amelyeket nagy érdeklődés övez és nagy aktív felhasználó és fejlesztő-bázissal rendelkeznek. Például a \href{https://lmarena.ai/}{LMArena} webes felület főleg fizetős, a \href{https://huggingface.co/spaces/open-llm-leaderboard/comparator}{Hugging Face Open LLM Leaderboard Model Comparator} pedig elsősorban nyílt forráskódú ingyenes modellek összehasonlítására alkalmas. Ezeken a platformokon különböző modellek teljesítményét lehet összehasonlítani különböző feladatokon, beleértve a WiC feladatot is. Azonban ezek a platformok nem kifejezetten a nyelvi konzisztencia tesztelésére lettek kitalálva, amely a kutatásom központi eleme.
+    A különböző nyelvi és nem nyelvi modellek összehasonlítására egyre több platform létezik, amelyeket nagy érdeklődés övez és nagy aktív felhasználó és fejlesztő-bázissal rendelkeznek. Például a \href{https://huggingface.co/spaces/open-llm-leaderboard/comparator}{Hugging Face Open LLM Leaderboard Model Comparator}, vagy az Ollama, amely elsősorban nyílt forráskódú ingyenes modellek összehasonlítására alkalmas, akár webesen, akár saját eszközre telepítve, továbbá a \href{https://lmarena.ai/}{LMArena}~\cite{chiang2024chatbot} webes felület, ahol fizetős modellek is kipróbálhatók korlátozottan, viszont csak a weboldalon keresztül. Ezeken a platformokon különböző modellek teljesítményét lehet összehasonlítani különböző feladatokon, beleértve a WiC feladatot is. Azonban ezek a platformok nem kifejezetten a nyelvi konzisztencia tesztelésére lettek kitalálva, amely a kutatásom központi eleme.
     A szoftver lefejlesztése előtt átelemeztem az jelenlegi legjobb módszereket és nyílt forráskódú nyelvi modelleket a Témavezetőm által javasolt LMArena és Hugging Face felületein, továbbá az utóbbiak futtatásának dokumentációját tanulmányoztam, mert azokra a szoftver elkészítéséhez szükség volt.
 
 
     \section{Az én szoftverem}
-    A megoldásom során törekedtem arra, hogy az bárki által reprodukálható legyen, ezért ingyenesen elérhető és nyílt forráskódú eszközöket (Python, GitHub, Hugging Face) használtam.
+    A fent említett platformokhoz hasonlóan a megoldásom során törekedtem arra, hogy minél több modell támogatott legyen, továbbá a keretrendszer a bárki által kipróbálható legyen, ezért ingyenesen elérhető és nyílt forráskódú eszközöket (Python, GitHub, Hugging Face) használtam.
 
 
     \section{A többértelműség problémája a természetes nyelvekben}
-    A természetes nyelvekben a programozási nyelvekkel ellentétben egy szónak több, egymástól teljesen elkülönülő jelentése is lehet. Például az "egér" szó jelenthet egy számítógépes perifériát vagy egy állatot, és a helyes értelmezéshez a környező szavakat ismerni kell. Az ilyen jellegű többértelműségek automatikus feloldása az egyik központi problémája a természetes nyelvi rendszerek fejlesztésének. Ez az alapja a Word-in-Context feladatnak.
+    A természetes nyelvekben a programozási nyelvekkel ellentétben egy szónak több, egymástól teljesen elkülönülő jelentése is lehet. Például az "egér" szó jelenthet egy számítógépes perifériát vagy egy állatot, és a helyes értelmezéshez a környező szavakat ismerni kell. Az ilyen jellegű többértelműségek automatikus feloldása az egyik központi problémája a természetes nyelvi rendszerek fejlesztésének. Ez az alapja a Word-in-Context feladatnak is.
 
 
     \section{A Word in context feladat}
