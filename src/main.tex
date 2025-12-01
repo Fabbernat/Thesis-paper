@@ -34,13 +34,15 @@
 
 
 % saját csomagok
-\usepackage{hyperref}
 % Referencing
 \usepackage[
     backend=biber,
     style=numeric,
     sorting=none
 ]{biblatex}
+
+\usepackage{hyperref}
+
 \usepackage{booktabs}
 \usepackage{makecell}
 \usepackage{pgfplots}
@@ -128,7 +130,7 @@
         Szeged
         \\
         \vspace{2mm}
-        2026
+        2025
         }
     \end{center}
 
@@ -207,15 +209,26 @@
 
 
     \chapter{Elméleti háttér}
-
-
-    \section{Eddigi megoldások}
-    A különböző nyelvi és nem nyelvi modellek összehasonlítására egyre több platform létezik, amelyeket nagy érdeklődés övez és nagy aktív felhasználó és fejlesztő-bázissal rendelkeznek. Például a \href{https://huggingface.co/spaces/open-llm-leaderboard/comparator}{Hugging Face Open LLM Leaderboard Model Comparator}, vagy az Ollama, amely elsősorban nyílt forráskódú ingyenes modellek összehasonlítására alkalmas, akár webesen, akár saját eszközre telepítve, továbbá a \href{https://lmarena.ai/}{LMArena}~\cite{chiang2024chatbot} webes felület, ahol fizetős modellek is kipróbálhatók korlátozottan, viszont csak a weboldalon keresztül. Ezeken a platformokon különböző modellek teljesítményét lehet összehasonlítani különböző feladatokon, beleértve a WiC feladatot is. Azonban ezek a platformok nem kifejezetten a nyelvi konzisztencia tesztelésére lettek kitalálva, amely a kutatásom központi eleme.
+    \section{Hasonló megoldások}
+    Az ötlet, hogy nagy nyelvi modellek lokális telepítésére, futtatásására és összehasonlítására szolgáló eszközöket hozzunk létre, nem egyedi, számos hasonló témájú és ötletű projekt született az elmúlt évtizedekben. Az alábbiakban bemutatok párat.
+    
+    \subsection{Nyelvi modellek összehasonlítását segítő eszközök}
+    A különböző nyelvi és nem nyelvi modellek összehasonlítására egyre több projekt létezik, amelyeket nagy érdeklődés övez és nagy aktív felhasználó és fejlesztő-bázissal rendelkeznek. Például a \href{https://huggingface.co/spaces/open-llm-leaderboard/comparator}{Hugging Face Open LLM Leaderboard Model Comparator}~\cite{hf_llm_comparator}, amely elsősorban nyílt forráskódú ingyenes modellek összehasonlítására alkalmas, akár webesen, akár saját eszközre telepítve, továbbá a \href{https://lmarena.ai/}{LMArena}~\cite{chiang2024chatbot} webes felület, ahol fizetős modellek is kipróbálhatók korlátozottan, viszont csak a weboldalon keresztül. Ezeken a platformokon különböző modellek teljesítményét lehet összehasonlítani különböző feladatokon, beleértve a WiC feladatot is. Azonban ezek a platformok nem kifejezetten a nyelvi konzisztencia tesztelésére lettek kitalálva, amely a kutatásom központi eleme.
     A szoftver lefejlesztése előtt átelemeztem az jelenlegi legjobb módszereket és nyílt forráskódú nyelvi modelleket a Témavezetőm által javasolt LMArena és Hugging Face felületein, továbbá az utóbbiak futtatásának dokumentációját tanulmányoztam, mert azokra a szoftver elkészítéséhez szükség volt.
-
+    
+    \subsection{Nyelvi modellek lokális telepítését és futtatásást segítő eszközök}
+    Az utóbbi években egyre elterjedtebbek lettek azok a közösségi kezdeményezések és eszközök is, amelyek lehetővé teszik nagy nyelvi modellek helyi — internetkapcsolat nélküli vagy privát környezetben is elérhető — futtatását. Ez létfontosságú adatvédelmi, költségcsökkentési és kutatási okokból is. Ilyen eszközök:
+    \begin{itemize}
+      \item A Témavezetőm által ajánlott  \href{https://ollama.com/}{Ollama}~\cite{ollama} CLI + desktop alkalmazás helyi API-jal sok nyílt modellt támogat.
+      \item A szintén a Témavezetőm által ajánlott \href{https://github.com/ggml-org/llama.cpp}{llama.cpp}~\cite{llama_cpp} egy nyílt forráskódú C/C++ projekt.
+      \item A szintén a Témavezetőm által ajánlott \texttt{vllm}~\cite{kwon2023efficient} szintén egy aktívan fejlesztett nyílt forráskódú projekt, amely elsősorban a memóriagazdálkodásra fókuszál.
+      \item Az \texttt{LM Studio}~\cite{lmstudio} grafikus felület. Modellmenedzsment, többszörös modellváltás, helyi inferencia elérhető benne.
+      \item \href{https://github.com/oobabooga/text-generation-webui}{text-generation-webui}~\cite{textgen_webui}: webes frontend, backendként pl. \texttt{llama.cpp}, nagyon rugalmas, sokféle modellt és konfigurációt támogat.
+      \item A \texttt{GPT4All}~\cite{gpt4all}: kezdeti belépő a helyi LLM-használatba — CPU-barát, alacsony küszöb, egyszerű használat jellemzi.
+    \end{itemize}
 
     \section{Az én szoftverem}
-    A fent említett platformokhoz hasonlóan a megoldásom során törekedtem arra, hogy minél több modell támogatott legyen, továbbá a keretrendszer a bárki által kipróbálható legyen, ezért ingyenesen elérhető és nyílt forráskódú eszközöket (Python, GitHub, Hugging Face) használtam.
+    A fent említett platformokhoz hasonlóan a megoldásom lehetővé teszi a nagy nyelvi modellek lokális telepítésére, futtatásását, továbbá az összehasonlítását is. A projektem ugyan nem biztosít olyan kényelmes grafikus felületet, vagy a webes szolgáltatásokat, mint a legtöbb fent felsorolt projekt, ám az én projektem abban nyújt többet, hogy a Word-in-Context benchmarkon való tesztelésre sokkal alkalmasabb, továbbá aki kedveli a Python és konzolos alkalmazásokat, annak az én megoldásom kényelmesebb lehet. A megoldásom során törekedtem arra, hogy minél több modell támogatott legyen, továbbá a keretrendszer a bárki által ingyen kipróbálható legyen, ezért ingyenesen elérhető és nyílt forráskódú eszközöket (Python, GitHub, Hugging Face) használtam.
 
 
     \section{A többértelműség problémája a természetes nyelvekben}
@@ -249,7 +262,7 @@ Does the word `w` mean the same thing in `s2` and `s1`?
 
     \section{Bináris osztályozás}
     A WiC feladat egy bináris osztályozási (binary classification) problémaként van megfogalmazva: el kell dönteni, hogy egy adott szó két különböző mondatbeli előfordulása ugyanabban az értelemben szerepel-e.
-    A bináris osztályozási feladatok problémakörében is változnak a trendek olyan szempontból, hogy egyre inkább a neurális hálók és nagy nyelvi modellek az elterjedtek bináris osztályozási feladatokra is. A Lesk-algoritmus~\cite{lesk1986automatic} egy klasszikus szóértelem-felismerő módszer, amely a szótári definíciók és a kontextus összevetésével próbálja meghatározni a szó legmegfelelőbb jelentését. A legjobbak mégis az olyan, kifejezetten emberi szöveg megértésére specializálódott nagy nyelvi modellek, mint például a GPT-4.5 és a Gemini-2.5 - 2025 végén.
+    A bináris osztályozási feladatok problémakörében is változnak a trendek olyan szempontból, hogy egyre inkább a neurális hálók és nagy nyelvi modellek az elterjedtek bináris osztályozási feladatokra is. A Lesk-algoritmus~\cite{lesk1986automatic} egy klasszikus szóértelem-felismerő módszer, amely a szótári definíciók és a kontextus összevetésével próbálja meghatározni a szó legmegfelelőbb jelentését. A legjobbak mégis az olyan, kifejezetten emberi szöveg megértésére specializálódott nagy nyelvi modellek, mint például a GPT-4.5 és a Gemini 3 - 2025 végén.
 
     \label{wic:dataset}
 
@@ -358,7 +371,7 @@ Does the word `w` mean the same thing in `s2` and `s1`?
     Forrás: \href{https://hu.wikipedia.org/wiki/Nagy_nyelvi_modell}{Wikipédia}
 
     \subsection{LMArena - nagy nyelvi modelleket összehasonlító platform}
-    Kutatómunkám első lépéseként utánanéztem, hogy melyik modellek a legjobbak angol nyelvű utasításkövetés feladatokban, mint amely az én problémám is. Ehhez a \href{https://lmarena.ai/}{LMArenát}~\cite{chiang2024chatbot} megfelelő referenciának tartottam, mert ez az oldal minden ismertebb ingyenes nagy nyelvi modellhez API-n keresztüli limitált hozzáférést biztosít: 2025. május 16-án 101 modell API-ja volt kipróbálható az oldalon keresztül több tucatnyi cégtől, a ranglétrán pedig 241 modell teljesítményét mérhetjük össze különböző kategóriák alapján emberi szavazatok alapján, amely több mint 1.5 millió ember szavazatán alapszik.
+    Kutatómunkám első lépéseként utánanéztem, hogy melyik modellek a legjobbak angol nyelvű utasításkövetés feladatokban, mint amely az én problémám is. Ehhez a \href{https://lmarena.ai/}{LMArenát}~\cite{chiang2024chatbot} megfelelő referenciának tartottam, mert ez az oldal minden ismertebb ingyenes nagy nyelvi modellhez API-n keresztüli limitált hozzáférést biztosít: 2025. december 1-én a ranglétrán pedig 276 modell teljesítményét mérhetjük össze különböző kategóriák alapján, amely több mint 1.5 millió ember szavazatán alapszik.
     A folyamatosan frissülő rangsor menüben az opciók közül az "Instruction Following" és az "English" kategóriát vizsgáltam meg, mert a problémám ehhez a területhez áll a legközelebb.
 
 
@@ -441,7 +454,7 @@ The cat sat on the _ .
     A \textbf{maximum kimeneti tokenek} paraméter határozza meg, hogy a modell legfeljebb hány tokent generálhat a válasz során. Ez kizárólag a válasz hosszát korlátozza, nem befolyásolja közvetlenül a bemeneti szöveget.
 
 
-    A \textbf{kontextusablak} (angolul \textit{context window}) a modell által egyszerre figyelembe vehető tokenek teljes száma – beleértve a bemenetet és a választ is. Ha a bemenet vagy a beszélgetés túl hosszú, a legrégebbi részek elvesznek. A GPT-4 esetében például ez elérheti a 8192 vagy akár 32\,768 tokent is, verziótól függően. ~\cite{https://community.openai.com/t/what-is-the-context-window-of-gpt-4/701256} % TODO into bib
+    A \textbf{kontextusablak} (angolul \textit{context window}) a modell által egyszerre figyelembe vehető tokenek teljes száma – beleértve a bemenetet és a választ is. Ha a bemenet vagy a beszélgetés túl hosszú, a legrégebbi részek elvesznek. A GPT-4 esetében például ez elérheti a 8192 vagy akár 32\,768 tokent is, verziótól függően. ~\cite{openai_context_window}
 
 
     \chapter{Legkonzisztensebb nagy nyelvi modellek megtalálása}
@@ -533,7 +546,7 @@ Does the word `w` mean the same thing in `s2` and `s1`?
         \item \href{https://huggingface.co/google/gemma-2-2b-it}{Google/Gemma-2-2b-it}~\cite{gemma22b2024} és a
         \item \href{https://huggingface.co/Qwen/Qwen1.5-1.8B-Chat}{Qwen1.5-1.8B-Chat}~\cite{qwen15chat2024}
     \end{itemize}
-    modelleket hasonlítom össze, mert ezek elég jók méret/minőség arányban a közösségi média fórumok szerint. Közelítő arányban sincsenek a nagy AI és tech cégek top modelljeivel, de a méretükhöz képest gazdag szókinccsel és jó nyelvérzékkel rendelkeznek. Mind a hármat közepes és nehéz kérdéseken, mindkét kérdésnehézséget egyenes és fordított sorrendben teszteltem. Ez így összesen \texttt{3*3*2=18} kiértékelést jelentett. Hangsúlyozom, hogy nem a {gemma-2b-it}, hanem a {gemma-\textit{2}-2b-it} változatot választottam. Az elnevezési szabály kissé összezavaró, ugyanis {gemma-\textit{x}b...} kezdetű modellek első generációs változatok, míg a {gemma-2-\textit{x}b...} a második, és a {gemma-3-\textit{x}b...} a harmadik generációs modelleket jelöli. A gemma 3 család 2025 tavaszán tétetett közzé, így erről átfogó vizsgálatot nem végeztem, ám feltehetően jobb a szójelentés-felismerés feladatokban, mint elődje.
+    modelleket hasonlítom össze, mert ezek elég jók méret/minőség arányban a közösségi média fórumok szerint. Közelítő arányban sincsenek a nagy AI és tech cégek top modelljeivel, de a méretükhöz képest gazdag szókinccsel és jó nyelvérzékkel rendelkeznek. Mind a hármat közepes és nehéz kérdéseken, mindkét kérdésnehézséget egyenes és fordított sorrendben teszteltem. Ez így összesen \texttt{3*3*2=18} kiértékelést jelentett. Hangsúlyozom, hogy nem a {gemma-2b-it}, hanem a {gemma-\textit{2}-2b-it} változatot választottam. Az elnevezési szabály kissé összezavaró, ugyanis {gemma-\textit{x}b...} kezdetű modellek első generációs változatok, míg a {gemma-2-\textit{x}b...} a második, és a {gemma-3-\textit{x}b...} a harmadik generációs modelleket jelöli.
     A modellek eredményeit összessítő táblázat a 4.1. táblázatban látható.\ref{tab:model-eval-summary}
 
 
@@ -933,7 +946,7 @@ Does the word "defeat" mean the same thing in sentences
     A szoftvert, amelyet a szakdolgozatomhoz készítettem, 2024-ben kezdtem el fejleszteni, és azóta folyamatosan, általában heti 10-20 committal fejlesztettem. A \href{https://github.com/Fabbernat}{GitHubomon} elérhető a kitűzött elemek között. Korábban a \href{https://github.com/Fabbernat/Peternity}{https://github.com/Fabbernat/Peternity} linken volt elérhető, ez most már archívum és a forráskód át lett helyezve a\\
     \href{https://github.com/Fabbernat/Thesis} {https://github.com/Fabbernat/Thesis} linkre.
 
-    A projekt első verziója sokat lett kritizálva, hogy nehezen átlátható és sok benne az AI generált, rossz minőségű kód, így 2025 nyarán újrakezdtem. Az új modulnak 2 fő fejlesztési szempontja volt.
+    A projekt első verziója kritikákat kapott, ugyanis nehezen átlátható és sok benne az AI generált, rossz minőségű kód, így 2025 nyarán újrakezdtem a fejlesztést. Az új modulnak 2 fő fejlesztési szempontja volt.
 
     Az egyik, hogy mind a 3 részfeladat egy kattintással elvégezhető legyen a Clean Code módszereivel, tehát nagyon egyszerűen futtatható legyen. Ez a 3 részfeladat:
     \begin{itemize}
@@ -967,8 +980,8 @@ Does the word "defeat" mean the same thing in sentences
     \subsubsection{ModelOutputProcessor}
     A ModelOutputProcessor feladata a modell outputból adatkinyerés, statisztikák készítése.
 
-
-    \section{Globális scope}
+    \section{Fejlesztés}
+    \subsection{Globális scope}
     GlobalMain.py: ez a szkript a fő belépési pont, amely egyszerre mind a 3 modult lefuttatja.
 
 
@@ -984,9 +997,9 @@ Does the word "defeat" mean the same thing in sentences
     .out fájlok: az output fájlok egységes kiterjesztése
 
 
-    \section{A modulok szerkezete}
+    \subsection{A modulok szerkezete}
 
-    \subsection{Közös elemek}
+    \subsubsection{Közös elemek}
     Mindhárom modul gyökérkönyvtárában megtalálható az alábbi 3 Python fájl.
 
     A \verb|config.py| a konfigurációs fájlok, melyek célja, hogy futtatás előtt módosítani lehessen az előre beállított, nagybetűsített globális változókban tárolt beállításokat, mint például a feldolgozandó adat mennyiségét, az input fájlok adatait, vagy a prompt üzenetet.
@@ -1000,7 +1013,7 @@ Does the word "defeat" mean the same thing in sentences
     Mindhárom modul futásideje mérve van, a \texttt{time} Python modul \texttt{perf\_counter} algoritmusával mérve. A futásidő konzolos logként tekinthető meg.
 
 
-    \section{ModelInputPreparer}
+    \subsection{ModelInputPreparer}
 
     Ahhoz, hogy a modellek szemantikus képességeinek konzisztenciáját megvizsgálhassuk, először el kell érni, hogy a modell sikeresen és értelmesen választ adjon. Ahhoz pedig, hogy választ adjon, szükséges a kérdések legyártása, ugyanis a Word-in-Context adathalmaz formátuma nem alkalmas generatív nyelvi modellek promptolására. Így a statisztikai elemző modul létrehozása előtt szükség volt ennek a két funkcionalitásnak a létrehozására.
 
@@ -1012,7 +1025,7 @@ Does the word "defeat" mean the same thing in sentences
     Ebből nekünk csak a szó, első mondat és a második mondat szükséges, a többivel nem is fogunk foglalkozni. Először is megnyitjuk a fájlt, majd beolvassuk és eltároljuk minden sorbol a szót és a két mondatot egy listában. Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot. Végül ezt elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
 
 
-    \section{HuggingFaceModelInferencer}
+    \subsection{HuggingFaceModelInferencer}
     Ebben a modulban történik a konkrét modell lefuttatása az előző modulban előállított kérdéseken.
 
     Az előző modulban láthattuk, hogy a kérdések legyártása viszonylag egyszerű fájl- és sztringfeldolgozó algoritmusokkal lehetséges. A modell futtatása viszont nem egy triviális feladat. Még kisebb méretű Hugging Face modellek futtatása is rendkívül körülményes. Ez egy internetes API-kat és rendkívül sok időt és erőforrást (CPU, GPU, RAM) igénylő művelet. Így nem is csoda, hogy ennek a modulnak az elkészítése vette igénybe az idő túlnyomó részét a szoftver elkészítésében.
@@ -1030,7 +1043,7 @@ Does the word "defeat" mean the same thing in sentences
     Végül pedig a modell válaszainak a fájlba írása történik, amely mellett egyéb futás közben keletkezett információk is mentésrer kerülnek külön fájlokban.
 
 
-    \section{ModelOutputProcessor}
+    \subsection{ModelOutputProcessor}
     A modelOutputProcessor bemenete a HuggingFaceModelInferencerben futtatott modell válaszai. Természetesen itt is van validálás a program bemenetére. Ha a modell jól válaszolt, akkor \texttt{n} darab kérdés esetén a válaszok száma is \texttt{n} kell, hogy legyen. Továbbá a válaszoknak az első fele az egyenes, második fele a fordított kérdésekre adott válaszokat kell, hogy tartalmazza. Emiatt ebben a modulban is elvárás, hogy az input fájl páros sorból álljon. Ha mégsem, akkor a felhasználó az előző modulokhoz hasonlóan választhat, hogy kilép a programból, vagy továbblép potenciálisan hibás input kérdésekkel. Ha a felhasználó megerősíti, hogy tovább kíván lépni, a program megpróbálja helyreállítani az emiatt keletkező anomáliákat egy, vagy több sor törlésével.
 
     \subsubsection{Konzisztencia}
@@ -1054,12 +1067,11 @@ Does the word "defeat" mean the same thing in sentences
         BalAcc = \frac{1}{2}\left(\frac{TP}{TP+FN} + \frac{TN}{TN+FP}\right) \times 100\label{eq:equation}
     \end{equation}
 
-    \subsection{LogFile}
+    \subsubsection{LogFile}
     A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit. A fájlhoz append módban minden futtatás után hozzáíródnak a legutóbbi futtatás riportjai. A megjelenített információk többek között a választott modell, a jelenlegi felhasználó neve, a futtatás dátuma, és a modell válaszok kiértékelésének eredményei: a konzisztencia, pontosság, konzisztens pontosság, kiegyensúlyozott pontosság és a tp,fp,fn,tn statisztikák.
 
-    \subsection{Eredmények}
-    3 modellnek a keretrendszeremen elért eredményeiből ábrát készítettem.
 
+    \section{Tesztelés}
     \subsection{A programok futtatása}
     A PyCharm IDE kínál egyszerű és felhasználóbarát futtatási módokat - a zöld háromszög ikonokat kell keresni, azzal lehet tetszőleges .py kiterjesztésű fájlt futtatni. Ez a projektem esetén is működik. A keretrendszer main.py fájlokat kell elindítani a modulok lefuttatásához. Mivel azonban a projektem kódja sok fájlból, külsős csomagokból és összetett projektszerkezetból áll, és a zöld gomb nem biztos, hogy megfelelő útvonalakon keresi majd a modulokat, a legbiztonságosabb és legprofesszionálisabb mód a terminálos futtatás. Én, mivel Windows-on fejlesztettem, a \href{https://learn.microsoft.com/en-us/powershell/}{PowerShell} terminált használtam fejlesztéshez és futtatáshoz, ezt ajánlom, de a \href{https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands}{Command Prompt Shell} is teljesen megfelelő.
 
@@ -1110,12 +1122,15 @@ Does the word "defeat" mean the same thing in sentences
     \end{lstlisting} parancs kiadására ahhoz, hogy az operációs rendszer engedélyezze a Python szkriptek futtatását.
 
 
-    \begin{figure}
-        \centering
-        \includegraphics[width=1\linewidth]{graphics/pelda}
-        \caption{példa válasz a `Qwen/Qwen2.5-0.5B-Instruct` futtatására 9 kérdésen}
-        \label{fig:PeldaValasz}
-    \end{figure}
+%    \begin{figure}[H]
+%        \centering
+%        \includegraphics[width=1\linewidth]{graphics/pelda}
+%        \caption{példa válasz a `Qwen/Qwen2.5-0.5B-Instruct` futtatására 9 kérdésen}
+%        \label{fig:PeldaValasz}
+%    \end{figure}
+
+    \subsection{Eredmények}
+    3 modellnek a keretrendszeremen elért eredményeiből ábrát készítettem.
 
     \subsection{Hibakezelés}
     A programban a hibák megtalálását és lekezelését egyszerű try-catch blokkokkal \footnote{Pythonban a try-except a hibakezelő kulcsszavak elnevezése, de a funkciójuk ugyanaz, mint a többi nyelvben ismert try-catch blokkoknak} kezelem. Egyes hibák az eltérő környezetekből adódnak, pl. a Python interpreter eltérő mappát tekint gökérkönyvtárnak. Ezt is try-catch-csel oldottam meg, amellyel minden importot használó szkriptbe kétféle módon is megpróbálom beimportálni a függőségeket.
@@ -1190,7 +1205,7 @@ Does the word "defeat" mean the same thing in sentences
 
         \item
         \label{att:colab}
-        A modelleket futtató Google Colab jegyzetfüzetem (elavult):
+        A modelleket futtató Google Colab jegyzetfüzetem:
         \href{https://colab.research.google.com/drive/1yA8IAd5z2oreKUXha-16Du2YrNhemNiU?usp=sharing}{ezen a linken}  található.
 
         \item A nyelvi modellek tesztelésének és kiértékelésének régi eredményei a
