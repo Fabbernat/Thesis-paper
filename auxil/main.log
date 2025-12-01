@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  1 DEC 2025 23:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  2 DEC 2025 00:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1040,7 +1040,7 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'magyar'.
-LaTeX Font Info:    Trying to load font information for T1+ptm on input line 72
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 71
 .
 
 (C:\MiKTeX\tex/latex/psnfss\t1ptm.fd
@@ -1048,24 +1048,24 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 ) (main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
 
 (C:\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1103,9 +1103,9 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' not found.
 
 No file main.bbl.
-Package biblatex Info: Reference section=0 on input line 72.
-Package biblatex Info: Reference segment=0 on input line 72.
-Package hyperref Info: Link coloring OFF on input line 72.
+Package biblatex Info: Reference section=0 on input line 71.
+Package biblatex Info: Reference segment=0 on input line 71.
+Package hyperref Info: Link coloring OFF on input line 71.
 (main.out) (main.out)
 \@outlinefile=\write6
 \openout6 = `main.out'.
@@ -1120,13 +1120,13 @@ LaTeX Info: Redefining \cal on input line 577.
 LaTeX Info: Redefining \mit on input line 578.
 )
 Package babel Info: 'magyar' activates 'magyar' shorthands.
-(babel)             Reported  on input line 72.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 119
+(babel)             Reported  on input line 71.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 118
 .
  (C:\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 119
+LaTeX Font Info:    Trying to load font information for U+msb on input line 118
 .
 
 (C:\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -1154,19 +1154,27 @@ onts/enc/dvips/base/8r.enc}] (main.toc
 [4
 
 ]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-82.
- (C:\MiKTeX\tex/latex/psnfss\ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-
-LaTeX Warning: Citation 'martin2008cleancode' on page 5 undefined on input line
- 191.
+Overfull \hbox (15.4419pt too wide) in paragraph at lines 160--163
+[]\T1/ptm/m/n/17.28 A fel-adat meg-fo-gal-ma-zá-sa A vizs-gá-lat-hoz hasz-ná-la
+n-dó adat-
+ []
 
 
-Overfull \hbox (16.3163pt too wide) in paragraph at lines 191--192
-[]\T1/ptm/m/n/12 Clean Co-de alap-el-vek \T1/ptm/m/it/12 Mar-tin és Ro-bert Cle
--an Co-de \T1/ptm/m/n/12 c. köny-ve [[]]
+Overfull \hbox (5.44566pt too wide) in paragraph at lines 160--163
+\T1/ptm/m/n/17.28 for-dí-tott sor-rend-ben is fel kell ten-ni a mo-del-lek-nek,
+ majd össze-
+ []
+
+
+Overfull \hbox (6.68951pt too wide) in paragraph at lines 164--169
+\T1/ptm/m/n/17.28 ha a prog-ram fut-ta-tá-sá-ra a ki-vá-lasz-tott mo-dell egy-é
+r-tel-m¶ igen/-
+ []
+
+
+Overfull \hbox (1.04858pt too wide) in paragraph at lines 172--178
+[]\T1/ptm/m/n/17.28 A meg-ol-dás kul-csa olyan szoft-ver fej-lesz-té-se, amely 
+mind-
  []
 
 
@@ -1174,10 +1182,14 @@ Overfull \hbox (16.3163pt too wide) in paragraph at lines 191--192
 [5
 
 ]
-Overfull \hbox (26.92503pt too wide) in paragraph at lines 200--201
-[]\T1/ptm/m/n/12 Nagy nyel-vi mo-dell, Word-in-Context, nyel-vi kon-zisz-ten-ci
-a, teljesítmény-összehasonlítás 
- []
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
+86.
+ (C:\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+
+LaTeX Warning: Citation 'martin2008cleancode' on page 6 undefined on input line
+ 195.
 
 
 
@@ -1189,32 +1201,16 @@ a, teljesítmény-összehasonlítás
 1. fejezet.
 
 LaTeX Warning: Citation 'hf_llm_comparator' on page 8 undefined on input line 2
-16.
+33.
 
 
 LaTeX Warning: Citation 'chiang2024chatbot' on page 8 undefined on input line 2
-16.
+33.
 
 
-Overfull \hbox (81.45233pt too wide) in paragraph at lines 216--218
-\T1/ptm/m/n/12 ren-del-kez-nek. Pél-dá-ul a []Hug-ging Face Open LLM Le-ader-bo
-ard Mo-del Com-pa-ra-tor[] [[]],
+Overfull \hbox (6.32782pt too wide) in paragraph at lines 233--237
+[]\T1/ptm/m/n/17.28 LMA-re-na[] [[]] we-bes fe-lü-let, ahol fi-ze-t®s mo-
  []
-
-
-LaTeX Warning: Citation 'ollama' on page 8 undefined on input line 222.
-
-
-LaTeX Warning: Citation 'llama_cpp' on page 8 undefined on input line 223.
-
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 22
-4.
-(C:\MiKTeX\tex/latex/psnfss\t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-
-LaTeX Warning: Citation 'kwon2023efficient' on page 8 undefined on input line 2
-24.
 
 
 
@@ -1222,19 +1218,58 @@ LaTeX Warning: Citation 'kwon2023efficient' on page 8 undefined on input line 2
 
 ]
 
-LaTeX Warning: Citation 'lmstudio' on page 9 undefined on input line 225.
+LaTeX Warning: Citation 'ollama' on page 9 undefined on input line 243.
 
 
-LaTeX Warning: Citation 'textgen_webui' on page 9 undefined on input line 226.
-
-
-Overfull \hbox (23.62444pt too wide) in paragraph at lines 226--227
-[][]\T1/ptm/m/n/12 text-generation-webui[] [[]]: we-bes front-end, bac-kend-kén
-t pl. \T1/pcr/m/n/12 llama.cpp\T1/ptm/m/n/12 ,
+Overfull \hbox (7.51622pt too wide) in paragraph at lines 243--244
+[]\T1/ptm/m/n/17.28 A Té-ma-ve-ze-t®m ál-tal aján-lott []Ol-la-ma[] [[]] CLI + 
+desk-
  []
 
 
-LaTeX Warning: Citation 'gpt4all' on page 9 undefined on input line 227.
+LaTeX Warning: Citation 'llama_cpp' on page 9 undefined on input line 244.
+
+
+Overfull \hbox (29.53151pt too wide) in paragraph at lines 244--245
+[]\T1/ptm/m/n/17.28 A szin-tén a Té-ma-ve-ze-t®m ál-tal aján-lott []lla-ma.cpp[
+] [[]]
+ []
+
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 24
+5.
+(C:\MiKTeX\tex/latex/psnfss\t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+
+LaTeX Warning: Citation 'kwon2023efficient' on page 9 undefined on input line 2
+45.
+
+
+Overfull \hbox (59.78928pt too wide) in paragraph at lines 245--246
+[]\T1/ptm/m/n/17.28 A szin-tén a Té-ma-ve-ze-t®m ál-tal aján-lott \T1/pcr/m/n/1
+7.28 vllm \T1/ptm/m/n/17.28 [[]]
+ []
+
+
+Overfull \hbox (18.8366pt too wide) in paragraph at lines 245--246
+\T1/ptm/m/n/17.28 szin-tén egy ak-tí-van fej-lesz-tett nyílt for-rás-kó-dú pro-
+jekt, amely
+ []
+
+
+LaTeX Warning: Citation 'lmstudio' on page 9 undefined on input line 246.
+
+
+LaTeX Warning: Citation 'textgen_webui' on page 9 undefined on input line 248.
+
+
+LaTeX Warning: Citation 'gpt4all' on page 9 undefined on input line 249.
+
+
+Overfull \hbox (40.24632pt too wide) in paragraph at lines 249--250
+[]\T1/ptm/m/n/17.28 A \T1/pcr/m/n/17.28 GPT4All \T1/ptm/m/n/17.28 [[]]: kez-de-
+ti be-lé-p® a he-lyi LLM-használatba
+ []
 
 
 
@@ -1242,128 +1277,99 @@ LaTeX Warning: Citation 'gpt4all' on page 9 undefined on input line 227.
 
 [10]
 
-LaTeX Warning: Citation 'lesk1986automatic' on page 11 undefined on input line 
-271.
-
-
-LaTeX Warning: Citation 'sarlin2020superglue' on page 11 undefined on input lin
-e 279.
-
-
-
 [11]
 
-LaTeX Warning: Citation 'wang2020superglue' on page 12 undefined on input line 
-291.
+[12]
+Overfull \hbox (361.17638pt too wide) in paragraph at lines 303--303
+[]\T1/pcr/m/n/17.28 Does the word `w` mean the same thing in `s1` and `s2`?\lab
+el{verb:verbatim}[] 
+ []
 
 
-Underfull \hbox (badness 7168) in paragraph at lines 309--310
+Overfull \hbox (371.54437pt too wide) in paragraph at lines 307--307
+[]\T1/pcr/m/n/17.28 Does the word `w` mean the same thing in `s2` and `s1`?\lab
+el{verb:verbatim2}[] 
+ []
+
+
+Overfull \hbox (6.73524pt too wide) in paragraph at lines 309--310
+[]\T1/ptm/m/n/17.28 kérdésekre min-dig ugyan-azt kel-le-ne, hogy vá-la-szol-ják
+ (vál-
+ []
+
+
+LaTeX Warning: Citation 'lesk1986automatic' on page 13 undefined on input line 
+315.
+
+
+
+[13]
+
+LaTeX Warning: Citation 'sarlin2020superglue' on page 14 undefined on input lin
+e 324.
+
+
+Overfull \hbox (16.97104pt too wide) in paragraph at lines 331--332
+[]\T1/ptm/m/n/17.28 ReCoRD(Reading Comp-re-hen-si-on with Com-mon-sen-se Rea-
+ []
+
+
+
+[14]
+
+LaTeX Warning: Citation 'wang2020superglue' on page 15 undefined on input line 
+339.
+
+
+Underfull \hbox (badness 7168) in paragraph at lines 363--364
 []|\T1/ptm/m/n/12 Any pe-netra-ti-on, howe-ver
  []
 
 
-Overfull \hbox (30.21132pt too wide) in paragraph at lines 303--313
+Overfull \hbox (30.21132pt too wide) in paragraph at lines 357--367
  [][] 
  []
 
 
-LaTeX Warning: Citation 'miller1994wordnet' on page 12 undefined on input line 
-318.
-
-
-
-[12
-pdfTeX warning (ext4): destination with the same identifier (name{table.1.1}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.319 
-      ]
-
-[13
-pdfTeX warning (ext4): destination with the same identifier (name{table.1.2}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.368     \clearpage
-                    ]
-
-LaTeX Warning: Citation 'chiang2024chatbot' on page 14 undefined on input line 
-380.
-
-
-LaTeX Warning: Citation 'springboard2023gpt3' on page 14 undefined on input lin
-e 385.
-
-
-LaTeX Warning: Citation 'tan2024terms' on page 14 undefined on input line 387.
-
-
-
-[14
-
-]
-
-LaTeX Warning: Citation 'wolf2019huggingface' on page 15 undefined on input lin
-e 390.
-
-LaTeX Info: Symbol \textrightarrow not provided by
-            font family ptm in TS1 encoding.
-            Default family used instead on input line 391.
-
 
 [15]
-2. fejezet.
 
-Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 397.
+LaTeX Warning: Citation 'miller1994wordnet' on page 16 undefined on input line 
+375.
 
 
-LaTeX Warning: Citation 'holtzman2020curious' on page 16 undefined on input lin
-e 409.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
 [16
-
-
-]
-Package pgfplots info on input line 437: Using 'lua backend=false' for axis: x 
-coord trafo unsupported.
-
-
-LaTeX Warning: Citation 'openai_context_window' on page 17 undefined on input l
-ine 462.
-
-
-
-[17
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1}) 
-has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.1.1}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.465      \chapter
-                   {MÃ©ret- Ã©s konzisztencia-arÃ¡nyban megfelelÅ‘ nyelvi mo...
-]
-3. fejezet.
+l.425     \clearpage
+                    ]
 
-Overfull \hbox (27.95789pt too wide) in paragraph at lines 505--506
-[]\T1/pcr/m/n/12 Does the word "defeat" mean the same thing in sentences
+[17
+pdfTeX warning (ext4): destination with the same identifier (name{table.1.2}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.425     \clearpage
+                    ]
+Overfull \hbox (6.61565pt too wide) in paragraph at lines 432--433
+[]\T1/ptm/m/n/17.28 Inputként kap egy promp-tot, egy leg-fel-jebb \T1/pcr/m/n/1
+7.28 n \T1/ptm/m/n/17.28 to-ken hosszú-
  []
 
 
-Overfull \hbox (35.15788pt too wide) in paragraph at lines 505--506
-\T1/pcr/m/n/12 "It was a narrow defeat." and "The army's only defeat."? 
- []
+LaTeX Warning: Citation 'chiang2024chatbot' on page 18 undefined on input line 
+437.
 
 
-Overfull \hbox (27.95789pt too wide) in paragraph at lines 510--511
-[]\T1/pcr/m/n/12 Does the word "defeat" mean the same thing in sentences
- []
-
-
-Overfull \hbox (35.15788pt too wide) in paragraph at lines 510--511
-\T1/pcr/m/n/12 "The army's only defeat." and "It was a narrow defeat."? 
+Overfull \hbox (8.40137pt too wide) in paragraph at lines 437--439
+\T1/ptm/m/n/17.28 mér-het-jük össze kü-lön-bö-z® ka-te-gó-ri-ák alap-ján, amely
+ több mint
  []
 
 
@@ -1372,182 +1378,539 @@ Overfull \hbox (35.15788pt too wide) in paragraph at lines 510--511
 
 ]
 
-LaTeX Warning: Citation 'berend2025phi' on page 19 undefined on input line 515.
+LaTeX Warning: Citation 'springboard2023gpt3' on page 19 undefined on input lin
+e 442.
 
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: Citation 'phi4mini2024' on page 19 undefined on input line 551.
+Overfull \hbox (24.6962pt too wide) in paragraph at lines 441--443
+\T1/ptm/m/n/17.28 an-gol nyel-v¶ wi-ki-pé-di-át is fel-hasz-nál-ták. [[]] 
+ []
 
 
-LaTeX Warning: Citation 'gemma22b2024' on page 19 undefined on input line 552.
+LaTeX Warning: Citation 'tan2024terms' on page 19 undefined on input line 444.
 
 
-LaTeX Warning: Citation 'qwen15chat2024' on page 19 undefined on input line 553
-.
-
-
-LaTeX Warning: Reference `tab:model-eval-summary' on page 19 undefined on input
- line 556.
+Overfull \hbox (7.13832pt too wide) in paragraph at lines 444--445
+\T1/ptm/m/n/17.28 meg-vál-toz-tat-ta, hogy fel-hasz-nál-has-sa szol-gál-ta-tá-s
+a-i-nak fel-hasz-
+ []
 
 
 
 [19]
 
-[20
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.1}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.617 
-      ]
+LaTeX Warning: Citation 'wolf2019huggingface' on page 20 undefined on input lin
+e 447.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family ptm in TS1 encoding.
+            Default family used instead on input line 448.
+
+Overfull \hbox (5.18622pt too wide) in paragraph at lines 447--449
+\T1/ptm/m/n/17.28 lön-fé-le gé-pi ta-nu-lá-si fel-ada-tok-ra, be-le-ért-ve a te
+r-mé-sze-tes nyelv-
+ []
 
 
-Overfull \hbox (22.65367pt too wide) in paragraph at lines 659--660
-\T1/ptm/m/n/12 szö-ve-get, hogy eze-ket is gon-do-san át-ala-kít-sam. Er-re has
-z-nál-tam a \T1/pcr/m/n/12 sentence_normalizer
+Overfull \hbox (6.86453pt too wide) in paragraph at lines 447--449
+\T1/ptm/m/n/17.28 vet-ke-zet-len) vá-la-szo-kat. El®-nyük vi-szont, hogy gyen-g
+ébb hard-
  []
 
 
 
-[21]
+[20]
+2. fejezet.
 
-[22
-pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1}) 
+Package hyperref Warning: The anchor of a bookmark and its parent's must not
+(hyperref)                be the same. Added a new anchor on input line 454.
+
+
+
+[21
+
+
+]
+
+LaTeX Warning: Citation 'holtzman2020curious' on page 22 undefined on input lin
+e 466.
+
+
+
+[22]
+Package pgfplots info on input line 494: Using 'lua backend=false' for axis: x 
+coord trafo unsupported.
+
+Overfull \hbox (0.5135pt too wide) in paragraph at lines 516--517
+[]\T1/ptm/m/n/17.28 A \T1/ptm/b/n/17.28 ma-xi-mum ki-me-ne-ti to-ke-nek \T1/ptm
+/m/n/17.28 pa-ra-mé-ter ha-tá-roz-za meg,
+ []
+
+
+
+[23
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.699     \begin{lstlisting}
-                            
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.2}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.699     \begin{lstlisting}
-                            ]
-Overfull \hbox (106.01408pt too wide) in paragraph at lines 726--727
-[][][][][][][][][][][][][][][][][][][][][][][][] 
- []
+l.519     A
+            \textbf{kontextusablak} (angolul \textit{context window}) a mode...
+]
 
+LaTeX Warning: Citation 'openai_context_window' on page 24 undefined on input l
+ine 519.
 
-Overfull \hbox (113.21416pt too wide) in paragraph at lines 727--728
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (48.4135pt too wide) in paragraph at lines 745--747
-[][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (3.8032pt too wide) in paragraph at lines 751--753
-[]\T1/pcr/m/n/12 skip_special_tokens=True \T1/ptm/m/n/12 el-tá-vo-lít-ja az oly
-an ve-zér-l® to-ke-ne-ket, mint \T1/pcr/m/n/12 <s>
- []
-
-
-
-[23]
-<graphics/Answer-all-questions-with-reasoning.png, id=489, 611.28375pt x 16.561
-87pt>
-File: graphics/Answer-all-questions-with-reasoning.png Graphic file (type png)
-<use graphics/Answer-all-questions-with-reasoning.png>
-Package pdftex.def Info: graphics/Answer-all-questions-with-reasoning.png  used
- on input line 791.
-(pdftex.def)             Requested size: 426.79134pt x 11.56316pt.
 
 
 [24]
+3. fejezet.
+
 
 [25
-pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.854     \subsubsection
-                        {A WiC sajÃ¡t kÃ©zi kiÃ©rtÃ©kelÃ©se} <./graphics/Answer
--all-questions-with-reasoning.png>]
 
-LaTeX Warning: Reference `tab:model-eval-summary' on page 26 undefined on input
- line 887.
+]
+Overfull \hbox (5.20592pt too wide) in paragraph at lines 562--563
+[]\T1/pcr/m/n/17.28 Does the word "defeat" mean the same
+ []
+
+
+Overfull \hbox (88.14989pt too wide) in paragraph at lines 562--563
+\T1/pcr/m/n/17.28 thing in sentences "It was a narrow defeat."
+ []
+
+
+Overfull \hbox (5.20592pt too wide) in paragraph at lines 567--568
+[]\T1/pcr/m/n/17.28 Does the word "defeat" mean the same
+ []
+
+
+Overfull \hbox (88.14989pt too wide) in paragraph at lines 567--568
+\T1/pcr/m/n/17.28 thing in sentences "The army's only defeat."
+ []
 
 
 
 [26]
 
-[27
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.3}) h
+LaTeX Warning: Citation 'berend2025phi' on page 27 undefined on input line 572.
+
+
+
+Overfull \hbox (1.09178pt too wide) in paragraph at lines 572--573
+\T1/ptm/m/n/17.28 Hug-ging Face to-ken bir-to-ká-ban tet-sz®-le-ges mo-dell vá-
+lasz-adás-
+ []
+
+
+Overfull \hbox (8.48766pt too wide) in paragraph at lines 576--577
+\T1/ptm/m/n/17.28 gen-cia mo-dell-je-ik van-nak, ame-lyek min-den ka-te-gó-ri-á
+-ban csúcs-
+ []
+
+
+Overfull \hbox (5.08269pt too wide) in paragraph at lines 576--577
+\T1/ptm/m/n/17.28 Me-ta tech-no-ló-gi-ai óri-á-sok-kal, csak hogy pá-rat em-lít
+-sek. Össze-
+ []
+
+
+Overfull \hbox (24.48776pt too wide) in paragraph at lines 582--583
+\T1/ptm/m/n/17.28 rás-kó-dú, nagy-mé-re-t¶. A leg-nép-sze-r¶bb mo-dell HuggingF
+ace-
+ []
+
+
+
+[27]
+
+LaTeX Warning: Citation 'phi4mini2024' on page 28 undefined on input line 608.
+
+
+LaTeX Warning: Citation 'gemma22b2024' on page 28 undefined on input line 609.
+
+
+LaTeX Warning: Citation 'qwen15chat2024' on page 28 undefined on input line 610
+.
+
+
+LaTeX Warning: Reference `tab:model-eval-summary' on page 28 undefined on input
+ line 614.
+
+
+
+[28
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.1}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.933     \subsection
-                     {A Qwen gyengesÃ©gei}
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.4}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.933     \subsection
-                     {A Qwen gyengesÃ©gei}]
-
-[28]
-4. fejezet.
+l.615 
+      ]
+Overfull \hbox (4.9785pt too wide) in paragraph at lines 623--624
+[]\T1/ptm/m/n/17.28 determinisztikus, te-hát ugyan-ar-ra az in-put-ra min-dig u
+gyan-
+ []
 
 
-[29
 
-]
+[29]
+Overfull \hbox (0.78986pt too wide) in paragraph at lines 671--671
+[]\T1/ptm/b/n/17.28 A \T1/ptm/m/n/17.28 gemma-2-2b-it, Phi-4-mini-instruct és a
+ Qwen1.5-1.8B-
+ []
+
+
 
 [30]
-Overfull \hbox (1.04076pt too wide) in paragraph at lines 994--995
-[]\T1/ptm/m/n/12 GlobalData map-pa: a Glo-bal-Ma-in fut-ta-tá-sa-kor hasz-nált 
-"adat-bá-zis", adat-tá-ro-ló map-
+Overfull \hbox (4.13075pt too wide) in paragraph at lines 706--707
+[]\T1/ptm/m/n/17.28 Másrészt, szin-tén a kér-dés-hal-ma-zom-ból ki-vá-lasz-tot-
+tam pár
  []
 
 
 
-[31]
+[31
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.718 
+      ]
 
-[32]
-Overfull \hbox (4.85571pt too wide) in paragraph at lines 1045--1050
-\T1/ptm/m/n/12 amellyel el®-ké-szít-jük a hard-vert a nagy-mé-re-t¶ adat szá-mo
--lá-sá-ra. A torch cso-mag no_grad()
+[32
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.2}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.745 
+      ]
+Overfull \hbox (39.7733pt too wide) in paragraph at lines 749--750
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (5.07292pt too wide) in paragraph at lines 1053--1054
-[]\T1/ptm/m/n/12 A mo-delO-ut-put-Pro-ces-sor be-me-ne-te a Hug-ging-Fa-ce-Mo-d
-elIn-fe-ren-cer-ben fut-ta-tott mo-
+Overfull \hbox (39.7733pt too wide) in paragraph at lines 762--763
+[][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (39.7733pt too wide) in paragraph at lines 767--768
+[][][][][][][][] 
  []
 
 
 
 [33]
+Overfull \hbox (6.60533pt too wide) in paragraph at lines 780--783
+\T1/pcr/m/n/17.28 Gemma \T1/ptm/m/n/17.28 ese-tén a \T1/pcr/m/n/17.28 flash-att
+ention \T1/ptm/m/n/17.28 cso-mag te-le-pí-té-se szük-
+ []
+
+
+Overfull \hbox (340.44829pt too wide) in paragraph at lines 784--785
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (350.81639pt too wide) in paragraph at lines 785--786
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (91.61382pt too wide) in paragraph at lines 796--797
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (112.35002pt too wide) in paragraph at lines 797--798
+[][][][][][][][][][][][][][][][] 
+ []
+
+
 
 [34]
+Overfull \hbox (257.50346pt too wide) in paragraph at lines 803--805
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (7.94693pt too wide) in paragraph at lines 809--811
+[]\T1/pcr/m/n/17.28 skip_special_tokens=True \T1/ptm/m/n/17.28 el-tá-vo-lít-ja 
+az olyan ve-
+ []
+
+
+Overfull \hbox (8.66899pt too wide) in paragraph at lines 815--816
+[][][][][][][][][][][][][][][][][] 
+ []
+
+
 
 [35]
+Overfull \hbox (8.21074pt too wide) in paragraph at lines 839--840
+[]\T1/ptm/m/n/17.28 Megkértem, a mo-dellt, hogy egy \T1/ptm/m/it/17.28 nor-ma-l
+i-zált ská-lán\T1/ptm/m/n/17.28 , mond-
+ []
+
+
 
 [36]
+<graphics/Answer-all-questions-with-reasoning.png, id=549, 611.28375pt x 16.561
+87pt>
+File: graphics/Answer-all-questions-with-reasoning.png Graphic file (type png)
+<use graphics/Answer-all-questions-with-reasoning.png>
+Package pdftex.def Info: graphics/Answer-all-questions-with-reasoning.png  used
+ on input line 849.
+(pdftex.def)             Requested size: 426.79134pt x 11.56316pt.
 
-[37]
+Overfull \hbox (143.44846pt too wide) in paragraph at lines 868--868
+[]\T1/pcr/m/n/17.28 Does the word "defeat" mean the same thing in sentences[] 
+ []
 
-[38
+
+Overfull \hbox (153.81645pt too wide) in paragraph at lines 868--868
+[]\T1/pcr/m/n/17.28 "It was a narrow defeat." and "The army's only defeat."?[] 
+
+ []
+
+
+Overfull \hbox (133.08046pt too wide) in paragraph at lines 868--868
+[]\T1/pcr/m/n/17.28 Does the word "groom" mean the same thing in sentences[] 
+ []
+
+
+Overfull \hbox (91.60847pt too wide) in paragraph at lines 868--868
+[]\T1/pcr/m/n/17.28 "Groom the dogs." and "Sheila groomed the horse."?[] 
+ []
+
+
+
+[37
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.871 
+       <./graphics/Answer-all-questions-with-reasoning.png>]
+Overfull \hbox (143.44846pt too wide) in paragraph at lines 878--878
+[]\T1/pcr/m/n/17.28 Answer all `n` questions with Yes or No with reasoning![] 
+ []
+
+
+Overfull \hbox (143.44846pt too wide) in paragraph at lines 878--878
+[]\T1/pcr/m/n/17.28 Does the word "defeat" mean the same thing in sentences[] 
+ []
+
+
+Overfull \hbox (1.5408pt too wide) in paragraph at lines 883--890
+\T1/ptm/m/n/17.28 ps Scrip-tet[], a Táb-lá-za-tok egy b®-vít-mé-nyét, amellyel 
+sa-ját függ-
+ []
+
+
+
+[38]
+
+[39]
+
+LaTeX Warning: Reference `tab:model-eval-summary' on page 40 undefined on input
+ line 945.
+
+
+
+[40]
+Overfull \hbox (25.63023pt too wide) in paragraph at lines 964--965
+\T1/ptm/m/n/17.28 ne-héz-sé-g¶ kér-dé-sek-nél a pon-tos-sá-ga vi-szony-lag ala-
+csony (53.33%
+ []
+
+
+
+[41
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.3}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.969 
+      ]
+Overfull \hbox (10.10393pt too wide) in paragraph at lines 986--987
+[]\T1/ptm/m/n/17.28 A gemma-2-2b-t mo-dell-nek nem ta-lál-tam kü-lö-nö-sebb gye
+n-
+ []
+
+
+Overfull \hbox (13.43903pt too wide) in paragraph at lines 989--990
+[]\T1/ptm/m/n/17.28 A Qwen1.5-1.8B-Chat a Gem-má-nál jobb tel-je-sít-ményt nyúj
+-
+ []
+
+
+Overfull \hbox (3.04501pt too wide) in paragraph at lines 995--996
+\T1/ptm/m/n/17.28 leg-job-ban a há-rom mo-dell kö-zül. Pon-tos, nem pre-fe-rál-
+ja arány-
+ []
+
+
+
+[42
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.4}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.996 
+      ]
+
+[43]
+4. fejezet.
+
+Overfull \hbox (127.19945pt too wide) in paragraph at lines 1010--1012
+\T1/ptm/m/n/17.28 he-t® a ki-t¶-zött ele-mek kö-zött. Ko-ráb-ban a []https://gi
+thub.com/Fabbernat/Peternity[]
+ []
+
+
+
+[44
+
+]
+Overfull \hbox (3.8739pt too wide) in paragraph at lines 1031--1032
+\T1/ptm/m/n/17.28 for-du-ló, ka-o-ti-kus, gyak-ran egy-más-tól tel-je-sen füg-g
+et-len szkrip-
+ []
+
+
+Overfull \hbox (73.99442pt too wide) in paragraph at lines 1031--1032
+\T1/ptm/m/n/17.28 már ma-nu-á-li-san kel-lett el-vé-gez-ni. Csak a mos-ta-ni "M
+odelInputPreparer"-
+ []
+
+
+
+[45]
+Overfull \hbox (2.44029pt too wide) in paragraph at lines 1033--1034
+\T1/ptm/m/n/17.28 mind-egyik-hez tar-toz-ván egy `main.py`belépési pont. PyChar
+m
+ []
+
+
+
+[46]
+
+[47]
+Overfull \hbox (5.29964pt too wide) in paragraph at lines 1045--1046
+[]\T1/ptm/m/n/17.28 A Mo-delO-ut-put-Pro-ces-sor fel-ada-ta a mo-dell out-put-b
+ól adat-
+ []
+
+
+
+[48]
+Overfull \hbox (3.76292pt too wide) in paragraph at lines 1084--1086
+[]\T1/ptm/m/n/17.28 Az el-s® mo-dul a Mo-delIn-put-Pre-par-er (mo-dell be-me-ne
+t el®-
+ []
+
+
+
+[49]
+
+[50]
+Overfull \hbox (45.60387pt too wide) in paragraph at lines 1097--1098
+\T1/ptm/m/n/17.28 do-sí-ta-ni. A mo-dell tet-sz®-le-ges le-het, de a aján-lott 
+a [][]\T1/pcr/m/n/17.28 modelname.py
+ []
+
+
+Overfull \hbox (0.10626pt too wide) in paragraph at lines 1099--1100
+\T1/ptm/m/n/17.28 ben a fel-hasz-ná-ló fi-gyel-mez-te-tést kap er-r®l, és vá-la
+szt-hat, hogy
+ []
+
+
+Overfull \hbox (0.12733pt too wide) in paragraph at lines 1103--1108
+\T1/pcr/m/n/17.28 accelerate, huggingface_hub\T1/ptm/m/n/17.28 , de sok mo-dell
+ egyéb
+ []
+
+
+
+[51]
+Overfull \hbox (17.6554pt too wide) in paragraph at lines 1111--1112
+[]\T1/ptm/m/n/17.28 A mo-delO-ut-put-Pro-ces-sor be-me-ne-te a Hug-ging-Fa-ce-M
+o-delIn-
+ []
+
+
+
+[52]
+
+[53]
+
+[54]
+
+[55]
+Overfull \hbox (0.64308pt too wide) in paragraph at lines 1157--1158
+\T1/ptm/m/n/17.28 ging-Fa-ce-Mo-delIn-fe-ren-cer, vagy Mo-delO-ut-put-Pro-ces-s
+or ke-rül-
+ []
+
+
+
+[56]
+
+[57]
+
+[58]
+
+[59]
+Overfull \hbox (4.14977pt too wide) in paragraph at lines 1228--1230
+\T1/ptm/m/n/17.28 Alulírott Fá-bi-án Ber-nát, prog-ram-ter-ve-z® in-for-ma-ti-k
+us BSc sza-
+ []
+
+
+Overfull \hbox (2.73286pt too wide) in paragraph at lines 1228--1230
+\T1/ptm/m/n/17.28 cia Tan-szé-kén ké-szí-tet-tem, a prog-ram-ter-ve-z® in-for-m
+a-ti-kus BSc
+ []
+
+
+Overfull \hbox (8.41182pt too wide) in paragraph at lines 1233--1234
+[]\T1/ptm/m/n/17.28 Tudomásul ve-szem, hogy szak-dol-go-za-to-mat / dip-lo-ma-m
+un-
+ []
+
+
+Overfull \hbox (11.4779pt too wide) in paragraph at lines 1233--1234
+\T1/ptm/m/n/17.28 ká-mat a Sze-ge-di Tu-do-mány-egye-tem In-for-ma-ti-kai In-té
+-zet könyv-
+ []
+
+
+Overfull \hbox (43.53525pt too wide) in paragraph at lines 1237--1242
+[][] 
+ []
+
+
+
+[60
 
 ]
 
-LaTeX Warning: Empty bibliography on input line 1199.
+LaTeX Warning: Empty bibliography on input line 1257.
 
 
 
-[39
+[61
 
 ]
+Overfull \hbox (12.25258pt too wide) in paragraph at lines 1268--1269
+[]\T1/ptm/m/n/17.28 A szak-dol-go-zat pdf for-rás-kód-ja a []GitHub/Fabbernat/T
+hesis-
+ []
 
-[40
+
+
+[62
 
 ] (main.aux)
  ***********
@@ -1570,13 +1933,21 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 43421 strings out of 468219
- 953018 string characters out of 5449698
- 1934975 words of memory out of 5000000
- 71103 multiletter control sequences out of 15000+600000
- 689084 words of font info for 120 fonts, out of 8000000 for 9000
+ 43452 strings out of 468219
+ 953486 string characters out of 5449698
+ 1914973 words of memory out of 5000000
+ 71114 multiletter control sequences out of 15000+600000
+ 686479 words of font info for 125 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,16n,105p,1684b,2356s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{chapter*.26} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{chapter*.25} has been referenced but does not exist
+, replaced by a fixed one
+
 
 pdfTeX warning (dest): name{chapter*.24} has been referenced but does not exist
 , replaced by a fixed one
@@ -1701,20 +2072,23 @@ exist, replaced by a fixed one
 pdfTeX warning (dest): name{subsection.1.9.2} has been referenced but does not 
 exist, replaced by a fixed one
 
+
+pdfTeX warning (dest): name{chapter*.10} has been referenced but does not exist
+, replaced by a fixed one
+
  <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
-1200.pk><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/MiKTeX/fonts/t
+1728.pk><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmmi10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cm
 mi12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmr12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
+ype1/public/amsfonts/cm/cmr17.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
 8.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/MiKTeX/fonts/typ
 e1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><
 C:/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utm
-bi8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/MiKTeX/fonts/type1/urw
-/times/utmri8a.pfb>
-Output written on C:/Users\BernÃ¡t\PycharmProjects\Thesis-paper\out\main.pdf (4
-0 pages, 350535 bytes).
+r8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on C:/Users\BernÃ¡t\PycharmProjects\Thesis-paper\out\main.pdf (6
+2 pages, 362623 bytes).
 PDF statistics:
- 765 PDF objects out of 1000 (max. 8388607)
- 228 named destinations out of 1000 (max. 500000)
+ 856 PDF objects out of 1000 (max. 8388607)
+ 247 named destinations out of 1000 (max. 500000)
  466 words of extra memory for PDF output out of 10000 (max. 10000000)
 
