@@ -542,7 +542,14 @@ The cat sat on the _ .
 %    \end{equation}
 %    \vspace*{0.5cm}
 
-%     \chapter{Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}
+    \chapter{Google Colab}
+    Az eredeti ötletem az volt, hogy a szoftvert a Google Colab webes környezetben valósítom meg.
+    Ehhez egy, a Témavezetőm által készített és javasolt Google Colab jegyzetfüzetet~\cite{berend2025phi} fejlesztettem tovább.
+    Ez egy egyszerű, de hatékony jegyzetfüzet, amellyel Hugging Face token birtokában tetszőleges modell válaszadásra bírható, és mindez hatékonyan automatizálható.
+    A környezettel egy darabig hatékonyan tudtam a kiértékelő keretrendszert fejleszteni.
+    Ám nem voltam elégedett a környezet adta korlátozásokkal, pl.\ session-alapú futtatókörnyezet, amely a session végével törli az adataimat, lassú csatlakozási idő a távoli hardverekhez, limitált erőforrás-hozzáférés, perzisztens adattárolási lehetőségek hiánya.
+    Emiatt PyCharm fejlesztői környezetet használtam a keretendszer elkészítésére, lásd később\ \ref{chap:src/Framework}.
+
 
 %    {\Large\textbf LMArena és Hugging Face modellek}
 
@@ -598,8 +605,6 @@ The cat sat on the _ .
 %    \end{quote}
 
 %    A véletlen faktor kikapcsolása mellett az is fontos volt, hogy egyesével adjam be a kérdéseket. Amikor ugyanis egyszerre $N$ kérdéssel bombáztam a modelleket, akkor az is egy figyelembe veendő tényező volt, hogy az $N$ kérdés milyen sorrendben lett feltéve. Ráadásul a modellek, ha egyszerre túl sok kérdést kaptak, jellemzően csak 40-60 kérdésre válaszoltak, az utána lévőket teljesen ignorálták. Ezzel szemben, ha minden kérdés esetén tiszta lappal indítottam, és új, független promptként adtam be, akkor ez a hatás nem tudott bezavarni. Emiatt tisztább a kísérlet, ha a modell nem egyszerre kapja meg mind az $N$ mondatot, amiről a döntést várjuk, hanem $N$ darab olyan kérdésként, amelyekben egyenként csak pontosan egy kérdés szerepel.
-%
-%    Eredetileg egy, a Témavezetőm által készített és javasolt Google Colab jegyzetfüzetet~\cite{berend2025phi} fejlesztettem tovább. Ez egy egyszerű, de hatékony jegyzetfüzet, amellyel Hugging Face token birtokában tetszőleges modell válaszadásra bírható, és mindez hatékonyan automatizálható. Ám nem voltam elégedett a környezet adta korlátozásokkal, pl. session-alapú futtatókörnyezet, amely a session végével törli az adataimat, lassú csatlakozási idő a távoli hardverekhez, limitált erőforrás-hozzáférés, perzisztens adattárolási lehetőségek hiánya. Emiatt PyCharm fejlesztői környezetet használtam a keretendszer elkészítésére, lásd később\ref{chap:src/Framework}.
 %
 %
 %    \section{A megfelelő nyelvi modellek kiválasztása}
@@ -1195,7 +1200,8 @@ The cat sat on the _ .
     \end{lstlisting}
     Ezzel a fenti módszerrel garantáltan megtalálja a Python a szkriptekben megadott modulokat.
 
-    Paramétert nem vár egyik modul sem. A paraméterezés helyette a config és a ".in" kiterjesztésű fájlokban történik.
+    Paramétert nem vár egyik modul sem.
+    A paraméterezés helyette a config és a ".in" kiterjesztésű fájlokban történik.
 
     Hogyha több Python verziót is használunk, akkor annak is jelentősége lehet, hogy milyen verziójú interpreterrel futtatjuk. Tehát lehet, hogy például 3.12-es verzióval nem fut le, de 3.13-assal már igen. Ez esetben ezt is expliciten meg kell adni futtatáskor egy kapcsolóval, az alábbi módon:
 
@@ -1223,8 +1229,10 @@ The cat sat on the _ .
 %        \label{fig:PeldaValasz}
 %    \end{figure}
 
-    \subsection{Eredmények}
+    \subsection{Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}
     3 modellnek a keretrendszeremen elért eredményeiből ábrát készítettem.
+
+    A modellek kiválasztásakor a cél az volt, hogy kellően kisméretűek legyenek ahhoz, hogy gyorsan lefussanak a lokális környezetben, ám korlátozott paraméterszámuk ellenére a lehető legjobb "konzisztens pontosságot" tudják elérni, azaz minél több kérdésre konzisztensen és a gold standard szerint válaszoljanak.
 
     \subsection{Hibakezelés}
     A programban a hibák megtalálását és lekezelését egyszerű try-catch blokkokkal \footnote{Pythonban a try-except a hibakezelő kulcsszavak elnevezése, de a funkciójuk ugyanaz, mint a többi nyelvben ismert try-catch blokkoknak} kezelem. Egyes hibák az eltérő környezetekből adódnak, pl. a Python interpreter eltérő mappát tekint gökérkönyvtárnak. Ezt is try-catch-csel oldottam meg, amellyel minden importot használó szkriptbe kétféle módon is megpróbálom beimportálni a függőségeket.
