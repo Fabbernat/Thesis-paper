@@ -1,0 +1,16 @@
+[0] Config.pm:328> INFO - This is Biber 2.21
+[0] Config.pm:331> INFO - Logfile is 'main.blg'
+[178] biber-MSWIN64:342> INFO - === 
+[238] Biber.pm:421> INFO - Reading 'main.bcf'
+[398] Biber.pm:1002> INFO - Found 14 citekeys in bib section 0
+[419] Biber.pm:4487> INFO - Processing section 0
+[432] Biber.pm:4678> INFO - Looking for bibtex file 'references.bib' for section 0
+[568] bibtex.pm:1713> INFO - LaTeX decoding ...
+[613] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
+[839] UCollate.pm:68> INFO - Overriding locale 'hu-HU' defaults 'variable = shifted' with 'variable = non-ignorable'
+[839] UCollate.pm:68> INFO - Overriding locale 'hu-HU' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[839] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'hu-HU'
+[856] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[871] bbl.pm:779> INFO - Output to main.bbl
+[871] Biber.pm:132> WARN - I didn't find a database entry for 'https://community.openai.com/t/what-is-the-context-window-of-gpt-4/701256' (section 0)
+[872] Biber.pm:134> INFO - WARNINGS: 1
