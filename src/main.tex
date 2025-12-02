@@ -1177,28 +1177,28 @@ The cat sat on the _ .
 
     Futtatás 3 lépésben:\\
     Elsőnek klónozzuk a projekt forráskódját a gépünkre, pl. a \verb|~\PycharmProjects\| elérési útra. Ajánlott a projekt nevét "Thesis" néven hagyni.
-    Következőnek lépjünk a projekt gyökérmappájába. Adjuk ki a \begin{lstlisting}
+    Következőnek lépjünk a projekt gyökérmappájába. Adjuk ki a \begin{verbatim}
   ~\PycharmProjects\Thesis>  & .\.venv\Scripts\Activate.ps1
-    \end{lstlisting} parancsot a virtuális környezet aktiválásához. Majd adjuk ki a \begin{lstlisting}
+    \end{verbatim} parancsot a virtuális környezet aktiválásához. Majd adjuk ki a \begin{verbatim}
    ~\PycharmProjects\Thesis> pip install torch transformers accelerate huggingface_hub
-    \end{lstlisting} parancsot a szükséges csomagok telepítéséhez. Ha nagyobb modelleket is szeretnénk futtatni, akkor más csomagokra is szükség lehet. Ez esetben a \begin{lstlisting}
+    \end{verbatim} parancsot a szükséges csomagok telepítéséhez. Ha nagyobb modelleket is szeretnénk futtatni, akkor más csomagokra is szükség lehet. Ez esetben a \begin{verbatim}
    ~\PycharmProjects\Thesis> pip install torch transformers accelerate huggingface_hub accelerate hf_xetm optimum
-    \end{lstlisting} az ajánlott parancs.
+    \end{verbatim} az ajánlott parancs.
 
     Itt kétféle opciónk van. Egyszerű mindhárom modellt lefuttató futtatásért adjuk ki a gyökérkönyvtárban ( - ahol a /.git/ és az /src/ mappa van -) a
-    \begin{lstlisting}
+    \begin{verbatim}
 ~\PycharmProjects\Thesis> py -m src.Framework.globalMain
-    \end{lstlisting} parancsot. Vagy ha csak egy modult szeretnénk futtatni, akkor szintén a gyökérkönyvtárból adjuk ki a \begin{lstlisting}
+    \end{verbatim} parancsot. Vagy ha csak egy modult szeretnénk futtatni, akkor szintén a gyökérkönyvtárból adjuk ki a \begin{verbatim}
    ~\PycharmProjects\Thesis> py -m src.Framework.<modul neve>.main
-    \end{lstlisting} parancsot. A modul neve helyére a ModelInputPreparer, HuggingFaceModelInferencer, vagy ModelOutputProcessor kerülhet, tehát a tényleges parancsok
-    \begin{lstlisting}
+    \end{verbatim} parancsot. A modul neve helyére a ModelInputPreparer, HuggingFaceModelInferencer, vagy ModelOutputProcessor kerülhet, tehát a tényleges parancsok
+    \begin{verbatim}
     ~\PycharmProjects\Thesis> py -m src.Framework.ModelInputPreparer.main
 
     ~\PycharmProjects\Thesis> py -m src.Framework.HuggingFaceModelInferencer.main
 
     ~\PycharmProjects\Thesis> py -m src.Framework.ModelOutputProcessor.main
 
-    \end{lstlisting}
+    \end{verbatim}
     Ezzel a fenti módszerrel garantáltan megtalálja a Python a szkriptekben megadott modulokat.
 
     Paramétert nem vár egyik modul sem.
@@ -1206,21 +1206,21 @@ The cat sat on the _ .
 
     Hogyha több Python verziót is használunk, akkor annak is jelentősége lehet, hogy milyen verziójú interpreterrel futtatjuk. Tehát lehet, hogy például 3.12-es verzióval nem fut le, de 3.13-assal már igen. Ez esetben ezt is expliciten meg kell adni futtatáskor egy kapcsolóval, az alábbi módon:
 
-    \begin{lstlisting}
+    \begin{verbatim}
 ~\PycharmProjects\Thesis> py -3.13 -m src.Framework.globalMain
-    \end{lstlisting}
+    \end{verbatim}
 
-    \begin{lstlisting}
+    \begin{verbatim}
     ~\PycharmProjects\Thesis> py -3.13 -m src.Framework.ModelInputPreparer.main
 
     ~\PycharmProjects\Thesis> py -3.13 -m src.Framework.HuggingFaceModelInferencer.main
 
     ~\PycharmProjects\Thesis> py -3.13 -m src.Framework.ModelOutputProcessor.main
-    \end{lstlisting}
+    \end{verbatim}
 
-    Windowson szükség lehet a  \begin{lstlisting}
+    Windowson szükség lehet a  \begin{verbatim}
     Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-    \end{lstlisting} parancs kiadására ahhoz, hogy az operációs rendszer engedélyezze a Python szkriptek futtatását.
+    \end{verbatim} parancs kiadására ahhoz, hogy az operációs rendszer engedélyezze a Python szkriptek futtatását.
 
 
 %    \begin{figure}[H]
