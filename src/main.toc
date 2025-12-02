@@ -1,11 +1,11 @@
-\select@language {magyar} \contentsline {section}{Feladatkiírás}{4}{chapter*.2}%
-\select@language {magyar} \contentsline {section}{Tartalmi összefoglaló}{5}{chapter*.3}%
-\select@language {magyar} \contentsline {subsubsection}{\textit {A téma megnevezése}}{5}{section*.4}%
-\select@language {magyar} \contentsline {subsubsection}{\textit {A feladat megfogalmazása}}{5}{section*.5}%
-\select@language {magyar} \contentsline {subsubsection}{\textit {A megoldási mód}}{5}{section*.6}%
-\select@language {magyar} \contentsline {subsubsection}{\textit {Az alkalmazott eszközök, módszerek}}{5}{section*.7}%
-\select@language {magyar} \contentsline {subsubsection}{\textit {Elért eredmények}}{6}{section*.8}%
-\select@language {magyar} \contentsline {subsubsection}{\textit {Kulcsszavak}}{6}{section*.9}%
+\select@language {magyar} \contentsline {section}{Feladatkiírás}{2}{chapter*.1}%
+\select@language {magyar} \contentsline {section}{Tartalmi összefoglaló}{3}{chapter*.2}%
+\select@language {magyar} \contentsline {subsubsection}{\textit {A téma megnevezése}}{3}{section*.3}%
+\select@language {magyar} \contentsline {subsubsection}{\textit {A feladat megfogalmazása}}{3}{section*.4}%
+\select@language {magyar} \contentsline {subsubsection}{\textit {A megoldási mód}}{3}{section*.5}%
+\select@language {magyar} \contentsline {subsubsection}{\textit {Az alkalmazott eszközök, módszerek}}{3}{section*.6}%
+\select@language {magyar} \contentsline {subsubsection}{\textit {Elért eredmények}}{4}{section*.7}%
+\select@language {magyar} \contentsline {subsubsection}{\textit {Kulcsszavak}}{4}{section*.8}%
 \select@language {magyar} \contentsline {section}{Motiváció}{7}{chapter*.10}%
 \select@language {magyar} \contentsline {chapter}{\numberline {1}Elméleti háttér}{8}{chapter.1}%
 \select@language {magyar} \contentsline {section}{\numberline {1.1}Hasonló megoldások}{8}{section.1.1}%
@@ -21,61 +21,38 @@
 \select@language {magyar} \contentsline {section}{\numberline {1.8}A WiC adathalmaz eredete}{11}{section.1.8}%
 \select@language {magyar} \contentsline {subsection}{\numberline {1.8.1}Korábbi eredmények a WiC adathalmazon}{13}{subsection.1.8.1}%
 \select@language {magyar} \contentsline {chapter}{\numberline {2}Nagy nyelvi modellek}{14}{chapter.2}%
-\select@language {magyar} \contentsline {section}{\numberline {2.1}LMArena - nagy nyelvi modelleket összehasonlító platform}{14}{section.2.1}%
-\select@language {magyar} \contentsline {section}{Nyelvi modell alapfogalmak}{16}{section*.12}%
-\select@language {magyar} \contentsline {section}{\numberline {2.2}A prompt}{16}{section.2.2}%
-\select@language {magyar} \contentsline {section}{\numberline {2.3}Inferencia}{16}{section.2.3}%
-\select@language {magyar} \contentsline {section}{\numberline {2.4}Determinisztikus következtetés, temperature, top-p és top-k}{16}{section.2.4}%
-\select@language {magyar} \contentsline {section}{\numberline {2.5}Maximum kimeneti tokenek és kontextusablak}{17}{section.2.5}%
-\select@language {magyar} \contentsline {chapter}{\numberline {3}Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}{18}{chapter.3}%
-\select@language {magyar} \contentsline {section}{\numberline {3.1}A megfelelő nyelvi modellek kiválasztása}{19}{section.3.1}%
-\select@language {magyar} \contentsline {section}{\numberline {3.2}Kiválasztott Hugging Face modellek}{19}{section.3.2}%
-\select@language {magyar} \contentsline {section}{\numberline {3.3}Google AI Studio}{20}{section.3.3}%
-\select@language {magyar} \contentsline {section}{\numberline {3.4}Három generatív nyelvi modell összehasonlítása Cloud környezetben}{21}{section.3.4}%
-\select@language {magyar} \contentsline {section}{\numberline {3.5}Módszer}{21}{section.3.5}%
-\select@language {magyar} \contentsline {subsection}{\numberline {3.5.1}Előkészítés}{21}{subsection.3.5.1}%
-\select@language {magyar} \contentsline {subsection}{\numberline {3.5.2}A beadott szöveg formátuma}{21}{subsection.3.5.2}%
-\select@language {magyar} \contentsline {subsection}{\numberline {3.5.3}A modelleket tesztelő kérdések}{21}{subsection.3.5.3}%
-\select@language {magyar} \contentsline {subsection}{\numberline {3.5.4}Kérdés-válasz szótár}{22}{subsection.3.5.4}%
-\select@language {magyar} \contentsline {subsection}{\numberline {3.5.5}Futtatás}{23}{subsection.3.5.5}%
-\select@language {magyar} \contentsline {subsection}{\numberline {3.5.6}Kiértékelés}{24}{subsection.3.5.6}%
-\select@language {magyar} \contentsline {subsection}{\numberline {3.5.7}A modell válaszainak bővítése}{24}{subsection.3.5.7}%
-\select@language {magyar} \contentsline {subsubsection}{Egyszavas válaszok}{25}{section*.13}%
-\select@language {magyar} \contentsline {subsubsection}{A WiC saját kézi kiértékelése}{26}{section*.14}%
-\select@language {magyar} \contentsline {subsubsection}{Futtatás Google Colab felületen}{26}{section*.15}%
-\select@language {magyar} \contentsline {subsection}{\numberline {3.5.8}Eredmények}{26}{subsection.3.5.8}%
-\select@language {magyar} \contentsline {subsection}{\numberline {3.5.9}A Phi erősségei}{27}{subsection.3.5.9}%
-\select@language {magyar} \contentsline {subsection}{\numberline {3.5.10}A Phi gyengeségei}{27}{subsection.3.5.10}%
-\select@language {magyar} \contentsline {subsection}{\numberline {3.5.11}A Gemma erősségei}{27}{subsection.3.5.11}%
-\select@language {magyar} \contentsline {subsection}{\numberline {3.5.12}A Gemma gyengeségei}{27}{subsection.3.5.12}%
-\select@language {magyar} \contentsline {subsection}{\numberline {3.5.13}A Qwen erősségei}{28}{subsection.3.5.13}%
-\select@language {magyar} \contentsline {subsection}{\numberline {3.5.14}A Qwen gyengeségei}{28}{subsection.3.5.14}%
-\select@language {magyar} \contentsline {subsection}{\numberline {3.5.15}Összegzés}{28}{subsection.3.5.15}%
-\select@language {magyar} \contentsline {chapter}{\numberline {4}A szoftver: modell futtató és kiértékelő keretrendszer fejlesztése PyCharmban}{29}{chapter.4}%
-\select@language {magyar} \contentsline {section}{\numberline {4.1}Tervezés}{29}{section.4.1}%
-\select@language {magyar} \contentsline {subsubsection}{ModelInputPreparer}{30}{section*.16}%
-\select@language {magyar} \contentsline {subsubsection}{HuggingFaceModelInferencer}{31}{section*.17}%
-\select@language {magyar} \contentsline {subsubsection}{ModelOutputProcessor}{31}{section*.18}%
-\select@language {magyar} \contentsline {section}{\numberline {4.2}Fejlesztés}{31}{section.4.2}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.2.1}Globális scope}{31}{subsection.4.2.1}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.2.2}A modulok szerkezete}{31}{subsection.4.2.2}%
-\select@language {magyar} \contentsline {subsubsection}{Közös elemek}{31}{section*.19}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.2.3}ModelInputPreparer}{32}{subsection.4.2.3}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.2.4}HuggingFaceModelInferencer}{32}{subsection.4.2.4}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.2.5}ModelOutputProcessor}{33}{subsection.4.2.5}%
-\select@language {magyar} \contentsline {subsubsection}{Konzisztencia}{34}{section*.20}%
-\select@language {magyar} \contentsline {subsubsection}{Pontosság}{34}{section*.21}%
-\select@language {magyar} \contentsline {subsubsection}{Konzisztens pontosság}{34}{section*.22}%
-\select@language {magyar} \contentsline {subsubsection}{Kiegyensúlyozott pontosság}{34}{section*.23}%
-\select@language {magyar} \contentsline {subsubsection}{LogFile}{34}{section*.24}%
-\select@language {magyar} \contentsline {section}{\numberline {4.3}Tesztelés}{35}{section.4.3}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.3.1}A programok futtatása}{35}{subsection.4.3.1}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.3.2}Eredmények}{36}{subsection.4.3.2}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.3.3}Hibakezelés}{36}{subsection.4.3.3}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.3.4}Platformfüggetlenség}{36}{subsection.4.3.4}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.3.5}Skálázhatóság, bővíthetőség}{37}{subsection.4.3.5}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.3.6}Megjegyzés}{37}{subsection.4.3.6}%
+\select@language {magyar} \contentsline {section}{Nyelvi modell alapfogalmak}{14}{section*.12}%
+\select@language {magyar} \contentsline {section}{\numberline {2.1}A prompt}{14}{section.2.1}%
+\select@language {magyar} \contentsline {section}{\numberline {2.2}Inferencia}{15}{section.2.2}%
+\select@language {magyar} \contentsline {section}{\numberline {2.3}Determinisztikus következtetés, temperature, top-p és top-k}{15}{section.2.3}%
+\select@language {magyar} \contentsline {section}{\numberline {2.4}Maximum kimeneti tokenek és kontextusablak}{16}{section.2.4}%
+\select@language {magyar} \contentsline {chapter}{\numberline {3}Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}{17}{chapter.3}%
+\select@language {magyar} \contentsline {section}{\numberline {3.1}LMArena - nagy nyelvi modelleket összehasonlító platform}{17}{section.3.1}%
+\select@language {magyar} \contentsline {chapter}{\numberline {4}A szoftver: modell futtató és kiértékelő keretrendszer fejlesztése PyCharmban}{19}{chapter.4}%
+\select@language {magyar} \contentsline {section}{\numberline {4.1}Tervezés}{19}{section.4.1}%
+\select@language {magyar} \contentsline {subsubsection}{ModelInputPreparer}{20}{section*.13}%
+\select@language {magyar} \contentsline {subsubsection}{HuggingFaceModelInferencer}{21}{section*.14}%
+\select@language {magyar} \contentsline {subsubsection}{ModelOutputProcessor}{21}{section*.15}%
+\select@language {magyar} \contentsline {section}{\numberline {4.2}Fejlesztés}{21}{section.4.2}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.2.1}Globális scope}{21}{subsection.4.2.1}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.2.2}A modulok szerkezete}{21}{subsection.4.2.2}%
+\select@language {magyar} \contentsline {subsubsection}{Közös elemek}{21}{section*.16}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.2.3}ModelInputPreparer}{22}{subsection.4.2.3}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.2.4}HuggingFaceModelInferencer}{22}{subsection.4.2.4}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.2.5}ModelOutputProcessor}{23}{subsection.4.2.5}%
+\select@language {magyar} \contentsline {subsubsection}{Konzisztencia}{24}{section*.17}%
+\select@language {magyar} \contentsline {subsubsection}{Pontosság}{24}{section*.18}%
+\select@language {magyar} \contentsline {subsubsection}{Konzisztens pontosság}{24}{section*.19}%
+\select@language {magyar} \contentsline {subsubsection}{Kiegyensúlyozott pontosság}{24}{section*.20}%
+\select@language {magyar} \contentsline {subsubsection}{LogFile}{24}{section*.21}%
+\select@language {magyar} \contentsline {section}{\numberline {4.3}Tesztelés}{25}{section.4.3}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.3.1}A programok futtatása}{25}{subsection.4.3.1}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.3.2}Eredmények}{26}{subsection.4.3.2}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.3.3}Hibakezelés}{26}{subsection.4.3.3}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.3.4}Platformfüggetlenség}{26}{subsection.4.3.4}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.3.5}Skálázhatóság, bővíthetőség}{26}{subsection.4.3.5}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.3.6}Megjegyzés}{27}{subsection.4.3.6}%
 \select@language {magyar} \ 
-\select@language {magyar} \contentsline {section}{Nyilatkozat}{38}{chapter*.25}%
-\select@language {magyar} \contentsline {section}{Köszönetnyilvánítás}{39}{chapter*.26}%
-\select@language {magyar} \contentsline {section}{Elektronikus mellékletek}{42}{chapter*.28}%
+\select@language {magyar} \contentsline {section}{Nyilatkozat}{30}{chapter*.23}%
+\select@language {magyar} \contentsline {section}{Köszönetnyilvánítás}{31}{chapter*.24}%
+\select@language {magyar} \contentsline {section}{Elektronikus mellékletek}{32}{chapter*.25}%

@@ -2389,16 +2389,12 @@
     <bcf:citekey order="14" intorder="1">pilehvar2019wic</bcf:citekey>
     <bcf:citekey order="15" intorder="1">miller1994wordnet</bcf:citekey>
     <bcf:citekey order="16" intorder="1">pilehvar2019wic</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">chiang2024chatbot</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">springboard2023gpt3</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">tan2024terms</bcf:citekey>
-    <bcf:citekey order="20" intorder="1">wolf2019huggingface</bcf:citekey>
-    <bcf:citekey order="21" intorder="1">holtzman2020curious</bcf:citekey>
-    <bcf:citekey order="22" intorder="1">openai_context_window</bcf:citekey>
-    <bcf:citekey order="23" intorder="1">berend2025phi</bcf:citekey>
-    <bcf:citekey order="24" intorder="1">phi4mini2024</bcf:citekey>
-    <bcf:citekey order="25" intorder="1">gemma22b2024</bcf:citekey>
-    <bcf:citekey order="26" intorder="1">qwen15chat2024</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">holtzman2020curious</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">openai_context_window</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">chiang2024chatbot</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">springboard2023gpt3</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">tan2024terms</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">wolf2019huggingface</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
