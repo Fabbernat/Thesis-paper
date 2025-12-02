@@ -439,7 +439,9 @@ Does the word `w` mean the same thing in `s2` and `s1`?
     Ahhoz, hogy nagy nyelvi modelleket ki tudjam értékelni, meg kell ismerni néhány alapfogalmat, koncepciót, amely a \texttt{Hugging Face transformers} könyvtár használata során is elengedhetetlen lesz.
 
     \section{A prompt}
-    A prompt alatt generatív mesterséges intelligenciák esetében egy nagy nyelvi modell számára beadott olyan inputot értünk, amelyre a modell egy előre meghatározott kimenetet generál. Működési elve lényegében ugyanaz, mint egy hagyományos konzolnak, parancssori interfésznek, például egy Windows rendszeren a PowerShell, vagy Linuxon Bash terminállal, azonban prompt esetén a kommunikáció emberi nyelven történik.
+    A prompt alatt generatív mesterséges intelligenciák esetében egy nagy nyelvi modell számára beadott olyan inputot értünk, amelyre a modell egy kimenetet, "választ" generál, amely lehet determinisztikus (előre meghatározható) és részben véletlenszerű is.
+    A prompt jellemzően szöveges formájú \textbf{nyelvi modellek esetén}, mint ahogy a válasz is, de egyre elterjedtebbek a hangalapú bemeneti és kimeneti formák is.
+%       Működési elve némiben hasonlít, egy hagyományos konzolhoz, parancssori interfészhoz, például egy Windows rendszeren a PowerShellhoz, vagy Linuxon Bash terminálhoz, azonban prompt esetén a kommunikáció emberi nyelven történik.
     Egy jelentős előnye a promptolásnak, hogy nem csak egy előre meghatározott parancskészletet használhatunk, hanem bármit beírhatunk, nincsenek szintaktikai hibák vagy futtatási hibák, mivel a rendszer minden bemenetre képes választ generálni.
 
     \section{Inferencia}
