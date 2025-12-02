@@ -52,6 +52,7 @@
 \setlength{\parindent}{1cm} % Behúzás mértéke (1 cm)
 \usepackage{float}
 \usepackage{listings}
+\usepackage{minted}
 \usepackage{psfrag}
 \usepackage{csquotes}
 
@@ -781,27 +782,27 @@ The cat sat on the _ .
 %
 %    \subsection{Kérdés-válasz szótár}
 %    A naiv kérdés-válasz készítési ötlet az lehetne, hogy a vizsgált szó legyen a kulcs, és a kérdés a válasz. Ez azonban nem célszerű, sőt hibás,  ugyanis egy szóhoz több bejegyzés is tartozhat az adathalmazban, viszont a mondatpárok egyediek egymáshoz képest. Emiatt a kérdéseknek kell lenniük a kulcsoknak, amelyeknek a gold standard válasz az értéke. Például egy szótárelem kulcs-érték pár a következőképpen néz ki:
-%    \begin{lstlisting}
+%    \begin{minted}[breaklines]{text}
 %Key: Does the word "w" mean the same thing in
 %"s1" and "s2"?
 %Value: Yes VAGY No
-%    \end{lstlisting}
+%    \end{minted}
 %% end TODO delete?
 %
 %    \subsection{Futtatás}
 %    A \href{https://colab.research.google.com/drive/1yA8IAd5z2oreKUXha-16Du2YrNhemNiU?usp=sharing}{Google Colab jegyzetfüzetem} esetén a modell nevének a pontos Hugging Face azonosítóját a
-%    \begin{lstlisting}
+%    \begin{minted}[breaklines]{text}
 %    model_name = <company/model-name>
-%    \end{lstlisting}
+%    \end{minted}
 %    utasítással lehet megadni. Az
-%    \begin{lstlisting}
+%    \begin{minted}[breaklines]{text}
 %    AutoTokenizer.from_pretrained(model_name)
-%    \end{lstlisting}
+%    \end{minted}
 %    sor létrehozza a tokenizer példányt. Ez felelős azért, hogy a nyers szöveget a modell által értelmezhető tokenekre bontsa. A \texttt{from\_pretrained} hívással automatikusan letöltöm a modellhez illő tokenizálót.
 %    Az
-%    \begin{lstlisting}
+%    \begin{minted}[breaklines]{text}
 %    AutoModelForCausalLM.from_pretrained(...)
-%    \end{lstlisting}
+%    \end{minted}
 %    függvény tölti be a nyelvi modellt, amely képes szöveget generálni. % A causal language model elnevezés arra utal, hogy a modell kategóriája szöveges következtető típus...
 %    \begin{itemize}
 %        \item \texttt{device\_map='auto'} beállítás automatikusan eldönti, melyik modelltömb kerüljön melyik eszközre pl. GPU-ra vagy CPU-ra.
@@ -816,41 +817,41 @@ The cat sat on the _ .
 %    A tokenizálást az \texttt{apply\_chat\_template} végzi el,
 %    \href{https://huggingface.co/docs/transformers/main/en/chat\_templating}{amely egyesíti a különböző modellek output formátumát}.
 %    A \texttt{Gemma} esetén a \texttt{flash-attention} csomag telepítése szükséges hozzá. Paraméterei:
-%    \begin{lstlisting}
+%    \begin{minted}[breaklines]{text}
 %return_tensors='pt'        # A kimenetet PyTorch tensor formatumban kerem.
 %add_generation_prompt=True # Specialis jelzes, hogy generalni kell valaszt.
-%    \end{lstlisting}
+%    \end{minted}
 %
 %    Ezután a \texttt{.to(model.device)} biztosítja, hogy az input tensor ugyanarra
 %    az eszközre (pl. GPU) kerüljön, mint a modell.
 %
 %    A szöveg-generálás lépése:
-%    \begin{lstlisting}
+%    \begin{minted}[breaklines]{text}
 %
 %output = model.generate(
 %    inputs,
 %    max_new_tokens=200,     # Maximum 200 uj token
 %    do_sample=False,       # Determinisztikus valasz
 %)
-%    \end{lstlisting}
+%    \end{minted}
 %
 %    A válasz dekódolása:
-%    \begin{lstlisting}
+%    \begin{minted}[breaklines]{text}
 %decoded = tokenizer.batch_decode(output, skip_special_tokens=True)
 %
 %for reply in decoded:
 %    print(reply)
-%    \end{lstlisting}
+%    \end{minted}
 %
 %    \texttt{skip\_special\_tokens=True} eltávolítja az olyan vezérlő tokeneket,
 %    mint \texttt{<s>} vagy \texttt{<|endoftext|>}, amelyek nem részei a természetes szövegnek.
 %
 %    Végül egy for ciklus segítségével az összes dekódolt választ szépen sorban kiírom:
 %
-%    \begin{lstlisting}
+%    \begin{minted}[breaklines]{text}
 %    for i, sentence in enumerate(decoded):
 %    print(f"[{i}] {sentence}")
-%    \end{lstlisting}
+%    \end{minted}
 %
 %
 %
@@ -858,10 +859,8 @@ The cat sat on the _ .
 %    A szkripttel hibátlanul le tudtam tesztelni a modelleket, amelyeket szerettem volna.
 %
 %    \subsection{Kiértékelés}
-%    A nyelvi modellek hajlamosak az önismétlés hibájába esni, és az is gyakori torzulás, hogy az egyik osztályt aránytalanul preferálják a másik fölött, tehát például a WiC kérdéseinek 80\%-ára nemmel válaszolnak. A kiértékelés során figyelembe vettem, hogy ha mindegyik kérdésre ugyanazt a választ adja, és ezzel aránytalanul sokat eltalál, az ne érjen annyi pontot, mint ha közel fele-fele arányban tippel vegyesen. Más szóval, ha egy modell mindenre ugyanazt válaszolja, és történetesen ezzel jól lefedi az egyoldalú gold standardot, az nem jelent valódi tudást, csak szerencsés torzítást.
-%    A kiegyensúlyozott pontosság (balanced accuracy) módszerével az abszolút \texttt{true positive} arány helyett egy átlagolt \texttt{true positive} arányt adunk meg az egyes osztályokra.
-%
-%
+
+
 %    Ez segít, ha pl. a gold standard 80\% "Yes" és 20\% "No", de a modell mindig "Yes"-t mond – a sima pontosság 80\%, de a kiegyensúlyozott pontosség csak 50\%.
 %
 %    \lstset{breaklines=true}
@@ -873,11 +872,11 @@ The cat sat on the _ .
 %        \item Megkértem a modellt, hogy írja le a gondolatmenetét.
 %        \item A promptban utasítottam a modellt, hogy érveljen is, miért tartja helyesnek a válaszát.
 %        \item Megkértem, a modellt, hogy egy \textit{normalizált skálán}, mondjuk egy 0 és 100 közötti számmal, a határértékeket beleértve ítélje meg, hogy a modell mennyire biztos abban, hogy a célszó a 2 mondatban ugyanabban az értelemben van jelen. 100\% jelenti azt, hogy a modell teljesen biztos abban, hogy a célszó a 2 mondatban ugyanazt jelenti, 0\% esetén pedig teljesen biztos az ellenkezőjében.
-%        \begin{lstlisting}
+%        \begin{minted}[breaklines]{text}
 %Answer with "Yes" or "No" with reasoning and your confidence score of "Yes" in percentage. 100% means you are a hundred percent sure that they mean the same thing, 0% means the opposite.
 %
 %Does the word "{word}" mean the same thing in sentences "{sentence1}" and "{sentence2}"?
-%        \end{lstlisting}
+%        \end{minted}
 %
 %
 %        \begin{figure}[H]
@@ -1161,42 +1160,64 @@ The cat sat on the _ .
     Tehát a konzisztencia és a pontosság 0,00 és 1,00 közé normalizált értékét szorozzuk össze egymással, majd az eredményt megszorozzuk százzal.
 
     \subsubsection{Kiegyensúlyozott pontosság}
-    Ha még pontosabb képet szeretnénk kapni, megvizsgálhatjuk, hogy a modell által adott "igen" és "nem" (és a "talán") válaszok aránya hogyan oszlik el. Ha azt vesszük észre, hogy az egyik túlnyomó többségben van, akkor azt úgy is vehetjük, hogy a modell torzít és preferálja az egyik választ, így azokat kevésbé kell komolyan venni. Ebből következően a képletünkbe alacsonyabb súllyal számítjuk bele ezt a kategóriát.
+    A nyelvi modellek hajlamosak az önismétlés hibájába esni, és az is gyakori torzulás, hogy az egyik osztályt aránytalanul preferálják a másik fölött, tehát például a WiC kérdéseinek 80\%-ára nemmel válaszolnak.
+    A kiértékelés során figyelembe vettem, hogy ha mindegyik kérdésre ugyanazt a választ adja, és ezzel aránytalanul sokat eltalál, az ne érjen annyi pontot, mint ha közel fele-fele arányban tippel vegyesen.
+    Más szóval, ha egy modell mindenre ugyanazt válaszolja, és történetesen ezzel jól lefedi az egyoldalú gold standardot, az nem jelent valódi tudást, csak szerencsés torzítást.
+    Ha még pontosabb képet szeretnénk kapni, megvizsgálhatjuk, hogy a modell által adott "igen" és "nem" (és a "talán") válaszok aránya hogyan oszlik el.
+    Ha azt vesszük észre, hogy az egyik túlnyomó többségben van, akkor azt úgy is vehetjük, hogy a modell torzít és preferálja az egyik választ, így azokat kevésbé kell komolyan venni.
+    Ebből következően a képletünkbe alacsonyabb súllyal számítjuk bele ezt a kategóriát.
+    A kiegyensúlyozott pontosság (balanced accuracy) módszerével az abszolút \texttt{true positive} arány helyett egy átlagolt \texttt{true positive} arányt adunk meg az egyes osztályokra.
+
     % todo check hogy helyes-e a képlet ehhez.
     \begin{equation}
         BalAcc = \frac{1}{2}\left(\frac{TP}{TP+FN} + \frac{TN}{TN+FP}\right) \times 100\label{eq:equation}
     \end{equation}
 
     \subsubsection{LogFile}
-    A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit. A fájlhoz append módban minden futtatás után hozzáíródnak a legutóbbi futtatás riportjai. A megjelenített információk többek között a választott modell, a jelenlegi felhasználó neve, a futtatás dátuma, és a modell válaszok kiértékelésének eredményei: a konzisztencia, pontosság, konzisztens pontosság, kiegyensúlyozott pontosság és a tp,fp,fn,tn statisztikák.
+    A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit.
+    A fájlhoz append módban minden futtatás után hozzáíródnak a legutóbbi futtatás riportjai.
+    A megjelenített információk többek között a választott modell, a jelenlegi felhasználó neve, a futtatás dátuma, és a modell válaszok kiértékelésének eredményei: a konzisztencia, pontosság, konzisztens pontosság, kiegyensúlyozott pontosság és a tp,fp,fn,tn statisztikák.
 
 
     \section{Tesztelés}
     \subsection{A programok futtatása}
-    A PyCharm IDE kínál egyszerű és felhasználóbarát futtatási módokat - a zöld háromszög ikonokat kell keresni, azzal lehet tetszőleges .py kiterjesztésű fájlt futtatni. Ez a projektem esetén is működik. A keretrendszer main.py fájlokat kell elindítani a modulok lefuttatásához. Mivel azonban a projektem kódja sok fájlból, külsős csomagokból és összetett projektszerkezetból áll, és a zöld gomb nem biztos, hogy megfelelő útvonalakon keresi majd a modulokat, a legbiztonságosabb és legprofesszionálisabb mód a terminálos futtatás. Én, mivel Windows-on fejlesztettem, a \href{https://learn.microsoft.com/en-us/powershell/}{PowerShell} terminált használtam fejlesztéshez és futtatáshoz és ezt ajánlom, de a \href{https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands}{Command Prompt Shell} is teljesen megfelelő.
+    A PyCharm IDE kínál egyszerű és felhasználóbarát futtatási módokat - a zöld háromszög ikonokat kell keresni, azzal lehet tetszőleges .py kiterjesztésű fájlt futtatni.
+    Ez a projektem esetén is működik.
+    A keretrendszer main.py fájlokat kell elindítani a modulok lefuttatásához.
+    Mivel azonban a projektem kódja sok fájlból, külsős csomagokból és összetett projektszerkezetból áll, és a zöld gomb nem biztos, hogy megfelelő útvonalakon keresi majd a modulokat, a legbiztonságosabb és legprofesszionálisabb mód a terminálos futtatás. Én, mivel Windows-on fejlesztettem, a \href{https://learn.microsoft.com/en-us/powershell/}{PowerShell} terminált használtam fejlesztéshez és futtatáshoz és ezt ajánlom, de a \href{https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands}{Command Prompt Shell} is teljesen megfelelő.
+
+
+
+
+
+
+
+
 
     Futtatás 3 lépésben:\\
     Elsőként klónozzuk a projekt forráskódját a gépünkre, pl. a \verb|~\PycharmProjects\| elérési útra. Ajánlott a projekt nevét "Thesis" néven hagyni.
     Következő lépésként lépjünk a projekt gyökérmappájába. Adjuk ki a \begin{verbatim}
-  ~\PycharmProjects\Thesis>  & .\.venv\Scripts\Activate.ps1
+   & .\.venv\Scripts\Activate.ps1
     \end{verbatim} parancsot a virtuális környezet aktiválásához. Majd adjuk ki a \begin{verbatim}
-   ~\PycharmProjects\Thesis> pip install torch transformers accelerate huggingface_hub
+   pip install torch transformers accelerate huggingface_hub
     \end{verbatim} parancsot a szükséges csomagok telepítéséhez. Ha nagyobb modelleket is szeretnénk futtatni, akkor más csomagokra is szükség lehet. Ez esetben a \begin{verbatim}
-   ~\PycharmProjects\Thesis> pip install torch transformers accelerate huggingface_hub accelerate hf_xetm optimum
+   pip install torch transformers accelerate huggingface_hub
+   hf_xetm optimum
     \end{verbatim} az ajánlott parancs.
 
     Itt kétféle opciónk van. Egyszerű mindhárom modellt lefuttató futtatásért adjuk ki a gyökérkönyvtárban ( - ahol a /.git/ és az /src/ mappa van -) a
     \begin{verbatim}
-~\PycharmProjects\Thesis> py -m src.Framework.globalMain
+py -m src.Framework.globalMain
     \end{verbatim} parancsot. Vagy ha csak egy modult szeretnénk futtatni, akkor szintén a gyökérkönyvtárból adjuk ki a \begin{verbatim}
-   ~\PycharmProjects\Thesis> py -m src.Framework.<modul neve>.main
-    \end{verbatim} parancsot. A modul neve helyére a ModelInputPreparer, HuggingFaceModelInferencer, vagy ModelOutputProcessor kerülhet, tehát a tényleges parancsok
+   py -m src.Framework.<modul neve>.main
+    \end{verbatim}
+    parancsot. A modul neve helyére a ModelInputPreparer, HuggingFaceModelInferencer, vagy ModelOutputProcessor kerülhet, tehát a tényleges parancsok
     \begin{verbatim}
-    ~\PycharmProjects\Thesis> py -m src.Framework.ModelInputPreparer.main
+    py -m src.Framework.ModelInputPreparer.main
 
-    ~\PycharmProjects\Thesis> py -m src.Framework.HuggingFaceModelInferencer.main
+    py -m src.Framework.HuggingFaceModelInferencer.main
 
-    ~\PycharmProjects\Thesis> py -m src.Framework.ModelOutputProcessor.main
+    py -m src.Framework.ModelOutputProcessor.main
 
     \end{verbatim}
     Ezzel a fenti módszerrel garantáltan megtalálja a Python a szkriptekben megadott modulokat.
@@ -1207,15 +1228,15 @@ The cat sat on the _ .
     Hogyha több Python verziót is használunk, akkor annak is jelentősége lehet, hogy milyen verziójú interpreterrel futtatjuk. Tehát lehet, hogy például 3.12-es verzióval nem fut le, de 3.13-assal már igen. Ez esetben ezt is expliciten meg kell adni futtatáskor egy kapcsolóval, az alábbi módon:
 
     \begin{verbatim}
-~\PycharmProjects\Thesis> py -3.13 -m src.Framework.globalMain
+py -3.13 -m src.Framework.globalMain
     \end{verbatim}
 
     \begin{verbatim}
-    ~\PycharmProjects\Thesis> py -3.13 -m src.Framework.ModelInputPreparer.main
+    py -3.13 -m src.Framework.ModelInputPreparer.main
 
-    ~\PycharmProjects\Thesis> py -3.13 -m src.Framework.HuggingFaceModelInferencer.main
+    py -3.13 -m src.Framework.HuggingFaceModelInferencer.main
 
-    ~\PycharmProjects\Thesis> py -3.13 -m src.Framework.ModelOutputProcessor.main
+    py -3.13 -m src.Framework.ModelOutputProcessor.main
     \end{verbatim}
 
     Windowson szükség lehet a  \begin{verbatim}
