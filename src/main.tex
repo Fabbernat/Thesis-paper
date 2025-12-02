@@ -277,6 +277,8 @@ Does the word `w` mean the same thing in `s2` and `s1`?
 
     A \href{https://pilehvar.github.io/wic/}{Word in Context adathalmaz} egy jó minőségű, nyelvészeti szakértők által készített benchmark adathalmaz. A mondatok a WordNetből, a VerbNetből és a Wikiszótárból származnak.
     A WiC adathalmaz segítségével megvizsgálhatjuk, hogy egy rendszer (modell, algoritmus) mennyire képes a szavak jelentését megérteni különböző kontextusokban. A WiC feladat része a SuperGlue~\cite{sarlin2020superglue} Benchmarknak, amely egy széles körben elfogadott benchmark nyelvi modellek kiértékelésére. 8 feladatból áll:
+    
+    
     \begin{itemize}
         \item  BoolQ (Boolean Questions)
         \item  CB (CommitmentBank)
@@ -287,7 +289,10 @@ Does the word `w` mean the same thing in `s2` and `s1`?
         \item \textbf{WiC(Word-in-Context)}
         \item  WSC (Winograd Schema Challenge)
     \end{itemize}
-
+    \textit{ Forrás:} \href{https://arxiv.org/abs/1905.00537}{arXiv}~\cite{wang2020superglue}
+    
+    \vspace*{2cm}
+    
     A SuperGLUE a GLUE továbbfejlesztett változata, amelyet 2019-ben vezettek be, mivel a GLUE feladatait a legmodernebb modellek (pl. BERT) már túl jól megoldották. ~\cite{wang2020superglue}
     Ez az egyik legszélesebb körben elfogadott benchmark, amelyen számos nyelvi modell teljesítményét vizsgálták.
     A WiC halmaz fel van osztva tanító, validációs és teszthalmazra, ezért gépi tanításra egyszerűen felhasználható. Ezt segíti elő az is, hogy az összes mondat tokenekre bontott, tabulált és egységesek az írásjelek is.
@@ -310,7 +315,7 @@ Does the word `w` mean the same thing in `s2` and `s1`?
             hit          & V               & 1-3            & We hit Detroit at one in the morning but kept driving through the night. & An interesting idea hit her.                                         \\
             \hline
         \end{tabular}
-        \caption{A WiC adathalmaz tesztkészletének néhány bejegyzése}
+        \caption{A WiC adathalmaz tesztkészletének néhány bejegyzése. \textit{ Forrás:} \href{https://pilehvar.github.io/wic/}{The Word-in-Context Dataset}}~\cite{pilehvar2019wic}
     \end{table}
 
     \subsection{Korábbi eredmények a WiC adathalmazon}
@@ -359,7 +364,7 @@ Does the word `w` mean the same thing in `s2` and `s1`?
             % & 60.x
             \bottomrule
         \end{tabular}
-        \caption{Forrás: \href{https://pilehvar.github.io/wic/}{The Word-in-Context Dataset}}
+        \caption{Korábbi eredmények a WiC adathalmazon.\textit{ Forrás:} \href{https://pilehvar.github.io/wic/}{The Word-in-Context Dataset}}~\cite{pilehvar2019wic}
 
         \label{tab:state_of_the_art}
     \end{table}
@@ -374,7 +379,7 @@ Does the word `w` mean the same thing in `s2` and `s1`?
 
     Inputként kap egy promptot, egy legfeljebb \texttt{n} token hosszúságú szöveget, ahol az \texttt{n} függ a modelltől és a paraméterezéstől. Erre fog legfeljebb \texttt{m} hosszúságú válaszban inferenciával, azaz következtetéssel válaszolni. Azért hívják modellnek a modelleket, mert az emberi nyelvet és kommunikációt utánozzák (modellezik).
 
-    Forrás: \href{https://hu.wikipedia.org/wiki/Nagy_nyelvi_modell}{Wikipédia}
+    \textit{ Forrás:} \href{https://hu.wikipedia.org/wiki/Nagy_nyelvi_modell}{Wikipédia}
 
     \subsection{LMArena - nagy nyelvi modelleket összehasonlító platform}
     Kutatómunkám első lépéseként utánanéztem, hogy melyik modellek a legjobbak angol nyelvű utasításkövetés feladatokban, mint amely az én problémám is. Ehhez a \href{https://lmarena.ai/}{LMArenát}~\cite{chiang2024chatbot} megfelelő referenciának tartottam, mert ez az oldal minden ismertebb ingyenes nagy nyelvi modellhez API-n keresztüli limitált hozzáférést biztosít: 2025. december 1-én a ranglétrán pedig 276 modell teljesítményét mérhetjük össze különböző kategóriák alapján, amely több mint 1.5 millió ember szavazatán alapszik.
@@ -772,7 +777,7 @@ for reply in decoded:
 
     \lstset{breaklines=true}
 
-    \subsection{A modell válaszainak bővításe}
+    \subsection{A modell válaszainak bővítése}
     Hamar be kellett látnom, hogy az algoritmus egy puszta "Yes" vagy "No" válasza önmagában nem sok információt rejt magában. Ha csak ennyit kapok vissza, nem tudom, hogy hogyan gondolkodott a modell, milyen szóvektorai vannak.
     Emiatt, hogy a puszta "Yes" és "No" válasznál többet kapjak vissza, többféle módszert alkalmaztam:
     \begin{enumerate}
@@ -1142,10 +1147,15 @@ Does the word "defeat" mean the same thing in sentences
     A programban a hibák megtalálását és lekezelését egyszerű try-catch blokkokkal \footnote{Pythonban a try-except a hibakezelő kulcsszavak elnevezése, de a funkciójuk ugyanaz, mint a többi nyelvben ismert try-catch blokkoknak} kezelem. Egyes hibák az eltérő környezetekből adódnak, pl. a Python interpreter eltérő mappát tekint gökérkönyvtárnak. Ezt is try-catch-csel oldottam meg, amellyel minden importot használó szkriptbe kétféle módon is megpróbálom beimportálni a függőségeket.
 
     \subsection{Platformfüggetlenség}
-    A szoftvert 3, eltérő architektúrájú és operációs rendszerű gépen is teszteltem. Teszteltem Asus laptopon és különböző toronygépházas gépeken, Windows 10-en, 11-en és Linuxon is működött a konzolos futtatás.
+    Mivel a Python virtuális környezetét használtam a programom fejlesztésére és a program nem használ abszolút útvonalakat, csak relatívakat, így a szoftverem platformfüggetlennek mondható.
+    A szoftvert 3, eltérő architektúrájú és operációs rendszerű gépen is teszteltem.
+    Teszteltem Asus laptopon és különböző toronygépházas gépeken, Windows 10-en, 11-en és Linux Debianon is működött a konzolos futtatás.
 
-    \subsection{Skálázhatóság}
-    A szoftverem tovább bővíthető és terhelhető tetszőlegesen nagy mennyiségű bemenettel, anélkül, hogy lényegesebb futásidő-növekedést tapasztalnánk, vagy lényegesebben újra kellene írni a logikáját. Az inputok beolvasása, modell választás és az outputok feldolgozása során is törekedtem arra, hogy ezek nagy mérete ne jelentsen problémát, és a validálás, hibakezelés jól működjön nagy méretű, vagy érvénytelen input esetén is. Ezt elsősorban a moduláris, és függvényekbe, osztályokba és metódusokba általánosított, absztrakt felépítésnek köszönheti a szoftver. Az egyes részek csak minimálisan függnek egymástól.
+    \subsection{Skálázhatóság, bővíthetőség}
+    A szoftverem tovább bővíthető és terhelhető tetszőlegesen nagy mennyiségű bemenettel, anélkül, hogy lényegesebb futásidő-növekedést tapasztalnánk, vagy lényegesebben újra kellene írni a logikáját.
+    Az inputok beolvasása, modell választás és az outputok feldolgozása során is törekedtem arra, hogy ezek nagy mérete ne jelentsen problémát, és a validálás, hibakezelés jól működjön nagy méretű, vagy érvénytelen input esetén is.
+    Ezt elsősorban a moduláris, és függvényekbe, osztályokba és metódusokba általánosított, absztrakt felépítésnek köszönheti a szoftver.
+    Az egyes részek csak minimálisan függnek egymástól.
 
     \subsection{Megjegyzés}
     Fontosnak tartom megjegyezni, hogy a Python keretrendszernek van egy fontos különbsége a Google Colab megoldásomhoz képest: Itt a modell alapértelmezett módon nem 2800 futtatásban válaszol egyesével a 2800 kérdésre, hanem egy futtatásban a megadott számú kérdésre. Emiatt a Colab megoldással szemben itt ha inputként megadjuk a kérdéseket egyenes és fordított sorrendben is, akkor a modell látja a modell a korábbi kérdésre adott válaszait. Ha ezt szeretnénk elkerülni, akkor kétszer kell lefuttatni a modell inferenciát, egyszer egyenes, majd fordított kérdésekkel, vagy a megfelelő beállításokat alkalmazni a config fájlokban.
