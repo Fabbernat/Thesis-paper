@@ -513,7 +513,7 @@ The cat sat on the _ .
 
     A \textbf{kontextusablak} (\textit{context window}) a modell által egyszerre figyelembe vehető tokenek teljes száma – beleértve a bemenetet és a választ is.
     Ha a bemenet vagy a beszélgetés túl hosszú, a legrégebbi részek elvesznek.
-    A GPT-4 (GPT-4-0613) kontextusablaka például 8192 tokent.
+    A GPT-4 (GPT-4-0613) kontextusablaka például 8192 token.
     ~\cite{openai_context_window}
 
 
@@ -540,36 +540,36 @@ The cat sat on the _ .
 %    \end{equation}
 %    \vspace*{0.5cm}
 
-     \chapter{Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}
+%     \chapter{Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}
 
-    {\Large\textbf LMArena és Hugging Face modellek}
+%    {\Large\textbf LMArena és Hugging Face modellek}
 
-        \section{LMArena - nagy nyelvi modelleket összehasonlító platform}
-    Kutatómunkám első lépéseként utánanéztem, hogy melyik modellek a legjobbak angol nyelvű utasításkövetés feladatokban, mint amely az én problémám is. Ehhez a \href{https://lmarena.ai/}{LMArenát}~\cite{chiang2024chatbot} megfelelő referenciának tartottam, mert ez az oldal minden ismertebb ingyenes nagy nyelvi modellhez API-n keresztüli limitált hozzáférést biztosít: 2025. december 1-én a ranglétrán pedig 276 modell teljesítményét mérhetjük össze különböző kategóriák alapján, amely több mint 1.5 millió ember szavazatán alapszik.
-    A folyamatosan frissülő rangsor menüben az opciók közül az "Instruction Following" és az "English" kategóriát vizsgáltam meg, mert a problémám ehhez a területhez áll a legközelebb.
+%        \section{LMArena - nagy nyelvi modelleket összehasonlító platform}
+%    Kutatómunkám első lépéseként utánanéztem, hogy melyik modellek a legjobbak angol nyelvű utasításkövetés feladatokban, mint amely az én problémám is. Ehhez a \href{https://lmarena.ai/}{LMArenát}~\cite{chiang2024chatbot} megfelelő referenciának tartottam, mert ez az oldal minden ismertebb ingyenes nagy nyelvi modellhez API-n keresztüli limitált hozzáférést biztosít: 2025. december 1-én a ranglétrán pedig 276 modell teljesítményét mérhetjük össze különböző kategóriák alapján, amely több mint 1.5 millió ember szavazatán alapszik.
+%    A folyamatosan frissülő rangsor menüben az opciók közül az "Instruction Following" és az "English" kategóriát vizsgáltam meg, mert a problémám ehhez a területhez áll a legközelebb.
+%
+%
+%    Az oldalon található modellek mind elérhetőek és kipróbálhatóak, és általában saját, felhasználóbarát webes felületük is van, amely személyre szabható, elmenthetőek a korábbi beszélgetéseink, és egyéb kényelmes szolgáltatásokkal kecsegtetnek. Azonban fontos észben tartanunk, hogy ezeket a felületeket fejlesztő cégek bármilyen publikus webes forrást felhasználhatnak a modelljeik tanításához, beleértve a chatben megadott információt.
+%    A nagy cégeknek, mint például a Google-nek, az OpenAI-nak és a DeepSeek-nek is vannak nyílt forráskódú, jó minőségű modelljeik, melyek hatalmas adathalmazokon be vannak tanítva. Például a GPT-3 tanítása során a Common Crawl Wikipédiát, WebText2 reddit posztokból és linkjeiből kinyert adatokat, internetes könyveket és az angol nyelvű wikipédiát is felhasználták.~\cite{springboard2023gpt3}
+%
+%    A nagy tech cégek, mint a Meta és az X, felhasználják a közösségi médiára feltöltött adatainkat a modelljeik fejlesztéséhez.
+%    A Google pedig a felhasználási feltételeit is többször megváltoztatta, hogy felhasználhassa szolgáltatásainak felhasználói adatait az AI termékei fejlesztéséhez.
+%    ~\cite{tan2024terms}
 
 
-    Az oldalon található modellek mind elérhetőek és kipróbálhatóak, és általában saját, felhasználóbarát webes felületük is van, amely személyre szabható, elmenthetőek a korábbi beszélgetéseink, és egyéb kényelmes szolgáltatásokkal kecsegtetnek. Azonban fontos észben tartanunk, hogy ezeket a felületeket fejlesztő cégek bármilyen publikus webes forrást felhasználhatnak a modelljeik tanításához, beleértve a chatben megadott információt.
-    A nagy cégeknek, mint például a Google-nek, az OpenAI-nak és a DeepSeek-nek is vannak nyílt forráskódú, jó minőségű modelljeik, melyek hatalmas adathalmazokon be vannak tanítva. Például a GPT-3 tanítása során a Common Crawl Wikipédiát, WebText2 reddit posztokból és linkjeiből kinyert adatokat, internetes könyveket és az angol nyelvű wikipédiát is felhasználták.~\cite{springboard2023gpt3}
-
-    A nagy tech cégek, mint a Meta és az X, felhasználják a közösségi médiára feltöltött adatainkat a modelljeik fejlesztéséhez.
-    A Google pedig a felhasználási feltételeit is többször megváltoztatta, hogy felhasználhassa szolgáltatásainak felhasználói adatait az AI termékei fejlesztéséhez.
-    ~\cite{tan2024terms}
-
-
-    A Hugging Face~\cite{wolf2019huggingface} [\href{https://huggingface.co/models}{több mint 1.7 millió modellt}] és [\href{https://huggingface.co/datasets}{csaknem 400 ezer adathalmazt}] kínál különféle gépi tanulási feladatokra, beleértve a természetes nyelvfeldolgozást, képfeldolgozást és kódgenerálást is. Ezek a modellek nyilvánosan elérhetők és szabadon használhatók.
-    Előnyük, hogy nyílt forráskódúak, így tetszőlegesen módosíthatóak.
-    Emellett biztonságosak: letölthetőek saját gépre, kódból futtathatóak anélkül, hogy egy szerverrel kommunikálnának.
-    Emiatt érzékeny adatok feldolgozására is alkalmasak.
-    Jellemzően minél kisebb a paraméterszámuk, annál gyengébb a visszaemlékező képességük, rövidebb válaszokat részesítenek előnyben, és annál gyakrabban követnek el hibákat vagy nyelvi torzulásokat - például nyelvtani hibákat, kódban szintaktikai hibákat, inkoherens (összefüggéstelen, logikailag következetlen) válaszokat.
-    Előnyük viszont, hogy gyengébb hardveren is gyorsabban, kevesebb memóriát fogyasztva képesek futni.
-    Nagyméretű modellek gyengébb hardveren való futtatására nyújt megoldást a kvantálás.
-    A kvantálás általában csak a népszerűbb/nagyobb modelleknél (pl.
-    Llama, Gemma, Mistral) elérhető, és gyakran közösségi kontribúciók eredménye (nem hivatalos verziók).
-    A kvantálás a modell súlyait alacsonyabb bitmélységűre (pl.
-    32 → 8/4 bit) konvertálja, ami csökkenti a memóriaigényt és gyorsítja a következtetést.
-    Emiatt azonban könnyen félrevezethetőek és könnyen hallucinálnak is.
-    Ráadásul a korlátozott kontextusmegértés a csökkentett bitmélység miatt nehezebben követik a hosszú gondolatmeneteket és a gyenge memóriájuk.
+%    A Hugging Face~\cite{wolf2019huggingface} [\href{https://huggingface.co/models}{több mint 1.7 millió modellt}] és [\href{https://huggingface.co/datasets}{csaknem 400 ezer adathalmazt}] kínál különféle gépi tanulási feladatokra, beleértve a természetes nyelvfeldolgozást, képfeldolgozást és kódgenerálást is. Ezek a modellek nyilvánosan elérhetők és szabadon használhatók.
+%    Előnyük, hogy nyílt forráskódúak, így tetszőlegesen módosíthatóak.
+%    Emellett biztonságosak: letölthetőek saját gépre, kódból futtathatóak anélkül, hogy egy szerverrel kommunikálnának.
+%    Emiatt érzékeny adatok feldolgozására is alkalmasak.
+%    Jellemzően minél kisebb a paraméterszámuk, annál gyengébb a visszaemlékező képességük, rövidebb válaszokat részesítenek előnyben, és annál gyakrabban követnek el hibákat vagy nyelvi torzulásokat - például nyelvtani hibákat, kódban szintaktikai hibákat, inkoherens (összefüggéstelen, logikailag következetlen) válaszokat.
+%    Előnyük viszont, hogy gyengébb hardveren is gyorsabban, kevesebb memóriát fogyasztva képesek futni.
+%    Nagyméretű modellek gyengébb hardveren való futtatására nyújt megoldást a kvantálás.
+%    A kvantálás általában csak a népszerűbb/nagyobb modelleknél (pl.
+%    Llama, Gemma, Mistral) elérhető, és gyakran közösségi kontribúciók eredménye (nem hivatalos verziók).
+%    A kvantálás a modell súlyait alacsonyabb bitmélységűre (pl.
+%    32 → 8/4 bit) konvertálja, ami csökkenti a memóriaigényt és gyorsítja a következtetést.
+%    Emiatt azonban könnyen félrevezethetőek és könnyen hallucinálnak is.
+%    Ráadásul a korlátozott kontextusmegértés a csökkentett bitmélység miatt nehezebben követik a hosszú gondolatmeneteket és a gyenge memóriájuk.
 %    LMArena és Hugging Face modelleket vizsgáltam meg, hogy mennyire érzékenyek arra, hogyha a 2 mondatot felcseréljük.
 %    A WiC adathalmazból előállított kérdésekből szúrópróbaszerűen adtam be kérdéseket a vizsgált modellnek, majd töröltem a modell memóriáját, és ezt a kérdést a 2 mondatot felcserélve is elküldtem a modellnek. A mondatokat ~\ref{chap:src/Framework} \texttt{ModelInputPreparer} modullal hoztam létre a WiC adatbázisból, erről majd később írok.
 %    Végül egy Google Táblázatban a válaszokból összesítettem az egyes promptolási módszerek pontosságát, kiegyensúlyozott pontosságát, hogy mekkora arányban egyeznek a válaszpárok.
