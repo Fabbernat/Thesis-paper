@@ -483,7 +483,7 @@ The cat sat on the _ .
     A kiválasztott k szóból ezt követően véletlenszerűen választ egyet, amelyet a szöveg folytatásához használ.
     Ez a megközelítés biztosítja, hogy csak a legrelevánsabb szavak kerüljenek figyelembe vételre, ugyanakkor némi változatosságot is megtart a generálásban.
 
-    \begin{figure}[htbp]
+    \begin{figure}[H]
         \centering
 
         \vspace{0.5em}
@@ -1216,6 +1216,12 @@ The cat sat on the _ .
     A kiértékelés során figyelembe vettem, hogy ha mindegyik kérdésre ugyanazt a választ adja, és ezzel aránytalanul sokat eltalál, az ne érjen annyi pontot (százalékban kifejezve), mint ha közel fele-fele arányban tippel vegyesen.
     Más szóval, ha egy modell mindenre ugyanazt válaszolja, és történetesen ezzel jól lefedi az egyoldalú gold standardot, az nem jelent valódi tudást, csak szerencsés torzítást.
     Ezt úgy valósítottam meg, hogy felvettem egy skalár változót, amely módosításával lehet állítani, hogy mennyire büntetjük az egyoldalú válaszadást.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\linewidth]{skalar}
+        \caption{A büntetés mértékét meghatározó skalár}
+        \label{fig:skalar}
+    \end{figure}
     Ha még pontosabb képet szeretnénk kapni, megvizsgálhatjuk, hogy a modell által adott "igen" és "nem" és a "talán" válaszok aránya hogyan oszlik el, ám én csak az "igen" és "nem" válaszok eloszlását vizsgáltam.
     Ha azt vesszük észre, hogy az egyik túlnyomó többségben van, akkor azt úgy is vehetjük, hogy a modell torzít és preferálja az egyik választ, így azokat kevésbé kell komolyan venni.
     Ebből következően a képletünkbe alacsonyabb súllyal számítjuk bele az arra a kategóriára adott eltalált válaszok arányát.
