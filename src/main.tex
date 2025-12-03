@@ -35,11 +35,13 @@
 
 % saját csomagok
 % Referencing
-\usepackage[
+\usepackage
+[
     backend=biber,
     style=numeric,
     sorting=none
-]{biblatex}
+]
+{biblatex}
 
 \usepackage{hyperref}
 
@@ -158,7 +160,8 @@
     képességeinek konzisztenciájának vizsgálata.
 
     \subsubsection{\textit{A feladat megfogalmazása}}
-    A vizsgálathoz használandó adathalmaz a \href{https://pilehvar.github.io/wic/}{Word-in-Context dataset}. A kérdéseket egyenes és fordított sorrendben is fel kell tenni a modelleknek, majd összehasonlítani a válaszaikat az azonos tartalmú, de felcserélt szósorrendű kérdésekre, ezzel felmérve a szemantikus képességeiket és nyelvi konzisztenciájukat erre az emberek számára triviális, de a modellek számára problémát okozó feladat megoldására.
+    A vizsgálathoz használandó adathalmaz a \href{https://pilehvar.github.io/wic/}{Word-in-Context dataset}.
+    A kérdéseket egyenes és fordított sorrendben is fel kell tenni a modelleknek, majd összehasonlítani a válaszaikat az azonos tartalmú, de felcserélt szósorrendű kérdésekre, ezzel felmérve a szemantikus képességeiket és nyelvi konzisztenciájukat erre az emberek számára triviális, de a modellek számára problémát okozó feladat megoldására.
 
     \subsubsection{\textit{A megoldási mód}}
     % Ez lényegében egy optimalizálási feladat, az optimalizálandó paraméterek a modellnek beadott prompt és a választott modell.
@@ -211,15 +214,13 @@
     \addcontentsline{toc}{section}{Motiváció}
 
     Az informatika és a nyelvtechnológia fejlődésével a generatív mesterséges intelligencia mindennapjaink részévé vált.
-    A nagy nyelvi modellek kiértékelésére számos teljesítményteszt (benchmark) fejlődött ki az évek során.
-    Az egyik legnépszerűbb ilyen teljesítményteszt a SuperGLUE Benchmark, amely 8 komoly kihívást jelentő feladat elé
-    állítja a nagy nyelvi modelleket.
+    A nyelvi modellek kiértékelésére számos teljesítményteszt (benchmark) fejlődött ki az évek során.
+    Az egyik legnépszerűbb ilyen teljesítményteszt a SuperGLUE Benchmark, amely 8, emberi nyelvi megértést igénylő nagyon nehéz érvelés-orientált feladat elé állítja a nyelvi modelleket.
     A WiC (Word-in-Context) probléma a SuperGlue 8 feladatának egyike.
-    Az emberi
-    szöveget értő nyelvi modellek fejlesztése kiemelten fontos mind az akadémiai kutatásban, mind a gyakorlati alkalmazásokban.
+    Az emberi szöveget értő nyelvi modellek fejlesztése kiemelten fontos mind az akadémiai kutatásban, mind a gyakorlati alkalmazásokban.
     Az angol nyelvű szövegek feldolgozása nem csak az angolszász területeken releváns, hanem Magyarországon is, hiszen az angol nyelv használata a számítógépek világában mindennapjaink része.
     Az egyetem és a helyi vállalatok is aktívan foglalkoznak természetesnyelv-feldolgozási (NLP) megoldásokkal.
-    Az AI megoldások - Hugging Face nyelvi modellek használatának - ismerete előnyt jelent mind a munkahelyeken, mind a magánéletben.
+    Az AI megoldások - például Hugging Face nyelvi modellek használatának - ismerete előnyt jelent mind a munkahelyeken, mind a magánéletben.
     IT területen különösen nagy előnyt jelent az AI megfelelő használatának ismerete, például a munkafolyamatok automatizálásában.
     Egy hatékony szoftver, amely képes Hugging Face modelleket futtatni, tehát nemcsak tudományos értékkel bír, hanem gyakorlati alkalmazásokban is közvetlen hasznot hozhat, főleg a nyelvészeti informatikai területen dolgozók számára.
 
@@ -306,7 +307,14 @@ Does the word `w` mean the same thing in `s1` and `s2`?
 Does the word `w` mean the same thing in `s2` and `s1`?
     \end{verbatim}
 
-    kérdésekre mindig ugyanazt kellene, hogy válaszolják (változatlan $w$, $s1$ és $s2$ esetén, ahol $w$ egy szó, $s1$ az első példamondat, és $s2$ a második példamondat). Ezek az invarianciák - a két mondat sorrendjének felcserélése - az ember számára könnyen felismerhetőek, így az emberi válaszadásra nincsenek befolyással, ám a nyelvi modelleket, főleg az alacsony, "csak" pár milliárd  paraméterszámúakat könnyen összezavarja.
+    kérdésekre mindig ugyanazt kellene, hogy válaszolják (változatlan $w$, $s1$ és $s2$ esetén, ahol $w$ egy szó, $s1$ az első példamondat, és $s2$ a második példamondat).
+    Ezek az invarianciák - a két mondat sorrendjének felcserélése - az ember számára könnyen felismerhetőek, így az emberi válaszadásra nincsenek befolyással, ám a nyelvi modelleket, főleg az alacsony, "csak" pár milliárd  paraméterszámúakat könnyen összezavarja.
+
+    A kérdéseket a fent látható formátumban egyenes és fordított sorrendben is fel fogom tenni a modelleknek.
+    A továbbiakban erre a formátumra fogok "egyenes" és "fordított" kérdésekként hivatkozni.
+    A keretrendszerem \textbf{minden esetben} így várja, és az egyenes és a fordított sorrendű kérdések száma is \textbf{minden esetben} szigorúan megegyezik.
+    Ha mégsem teljesül a fentiek valamelyike az inputra, akkor a felhasználó arról feltétlenül értesítést kap.
+
 
 
     \section{Bináris osztályozás}
@@ -318,8 +326,12 @@ Does the word `w` mean the same thing in `s2` and `s1`?
     \label{wic:dataset}
     \section{A WiC adathalmaz eredete}
 
-    A \href{https://pilehvar.github.io/wic/}{Word in Context adathalmaz} egy jó minőségű, nyelvészeti szakértők által készített benchmark adathalmaz. A mondatok a WordNetből, a VerbNetből és a Wikiszótárból származnak.
-    A WiC adathalmaz segítségével megvizsgálhatjuk, hogy egy rendszer (modell, algoritmus) mennyire képes a szavak jelentését megérteni különböző kontextusokban. A WiC feladat része a SuperGlue~\cite{sarlin2020superglue} Benchmarknak, amely egy széles körben elfogadott benchmark nyelvi modellek kiértékelésére. 8 feladatból áll:
+    A \href{https://pilehvar.github.io/wic/}{Word in Context adathalmaz} egy jó minőségű, nyelvészeti szakértők által készített benchmark adathalmaz.
+    A mondatok a WordNetből, a VerbNetből és a Wikiszótárból származnak.
+    A WiC adathalmaz segítségével megvizsgálhatjuk, hogy egy rendszer (modell, algoritmus) mennyire képes a szavak jelentését megérteni különböző kontextusokban.
+    A WiC feladat része a SuperGlue~\cite{sarlin2020superglue} Benchmarknak, amely egy széles körben elfogadott benchmark nyelvi modellek kiértékelésére.
+
+    8 feladatból áll:
 
 
     \begin{itemize}
@@ -336,7 +348,9 @@ Does the word `w` mean the same thing in `s2` and `s1`?
 
     \vspace*{2cm}
 
-    A SuperGLUE a GLUE továbbfejlesztett változata, amelyet 2019-ben vezettek be, mivel a GLUE feladatait a legmodernebb modellek (pl. BERT) már túl jól megoldották. ~\cite{wang2020superglue}
+    A SuperGLUE a GLUE továbbfejlesztett változata, amelyet 2019-ben azért vezettek be, mert az előző versenykörnyezet, a GLUE feladatai a modern, nagyteljesítményű NLP-modellek számára.
+    ~\cite{wang2020superglue}
+    Az új benchmark célja az volt, hogy keményebb, nehezebb nyelvi és értelmi kihívásokat állítson.
     Ez az egyik legszélesebb körben elfogadott benchmark, amelyen számos nyelvi modell teljesítményét vizsgálták.
     A WiC halmaz fel van osztva tanító, validációs és teszthalmazra, ezért gépi tanításra egyszerűen felhasználható.
     Ezt segíti elő az is, hogy az összes mondat tokenekre bontott, tabulált és egységesek az írásjelek is.
@@ -1074,7 +1088,9 @@ The cat sat on the _ .
     Felhívom a figyelmet arra, hogy mivel a szoftver folyamatosan módosul, így a legújabb verzió valósága, működése, stb. részben eltérhet a leírttól. A leírás a 2025 év végi verzióra vonatkozik és a későbbi verziókban történő eltérések miatt felelősséget nem vállalok.
 
     \subsubsection{ModelInputPreparer}
-    A ModelInputPreparer inputja egy lokális adathalmaz és az elkészíteni kívánt kérdések száma. A program az adathalmazból létrehozza a megadott számú kérdést, amelyet majd a modell inputként meg fog kapni. Ez a program alapértelmezetten 'WiC adathalmaz' 'test' splitjének rekordjaiból hozza létre a kérdéseket, de saját, megegyező formátumú kérdésekre is működik. A kérdéseket mind egyenes, mind fordított sorrendben létrehozza, amelyekkel azután a modellek konzisztenciáját vizsgáljuk. Mivel az adathalmaz alapértelmezetten 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így alap beállításokkal 2800 kérdést kapunk, de ezen igény szerint lehet módosítani.
+    A ModelInputPreparer inputja egy lokális adathalmaz és az elkészíteni kívánt kérdések száma.
+    A program az adathalmazból létrehozza a megadott számú kérdést, amelyet majd a modell inputként meg fog kapni.
+    Ez a program alapértelmezetten 'WiC adathalmaz' 'test' splitjének rekordjaiból hozza létre a kérdéseket, de saját, megegyező formátumú kérdésekre is működik. A kérdéseket mind egyenes, mind fordított sorrendben létrehozza, amelyekkel azután a modellek konzisztenciáját vizsgáljuk. Mivel az adathalmaz alapértelmezetten 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így alap beállításokkal 2800 kérdést kapunk, de ezen igény szerint lehet módosítani.
 
     \subsubsection{HuggingFaceModelInferencer}
     A HuggingFaceModelInferencer inputként a ModelInputPreparer outputját kapja. Feladata a modell futtatása az elkészített prompton, válasz generálása.
@@ -1183,27 +1199,30 @@ The cat sat on the _ .
     Pl. 50\% esetén a válaszpárok fele egyezik, 90\% esetén 10-ből 9 válaszpár egyezik.
 
     \subsubsection{Pontosság}
-    Önmagában az, hogy a válaszok konzisztensek, nem elég, hiszen lehet konzisztensen hibás az összes válasz is, amely nem egy kívánatos eredmény. Emiatt azt is meg kell vizsgálni, hogy a válasz megegyezik-e a gold standardbeli válasszal. Ezért egy százalékban kifejezett mutatóban eltároltam az egész adathalmazra levetített pontosság mértékét is.
+    Önmagában az, hogy a válaszok konzisztensek, nem elég, hiszen lehet konzisztensen hibás az összes válasz is, amely nem egy kívánatos eredmény.
+    Emiatt azt is meg kell vizsgálni, hogy a válasz megegyezik-e a gold standardbeli válasszal, függetlenül attól, hogy az egyenes vagy fordított.
+    Ezért egy százalékban kifejezett mutatóban eltároltam az egész adathalmazra levetített pontosság mértékét is.
+    Pl. 50\% esetén a válaszok 50\%-a egyezik meg a gold standardbeli válasszal.
 
     \subsubsection{Konzisztens pontosság}
     Ez a két érték, a konzisztencia és a pontosság alapján kiszámítható a konzisztens pontosság értéke is, amelynek a képlete a következő:
     \begin{equation}
-        ConsAcc = (Cons/100 * Acc/100) * 100\label{eq:equation2}
+        ConsAcc(\%) = (Cons(\%)/100 * Acc(\%)/100) * 100\label{eq:equation2}
     \end{equation}
     Tehát a konzisztencia és a pontosság 0,00 és 1,00 közé normalizált értékét szorozzuk össze egymással, majd az eredményt megszorozzuk százzal.
 
     \subsubsection{Kiegyensúlyozott pontosság}
     A nyelvi modellek hajlamosak az önismétlés hibájába esni, és az is gyakori torzulás, hogy az egyik osztályt aránytalanul preferálják a másik fölött, tehát például a WiC kérdéseinek 80\%-ára nemmel válaszolnak.
-    A kiértékelés során figyelembe vettem, hogy ha mindegyik kérdésre ugyanazt a választ adja, és ezzel aránytalanul sokat eltalál, az ne érjen annyi pontot, mint ha közel fele-fele arányban tippel vegyesen.
+    A kiértékelés során figyelembe vettem, hogy ha mindegyik kérdésre ugyanazt a választ adja, és ezzel aránytalanul sokat eltalál, az ne érjen annyi pontot (százalékban kifejezve), mint ha közel fele-fele arányban tippel vegyesen.
     Más szóval, ha egy modell mindenre ugyanazt válaszolja, és történetesen ezzel jól lefedi az egyoldalú gold standardot, az nem jelent valódi tudást, csak szerencsés torzítást.
     Ha még pontosabb képet szeretnénk kapni, megvizsgálhatjuk, hogy a modell által adott "igen" és "nem" (és a "talán") válaszok aránya hogyan oszlik el.
     Ha azt vesszük észre, hogy az egyik túlnyomó többségben van, akkor azt úgy is vehetjük, hogy a modell torzít és preferálja az egyik választ, így azokat kevésbé kell komolyan venni.
-    Ebből következően a képletünkbe alacsonyabb súllyal számítjuk bele ezt a kategóriát.
+    Ebből következően a képletünkbe alacsonyabb súllyal számítjuk bele az arra a kategóriára adott jó választ.
     A kiegyensúlyozott pontosság (balanced accuracy) módszerével az abszolút \texttt{true positive} arány helyett egy átlagolt \texttt{true positive} arányt adunk meg az egyes osztályokra.
 
     % todo check hogy helyes-e a képlet ehhez.
     \begin{equation}
-        BalAcc = \frac{1}{2}\left(\frac{TP}{TP+FN} + \frac{TN}{TN+FP}\right) \times 100\label{eq:equation}
+        BalAcc(\%) = \frac{1}{2}\left(\frac{TP}{TP+FN} + \frac{TN}{TN+FP}\right) \times 100\label{eq:equation}
     \end{equation}
 
     \subsubsection{LogFile}
