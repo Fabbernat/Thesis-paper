@@ -469,7 +469,7 @@ Does the word `w` mean the same thing in `s2` and `s1`?
 
     \section{Determinisztikus következtetés, hőmérséklet, top-p és top-k}
     A modellek teljesítményének vizsgálata könnyebb lehet, ha a futtatás determinisztikus.
-    Azt jelenti, hogy a modell mindig ugyanazt a kimenetet adja ugyanazon bemenet esetén, mivel a véletlenszerűséget kizáró paraméterekkel (pl. $temperature=1.0$, $top-k=0$, $top-p=1.0$) működik.
+    Azt jelenti, hogy a modell mindig ugyanazt a kimenetet adja ugyanazon bemenet esetén, mivel a véletlenszerűséget kizáró paraméterekkel (pl. $temperature=0.0$, $top-k=0$, $top-p=1.0$) működik.
     A hőmérséklet (temperature) a nyelvi modellek válaszainak kreativitását szabályozza (magas értéknél változatosabb, alacsonynál determinisztikusabb kimenet), a top-k pedig korlátozza a következő szó választékát a k legvalószínűbb tokenre, míg a top-p (más néven nucleus sampling) dinamikusan választja ki a valószínűségi eloszlás egy részhalmazát (pl. a legvalószínűbb tokeneket, amelyek összege eléri a p küszöböt)~\cite{holtzman2020curious}.
 
     Tegyük fel, hogy a nyelvi modellnek a következő mondatot kell befejeznie:
@@ -564,10 +564,11 @@ The cat sat on the _ .
     \chapter{Google Colab}
     \section{Fejlesztés Google Colabban}
     Az eredeti ötletem az volt, hogy a szoftvert a \href{https://colab.research.google.com}{Google Colab} környezetben valósítom meg, amely egy Google által fejlesztett webes Python-alapú futtatókörnyezet.
-    Ehhez egy, a Témavezetőm által készített és javasolt Google Colab jegyzetfüzetet~\cite{berend2025phi} fejlesztettem tovább.
+    Ötletem megvalósításához a Témavezetőm által készített és javasolt Google Colab jegyzetfüzetet~\cite{berend2025phi} fejlesztettem tovább.
     Ez egy egyszerű, de hatékony jegyzetfüzet, amellyel Hugging Face token birtokában tetszőleges modell válaszadásra bírható, és mindez hatékonyan automatizálható.
     A környezettel egy darabig hatékonyan tudtam a kiértékelő keretrendszert fejleszteni.
-    Ám nem voltam elégedett a környezet adta korlátozásokkal, pl.\ session-alapú futtatókörnyezet, amely a session végével törli az adataimat, lassú csatlakozási idő a távoli hardverekhez, limitált erőforrás-hozzáférés, perzisztens adattárolási lehetőségek hiánya.
+    A Google Colab egyszerű és kényelmes környezetet biztosít modellek futtatására, akár limitált ingyenes GPU használattal is.
+    Ám nem voltam elégedett a környezet adta korlátozásokkal, pl.\ session-alapú futtatókörnyezet, amely a session végével törli az adataimat, lassú csatlakozási idő a távoli hardverekhez, limitált erőforrás-hozzáférés, perzisztens adattárolási lehetőségek hiánya és egyéb korlátozások, amelyek csak előfizetéssel kerülhetőek ki.
     Emiatt PyCharm fejlesztői környezetet használtam a keretendszer elkészítésére, lásd később\ \ref{chap:src/Framework}.
 
 
@@ -1093,10 +1094,12 @@ The cat sat on the _ .
     Ez a program alapértelmezetten 'WiC adathalmaz' 'test' splitjének rekordjaiból hozza létre a kérdéseket, de saját, megegyező formátumú kérdésekre is működik. A kérdéseket mind egyenes, mind fordított sorrendben létrehozza, amelyekkel azután a modellek konzisztenciáját vizsgáljuk. Mivel az adathalmaz alapértelmezetten 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így alap beállításokkal 2800 kérdést kapunk, de ezen igény szerint lehet módosítani.
 
     \subsubsection{HuggingFaceModelInferencer}
-    A HuggingFaceModelInferencer inputként a ModelInputPreparer outputját kapja. Feladata a modell futtatása az elkészített prompton, válasz generálása.
+    A HuggingFaceModelInferencer inputként a ModelInputPreparer outputját kapja.
+    Itt történik a távoli Hugging Face modell letöltése, telepítése és futtatása.
+    Feladata a modell futtatása az elkészített prompton, válasz generálása.
 
     \subsubsection{ModelOutputProcessor}
-    A ModelOutputProcessor feladata a modell outputból adatkinyerés, statisztikák készítése.
+    A ModelOutputProcessor feladata a modell outputból adatkinyerés, majd azt a gold standarddal összevetve statisztikák készítése.
 
     \section{Fejlesztés}
     \subsection{Globális scope}
