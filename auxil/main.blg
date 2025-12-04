@@ -1,0 +1,16 @@
+[0] Config.pm:328> INFO - This is Biber 2.21
+[0] Config.pm:331> INFO - Logfile is 'main.blg'
+[168] biber-MSWIN64:342> INFO - === 
+[225] Biber.pm:421> INFO - Reading 'main.bcf'
+[385] Biber.pm:1002> INFO - Found 22 citekeys in bib section 0
+[406] Biber.pm:4487> INFO - Processing section 0
+[419] Biber.pm:4678> INFO - Looking for bibtex file 'references.bib' for section 0
+[548] bibtex.pm:1713> INFO - LaTeX decoding ...
+[605] bibtex.pm:1519> INFO - Found BibTeX data source 'C:\Users\admin\PycharmProjects\Thesis-paper\src\references.bib'
+[815] UCollate.pm:68> INFO - Overriding locale 'hu-HU' defaults 'variable = shifted' with 'variable = non-ignorable'
+[815] UCollate.pm:68> INFO - Overriding locale 'hu-HU' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[815] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'hu-HU'
+[838] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[858] bbl.pm:779> INFO - Output to main.bbl
+[858] Biber.pm:132> WARN - legacy month field 'September' in entry 'qwen2.5' is not an integer - this will probably not sort properly.
+[858] Biber.pm:134> INFO - WARNINGS: 1
