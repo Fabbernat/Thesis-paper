@@ -1335,17 +1335,18 @@ py -3.13 -m src.Framework.globalMain
     Hangsúlyozom, hogy nem a {gemma-2b-it}, hanem a {gemma-\textit{2}-2b-it} változatot választottam.
     Az elnevezési szabály megtévesztő lehet, ugyanis {gemma-\textit{x}b\ldots} kezdetű modellek első generációs változatok, míg a {gemma-2-\textit{x}b\ldots} a második, és a {gemma-3-\textit{x}b\ldots} a harmadik generációs modelleket jelöli.
 %    A modellek eredményeit összessítő táblázat a 4.1. táblázatban látható.\ref{tab:model-eval-summary}
-    3 modellnek a keretrendszeremen elért eredményeiből ábrát készítettem.
 
+    \subsection{Google Colab futtatás}
+    A középső modul egyszerűsített változata elérhető Google Colab-on, a mellékletben található linken.~\ref{att:colab}
 
-    A nagy nyelvi modelleket futtató szkriptem nyilvánosan megtekinthető, és a kísérlet elvégezhető Google Colab-on, a mellékletben található linken.~\ref{att:colab}
-
-    Mivel Google Colabot használtam, azon belül is GPU-s futtatókörnyezete, így a kiértékelés megfelelően gyors volt.
-    A webes környezet és a kikapcsolt valószínűségi változók miatt elmondható, hogy a kiértékelésem módja:
+    Mivel Google Colabot használtam, azon belül is GPU-s futtatókörnyezetet, így a kiértékelés megfelelően gyors volt.
+    A webes környezet és a kikapcsolt valószínűségi változók miatt elmondható, hogy a kiértékelés módja:
     \begin{itemize}
         \item reprodukálható, azaz bárki meg tudja ismételni a kísérletet
         \item determinisztikus, tehát ugyanarra az inputra mindig ugyanaz lesz az output, nem függ a véletlentől.
     \end{itemize}
+
+    \subsection{2 modell kiértékelése 100 véletlenszerű rekordon a keretrendszerben}
 
     \subsection{Hibakezelés}
     A programban a hibák megtalálását és lekezelését egyszerű try-catch blokkokkal \footnote{Pythonban a try-except a hibakezelő kulcsszavak elnevezése, de a funkciójuk ugyanaz, mint a többi nyelvben ismert try-catch blokkoknak} kezelem. Egyes hibák az eltérő környezetekből adódnak, pl. a Python interpreter eltérő mappát tekint gökérkönyvtárnak. Ezt is try-catch-csel oldottam meg, amellyel minden importot használó szkriptbe kétféle módon is megpróbálom beimportálni a függőségeket.
