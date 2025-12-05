@@ -120,10 +120,10 @@
 %Értelemszerûen megváltoztatandó:
         {\large
             \begin{tabular}{c@{\hspace{4cm}}c}
-                \emph{Készítette:} & \emph{Témavezetõ:}    \\
+                \emph{Készítette:}     & \emph{Témavezetõ:}        \\
                 \textbf{Fábián Bernát} & \textbf{Dr. Berend Gábor} \\
-                informatika szakos & egyetemi docens       \\
-                hallgató           &
+                Programtervező informatikus szakos     & egyetemi docens           \\
+                hallgató               &
             \end{tabular}
         }
 
@@ -136,7 +136,6 @@
         2025
         }
     \end{center}
-
 
 
 %A \chapter* parancs nem ad a fejezetnek sorszámot
@@ -210,6 +209,7 @@
 %A tartalomjegyzék:
     \tableofcontents
 
+
     \chapter*{Motiváció}
     \addcontentsline{toc}{section}{Motiváció}
 
@@ -226,32 +226,38 @@
 
 
     \chapter{Elméleti háttér}
+
+
     \section{Hasonló megoldások}
-    Az ötlet, hogy nagy nyelvi modellek lokális telepítésére, futtatásására és összehasonlítására szolgáló eszközöket hozzunk létre, nem egyedi, számos hasonló témájú és ötletű projekt született az elmúlt évtizedekben.
+    Az ötlet, hogy generatív modellek lokális telepítésére, futtatására és összehasonlítására szolgáló eszközöket hozzunk létre nem újkeletű, hiszen egy jó modell jelentősen megkönnyíti a munkafolyamatokat, a lokalizálása pedig biztonságosabbá és olcsóbbá teszi a használatukat.
+    Számos hasonló témájú és ötletű projekt született az elmúlt években.
     Az alábbiakban bemutatok párat.
-    
+
     \subsection{Nyelvi modellek összehasonlítását segítő eszközök}
     A különböző nyelvi és nem nyelvi modellek összehasonlítására egyre több projekt létezik, amelyeket nagy érdeklődés övez és nagy aktív felhasználó és fejlesztő-bázissal rendelkeznek. Például a \href{https://huggingface.co/spaces/open-llm-leaderboard/comparator}{Hugging Face Open LLM Leaderboard Model Comparator}~\cite{hf_llm_comparator}, amely elsősorban nyílt forráskódú ingyenes modellek összehasonlítására alkalmas, akár webesen, akár saját eszközre telepítve, továbbá a \href{https://lmarena.ai/}{LMArena}~\cite{chiang2024chatbot} webes felület, ahol fizetős modellek is kipróbálhatók korlátozottan, viszont csak a weboldalon keresztül.
     Ezeken a platformokon különböző modellek teljesítményét lehet összehasonlítani különböző feladatokon, beleértve a WiC feladatot is.
     Azonban ezek a platformok nem kifejezetten a nyelvi konzisztencia tesztelésére lettek kitalálva, amely a kutatásom központi eleme.
     A szoftver lefejlesztése előtt átelemeztem az jelenlegi legjobb módszereket és nyílt forráskódú nyelvi modelleket a Témavezetőm által javasolt LMArena és Hugging Face felületein, továbbá az utóbbiak futtatásának dokumentációját tanulmányoztam, mert azokra a szoftver elkészítéséhez szükség volt.
-    
-    \subsection{Nyelvi modellek lokális telepítését és futtatásást segítő eszközök}
+
+    \subsection{Nyelvi modellek lokális telepítését és futtatását segítő eszközök}
     Az utóbbi években egyre elterjedtebbek lettek azok a közösségi kezdeményezések és eszközök is, amelyek lehetővé teszik nagy nyelvi modellek helyi — internetkapcsolat nélküli vagy privát környezetben is elérhető — futtatását.
     Ez létfontosságú adatvédelmi, költségcsökkentési és kutatási okokból is.
     Ilyen eszközök:
     \begin{itemize}
-      \item A Témavezetőm által ajánlott  \href{https://ollama.com/}{Ollama}~\cite{ollama} CLI + desktop alkalmazás helyi API-jal sok nyílt modellt támogat.
-      \item A szintén a Témavezetőm által ajánlott \href{https://github.com/ggml-org/llama.cpp}{llama.cpp}~\cite{llama_cpp} egy nyílt forráskódú C/C++ projekt.
-      \item A szintén a Témavezetőm által ajánlott \texttt{vllm}~\cite{kwon2023efficient} szintén egy aktívan fejlesztett nyílt forráskódú projekt, amely elsősorban a memóriagazdálkodásra fókuszál.
-      \item Az \texttt{LM Studio}~\cite{lmstudio} grafikus felület.
-      Modellmenedzsment, többszörös modellváltás, helyi inferencia elérhető benne.
-      \item \href{https://github.com/oobabooga/text-generation-webui}{text-generation-webui}~\cite{textgen_webui}: webes frontend, backendként pl. \texttt{llama.cpp}, nagyon rugalmas, sokféle modellt és konfigurációt támogat.
-      \item A \texttt{GPT4All}~\cite{gpt4all}: kezdeti belépő a helyi LLM-használatba — CPU-barát, alacsony küszöb, egyszerű használat jellemzi.
+        \item A Témavezetőm által ajánlott  \href{https://ollama.com/}{Ollama}~\cite{ollama} CLI + desktop alkalmazás helyi API-jal sok nyílt modellt támogat.
+        \item A szintén a Témavezetőm által ajánlott \href{https://github.com/ggml-org/llama.cpp}{llama.cpp}~\cite{llama_cpp} egy nyílt forráskódú C/C++ projekt.
+        \item A szintén a Témavezetőm által ajánlott \texttt{vllm}~\cite{kwon2023efficient} szintén egy aktívan fejlesztett nyílt forráskódú projekt, amely elsősorban a memóriagazdálkodásra fókuszál.
+        \item Az \texttt{LM Studio}~\cite{lmstudio} grafikus felület.
+        Modellmenedzsment, többszörös modellváltás, helyi inferencia elérhető benne.
+        \item \href{https://github.com/oobabooga/text-generation-webui}{text-generation-webui}~\cite{textgen_webui}: webes frontend, backendként pl. \texttt{llama.cpp}, nagyon rugalmas, sokféle modellt és konfigurációt támogat.
+        \item A \texttt{GPT4All}~\cite{gpt4all}: kezdeti belépő a helyi LLM-használatba — CPU-barát, alacsony küszöb, egyszerű használat jellemzi.
     \end{itemize}
 
+    \section{Problémafelvetés}
+    Architektúrájukból adódóan a modellek esetén nincs garancia, hogy bizonyos emberek számára triviális invarianciákat konzisztensen kezeljenek, erre fókuszál a szakdolgozatom.
+
     \section{Az én szoftverem}
-    A fent említett platformokhoz hasonlóan a megoldásom lehetővé teszi a nagy nyelvi modellek lokális telepítésére, futtatásását, továbbá az összehasonlítását is.
+    A fent említett platformokhoz hasonlóan a megoldásom lehetővé teszi a nagy nyelvi modellek lokális telepítésére, futtatásását, továbbá az összehasonlítását is, ezáltal alkalmassá téve a szoftveremet konzisztens viselkedés hiányának a megállapítására.
     A projektem ugyan nem biztosít olyan kényelmes grafikus felületet, vagy a webes szolgáltatásokat, mint a legtöbb fent felsorolt projekt, ám az én projektem abban nyújt többet, hogy a Word-in-Context benchmarkon való tesztelésre sokkal alkalmasabb, mint az előbbiek, hiszen kifejezetten erre készült, továbbá aki kedveli a Python és konzolos alkalmazásokat, annak az én megoldásom kényelmesebb lehet.
     Ráadásul nem csak egyesével lehet beadni a modelleknek a promptokat, hanem egy futtatásra tetszőlegesen sok inferenciát kiszámíttathatunk, - olyan, minta mindegyik prompt "új chatbe" kerülne - amely jelentős előny a legtöbb felsorolt projekthez képest.
     A megoldásom során törekedtem arra, hogy minél több modell támogatott legyen, továbbá a keretrendszer a bárki által ingyen kipróbálható legyen, ezért ingyenesen elérhető és nyílt forráskódú eszközöket (Python, GitHub, Hugging Face) használtam.
@@ -266,7 +272,7 @@
 
     \section{A Word in context feladat}
 
-    A Word in context feladatot 2019-ben fogalmazta meg Mohammad Tahmed Pilehvar, abból a célból, hogy különböző transzformer és szóbeágyazasos modelleket vizsgáljanak a feladat által megfogalmazott teljesítményteszten.
+    A Word in context feladatot 2019-ben fogalmazták meg Mohammad Tahmed Pilehvar és munkatársai, abból a célból, hogy különböző transzformer és szóbeágyazasos modelleket vizsgáljanak a feladat által megfogalmazott teljesítményteszten.
     A WiC feladat lényege, hogy egy adott szó két különböző mondatbeli előfordulásáról eldöntse, hogy azonos értelemben szerepel-e.
     A természetes nyelvi feldolgozásban.
     Az ezt a feladatot megfogalmazó adathalmazt alkalmasnak találtuk a témavezetőmmel az általa megfogalmazott teljesítményteszt, a nagy nyelvi modellek szemantikus képességeinek konzisztenciájának vizsgálata elvégzéséhez.
@@ -296,6 +302,7 @@
 
 
     \section{Az én céljaim ehhez képest}
+    Ez a SuperGlue feladat, a Word-in-Context alapján készíthetőek olyan promptok, amelyek hasznosnak bizonyulhatnak az inkonzisztens viselkedés detektálására.
     A kutatásom első felének célja a modellek teljesítményének összehasonlítása a WiC-ből szedett kérdéseken volt, ám a többi Word-in-Context ranglétrán látható rendszerrel ellentétben az én célom nem az volt, hogy minél több kérdésre a gold standard \footnote{A gold standard egy szakértők által hitelesen és konzisztensen annotált adathalmaz, amely viszonyítási alapként szolgál automatikus rendszerek teljesítményének kiértékeléséhez.} szerint válaszoljon egy általam tanított modell, hanem hogy megvizsgáljam, hogy mások által készített nagy nyelvi modellek válaszai milyen érzékenységet mutatnak olyan invarianciákra, amelyek az emberi válaszadásra nincsenek befolyással.
     Ez alapján a kérdésben a mondatok sorrendje nem szabadna, hogy befolyásolja a válaszadásukat, ám azt mégis befolyásolja.
     Egész pontosan a
@@ -308,13 +315,12 @@ Does the word `w` mean the same thing in `s2` and `s1`?
     \end{verbatim}
 
     kérdésekre mindig ugyanazt kellene, hogy válaszolják (változatlan $w$, $s1$ és $s2$ esetén, ahol $w$ egy szó, $s1$ az első példamondat, és $s2$ a második példamondat).
-    Ezek az invarianciák - a két mondat sorrendjének felcserélése - az ember számára könnyen felismerhetőek, így az emberi válaszadásra nincsenek befolyással, ám a nyelvi modelleket, főleg az alacsony, "csak" pár milliárd  paraméterszámúakat könnyen összezavarja.
+    Ezek az invarianciák - a két mondat sorrendjének felcserélése - az ember számára könnyen felismerhetőek, így az emberi válaszadásra nincsenek befolyással, ám a nyelvi modelleket, főleg az alacsony, "csak" pár milliárd paraméterszámúakat könnyen összezavarja.
 
     A kérdéseket a fent látható formátumban egyenes és fordított sorrendben is fel fogom tenni a modelleknek.
     A továbbiakban erre a formátumra fogok "egyenes" és "fordított" kérdésekként hivatkozni.
     A keretrendszerem \textbf{minden esetben} így várja, és az egyenes és a fordított sorrendű kérdések száma is \textbf{minden esetben} szigorúan megegyezik.
     Ha mégsem teljesül a fentiek valamelyike az inputra, akkor a felhasználó arról feltétlenül értesítést kap.
-
 
 
     \section{Bináris osztályozás}
@@ -324,6 +330,8 @@ Does the word `w` mean the same thing in `s2` and `s1`?
     A legjobbak mégis az olyan, kifejezetten emberi szöveg megértésére specializálódott nagy nyelvi modellek, mint például a GPT-4.5 és a Gemini 3 - 2025 végén.
 
     \label{wic:dataset}
+
+
     \section{A WiC adathalmaz eredete}
 
     A \href{https://pilehvar.github.io/wic/}{Word in Context adathalmaz} egy jó minőségű, nyelvészeti szakértők által készített benchmark adathalmaz.
@@ -453,19 +461,23 @@ Does the word `w` mean the same thing in `s2` and `s1`?
 
     Ahhoz, hogy nagy nyelvi modelleket ki tudjam értékelni, meg kell ismerni néhány alapfogalmat, koncepciót, amely a \texttt{Hugging Face transformers} könyvtár használata során is elengedhetetlen lesz.
 
+
     \section{A prompt}
     A prompt alatt generatív mesterséges intelligenciák esetében egy nagy nyelvi modell számára beadott olyan inputot értünk, amelyre a modell egy kimenetet, "választ" generál, amely lehet determinisztikus (előre meghatározható) és részben véletlenszerű is.
     A prompt jellemzően szöveges formájú \textbf{nyelvi modellek esetén}, mint ahogy a válasz is, de egyre elterjedtebbek a hangalapú bemeneti és kimeneti formák is.
 %       Működési elve némiben hasonlít, egy hagyományos konzolhoz, parancssori interfészhoz, például egy Windows rendszeren a PowerShellhoz, vagy Linuxon Bash terminálhoz, azonban prompt esetén a kommunikáció emberi nyelven történik.
     Egy jelentős előnye a promptolásnak, hogy nem csak egy előre meghatározott parancskészletet használhatunk, hanem bármit beírhatunk, nincsenek szintaktikai hibák vagy futtatási hibák, mivel a rendszer minden bemenetre képes választ generálni.\\
-        \textit{ Forrás:} \href{https://hu.wikipedia.org/wiki/Nagy_nyelvi_modell}{Wikipédia}
+    \textit{ Forrás:} \href{https://hu.wikipedia.org/wiki/Nagy_nyelvi_modell}{Wikipédia}
+
 
     \section{Inferencia}
     Egy modell promptra adott válaszát inferenciának nevezzük, ami következtetést jelent.
     Általánosabban az inferencia azt a folyamatot jeleni, amikor a rendszerek a tanult adatok alapján következtetéseket vonnak le képesek és új döntéseket hozni.
+    A projektemben a generatív modellek inferenciának folyamatára az egyszerűség kedvéért általában "a modell futattásaként" fogok hivatkozni.
 
     Ez arra utal, hogy a modell a megtanult minták alapján futásidőben logikailag következtet a legvalószínűbb kimenetre, bonyolult statisztikai számítással, nem pedig csak szó szerint "visszadobva" a betanított adatokat.\\
-        \textit{ Forrás:} \href{https://hu.wikipedia.org/wiki/Nagy_nyelvi_modell}{Wikipédia}
+    \textit{ Forrás:} \href{https://hu.wikipedia.org/wiki/Nagy_nyelvi_modell}{Wikipédia}
+
 
     \section{Determinisztikus következtetés, hőmérséklet, top-p és top-k}
     A modellek teljesítményének vizsgálata könnyebb lehet, ha a futtatás determinisztikus.
@@ -526,6 +538,7 @@ The cat sat on the _ .
     Ellenkező esetben csak belevesszük a szót, és leáll az algoritmus.
     Ezzel a módszerrel minél nagyobb a $p$ érték, annál több szó közül lehet választani, de legalább 1 szót kapunk, tehát mindenképpen tudjuk folytatni a szöveget.
 
+
     \section{Maximum kimeneti tokenek és kontextusablak}
 
     A \textbf{maximum kimeneti tokenek} paraméter határozza meg, hogy a modell legfeljebb hány tokent generálhat a válasz során.
@@ -536,7 +549,6 @@ The cat sat on the _ .
     Ha a bemenet vagy a beszélgetés túl hosszú, a legrégebbi részek elvesznek.
     A GPT-4 (GPT-4-0613) kontextusablaka például 8192 token.
     ~\cite{openai_context_window}
-
 
 
 %    \section{Konzisztencia}
@@ -561,7 +573,10 @@ The cat sat on the _ .
 %    \end{equation}
 %    \vspace*{0.5cm}
 
+
     \chapter{Google Colab}
+
+
     \section{Fejlesztés Google Colabban}
     Az eredeti ötletem az volt, hogy a szoftvert a \href{https://colab.research.google.com}{Google Colab} környezetben valósítom meg, amely egy Google által fejlesztett webes Python-alapú futtatókörnyezet.
     Ötletem megvalósításához a Témavezetőm által készített és javasolt Google Colab jegyzetfüzetet~\cite{berend2025phi} fejlesztettem tovább.
@@ -1101,7 +1116,9 @@ The cat sat on the _ .
     \subsubsection{ModelOutputProcessor}
     A ModelOutputProcessor feladata a modell outputból adatkinyerés, majd azt a gold standarddal összevetve statisztikák készítése.
 
+
     \section{Fejlesztés}
+
     \subsection{Globális scope}
     GlobalMain.py: ez a szkript a fő belépési pont, amely egyszerre mind a 3 modult lefuttatja.
 
@@ -1116,7 +1133,6 @@ The cat sat on the _ .
 
 
     .out fájlok: az output fájlok egységes kiterjesztése
-
 
     \subsection{A modulok szerkezete}
 
@@ -1133,7 +1149,6 @@ The cat sat on the _ .
 
     Mindhárom modul futásideje mérve van, a \texttt{time} Python modul \texttt{perf\_counter} algoritmusával mérve. A futásidő konzolos logként tekinthető meg.
 
-
     \subsection{ModelInputPreparer}
 
     Ahhoz, hogy a modellek szemantikus képességeinek konzisztenciáját megvizsgálhassuk, először el kell érni, hogy a modell sikeresen és értelmesen választ adjon. Ahhoz pedig, hogy választ adjon, szükséges a kérdések legyártása, ugyanis a Word-in-Context adathalmaz formátuma nem alkalmas generatív nyelvi modellek promptolására. Így a statisztikai elemző modul létrehozása előtt szükség volt ennek a két funkcionalitásnak a létrehozására.
@@ -1144,7 +1159,6 @@ The cat sat on the _ .
         \item szó,\item  szófaj, \item a szó pozíciói a mondatokban, \item az első mondat, \item a második mondat.
     \end{itemize}
     Ebből nekünk csak a szó, első mondat és a második mondat szükséges, a többivel nem is fogunk foglalkozni. Először is megnyitjuk a fájlt, majd beolvassuk és eltároljuk minden sorbol a szót és a két mondatot egy listában. Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot. Végül ezt elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
-
 
     \subsection{HuggingFaceModelInferencer}
     Ebben a modulban történik a konkrét modell lefuttatása az előző modulban előállított kérdéseken.
@@ -1162,7 +1176,6 @@ The cat sat on the _ .
     Ezután a transformers csomag importálása történik. Első lépés a tokenizálás, amelyhez segítséget nyújt a transformers AutoTokenizer osztálya, és annak from\_pretrained metódusa, amely a promptunkat a modell számára érthető tokenekké bontja.
     Ezután következik a modell-specifikus rész, hiszen a különböző modelleknek eltérő az inferencia-végrehajtó logikája. Az inferencia történhet determinisztikusan és nem-determinisztikusan, ezt is a config fájlban lehet állítani.
     Végül pedig a modell válaszainak a fájlba írása történik, amely mellett egyéb futás közben keletkezett információk is mentésrer kerülnek külön fájlokban.
-
 
     \subsection{ModelOutputProcessor}
     A \texttt{ModelOutputProcessor} bemenete a HuggingFaceModelInferencerben futtatott modell válaszai.
@@ -1191,6 +1204,15 @@ The cat sat on the _ .
     Az eldöntési algoritmusnak több módszere is van, ezért választható itt az \texttt{AnswerAwareClassificationRule} és a \texttt{SentenceClassifier}, amelyet a config fájlban található \texttt{ADAPTIVE\_RUN} változóval lehet beállítani.
     Ezután a kategóriákat a \texttt{TernaryResultsProcessor} összeveti a gold standardban szereplő értékekkel, majd az összevetés eredményei alapján készülnek el a run szkriptben a végeredmények.
 
+    \subsection{A válaszok formátuma}
+    \begin{verbatim}
+        Egyenes kérdés | Fordított kérdés | Gold standard | Pontos | Konzisztensen pontos | Bizonytalan | Konzisztensen bizonytalan
+        --------------------------------------------
+        T T T
+        ? F T
+        F F T
+    \end{verbatim}
+
     \subsubsection{Konzisztencia}
     A program első lépésként végigmegy a válaszok sorain.
     Megnézi, hogy a modell mit válaszolt soronként.
@@ -1207,32 +1229,13 @@ The cat sat on the _ .
     Ezért egy százalékban kifejezett mutatóban eltároltam az egész adathalmazra levetített pontosság mértékét is.
     Pl. 50\% esetén a válaszok 50\%-a egyezik meg a gold standardbeli válasszal.
 
-    \subsubsection{Konzisztens pontosság}
+    \subsubsection{Konzisztensen pontosság}
     Ez a két érték, a konzisztencia és a pontosság alapján kiszámítható a konzisztens pontosság értéke is, amelynek a képlete a következő:
     \begin{equation}
         ConsAcc(\%) = (Cons(\%)/100 * Acc(\%)/100) * 100\label{eq:equation2}
     \end{equation}
     Tehát a konzisztencia és a pontosság 0,00 és 1,00 közé normalizált értékét szorozzuk össze egymással, majd az eredményt megszorozzuk százzal.
 
-    \subsubsection{Kiegyensúlyozott pontosság}
-    A nyelvi modellek hajlamosak az önismétlés hibájába esni, és az is gyakori torzulás, hogy az egyik osztályt aránytalanul preferálják a másik fölött, tehát például a WiC kérdéseinek 80\%-ára nemmel válaszolnak.
-    A kiértékelés során figyelembe vettem, hogy ha mindegyik kérdésre ugyanazt a választ adja, és ezzel aránytalanul sokat eltalál, az ne érjen annyi pontot (százalékban kifejezve), mint ha közel fele-fele arányban tippel vegyesen.
-    Más szóval, ha egy modell mindenre ugyanazt válaszolja, és történetesen ezzel jól lefedi az egyoldalú gold standardot, az nem jelent valódi tudást, csak szerencsés torzítást.
-    Ezt úgy valósítottam meg, hogy felvettem egy skalár változót, amely módosításával lehet állítani, hogy mennyire büntetjük az egyoldalú válaszadást.
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=1\linewidth]{skalar}
-        \caption{A büntetés mértékét meghatározó skalár}
-        \label{fig:skalar}
-    \end{figure}
-    Ha még pontosabb képet szeretnénk kapni, megvizsgálhatjuk, hogy a modell által adott "igen" és "nem" és a "talán" válaszok aránya hogyan oszlik el, ám én csak az "igen" és "nem" válaszok eloszlását vizsgáltam.
-    Ha azt vesszük észre, hogy az egyik túlnyomó többségben van, akkor azt úgy is vehetjük, hogy a modell torzít és preferálja az egyik választ, így azokat kevésbé kell komolyan venni.
-    Ebből következően a képletünkbe alacsonyabb súllyal számítjuk bele az arra a kategóriára adott eltalált válaszok arányát.
-    A kiegyensúlyozott pontosság (balanced accuracy) módszerével az kérdések számához viszonyított \texttt{true positive} és \texttt{true negatív} arány helyett csökkentjük ezt az értéket annál jobban, minél inkább egyoldalú a válasz.
-
-    \begin{equation}
-        BalAcc(\%) = \frac{1}{2}\left(\frac{TP}{TP+FN} + \frac{TN}{TN+FP}\right) \times 100\label{eq:equation}
-    \end{equation}
 
     \subsubsection{LogFile}
     A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit.
@@ -1241,18 +1244,12 @@ The cat sat on the _ .
 
 
     \section{Tesztelés}
+
     \subsection{A programok futtatása}
     A PyCharm IDE kínál egyszerű és felhasználóbarát futtatási módokat - a zöld háromszög ikonokat kell keresni, azzal lehet tetszőleges .py kiterjesztésű fájlt futtatni.
     Ez a projektem esetén is működik.
     A keretrendszer main.py fájlokat kell elindítani a modulok lefuttatásához.
     Mivel azonban a projektem kódja sok fájlból, külsős csomagokból és összetett projektszerkezetból áll, és a zöld gomb nem biztos, hogy megfelelő útvonalakon keresi majd a modulokat, a legbiztonságosabb és legprofesszionálisabb mód a terminálos futtatás. Én, mivel Windows-on fejlesztettem, a \href{https://learn.microsoft.com/en-us/powershell/}{PowerShell} terminált használtam fejlesztéshez és futtatáshoz és ezt ajánlom, de a \href{https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands}{Command Prompt Shell} is teljesen megfelelő.
-
-
-
-
-
-
-
 
 
     Futtatás 3 lépésben:\\
@@ -1312,6 +1309,22 @@ py -3.13 -m src.Framework.globalMain
 %        \label{fig:PeldaValasz}
 %    \end{figure}
 
+
+    \section{A konzisztenciára vonatkozó megállapítások}
+    1-2 modellre vonatkozóan, és az erőforrásigény miatt az nem
+    megoldható, így nem az összes tesztesetre, de legalább egy
+    100 elemű véletlenszerűen kiválasztott mintájára megnézni azt,
+    hogy hogy viselkednek a modellek a konzsiztencia szempontjából, és az
+    ezzel kapcsolatos tapasztalatok.
+
+    Akkor beszélhetünk egyáltalán konzisztenciáról, az az első szintje, ha a modell \textit{reagál a bemenetre}, azaz a válaszának egyáltalán valami köze van a feltett kérdésekhez. Előfordul, hogy a modell teljesen vakon van és nincs reláció a válasza és az egyes kérdések között. Ekkor az összes mutatója 0.
+
+
+    A vizsgált nyelvi modellek jelentős része nem képes stabil és konzisztens döntést hozni a WiC-feladat esetén.
+    Ahelyett, hogy bináris osztályozást adnának, gyakran irreleváns generatív válaszokba esnek (pl.
+    “Hello, how can I help you today?”), vagy repetitív tokenflodding jelenséget mutatnak, egy nagy valószínűségű tokenre “ragadva rá”, majd azt ismétli determinisztikusan, magas temperature nélkül (“Yes Yes Yes…” vagy “No No No…”).
+    Ez a \textit{mode collapse} egy tipikus megnyilvánulása, mely azt mutatja, hogy a modellek nem értik megfelelően az instrukciót, nem tartják a formátumot, és egyenes-fordított párok esetén extrém alacsony konzisztenciát adnak.
+
     \subsection{Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}
     A modelleket a Témavezetőm ajánlásával együtt választottam ki.
     Ő ajánlotta, hogy a \href{https://lmarena.ai/}{LMArena}~\cite{chiang2024chatbot} és a \href{https://huggingface.co}{Hugging Face}~\cite{wolf2019huggingface}  platformokon lévő modelleket vizsgáljam meg, de a konkrét modell példány kiválasztását rám bízta.
@@ -1340,16 +1353,19 @@ py -3.13 -m src.Framework.globalMain
     A középső modul egyszerűsített változata elérhető Google Colab-on, a mellékletben található linken.~\ref{att:colab}
 
     Mivel Google Colabot használtam, azon belül is GPU-s futtatókörnyezetet, így a kiértékelés megfelelően gyors volt.
-    A webes környezet és a kikapcsolt valószínűségi változók miatt elmondható, hogy a kiértékelés módja:
+    A webes környezet és a kikapcsolt valószínűségi változók és az inferenciák egyesével történő végigvárása miatt elmondható, hogy a kiértékelés módja:
     \begin{itemize}
-        \item reprodukálható, azaz bárki meg tudja ismételni a kísérletet
-        \item determinisztikus, tehát ugyanarra az inputra mindig ugyanaz lesz az output, nem függ a véletlentől.
+        \item reprodukálható, azaz bárki meg tudja ismételni a kísérletet,
+        \item determinisztikus, tehát ugyanarra az inputra mindig ugyanaz lesz az output, nem függ a véletlentől,
+        \item és izolált, azaz a modell egyik futtatásban sem "tud" semmit a korábbi bemeneteiről és válaszairól.
     \end{itemize}
+    Ennek ellenére a Google Colab környezet nem egy hatékony módja a kiértékelésnek a korábban felsorolt gyengeségei miatt, helyette a lokális PyCharm keretrendszerem biztosít egy kényelmesebb és sokkal átláthatóbb környezetet.
 
-    \subsection{2 modell kiértékelése 100 véletlenszerű rekordon a keretrendszerben}
+    \subsection{2 konkrét modell kiértékelése 100 véletlenszerű mintán a keretrendszerben}
+
 
     \subsection{Hibakezelés}
-    A programban a hibák megtalálását és lekezelését egyszerű try-catch blokkokkal \footnote{Pythonban a try-except a hibakezelő kulcsszavak elnevezése, de a funkciójuk ugyanaz, mint a többi nyelvben ismert try-catch blokkoknak} kezelem. Egyes hibák az eltérő környezetekből adódnak, pl. a Python interpreter eltérő mappát tekint gökérkönyvtárnak. Ezt is try-catch-csel oldottam meg, amellyel minden importot használó szkriptbe kétféle módon is megpróbálom beimportálni a függőségeket.
+    A programban a hibák megtalálását és lekezelését egyszerű try-catch blokkokkal \footnote{Pythonban a try-except a hibakezelő kulcsszavak elnevezése, de a funkciójuk ugyanaz, mint a többi nyelvben ismert try-catch blokkoknak} kezelem. Egyes hibák az eltérő környezetekből adódnak, pl. a Python interpreter eltérő mappát tekint gyökérkönyvtárnak. Ezt is try-catch-csel oldottam meg, amellyel minden importot használó szkriptbe kétféle módon is megpróbálom beimportálni a függőségeket.
 
     \subsection{Platformfüggetlenség}
     Mivel a Python virtuális környezetét használtam a programom fejlesztésére és a program nem használ abszolút útvonalakat, csak relatívakat, így a szoftverem platformfüggetlennek mondható.
@@ -1365,6 +1381,10 @@ py -3.13 -m src.Framework.globalMain
     \subsection{Megjegyzés}
     Fontosnak tartom megjegyezni, hogy a Python keretrendszernek van egy fontos különbsége a Google Colab megoldásomhoz képest: Itt a modell alapértelmezett módon nem 2800 futtatásban válaszol egyesével a 2800 kérdésre, hanem egy futtatásban a megadott számú kérdésre. Emiatt a Colab megoldással szemben itt ha inputként megadjuk a kérdéseket egyenes és fordított sorrendben is, akkor a modell látja a modell a korábbi kérdésre adott válaszait. Ha ezt szeretnénk elkerülni, akkor kétszer kell lefuttatni a modell inferenciát, egyszer egyenes, majd fordított kérdésekkel, vagy a megfelelő beállításokat alkalmazni a config fájlokban.
 
+\chapter{Konklúzió}
+
+
+
 
 %% Az itrodalomjegyzek keszitheto a BibTeX segedprogrammal:
 % \bibliography{diploma}
@@ -1372,6 +1392,7 @@ py -3.13 -m src.Framework.globalMain
     \printbibliography[title={Irodalomjegyzék}]
 
 % \bibliography{references}
+
 
     \chapter*{Nyilatkozat}
 %Egy üres sort adunk a tartalomjegyzékhez:
@@ -1413,8 +1434,6 @@ py -3.13 -m src.Framework.globalMain
     Ezúton szeretnék köszönetet mondani a családomnak, barátaimnak, tanítóimnak, tanáraimnak és egyetemi tanáraimnak, akik végigkísértek utamon és támogattak tanulmányaim alatt. Köszönetet szeretnék továbbá nyilvánítani szüleimnek, testvéreimnek és barátaimnak, hogy mindenben támogattak.
 
     Végül, de nem utolsó sorban köszönetet szeretnék mondani \textbf{témavezetőmnek, Berend Gábornak}, hogy konzulensként és témavezetőként segített a szakdolgozatom megírásában.
-
-
 
 
     \chapter*{Elektronikus mellékletek}
