@@ -1204,6 +1204,10 @@ The cat sat on the _ .
     Az eldöntési algoritmusnak több módszere is van, ezért választható itt az \texttt{AnswerAwareClassificationRule} és a \texttt{SentenceClassifier}, amelyet a config fájlban található \texttt{ADAPTIVE\_RUN} változóval lehet beállítani.
     Ezután a kategóriákat a \texttt{TernaryResultsProcessor} összeveti a gold standardban szereplő értékekkel, majd az összevetés eredményei alapján készülnek el a run szkriptben a végeredmények.
 
+
+    A modul, és így az egész program végeredményeként az alábbi statisztikákat számolom ki.
+    Bemutatom a számolási módszer képletét és helyességét is.
+
     \subsection{A válaszok formátuma}
     \begin{verbatim}
         Egyenes kérdés | Fordított kérdés | Gold standard | Pontos | Konzisztensen pontos | Bizonytalan | Konzisztensen bizonytalan
@@ -1212,6 +1216,8 @@ The cat sat on the _ .
         ? F T
         F F T
     \end{verbatim}
+
+
 
     \subsubsection{Konzisztencia}
     A program első lépésként végigmegy a válaszok sorain.
@@ -1222,6 +1228,7 @@ The cat sat on the _ .
     Ez \texttt{n} kérdés esetén \texttt{n/2} összehasonlítást jelent.
     Az egyezések aránya adja meg a konzisztencia mértékét, amelyet százalékban fejezek ki.
     Pl. 50\% esetén a válaszpárok fele egyezik, 90\% esetén 10-ből 9 válaszpár egyezik.
+
 
     \subsubsection{Pontosság}
     Önmagában az, hogy a válaszok konzisztensek, nem elég, hiszen lehet konzisztensen hibás az összes válasz is, amely nem egy kívánatos eredmény.
@@ -1236,6 +1243,9 @@ The cat sat on the _ .
     \end{equation}
     Tehát a konzisztencia és a pontosság 0,00 és 1,00 közé normalizált értékét szorozzuk össze egymással, majd az eredményt megszorozzuk százzal.
 
+        \subsection{Bizonytalan}
+
+    \subsection{Konzisztensen bizonytalan}
 
     \subsubsection{LogFile}
     A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit.
