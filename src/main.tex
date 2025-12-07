@@ -1087,12 +1087,12 @@ The cat sat on the _ .
     A programot nem lehetett egy belépési ponttal futtatni.
     Helyette nem forduló, kaotikus, gyakran egymástól teljesen független szkriptek szerepeltek rendezetlenül, amelyeknek a használatát csak én ismertem, ráadásul egy részük nem is működött, csak úgy "volt".
     A program egyébként is csak a modell inputjainak előkészítését tudta, a modell inferenciát és a válasz feldolgozást már manuálisan kellett elvégezni.
-    Csak a mostani "ModelInputPreparer"-nek megegyező rész funkcionalitásával rendelkezett standard Python környezetben.
-    A Hugging Face modell inferenciájára (a mostani "HuggingFaceModelInferencer"~\ref{subsubsec:huggingfacemodelinferencer} modullal megegyező funkcionalitás) egy Jupyter Notebookban került sor, Google Colab környezetben.
-    A modell outputjának feldolgozása ( a mostani "ModelOutputProcessor") pedig megint egy harmadik környezetben, Google Apps Scriptben került feldolgozásra.
+    Csak a mostani \texttt{ModelInputPreparernek} megegyező rész funkcionalitásával rendelkezett standard Python környezetben.
+    A Hugging Face modell inferenciájára (a mostani \texttt{HuggingFaceModelInferencer}~\ref{subsubsec:huggingfacemodelinferencer} modullal megegyező funkcionalitás) egy Jupyter Notebookban került sor, Google Colab környezetben.
+    A modell outputjának feldolgozása ( a mostani \texttt{ModelOutputProcessor}) pedig megint egy harmadik környezetben, Google Apps Scriptben került feldolgozásra.
 
     Az újraírásnál első lépésem volt, hogy a platformot egyesítettem.
-    Most az egész szoftver egy sima, standard Python futtatókörnyezetben fut, egyetlen könnyen megtalálható `main` fájl futtatásával, ipari standard szerint az src mappában lévő globális belépési ponttal, de egyenként is lehet futtathatni a 3 modult, mindegyikhez tartozván egy `main.py` fájlban található belépési pont.
+    Most az egész szoftver egy sima, standard Python futtatókörnyezetben fut, egyetlen könnyen megtalálható \texttt{main} fájl futtatásával, ipari standard szerint az src mappában lévő globális belépési ponttal, de egyenként is lehet futtathatni a 3 modult, mindegyikhez tartozván egy \texttt{main.py} fájlban található belépési pont.
     PyCharm környezet ajánlott a szoftver futtatásához.
     A legnagyobb ihletet a szoftver megálmodásához a Clean Code című könyv elolvasása hozta, amely hatására átértékeltem a programozói tudásomat és a szakdolgozatomat.
     Láttam, hogy modulárisan, objektumorientált módszerrel és az egymásra halmozódó függőségek minimalizálásával nagy szoftvereket is átláthatóan és biztonságosan lehet fejleszteni.
@@ -1215,14 +1215,16 @@ The cat sat on the _ .
     A modul, és így az egész program végeredményeként az alábbi statisztikákat számolom ki.
     Bemutatom a számolási módszer képletét és helyességét is.
 
-    \subsection{A válaszok formátuma}
+    Informatikusként természetesen szeretnénk az eredményeket számszerűsíteni, főleg, hogy ez a legkönnyedebb módja a különböző futtatások összehasonlításának. Éppen ezért minden eredményt egy 0 és 100\% közé normalizált számként fejez ki a programom.
+    Az eredmények az alábbi statisztikai indikátor mutatók.
+    \subsection{A végeredmény várt formátuma}
     \begin{verbatim}
         Egyenes kérdés | Fordított kérdés | Gold standard | Pontos | Konzisztensen pontos | Bizonytalan | Konzisztensen bizonytalan
         --------------------------------------------
         T T T
         ? F T
         F F T
-    \end{verbatim}
+    \end{verbatim} % TODO
 
 
 
