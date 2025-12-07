@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  7 DEC 2025 09:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  7 DEC 2025 17:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1412,7 +1412,7 @@ Overfull \hbox (4.85571pt too wide) in paragraph at lines 1181--1186
 
 
 [23]
-Overfull \hbox (516.40826pt too wide) in paragraph at lines 1227--1227
+Overfull \hbox (516.40826pt too wide) in paragraph at lines 1228--1228
 []        \T1/pcr/m/n/12 Egyenes kérdés | Fordított kérdés | Gold standard | Po
 ntos | Konzisztensen pontos | Bizonytalan | Konzisztensen bizonytalan[] 
  []
@@ -1422,19 +1422,19 @@ ntos | Konzisztensen pontos | Bizonytalan | Konzisztensen bizonytalan[]
 [24]
 
 [25]
-Overfull \hbox (5.20848pt too wide) in paragraph at lines 1280--1280
+Overfull \hbox (5.20848pt too wide) in paragraph at lines 1281--1281
 []   \T1/pcr/m/n/12 pip install torch transformers accelerate huggingface_hub[]
  
  []
 
 
-Overfull \hbox (5.20848pt too wide) in paragraph at lines 1283--1283
+Overfull \hbox (5.20848pt too wide) in paragraph at lines 1284--1284
 []   \T1/pcr/m/n/12 pip install torch transformers accelerate huggingface_hub[]
  
  []
 
 
-Overfull \hbox (12.40848pt too wide) in paragraph at lines 1317--1317
+Overfull \hbox (12.40848pt too wide) in paragraph at lines 1318--1318
 []    \T1/pcr/m/n/12 py -3.13 -m src.Framework.HuggingFaceModelInferencer.main[
 ] 
  []
@@ -1442,7 +1442,7 @@ Overfull \hbox (12.40848pt too wide) in paragraph at lines 1317--1317
 
 
 [26]
-Overfull \hbox (19.60847pt too wide) in paragraph at lines 1321--1321
+Overfull \hbox (19.60847pt too wide) in paragraph at lines 1322--1322
 []    \T1/pcr/m/n/12 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 [] 
  []
@@ -1460,31 +1460,31 @@ Overfull \hbox (19.60847pt too wide) in paragraph at lines 1321--1321
 [30
 
 ]
-Overfull \hbox (5.49321pt too wide) in paragraph at lines 1411--1411
+Overfull \hbox (5.49321pt too wide) in paragraph at lines 1412--1412
 []\T1/ptm/m/n/12 Hugging Face. \T1/ptm/m/it/12 Hug-ging Face Open LLM Le-ader-b
 oard Mo-del Com-pa-ra-tor\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
 
 
-Overfull \hbox (4.95029pt too wide) in paragraph at lines 1411--1411
+Overfull \hbox (4.95029pt too wide) in paragraph at lines 1412--1412
 \T1/pcr/m/n/12 / / huggingface . co / spaces / open -[] llm -[] leaderboard / c
 omparator$[]\T1/ptm/m/n/12 .
  []
 
 
-Overfull \hbox (4.4157pt too wide) in paragraph at lines 1411--1411
+Overfull \hbox (4.4157pt too wide) in paragraph at lines 1412--1412
 []\T1/ptm/m/n/12 LM Stu-dio Team. \T1/ptm/m/it/12 LM Stu-dio: Desk-top app-li-c
 a-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
 
 
-Overfull \hbox (10.67581pt too wide) in paragraph at lines 1411--1411
+Overfull \hbox (10.67581pt too wide) in paragraph at lines 1412--1412
 \T1/ptm/m/it/12 gu-age Un-der-stand-ing Sys-tems\T1/ptm/m/n/12 . Utol-só meg-te
 -kin-tés: 2025-12-10. 2020. ar-Xiv: []$\T1/pcr/m/n/12 1905 .
  []
 
 
-Overfull \hbox (0.59474pt too wide) in paragraph at lines 1411--1411
+Overfull \hbox (0.59474pt too wide) in paragraph at lines 1412--1412
 []\T1/ptm/m/n/12 Mohammad Ta-her Pi-leh-var és Jo-se Camacho-Collados. ^^R  WiC
 : the Word-in-Context
  []
@@ -1494,7 +1494,7 @@ Overfull \hbox (0.59474pt too wide) in paragraph at lines 1411--1411
 [31
 
 ]
-Overfull \hbox (4.55653pt too wide) in paragraph at lines 1411--1411
+Overfull \hbox (4.55653pt too wide) in paragraph at lines 1412--1412
 \T1/ptm/m/n/12 meg-te-kin-tés: 2025-12-10. \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : 
 []$\T1/pcr/m/n/12 https : / / aclanthology . org / H94 -[] 1111/$[]\T1/ptm/m/n/
 12 . 
@@ -1515,7 +1515,7 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1411--1411
 [35
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251207091828 FAD58DE7366495DB465
+runsystem(latexminted cleantemp  --timestamp 20251207171742 FAD58DE7366495DB465
 0CFEFAC2FCD61)...disabled (restricted).
 
  (C:/Users\BernÃ¡t\PycharmProjects\Thesis-paper\out\main.aux)
