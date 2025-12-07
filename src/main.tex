@@ -159,16 +159,17 @@
     képességeinek konzisztenciájának vizsgálata.
 
     \subsubsection{\textit{A feladat megfogalmazása}}
+    A nyelvi modellek gyakran érzékenyek a felhasználótól kapott prompt szósorrendjére, emiatt nincsen garancia arra, hogy szemantikailag azonos értelmű, de más szósorrendű input promptra konzisztens viselkedést mutatnak.
     A vizsgálathoz használandó adathalmaz a \href{https://pilehvar.github.io/wic/}{Word-in-Context dataset}.
-    A kérdéseket egyenes és fordított sorrendben is fel kell tenni a modelleknek, majd összehasonlítani a válaszaikat az azonos tartalmú, de felcserélt szósorrendű kérdésekre, ezzel felmérve a szemantikus képességeiket és nyelvi konzisztenciájukat erre az emberek számára triviális, de a modellek számára problémát okozó feladat megoldására.
+    A kérdéseket egyenes és fordított sorrendben is fel kell tenni a modelleknek, majd összehasonlítani a válaszaikat az azonos tartalmú, de felcserélt szósorrendű kérdésekre, ezzel felmérve a szemantikus képességeiket és nyelvi konzisztenciájukat erre, az emberek számára triviális, de a modellek számára problémát okozó feladat megoldására.
 
     \subsubsection{\textit{A megoldási mód}}
     % Ez lényegében egy optimalizálási feladat, az optimalizálandó paraméterek a modellnek beadott prompt és a választott modell.
-    Akkor tekintjük helyesnek a megoldást, ha a program futtatására a kiválasztott modell egyértelmű igen/nem válaszokat ad az eldöntendő kérdésekre.
-    A válaszainak helyessége viszont másodlagos, de nem elhanyagolható.
-    A nyelvi modellek a Hugging Face platformról lesznek választva.
+    Akkor tekintjük helyesnek a megoldást, ha a program futtatásával a kiválasztott modell a kért mennyiségű, egyértelmű igen/nem választ képes generálni az eldöntendő kérdésekre.
+    A válaszainak helyessége másodlagos, de nem elhanyagolható.
+    A nyelvi modelleket a Hugging Face platformról fogom választani.
 
-    A program bemenete tetszőleges sornyi bejegyzés a Word-in-Context adathalmaz "test" splitjéből (vagy tetszőleges, ezzel megegyező formátumú kérdéshalmaz) és tetszőleges modell a Hugging Face platformról.
+    A program bemenete tetszőleges sornyi bejegyzés a Word-in-Context adathalmaz \texttt{test} splitjéből (vagy tetszőleges, ezzel megegyező formátumú kérdéshalmazból), és tetszőleges modell a Hugging Face platformról.
 
     A megoldás kulcsa olyan szoftver fejlesztése, amely mindezt minél egyszerűbbé, automatizáltabbá és gördülékenyebbé teszi.
     %         \item Összehasonlító teljesítményvizsgálatot végeztem a
@@ -227,11 +228,14 @@
 
     \chapter{Elméleti háttér}
 
+    \section{Problémafelvetés}
+    Architektúrájukból adódóan a modellek esetén nincs garancia, hogy bizonyos emberek számára triviális invarianciákat konzisztensen kezeljenek, erre fókuszál a szakdolgozatom.
+    Ehhez szükség lesz egy - lehetőleg lokális - környezetre, ahol különböző modellek telepítése és használata lehetséges.
 
     \section{Hasonló megoldások}
-    Az ötlet, hogy generatív modellek lokális telepítésére, futtatására és összehasonlítására szolgáló eszközöket hozzunk létre nem újkeletű, hiszen egy jó modell jelentősen megkönnyíti a munkafolyamatokat, a lokalizálása pedig biztonságosabbá és olcsóbbá teszi a használatukat.
+    A törekvés, hogy generatív modellek lokális telepítésére, futtatására és összehasonlítására szolgáló eszközöket hozzunk létre nem újkeletű, hiszen egy jó modell jelentősen megkönnyíti a munkafolyamatokat, a lokalizálása pedig biztonságosabbá és olcsóbbá teszi a használatukat.
     Számos hasonló témájú és ötletű projekt született az elmúlt években.
-    Az alábbiakban bemutatok párat.
+    Az alábbiakban bemutatok párat. % TODO átnézni
 
     \subsection{Nyelvi modellek összehasonlítását segítő eszközök}
     A különböző nyelvi és nem nyelvi modellek összehasonlítására egyre több projekt létezik, amelyeket nagy érdeklődés övez és nagy aktív felhasználó és fejlesztő-bázissal rendelkeznek. Például a \href{https://huggingface.co/spaces/open-llm-leaderboard/comparator}{Hugging Face Open LLM Leaderboard Model Comparator}~\cite{hf_llm_comparator}, amely elsősorban nyílt forráskódú ingyenes modellek összehasonlítására alkalmas, akár webesen, akár saját eszközre telepítve, továbbá a \href{https://lmarena.ai/}{LMArena}~\cite{chiang2024chatbot} webes felület, ahol fizetős modellek is kipróbálhatók korlátozottan, viszont csak a weboldalon keresztül.
@@ -253,13 +257,11 @@
         \item A \texttt{GPT4All}~\cite{gpt4all}: kezdeti belépő a helyi LLM-használatba — CPU-barát, alacsony küszöb, egyszerű használat jellemzi.
     \end{itemize}
 
-    \section{Problémafelvetés}
-    Architektúrájukból adódóan a modellek esetén nincs garancia, hogy bizonyos emberek számára triviális invarianciákat konzisztensen kezeljenek, erre fókuszál a szakdolgozatom.
-
-    \section{Az én szoftverem}
-    A fent említett platformokhoz hasonlóan a megoldásom lehetővé teszi a nagy nyelvi modellek lokális telepítésére, futtatásását, továbbá az összehasonlítását is, ezáltal alkalmassá téve a szoftveremet konzisztens viselkedés hiányának a megállapítására.
-    A projektem ugyan nem biztosít olyan kényelmes grafikus felületet, vagy a webes szolgáltatásokat, mint a legtöbb fent felsorolt projekt, ám az én projektem abban nyújt többet, hogy a Word-in-Context benchmarkon való tesztelésre sokkal alkalmasabb, mint az előbbiek, hiszen kifejezetten erre készült, továbbá aki kedveli a Python és konzolos alkalmazásokat, annak az én megoldásom kényelmesebb lehet.
-    Ráadásul nem csak egyesével lehet beadni a modelleknek a promptokat, hanem egy futtatásra tetszőlegesen sok inferenciát kiszámíttathatunk, - olyan, minta mindegyik prompt "új chatbe" kerülne - amely jelentős előny a legtöbb felsorolt projekthez képest.
+    \section{Az én szoftverem előnyei korábbiakhoz képest}
+    A fent említett platformokhoz hasonlóan a megoldásom lehetővé teszi a nagy nyelvi modellek lokális telepítését, futtatását, továbbá az összehasonlítását is, ezáltal alkalmassá téve a szoftveremet konzisztens viselkedés hiányának a megállapítására.
+    Az én projektem ugyan nem biztosít olyan kényelmes grafikus felületet, vagy a webes szolgáltatásokat, mint a legtöbb fent felsorolt projekt, ám abban nyújt többet, hogy a Word-in-Context benchmarkon való tesztelésre sokkal alkalmasabb, mint az előbbiek, hiszen kifejezetten erre készült.
+    Aki kedveli a Python és konzolos alkalmazásokat, annak az én megoldásom kényelmesebb lehet.
+    Ráadásul nem csak egyesével lehet beadni a modelleknek a promptokat, hanem egy futtatásra tetszőlegesen sok inferenciát kiszámíttathatunk, - olyan, mintha mindegyik prompt "új chatbe" kerülne - amely jelentős előny a legtöbb felsorolt projekthez képest.
     A megoldásom során törekedtem arra, hogy minél több modell támogatott legyen, továbbá a keretrendszer a bárki által ingyen kipróbálható legyen, ezért ingyenesen elérhető és nyílt forráskódú eszközöket (Python, GitHub, Hugging Face) használtam.
 
 
@@ -270,15 +272,14 @@
     Ez az alapja a Word-in-Context feladatnak is.
 
 
-    \section{A Word in context feladat}
+    \section{A Word-in-Context feladat}
 
-    A Word in context feladatot 2019-ben fogalmazták meg Mohammad Tahmed Pilehvar és munkatársai, abból a célból, hogy különböző transzformer és szóbeágyazasos modelleket vizsgáljanak a feladat által megfogalmazott teljesítményteszten.
+    A Word-in-Context feladatot 2019-ben fogalmazták meg Mohammad Tahmed Pilehvar és munkatársai, abból a célból, hogy különböző transzformer és szóbeágyazasos modelleket vizsgáljanak a feladat által megfogalmazott teljesítményteszten.
     A WiC feladat lényege, hogy egy adott szó két különböző mondatbeli előfordulásáról eldöntse, hogy azonos értelemben szerepel-e.
-    A természetes nyelvi feldolgozásban.
-    Az ezt a feladatot megfogalmazó adathalmazt alkalmasnak találtuk a témavezetőmmel az általa megfogalmazott teljesítményteszt, a nagy nyelvi modellek szemantikus képességeinek konzisztenciájának vizsgálata elvégzéséhez.
+    Az ezt a feladatot megfogalmazó adathalmazt alkalmasnak találtuk a Témavezetőmmel az általa megfogalmazott teljesítményteszt, a nagy nyelvi modellek szemantikus képességei konzisztenciájának vizsgálata elvégzéséhez.
     A kérdések már eleve csoportosítva vannak azonos és különböző jelentésű mondatpárokként.
 
-    \subsubsection{A Word in context háttere}
+    \subsubsection{A Word-in-Context háttere}
     A WiC csapata alapvetően a folyamatosan fejlődő modelleknek igyekezett egy nehezebb, korszerű teljesítménytesztet állítani.
     Míg korábban a statikus szóbeágyazások, mint például a Word2vec és a GloVe voltak elterjedtek a szójelentés feloldására, ma már elavult módszereknek számítanak.
     Ezek a statikus szóbeágyazások tervezésükből adódóan nem képesek modellezni a szavak szemantikájának dinamikus természetét, vagyis azt a tulajdonságot, hogy a szavak potenciálisan különböző jelentéseknek felelhetnek meg.
@@ -303,7 +304,7 @@
 
     \section{Az én céljaim ehhez képest}
     Ez a SuperGlue feladat, a Word-in-Context alapján készíthetőek olyan promptok, amelyek hasznosnak bizonyulhatnak az inkonzisztens viselkedés detektálására.
-    A kutatásom első felének célja a modellek teljesítményének összehasonlítása a WiC-ből szedett kérdéseken volt, ám a többi Word-in-Context ranglétrán látható rendszerrel ellentétben az én célom nem az volt, hogy minél több kérdésre a gold standard \footnote{A gold standard egy szakértők által hitelesen és konzisztensen annotált adathalmaz, amely viszonyítási alapként szolgál automatikus rendszerek teljesítményének kiértékeléséhez.} szerint válaszoljon egy általam tanított modell, hanem hogy megvizsgáljam, hogy mások által készített nagy nyelvi modellek válaszai milyen érzékenységet mutatnak olyan invarianciákra, amelyek az emberi válaszadásra nincsenek befolyással.
+    A kutatásom célja a témámnak megfelelően a modellek teljesítményének összehasonlítása a WiC-ből szedett kérdéseken volt, ám a többi Word-in-Context ranglétrán látható rendszerrel ellentétben az én célom nem az volt, hogy minél több kérdésre a gold standard \footnote{A gold standard egy szakértők által hitelesen és konzisztensen annotált adathalmaz, amely viszonyítási alapként szolgál automatikus rendszerek teljesítményének kiértékeléséhez.} szerint válaszoljon egy általam tanított modell, hanem hogy megvizsgáljam, hogy mások által készített nagy nyelvi modellek válaszai milyen érzékenységet mutatnak olyan invarianciákra, amelyek az emberi válaszadásra nincsenek befolyással.
     Ez alapján a kérdésben a mondatok sorrendje nem szabadna, hogy befolyásolja a válaszadásukat, ám azt mégis befolyásolja.
     Egész pontosan a
     \begin{verbatim}
@@ -334,7 +335,7 @@ Does the word `w` mean the same thing in `s2` and `s1`?
 
     \section{A WiC adathalmaz eredete}
 
-    A \href{https://pilehvar.github.io/wic/}{Word in Context adathalmaz} egy jó minőségű, nyelvészeti szakértők által készített benchmark adathalmaz.
+    A \href{https://pilehvar.github.io/wic/}{Word-in-Context adathalmaz} egy jó minőségű, nyelvészeti szakértők által készített benchmark adathalmaz.
     A mondatok a WordNetből, a VerbNetből és a Wikiszótárból származnak.
     A WiC adathalmaz segítségével megvizsgálhatjuk, hogy egy rendszer (modell, algoritmus) mennyire képes a szavak jelentését megérteni különböző kontextusokban.
     A WiC feladat része a SuperGlue~\cite{sarlin2020superglue} Benchmarknak, amely egy széles körben elfogadott benchmark nyelvi modellek kiértékelésére.
@@ -449,7 +450,7 @@ Does the word `w` mean the same thing in `s2` and `s1`?
 
     \chapter{Nagy nyelvi modellek}
 
-    A nagy nyelvi modell (angolul Large Language Model, LLM) olyan számítási modell, amely képes értelmes szöveg generálására vagy más természetes nyelvi feldolgozási feladatok elvégzésére. Ezek a modellek egy rendkívül költséges folyamat révén, hatalmas mennyiségű szöveges adat feldolgozásával és mélytanulási technikák alkalmazásával sajátítják el a nyelv megértését és előállítását. Az LLM-ek, mint például az OpenAI GPT-sorozata, a Google Gemini vagy a Meta LLaMA modelljei, különböző architektúrákat használnak, de leggyakrabban a transzformer alapú megközelítést alkalmazzák. Mint nyelvi modellek, az LLM-ek úgy sajátítják el ezeket a képességeket, hogy óriási mennyiségű szövegből, egy önfelügyelt és egy félig felügyelt tanulási folyamat során, statisztikai összefüggéseket tanulnak meg. Ezek a modellek képesek összetett feladatok elvégzésére, mint például szövegfordítás, összefoglalás, információ-kinyerés, kérdés-válasz és kreatív szövegalkotás. Finomhangolás által specializált feladatokra. Nagy nyelvi modelleknek jellemzően az 50 milliárd paraméteresnél nagyobb modelleket hívják. Az ennél kisebb modelleket inkább csak nyelvi modelleknek hívom.
+    A nagy nyelvi modell (angolul Large Language Model, LLM) olyan számítási modell, amely képes értelmes szöveg generálására vagy más természetes nyelvi feldolgozási feladatok elvégzésére. Ezek a modellek egy rendkívül költséges folyamat révén, hatalmas mennyiségű szöveges adat feldolgozásával és mélytanulási technikák alkalmazásával sajátítják el a nyelv megértését és előállítását. Az LLM-ek, mint például az OpenAI GPT-sorozata, a Google Gemini vagy a Meta LLaMA modelljei, különböző architektúrákat használnak, de leggyakrabban a transzformer alapú megközelítést alkalmazzák. Mint nyelvi modellek, az LLM-ek úgy sajátítják el ezeket a képességeket, hogy óriási mennyiségű szövegből, egy önfelügyelt és egy félig felügyelt tanulási folyamat során, statisztikai összefüggéseket tanulnak meg. Ezek a modellek képesek összetett feladatok elvégzésére, mint például szövegfordítás, összefoglalás, információ-kinyerés, kérdés-válasz és kreatív szövegalkotás. Alkalmazhatóak finomhangolás által specializált feladatokra. Nagy nyelvi modelleknek jellemzően az 50 milliárd paraméteresnél nagyobb modelleket hívják. Az ennél kisebb modelleket inkább csak nyelvi modelleknek hívom.
 
     Inputként kap egy promptot, egy legfeljebb \texttt{n} token hosszúságú szöveget, ahol az \texttt{n} függ a modelltől és a paraméterezéstől. Erre fog legfeljebb \texttt{m} hosszúságú válaszban inferenciával, azaz következtetéssel válaszolni. Azért hívják modellnek a modelleket, mert az emberi nyelvet és kommunikációt utánozzák (modellezik).
 
@@ -472,8 +473,8 @@ Does the word `w` mean the same thing in `s2` and `s1`?
 
     \section{Inferencia}
     Egy modell promptra adott válaszát inferenciának nevezzük, ami következtetést jelent.
-    Általánosabban az inferencia azt a folyamatot jeleni, amikor a rendszerek a tanult adatok alapján következtetéseket vonnak le képesek és új döntéseket hozni.
-    A projektemben a generatív modellek inferenciának folyamatára az egyszerűség kedvéért általában "a modell futattásaként" fogok hivatkozni.
+    Általánosabban az inferencia azt a folyamatot jelenti, amikor a rendszerek a tanult adatok alapján következtetéseket vonnak le és képesek új döntéseket hozni.
+    A projektemben a generatív modellek inferenciájának folyamatára az egyszerűség kedvéért általában "a modell futattásaként" fogok hivatkozni.
 
     Ez arra utal, hogy a modell a megtanult minták alapján futásidőben logikailag következtet a legvalószínűbb kimenetre, bonyolult statisztikai számítással, nem pedig csak szó szerint "visszadobva" a betanított adatokat.\\
     \textit{ Forrás:} \href{https://hu.wikipedia.org/wiki/Nagy_nyelvi_modell}{Wikipédia}
@@ -580,9 +581,11 @@ The cat sat on the _ .
     \section{Fejlesztés Google Colabban}
     Az eredeti ötletem az volt, hogy a szoftvert a \href{https://colab.research.google.com}{Google Colab} környezetben valósítom meg, amely egy Google által fejlesztett webes Python-alapú futtatókörnyezet.
     Ötletem megvalósításához a Témavezetőm által készített és javasolt Google Colab jegyzetfüzetet~\cite{berend2025phi} fejlesztettem tovább.
-    Ez egy egyszerű, de hatékony jegyzetfüzet, amellyel Hugging Face token birtokában tetszőleges modell válaszadásra bírható, és mindez hatékonyan automatizálható.
-    A környezettel egy darabig hatékonyan tudtam a kiértékelő keretrendszert fejleszteni.
-    A Google Colab egyszerű és kényelmes környezetet biztosít modellek futtatására, akár limitált ingyenes GPU használattal is.
+    Ez egy egyszerű, de hatékony jegyzetfüzet, amellyel egy tetszőleges modell válaszadásra bírható.
+    A környezettel egy darabig, a modell válaszok legeneráltatása erejéig effektíven és eredményesen tudtam a kiértékelő keretrendszert fejleszteni.
+    Az elkészült jegyzetfüzet~\ref{att:colab} jelenlegi formájában képes a meghatárzott számú, akár mind a 2800 Word-in-Context-alapú kérdésre választ generáltatni a meghatározott modellen, így rendelkezik a keretrendszer középső moduljának~\ref{subsubsec:huggingfacemodelinferencer} funkcionalitásával.
+    Használata egyszerű: csak le kell futtatni sorban az összes cellát, mely akár egyetlen kattintással is elvégezhető
+    A Google Colab egyszerű és kényelmes környezetet biztosít modellek futtatására, akár limitált ingyenes GPU-használattal is.
     Ám nem voltam elégedett a környezet adta korlátozásokkal, pl.\ session-alapú futtatókörnyezet, amely a session végével törli az adataimat, lassú csatlakozási idő a távoli hardverekhez, limitált erőforrás-hozzáférés, perzisztens adattárolási lehetőségek hiánya és egyéb korlátozások, amelyek csak előfizetéssel kerülhetőek ki.
     Emiatt PyCharm fejlesztői környezetet használtam a keretendszer elkészítésére, lásd később\ \ref{chap:src/Framework}.
 
@@ -1051,7 +1054,7 @@ The cat sat on the _ .
         {\large\itshape #2\par}%
         \vspace{2ex}%
     }
-    \chapterwithdesc{A szoftver: modell futtató és kiértékelő keretrendszer fejlesztése PyCharmban}
+    \chapterwithdesc{A szoftver: modellt futtató és kiértékelő keretrendszer fejlesztése PyCharmban}
     {A részletes kimutatásokat tartalmazó megoldás}
     \label{chap:src/Framework}
 
@@ -1060,11 +1063,11 @@ The cat sat on the _ .
     A szoftvert, amelyet a szakdolgozatomhoz készítettem, 2024-ben kezdtem el fejleszteni, és azóta folyamatosan, általában heti 10-20 committal fejlesztettem. A \href{https://github.com/Fabbernat}{GitHubomon} elérhető a kitűzött elemek között. Korábban a \href{https://github.com/Fabbernat/Peternity}{https://github.com/Fabbernat/Peternity} linken volt elérhető, ez most már archívum és a forráskód át lett helyezve a\\
     \href{https://github.com/Fabbernat/Thesis} {https://github.com/Fabbernat/Thesis} linkre.
 
-    A projekt első verziója kritikákat kapott, ugyanis nehezen átlátható és nagyban AI generált, rossz minőségű kódra alapszik, így 2025 nyarán újrakezdtem a fejlesztést. Az új modulnak 2 fő fejlesztési szempontja volt.
+    A projekt első verziója kritikákat kapott, ugyanis nehezen átlátható és nagyban AI generált, rossz minőségű kódra alapszik, így 2025 nyarán újrakezdtem a fejlesztést. Az új szoftvernek 2 fő fejlesztési szempontja volt.
 
-    Az egyik, hogy mind a 3 részfeladat egy kattintással elvégezhető legyen a Clean Code módszereivel, tehát nagyon egyszerűen futtatható legyen. Ez a 3 részfeladat:
+    Az egyik, hogy mind a 3 részfeladat egy kattintással elvégezhető legyen a Clean Code~\cite{martin2008cleancode} módszereivel, tehát nagyon egyszerűen futtatható legyen. Ez a 3 részfeladat:
     \begin{itemize}
-        \item A WiC adathalmazból (vagy azzal megegyező formátumú adathalmazból modell prompt elkészítése.
+        \item A WiC adathalmazból (vagy azzal megegyező formátumú adathalmazból) modell prompt elkészítése.
         \item A modell futtatása az elkészített prompton, válasz generálása.
         \item A modell outputból adatkinyerés, statisztikák készítése.
     \end{itemize}
@@ -1073,8 +1076,8 @@ The cat sat on the _ .
 
 
     A projekt kutatási szempontból érdekes része így csak az újraírt \texttt{src/Framework} modulban található.
-    A többi archívum és mellőzhető a projekt megértéséhez.
-    A \texttt{src/Framework} 3 almodult tartalmaz, amelyek mindegyike egy önálló, de nagyon egyszerűen futtatható programot tesz ki. Egyesítve is lehet futtatni, de több indoka is van, hogy miért inkább egyesével érdemes futtatni a programokat. Az első és utolsó modul offline futtatható és nem erőforrásigényes, a hibák esélye minimális. A középső modul a fő ok, amelyben rengeteg a hibaforrás és a nemdeterminizmus. Online API hívásokat végez és GPU-t igényel (GPU hiányában pedig hatalmas erőforrásigényt és számítási kapacitást), ráadásul sok harmadik féltől származó függvénykönyvtárra támaszkodik. Emiatt számos hálózati és memóriakezelési hibába futhat, így érdemes külön futtatni ezt a programot, és a hibákat lekezelni. A modulok futtatási sorrendje fontos.
+    A többi nagyrészt archívum és mellőzhető a projekt megértéséhez.
+    A \texttt{src/Framework} 3 almodult tartalmaz, amelyek mindegyike egy önálló, de nagyon egyszerűen futtatható programot tesz ki. Egyesítve is lehet futtatni, de több indoka is van, hogy miért inkább egyesével érdemes elindítani a programokat. Az első és utolsó modul offline futtatható és nem erőforrásigényes, a hibák esélye minimális. A középső modul a fő ok, amelyben rengeteg a hibaforrás és a nemdeterminizmus. Online API-hívásokat végez és GPU-t igényel (GPU hiányában pedig hatalmas erőforrásigényt és számítási kapacitást), ráadásul sok harmadik féltől származó függvénykönyvtárra támaszkodik. Emiatt számos hálózati és memóriakezelési hibába futhat, így érdemes külön futtatni ezt a programot, és a hibákat lekezelni. A modulok futtatási sorrendje fontos.
 
 
     Ezt a szoftvert 2024-ben kezdtem el fejleszteni, de a lényegi részét 2025-ben készítettem, folyamatos fejlesztéssel, hibajavítással, kísérletezéssel.
@@ -1085,30 +1088,32 @@ The cat sat on the _ .
     Helyette nem forduló, kaotikus, gyakran egymástól teljesen független szkriptek szerepeltek rendezetlenül, amelyeknek a használatát csak én ismertem, ráadásul egy részük nem is működött, csak úgy "volt".
     A program egyébként is csak a modell inputjainak előkészítését tudta, a modell inferenciát és a válasz feldolgozást már manuálisan kellett elvégezni.
     Csak a mostani "ModelInputPreparer"-nek megegyező rész funkcionalitásával rendelkezett standard Python környezetben.
-    A Hugging Face modell inferenciájára (a mostani "HuggingFaceModelInferencer" modullal megegyező funkcionalitás) egy Jupyter Notebookban került sor, Google Colab környezetben.
+    A Hugging Face modell inferenciájára (a mostani "HuggingFaceModelInferencer"~\ref{subsubsec:huggingfacemodelinferencer} modullal megegyező funkcionalitás) egy Jupyter Notebookban került sor, Google Colab környezetben.
     A modell outputjának feldolgozása ( a mostani "ModelOutputProcessor") pedig megint egy harmadik környezetben, Google Apps Scriptben került feldolgozásra.
 
-    Az újraírásnál első lépésem volt, hogy a platformot egyesítem.
-    Most az egész szoftver egy sima Python futtatókörnyezetben fut, egyetlen könnyen megtalálható `main` fájl futtatásával, ipari standard szerint az src mappában lévő globális belépési ponttal, de egyenként is lehet futtathatni a 3 modult, mindegyikhez tartozván egy `main.py` belépési pont.
+    Az újraírásnál első lépésem volt, hogy a platformot egyesítettem.
+    Most az egész szoftver egy sima, standard Python futtatókörnyezetben fut, egyetlen könnyen megtalálható `main` fájl futtatásával, ipari standard szerint az src mappában lévő globális belépési ponttal, de egyenként is lehet futtathatni a 3 modult, mindegyikhez tartozván egy `main.py` fájlban található belépési pont.
     PyCharm környezet ajánlott a szoftver futtatásához.
     A legnagyobb ihletet a szoftver megálmodásához a Clean Code című könyv elolvasása hozta, amely hatására átértékeltem a programozói tudásomat és a szakdolgozatomat.
-    Láttam, hogy objektumorientált módszerrel nagy szoftvereket is átláthatóan és biztonságosan lehet fejleszteni.
+    Láttam, hogy modulárisan, objektumorientált módszerrel és az egymásra halmozódó függőségek minimalizálásával nagy szoftvereket is átláthatóan és biztonságosan lehet fejleszteni.
     Megjegyeztem azt is, hogy a jó elnevezések milyen fontosak.
     Ezek az elvek alapján írtam meg teljesen üres vázlatból az új szakdolgozat szoftveremet.
-    A szoftver egy keretrendszer, hiszen a szoftver keretrendszert biztosít Hugging Face modellek lokális futtatására és azok válaszainak kiértékelésére, továbbá nincsen hozzá webes, mobilos, vagy desktop grafikus felület, nincsen hostolva stb., helyette parancssorból indítható a program és a config fájlok beállításainak módosításával paraméterezhető.
-    Én általában csak "modulok"-ként hivatkozom a keretrendszerbe, hiszen 3, egymástól jól elkülönülő feladatú és funkciójú modulból áll.
-    Így az egyes modulok egyénileg is futtathatóak, akkor is, ha a másik kettő nem létezik, vagy meghibásodik.
-    Mindegyik modul egy fő futtatható állományt tartalmaz, egy-egy main.py fájt egy-egy main belépési ponttal.
+    A szoftver egy keretrendszer, hiszen keretrendszert biztosít Hugging Face modellek lokális futtatására és azok válaszainak kiértékelésére, továbbá nincsen hozzá webes, mobilos, vagy desktop grafikus felület és nincsen hostolva sem.
+    Helyette parancssorból indítható a program és a \texttt{config} fájlok beállításainak módosításával paraméterezhető.
+    Én általában csak "modulokként" hivatkozom a keretrendszerre, hiszen három, egymástól jól elkülönülő feladatú és funkciójú modulból áll.
+    Így az egyes modulok egyedülállóan is futtathatóak, akkor is, ha a másik kettő nem létezik, vagy meghibásodik.
+    Mindegyik modul egy fő futtatható állományt tartalmaz, egy-egy \texttt{main.py} fájt egy-egy \texttt{main} belépési ponttal.
 
 
-    Felhívom a figyelmet arra, hogy mivel a szoftver folyamatosan módosul, így a legújabb verzió valósága, működése, stb. részben eltérhet a leírttól. A leírás a 2025 év végi verzióra vonatkozik és a későbbi verziókban történő eltérések miatt felelősséget nem vállalok.
+    Felhívom a figyelmet arra, hogy mivel a szoftver folyamatosan módosul, így a legújabb verzió valósága, működése, stb.\ részben eltérhet a leírttól.
+    A leírás a 2025 év végi verzióra vonatkozik és a későbbi verziókban kisebb eltérések előfordulhatnak.
 
     \subsubsection{ModelInputPreparer}
-    A ModelInputPreparer inputja egy lokális adathalmaz és az elkészíteni kívánt kérdések száma.
+    A \texttt{ModelInputPreparer} modul inputjai egy lokális adathalmaz és az elkészíteni kívánt kérdések száma.
     A program az adathalmazból létrehozza a megadott számú kérdést, amelyet majd a modell inputként meg fog kapni.
-    Ez a program alapértelmezetten 'WiC adathalmaz' 'test' splitjének rekordjaiból hozza létre a kérdéseket, de saját, megegyező formátumú kérdésekre is működik. A kérdéseket mind egyenes, mind fordított sorrendben létrehozza, amelyekkel azután a modellek konzisztenciáját vizsgáljuk. Mivel az adathalmaz alapértelmezetten 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így alap beállításokkal 2800 kérdést kapunk, de ezen igény szerint lehet módosítani.
+    Ez a program alapértelmezetten \texttt{Word-in-Context} adathalmaz \texttt{test} splitjének rekordjaiból hozza létre a kérdéseket, de saját, megegyező formátumú kérdésekre is működik. A kérdéseket mind egyenes, mind fordított sorrendben létrehozza, amelyekkel azután a modellek konzisztenciáját vizsgáljuk. Mivel az adathalmaz alapértelmezetten 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így alap beállításokkal 2800 kérdést kapunk, de ezen igény szerint lehet módosítani.
 
-    \subsubsection{HuggingFaceModelInferencer}
+    \subsubsection{HuggingFaceModelInferencer}\label{subsubsec:huggingfacemodelinferencer}
     A HuggingFaceModelInferencer inputként a ModelInputPreparer outputját kapja.
     Itt történik a távoli Hugging Face modell letöltése, telepítése és futtatása.
     Feladata a modell futtatása az elkészített prompton, válasz generálása.
@@ -1120,26 +1125,26 @@ The cat sat on the _ .
     \section{Fejlesztés}
 
     \subsection{Globális scope}
-    GlobalMain.py: ez a szkript a fő belépési pont, amely egyszerre mind a 3 modult lefuttatja.
+    \texttt{GlobalMain.py}: ebben a szkriptben található a fő belépési pont, amely egyszerre mind a három modult lefuttatja.
 
 
-    GlobalData mappa: a GlobalMain futtatásakor használt "adatbázis", adattároló mappa. A modulok egyesével való futtatásakor nem ezt használják, hanem az adott modul gyökerében található "data" mappát. Mindegyik modulhoz tartozik ebből egy külön.
+        \texttt{GlobalData} mappa: Ez a GlobalMain futtatásakor használt "adatbázis", adattároló mappa. A modulok egyesével való futtatásakor nem ezt használják, hanem az adott modul gyökerében található \texttt{data} mappát. Mindegyik modulhoz tartozik ebből egy-egy külön.
 
 
-    Data mappák: az egyes modulokhoz tartozó input és output fájlok tárolását szolgálja.
+        \texttt{Data} mappák: az egyes modulokhoz tartozó input és output fájlok tárolását szolgálják.
 
 
-    .in fájlok: az input fájlok egységes kiterjesztése. Ha in a kiterjesztése, akkor valamelyik fájl azt bemetként használni fogja.
+        \texttt{*.in} fájlok: az input fájlok egységes kiterjesztése. Ha \texttt{*.in} a kiterjesztése, akkor valamelyik fájl azt bemenetként használni fogja.
 
 
-    .out fájlok: az output fájlok egységes kiterjesztése
+        \texttt{.out} fájlok: az output fájlok egységes kiterjesztése
 
     \subsection{A modulok szerkezete}
 
     \subsubsection{Közös elemek}
-    Mindhárom modul gyökérkönyvtárában megtalálható az alábbi 3 Python fájl.
+    Mindhárom modul gyökérkönyvtárában megtalálható az alábbi három Python fájl.
 
-    A \verb|config.py| a konfigurációs fájlok, melyek célja, hogy futtatás előtt módosítani lehessen az előre beállított, nagybetűsített globális változókban tárolt beállításokat, mint például a feldolgozandó adat mennyiségét, az input fájlok adatait, vagy a prompt üzenetet.
+    A \verb|config.py| nevű fájlok a konfigurációs szkriptek, melyek célja, hogy futtatás előtt módosítani lehessen az előre beállított, nagybetűsített globális változókban tárolt beállításokat, mint például a feldolgozandó adat mennyiségét, az input fájlok adatait, vagy a prompt üzenetet.
 
     A \verb|main.py| a fő belépési pont, itt lehet elindítani a main függvényt, amely csak elindítja programot, átadva a futást a run.py szkriptnek.
 
@@ -1151,21 +1156,23 @@ The cat sat on the _ .
 
     \subsection{ModelInputPreparer}
 
-    Ahhoz, hogy a modellek szemantikus képességeinek konzisztenciáját megvizsgálhassuk, először el kell érni, hogy a modell sikeresen és értelmesen választ adjon. Ahhoz pedig, hogy választ adjon, szükséges a kérdések legyártása, ugyanis a Word-in-Context adathalmaz formátuma nem alkalmas generatív nyelvi modellek promptolására. Így a statisztikai elemző modul létrehozása előtt szükség volt ennek a két funkcionalitásnak a létrehozására.
+    Ahhoz, hogy a modellek szemantikus képességeinek konzisztenciáját megvizsgálhassuk, először el kell érni, hogy a modell sikeresen és értelmesen választ adjon.
+    Ahhoz pedig, hogy választ adjon, szükséges a kérdések legyártása, ugyanis a Word-in-Context adathalmaz formátuma nem alkalmas generatív nyelvi modellek promptolására.
+    Így a statisztikai elemző modul létrehozása előtt szükség volt ennek a két funkcionalitásnak a létrehozására.
 
     Az első modul a ModelInputPreparer (modell bemenet előkészítő), amely a WiC adathalmazból létrehozza a modellnek szánt inputot, a 2800 kérdést. Ez a \texttt{WiC} adathalmaz \texttt{test} splitjének összes rekordjából létrehoz egy kérdést, mind egyenes, mind fordított sorrendben, hogy a modellek konzisztenciáját vizsgáljuk. Mivel 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így jön ki a 2800 kérdés. A létrehozás módja a következő:
     A WiC adathalmaz minden sora 5, tabulátorral elválasztott értéket tartalmaz:
     \begin{itemize}
         \item szó,\item  szófaj, \item a szó pozíciói a mondatokban, \item az első mondat, \item a második mondat.
     \end{itemize}
-    Ebből nekünk csak a szó, első mondat és a második mondat szükséges, a többivel nem is fogunk foglalkozni. Először is megnyitjuk a fájlt, majd beolvassuk és eltároljuk minden sorbol a szót és a két mondatot egy listában. Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot. Végül ezt elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
+    Ebből nekünk csak a szó, első mondat és a második mondat szükséges, a többivel nem is fogunk foglalkozni. Először is megnyitjuk a fájlt, majd beolvassuk és eltároljuk minden sorból a szót és a két mondatot egy listában. Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot. Végül ezt elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
 
     \subsection{HuggingFaceModelInferencer}
     Ebben a modulban történik a konkrét modell lefuttatása az előző modulban előállított kérdéseken.
 
-    Az előző modulban láthattuk, hogy a kérdések legyártása viszonylag egyszerű fájl- és sztringfeldolgozó algoritmusokkal lehetséges. A modell futtatása viszont nem egy triviális feladat. Még kisebb méretű Hugging Face modellek futtatása is rendkívül körülményes. Ez egy internetes API-kat és rendkívül sok időt és erőforrást (CPU, GPU, RAM) igénylő művelet. Így nem is csoda, hogy ennek a modulnak az elkészítése vette igénybe az idő túlnyomó részét a szoftver elkészítésében.
+    Az előző modulban láthattuk, hogy a kérdések legyártása viszonylag egyszerű fájl- és sztringfeldolgozó algoritmusokkal lehetséges. A modell futtatása viszont nem egy triviális feladat. Még kisebb méretű Hugging Face modellek futtatása is rendkívül körülményes. Ez egy internetes API-kat és rendkívül sok időt és erőforrást (CPU, GPU, RAM) igénylő művelet. Így nem meglepő, hogy ennek a modulnak az elkészítése vette igénybe az idő túlnyomó részét a szoftver elkészítésében.
 
-    A program elindítása előtt érdemes a \verb|config.py| és a \verb|modelname.py| beállításait ellenőrizni és igény szerint módosítani. A modell tetszőleges lehet, de a ajánlott a \verb|modelname.py| fájlban található \verb|supported\_models| listában lévő modellek közül, az elöl elhelyezkedő modellek közül választani, mert ezek kompatibilisebbek a keretrendszerrel. A config fájlban lehetőség van a prompt utasítás részén változtatni, amely aztán a kérdések elé kerül a felépítésében. Ebben lehet adni, hogy hány kérdésre válaszoljon, milyen kulcsszavakkal, terjedelemben, stb. A konzolra történő kiíratások mennyiségét is itt lehet állítani.
+    A program elindítása előtt érdemes a \verb|config.py| és a \verb|modelname.py| beállításait ellenőrizni és igény szerint módosítani. A modell tetszőleges lehet, de a ajánlott a \verb|modelname.py| fájlban található \verb|supported\_models| listában lévő modellek közül, annak is az első indexein elhelyezkedő modellek közül választani, mert ezek kompatibilisebbek a keretrendszerrel. A config fájlban lehetőség van a promptnak az utasítás részén változtatni, amely aztán a kérdések elé kerül a prompt-felépítés során. Ebben lehet adni, hogy hány kérdésre válaszoljon, milyen kulcsszavakkal, terjedelemben, stb. A konzolra történő kiíratások mennyiségét is itt lehet állítani.
 
     A program első lépésként ellenőrzi, hogy az input helyes-e. Ha páratlan kérdésből áll, akkor helytelen, hiszen nem egyezik meg az egyenes és fordított kérdések száma. Ez esetben a felhasználó figyelmeztetést kap erről, és választhat, hogy kilép a programból, vagy továbblép, és a programra bízza, hogy az megpróbálja helyreállítani - 1 sor kitörlésével.
 
