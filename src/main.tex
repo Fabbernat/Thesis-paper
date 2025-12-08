@@ -230,7 +230,15 @@
 
     \section{Problémafelvetés}
     Architektúrájukból adódóan a modellek esetén nincs garancia, hogy bizonyos emberek számára triviális invarianciákat konzisztensen kezeljenek, erre fókuszál a szakdolgozatom.
-    Ehhez szükség lesz egy - lehetőleg lokális - környezetre, ahol különböző modellek telepítése és használata lehetséges.
+    Hogy majd az eredményekből következtetést lehessen levonni, két hipotézist fogalmazok meg.
+    Egyrészt valószínűsíthető és feltételezem, hogy minél nagyobb paraméterszámú egy model, annál jobban fog teljesíteni a megfogalmazott feladatra.
+    Továbbá méretnövekedéssel történő teljesítményjavulás mértéke is kérdéses és érdekel.
+    Másrészt azonos méretű modellek teljesítménye között is óriási különbség lehet, még akkor is, ha azok azonos célra, pl.\ utasítás-végrehajtásra készültek (\texttt{instruct} modellek).
+    Ez különösen igaz lehet a különböző cégek által gyártott modellekre.
+    Emiatt azt is feltételezem, hogy lesznek különbségek az ilyen azonos méretű, de eltérő architektúrájú modellek között.
+    A szakdolgozatom, pontosabban a szoftverem tesztelésének eredményei ezeket a hipotéziseket vagy megerősítik, vagy megcáfolják és ezekre a feltevésekre majd a konklúzió fejezetben reagálok.
+
+    Ehhez szükség lesz egy - lehetőleg lokális környezetben futó - programra, ahol különböző modellek telepítése és használata lehetséges.
 
     \section{Hasonló megoldások}
     A törekvés, hogy generatív modellek lokális telepítésére, futtatására és összehasonlítására szolgáló eszközöket hozzunk létre nem újkeletű, hiszen egy jó modell jelentősen megkönnyíti a munkafolyamatokat, a lokalizálása pedig biztonságosabbá és olcsóbbá teszi a használatukat.
@@ -304,8 +312,8 @@
 
     \section{Az én céljaim ehhez képest}
     Ez a SuperGlue feladat, a Word-in-Context alapján készíthetőek olyan promptok, amelyek hasznosnak bizonyulhatnak az inkonzisztens viselkedés detektálására.
-    A kutatásom célja a témámnak megfelelően a modellek teljesítményének összehasonlítása a WiC-ből szedett kérdéseken volt, ám a többi Word-in-Context ranglétrán látható rendszerrel ellentétben az én célom nem az volt, hogy minél több kérdésre a gold standard \footnote{A gold standard egy szakértők által hitelesen és konzisztensen annotált adathalmaz, amely viszonyítási alapként szolgál automatikus rendszerek teljesítményének kiértékeléséhez.} szerint válaszoljon egy általam tanított modell, hanem hogy megvizsgáljam, hogy mások által készített nagy nyelvi modellek válaszai milyen érzékenységet mutatnak olyan invarianciákra, amelyek az emberi válaszadásra nincsenek befolyással.
-    Ez alapján a kérdésben a mondatok sorrendje nem szabadna, hogy befolyásolja a válaszadásukat, ám azt mégis befolyásolja.
+    A kutatásom célja a témámnak megfelelően a modellek teljesítményének összehasonlítása a WiC-ből szedett kérdéseken volt, ám a többi Word-in-Context ranglétrán látható rendszerrel ellentétben az én célom nem az volt, hogy minél több kérdésre a gold standard \footnote{A gold standard egy szakértők által hitelesen és konzisztensen annotált adathalmaz, amely viszonyítási alapként szolgál automatikus rendszerek teljesítményének kiértékeléséhez.} szerint válaszoljon a vizsgált modell, hanem hogy a szavak sorrendje ne befolyásolja a válaszadásukat.
+    Más szóval megvizsgálom, hogy mások által készített nagy nyelvi modellek válaszai milyen érzékenységet mutatnak olyan invarianciákra, amelyek az emberi válaszadásra nincsenek befolyással.
     Egész pontosan a
     \begin{verbatim}
 Does the word `w` mean the same thing in `s1` and `s2`?
@@ -587,7 +595,7 @@ The cat sat on the _ .
     Használata egyszerű: csak le kell futtatni sorban az összes cellát, mely akár egyetlen kattintással is elvégezhető
     A Google Colab egyszerű és kényelmes környezetet biztosít modellek futtatására, akár limitált ingyenes GPU-használattal is.
     Ám nem voltam elégedett a környezet adta korlátozásokkal, pl.\ session-alapú futtatókörnyezet, amely a session végével törli az adataimat, lassú csatlakozási idő a távoli hardverekhez, limitált erőforrás-hozzáférés, perzisztens adattárolási lehetőségek hiánya és egyéb korlátozások, amelyek csak előfizetéssel kerülhetőek ki.
-    Emiatt PyCharm fejlesztői környezetet használtam a keretendszer elkészítésére, lásd később\ \ref{chap:src/Framework}.
+    Emiatt PyCharm fejlesztői környezetet használtam a keretendszer elkészítésére.
 
 
 %    {\Large\textbf LMArena és Hugging Face modellek}
@@ -1060,8 +1068,9 @@ The cat sat on the _ .
 
 
     \section{Tervezés}
-    A szoftvert, amelyet a szakdolgozatomhoz készítettem, 2024-ben kezdtem el fejleszteni, és azóta folyamatosan, általában heti 10-20 committal fejlesztettem. A \href{https://github.com/Fabbernat}{GitHubomon} elérhető a kitűzött elemek között. Korábban a \href{https://github.com/Fabbernat/Peternity}{https://github.com/Fabbernat/Peternity} linken volt elérhető, ez most már archívum és a forráskód át lett helyezve a\\
-    \href{https://github.com/Fabbernat/Thesis} {https://github.com/Fabbernat/Thesis} linkre.
+    A szoftvert, amelyet a szakdolgozatomhoz készítettem, 2024-ben kezdtem el fejleszteni, és azóta folyamatosan, általában heti 10-20 committal fejlesztettem. A \href{https://github.com/Fabbernat}{GitHubomon} elérhető a kitűzött elemek között.
+    A teljes forráskód az összes korábbi verzióval együtt a\\
+    \href{https://github.com/Fabbernat/Thesis} {https://github.com/Fabbernat/Thesis} GitHub repozitóriumban található.
 
     A projekt első verziója kritikákat kapott, ugyanis nehezen átlátható és nagyban AI generált, rossz minőségű kódra alapszik, így 2025 nyarán újrakezdtem a fejlesztést. Az új szoftvernek 2 fő fejlesztési szempontja volt.
 
@@ -1105,8 +1114,9 @@ The cat sat on the _ .
     Mindegyik modul egy fő futtatható állományt tartalmaz, egy-egy \texttt{main.py} fájt egy-egy \texttt{main} belépési ponttal.
 
 
-    Felhívom a figyelmet arra, hogy mivel a szoftver folyamatosan módosul, így a legújabb verzió valósága, működése, stb.\ részben eltérhet a leírttól.
+    Felhívom a figyelmet arra, hogy mivel a szoftvert indőnként módosul, így a legújabb GitHub verzió konfigurációi, paraméterei, működése stb.\ részben eltérhetnek a leírttól.
     A leírás a 2025 év végi verzióra vonatkozik és a későbbi verziókban kisebb eltérések előfordulhatnak.
+    A legtöbb eltérés korábbi verziók visszaállításával, vagy a config és az input fájlok módosításával kiküszöbölhető.
 
     \subsubsection{ModelInputPreparer}
     A \texttt{ModelInputPreparer} modul inputjai egy lokális adathalmaz és az elkészíteni kívánt kérdések száma.
@@ -1215,17 +1225,18 @@ The cat sat on the _ .
     A modul, és így az egész program végeredményeként az alábbi statisztikákat számolom ki.
     Bemutatom a számolási módszer képletét és helyességét is.
 
-    Informatikusként természetesen szeretnénk az eredményeket számszerűsíteni, főleg, hogy ez a legkönnyedebb módja a különböző futtatások összehasonlításának.
+    Informatikusként természetesen szeretnénk az eredményeket számszerűsíteni.
+    Különösen igaz ez a \texttt{ModelOutputProcessor}, esetén, hiszen az eredmények könnyen számszerűsíthetők.
+    Ez talán a legkönnyedebb módja a különböző futtatások összehasonlításának és ez teszi lehetővé a következtetések levonását.
     Éppen ezért minden eredményt egy 0 és 100\% közé normalizált számként fejez ki a programom.
-    Az eredmények az alábbi statisztikai indikátor mutatók.
-    \subsection{A végeredmény várt formátuma}
-    \begin{verbatim}
-        Egyenes kérdés | Fordított kérdés | Gold standard | Pontos | Konzisztensen pontos | Bizonytalan | Konzisztensen bizonytalan
-        --------------------------------------------
-        T T T
-        ? F T
-        F F T
-    \end{verbatim} % TODO
+    Az eredményként az alábbi statisztikai indikátor mutatókat számítja ki a modul:
+    \begin{itemize}
+        \item Pontos válaszok aránya
+        \item Konzisztensen pontos válaszok aránya
+        \item Bizonytalan válaszok aránya
+        \item Konzisztensen bizonytalan válaszok aránya
+    \end{itemize}
+
 
 
 
@@ -1258,7 +1269,7 @@ The cat sat on the _ .
     \subsection{Konzisztensen bizonytalan}
 
     \subsubsection{LogFile}
-    A ModelOutputProcessorban található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit.
+    A \texttt{ModelOutputProcessorban} található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit.
     A fájlhoz append módban minden futtatás után hozzáíródnak a legutóbbi futtatás riportjai.
     A megjelenített információk többek között a választott modell, a jelenlegi felhasználó neve, a futtatás dátuma, és a modell válaszok kiértékelésének eredményei: a konzisztencia, pontosság, konzisztens pontosság, kiegyensúlyozott pontosság és a tp,fp,fn,tn statisztikák.
 
@@ -1330,20 +1341,19 @@ py -3.13 -m src.Framework.globalMain
 %    \end{figure}
 
 
-    \section{A konzisztenciára vonatkozó megállapítások}
-    1-2 modellre vonatkozóan, és az erőforrásigény miatt az nem
-    megoldható, így nem az összes tesztesetre, de legalább egy
-    100 elemű véletlenszerűen kiválasztott mintájára megnézni azt,
-    hogy hogy viselkednek a modellek a konzsiztencia szempontjából, és az
-    ezzel kapcsolatos tapasztalatok.
+    \subsection{A konzisztenciára vonatkozó megállapítások}
 
-    Akkor beszélhetünk egyáltalán konzisztenciáról, az az első szintje, ha a modell \textit{reagál a bemenetre}, azaz a válaszának egyáltalán valami köze van a feltett kérdésekhez. Előfordul, hogy a modell teljesen vakon van és nincs reláció a válasza és az egyes kérdések között. Ekkor az összes mutatója 0.
+
+    Akkor beszélhetünk egyáltalán konzisztenciáról, tekinthetjük a konzisztens viselkedés első szintjét annak, ha a modell \textit{reagál a bemenetre}, azaz a válaszának egyáltalán valami köze van a feltett kérdésekhez.
+    Előfordul, hogy a modell teljesen vakon van és nincs reláció a válasza és az egyes kérdések között.
+    Ekkor az összes mutatója 0.
 
 
     A vizsgált nyelvi modellek jelentős része nem képes stabil és konzisztens döntést hozni a WiC-feladat esetén.
     Ahelyett, hogy bináris osztályozást adnának, gyakran irreleváns generatív válaszokba esnek (pl.
     “Hello, how can I help you today?”), vagy repetitív tokenflodding jelenséget mutatnak, egy nagy valószínűségű tokenre “ragadva rá”, majd azt ismétli determinisztikusan, magas temperature nélkül (“Yes Yes Yes…” vagy “No No No…”).
-    Ez a \textit{mode collapse} egy tipikus megnyilvánulása, mely azt mutatja, hogy a modellek nem értik megfelelően az instrukciót, nem tartják a formátumot, és egyenes-fordított párok esetén extrém alacsony konzisztenciát adnak.
+    Ez a \textit{mode collapse} egy tipikus megnyilvánulása, mely azt mutatja, hogy a modellek nem értik megfelelően az instrukciót, nem tartják a formátumot, és egyenes-fordított párok esetén extrém alacsony konzisztenciát adnak. Erre a megoldásom a \texttt{max\_new\_tokens} paraméter 1-re állítása volt a \texttt{transformers} könyvtár \texttt{\_BaseModelWithGenerate} típusának a \texttt{generate} metódusában.
+    Ez minden esetben garantálta, hogy a modell pontosan 1 tokenben, 1 szóban válaszoljon.
 
     \subsection{Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}
     A modelleket a Témavezetőm ajánlásával együtt választottam ki.
@@ -1398,8 +1408,7 @@ py -3.13 -m src.Framework.globalMain
     Ezt elsősorban a moduláris, és függvényekbe, osztályokba és metódusokba általánosított, absztrakt felépítésnek köszönheti a szoftver.
     Az egyes részek csak minimálisan függnek egymástól.
 
-    \subsection{Megjegyzés}
-    Fontosnak tartom megjegyezni, hogy a Python keretrendszernek van egy fontos különbsége a Google Colab megoldásomhoz képest: Itt a modell alapértelmezett módon nem 2800 futtatásban válaszol egyesével a 2800 kérdésre, hanem egy futtatásban a megadott számú kérdésre. Emiatt a Colab megoldással szemben itt ha inputként megadjuk a kérdéseket egyenes és fordított sorrendben is, akkor a modell látja a modell a korábbi kérdésre adott válaszait. Ha ezt szeretnénk elkerülni, akkor kétszer kell lefuttatni a modell inferenciát, egyszer egyenes, majd fordított kérdésekkel, vagy a megfelelő beállításokat alkalmazni a config fájlokban.
+
 
 \chapter{Konklúzió}
 
