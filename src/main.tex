@@ -241,7 +241,7 @@
     Ehhez szükség lesz egy - lehetőleg lokális környezetben futó - programra, ahol különböző modellek telepítése és használata lehetséges.
 
     \section{Hasonló megoldások}
-    Az elmúlt években számtalan, a nagy nyelvi modellek szemantikus konzisztenciájával kapcsolatos cikk jelent meg, jól mutatva, hogy a téma nagy népszerűségnek örvend~\cite{yang-etal-2024-enhancing}.
+    Az elmúlt években számtalan, a nagy nyelvi modellek szemantikus konzisztenciájával kapcsolatos cikk jelent meg, jól mutatva, hogy a téma nagy népszerűségnek örvend. A Google Scholar például 22 100 találatot listáz az \texttt{analyzing the semantical consistency of large language models} kifejezésre, amelyeknek a java részét az elmúlt években publikálták.~\cite{yang-etal-2024-enhancing}.
     A törekvés, hogy generatív modellek lokális telepítésére, futtatására és összehasonlítására szolgáló eszközöket hozzunk létre nem újkeletű, hiszen egy jó modell jelentősen megkönnyíti a munkafolyamatokat, a lokalizálása pedig biztonságosabbá és olcsóbbá teszi a használatukat.
     Számos hasonló témájú és ötletű projekt született az elmúlt években.
     Az alábbiakban bemutatok párat. % TODO átnézni
@@ -1148,7 +1148,7 @@ The cat sat on the _ .
         \texttt{*.in} fájlok: az input fájlok egységes kiterjesztése. Ha \texttt{*.in} a kiterjesztése, akkor valamelyik fájl azt bemenetként használni fogja.
 
 
-        \texttt{.out} fájlok: az output fájlok egységes kiterjesztése
+        \texttt{.out} fájlok: az output fájlok egységes kiterjesztése. Általában "append", azaz hozzáfűző módban írat a program beléjük, hogy így meg legyenek őrizve a korábbi futtatások eredményei is.
 
     \subsection{A modulok szerkezete}
 
@@ -1319,13 +1319,13 @@ The cat sat on the _ .
    hf_xetm optimum
     \end{verbatim} az ajánlott parancs.
 
-    Itt kétféle opciónk van. Egyszerű mindhárom modellt lefuttató futtatásért adjuk ki a gyökérkönyvtárban ( - ahol a /.git/ és az /src/ mappa van -) a
+    Itt kétféle opciónk van. Egyszerű mindhárom modellt lefuttató futtatásért adjuk ki a gyökérkönyvtárban - ahol a \texttt{/.git/} és az \texttt{/src/} mappa van - a
     \begin{verbatim}
 py -m src.Framework.globalMain
     \end{verbatim} parancsot. Vagy ha csak egy modult szeretnénk futtatni, akkor szintén a gyökérkönyvtárból adjuk ki a \begin{verbatim}
    py -m src.Framework.<modul neve>.main
     \end{verbatim}
-    parancsot. A modul neve helyére a ModelInputPreparer, HuggingFaceModelInferencer, vagy ModelOutputProcessor kerülhet, tehát a tényleges parancsok
+    parancsot. A modul neve helyére a ModelInputPreparer, HuggingFaceModelInferencer, vagy ModelOutputProcessor kerülhet, tehát a tényleges parancsok:
     \begin{verbatim}
     py -m src.Framework.ModelInputPreparer.main
 
@@ -1337,7 +1337,7 @@ py -m src.Framework.globalMain
     Ezzel a fenti módszerrel garantáltan megtalálja a Python a szkriptekben megadott modulokat.
 
     Paramétert nem vár egyik modul sem.
-    A paraméterezés helyette a config és a ".in" kiterjesztésű fájlokban történik.
+    A paraméterezés helyette a \texttt{config} és a \texttt{.in} kiterjesztésű fájlokban történik.
 
     Hogyha több Python verziót is használunk, akkor annak is jelentősége lehet, hogy milyen verziójú interpreterrel futtatjuk. Tehát lehet, hogy például 3.12-es verzióval nem fut le, de 3.13-assal már igen. Ez esetben ezt is expliciten meg kell adni futtatáskor egy kapcsolóval, az alábbi módon:
 
@@ -1369,9 +1369,8 @@ py -3.13 -m src.Framework.globalMain
 
     \section{Egyebek}
     \subsection{Hibakezelés}
-    A programban a hibák megtalálását és lekezelését egyszerű try-catch blokkokkal \footnote{Pythonban a try-except a hibakezelő kulcsszavak elnevezése, de a funkciójuk ugyanaz, mint a többi nyelvben ismert try-catch blokkoknak} kezelem.
-    Egyes hibák az eltérő környezetekből adódnak, pl.
-    a Python interpreter eltérő mappát tekint gyökérkönyvtárnak.
+    A programban a hibák megtalálását és lekezelését egyszerű try-catch blokkokkal \footnote{Pythonban a try-except a hibakezelő kulcsszavak elnevezése, de a funkciójuk ugyanaz, mint a többi nyelvben ismert try-catch blokkoknak} érem el.
+    Egyes hibák az eltérő verziókból és környezetekből adódhatnak, pl.\ a Python interpreter eltérő mappát tekint gyökérkönyvtárnak.
     Ezt is try-catch-csel oldottam meg, amellyel minden importot használó szkriptbe kétféle módon is megpróbálom beimportálni a függőségeket.
 
     \subsection{Dupla importok}
@@ -1386,7 +1385,7 @@ py -3.13 -m src.Framework.globalMain
     Teszteltem Asus laptopon és különböző toronygépházas gépeken, Windows 10-en, 11-en és Linux Debianon is működött a konzolos futtatás.
 
     \subsection{Skálázhatóság, bővíthetőség}
-    A szoftverem könnyen tovább bővíthető, hogy több és újabb modelleket is képes legyen támogatni, és terhelhető tetszőlegesen nagy mennyiségű bemenettel, anélkül, hogy lényegesebb futásidő-növekedést tapasztalnánk, vagy lényegesebben újra kellene írni a logikáját.
+    A szoftverem könnyen tovább bővíthető, hogy több és újabb modelleket is képes legyen támogatni, és terhelhető tetszőlegesen nagy mennyiségű bemenettel, anélkül, hogy lényegesebb futásidő-növekedést tapasztalnánk, vagy jelentősebben újra kellene írni a logikáját.
     Az inputok beolvasása, modell választás és az outputok feldolgozása során is törekedtem arra, hogy ezek nagy mérete ne jelentsen problémát, és a validálás, hibakezelés jól működjön nagy méretű, vagy érvénytelen input esetén is.
     Ezt elsősorban a moduláris, és függvényekbe, osztályokba és metódusokba általánosított, absztrakt felépítésnek köszönheti a szoftver.
     Az egyes részek csak minimálisan függnek egymástól.
@@ -1403,8 +1402,8 @@ py -3.13 -m src.Framework.globalMain
     \section{A konzisztenciára vonatkozó megállapítások}
 
 
-    Akkor beszélhetünk egyáltalán konzisztenciáról, tekinthetjük a konzisztens viselkedés első szintjét annak, ha a modell \textit{reagál a bemenetre}, azaz a válaszának egyáltalán valami köze van a feltett kérdésekhez.
-    Előfordul, hogy a modell teljesen vakon van és nincs reláció a válasza és az egyes kérdések között.
+    Akkor beszélhetünk egyáltalán konzisztenciáról, azt tekinthetjük a konzisztens viselkedés első szintjének, ha a modell \textit{reagál a bemenetre}, azaz a válaszának egyáltalán valami köze van a feltett kérdésekhez.
+    Előfordul, hogy nincs reláció a modell válasza és az egyes kérdések között.
     Ekkor az összes mutatója 0.
 
 
@@ -1452,7 +1451,7 @@ py -3.13 -m src.Framework.globalMain
 
     \section{Két konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
     Ahhoz, hogy módszertanilag helyes legyen és látszódjon, hogy az eredmények nincsenek beégetve a keretrendszerbe, a Témavezetőmmel megegyezve a kérdéseket random index generátor függvény segítségével véletlenszerűen választottam ki a WiC-adathalmaz bejegyzéseiből.
-    Az alábbi ábrában {n} modell összehasonlítása látható {m} véletlenszerűen kiválasztott kérdésen.
+    Az alábbi ábrában \texttt{n} modell összehasonlítása látható \texttt{m} véletlenszerűen kiválasztott kérdésen.
 
 % \chapter{Konklúzió} % TODO
 
