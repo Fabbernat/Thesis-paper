@@ -42,6 +42,7 @@
     sorting=none
 ]
 {biblatex}
+\addbibresource{references.bib}
 
 \usepackage{hyperref}
 
@@ -58,7 +59,6 @@
 \usepackage{psfrag}
 \usepackage{csquotes}
 
-\addbibresource{references.bib}
 
 %Margók:
 \hoffset -1in
@@ -1178,6 +1178,19 @@ The cat sat on the _ .
     \end{itemize}
     Ebből nekünk csak a szó, első mondat és a második mondat szükséges, a többivel nem is fogunk foglalkozni. Először is megnyitjuk a fájlt, majd beolvassuk és eltároljuk minden sorból a szót és a két mondatot egy listában. Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot. Végül ezt elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
 
+    A modul hívási verme a következő:
+
+    \begin{verbatim}
+    main ->
+        run ->
+            LabelAdder
+            WordAndSentencesExtractor
+            SentenceBuilder
+            SentenceNormalizer
+    \end{verbatim}
+
+    A négy egymás alatt található szkript egymás után hívódnak meg és mind a run szkriptnek adják vissza az irányítást a befejeztük után.
+
     \subsection{HuggingFaceModelInferencer}
     Ebben a modulban történik a konkrét modell lefuttatása az előző modulban előállított kérdéseken.
 
@@ -1194,6 +1207,17 @@ The cat sat on the _ .
     Ezután a transformers csomag importálása történik. Első lépés a tokenizálás, amelyhez segítséget nyújt a transformers AutoTokenizer osztálya, és annak from\_pretrained metódusa, amely a promptunkat a modell számára érthető tokenekké bontja.
     Ezután következik a modell-specifikus rész, hiszen a különböző modelleknek eltérő az inferencia-végrehajtó logikája. Az inferencia történhet determinisztikusan és nem-determinisztikusan, ezt is a config fájlban lehet állítani.
     Végül pedig a modell válaszainak a fájlba írása történik, amely mellett egyéb futás közben keletkezett információk is mentésrer kerülnek külön fájlokban.
+
+    A modul hívási verme a következő:
+
+    \begin{verbatim}
+    main ->
+        run ->
+            TorchApiHandler ->
+                TransformersApiHandler ->
+                    Builder
+    \end{verbatim}
+    Mindegyik szkript rekurzívan meghívja a nyíllal tőle jobbra jelzett szkriptet, majd azok mindegyikének befejezte után veszi vissza az irányítást.
 
     \subsection{ModelOutputProcessor}
     A \texttt{ModelOutputProcessor} bemenete a HuggingFaceModelInferencerben futtatott modell válaszai.

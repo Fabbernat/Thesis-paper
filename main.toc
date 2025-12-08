@@ -44,13 +44,13 @@
 \select@language {magyar} \contentsline {subsubsection}{Konzisztencia}{25}{section*.17}%
 \select@language {magyar} \contentsline {subsubsection}{Pontosság}{25}{section*.18}%
 \select@language {magyar} \contentsline {subsubsection}{Konzisztensen pontosság}{25}{section*.19}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.2.6}Bizonytalan}{26}{subsection.4.2.6}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.2.7}Konzisztensen bizonytalan}{26}{subsection.4.2.7}%
-\select@language {magyar} \contentsline {subsubsection}{LogFile}{26}{section*.20}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.2.6}Bizonytalan}{25}{subsection.4.2.6}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.2.7}Konzisztensen bizonytalan}{25}{subsection.4.2.7}%
+\select@language {magyar} \contentsline {subsubsection}{LogFile}{25}{section*.20}%
 \select@language {magyar} \contentsline {section}{\numberline {4.3}Tesztelés}{26}{section.4.3}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.3.1}A programok futtatása}{26}{subsection.4.3.1}%
-\select@language {magyar} \contentsline {section}{\numberline {4.4}Egyebek}{28}{section.4.4}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.4.1}Hibakezelés}{28}{subsection.4.4.1}%
+\select@language {magyar} \contentsline {section}{\numberline {4.4}Egyebek}{27}{section.4.4}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.1}Hibakezelés}{27}{subsection.4.4.1}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.4.2}Dupla importok}{28}{subsection.4.4.2}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.4.3}Platformfüggetlenség}{28}{subsection.4.4.3}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.4.4}Skálázhatóság, bővíthetőség}{28}{subsection.4.4.4}%
