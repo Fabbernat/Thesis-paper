@@ -1,16 +1,38 @@
-[0] Config.pm:328> INFO - This is Biber 2.21
-[0] Config.pm:331> INFO - Logfile is 'main.blg'
-[168] biber-MSWIN64:342> INFO - === 
-[225] Biber.pm:421> INFO - Reading 'main.bcf'
-[385] Biber.pm:1002> INFO - Found 22 citekeys in bib section 0
-[406] Biber.pm:4487> INFO - Processing section 0
-[419] Biber.pm:4678> INFO - Looking for bibtex file 'references.bib' for section 0
-[548] bibtex.pm:1713> INFO - LaTeX decoding ...
-[605] bibtex.pm:1519> INFO - Found BibTeX data source 'C:\Users\admin\PycharmProjects\Thesis-paper\src\references.bib'
-[815] UCollate.pm:68> INFO - Overriding locale 'hu-HU' defaults 'variable = shifted' with 'variable = non-ignorable'
-[815] UCollate.pm:68> INFO - Overriding locale 'hu-HU' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[815] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'hu-HU'
-[838] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[858] bbl.pm:779> INFO - Output to main.bbl
-[858] Biber.pm:132> WARN - legacy month field 'September' in entry 'qwen2.5' is not an integer - this will probably not sort properly.
-[858] Biber.pm:134> INFO - WARNINGS: 1
+[0] Config.pm:308> INFO - This is Biber 2.20
+[0] Config.pm:311> INFO - Logfile is 'auxil\main.blg'
+[135] biber-MSWIN64:340> INFO - === 
+[185] Biber.pm:420> INFO - Reading 'auxil\main.bcf'
+[297] Biber.pm:994> INFO - Found 23 citekeys in bib section 0
+[315] Biber.pm:4463> INFO - Processing section 0
+[331] Biber.pm:4654> INFO - Looking for bibtex file 'references.bib' for section 0
+[9297] bibtex.pm:1713> INFO - LaTeX decoding ...
+[9306] bibtex.pm:1519> INFO - Found BibTeX data source 'C:/MiKTeX/bibtex/bib/feupphdteses/references.bib'
+[9327] UCollate.pm:68> INFO - Overriding locale 'hu-HU' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[9330] UCollate.pm:68> INFO - Overriding locale 'hu-HU' defaults 'variable = shifted' with 'variable = non-ignorable'
+[9332] Biber.pm:4283> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'hu-HU'
+[9333] bbl.pm:676> INFO - Writing 'auxil\main.bbl' with encoding 'UTF-8'
+[9334] bbl.pm:779> INFO - Output to auxil\main.bbl
+[9336] Biber.pm:131> WARN - I didn't find a database entry for 'martin2008cleancode' (section 0)
+[9337] Biber.pm:131> WARN - I didn't find a database entry for 'yang-etal-2024-enhancing' (section 0)
+[9337] Biber.pm:131> WARN - I didn't find a database entry for 'hf_llm_comparator' (section 0)
+[9338] Biber.pm:131> WARN - I didn't find a database entry for 'chiang2024chatbot' (section 0)
+[9338] Biber.pm:131> WARN - I didn't find a database entry for 'ollama' (section 0)
+[9339] Biber.pm:131> WARN - I didn't find a database entry for 'llama_cpp' (section 0)
+[9339] Biber.pm:131> WARN - I didn't find a database entry for 'kwon2023efficient' (section 0)
+[9339] Biber.pm:131> WARN - I didn't find a database entry for 'lmstudio' (section 0)
+[9339] Biber.pm:131> WARN - I didn't find a database entry for 'textgen_webui' (section 0)
+[9339] Biber.pm:131> WARN - I didn't find a database entry for 'gpt4all' (section 0)
+[9339] Biber.pm:131> WARN - I didn't find a database entry for 'lesk1986automatic' (section 0)
+[9340] Biber.pm:131> WARN - I didn't find a database entry for 'sarlin2020superglue' (section 0)
+[9340] Biber.pm:131> WARN - I didn't find a database entry for 'wang2020superglue' (section 0)
+[9340] Biber.pm:131> WARN - I didn't find a database entry for 'pilehvar2019wic' (section 0)
+[9340] Biber.pm:131> WARN - I didn't find a database entry for 'miller1994wordnet' (section 0)
+[9340] Biber.pm:131> WARN - I didn't find a database entry for 'holtzman2020curious' (section 0)
+[9340] Biber.pm:131> WARN - I didn't find a database entry for 'openai_context_window' (section 0)
+[9340] Biber.pm:131> WARN - I didn't find a database entry for 'berend2025phi' (section 0)
+[9340] Biber.pm:131> WARN - I didn't find a database entry for 'wolf2019huggingface' (section 0)
+[9341] Biber.pm:131> WARN - I didn't find a database entry for 'phi4mini2024' (section 0)
+[9343] Biber.pm:131> WARN - I didn't find a database entry for 'gemma22b2024' (section 0)
+[9344] Biber.pm:131> WARN - I didn't find a database entry for 'qwen15chat2024' (section 0)
+[9345] Biber.pm:131> WARN - I didn't find a database entry for 'qwen2.5' (section 0)
+[9346] Biber.pm:133> INFO - WARNINGS: 23

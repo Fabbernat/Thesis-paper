@@ -16,7 +16,7 @@
 \select@language {magyar} \contentsline {section}{\numberline {1.4}A többértelműség problémája a természetes nyelvekben}{10}{section.1.4}%
 \select@language {magyar} \contentsline {section}{\numberline {1.5}A Word-in-Context feladat}{10}{section.1.5}%
 \select@language {magyar} \contentsline {subsubsection}{A Word-in-Context háttere}{10}{section*.11}%
-\select@language {magyar} \contentsline {section}{\numberline {1.6}Egy rendszer feladata a WiC adathalmazon}{10}{section.1.6}%
+\select@language {magyar} \contentsline {section}{\numberline {1.6}Egy rendszer feladata a WiC adathalmazon}{11}{section.1.6}%
 \select@language {magyar} \contentsline {section}{\numberline {1.7}Az én céljaim ehhez képest}{11}{section.1.7}%
 \select@language {magyar} \contentsline {section}{\numberline {1.8}Bináris osztályozás}{12}{section.1.8}%
 \select@language {magyar} \contentsline {section}{\numberline {1.9}A WiC adathalmaz eredete}{12}{section.1.9}%
@@ -52,7 +52,7 @@
 \select@language {magyar} \contentsline {section}{\numberline {4.4}Egyebek}{27}{section.4.4}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.4.1}Hibakezelés}{27}{subsection.4.4.1}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.4.2}Dupla importok}{27}{subsection.4.4.2}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.4.3}Platformfüggetlenség}{27}{subsection.4.4.3}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.3}Platformfüggetlenség}{28}{subsection.4.4.3}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.4.4}Skálázhatóság, bővíthetőség}{28}{subsection.4.4.4}%
 \select@language {magyar} \contentsline {section}{\numberline {4.5}Jövőbeli tervek}{28}{section.4.5}%
 \select@language {magyar} \contentsline {chapter}{\numberline {5}Kísérlet}{29}{chapter.5}%

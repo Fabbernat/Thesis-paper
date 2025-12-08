@@ -73,21 +73,6 @@
     note = {Utolsó megtekintés: 2025-12-10}
 }
 
-@article{sokolova2009systematic,
-    title = {A systematic analysis of performance measures for classification tasks},
-    author = {Sokolova, Marina and Lapalme, Guy},
-    journal = {Information Processing \& Management},
-    volume = {45},
-    number = {4},
-    pages = {427--437},
-    year = {2009},
-    issn = {0306-4573},
-    doi = {10.1016/j.ipm.2009.03.002},
-    url = {https://www.sciencedirect.com/science/article/pii/S0306457309000259},
-    keywords = {Performance evaluation, Machine Learning, Text classification},
-    note = {Utolsó megtekintés: 2025-12-10}
-}
-
 @article{tan2024terms,
     title = {When the Terms of Service Change to Make Way for {A.I.} Training},
     author = {Tan, Eli},
@@ -328,4 +313,26 @@
     publisher = {Prentice Hall},
     address = {Upper Saddle River, NJ, USA},
     isbn = {978-0-13-235088-4}
+}
+
+@inproceedings{yang-etal-2024-enhancing,
+    title = "Enhancing Semantic Consistency of Large Language Models through Model Editing: An Interpretability-Oriented Approach",
+    author = "Yang, Jingyuan  and
+      Chen, Dapeng  and
+      Sun, Yajing  and
+      Li, Rongjun  and
+      Feng, Zhiyong  and
+      Peng, Wei",
+    editor = "Ku, Lun-Wei  and
+      Martins, Andre  and
+      Srikumar, Vivek",
+    booktitle = "Findings of the Association for Computational Linguistics: ACL 2024",
+    month = aug,
+    year = "2024",
+    address = "Bangkok, Thailand",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.findings-acl.199/",
+    doi = "10.18653/v1/2024.findings-acl.199",
+    pages = "3343--3353",
+    abstract = "A Large Language Model (LLM) tends to generate inconsistent and sometimes contradictory outputs when presented with a prompt that has equivalent semantics but is expressed differently from the original prompt. To achieve semantic consistency of an LLM, one of the key approaches is to finetune the model with prompt-output pairs with semantically equivalent meanings. Despite its effectiveness, a data-driven finetuning method incurs substantial computation costs in data preparation and model optimization. In this regime, an LLM is treated as a ``black box'', restricting our ability to gain deeper insights into its internal mechanism. In this paper, we are motivated to enhance the semantic consistency of LLMs through a more interpretable method (i.e., model editing) to this end. We first identify the model components (i.e., attention heads) that have a key impact on the semantic consistency of an LLM. We subsequently inject biases into the output of these model components along the semantic-consistency activation direction. It is noteworthy that these modifications are cost-effective, without reliance on mass manipulations of the original model parameters. Through comprehensive experiments on the constructed NLU and open-source NLG datasets, our method demonstrates significant improvements in the semantic consistency and task performance of LLMs. Additionally, our method exhibits promising generalization capabilities by performing well on tasks beyond the primary tasks."
 }
