@@ -1258,15 +1258,15 @@ The cat sat on the _ .
     Pl. 50\% esetén a válaszok 50\%-a egyezik meg a gold standardbeli válasszal.
 
     \subsubsection{Konzisztensen pontosság}
-    Ez a két érték, a konzisztencia és a pontosság alapján kiszámítható a konzisztens pontosság értéke is, amelynek a képlete a következő:
-    \begin{equation}
-        ConsAcc(\%) = (Cons(\%)/100 * Acc(\%)/100) * 100\label{eq:equation2}
-    \end{equation}
-    Tehát a konzisztencia és a pontosság 0,00 és 1,00 közé normalizált értékét szorozzuk össze egymással, majd az eredményt megszorozzuk százzal.
+    A konzisztensen pontos válaszok egyszerűen azok, amelyek konzisztensek és pontosak is.
+    Magyarul azon túl, hogy az egyenes és a fordított kérdésre adott "igen" vagy "nem" válasz(ként generált token) megegyezik, mindez a gold standard válasszal is megegyezik.
+    Emiatt ha a válasz nem "igen" vagy "nem", az automatikusan nem konzisztensen pontos.
 
-        \subsection{Bizonytalan}
+    \subsection{Bizonytalan}
+    Ha egy egyenes-fordított kérdéspár \textbf{legalább egyikére} a válasz se nem "igen", se nem "nem", akkor azt a sort "bizonytalannak" számítom.
 
     \subsection{Konzisztensen bizonytalan}
+    Ha egy egyenes-fordított kérdéspár \textbf{mindkét kérdésére} a válasz se nem "igen", se nem "nem", akkor azt a sort "konzisztensen bizonytalannak" számítom.
 
     \subsubsection{LogFile}
     A \texttt{ModelOutputProcessorban} található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit.
