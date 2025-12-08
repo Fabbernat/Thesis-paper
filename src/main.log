@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  8 DEC 2025 14:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  8 DEC 2025 15:14
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1432,54 +1432,56 @@ Overfull \hbox (19.60847pt too wide) in paragraph at lines 1358--1358
 [27]
 
 [28]
+
+[29]
 5. fejezet.
 
-Overfull \hbox (7.36476pt too wide) in paragraph at lines 1417--1417
+Overfull \hbox (7.36476pt too wide) in paragraph at lines 1416--1416
 []\T1/ptm/b/n/17.28 Méret- és konzisztencia-arányban meg-fe-le-l® nyel-vi mo-
  []
 
 
 
-[29
+[30
 
 ]
 
-[30]
-Overfull \hbox (5.49321pt too wide) in paragraph at lines 1465--1465
+[31]
+Overfull \hbox (5.49321pt too wide) in paragraph at lines 1464--1464
 []\T1/ptm/m/n/12 Hugging Face. \T1/ptm/m/it/12 Hug-ging Face Open LLM Le-ader-b
 oard Mo-del Com-pa-ra-tor\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
 
 
-Overfull \hbox (4.95029pt too wide) in paragraph at lines 1465--1465
+Overfull \hbox (4.95029pt too wide) in paragraph at lines 1464--1464
 \T1/pcr/m/n/12 / / huggingface . co / spaces / open -[] llm -[] leaderboard / c
 omparator$[]\T1/ptm/m/n/12 .
  []
 
 
-Overfull \hbox (4.4157pt too wide) in paragraph at lines 1465--1465
+Overfull \hbox (4.4157pt too wide) in paragraph at lines 1464--1464
 []\T1/ptm/m/n/12 LM Stu-dio Team. \T1/ptm/m/it/12 LM Stu-dio: Desk-top app-li-c
 a-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
 
 
 
-[31
+[32
 
 ]
-Overfull \hbox (10.67581pt too wide) in paragraph at lines 1465--1465
+Overfull \hbox (10.67581pt too wide) in paragraph at lines 1464--1464
 \T1/ptm/m/it/12 gu-age Un-der-stand-ing Sys-tems\T1/ptm/m/n/12 . Utol-só meg-te
 -kin-tés: 2025-12-10. 2020. ar-Xiv: []$\T1/pcr/m/n/12 1905 .
  []
 
 
-Overfull \hbox (0.59474pt too wide) in paragraph at lines 1465--1465
+Overfull \hbox (0.59474pt too wide) in paragraph at lines 1464--1464
 []\T1/ptm/m/n/12 Mohammad Ta-her Pi-leh-var és Jo-se Camacho-Collados. ^^R  WiC
 : the Word-in-Context
  []
 
 
-Overfull \hbox (4.55653pt too wide) in paragraph at lines 1465--1465
+Overfull \hbox (4.55653pt too wide) in paragraph at lines 1464--1464
 \T1/ptm/m/n/12 meg-te-kin-tés: 2025-12-10. \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : 
 []$\T1/pcr/m/n/12 https : / / aclanthology . org / H94 -[] 1111/$[]\T1/ptm/m/n/
 12 . 
@@ -1487,11 +1489,7 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1465--1465
 
 
 
-[32]
-
-[33
-
-]
+[33]
 
 [34
 
@@ -1500,7 +1498,11 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1465--1465
 [35
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251208141606 FAD58DE7366495DB465
+
+[36
+
+]
+runsystem(latexminted cleantemp  --timestamp 20251208151408 FAD58DE7366495DB465
 0CFEFAC2FCD61)...executed.
 
  (main.aux)
@@ -1508,6 +1510,10 @@ runsystem(latexminted cleantemp  --timestamp 20251208141606 FAD58DE7366495DB465
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-05-26>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 5D5ED2295AB83776357C42D8F258BF69;10018.
 Package logreq Info: Writing requests to 'main.run.xml'.
@@ -1515,8 +1521,8 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47035 strings out of 468219
- 1062667 string characters out of 5449698
+ 47036 strings out of 468219
+ 1062674 string characters out of 5449698
  2084239 words of memory out of 5000000
  74772 multiletter control sequences out of 15000+600000
  687323 words of font info for 118 fonts, out of 8000000 for 9000
@@ -1531,9 +1537,9 @@ y10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX/fonts/ty
 pe1/urw/courier/ucrr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/MiKT
 eX/fonts/type1/urw/times/utmbi8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmr8a.pf
 b><C:/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (35 pages, 318266 bytes).
+Output written on main.pdf (36 pages, 319534 bytes).
 PDF statistics:
- 665 PDF objects out of 1000 (max. 8388607)
- 131 named destinations out of 1000 (max. 500000)
+ 670 PDF objects out of 1000 (max. 8388607)
+ 132 named destinations out of 1000 (max. 500000)
  413 words of extra memory for PDF output out of 10000 (max. 10000000)
 

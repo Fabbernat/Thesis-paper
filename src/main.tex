@@ -1254,7 +1254,7 @@ The cat sat on the _ .
     Különösen igaz ez a \texttt{ModelOutputProcessor}, esetén, hiszen az eredmények könnyen számszerűsíthetők.
     Ez talán a legkönnyedebb módja a különböző futtatások összehasonlításának és ez teszi lehetővé a következtetések levonását.
     Éppen ezért minden eredményt egy 0 és 100\% közé normalizált számként fejez ki a programom.
-    Az eredményként az alábbi statisztikai indikátor mutatókat számítja ki a modul:
+    Az eredményként az alábbi statisztikai indikátor mérőszámokat számítja ki a modul:
     \begin{itemize}
         \item Pontos válaszok aránya
         \item Konzisztensen pontos válaszok aránya
@@ -1279,7 +1279,7 @@ The cat sat on the _ .
     \subsubsection{Pontosság}
     Önmagában az, hogy a válaszok konzisztensek, nem elég, hiszen lehet konzisztensen hibás az összes válasz is, amely nem egy kívánatos eredmény.
     Emiatt azt is meg kell vizsgálni, hogy a válasz megegyezik-e a gold standardbeli válasszal, függetlenül attól, hogy az egyenes vagy fordított.
-    Ezért egy százalékban kifejezett mutatóban eltároltam az egész adathalmazra levetített pontosság mértékét is.
+    Ezért egy százalékban kifejezett mérőszámban eltároltam az egész adathalmazra levetített pontosság mértékét is.
     Pl. 50\% esetén a válaszok 50\%-a egyezik meg a gold standardbeli válasszal.
 
     \subsubsection{Konzisztensen pontosság}
@@ -1302,7 +1302,7 @@ The cat sat on the _ .
     \section{Tesztelés}
 
     \subsection{A programok futtatása}
-    A PyCharm IDE kínál egyszerű és felhasználóbarát futtatási módokat - a zöld háromszög ikonokat kell keresni, azzal lehet tetszőleges .py kiterjesztésű fájlt futtatni.
+    A PyCharm fejlesztői környezet kínál egyszerű és felhasználóbarát futtatási módokat - a zöld háromszög ikonokat kell keresni, azzal lehet tetszőleges .py kiterjesztésű fájlt futtatni.
     Ez a projektem esetén is működik.
     A keretrendszer main.py fájlokat kell elindítani a modulok lefuttatásához.
     Mivel azonban a projektem kódja sok fájlból, külsős csomagokból és összetett projektszerkezetból áll, és a zöld gomb nem biztos, hogy megfelelő útvonalakon keresi majd a modulokat, a legbiztonságosabb és legprofesszionálisabb mód a terminálos futtatás. Én, mivel Windows-on fejlesztettem, a \href{https://learn.microsoft.com/en-us/powershell/}{PowerShell} terminált használtam fejlesztéshez és futtatáshoz és ezt ajánlom, de a \href{https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands}{Command Prompt Shell} is teljesen megfelelő.
@@ -1404,7 +1404,7 @@ py -3.13 -m src.Framework.globalMain
 
     Akkor beszélhetünk egyáltalán konzisztenciáról, azt tekinthetjük a konzisztens viselkedés első szintjének, ha a modell \textit{reagál a bemenetre}, azaz a válaszának egyáltalán valami köze van a feltett kérdésekhez.
     Előfordul, hogy nincs reláció a modell válasza és az egyes kérdések között.
-    Ekkor az összes mutatója 0.
+    Ekkor az összes mérőszáma 0.
 
 
     A vizsgált nyelvi modellek jelentős része nem képes stabil és konzisztens döntést hozni a WiC-feladat esetén.
