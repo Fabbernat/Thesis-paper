@@ -1341,7 +1341,41 @@ py -3.13 -m src.Framework.globalMain
 %    \end{figure}
 
 
-    \subsection{A konzisztenciára vonatkozó megállapítások}
+
+    \section{Egyebek}
+    \subsection{Hibakezelés}
+    A programban a hibák megtalálását és lekezelését egyszerű try-catch blokkokkal \footnote{Pythonban a try-except a hibakezelő kulcsszavak elnevezése, de a funkciójuk ugyanaz, mint a többi nyelvben ismert try-catch blokkoknak} kezelem.
+    Egyes hibák az eltérő környezetekből adódnak, pl.
+    a Python interpreter eltérő mappát tekint gyökérkönyvtárnak.
+    Ezt is try-catch-csel oldottam meg, amellyel minden importot használó szkriptbe kétféle módon is megpróbálom beimportálni a függőségeket.
+
+    \subsection{Dupla importok}
+    A moduljaimban szinte minden fájlban észrevehető, hogy az importok egy try-catch blokkban vannak megadva.
+    Ez duplikált importálásnak tűnhet, ám nem az, hiszen a verzérlési szerkezet biztosítja, hogy ha az első elérési út megtalálása meghiúsul, akkor a másik útvonalról töltődjenek be a szükséges modulok.
+    Erre azért volt szükség, mert mindenképpen el szerettem volna érni, hogy a projekt gyökérkönyvtárából és modul-szinten is futtathatóak legyenek a programok.
+
+
+    \subsection{Platformfüggetlenség}
+    Mivel a Python virtuális környezetét használtam a programom fejlesztésére és a program nem használ abszolút útvonalakat, csak relatívakat, így a szoftverem platformfüggetlennek mondható.
+    A szoftvert 3, eltérő architektúrájú és operációs rendszerű gépen is teszteltem.
+    Teszteltem Asus laptopon és különböző toronygépházas gépeken, Windows 10-en, 11-en és Linux Debianon is működött a konzolos futtatás.
+
+    \subsection{Skálázhatóság, bővíthetőség}
+    A szoftverem könnyen tovább bővíthető, hogy több és újabb modelleket is képes legyen támogatni, és terhelhető tetszőlegesen nagy mennyiségű bemenettel, anélkül, hogy lényegesebb futásidő-növekedést tapasztalnánk, vagy lényegesebben újra kellene írni a logikáját.
+    Az inputok beolvasása, modell választás és az outputok feldolgozása során is törekedtem arra, hogy ezek nagy mérete ne jelentsen problémát, és a validálás, hibakezelés jól működjön nagy méretű, vagy érvénytelen input esetén is.
+    Ezt elsősorban a moduláris, és függvényekbe, osztályokba és metódusokba általánosított, absztrakt felépítésnek köszönheti a szoftver.
+    Az egyes részek csak minimálisan függnek egymástól.
+
+    \section{Jövőbeli tervek}
+    Hosszútávú célom egyszer közzétenni a keretrendszert.
+    Ehhez azonban még sok fejlesztési "mérföldkövet" kellene elérnem.
+    Egy letisztult webes, vagy konzolos CLI felület sokat segítene, hogy a projekt szélesebb körben, több ember számára elérhető lehessen.
+    A Hugging Face Hub alkalmas platform lehet erre.
+    Továbbá egy adatbázis a jelenlegi nyers szöveg-alapú adatkezelés helyett nagy előrelépés lenne.
+
+\chapter{Kísérlet}
+
+    \section{A konzisztenciára vonatkozó megállapítások}
 
 
     Akkor beszélhetünk egyáltalán konzisztenciáról, tekinthetjük a konzisztens viselkedés első szintjét annak, ha a modell \textit{reagál a bemenetre}, azaz a válaszának egyáltalán valami köze van a feltett kérdésekhez.
@@ -1355,7 +1389,7 @@ py -3.13 -m src.Framework.globalMain
     Ez a \textit{mode collapse} egy tipikus megnyilvánulása, mely azt mutatja, hogy a modellek nem értik megfelelően az instrukciót, nem tartják a formátumot, és egyenes-fordított párok esetén extrém alacsony konzisztenciát adnak. Erre a megoldásom a \texttt{max\_new\_tokens} paraméter 1-re állítása volt a \texttt{transformers} könyvtár \texttt{\_BaseModelWithGenerate} típusának a \texttt{generate} metódusában.
     Ez minden esetben garantálta, hogy a modell pontosan 1 tokenben, 1 szóban válaszoljon.
 
-    \subsection{Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}
+    \section{Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}
     A modelleket a Témavezetőm ajánlásával együtt választottam ki.
     Ő ajánlotta, hogy a \href{https://lmarena.ai/}{LMArena}~\cite{chiang2024chatbot} és a \href{https://huggingface.co}{Hugging Face}~\cite{wolf2019huggingface}  platformokon lévő modelleket vizsgáljam meg, de a konkrét modell példány kiválasztását rám bízta.
     A modellek kiválasztásakor a cél az volt, hogy kellően kisméretűek legyenek ahhoz, hogy gyorsan lefussanak a lokális környezetben, ám korlátozott paraméterszámuk ellenére a lehető legjobb "konzisztens pontosságot" tudják elérni, azaz minél több kérdésre konzisztensen és a gold standard szerint válaszoljanak.
@@ -1379,7 +1413,7 @@ py -3.13 -m src.Framework.globalMain
     Az elnevezési szabály megtévesztő lehet, ugyanis {gemma-\textit{x}b\ldots} kezdetű modellek első generációs változatok, míg a {gemma-2-\textit{x}b\ldots} a második, és a {gemma-3-\textit{x}b\ldots} a harmadik generációs modelleket jelöli.
 %    A modellek eredményeit összessítő táblázat a 4.1. táblázatban látható.\ref{tab:model-eval-summary}
 
-    \subsection{Google Colab futtatás}
+    \section{Google Colab futtatás}
     A középső modul egyszerűsített változata elérhető Google Colab-on, a mellékletben található linken.~\ref{att:colab}
 
     Mivel Google Colabot használtam, azon belül is GPU-s futtatókörnyezetet, így a kiértékelés megfelelően gyors volt.
@@ -1391,24 +1425,7 @@ py -3.13 -m src.Framework.globalMain
     \end{itemize}
     Ennek ellenére a Google Colab környezet nem egy hatékony módja a kiértékelésnek a korábban felsorolt gyengeségei miatt, helyette a lokális PyCharm keretrendszerem biztosít egy kényelmesebb és sokkal átláthatóbb környezetet.
 
-    \subsection{2 konkrét modell kiértékelése 100 véletlenszerű mintán a keretrendszerben}
-
-
-    \subsection{Hibakezelés}
-    A programban a hibák megtalálását és lekezelését egyszerű try-catch blokkokkal \footnote{Pythonban a try-except a hibakezelő kulcsszavak elnevezése, de a funkciójuk ugyanaz, mint a többi nyelvben ismert try-catch blokkoknak} kezelem. Egyes hibák az eltérő környezetekből adódnak, pl. a Python interpreter eltérő mappát tekint gyökérkönyvtárnak. Ezt is try-catch-csel oldottam meg, amellyel minden importot használó szkriptbe kétféle módon is megpróbálom beimportálni a függőségeket.
-
-    \subsection{Platformfüggetlenség}
-    Mivel a Python virtuális környezetét használtam a programom fejlesztésére és a program nem használ abszolút útvonalakat, csak relatívakat, így a szoftverem platformfüggetlennek mondható.
-    A szoftvert 3, eltérő architektúrájú és operációs rendszerű gépen is teszteltem.
-    Teszteltem Asus laptopon és különböző toronygépházas gépeken, Windows 10-en, 11-en és Linux Debianon is működött a konzolos futtatás.
-
-    \subsection{Skálázhatóság, bővíthetőség}
-    A szoftverem könnyen tovább bővíthető, hogy több és újabb modelleket is képes legyen támogatni, és terhelhető tetszőlegesen nagy mennyiségű bemenettel, anélkül, hogy lényegesebb futásidő-növekedést tapasztalnánk, vagy lényegesebben újra kellene írni a logikáját.
-    Az inputok beolvasása, modell választás és az outputok feldolgozása során is törekedtem arra, hogy ezek nagy mérete ne jelentsen problémát, és a validálás, hibakezelés jól működjön nagy méretű, vagy érvénytelen input esetén is.
-    Ezt elsősorban a moduláris, és függvényekbe, osztályokba és metódusokba általánosított, absztrakt felépítésnek köszönheti a szoftver.
-    Az egyes részek csak minimálisan függnek egymástól.
-
-
+    \section{2 konkrét modell kiértékelése 100 véletlenszerű mintán a keretrendszerben}
 
 \chapter{Konklúzió}
 

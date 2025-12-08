@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  8 DEC 2025 08:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  8 DEC 2025 10:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1135,7 +1135,7 @@ LaTeX Font Info:    Trying to load font information for T1+ptm on input line 75
 (C:\MiKTeX\tex/latex/psnfss\t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
-(C:/Users\Bern√°t\PycharmProjects\Thesis-paper\out\main.aux)
+(C:/Users\Bern√°t\PycharmProjects\Thesis-paper\auxil\main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
@@ -1197,8 +1197,8 @@ Package biblatex Info: Reference section=0 on input line 75.
 Package biblatex Info: Reference segment=0 on input line 75.
 Package hyperref Info: Link coloring OFF on input line 75.
 
-(C:/Users\Bern√°t\PycharmProjects\Thesis-paper\out\main.out)
-(C:/Users\Bern√°t\PycharmProjects\Thesis-paper\out\main.out)
+(C:/Users\Bern√°t\PycharmProjects\Thesis-paper\auxil\main.out)
+(C:/Users\Bern√°t\PycharmProjects\Thesis-paper\auxil\main.out)
 \@outlinefile=\write7
 \openout7 = `main.out'.
 
@@ -1262,7 +1262,7 @@ a, teljesÌtmÈny-ˆsszehasonlÌt·s
 
 
 
-[4] (C:/Users\Bern√°t\PycharmProjects\Thesis-paper\out\main.toc
+[4] (C:/Users\Bern√°t\PycharmProjects\Thesis-paper\auxil\main.toc
 
 [5
 
@@ -1379,10 +1379,6 @@ l.586     \chapter
                   {Google Colab}]
 3. fejezet.
 
-LaTeX Warning: Reference `subsubsec:huggingfacemodelinferencer' on page 18 unde
-fined on input line 594.
-
-
 
 [18
 
@@ -1393,11 +1389,6 @@ fined on input line 594.
 [19
 
 ]
-
-LaTeX Warning: Reference `subsubsec:huggingfacemodelinferencer' on page 20 unde
-fined on input line 1100.
-
-
 
 [20]
 
@@ -1446,49 +1437,60 @@ Overfull \hbox (19.60847pt too wide) in paragraph at lines 1333--1333
 [27]
 
 [28]
-
-[29]
 5. fejezet.
 
+Overfull \hbox (7.36476pt too wide) in paragraph at lines 1392--1392
+[]\T1/ptm/b/n/17.28 MÈret- Ès konzisztencia-ar·nyban meg-fe-le-lÆ nyel-vi mo-
+ []
 
-[30
+
+
+[29
 
 ]
-Overfull \hbox (5.49321pt too wide) in paragraph at lines 1421--1421
+
+[30]
+6. fejezet.
+
+
+[31
+
+]
+Overfull \hbox (5.49321pt too wide) in paragraph at lines 1438--1438
 []\T1/ptm/m/n/12 Hugging Face. \T1/ptm/m/it/12 Hug-ging Face Open LLM Le-ader-b
 oard Mo-del Com-pa-ra-tor\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
 
 
-Overfull \hbox (4.95029pt too wide) in paragraph at lines 1421--1421
+Overfull \hbox (4.95029pt too wide) in paragraph at lines 1438--1438
 \T1/pcr/m/n/12 / / huggingface . co / spaces / open -[] llm -[] leaderboard / c
 omparator$[]\T1/ptm/m/n/12 .
  []
 
 
-Overfull \hbox (4.4157pt too wide) in paragraph at lines 1421--1421
+Overfull \hbox (4.4157pt too wide) in paragraph at lines 1438--1438
 []\T1/ptm/m/n/12 LM Stu-dio Team. \T1/ptm/m/it/12 LM Stu-dio: Desk-top app-li-c
 a-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
 
 
-Overfull \hbox (10.67581pt too wide) in paragraph at lines 1421--1421
+Overfull \hbox (10.67581pt too wide) in paragraph at lines 1438--1438
 \T1/ptm/m/it/12 gu-age Un-der-stand-ing Sys-tems\T1/ptm/m/n/12 . Utol-sÛ meg-te
 -kin-tÈs: 2025-12-10. 2020. ar-Xiv: []$\T1/pcr/m/n/12 1905 .
  []
 
 
-Overfull \hbox (0.59474pt too wide) in paragraph at lines 1421--1421
+Overfull \hbox (0.59474pt too wide) in paragraph at lines 1438--1438
 []\T1/ptm/m/n/12 Mohammad Ta-her Pi-leh-var Ès Jo-se Camacho-Collados. ^^R  WiC
 : the Word-in-Context
  []
 
 
 
-[31
+[32
 
 ]
-Overfull \hbox (4.55653pt too wide) in paragraph at lines 1421--1421
+Overfull \hbox (4.55653pt too wide) in paragraph at lines 1438--1438
 \T1/ptm/m/n/12 meg-te-kin-tÈs: 2025-12-10. \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : 
 []$\T1/pcr/m/n/12 https : / / aclanthology . org / H94 -[] 1111/$[]\T1/ptm/m/n/
 12 . 
@@ -1496,11 +1498,7 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1421--1421
 
 
 
-[32]
-
-[33
-
-]
+[33]
 
 [34
 
@@ -1509,92 +1507,45 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1421--1421
 [35
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251208085955 FAD58DE7366495DB465
+
+[36
+
+]
+runsystem(latexminted cleantemp  --timestamp 20251208100223 FAD58DE7366495DB465
 0CFEFAC2FCD61)...disabled (restricted).
 
- (C:/Users\Bern√°t\PycharmProjects\Thesis-paper\out\main.aux)
+ (C:/Users\Bern√°t\PycharmProjects\Thesis-paper\auxil\main.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-05-26>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 2495B8A5022AC6B9803E645E4605E612;9078.
-
-Package biblatex Warning: Please rerun LaTeX.
-
+(rerunfilecheck)             Checksum: 19AF5CE08575F53E46D714AC1FE5AA19;10091.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47014 strings out of 468219
- 1062024 string characters out of 5449698
- 2082477 words of memory out of 5000000
- 74741 multiletter control sequences out of 15000+600000
+ 47035 strings out of 468219
+ 1062983 string characters out of 5449698
+ 2083192 words of memory out of 5000000
+ 74768 multiletter control sequences out of 15000+600000
  687323 words of font info for 118 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,105p,1323b,2348s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{subsection.4.4.7} has been referenced but does not 
-exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.4.4.6} has been referenced but does not 
-exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.4.4.5} has been referenced but does not 
-exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.4.4.4} has been referenced but does not 
-exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.4.4.3} has been referenced but does not 
-exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.4.4.2} has been referenced but does not 
-exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.4.4.1} has been referenced but does not 
-exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{section.4.4} has been referenced but does not exist
-, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.1.8.1} has been referenced but does not 
-exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.1.1.2} has been referenced but does not 
-exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.1.1.1} has been referenced but does not 
-exist, replaced by a fixed one
-
- <C:\Users\Bern√°t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt
-1200.pk><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmmi12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cm
-r10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmr8.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX/fonts/type
-1/urw/courier/ucrr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/MiKTeX
-/fonts/type1/urw/times/utmbi8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmr8a.pfb>
-<C:/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+ <C:\Users\Bern√°t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tc
+tt1200.pk><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmmi12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmr10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmr8.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cms
+y10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX/fonts/ty
+pe1/urw/courier/ucrr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/MiKT
+eX/fonts/type1/urw/times/utmbi8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmr8a.pf
+b><C:/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
 Output written on C:/Users\Bern√°t\PycharmProjects\Thesis-paper\out\main.pdf (3
-5 pages, 313542 bytes).
+6 pages, 318611 bytes).
 PDF statistics:
- 644 PDF objects out of 1000 (max. 8388607)
- 139 named destinations out of 1000 (max. 500000)
- 365 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 669 PDF objects out of 1000 (max. 8388607)
+ 133 named destinations out of 1000 (max. 500000)
+ 421 words of extra memory for PDF output out of 10000 (max. 10000000)
 
