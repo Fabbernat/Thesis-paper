@@ -27,6 +27,7 @@
 \select@language {magyar} \contentsline {section}{\numberline {2.2}Inferencia}{15}{section.2.2}%
 \select@language {magyar} \contentsline {section}{\numberline {2.3}Determinisztikus következtetés, hőmérséklet, top-p és top-k}{15}{section.2.3}%
 \select@language {magyar} \contentsline {section}{\numberline {2.4}Maximum kimeneti tokenek és kontextusablak}{16}{section.2.4}%
+\select@language {magyar} \contentsline {section}{\numberline {2.5}Logikai szövegkövetkeztetési konzisztencia}{16}{section.2.5}%
 \select@language {magyar} \contentsline {chapter}{\numberline {3}Google Colab}{17}{chapter.3}%
 \select@language {magyar} \contentsline {section}{\numberline {3.1}Fejlesztés Google Colabban}{17}{section.3.1}%
 \select@language {magyar} \contentsline {chapter}{\numberline {4}A szoftver: modellt futtató és kiértékelő keretrendszer fejlesztése PyCharmban}{18}{chapter.4}%
