@@ -54,7 +54,7 @@
 \select@language {magyar} \contentsline {subsection}{\numberline {4.4.2}Dupla importok}{27}{subsection.4.4.2}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.4.3}Platformfüggetlenség}{27}{subsection.4.4.3}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.4.4}Skálázhatóság, bővíthetőség}{27}{subsection.4.4.4}%
-\select@language {magyar} \contentsline {section}{\numberline {4.5}Jövőbeli tervek}{28}{section.4.5}%
+\select@language {magyar} \contentsline {section}{\numberline {4.5}Jövőbeli tervek}{27}{section.4.5}%
 \select@language {magyar} \contentsline {chapter}{\numberline {5}Kísérlet}{29}{chapter.5}%
 \select@language {magyar} \contentsline {section}{\numberline {5.1}A konzisztenciára vonatkozó megállapítások}{29}{section.5.1}%
 \select@language {magyar} \contentsline {section}{\numberline {5.2}Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}{29}{section.5.2}%
