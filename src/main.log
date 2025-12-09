@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  9 DEC 2025 14:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  9 DEC 2025 18:34
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1392,1615 +1392,114 @@ l.600     \chapter
 [20]
 
 [21]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1214 ...an talÃ¡lhatÃ³ \texttt{supported_models}
-                                                   lista a keretrendszerrel ...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-<recently read> \egroup 
-                        
-l.1214 ...an talÃ¡lhatÃ³ \texttt{supported_models}
-                                                   lista a keretrendszerrel ...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \H invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \H invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \H invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \H invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \H invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \H invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1214.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1215 
-       
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-Missing character: There is no á in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no ¶ in font cmr12!
-Missing character: There is no ö in font cmr12!
-Missing character: There is no ü in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no ® in font cmr12!
-Missing character: There is no ö in font cmr12!
-Missing character: There is no ü in font cmr12!
-Missing character: There is no ® in font cmr12!
-Missing character: There is no ® in font cmr12!
-Missing character: There is no ö in font cmr12!
-Missing character: There is no ü in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no ® in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no í in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no ü in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no í in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no ö in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no ® in font cmr12!
-Missing character: There is no í in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no í in font cmr12!
-
-Overfull \hbox (1519.01114pt too wide) in paragraph at lines 1214--1215
-\T1/pcr/m/n/12 modelname.py \T1/ptm/m/n/12 fájl-ban ta-lál-ha-tó \T1/pcr/m/n/12
- supported$[]\OML/cmm/m/it/12 odelslistaakeretrendszerrelmrteszteltmodelleketta
-rtalmazza; ezrtclszerezekkzlvlasztani:A[]listbanlvmodellekkzl; annakisazelsinde
-xeinelhelyezkedmodellekkzlvlasztani; mertezekkompatibilisebbekakeretrendszerrel
-:A[]fjlbanlehetsgvanapromptnakazutastsrsznvltoztatni; amelyaztnakrdsekelkerlapr
-ompt \OMS/cmsy/m/n/12 ^^@
- []
-
-
-Overfull \hbox (334.91878pt too wide) in paragraph at lines 1214--1215
-\OML/cmm/m/it/12 felptssorn:Ebbenlehetadni; hogyhnykrdsrevlaszoljon; milyenkulc
-sszavakkal; terjedelemben; stb:Akonzolratrtnkiratsokmennyisgtisittlehetlltani:$
- 
- []
-
-
-Overfull \hbox (19.26123pt too wide) in paragraph at lines 1216--1217
-[]\T1/pcr/m/n/12 A futás els® lépéseként a program ellen®rzi, hogy az input
- []
-
-
-Overfull \hbox (5.20848pt too wide) in paragraph at lines 1216--1217
-\T1/pcr/m/n/12 kérdéssor helyes-e. Ha a bemenet páratlan számú sorból áll,
- []
-
-
-Overfull \hbox (62.80846pt too wide) in paragraph at lines 1216--1217
-\T1/pcr/m/n/12 akkor hibás, hiszen nem egyezik meg az egyenes és fordított kérd
-ések
- []
-
-
-Overfull \hbox (26.80847pt too wide) in paragraph at lines 1216--1217
-\T1/pcr/m/n/12 száma. Ilyenkor a felhasználó figyelmeztetést kap, és dönthet,
- []
-
-
-Overfull \hbox (55.60846pt too wide) in paragraph at lines 1216--1217
-\T1/pcr/m/n/12 hogy kilép, vagy továbblép, és a program megpróbálja helyreállít
-ani
- []
-
-
-Overfull \hbox (33.66122pt too wide) in paragraph at lines 1218--1219
-[]\T1/pcr/m/n/12 Ezután a program azt is leellen®rzi, hogy tényleg a kérdések
- []
-
-
-Overfull \hbox (84.40845pt too wide) in paragraph at lines 1218--1219
-\T1/pcr/m/n/12 fele-e fordított, a most már biztosan páros hosszúságú kérdéshal
-mazból.
- []
-
-
-Overfull \hbox (12.40848pt too wide) in paragraph at lines 1218--1219
-\T1/pcr/m/n/12 Ezt úgy teszi, hogy n kérdés esetén összehasonlítja az 1. és
- []
-
-
-Overfull \hbox (5.20848pt too wide) in paragraph at lines 1218--1219
-\T1/pcr/m/n/12 az n/2+1. kérdésben szerepl® 1. és 2. mondatot, hogy azok
- []
-
-
-Overfull \hbox (26.80847pt too wide) in paragraph at lines 1218--1219
-\T1/pcr/m/n/12 tényleg egymás fordítottjai-e. Hogyha nem, akkor figyelmezteti
- []
-
-
-Overfull \hbox (34.00847pt too wide) in paragraph at lines 1218--1219
-\T1/pcr/m/n/12 a felhasználót, hogy hibát talált a kérdéssorban. A felhasználó
- []
-
-
-Overfull \hbox (26.80847pt too wide) in paragraph at lines 1218--1219
-\T1/pcr/m/n/12 itt szintén választhat, hogy kilép a programból, vagy továbblép
- []
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1220 ...accelerate} Ã©s \texttt{huggingface_hub}
-                                                  , de bizonyos modellek tov...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-<recently read> \egroup 
-                        
-l.1220 ...accelerate} Ã©s \texttt{huggingface_hub}
-                                                  , de bizonyos modellek tov...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1220.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 1220.
-
-
-LaTeX Warning: Command \H invalid in math mode on input line 1220.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1220.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1220.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1220.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1220.
-
-
-LaTeX Warning: Command \H invalid in math mode on input line 1220.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1220.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1221 
-       
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-Missing character: There is no á in font cmr12!
-Missing character: There is no ü in font cmr12!
-Missing character: There is no ® in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no ® in font cmr12!
-Missing character: There is no á in font cmr12!
-
-Overfull \hbox (69.66121pt too wide) in paragraph at lines 1220--1221
-[]\T1/pcr/m/n/12 Ezt követ®en történik a 3. félt®l származó könyvtárak betöltés
-e.
- []
-
-
-Overfull \hbox (5.20848pt too wide) in paragraph at lines 1220--1221
-\T1/pcr/m/n/12 A szükséges f® csomagok a torch, transformers, accelerate és
- []
-
-
-Overfull \hbox (191.63455pt too wide) in paragraph at lines 1220--1221
-\T1/pcr/m/n/12 huggingface$[]\OML/cmm/m/it/12 ub; debizonyosmodellektovbbifggsg
-eketisignyelnek:Havalamelyikhinyzik; aPythonfutsidbenhibtjelez:$ 
- []
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1223 A \texttt{torch} csomag \texttt{no_grad()}
-                                                  kontextuskezelÅ‘jÃ©vel kik...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-<recently read> \egroup 
-                        
-l.1223 A \texttt{torch} csomag \texttt{no_grad()}
-                                                  kontextuskezelÅ‘jÃ©vel kik...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-LaTeX Warning: Command \H invalid in math mode on input line 1223.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1223.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1223.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1223.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1223.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1223.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 1223.
-
-
-LaTeX Warning: Command \H invalid in math mode on input line 1223.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1223.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1223.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 1223.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1223.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1223.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1223.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1224 
-       
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-Missing character: There is no ® in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no í in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no ö in font cmr12!
-Missing character: There is no ¶ in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no ü in font cmr12!
-Missing character: There is no é in font cmr12!
-Missing character: There is no á in font cmr12!
-Missing character: There is no é in font cmr12!
-
-Overfull \hbox (48.06122pt too wide) in paragraph at lines 1222--1224
-[]\T1/pcr/m/n/12 Ezután következik a modell-specifikus rész, hiszen a különböz®
-
- []
-
-
-Overfull \hbox (62.80846pt too wide) in paragraph at lines 1222--1224
-\T1/pcr/m/n/12 modelleknek eltér® az inferencia-végrehajtó logikája. Az inferen
-cia
- []
-
-
-Overfull \hbox (19.60847pt too wide) in paragraph at lines 1222--1224
-\T1/pcr/m/n/12 történhet determinisztikusan és nem-determinisztikusan, ezt is
- []
-
-
-Overfull \hbox (26.80847pt too wide) in paragraph at lines 1222--1224
-\T1/pcr/m/n/12 a config fájlban lehet állítani. Az alap logika viszont minden
- []
-
-
-Overfull \hbox (62.80846pt too wide) in paragraph at lines 1222--1224
-\T1/pcr/m/n/12 modell esetén ugyanaz, f®leg mivel a generálási stratégiám része
-ként
- []
-
-
-Overfull \hbox (5.20848pt too wide) in paragraph at lines 1222--1224
-\T1/pcr/m/n/12 minden inferencia eredménye pontosan 1 darab token. A torch
- []
-
-
-Overfull \hbox (484.63884pt too wide) in paragraph at lines 1222--1224
-\T1/pcr/m/n/12 csomag no$[]\OML/cmm/m/it/12 rad\OT1/cmr/m/n/12 ()\OML/cmm/m/it/
-12 kontextuskezeljvelkikapcsoljukagradiensekszmtstamodellsszesmveletre; mivelin
-ferenciasornerrenincsszksg:Aprogramtovbbirszeebbenakontextusbanfut:$ 
- []
-
-
 
 [22]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1225 ...\texttt{AutoTokenizer.from_pretrained()}
-                                                   metÃ³dussal. A tokenizer ...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-<recently read> \egroup 
-                        
-l.1225 ...\texttt{AutoTokenizer.from_pretrained()}
-                                                   metÃ³dussal. A tokenizer ...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 1225.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-\textdef@ ...th {#1}\let \f@size #2\selectfont #3}
-                                                  }
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
-                                                  
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\text@ ...e {\textdef@ \displaystyle \f@size {#1}}
-                                                  {\textdef@ \textstyle \f@s...
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-\textdef@ ...th {#1}\let \f@size #2\selectfont #3}
-                                                  }
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
-                                                  
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\text@ ...xtstyle \f@size {\firstchoice@false #1}}
-                                                  {\textdef@ \textstyle \sf@...
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-\textdef@ ...th {#1}\let \f@size #2\selectfont #3}
-                                                  }
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
-                                                  
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\text@ ...tstyle \sf@size {\firstchoice@false #1}}
-                                                  {\textdef@ \textstyle \ssf...
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-\textdef@ ...th {#1}\let \f@size #2\selectfont #3}
-                                                  }
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
-                                                  
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\text@ ...style \ssf@size {\firstchoice@false #1}}
-                                                  \check@mathfonts }
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\text@ ...firstchoice@false #1}}\check@mathfonts }
-                                                  
-l.1225 ...tokenizer \texttt{apply_chat_template()}
-                                                   metÃ³dusa a promptot a ki...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-\textdef@ ...th {#1}\let \f@size #2\selectfont #3}
-                                                  }
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
-                                                  
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\text@ ...e {\textdef@ \displaystyle \f@size {#1}}
-                                                  {\textdef@ \textstyle \f@s...
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-\textdef@ ...th {#1}\let \f@size #2\selectfont #3}
-                                                  }
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
-                                                  
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\text@ ...xtstyle \f@size {\firstchoice@false #1}}
-                                                  {\textdef@ \textstyle \sf@...
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-\textdef@ ...th {#1}\let \f@size #2\selectfont #3}
-                                                  }
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
-                                                  
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\text@ ...tstyle \sf@size {\firstchoice@false #1}}
-                                                  {\textdef@ \textstyle \ssf...
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-\textdef@ ...th {#1}\let \f@size #2\selectfont #3}
-                                                  }
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\textdef@ ...h {#1}\let \f@size #2\selectfont #3}}
-                                                  
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\text@ ...style \ssf@size {\firstchoice@false #1}}
-                                                  \check@mathfonts }
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-\text@ ...firstchoice@false #1}}\check@mathfonts }
-                                                  
-l.1225 ...{AutoModelForCausalLM.from_pretrained()}
-                                                   metÃ³dussal tÃ¶rtÃ©nik, a...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1226 
-       
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-Missing character: There is no ó in font cmr5!
-Missing character: There is no ö in font cmr5!
-Missing character: There is no é in font cmr5!
-Missing character: There is no é in font cmr5!
-Missing character: There is no ® in font cmr5!
-Missing character: There is no á in font cmr5!
-Missing character: There is no ú in font cmr5!
-Missing character: There is no ú in font cmr5!
-Missing character: There is no ö in font cmr5!
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1227 ... Ã¡llÃ­t elÅ‘ (\texttt{max_new_tokens=1}
-                                                  ). A kapott tokenhalmazt a...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-<recently read> \egroup 
-                        
-l.1227 ... Ã¡llÃ­t elÅ‘ (\texttt{max_new_tokens=1}
-                                                  ). A kapott tokenhalmazt a...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1228 
-       
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-Missing character: There is no í in font cmr5!
-Missing character: There is no é in font cmr5!
-Missing character: There is no é in font cmr5!
-Missing character: There is no í in font cmr5!
-Missing character: There is no ö in font cmr5!
-Missing character: There is no é in font cmr5!
-! Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1233     \begin{verbatim}
-                           
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1233     \begin{verbatim}
-                           
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1233     \begin{verbatim}
-                           
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1233     \begin{verbatim}
-                           
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing { inserted.
-<to be read again> 
-                   $
-l.1233     \begin{verbatim}
-                           
-A left brace was mandatory here, so I've put one in.
-You might want to delete and/or insert some corrections
-so that I will find a matching right brace soon.
-(If you're confused by all this, try typing `I}' now.)
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing { inserted.
-<to be read again> 
-                   $
-l.1233     \begin{verbatim}
-                           
-A left brace was mandatory here, so I've put one in.
-You might want to delete and/or insert some corrections
-so that I will find a matching right brace soon.
-(If you're confused by all this, try typing `I}' now.)
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing { inserted.
-<to be read again> 
-                   $
-l.1233     \begin{verbatim}
-                           
-A left brace was mandatory here, so I've put one in.
-You might want to delete and/or insert some corrections
-so that I will find a matching right brace soon.
-(If you're confused by all this, try typing `I}' now.)
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-Missing character: There is no ó in font cmr5!
-Missing character: There is no á in font cmr5!
-Missing character: There is no á in font cmr5!
-Missing character: There is no á in font cmr5!
-Missing character: There is no á in font cmr5!
-Missing character: There is no í in font cmr5!
-Missing character: There is no ö in font cmr5!
-Missing character: There is no é in font cmr5!
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1233     \begin{verbatim}
-                           
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1233     \begin{verbatim}
-                           
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1233     \begin{verbatim}
-                           
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1233     \begin{verbatim}
-                           
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing { inserted.
-<to be read again> 
-                   $
-l.1233     \begin{verbatim}
-                           
-A left brace was mandatory here, so I've put one in.
-You might want to delete and/or insert some corrections
-so that I will find a matching right brace soon.
-(If you're confused by all this, try typing `I}' now.)
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing { inserted.
-<to be read again> 
-                   $
-l.1233     \begin{verbatim}
-                           
-A left brace was mandatory here, so I've put one in.
-You might want to delete and/or insert some corrections
-so that I will find a matching right brace soon.
-(If you're confused by all this, try typing `I}' now.)
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing { inserted.
-<to be read again> 
-                   $
-l.1233     \begin{verbatim}
-                           
-A left brace was mandatory here, so I've put one in.
-You might want to delete and/or insert some corrections
-so that I will find a matching right brace soon.
-(If you're confused by all this, try typing `I}' now.)
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1233     \begin{verbatim}
-                           
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-Missing character: There is no ó in font cmr12!
-
-Overfull \hbox (55.26122pt too wide) in paragraph at lines 1225--1233
-[]\T1/pcr/m/n/12 Ezután történik a transformers csomag komponenseinek betöltése
-.
+Overfull \hbox (21.26813pt too wide) in paragraph at lines 1225--1226
+\OML/cmm/m/it/12 from[]pretrained\OT1/cmr/m/n/12 ()$ \T1/ptm/m/n/12 me-tó-du-sá
+-val tör-té-nik, amely ^^V amennyi-ben el-ér-he-t® ^^V \T1/pcr/m/n/12 safetenso
+rs
  []
 
 
-Overfull \hbox (242.16559pt too wide) in paragraph at lines 1225--1233
-\T1/pcr/m/n/12 Els® lépésként a tokenizer létrehozása történik a AutoTokenizer.
-from$[]\OML/cmm/m/it/12 retrained\OT1/cmr/m/n/12 ()\OML/cmm/m/it/12 metdussal:A
-tokenizer[]$ 
+Overfull \hbox (13.38208pt too wide) in paragraph at lines 1227--1228
+[]\T1/ptm/m/n/12 A mo-dell és a to-ke-ni-zált be-me-net át-he-lye-zé-se a meg-f
+e-le-l® esz-köz-re a $\OML/cmm/m/it/12 model:to\OT1/cmr/m/n/12 (\OML/cmm/m/it/1
+2 device\OT1/cmr/m/n/12 )$
  []
 
 
-! LaTeX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1233     \begin{verbatim}
-                           
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 1233
-[][]
+Overfull \hbox (18.8256pt too wide) in paragraph at lines 1227--1228
+\T1/ptm/m/n/12 sal tör-té-nik, amely je-len kon-fi-gu-rá-ci-ó-ban pon-to-san eg
+y új to-kent ál-lít el® $\OML/cmm/m/it/12 max[]new[]tokens \OT1/cmr/m/n/12 =
  []
-
-
-! LaTeX Error: \begin{document} ended by \end{verbatim}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1239     \end{verbatim}
-                         
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1239     \end{verbatim}
-                         
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1239     \end{verbatim}
-                         
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1239     \end{verbatim}
-                         
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1239     \end{verbatim}
-                         
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Extra \endgroup.
-<recently read> \endgroup 
-                          
-l.1239     \end{verbatim}
-                         
-Things are pretty mixed up, but I think the worst is over.
 
 
 
 [23]
 
 [24]
-Overfull \hbox (5.20848pt too wide) in paragraph at lines 1338--1338
-[]   \T1/pcr/m/n/12 pip install torch transformers accelerate huggingface_hub[]
- 
- []
-
-
-Overfull \hbox (5.20848pt too wide) in paragraph at lines 1341--1341
-[]   \T1/pcr/m/n/12 pip install torch transformers accelerate huggingface_hub[]
- 
- []
-
-
 
 [25]
-Overfull \hbox (12.40848pt too wide) in paragraph at lines 1375--1375
+Overfull \hbox (5.20848pt too wide) in paragraph at lines 1340--1340
+[]   \T1/pcr/m/n/12 pip install torch transformers accelerate huggingface_hub[]
+ 
+ []
+
+
+Overfull \hbox (5.20848pt too wide) in paragraph at lines 1343--1343
+[]   \T1/pcr/m/n/12 pip install torch transformers accelerate huggingface_hub[]
+ 
+ []
+
+
+
+[26]
+Overfull \hbox (12.40848pt too wide) in paragraph at lines 1377--1377
 []    \T1/pcr/m/n/12 py -3.13 -m src.Framework.HuggingFaceModelInferencer.main[
 ] 
  []
 
 
-Overfull \hbox (19.60847pt too wide) in paragraph at lines 1379--1379
+Overfull \hbox (19.60847pt too wide) in paragraph at lines 1381--1381
 []    \T1/pcr/m/n/12 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 [] 
  []
 
 
 
-[26]
-
 [27]
 
 [28]
 5. fejezet.
 
-Overfull \hbox (7.36476pt too wide) in paragraph at lines 1437--1437
+
+[29
+
+]
+Overfull \hbox (7.36476pt too wide) in paragraph at lines 1450--1450
 []\T1/ptm/b/n/17.28 Méret- és konzisztencia-arányban meg-fe-le-l® nyel-vi mo-
  []
 
 
 
-[29
-
-]
-
 [30]
-Overfull \hbox (5.49321pt too wide) in paragraph at lines 1485--1485
+
+[31]
+Overfull \hbox (5.49321pt too wide) in paragraph at lines 1498--1498
 []\T1/ptm/m/n/12 Hugging Face. \T1/ptm/m/it/12 Hug-ging Face Open LLM Le-ader-b
 oard Mo-del Com-pa-ra-tor\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
 
 
-Overfull \hbox (4.95029pt too wide) in paragraph at lines 1485--1485
+Overfull \hbox (4.95029pt too wide) in paragraph at lines 1498--1498
 \T1/pcr/m/n/12 / / huggingface . co / spaces / open -[] llm -[] leaderboard / c
 omparator$[]\T1/ptm/m/n/12 .
  []
 
 
-Overfull \hbox (4.4157pt too wide) in paragraph at lines 1485--1485
+Overfull \hbox (4.4157pt too wide) in paragraph at lines 1498--1498
 []\T1/ptm/m/n/12 LM Stu-dio Team. \T1/ptm/m/it/12 LM Stu-dio: Desk-top app-li-c
 a-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
 
 
 
-[31
+[32
 
 ]
-Overfull \hbox (10.67581pt too wide) in paragraph at lines 1485--1485
+Overfull \hbox (10.67581pt too wide) in paragraph at lines 1498--1498
 \T1/ptm/m/it/12 gu-age Un-der-stand-ing Sys-tems\T1/ptm/m/n/12 . Utol-só meg-te
 -kin-tés: 2025-12-10. 2020. ar-Xiv: []$\T1/pcr/m/n/12 1905 .
  []
 
 
-Overfull \hbox (0.59474pt too wide) in paragraph at lines 1485--1485
+Overfull \hbox (0.59474pt too wide) in paragraph at lines 1498--1498
 []\T1/ptm/m/n/12 Mohammad Ta-her Pi-leh-var és Jo-se Camacho-Collados. ^^R  WiC
 : the Word-in-Context
  []
 
 
-Overfull \hbox (4.55653pt too wide) in paragraph at lines 1485--1485
+Overfull \hbox (4.55653pt too wide) in paragraph at lines 1498--1498
 \T1/ptm/m/n/12 meg-te-kin-tés: 2025-12-10. \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : 
 []$\T1/pcr/m/n/12 https : / / aclanthology . org / H94 -[] 1111/$[]\T1/ptm/m/n/
 12 . 
@@ -3008,11 +1507,7 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1485--1485
 
 
 
-[32]
-
-[33
-
-]
+[33]
 
 [34
 
@@ -3021,7 +1516,11 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1485--1485
 [35
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251209141327 FAD58DE7366495DB465
+
+[36
+
+]
+runsystem(latexminted cleantemp  --timestamp 20251209183406 FAD58DE7366495DB465
 0CFEFAC2FCD61)...executed.
 
  (main.aux)
@@ -3031,25 +1530,28 @@ L3 programming layer <2025-05-26>
  ***********
 
 
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
 Package rerunfilecheck Warning: File `main.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: 5D5ED2295AB83776357C42D8F258BF69;10018
-(rerunfilecheck)             After:  98697C40BD5B120F91BB263B4FFD0040;10298.
+(rerunfilecheck)             Before: 98697C40BD5B120F91BB263B4FFD0040;10298
+(rerunfilecheck)             After:  3FFC1B125AEEE3B8D99F9FAF44F415C8;10210.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47151 strings out of 468219
- 1064780 string characters out of 5449698
- 2083458 words of memory out of 5000000
- 74876 multiletter control sequences out of 15000+600000
- 694794 words of font info for 128 fonts, out of 8000000 for 9000
+ 47150 strings out of 468219
+ 1064765 string characters out of 5449698
+ 2084458 words of memory out of 5000000
+ 74873 multiletter control sequences out of 15000+600000
+ 695472 words of font info for 126 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,30n,105p,1614b,2348s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,12n,105p,1614b,2348s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
 , replaced by a fixed one
@@ -3061,16 +1563,15 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
  <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt
 1200.pk><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmmi12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cm
-mi8.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmr12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8
-.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C
-:/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmb
-i8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/MiKTeX/fonts/type1/urw/
-times/utmri8a.pfb>
-Output written on main.pdf (35 pages, 336055 bytes).
+r10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmr8.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX/fonts/type
+1/urw/courier/ucrr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/MiKTeX
+/fonts/type1/urw/times/utmbi8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmr8a.pfb>
+<C:/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (36 pages, 328267 bytes).
 PDF statistics:
- 673 PDF objects out of 1000 (max. 8388607)
- 132 named destinations out of 1000 (max. 500000)
- 413 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 678 PDF objects out of 1000 (max. 8388607)
+ 134 named destinations out of 1000 (max. 500000)
+ 421 words of extra memory for PDF output out of 10000 (max. 10000000)
 

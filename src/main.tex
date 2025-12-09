@@ -1211,20 +1211,20 @@ Ebben a modulban történik a konkrét modell lefuttatása az előző modulban e
 
 Az előző modulban láthattuk, hogy a kérdések legyártása viszonylag egyszerű fájl- és sztringfeldolgozó algoritmusokkal lehetséges. A modell futtatása a nagymérteű promptom és annak speciális felépítése miatt viszont nem egy triviális feladat. Még kisebb méretű Hugging Face modellek futtatása is rendkívül körülményes. Ez egy internetelérést és rendkívül sok időt és erőforrást (CPU, GPU, RAM) igénylő művelet. Így nem meglepő, hogy ennek a modulnak az elkészítése vette igénybe az idő túlnyomó részét a szoftver elkészítésében.
 
-A program elindítása előtt érdemes a \texttt{config.py} és a \texttt{modelname.py} beállításait ellenőrizni és igény szerint módosítani. A modell tetszőleges lehet, de ajánlott a \texttt{modelname.py} fájlban található \texttt{supported_models} lista a keretrendszerrel már tesztelt modelleket tartalmazza, ezért célszerű ezek közül választani. A \texttt{config.py} listában lévő modellek közül, annak is az első indexein elhelyezkedő modellek közül választani, mert ezek kompatibilisebbek a keretrendszerrel. A \texttt{config} fájlban lehetőség van a promptnak az utasítás részén változtatni, amely aztán a kérdések elé kerül a prompt-felépítés során. Ebben lehet adni, hogy hány kérdésre válaszoljon, milyen kulcsszavakkal, terjedelemben, stb. A konzolra történő kiíratások mennyiségét is itt lehet állítani.
+A program elindítása előtt érdemes a \texttt{config.py} és a \texttt{modelname.py} beállításait ellenőrizni és igény szerint módosítani. A modell tetszőleges lehet, de ajánlott a \texttt{modelname.py} fájlban található \texttt{supported\_models} lista a keretrendszerrel már tesztelt modelleket tartalmazza, ezért célszerű ezek közül választani. A \texttt{config.py} listában lévő modellek közül, annak is az első indexein elhelyezkedő modellek közül választani, mert ezek kompatibilisebbek a keretrendszerrel. A \texttt{config} fájlban lehetőség van a promptnak az utasítás részén változtatni, amely aztán a kérdések elé kerül a prompt-felépítés során. Ebben lehet adni, hogy hány kérdésre válaszoljon, milyen kulcsszavakkal, terjedelemben, stb. A konzolra történő kiíratások mennyiségét is itt lehet állítani.
 
 A futás első lépéseként a program ellenőrzi, hogy az input kérdéssor helyes-e. Ha a bemenet páratlan számú sorból áll, akkor hibás, hiszen nem egyezik meg az egyenes és fordított kérdések száma. Ilyenkor a felhasználó figyelmeztetést kap, és dönthet, hogy kilép, vagy továbblép, és a program megpróbálja helyreállítani 1 sor kitörlésével a bementetet.
 
 Ezután a program azt is leellenőrzi, hogy tényleg a kérdések fele-e fordított, a most már biztosan páros hosszúságú kérdéshalmazból. Ezt úgy teszi, hogy n kérdés esetén összehasonlítja az 1. és az n/2+1. kérdésben szereplő 1. és 2. mondatot, hogy azok tényleg egymás fordítottjai-e. Hogyha nem, akkor figyelmezteti a felhasználót, hogy hibát talált a kérdéssorban. A felhasználó itt szintén választhat, hogy kilép a programból, vagy továbblép potenciálisan hibás input kérdésekkel.
 
-Ezt követően történik a 3. féltől származó könyvtárak betöltése. A szükséges fő csomagok a \texttt{torch}, \texttt{transformers}, \texttt{accelerate} és \texttt{huggingface_hub}, de bizonyos modellek további függőségeket is igényelnek. Ha valamelyik hiányzik, a Python futásidőben hibát jelez.
+Ezt követően történik a 3. féltől származó könyvtárak betöltése. A szükséges fő csomagok a \texttt{torch}, \texttt{transformers}, \texttt{accelerate} és \texttt{huggingface\_hub}, de bizonyos modellek további függőségeket is igényelnek. Ha valamelyik hiányzik, a Python futásidőben hibát jelez.
 
 Ezután következik a modell-specifikus rész, hiszen a különböző modelleknek eltérő az inferencia-végrehajtó logikája. Az inferencia történhet determinisztikusan és nem-determinisztikusan, ezt is a config fájlban lehet állítani. Az alap logika viszont minden modell esetén ugyanaz, főleg mivel a generálási stratégiám részeként minden inferencia eredménye pontosan 1 darab token.
-A \texttt{torch} csomag \texttt{no_grad()} kontextuskezelőjével kikapcsoljuk a gradiensek számítását a modell összes műveletére, mivel inferencia során erre nincs szükség. A program további része ebben a kontextusban fut.
+A \texttt{torch} csomag \texttt{no\_grad()} kontextuskezelőjével kikapcsoljuk a gradiensek számítását a modell összes műveletére, mivel inferencia során erre nincs szükség. A program további része ebben a kontextusban fut.
 
-Ezután történik a \texttt{transformers} csomag komponenseinek betöltése. Első lépésként a tokenizer létrehozása történik a \texttt{AutoTokenizer.from_pretrained()} metódussal. A tokenizer \texttt{apply_chat_template()} metódusa a promptot a kiválasztott modell által elvárt formátumra alakítja. A modell betöltése az \texttt{AutoModelForCausalLM.from_pretrained()} metódussal történik, amely — amennyiben elérhető — \texttt{safetensors} formátumú súlyokat tölt le.
+Ezután történik a \texttt{transformers} csomag komponenseinek betöltése. Első lépésként a tokenizer létrehozása történik a $AutoTokenizer$ $from\_pretrained()$ metódusával. A tokenizer \texttt{apply\_chat\_template()} metódusa a promptot a kiválasztott modell által elvárt formátumra alakítja. A modell betöltése az $AutoModelForCausalLM$ $from\_pretrained()$ metódusával történik, amely — amennyiben elérhető — \texttt{safetensors} formátumú súlyokat tölt le.
 
-A modell és a tokenizált bemenet áthelyezése a megfelelő eszközre a \texttt{model.to(device)} és \texttt{inputs.to(device)} hívásokkal történik. A válasz generálása a \texttt{generate()} metódussal történik, amely jelen konfigurációban pontosan egy új tokent állít elő (\texttt{max_new_tokens=1}). A kapott tokenhalmazt a \texttt{tokenizer.decode()} segítségével alakítom vissza szöveggé.
+A modell és a tokenizált bemenet áthelyezése a megfelelő eszközre a $model.to(device)$ és $inputs.to(device)$ hívásokkal történik. A válasz generálása a \texttt{generate()} metódussal történik, amely jelen konfigurációban pontosan egy új tokent állít elő $max\_new\_tokens=1$. A kapott tokenhalmazt a \texttt{tokenizer.decode()} segítségével alakítom vissza szöveggé.
 
 A futás végén megtörténik a modell válaszainak fájlba írása, továbbá a futás során keletkezett meta-információk is külön fájlokba kerülnek.
 
@@ -1238,6 +1238,8 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
                     Builder
     \end{verbatim}
     Mindegyik szkript rekurzívan meghívja a nyíllal tőle jobbra jelzett szkriptet, majd azok mindegyikének befejezte után veszi vissza az irányítást.
+
+    Az eredményként kapott modell válaszok itt még jó esetben is csak egy halom, "Yes" és "No", mindegyik új sorban, amelyből önmagában nehéz statisztikai következtetéseket levonni. Éppen ezért van szükség a ModelOutputProcessor modulra, amely érthetővé teszi az eredményeket.
 
     \subsection{ModelOutputProcessor}
     A \texttt{ModelOutputProcessor} bemenete a HuggingFaceModelInferencerben futtatott modell válaszai.
@@ -1419,10 +1421,20 @@ py -3.13 -m src.Framework.globalMain
     Továbbá egy adatbázis a jelenlegi nyers szöveg-alapú adatkezelés helyett nagy előrelépés lenne.
 
 \chapter{Kísérlet}
+    A végső cél, amiért az egész szoftver keretrendszer készült, az volt, hogy modelleket összehasonlíthassunk nagy mennyiségű kérdésen is el lehessen végezni a konzisztencia vizsgálatot.
 
-    \section{A konzisztenciára vonatkozó megállapítások}
+
+    \section{Két konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
+    Ahhoz, hogy módszertanilag helyes legyen és látszódjon, hogy az eredmények nincsenek beégetve a keretrendszerbe, a Témavezetőmmel megegyezve a kérdéseket random index generátor függvény segítségével véletlenszerűen választottam ki a WiC-adathalmaz bejegyzéseiből.
+    
+
+    \section{Indexer}
+    Ilyen nagy mennyiségű adat esetén komoly problémát jelent az indexelés, kiváltképpen mivel a kérdések sorrendje eleve véletlenszerű.
+    Éppen ezért a ModelOutputProcessor modulban létrehoztam egy indexer függvényt, amely az az egyenes kérdést, a fordított kérdést, az egyenes kérdésre adott választ, a fordított kérdésre adott választ, a gold standard választ, valamint a ModelInputPreparerben létrehozott kérdés GUID-kat indexeli, kapcsolja össze.
+    Így visszakereshetővé vált, hogy melyik választ melyik kérdésre adta a modell, és hogy az megegyezik-e a gold standarddal.
 
 
+    \section{Nehézségek}
     Akkor beszélhetünk egyáltalán konzisztenciáról, azt tekinthetjük a konzisztens viselkedés első szintjének, ha a modell \textit{reagál a bemenetre}, azaz a válaszának egyáltalán valami köze van a feltett kérdésekhez.
     Előfordul, hogy nincs reláció a modell válasza és az egyes kérdések között.
     Ekkor az összes mérőszáma 0.
@@ -1433,6 +1445,7 @@ py -3.13 -m src.Framework.globalMain
     “Hello, how can I help you today?”), vagy repetitív tokenflodding jelenséget mutatnak, egy nagy valószínűségű tokenre “ragadva rá”, majd azt ismétli determinisztikusan, magas temperature nélkül (“Yes Yes Yes…” vagy “No No No…”).
     Ez a \textit{mode collapse} egy tipikus megnyilvánulása, mely azt mutatja, hogy a modellek nem értik megfelelően az instrukciót, nem tartják a formátumot, és egyenes-fordított párok esetén extrém alacsony konzisztenciát adnak. Erre a megoldásom a \texttt{max\_new\_tokens} paraméter 1-re állítása volt a \texttt{transformers} könyvtár \texttt{\_BaseModelWithGenerate} típusának a \texttt{generate} metódusában.
     Ez minden esetben garantálta, hogy a modell pontosan 1 tokenben, 1 szóban válaszoljon.
+
 
     \section{Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}
     A modelleket a Témavezetőm ajánlásával együtt választottam ki.
@@ -1458,6 +1471,9 @@ py -3.13 -m src.Framework.globalMain
     Az elnevezési szabály megtévesztő lehet, ugyanis {gemma-\textit{x}b\ldots} kezdetű modellek első generációs változatok, míg a {gemma-2-\textit{x}b\ldots} a második, és a {gemma-3-\textit{x}b\ldots} a harmadik generációs modelleket jelöli.
 %    A modellek eredményeit összessítő táblázat a 4.1. táblázatban látható.\ref{tab:model-eval-summary}
 
+    Az alábbi ábrában \texttt{n} modell összehasonlítása látható \texttt{m} véletlenszerűen kiválasztott kérdésen.
+
+
     \section{Google Colab futtatás}
     A középső modul egyszerűsített változata elérhető Google Colab-on, a mellékletben található linken.~\ref{att:colab}
 
@@ -1470,12 +1486,9 @@ py -3.13 -m src.Framework.globalMain
     \end{itemize}
     Ennek ellenére a Google Colab környezet nem egy hatékony módja a kiértékelésnek a korábban felsorolt gyengeségei miatt, helyette a lokális PyCharm keretrendszerem biztosít egy kényelmesebb és sokkal átláthatóbb környezetet.
 
-    \section{Két konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
-    Ahhoz, hogy módszertanilag helyes legyen és látszódjon, hogy az eredmények nincsenek beégetve a keretrendszerbe, a Témavezetőmmel megegyezve a kérdéseket random index generátor függvény segítségével véletlenszerűen választottam ki a WiC-adathalmaz bejegyzéseiből.
-    Az alábbi ábrában \texttt{n} modell összehasonlítása látható \texttt{m} véletlenszerűen kiválasztott kérdésen.
 
-% \chapter{Konklúzió} % TODO
-
+\chapter{Konklúzió} % TODO
+Ha az elkészült munkámmal legalább egy embernek segítettem, akkor már megérte. Bízom benne, hogy a keretrendszerem hasznos lesz a jövőben mások számára is.
 
 
 
