@@ -2394,13 +2394,14 @@
     <bcf:citekey order="20" intorder="1">berend2025phi</bcf:citekey>
     <bcf:citekey order="21" intorder="1">martin2008cleancode</bcf:citekey>
     <bcf:citekey order="22" intorder="1">martin2008cleancode</bcf:citekey>
-    <bcf:citekey order="23" intorder="1">chiang2024chatbot</bcf:citekey>
-    <bcf:citekey order="24" intorder="1">wolf2019huggingface</bcf:citekey>
-    <bcf:citekey order="25" intorder="1">phi4mini2024</bcf:citekey>
-    <bcf:citekey order="26" intorder="1">gemma22b2024</bcf:citekey>
-    <bcf:citekey order="27" intorder="1">qwen15chat2024</bcf:citekey>
-    <bcf:citekey order="28" intorder="1">qwen2.5</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">huggingfacehub</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">chiang2024chatbot</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">wolf2019huggingface</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">phi4mini2024</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">gemma22b2024</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">qwen15chat2024</bcf:citekey>
     <bcf:citekey order="29" intorder="1">qwen2.5</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">qwen2.5</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

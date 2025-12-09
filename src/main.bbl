@@ -124,6 +124,7 @@
       \field{abstract}{A Large Language Model (LLM) tends to generate inconsistent and sometimes contradictory outputs when presented with a prompt that has equivalent semantics but is expressed differently from the original prompt. To achieve semantic consistency of an LLM, one of the key approaches is to finetune the model with prompt-output pairs with semantically equivalent meanings. Despite its effectiveness, a data-driven finetuning method incurs substantial computation costs in data preparation and model optimization. In this regime, an LLM is treated as a ``black box'', restricting our ability to gain deeper insights into its internal mechanism. In this paper, we are motivated to enhance the semantic consistency of LLMs through a more interpretable method (i.e., model editing) to this end. We first identify the model components (i.e., attention heads) that have a key impact on the semantic consistency of an LLM. We subsequently inject biases into the output of these model components along the semantic-consistency activation direction. It is noteworthy that these modifications are cost-effective, without reliance on mass manipulations of the original model parameters. Through comprehensive experiments on the constructed NLU and open-source NLG datasets, our method demonstrates significant improvements in the semantic consistency and task performance of LLMs. Additionally, our method exhibits promising generalization capabilities by performing well on tasks beyond the primary tasks.}
       \field{booktitle}{Findings of the Association for Computational Linguistics: ACL 2024}
       \field{month}{8}
+      \field{note}{Utolsó megtekintés: 2025-12-10}
       \field{title}{Enhancing Semantic Consistency of Large Language Models through Model Editing: An Interpretability-Oriented Approach}
       \field{year}{2024}
       \field{pages}{3343\bibrangedash 3353}
@@ -152,12 +153,13 @@
       \strng{authornamehash}{e0b6bb846c6a3e0649ce0e3cd9355df3}
       \strng{authorfullhash}{e0b6bb846c6a3e0649ce0e3cd9355df3}
       \strng{authorfullhashraw}{e0b6bb846c6a3e0649ce0e3cd9355df3}
+      \field{extraname}{1}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://huggingface.co/spaces/open-llm-leaderboard/comparator}}
-      \field{note}{Accessed: 2025-12-10}
+      \field{note}{Utolsó megtekintés: 2025-12-10}
       \field{title}{Hugging Face Open LLM Leaderboard Model Comparator}
     \endentry
     \entry{chiang2024chatbot}{misc}{}{}
@@ -264,7 +266,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://ollama.com}}
-      \field{note}{Accessed: 2025-12-10}
+      \field{note}{Utolsó megtekintés: 2025-12-10}
       \field{title}{Ollama: Run LLMs locally}
       \field{year}{2024}
     \endentry
@@ -289,7 +291,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://github.com/ggml-org/llama.cpp}}
-      \field{note}{Accessed: 2025-12-10}
+      \field{note}{Utolsó megtekintés: 2025-12-10}
       \field{title}{llama.cpp: Port of Meta's LLaMA models in C/C++}
       \field{year}{2024}
     \endentry
@@ -378,7 +380,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://lmstudio.ai}}
-      \field{note}{Accessed: 2025-12-10}
+      \field{note}{Utolsó megtekintés: 2025-12-10}
       \field{title}{LM Studio: Desktop application for running local LLMs}
       \field{year}{2024}
     \endentry
@@ -401,7 +403,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://github.com/oobabooga/text-generation-webui}}
-      \field{note}{Accessed: 2025-12-10}
+      \field{note}{Utolsó megtekintés: 2025-12-10}
       \field{title}{Text Generation WebUI}
       \field{year}{2024}
     \endentry
@@ -766,6 +768,30 @@
       \field{howpublished}{\url{https://colab.research.google.com/drive/1GQRiTDNWwNPP_PPARYd1swY1Oiai9Ey_}}
       \field{note}{Utolsó megtekintés: 2025-12-10}
       \field{title}{11\_phi.ipynb}
+      \field{year}{2025}
+    \endentry
+    \entry{huggingfacehub}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=e0b6bb846c6a3e0649ce0e3cd9355df3}{%
+           family={{Hugging Face}},
+           familyi={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{e0b6bb846c6a3e0649ce0e3cd9355df3}
+      \strng{fullhash}{e0b6bb846c6a3e0649ce0e3cd9355df3}
+      \strng{fullhashraw}{e0b6bb846c6a3e0649ce0e3cd9355df3}
+      \strng{bibnamehash}{e0b6bb846c6a3e0649ce0e3cd9355df3}
+      \strng{authorbibnamehash}{e0b6bb846c6a3e0649ce0e3cd9355df3}
+      \strng{authornamehash}{e0b6bb846c6a3e0649ce0e3cd9355df3}
+      \strng{authorfullhash}{e0b6bb846c6a3e0649ce0e3cd9355df3}
+      \strng{authorfullhashraw}{e0b6bb846c6a3e0649ce0e3cd9355df3}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://huggingface.co/}}
+      \field{note}{Utolsó megtekintés: 2025-12-10}
+      \field{title}{Hugging Face Hub}
       \field{year}{2025}
     \endentry
     \entry{wolf2019huggingface}{article}{}{}
