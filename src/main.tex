@@ -58,7 +58,8 @@
 \usepackage{minted}
 \usepackage{psfrag}
 \usepackage{csquotes}
-
+\usepackage{changepage} % adjustwidth
+\usepackage{setspace}   % sorköz
 
 %Margók:
 \hoffset -1in
@@ -151,6 +152,11 @@
     A kísérletek során a nagy nyelvi modellek azzal kapcsolatos érzékenységének vizsgálata a cél, hogy mennyiben érzékenyek a nagy nyelvi modellek a Word-in-Context nevű feladat megoldása során az egyes inputokban szereplő mondatpárosok sorrendjének megcserélésére.
 
 
+\begin{adjustwidth}{-1.2cm}{-1.2cm} % BAL és JOBB margó csökkentése csak ezen az oldalon
+\begingroup
+\setstretch{0.95} % enyhe sorköz-csökkentés csak ezen az oldalon
+\fontsize{10.5pt}{12.2pt}\selectfont % picit kisebb betű, csak ezen az oldalon
+
     \chapter*{Tartalmi összefoglaló}
     \addcontentsline{toc}{section}{Tartalmi összefoglaló}
 
@@ -159,17 +165,16 @@
     képességeinek konzisztenciájának vizsgálata.
 
     \subsubsection{\textit{A feladat megfogalmazása}}
-    A nyelvi modellek gyakran érzékenyek a felhasználótól kapott prompt szósorrendjére, emiatt nincsen garancia arra, hogy szemantikailag azonos értelmű, de más szósorrendű input promptra konzisztens viselkedést mutatnak.
     A vizsgálathoz használandó adathalmaz a \href{https://pilehvar.github.io/wic/}{Word-in-Context dataset}.
-    A kérdéseket egyenes és fordított sorrendben is fel kell tenni a modelleknek, majd összehasonlítani a válaszaikat az azonos tartalmú, de felcserélt szósorrendű kérdésekre, ezzel felmérve a szemantikus képességeiket és nyelvi konzisztenciájukat erre, az emberek számára triviális, de a modellek számára problémát okozó feladat megoldására.
+    A kérdéseket egyenes és fordított sorrendben is fel kell tenni a modelleknek, majd összehasonlítani a válaszaikat az azonos tartalmú, de felcserélt szósorrendű kérdésekre, továbbá összemérve azt a gold standard alappal. % felmérve a szemantikus képességeiket és nyelvi konzisztenciájukat erre, az emberek számára triviális, de a modellek számára problémát okozó feladat megoldására.
 
     \subsubsection{\textit{A megoldási mód}}
     % Ez lényegében egy optimalizálási feladat, az optimalizálandó paraméterek a modellnek beadott prompt és a választott modell.
     Akkor tekintjük helyesnek a megoldást, ha a program futtatásával a kiválasztott modell a kért mennyiségű, egyértelmű igen/nem választ képes generálni az eldöntendő kérdésekre.
     A válaszainak helyessége másodlagos, de nem elhanyagolható.
-    A nyelvi modelleket a Hugging Face platformról fogom választani.
+    A nyelvi modelleket a Hugging Face platformról lesznek kiválasztva.
 
-    A program bemenete tetszőleges sornyi bejegyzés a Word-in-Context adathalmaz \texttt{test} splitjéből (vagy tetszőleges, ezzel megegyező formátumú kérdéshalmazból), és tetszőleges modell a Hugging Face platformról.
+    A program bemenete tetszőleges sornyi bejegyzés a Word-in-Context adathalmaz \texttt{test} splitjéből (vagy tetszőleges, ezzel megegyező formátumú kérdéshalmazból), és tetszőleges modell a Hugging Face platformról. A program során keletkező hibákat le kell kezelni.
 
     A megoldás kulcsa olyan szoftver fejlesztése, amely mindezt minél egyszerűbbé, automatizáltabbá és gördülékenyebbé teszi.
     %         \item Összehasonlító teljesítményvizsgálatot végeztem a
@@ -205,7 +210,9 @@
     \subsubsection{\textit{Kulcsszavak}}
 
     Nagy nyelvi modell, Word-in-Context, nyelvi konzisztencia, teljesítmény-összehasonlítás
-
+    \endgroup
+    \end{adjustwidth}
+    \newpage
 
 %A tartalomjegyzék:
     \tableofcontents
@@ -229,7 +236,7 @@
     \chapter{Elméleti háttér}
 
     \section{Problémafelvetés}
-    Architektúrájukból adódóan a modellek esetén nincs garancia, hogy bizonyos emberek számára triviális invarianciákat konzisztensen kezeljenek, erre fókuszál a szakdolgozatom.
+    A nyelvi modellek gyakran érzékenyek a felhasználótól kapott prompt szósorrendjére. Architektúrájukból adódóan a modellek esetén nincs garancia, hogy bizonyos, emberek számára triviális invarianciákat konzisztensen kezeljenek. Emiatt előfordul, hogy szemantikailag azonos értelmű, de más szósorrendű input promptra inkonzisztens viselkedést mutatnak. Erre fókuszál a szakdolgozatom.
     Hogy majd az eredményekből következtetést lehessen levonni, két hipotézist fogalmazok meg.
     Egyrészt valószínűsíthető és feltételezem, hogy minél nagyobb paraméterszámú egy model, annál jobban fog teljesíteni a megfogalmazott feladatra.
     Továbbá méretnövekedéssel történő teljesítményjavulás mértéke is kérdéses és érdekel.
@@ -241,7 +248,7 @@
     Ehhez szükség lesz egy - lehetőleg lokális környezetben futó - programra, ahol különböző modellek telepítése és használata lehetséges.
 
     \section{Hasonló megoldások}
-    Az elmúlt években számtalan, a nagy nyelvi modellek szemantikus konzisztenciájával kapcsolatos cikk jelent meg, jól mutatva, hogy a téma nagy népszerűségnek örvend. A Google Scholar például 22 100 találatot listáz az \texttt{analyzing the semantical consistency of large language models} kifejezésre, amelyeknek a java részét az elmúlt években publikálták.~\cite{yang-etal-2024-enhancing}.
+    Az elmúlt években számtalan, a nagy nyelvi modellek szemantikus konzisztenciájával, illetve logikai stabilitásával kapcsolatos cikk jelent meg, jól mutatva, hogy a téma nagy népszerűségnek örvend. A Google Scholar például 22 100 találatot listáz az \texttt{analyzing the semantical consistency of large language models} kifejezésre, amelyeknek a java részét az elmúlt években publikálták.~\cite{yang-etal-2024-enhancing}.
     A törekvés, hogy generatív modellek lokális telepítésére, futtatására és összehasonlítására szolgáló eszközöket hozzunk létre nem újkeletű, hiszen egy jó modell jelentősen megkönnyíti a munkafolyamatokat, a lokalizálása pedig biztonságosabbá és olcsóbbá teszi a használatukat.
     Számos hasonló témájú és ötletű projekt született az elmúlt években.
     Az alábbiakban bemutatok párat. % TODO átnézni
@@ -326,6 +333,8 @@ Does the word `w` mean the same thing in `s2` and `s1`?
 
     kérdésekre mindig ugyanazt kellene, hogy válaszolják (változatlan $w$, $s1$ és $s2$ esetén, ahol $w$ egy szó, $s1$ az első példamondat, és $s2$ a második példamondat).
     Ezek az invarianciák - a két mondat sorrendjének felcserélése - az ember számára könnyen felismerhetőek, így az emberi válaszadásra nincsenek befolyással, ám a nyelvi modelleket, főleg az alacsony, "csak" pár milliárd paraméterszámúakat könnyen összezavarja.
+
+    A fenti felcserélés egy klasszikus logikai invariancia teszt. Ha $A \land B$ igaz, akkor $B \land A$-nak is igaznak kell lennie. Ebből következően ha a modell szerint a $w$ szó jelentése azonos $s1$ és $s2$ kontextusban, akkor az $s2$ és $s1$ sorrendben is azonosnak kell lennie.
 
     A kérdéseket a fent látható formátumban egyenes és fordított sorrendben is fel fogom tenni a modelleknek.
     A továbbiakban erre a formátumra fogok "egyenes" és "fordított" kérdésekként hivatkozni.
@@ -1168,10 +1177,11 @@ The cat sat on the _ .
     \subsection{ModelInputPreparer}
 
     Ahhoz, hogy a modellek szemantikus képességeinek konzisztenciáját megvizsgálhassuk, először el kell érni, hogy a modell sikeresen és értelmesen választ adjon.
-    Ahhoz pedig, hogy választ adjon, szükséges a kérdések legyártása, ugyanis a Word-in-Context adathalmaz formátuma nem alkalmas generatív nyelvi modellek promptolására.
+    Ahhoz pedig, hogy választ adjon, szükséges a kérdések legyártása, ugyanis a Word-in-Context adathalmaz formátuma nyers szövegként nem alkalmas generatív nyelvi modellek promptolására.
     Így a statisztikai elemző modul létrehozása előtt szükség volt ennek a két funkcionalitásnak a létrehozására.
 
-    Az első modul a ModelInputPreparer (modell bemenet előkészítő), amely a WiC adathalmazból létrehozza a modellnek szánt inputot, a 2800 kérdést. Ez a \texttt{WiC} adathalmaz \texttt{test} splitjének összes rekordjából létrehoz egy kérdést, mind egyenes, mind fordított sorrendben, hogy a modellek konzisztenciáját vizsgáljuk. Mivel 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így jön ki a 2800 kérdés. A létrehozás módja a következő:
+    Az első modul a ModelInputPreparer (modell bemenet előkészítő), amely a WiC adathalmazból létrehozza a modellnek szánt inputot, a legfeljebb 2800 kérdést, igény szerint akár véletlenszerű sorrendben is.
+    Ez a \texttt{WiC} adathalmaz \texttt{test} splitjének összes rekordjából létre képes hozni egy-egy kérdést, mind egyenes, mind fordított sorrendben, hogy a modellek konzisztenciáját vizsgáljuk. Mivel 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így jön ki a 2800 kérdés. A létrehozás módja a következő:
     A WiC adathalmaz minden sora 5, tabulátorral elválasztott értéket tartalmaz:
     \begin{itemize}
         \item szó,\item  szófaj, \item a szó pozíciói a mondatokban, \item az első mondat, \item a második mondat.
