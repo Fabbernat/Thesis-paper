@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  9 DEC 2025 18:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  9 DEC 2025 18:38
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1465,6 +1465,12 @@ Overfull \hbox (7.36476pt too wide) in paragraph at lines 1450--1450
 [30]
 
 [31]
+6. fejezet.
+
+
+[32
+
+]
 Overfull \hbox (5.49321pt too wide) in paragraph at lines 1498--1498
 []\T1/ptm/m/n/12 Hugging Face. \T1/ptm/m/it/12 Hug-ging Face Open LLM Le-ader-b
 oard Mo-del Com-pa-ra-tor\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
@@ -1484,7 +1490,7 @@ a-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
 
 
 
-[32
+[33
 
 ]
 Overfull \hbox (10.67581pt too wide) in paragraph at lines 1498--1498
@@ -1507,11 +1513,7 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1498--1498
 
 
 
-[33]
-
-[34
-
-]
+[34]
 
 [35
 
@@ -1520,7 +1522,11 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1498--1498
 [36
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251209183406 FAD58DE7366495DB465
+
+[37
+
+]
+runsystem(latexminted cleantemp  --timestamp 20251209183851 FAD58DE7366495DB465
 0CFEFAC2FCD61)...executed.
 
  (main.aux)
@@ -1538,17 +1544,17 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: 98697C40BD5B120F91BB263B4FFD0040;10298
-(rerunfilecheck)             After:  3FFC1B125AEEE3B8D99F9FAF44F415C8;10210.
+(rerunfilecheck)             Before: 3FFC1B125AEEE3B8D99F9FAF44F415C8;10210
+(rerunfilecheck)             After:  31F25ED264691EE01C770E4B6DB933F5;10305.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47150 strings out of 468219
- 1064765 string characters out of 5449698
- 2084458 words of memory out of 5000000
- 74873 multiletter control sequences out of 15000+600000
+ 47153 strings out of 468219
+ 1064794 string characters out of 5449698
+ 2083458 words of memory out of 5000000
+ 74874 multiletter control sequences out of 15000+600000
  695472 words of font info for 126 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,105p,1614b,2348s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1569,9 +1575,9 @@ pe1/public/amsfonts/cm/cmr8.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy1
 1/urw/courier/ucrr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/MiKTeX
 /fonts/type1/urw/times/utmbi8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmr8a.pfb>
 <C:/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (36 pages, 328267 bytes).
+Output written on main.pdf (37 pages, 329837 bytes).
 PDF statistics:
- 678 PDF objects out of 1000 (max. 8388607)
- 134 named destinations out of 1000 (max. 500000)
- 421 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 690 PDF objects out of 1000 (max. 8388607)
+ 136 named destinations out of 1000 (max. 500000)
+ 429 words of extra memory for PDF output out of 10000 (max. 10000000)
 
