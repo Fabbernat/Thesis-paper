@@ -289,11 +289,15 @@
 
 
     \section{A Word-in-Context feladat}
+    A \href{https://pilehvar.github.io/wic/}{Word-in-Context adathalmaz} egy jó minőségű, nyelvészeti szakértők által készített benchmark adathalmaz.
+    A mondatok a WordNetből, a VerbNetből és a Wikiszótárból származnak.
+    Minden sor egy azonos és különböző jelentésű mondatpárt bináris osztályozási feladatát fogalmazza meg.
+    A WiC adathalmaz segítségével megvizsgálhatjuk, hogy egy rendszer (modell, algoritmus) mennyire képes a szavak jelentését megérteni különböző kontextusokban.
 
     A Word-in-Context feladatot 2019-ben fogalmazták meg Mohammad Tahmed Pilehvar és munkatársai, abból a célból, hogy különböző transzformer és szóbeágyazasos modelleket vizsgáljanak a feladat által megfogalmazott teljesítményteszten.
     A WiC feladat lényege, hogy egy adott szó két különböző mondatbeli előfordulásáról eldöntse, hogy azonos értelemben szerepel-e.
     Az ezt a feladatot megfogalmazó adathalmazt alkalmasnak találtuk a Témavezetőmmel az általa megfogalmazott teljesítményteszt, a nagy nyelvi modellek szemantikus képességei konzisztenciájának vizsgálata elvégzéséhez.
-    A kérdések már eleve csoportosítva vannak azonos és különböző jelentésű mondatpárokként.
+    Ez az adathalmaz ideális, mivel eleve bináris osztályozás, és a feladat a szójelentés megértésén alapul.
 
     \subsubsection{A Word-in-Context háttere}
     A WiC csapata alapvetően a folyamatosan fejlődő modelleknek igyekezett egy nehezebb, korszerű teljesítménytesztet állítani.
@@ -350,12 +354,8 @@ Does the word `w` mean the same thing in `s2` and `s1`?
 
     \label{wic:dataset}
 
-
+    
     \section{A WiC adathalmaz eredete}
-
-    A \href{https://pilehvar.github.io/wic/}{Word-in-Context adathalmaz} egy jó minőségű, nyelvészeti szakértők által készített benchmark adathalmaz.
-    A mondatok a WordNetből, a VerbNetből és a Wikiszótárból származnak.
-    A WiC adathalmaz segítségével megvizsgálhatjuk, hogy egy rendszer (modell, algoritmus) mennyire képes a szavak jelentését megérteni különböző kontextusokban.
     A WiC feladat része a SuperGlue~\cite{sarlin2020superglue} Benchmarknak, amely egy széles körben elfogadott benchmark nyelvi modellek kiértékelésére.
 
     8 feladatból áll:
@@ -1082,7 +1082,7 @@ The cat sat on the _ .
     A teljes forráskód az összes korábbi verzióval együtt a\\
     \href{https://github.com/Fabbernat/Thesis} {https://github.com/Fabbernat/Thesis} GitHub repozitóriumban található.
 
-    A projekt első verziója kritikákat kapott, ugyanis nehezen átlátható és nagyban AI generált, rossz minőségű kódra alapszik, így 2025 nyarán újrakezdtem a fejlesztést. Az új szoftvernek 2 fő fejlesztési szempontja volt.
+    A projekt első verziója kritikákat kapott, ugyanis nehezen átlátható és nagyban AI generált, pongyola minőségű kódra alapszik, így 2025 nyarán újrakezdtem a fejlesztést. Az új szoftvernek 2 fő fejlesztési szempontja volt.
 
     Az egyik, hogy mind a 3 részfeladat egy kattintással elvégezhető legyen a Clean Code~\cite{martin2008cleancode} módszereivel, tehát nagyon egyszerűen futtatható legyen. Ez a 3 részfeladat:
     \begin{itemize}
@@ -1130,13 +1130,14 @@ The cat sat on the _ .
 
     \subsubsection{ModelInputPreparer}
     A \texttt{ModelInputPreparer} modul inputjai egy lokális adathalmaz és az elkészíteni kívánt kérdések száma.
-    A program az adathalmazból létrehozza a megadott számú kérdést, amelyet majd a modell inputként meg fog kapni.
-    Ez a program alapértelmezetten \texttt{Word-in-Context} adathalmaz \texttt{test} splitjének rekordjaiból hozza létre a kérdéseket, de saját, megegyező formátumú kérdésekre is működik. A kérdéseket mind egyenes, mind fordított sorrendben létrehozza, amelyekkel azután a modellek konzisztenciáját vizsgáljuk. Mivel az adathalmaz alapértelmezetten 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így alap beállításokkal 2800 kérdést kapunk, de ezen igény szerint lehet módosítani.
+    A program feladata a WiC adatokból a megadott számú az egyenes és fordított kérdés legyártása, amelyet majd a nyelvi modell inputként meg fog kapni.
+    Ez a program alapértelmezetten \texttt{Word-in-Context} adathalmaz \texttt{test} splitjének rekordjaiból hozza létre a kérdéseket, de saját, megegyező formátumú kérdésekre is működik. A ModelInputPreparer alapértelmezetten randomizálja az elkészített kérdések sorrendjét a tiszta kiértékelés érdekében. A kérdéseket mind egyenes, mind fordított sorrendben létrehozza, amelyekkel azután a modellek konzisztenciáját vizsgáljuk. Mivel az adathalmaz alapértelmezetten 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így alap beállításokkal 2800 kérdést kapunk, de ezen igény szerint lehet módosítani.
 
     \subsubsection{HuggingFaceModelInferencer}\label{subsubsec:huggingfacemodelinferencer}
     A HuggingFaceModelInferencer inputként a ModelInputPreparer outputját kapja.
-    Itt történik a távoli Hugging Face modell letöltése, telepítése és futtatása.
+    Itt hajtódik végre a távoli Hugging Face modell(ek) letöltése, telepítése és futtatása.
     Feladata a modell futtatása az elkészített prompton, válasz generálása.
+    A generálási stratétiám lényege, hogy minden inferencia során 1 kérdést válaszoltatok meg, egymástól függetlenül, így elkerülve a modellek "emlékezőképességét", továbbá csak 1 output tokent engedélyezek, biztosítva, hogy a válasz csak egy "igen" vagy "nem" lesz.
 
     \subsubsection{ModelOutputProcessor}
     A ModelOutputProcessor feladata a modell outputból adatkinyerés, majd azt a gold standarddal összevetve statisztikák készítése.
@@ -1214,8 +1215,7 @@ The cat sat on the _ .
 
     Ezután kezdődik a 3. féltől származó könyvtárak használata. A szükséges könyvtárak a \texttt{torch, transformers, accelerate, huggingface\_hub}, de sok modell egyéb könyvtárak telepítését is kéri. Ha valamelyik hiányzik, akkor a Python fordító, vagy a programom hibaüzenetben jelzi azt.
     Az első szükséges csomag a torch, amellyel előkészítjük a hardvert a nagyméretű adat számolására. A torch csomag no\_grad() kontextuskezelő metódusa kikapcsolja a gradiensek számolását a szálon amin a program fut. A program maradék részét ebbe a kontextusba helyezzük, mert erre egész biztosan nem lesz szükség.
-    Ezután a transformers csomag importálása történik. Első lépés a tokenizálás, amelyhez segítséget nyújt a transformers AutoTokenizer osztálya, és annak from\_pretrained metódusa, amely a promptunkat a modell számára érthető tokenekké bontja.
-    Ezután következik a modell-specifikus rész, hiszen a különböző modelleknek eltérő az inferencia-végrehajtó logikája. Az inferencia történhet determinisztikusan és nem-determinisztikusan, ezt is a config fájlban lehet állítani.
+    Ezután a transformers csomag importálása történik. Ezután következik a modell-specifikus rész, hiszen a különböző modelleknek eltérő az inferencia-végrehajtó logikája. Az inferencia történhet determinisztikusan és nem-determinisztikusan, ezt is a config fájlban lehet állítani. Az alap logika viszont minden modell esetén ugyanaz, főleg mivel a generálási stratégiám részeként minden inferencia eredménye pontosan 1 darab token. Első lépés a választott modell súlyainak letöltése textit{safetensors} formátumban az AutoModelForCausalLM osztály from_pretrained metódusával. Ezután modell letöltése tokenizálás, történik amelyhez segítséget nyújt a \texttt{transformers} \texttt{AutoTokenizer} osztálya, és annak from\_pretrained metódusa, amely a promptunkat a modell számára érthető tokenekké bontja. Ezután a tokenizer osztály apply_chat_template metódusával a promptot a modell által elvárt formátumra alakítjuk át. Majd kiválasztjuk a céleszközt, a programom esetében a saját hardverem a transformers .to(model.device). Végül megtörténik a válasz legyártása a modell generate metódusával, amely a tokenizált promptot bemenetként megkapva legyártja a választ tokenek formájában. Ezt a tokeneket a tokenizer decode metódusával visszaalakítjuk szöveggé.
     Végül pedig a modell válaszainak a fájlba írása történik, amely mellett egyéb futás közben keletkezett információk is mentésrer kerülnek külön fájlokban.
 
     A modul hívási verme a következő:

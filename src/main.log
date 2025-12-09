@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  9 DEC 2025 01:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  9 DEC 2025 09:57
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1289,24 +1289,6 @@ Overfull \hbox (12.40848pt too wide) in paragraph at lines 251--255
 [9]
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 328.
-LaTeX Info: Symbol \textasciigrave not provided by
-            font family pcr in TS1 encoding.
-            Default family used instead on input line 328.
-LaTeX Info: Symbol \textasciigrave not provided by
-            font family pcr in TS1 encoding.
-            Default family used instead on input line 328.
-LaTeX Info: Symbol \textasciigrave not provided by
-            font family pcr in TS1 encoding.
-            Default family used instead on input line 328.
-LaTeX Info: Symbol \textasciigrave not provided by
-            font family pcr in TS1 encoding.
-            Default family used instead on input line 328.
-LaTeX Info: Symbol \textasciigrave not provided by
-            font family pcr in TS1 encoding.
-            Default family used instead on input line 328.
-LaTeX Info: Symbol \textasciigrave not provided by
-            font family pcr in TS1 encoding.
             Default family used instead on input line 332.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
@@ -1323,6 +1305,24 @@ LaTeX Info: Symbol \textasciigrave not provided by
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
             Default family used instead on input line 332.
+LaTeX Info: Symbol \textasciigrave not provided by
+            font family pcr in TS1 encoding.
+            Default family used instead on input line 336.
+LaTeX Info: Symbol \textasciigrave not provided by
+            font family pcr in TS1 encoding.
+            Default family used instead on input line 336.
+LaTeX Info: Symbol \textasciigrave not provided by
+            font family pcr in TS1 encoding.
+            Default family used instead on input line 336.
+LaTeX Info: Symbol \textasciigrave not provided by
+            font family pcr in TS1 encoding.
+            Default family used instead on input line 336.
+LaTeX Info: Symbol \textasciigrave not provided by
+            font family pcr in TS1 encoding.
+            Default family used instead on input line 336.
+LaTeX Info: Symbol \textasciigrave not provided by
+            font family pcr in TS1 encoding.
+            Default family used instead on input line 336.
 
 
 [10]
@@ -1392,9 +1392,329 @@ l.596     \chapter
 [20]
 
 [21]
-Overfull \hbox (4.85571pt too wide) in paragraph at lines 1215--1220
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1218 ...n az AutoModelForCausalLM osztÃ¡ly from_
+                                                  pretrained metÃ³dusÃ¡val. ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \H invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1218.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 1219.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 1219.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1220 
+       
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+Missing character: There is no ó in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no ö in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no ö in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no í in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no ó in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no ® in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no ó in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no í in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no ö in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no ü in font cmr12!
+Missing character: There is no ö in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no ó in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no ó in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no í in font cmr12!
+Missing character: There is no ö in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no ü in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no í in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no ö in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no ö in font cmr12!
+Missing character: There is no á in font cmr12!
+Missing character: There is no ó in font cmr12!
+Missing character: There is no é in font cmr12!
+Missing character: There is no ü in font cmr12!
+Missing character: There is no ü in font cmr12!
+Missing character: There is no ö in font cmr12!
+Missing character: There is no á in font cmr12!
+
+Overfull \hbox (4.85571pt too wide) in paragraph at lines 1216--1220
 \T1/ptm/m/n/12 amellyel el®-ké-szít-jük a hard-vert a nagy-mé-re-t¶ adat szá-mo
 -lá-sá-ra. A torch cso-mag no_grad()
+ []
+
+
+Overfull \hbox (3613.5706pt too wide) in paragraph at lines 1216--1220
+\T1/ptm/m/n/12 Au-to-Mo-del-For-Ca-u-salLM osz-tály from$[]\OML/cmm/m/it/12 ret
+rainedmetdusval:Ezutnmodellletltsetokenizls; trtnikamelyhezsegtsgetnyjta[][]osz
+tlya; sannakfrom[]pretrainedmetdusa; amelyapromptunkatamodellszmrarthettokenekk
+bontja:Ezutnatokenizerosztlyapply[]hat[]emplatemetdusvalapromptotamodellltalelv
+rtformtumraalaktjukt:Majdkivlasztjukacleszkzt; aprogramomesetbenasajthardverema
+transformers:to\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 model:device\OT1/cmr/m/n/12 )\
+OML/cmm/m/it/12 :Vglmegtrtnikavlaszlegyrtsaamodellgeneratemetdusval; amelyatoke
+nizltpromptotbemenetkntmegkapvalegyrtjaavlaszttokenekformjban:Eztatokeneketatok
+enizerdecodemetdusvalvisszaalaktjukszvegg:Vglpedigamodellvlaszainakafjlbarsatrt
+nik; amelymellettegybfutskzbenkeletkezettinformcikismentsrerkerlnekklnfjlokban:
+$ 
  []
 
 
@@ -1504,7 +1824,7 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1474--1474
 [35
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251209011218 FAD58DE7366495DB465
+runsystem(latexminted cleantemp  --timestamp 20251209095714 FAD58DE7366495DB465
 0CFEFAC2FCD61)...executed.
 
  (main.aux)
@@ -1519,11 +1839,11 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47145 strings out of 468219
- 1064711 string characters out of 5449698
- 2083457 words of memory out of 5000000
- 74871 multiletter control sequences out of 15000+600000
- 693828 words of font info for 125 fonts, out of 8000000 for 9000
+ 47148 strings out of 468219
+ 1064747 string characters out of 5449698
+ 2083458 words of memory out of 5000000
+ 74874 multiletter control sequences out of 15000+600000
+ 696116 words of font info for 128 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,105p,1614b,2348s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
@@ -1537,15 +1857,16 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
  <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt
 1200.pk><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmmi12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cm
-r10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmr8.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX/fonts/type
-1/urw/courier/ucrr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/MiKTeX
-/fonts/type1/urw/times/utmbi8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmr8a.pfb>
-<C:/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (35 pages, 320250 bytes).
+mi8.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmr12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8
+.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C
+:/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmb
+i8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/MiKTeX/fonts/type1/urw/
+times/utmri8a.pfb>
+Output written on main.pdf (35 pages, 334245 bytes).
 PDF statistics:
- 667 PDF objects out of 1000 (max. 8388607)
+ 672 PDF objects out of 1000 (max. 8388607)
  131 named destinations out of 1000 (max. 500000)
  413 words of extra memory for PDF output out of 10000 (max. 10000000)
 
