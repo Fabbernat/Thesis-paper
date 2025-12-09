@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  9 DEC 2025 00:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  9 DEC 2025 01:12
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1274,6 +1274,11 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ]
 1. fejezet.
 
+Overfull \hbox (12.40848pt too wide) in paragraph at lines 251--255
+\T1/pcr/m/n/12 analyzing the semantical consistency of large language models
+ []
+
+
 
 [7
 
@@ -1323,17 +1328,14 @@ LaTeX Info: Symbol \textasciigrave not provided by
 [10]
 
 [11]
-Underfull \hbox (badness 7168) in paragraph at lines 402--403
+Underfull \hbox (badness 7168) in paragraph at lines 404--405
 []|\T1/ptm/m/n/12 Any pe-netra-ti-on, howe-ver
  []
 
 
-Overfull \hbox (30.21132pt too wide) in paragraph at lines 396--406
+Overfull \hbox (30.21132pt too wide) in paragraph at lines 398--408
  [][] 
  []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
@@ -1342,15 +1344,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1.1}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.464     \clearpage
-                    ]
+l.417 
+      ]
 
 [13
 pdfTeX warning (ext4): destination with the same identifier (name{table.1.2}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.464     \clearpage
+l.466     \clearpage
                     ]
 2. fejezet.
 
@@ -1359,7 +1361,7 @@ l.464     \clearpage
 
 
 ]
-Package pgfplots info on input line 533: Using 'lua backend=false' for axis: x 
+Package pgfplots info on input line 535: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 
 
@@ -1370,7 +1372,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.594     \chapter
+l.596     \chapter
                   {Google Colab}]
 3. fejezet.
 
@@ -1390,7 +1392,7 @@ l.594     \chapter
 [20]
 
 [21]
-Overfull \hbox (4.85571pt too wide) in paragraph at lines 1213--1218
+Overfull \hbox (4.85571pt too wide) in paragraph at lines 1215--1220
 \T1/ptm/m/n/12 amellyel el®-ké-szít-jük a hard-vert a nagy-mé-re-t¶ adat szá-mo
 -lá-sá-ra. A torch cso-mag no_grad()
  []
@@ -1402,13 +1404,13 @@ Overfull \hbox (4.85571pt too wide) in paragraph at lines 1213--1218
 [23]
 
 [24]
-Overfull \hbox (5.20848pt too wide) in paragraph at lines 1325--1325
+Overfull \hbox (5.20848pt too wide) in paragraph at lines 1327--1327
 []   \T1/pcr/m/n/12 pip install torch transformers accelerate huggingface_hub[]
  
  []
 
 
-Overfull \hbox (5.20848pt too wide) in paragraph at lines 1328--1328
+Overfull \hbox (5.20848pt too wide) in paragraph at lines 1330--1330
 []   \T1/pcr/m/n/12 pip install torch transformers accelerate huggingface_hub[]
  
  []
@@ -1416,13 +1418,13 @@ Overfull \hbox (5.20848pt too wide) in paragraph at lines 1328--1328
 
 
 [25]
-Overfull \hbox (12.40848pt too wide) in paragraph at lines 1362--1362
+Overfull \hbox (12.40848pt too wide) in paragraph at lines 1364--1364
 []    \T1/pcr/m/n/12 py -3.13 -m src.Framework.HuggingFaceModelInferencer.main[
 ] 
  []
 
 
-Overfull \hbox (19.60847pt too wide) in paragraph at lines 1366--1366
+Overfull \hbox (19.60847pt too wide) in paragraph at lines 1368--1368
 []    \T1/pcr/m/n/12 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 [] 
  []
@@ -1436,7 +1438,7 @@ Overfull \hbox (19.60847pt too wide) in paragraph at lines 1366--1366
 [28]
 5. fejezet.
 
-Overfull \hbox (7.36476pt too wide) in paragraph at lines 1424--1424
+Overfull \hbox (7.36476pt too wide) in paragraph at lines 1426--1426
 []\T1/ptm/b/n/17.28 Méret- és konzisztencia-arányban meg-fe-le-l® nyel-vi mo-
  []
 
@@ -1447,19 +1449,19 @@ Overfull \hbox (7.36476pt too wide) in paragraph at lines 1424--1424
 ]
 
 [30]
-Overfull \hbox (5.49321pt too wide) in paragraph at lines 1472--1472
+Overfull \hbox (5.49321pt too wide) in paragraph at lines 1474--1474
 []\T1/ptm/m/n/12 Hugging Face. \T1/ptm/m/it/12 Hug-ging Face Open LLM Le-ader-b
 oard Mo-del Com-pa-ra-tor\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
 
 
-Overfull \hbox (4.95029pt too wide) in paragraph at lines 1472--1472
+Overfull \hbox (4.95029pt too wide) in paragraph at lines 1474--1474
 \T1/pcr/m/n/12 / / huggingface . co / spaces / open -[] llm -[] leaderboard / c
 omparator$[]\T1/ptm/m/n/12 .
  []
 
 
-Overfull \hbox (4.4157pt too wide) in paragraph at lines 1472--1472
+Overfull \hbox (4.4157pt too wide) in paragraph at lines 1474--1474
 []\T1/ptm/m/n/12 LM Stu-dio Team. \T1/ptm/m/it/12 LM Stu-dio: Desk-top app-li-c
 a-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
@@ -1469,19 +1471,19 @@ a-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
 [31
 
 ]
-Overfull \hbox (10.67581pt too wide) in paragraph at lines 1472--1472
+Overfull \hbox (10.67581pt too wide) in paragraph at lines 1474--1474
 \T1/ptm/m/it/12 gu-age Un-der-stand-ing Sys-tems\T1/ptm/m/n/12 . Utol-só meg-te
 -kin-tés: 2025-12-10. 2020. ar-Xiv: []$\T1/pcr/m/n/12 1905 .
  []
 
 
-Overfull \hbox (0.59474pt too wide) in paragraph at lines 1472--1472
+Overfull \hbox (0.59474pt too wide) in paragraph at lines 1474--1474
 []\T1/ptm/m/n/12 Mohammad Ta-her Pi-leh-var és Jo-se Camacho-Collados. ^^R  WiC
 : the Word-in-Context
  []
 
 
-Overfull \hbox (4.55653pt too wide) in paragraph at lines 1472--1472
+Overfull \hbox (4.55653pt too wide) in paragraph at lines 1474--1474
 \T1/ptm/m/n/12 meg-te-kin-tés: 2025-12-10. \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : 
 []$\T1/pcr/m/n/12 https : / / aclanthology . org / H94 -[] 1111/$[]\T1/ptm/m/n/
 12 . 
@@ -1502,7 +1504,7 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1472--1472
 [35
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251209005124 FAD58DE7366495DB465
+runsystem(latexminted cleantemp  --timestamp 20251209011218 FAD58DE7366495DB465
 0CFEFAC2FCD61)...executed.
 
  (main.aux)
@@ -1519,7 +1521,7 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Here is how much of TeX's memory you used:
  47145 strings out of 468219
  1064711 string characters out of 5449698
- 2085457 words of memory out of 5000000
+ 2083457 words of memory out of 5000000
  74871 multiletter control sequences out of 15000+600000
  693828 words of font info for 125 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1541,7 +1543,7 @@ pe1/public/amsfonts/cm/cmr8.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy1
 1/urw/courier/ucrr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/MiKTeX
 /fonts/type1/urw/times/utmbi8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmr8a.pfb>
 <C:/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (35 pages, 318798 bytes).
+Output written on main.pdf (35 pages, 320250 bytes).
 PDF statistics:
  667 PDF objects out of 1000 (max. 8388607)
  131 named destinations out of 1000 (max. 500000)
