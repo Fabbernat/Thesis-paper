@@ -1327,6 +1327,15 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     A megjelenített információk többek között a választott modell, a jelenlegi felhasználó neve, a futtatás dátuma, és a modell válaszok kiértékelésének eredményei: a konzisztencia, pontosság, konzisztens pontosság, kiegyensúlyozott pontosság és a tp,fp,fn,tn statisztikák.
 
 
+     \section{Indexer}
+    Ha megkaptuk az 5 értéket (Konzisztens, Pontos, Konzisztensen pontos, Bizonytalan, Konzisztensen bizonytalan) a megfelelő tartományban, akkor már nincs más dolgunk, mint ellenőrizni az alábbiakat:
+    Az {adathalmaz sor-kérdés-egyenes válasz-fordított válasz-gold standard sor} guid-jai \textbf{pontosan megegyeznek-e}. A guid az eredeti, WiC adathalmazban elfoglalt sorszám, amelyre indexként tekintünk a beolvasás után. A guid az indices.out fájlban található
+    Ilyen nagy mennyiségű adat esetén komoly problémát jelent a manuális indexelés, kiváltképpen mivel a kérdések sorrendje eleve véletlenszerű.
+    Ráadásul indexer nélkül körülményes a ModelOutputProcessor eredményinek validálása.
+    Éppen ezért a ModelOutputProcessor modulban létrehoztam egy indexer függvényt, amely az az egyenes kérdést, a fordított kérdést, az egyenes kérdésre adott választ, a fordított kérdésre adott választ, a gold standard választ, valamint a ModelInputPreparerben létrehozott kérdés \texttt{guid}-jait indexeli, kapcsolja össze.
+    Így visszakereshetővé vált, hogy melyik választ melyik kérdésre adta a modell, és hogy az megegyezik-e a gold standarddal.
+
+    
     \section{Tesztelés}
 
     \subsection{A programok futtatása}
@@ -1436,15 +1445,6 @@ py -3.13 -m src.Framework.globalMain
     \section{Két konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
     Ahhoz, hogy módszertanilag helyes legyen és látszódjon, hogy az eredmények nincsenek beégetve a keretrendszerbe, a Témavezetőmmel megegyezve a kérdéseket random index generátor függvény segítségével véletlenszerűen választottam ki a WiC-adathalmaz bejegyzéseiből.
     
-
-    \section{Indexer}
-    Ha megkaptuk az 5 értéket (Konzisztens, Pontos, Konzisztensen pontos, Bizonytalan, Konzisztensen bizonytalan) a megfelelő tartományban, akkor már nincs más dolgunk, mint ellenőrizni az alábbiakat:
-    Az {adathalmaz sor-kérdés-egyenes válasz-fordított válasz-gold standard sor} guid-jai \textbf{pontosan megegyeznek-e}. A guid az eredeti, WiC adathalmazban elfoglalt sorszám, amelyre indexként tekintünk a beolvasás után. A guid az indices.out fájlban található
-    Ilyen nagy mennyiségű adat esetén komoly problémát jelent az indexelés, kiváltképpen mivel a kérdések sorrendje eleve véletlenszerű.
-    Ráadásul indexer nélkül körülményes a ModelOutputProcessor eredményinek validálása.
-    Éppen ezért a ModelOutputProcessor modulban létrehoztam egy indexer függvényt, amely az az egyenes kérdést, a fordított kérdést, az egyenes kérdésre adott választ, a fordított kérdésre adott választ, a gold standard választ, valamint a ModelInputPreparerben létrehozott kérdés GUID-kat indexeli, kapcsolja össze.
-    Így visszakereshetővé vált, hogy melyik választ melyik kérdésre adta a modell, és hogy az megegyezik-e a gold standarddal.
-
 
     \section{Nehézségek}
     Akkor beszélhetünk egyáltalán konzisztenciáról, azt tekinthetjük a konzisztens viselkedés első szintjének, ha a modell \textit{reagál a bemenetre}, azaz a válaszának egyáltalán valami köze van a feltett kérdésekhez.
