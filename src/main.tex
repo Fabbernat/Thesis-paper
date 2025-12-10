@@ -1190,7 +1190,10 @@ The cat sat on the _ .
     \begin{itemize}
         \item szó,\item  szófaj, \item a szó pozíciói a mondatokban, \item az első mondat, \item a második mondat.
     \end{itemize}
-    Ebből nekünk csak a szó, első mondat és a második mondat szükséges, a többivel nem is fogunk foglalkozni. Először is megnyitjuk a fájlt, majd beolvassuk és eltároljuk minden sorból a szót és a két mondatot egy listában. Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot. Végül ezt elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
+    
+    Ebből nekünk csak a szó, első mondat és a második mondat szükséges, a többivel nem is fogunk foglalkozni. Először is a \texttt{randomsamples.py} szkriptem legenerál \texttt{n} darab - a \texttt{config.py}-ban meghatározott mennyiségű indexet. Ezek az indexek lesznek a kérdés-válasz párok azonosítói, én \texttt{guid}-nak neveztem el őket, amely a "globálisan egyedi azonosító" (globally unique identifier) rövidítése . Ezután megnyitjuk a fájlt, majd beolvassuk és minden egyes \texttt{guid}-adik indexű sorból eltároljuk a szót és a két mondatot egy listában. A guid értéke mindig 0 és 1399 között van, tehát az értéke pont megegyezik a teszthalmaz hosszával, így nem történhet túlindexelés. Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot. Végül ezt elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
+
+
 
     A modul hívási verme a következő:
 
@@ -1435,6 +1438,8 @@ py -3.13 -m src.Framework.globalMain
     
 
     \section{Indexer}
+    Ha megkaptuk az 5 értéket (Konzisztens, Pontos, Konzisztensen pontos, Bizonytalan, Konzisztensen bizonytalan) a megfelelő tartományban, akkor már nincs más dolgunk, mint ellenőrizni az alábbiakat:
+    Az {adathalmaz sor-kérdés-egyenes válasz-fordított válasz-gold standard sor} guid-jai \textbf{pontosan megegyeznek-e}. A guid az eredeti, WiC adathalmazban elfoglalt sorszám, amelyre indexként tekintünk a beolvasás után. A guid az indices.out fájlban található
     Ilyen nagy mennyiségű adat esetén komoly problémát jelent az indexelés, kiváltképpen mivel a kérdések sorrendje eleve véletlenszerű.
     Ráadásul indexer nélkül körülményes a ModelOutputProcessor eredményinek validálása.
     Éppen ezért a ModelOutputProcessor modulban létrehoztam egy indexer függvényt, amely az az egyenes kérdést, a fordított kérdést, az egyenes kérdésre adott választ, a fordított kérdésre adott választ, a gold standard választ, valamint a ModelInputPreparerben létrehozott kérdés GUID-kat indexeli, kapcsolja össze.
