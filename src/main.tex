@@ -1451,6 +1451,7 @@ py -3.13 -m src.Framework.globalMain
 
     \section{Két konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
     Ahhoz, hogy módszertanilag helyes legyen és látszódjon, hogy az eredmények nincsenek beégetve a keretrendszerbe, a Témavezetőmmel megegyezve a kérdéseket random index generátor függvény segítségével véletlenszerűen választottam ki a WiC-adathalmaz bejegyzéseiből.
+    A kérdések között nincs ismétlődés és minden modell ugyanazt a kérdéskészletet kapja meg feladatként. A kérdések 100, véletlenszerűen kiválasztott WiC adathalmazbeli mintából származnak.
     
 
     \section{Nehézségek}
@@ -1492,7 +1493,7 @@ py -3.13 -m src.Framework.globalMain
 
     \section{2 modell összehasonlítása 100 véletlenszerű kérdésen}
     Végül a \texttt{Qwen/Qwen2.5-0.5B-Instruct} és a \texttt{Google/Gemma-2-2b-it} modelleket hasonlítottam össze. Az előbbi az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük 2 eltérő méretű (0.5B vs 2B) és gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
-    Keretrendszerem érdeme, hogy végül sikerült a 2 modell hibátlan válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) elérni. 
+    Keretrendszerem érdeme, hogy végül sikerült a 2 modell hibátlan válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) elérni.
     A modellek hibátlanul csak "Yes" és "No" válaszokat adtak.
     Az alábbi ábrában \texttt{n} modell összehasonlítása látható \texttt{m} véletlenszerűen kiválasztott kérdésen.
     % ide jön a táblázat
