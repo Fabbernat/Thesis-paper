@@ -199,7 +199,6 @@
     Alkalmazott módszerek:
     \begin{itemize}
         \item Objektumorientált programozás
-        \item Clean Code alapelvek \textit{Martin és Robert Clean Code} c. könyve~\cite{martin2008cleancode} alapján
     \end{itemize}
 
     \subsubsection{\textit{Elért eredmények}}
@@ -1239,7 +1238,10 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     \end{verbatim}
     Mindegyik szkript rekurzívan meghívja a nyíllal tőle jobbra jelzett szkriptet, majd azok mindegyikének befejezte után veszi vissza az irányítást.
 
-    Az eredményként kapott modell válaszok itt még jó esetben is csak egy halom, "Yes" és "No", mindegyik új sorban, amelyből önmagában nehéz statisztikai következtetéseket levonni. Éppen ezért van szükség a ModelOutputProcessor modulra, amely érthetővé teszi az eredményeket.
+    Ha sikeresen lefutott a válaszgenerálás, akkor a kérdések hosszával megegyező számú választ kaptunk. 
+    Ellenkező esetben sajnos meg kell ismételni a generálást, hiszen nem triviális, hogy melyik válasz melyik kérdéshez tartozott - kivéve ha kérdés-válasz párokként mentettük el az eredményt. 
+    Azonban az eredményként kapott modell válaszok még helyes válaszgenerálás esetén is csak egy halom "Yes" és "No", mindegyik új sorban, amelyből önmagában nehéz statisztikai következtetéseket levonni. 
+    Éppen ezért van szükség a ModelOutputProcessor modulra, amely érthetővé teszi az eredményeket.
 
     \subsection{ModelOutputProcessor}
     A \texttt{ModelOutputProcessor} bemenete a HuggingFaceModelInferencerben futtatott modell válaszai.
@@ -1310,10 +1312,10 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     Magyarul azon túl, hogy az egyenes és a fordított kérdésre adott "igen" vagy "nem" válasz(ként generált token) megegyezik, mindez a gold standard válasszal is megegyezik.
     Emiatt ha a válasz nem "igen" vagy "nem", az automatikusan nem konzisztensen pontos.
 
-    \subsection{Bizonytalan}
+    \subsubsection{Bizonytalan}
     Ha egy egyenes-fordított kérdéspár \textbf{legalább egyikére} a válasz se nem "igen", se nem "nem", akkor azt a sort "bizonytalannak" számítom.
 
-    \subsection{Konzisztensen bizonytalan}
+    \subsubsection{Konzisztensen bizonytalan}
     Ha egy egyenes-fordított kérdéspár \textbf{mindkét kérdésére} a válasz se nem "igen", se nem "nem", akkor azt a sort "konzisztensen bizonytalannak" számítom.
 
     \subsubsection{LogFile}
@@ -1391,6 +1393,10 @@ py -3.13 -m src.Framework.globalMain
 
 
     \section{Egyebek}
+    \subsection{Elnevezési stílus}
+    Igyekeztem a Clean Code~\cite{martin2008cleancode} elveit követve a változók, függvények, osztályok és metódusok szerepét sokatmondó, egyértelmű, könnyen kereshető és refaktorálható, leíró nevekkel ellátni.
+    A fájlok és osztályok neveit  egységesen \textit{PascalCase} stílusban adtam meg, minden egyéb változót pedig \textit{camelCase} stílusban.
+
     \subsection{Hibakezelés}
     A programban a hibák megtalálását és lekezelését egyszerű try-catch blokkokkal \footnote{Pythonban a try-except a hibakezelő kulcsszavak elnevezése, de a funkciójuk ugyanaz, mint a többi nyelvben ismert try-catch blokkoknak} érem el.
     Egyes hibák az eltérő verziókból és környezetekből adódhatnak, pl.\ a Python interpreter eltérő mappát tekint gyökérkönyvtárnak.
@@ -1430,6 +1436,7 @@ py -3.13 -m src.Framework.globalMain
 
     \section{Indexer}
     Ilyen nagy mennyiségű adat esetén komoly problémát jelent az indexelés, kiváltképpen mivel a kérdések sorrendje eleve véletlenszerű.
+    Ráadásul indexer nélkül körülményes a ModelOutputProcessor eredményinek validálása.
     Éppen ezért a ModelOutputProcessor modulban létrehoztam egy indexer függvényt, amely az az egyenes kérdést, a fordított kérdést, az egyenes kérdésre adott választ, a fordított kérdésre adott választ, a gold standard választ, valamint a ModelInputPreparerben létrehozott kérdés GUID-kat indexeli, kapcsolja össze.
     Így visszakereshetővé vált, hogy melyik választ melyik kérdésre adta a modell, és hogy az megegyezik-e a gold standarddal.
 
