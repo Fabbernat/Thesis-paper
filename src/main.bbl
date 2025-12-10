@@ -19,36 +19,6 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global/global}
-    \entry{martin2008cleancode}{book}{}{}
-      \name{author}{1}{}{%
-        {{hash=6f41df64eb0dc4855be70172368604c2}{%
-           family={Martin},
-           familyi={M\bibinitperiod},
-           given={Robert\bibnamedelima C.},
-           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {Upper Saddle River, NJ, USA}%
-      }
-      \list{publisher}{1}{%
-        {Prentice Hall}%
-      }
-      \strng{namehash}{6f41df64eb0dc4855be70172368604c2}
-      \strng{fullhash}{6f41df64eb0dc4855be70172368604c2}
-      \strng{fullhashraw}{6f41df64eb0dc4855be70172368604c2}
-      \strng{bibnamehash}{6f41df64eb0dc4855be70172368604c2}
-      \strng{authorbibnamehash}{6f41df64eb0dc4855be70172368604c2}
-      \strng{authornamehash}{6f41df64eb0dc4855be70172368604c2}
-      \strng{authorfullhash}{6f41df64eb0dc4855be70172368604c2}
-      \strng{authorfullhashraw}{6f41df64eb0dc4855be70172368604c2}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{isbn}{978-0-13-235088-4}
-      \field{title}{Clean Code: A Handbook of Agile Software Craftsmanship}
-      \field{year}{2008}
-    \endentry
     \entry{yang-etal-2024-enhancing}{inproceedings}{}{}
       \name{author}{6}{}{%
         {{hash=6b5c661d5f9256bb14959aead31e3120}{%
@@ -117,8 +87,8 @@
       \strng{editornamehash}{62d396a0f210c1554518cd993b9e4997}
       \strng{editorfullhash}{62d396a0f210c1554518cd993b9e4997}
       \strng{editorfullhashraw}{62d396a0f210c1554518cd993b9e4997}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{A Large Language Model (LLM) tends to generate inconsistent and sometimes contradictory outputs when presented with a prompt that has equivalent semantics but is expressed differently from the original prompt. To achieve semantic consistency of an LLM, one of the key approaches is to finetune the model with prompt-output pairs with semantically equivalent meanings. Despite its effectiveness, a data-driven finetuning method incurs substantial computation costs in data preparation and model optimization. In this regime, an LLM is treated as a ``black box'', restricting our ability to gain deeper insights into its internal mechanism. In this paper, we are motivated to enhance the semantic consistency of LLMs through a more interpretable method (i.e., model editing) to this end. We first identify the model components (i.e., attention heads) that have a key impact on the semantic consistency of an LLM. We subsequently inject biases into the output of these model components along the semantic-consistency activation direction. It is noteworthy that these modifications are cost-effective, without reliance on mass manipulations of the original model parameters. Through comprehensive experiments on the constructed NLU and open-source NLG datasets, our method demonstrates significant improvements in the semantic consistency and task performance of LLMs. Additionally, our method exhibits promising generalization capabilities by performing well on tasks beyond the primary tasks.}
@@ -154,8 +124,8 @@
       \strng{authorfullhash}{e0b6bb846c6a3e0649ce0e3cd9355df3}
       \strng{authorfullhashraw}{e0b6bb846c6a3e0649ce0e3cd9355df3}
       \field{extraname}{1}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://huggingface.co/spaces/open-llm-leaderboard/comparator}}
@@ -228,8 +198,8 @@
       \strng{authornamehash}{aaae3fae64ea8a54db3b893b753fd3e5}
       \strng{authorfullhash}{434e9dede1b1c89a01808ac5c5ac401a}
       \strng{authorfullhashraw}{434e9dede1b1c89a01808ac5c5ac401a}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{eprintclass}{cs.AI}
@@ -261,8 +231,8 @@
       \strng{authornamehash}{567602858fa5c17f5ef764a00a47bd8d}
       \strng{authorfullhash}{567602858fa5c17f5ef764a00a47bd8d}
       \strng{authorfullhashraw}{567602858fa5c17f5ef764a00a47bd8d}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://ollama.com}}
@@ -286,8 +256,8 @@
       \strng{authornamehash}{04310eba93e5dc1c0adb659291d1aeca}
       \strng{authorfullhash}{04310eba93e5dc1c0adb659291d1aeca}
       \strng{authorfullhashraw}{04310eba93e5dc1c0adb659291d1aeca}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://github.com/ggml-org/llama.cpp}}
@@ -351,8 +321,8 @@
       \strng{authornamehash}{dd534d6c7046a3f7b2811b8ac2696584}
       \strng{authorfullhash}{2c27acbcd2852c70e7247e70cc009b6d}
       \strng{authorfullhashraw}{2c27acbcd2852c70e7247e70cc009b6d}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the ACM SIGOPS 29th Symposium on Operating Systems Principles}
@@ -375,8 +345,8 @@
       \strng{authornamehash}{c53aefbf4788f31b0f92c84353ad5212}
       \strng{authorfullhash}{c53aefbf4788f31b0f92c84353ad5212}
       \strng{authorfullhashraw}{c53aefbf4788f31b0f92c84353ad5212}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://lmstudio.ai}}
@@ -398,8 +368,8 @@
       \strng{authornamehash}{af46959baf71336fdaa11a1383fe047b}
       \strng{authorfullhash}{af46959baf71336fdaa11a1383fe047b}
       \strng{authorfullhashraw}{af46959baf71336fdaa11a1383fe047b}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://github.com/oobabooga/text-generation-webui}}
@@ -421,8 +391,8 @@
       \strng{authornamehash}{524e0c0872c676c7ed365bee6657a45a}
       \strng{authorfullhash}{524e0c0872c676c7ed365bee6657a45a}
       \strng{authorfullhashraw}{524e0c0872c676c7ed365bee6657a45a}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://gpt4all.io}}
@@ -761,14 +731,44 @@
       \strng{authornamehash}{0c492c0c64964fed694c6a94ed16d51c}
       \strng{authorfullhash}{0c492c0c64964fed694c6a94ed16d51c}
       \strng{authorfullhashraw}{0c492c0c64964fed694c6a94ed16d51c}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://colab.research.google.com/drive/1GQRiTDNWwNPP_PPARYd1swY1Oiai9Ey_}}
       \field{note}{Utolsó megtekintés: 2025-12-10}
       \field{title}{11\_phi.ipynb}
       \field{year}{2025}
+    \endentry
+    \entry{martin2008cleancode}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=6f41df64eb0dc4855be70172368604c2}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={Robert\bibnamedelima C.},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Upper Saddle River, NJ, USA}%
+      }
+      \list{publisher}{1}{%
+        {Prentice Hall}%
+      }
+      \strng{namehash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{fullhash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{fullhashraw}{6f41df64eb0dc4855be70172368604c2}
+      \strng{bibnamehash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{authorbibnamehash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{authornamehash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{authorfullhash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{authorfullhashraw}{6f41df64eb0dc4855be70172368604c2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-13-235088-4}
+      \field{title}{Clean Code: A Handbook of Agile Software Craftsmanship}
+      \field{year}{2008}
     \endentry
     \entry{huggingfacehub}{misc}{}{}
       \name{author}{1}{}{%

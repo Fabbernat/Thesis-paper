@@ -342,7 +342,7 @@ Does the word `w` mean the same thing in `s2` and `s1`?
     A kérdéseket a fent látható formátumban egyenes és fordított sorrendben is fel fogom tenni a modelleknek.
     A továbbiakban erre a formátumra fogok "egyenes" és "fordított" kérdésekként hivatkozni.
     A keretrendszerem \textbf{minden esetben} így várja, és az egyenes és a fordított sorrendű kérdések száma is \textbf{minden esetben} szigorúan megegyezik.
-    Ha mégsem teljesül a fentiek valamelyike az inputra, akkor a felhasználó arról feltétlenül értesítést kap.
+    Ha mégsem teljesül a fentiek valamelyike az inputra (bemenetre), akkor a felhasználó arról feltétlenül értesítést kap.
 
 
     \section{Bináris osztályozás}
@@ -1085,13 +1085,13 @@ The cat sat on the _ .
     A teljes forráskód az összes korábbi verzióval együtt a\\
     \href{https://github.com/Fabbernat/Thesis} {https://github.com/Fabbernat/Thesis} GitHub repozitóriumban található.
 
-    A projekt első verziója kritikákat kapott, ugyanis nehezen átlátható és nagyban AI generált, pongyola minőségű kódra alapszik, így 2025 nyarán újrakezdtem a fejlesztést. Az új szoftvernek 2 fő fejlesztési szempontja volt.
+    A projekt első verziója kritikákat kapott, ugyanis nehezen átlátható és részben AI generált, pongyola minőségű kódra alapszik, így 2025 nyarán újrakezdtem a fejlesztést. Az új szoftvernek 2 fő fejlesztési szempontja volt.
 
     Az egyik, hogy mind a 3 részfeladat egy kattintással elvégezhető legyen a Clean Code~\cite{martin2008cleancode} módszereivel, tehát nagyon egyszerűen futtatható legyen. Ez a 3 részfeladat:
     \begin{itemize}
         \item A WiC adathalmazból (vagy azzal megegyező formátumú adathalmazból) modell prompt elkészítése.
         \item A modell futtatása az elkészített prompton, válasz generálása.
-        \item A modell outputból adatkinyerés, statisztikák készítése.
+        \item A modell kimenetből adatkinyerés, statisztikák készítése.
     \end{itemize}
 
     A másik fejlesztési szempont az volt, hogy a promptok alapjául szolgáló adathalmaz és a modellek nagyon egyszerűen cserélhetőek legyenek, anélkül, hogy a program egyéb részein módosítani kellene.
@@ -1111,7 +1111,7 @@ The cat sat on the _ .
     A program egyébként is csak a modell inputjainak előkészítését tudta, a modell inferenciát és a válasz feldolgozást már manuálisan kellett elvégezni.
     Csak a mostani \texttt{ModelInputPreparernek} megegyező rész funkcionalitásával rendelkezett standard Python környezetben.
     A Hugging Face modell inferenciájára (a mostani \texttt{HuggingFaceModelInferencer}~\ref{subsubsec:huggingfacemodelinferencer} modullal megegyező funkcionalitás) egy Jupyter Notebookban került sor, Google Colab környezetben.
-    A modell outputjának feldolgozása ( a mostani \texttt{ModelOutputProcessor}) pedig megint egy harmadik környezetben, Google Apps Scriptben került feldolgozásra.
+    A modell outputjának (kimenetének) feldolgozása ( a mostani \texttt{ModelOutputProcessor}) pedig megint egy harmadik környezetben, Google Apps Scriptben került feldolgozásra.
 
     Az újraírásnál első lépésem volt, hogy a platformot egyesítettem.
     Most az egész szoftver egy sima, standard Python futtatókörnyezetben fut, egyetlen könnyen megtalálható \texttt{main} fájl futtatásával, ipari standard szerint az src mappában lévő globális belépési ponttal, de egyenként is lehet futtathatni a 3 modult, mindegyikhez tartozván egy \texttt{main.py} fájlban található belépési pont.
@@ -1448,13 +1448,14 @@ py -3.13 -m src.Framework.globalMain
 
     \section{Nehézségek}
     Akkor beszélhetünk egyáltalán konzisztenciáról, azt tekinthetjük a konzisztens viselkedés első szintjének, ha a modell \textit{reagál a bemenetre}, azaz a válaszának egyáltalán valami köze van a feltett kérdésekhez.
-    Előfordul, hogy nincs reláció a modell válasza és az egyes kérdések között.
-    Ekkor az összes mérőszáma 0.
+    A legnagyobb nehézséget a dolgozatomban egyértelműen a nem megfelelő formátumú és/vagy mennyiségű kimenet jelentette a modell válaszadás során, amely miatt gyakran az egészet meg kellett ismételni.
+    Ugyani ha nincs reláció a modell válasza és az egyes kérdések között, nem lehet egyértelműen megfeleltetni a válaszokat a kérdésekhez, így a kiértékelés sem lehetséges.
+    Ekkor az összes mérőszám 0.
 
 
     A vizsgált nyelvi modellek jelentős része nem képes stabil és konzisztens döntést hozni a WiC-feladat esetén.
-    Ahelyett, hogy bináris osztályozást adnának, gyakran irreleváns generatív válaszokba esnek (pl.
-    “Hello, how can I help you today?”), vagy repetitív tokenflodding jelenséget mutatnak, egy nagy valószínűségű tokenre “ragadva rá”, majd azt ismétli determinisztikusan, magas temperature nélkül (“Yes Yes Yes…” vagy “No No No…”).
+    Ha a maximum output tokenek mennyisége nincs lekorlátozva 1-re, gyakran irreleváns generatív válaszokba esnek (pl.
+    “Hello, how can I help you today?”), vagy repetitív tokenflooding jelenséget mutatnak, egy nagy valószínűségű tokenre “ragadva rá”, majd azt ismétli determinisztikusan, magas temperature nélkül (“Yes Yes Yes…” vagy “No No No…”).
     Ez a \textit{mode collapse} egy tipikus megnyilvánulása, mely azt mutatja, hogy a modellek nem értik megfelelően az instrukciót, nem tartják a formátumot, és egyenes-fordított párok esetén extrém alacsony konzisztenciát adnak. Erre a megoldásom a \texttt{max\_new\_tokens} paraméter 1-re állítása volt a \texttt{transformers} könyvtár \texttt{\_BaseModelWithGenerate} típusának a \texttt{generate} metódusában.
     Ez minden esetben garantálta, hogy a modell pontosan 1 tokenben, 1 szóban válaszoljon.
 
