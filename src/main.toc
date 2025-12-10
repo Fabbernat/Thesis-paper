@@ -45,16 +45,17 @@
 \select@language {magyar} \contentsline {subsubsection}{Konzisztencia}{24}{section*.17}%
 \select@language {magyar} \contentsline {subsubsection}{Pontosság}{25}{section*.18}%
 \select@language {magyar} \contentsline {subsubsection}{Konzisztensen pontosság}{25}{section*.19}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.2.6}Bizonytalan}{25}{subsection.4.2.6}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.2.7}Konzisztensen bizonytalan}{25}{subsection.4.2.7}%
-\select@language {magyar} \contentsline {subsubsection}{LogFile}{25}{section*.20}%
+\select@language {magyar} \contentsline {subsubsection}{Bizonytalan}{25}{section*.20}%
+\select@language {magyar} \contentsline {subsubsection}{Konzisztensen bizonytalan}{25}{section*.21}%
+\select@language {magyar} \contentsline {subsubsection}{LogFile}{25}{section*.22}%
 \select@language {magyar} \contentsline {section}{\numberline {4.3}Tesztelés}{25}{section.4.3}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.3.1}A programok futtatása}{25}{subsection.4.3.1}%
 \select@language {magyar} \contentsline {section}{\numberline {4.4}Egyebek}{27}{section.4.4}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.4.1}Hibakezelés}{27}{subsection.4.4.1}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.4.2}Dupla importok}{27}{subsection.4.4.2}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.4.3}Platformfüggetlenség}{27}{subsection.4.4.3}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.4.4}Skálázhatóság, bővíthetőség}{28}{subsection.4.4.4}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.1}Elnevezési stílus}{27}{subsection.4.4.1}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.2}Hibakezelés}{27}{subsection.4.4.2}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.3}Dupla importok}{28}{subsection.4.4.3}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.4}Platformfüggetlenség}{28}{subsection.4.4.4}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.5}Skálázhatóság, bővíthetőség}{28}{subsection.4.4.5}%
 \select@language {magyar} \contentsline {section}{\numberline {4.5}Jövőbeli tervek}{28}{section.4.5}%
 \select@language {magyar} \contentsline {chapter}{\numberline {5}Kísérlet}{29}{chapter.5}%
 \select@language {magyar} \contentsline {section}{\numberline {5.1}Két konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}{29}{section.5.1}%
@@ -64,6 +65,6 @@
 \select@language {magyar} \contentsline {section}{\numberline {5.5}Google Colab futtatás}{30}{section.5.5}%
 \select@language {magyar} \contentsline {chapter}{\numberline {6}Konklúzió}{32}{chapter.6}%
 \select@language {magyar} \ 
-\select@language {magyar} \contentsline {section}{Nyilatkozat}{35}{chapter*.22}%
-\select@language {magyar} \contentsline {section}{Köszönetnyilvánítás}{36}{chapter*.23}%
-\select@language {magyar} \contentsline {section}{Elektronikus mellékletek}{37}{chapter*.24}%
+\select@language {magyar} \contentsline {section}{Nyilatkozat}{35}{chapter*.24}%
+\select@language {magyar} \contentsline {section}{Köszönetnyilvánítás}{36}{chapter*.25}%
+\select@language {magyar} \contentsline {section}{Elektronikus mellékletek}{37}{chapter*.26}%
