@@ -1324,7 +1324,9 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     \subsubsection{LogFile}
     A \texttt{ModelOutputProcessorban} található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit.
     A fájlhoz append módban minden futtatás után hozzáíródnak a legutóbbi futtatás riportjai.
-    A megjelenített információk többek között a választott modell, a jelenlegi felhasználó neve, a futtatás dátuma, és a modell válaszok kiértékelésének eredményei: a konzisztencia, pontosság, konzisztens pontosság, kiegyensúlyozott pontosság és a tp,fp,fn,tn statisztikák.
+    A megjelenített információk többek között a választott modell, a jelenlegi felhasználó neve, a futtatás dátuma, és a modell válaszok kiértékelésének eredményei: a konzisztencia, pontosság, és a konzisztens pontosság
+    % , továbbá az igen válaszok aránya és a tp,fp,fn,tn statisztikák
+    .
 
 
      \section{Indexer}
@@ -1530,7 +1532,6 @@ py -3.13 -m src.Framework.globalMain
         \label{fig:ModelEvalSummary}
     \end{figure}
 
-
     \section{Google Colab futtatás}
     A középső modul egyszerűsített változata elérhető Google Colab-on, a mellékletben található linken.~\ref{att:colab}
 
@@ -1548,6 +1549,8 @@ py -3.13 -m src.Framework.globalMain
 Tisztán látható, hogy a Qwen2.5-0.5B-Instruct modell előnyben részesíti a "nem" választ, amelynek fő oka valószínűleg az, hogy nincs elég lexikális tudása, hogy ezeknek a WiC adathalmazbeli ritka szavaknak a pontos jelentését emberi szinten modellezni tudja, így a megfelelő tudás hiányában a biztonságosabb "nem ugyanazt jelentik" predikcióba esik vissza. 
 Ezt az egyoldalúságot valószínűleg továbberősíti az adathalmaz mondatainak jellemző nem-köznyelvi jellege, hiszen nagyrészt régies, tudományos, irodalmi szövegeket tartalmaz.
 Ilyesfajta szövegeket egy ilyen kisméretű, köznyelvi angol megértésére szánt modell nem tud megfelelően ábrázolni és értelmezni.
+
+Említésre méltó az inferenciák időkülönbsége is a két modell között, amelyben viszont jelentősen nyert a Qwen. A Qwen modell esetén átlagosan 6 másodpercet vett igénybe egy kérdés megválaszolása, míg a Gemma modell esetén átlagosan kb. 35(!) másodperc volt.
 
 Habár nem sikerült olyan mértékben automatizálnom a keretrendszert, mint ahogy eredetileg megálmodtam, az elkészült keretrendszer jelentősen megkönnyítette a végső kísérlet elvégzését és így a saját munkámat. Részben így is manuálisan kellett feldolgozni az adatokat, de a munkafolyamatok túlnyomó többségét sikerült teljesen automatizálnom.
 Ha az elkészült munkámmal legalább egy embernek segítettem, akkor már megérte. Bízom benne, hogy a keretrendszerem és a kísérletem hasznos lesz a jövőben mások számára is.
