@@ -1487,8 +1487,9 @@ py -3.13 -m src.Framework.globalMain
     Az elnevezési szabály megtévesztő lehet, ugyanis {gemma-\textit{x}b\ldots} kezdetű modellek első generációs változatok, míg a {gemma-2-\textit{x}b\ldots} a második, és a {gemma-3-\textit{x}b\ldots} a harmadik generációs modelleket jelöli.
 %    A modellek eredményeit összessítő táblázat a 4.1. táblázatban látható.\ref{tab:model-eval-summary}
 
-    \section{100 kérdésen}
-    Végül sikerült 2 modell hibátlan válaszadását 200 kérdésre elérni. A modellek hibátlanul csak "Yes" és "No" válaszokat adtak.
+    \section{2 modell összehasonlítása 100 kérdésen}
+    Végül a \texttt{Qwen/Qwen2.5-0.5B-Instruct} és a \texttt{Google/Gemma-2-2b-it} modelleket hasonlítottam össze. Az előbbi az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük 2 eltérő méretű (0.5B vs 2B) és gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
+    Keretrendszerem érdeme, hogy végül sikerült a 2 modell hibátlan válaszadását 200 kérdésre elérni. A modellek hibátlanul csak "Yes" és "No" válaszokat adtak.
     Az alábbi ábrában \texttt{n} modell összehasonlítása látható \texttt{m} véletlenszerűen kiválasztott kérdésen.
     % ide jön a táblázat
     \begin{figure}[H]
@@ -1519,8 +1520,8 @@ py -3.13 -m src.Framework.globalMain
                 (Konzisztens, 84.00)
                 (Pontos, 70.00)
                 (Konzisztensen pontos, 54.00)
-                (Ambigus, 0.00)
-                (Konzisztensen ambigus, 0.00)
+                (Bizonytalan, 0.00)
+                (Konzisztensen bizonytalan, 0.00)
             };
             
             \end{axis}
