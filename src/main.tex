@@ -1419,6 +1419,9 @@ py -3.13 -m src.Framework.globalMain
     Ez duplikált importálásnak tűnhet, ám nem az, hiszen a verzérlési szerkezet biztosítja, hogy ha az első elérési út megtalálása meghiúsul, akkor a másik útvonalról töltődjenek be a szükséges modulok.
     Erre azért volt szükség, mert mindenképpen el szerettem volna érni, hogy a projekt gyökérkönyvtárából és modul-szinten is futtathatóak legyenek a programok.
 
+    \subsection{Kommentek}
+    A kommentek terén törekedtem, hogy minden angolul legyen, ám ezt egy idő után feladtam, és az újabb részek kommentjeit magyarul írtam.
+    Mivel a céljaim a helyes funkcionalitás és a karbantarthatóság voltak, ezért bevallom, elég sok kikommentezett kódrészlet és számos nyúlfarknyi megjegyzés található, ám ezek az átláthatósághoz és a jövőbeli fejlesztésekhez szükségesek.
 
     \subsection{Platformfüggetlenség}
     Mivel a Python virtuális környezetét használtam a programom fejlesztésére és a program nem használ abszolút útvonalakat, csak relatívakat, így a szoftverem platformfüggetlennek mondható.
@@ -1487,6 +1490,44 @@ py -3.13 -m src.Framework.globalMain
     \section{100 kérdésen}
     Végül sikerült 2 modell hibátlan válaszadását 200 kérdésre elérni. A modellek hibátlanul csak "Yes" és "No" válaszokat adtak.
     Az alábbi ábrában \texttt{n} modell összehasonlítása látható \texttt{m} véletlenszerűen kiválasztott kérdésen.
+    % ide jön a táblázat
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            % Válaszarányok oszlopdiagram
+            \begin{axis}[
+                ybar,
+                bar width=0.8cm,
+                width=0.9\textwidth,
+                height=8cm,
+                ylabel={Arány (\%)},
+                symbolic x coords={Konzisztens, Pontos, Konzisztensen pontos, Bizonytalan, Konzisztensen bizonytalan},
+                xtick=data,
+                x tick label style={rotate=45, anchor=east, font=\small},
+                ymin=0,
+                ymax=100,
+                ymajorgrids=true,
+                grid style=dashed,
+                enlarge x limits=0.15,
+                legend style={at={(0.5,-0.25)}, anchor=north, legend columns=-1},
+                nodes near coords,
+                nodes near coords style={font=\footnotesize},
+                every node near coord/.append style={/pgf/number format/fixed, /pgf/number format/precision=2}
+            ]
+            
+            \addplot[fill=blue!60, draw=blue!80!black] coordinates {
+                (Konzisztens, 84.00)
+                (Pontos, 70.00)
+                (Konzisztensen pontos, 54.00)
+                (Ambigus, 0.00)
+                (Konzisztensen ambigus, 0.00)
+            };
+            
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Két modell kiértékelése 200 véletlenszerű kérdésen. Válaszarányok a modell kiértékelése során (Igaz/összes). A konzisztens válaszok aránya 84\%, a pontos válaszok aránya 70\%, míg a konzisztensen pontos válaszok aránya 54\% volt. Bizonytalan válaszok nem fordultak elő.}
+        \label{fig:ModelEvalSummary}
+    \end{figure}
 
 
     \section{Google Colab futtatás}
