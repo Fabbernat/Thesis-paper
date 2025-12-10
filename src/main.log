@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.25)  10 DEC 2025 18:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.25)  10 DEC 2025 20:16
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1342,11 +1342,6 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 123
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (21.37476pt too wide) in paragraph at lines 123--130
- [][] 
- []
-
-
 
 [1
 Non-PDF special ignored!
@@ -1360,12 +1355,12 @@ n/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
 
 ]
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 17
-7.
+9.
  (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-93.
+95.
 
 (C:\Users\admin\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
@@ -1390,7 +1385,7 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ]
 1. fejezet.
 
-Overfull \hbox (12.40848pt too wide) in paragraph at lines 250--254
+Overfull \hbox (12.40848pt too wide) in paragraph at lines 252--256
 \T1/pcr/m/n/12 analyzing the semantical consistency of large language models
  []
 
@@ -1405,51 +1400,51 @@ Overfull \hbox (12.40848pt too wide) in paragraph at lines 250--254
 [9]
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 331.
+            Default family used instead on input line 333.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 331.
+            Default family used instead on input line 333.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 331.
+            Default family used instead on input line 333.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 331.
+            Default family used instead on input line 333.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 331.
+            Default family used instead on input line 333.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 331.
+            Default family used instead on input line 333.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 335.
+            Default family used instead on input line 337.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 335.
+            Default family used instead on input line 337.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 335.
+            Default family used instead on input line 337.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 335.
+            Default family used instead on input line 337.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 335.
+            Default family used instead on input line 337.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 335.
+            Default family used instead on input line 337.
 
 
 [10]
 
 [11]
-Underfull \hbox (badness 7168) in paragraph at lines 403--404
+Underfull \hbox (badness 7168) in paragraph at lines 405--406
 []|\T1/ptm/m/n/12 Any pe-netra-ti-on, howe-ver
  []
 
 
-Overfull \hbox (30.21132pt too wide) in paragraph at lines 397--407
+Overfull \hbox (30.21132pt too wide) in paragraph at lines 399--409
  [][] 
  []
 
@@ -1460,7 +1455,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1.1}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.416 
+l.418 
       ]
 
 [13
@@ -1468,7 +1463,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1.2}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.465     \clearpage
+l.467     \clearpage
                     ]
 2. fejezet.
 
@@ -1477,7 +1472,7 @@ l.465     \clearpage
 
 
 ]
-Package pgfplots info on input line 534: Using 'lua backend=false' for axis: x 
+Package pgfplots info on input line 536: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 
 
@@ -1488,7 +1483,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.599     \chapter
+l.601     \chapter
                   {Google Colab}]
 3. fejezet.
 
@@ -1502,7 +1497,7 @@ l.599     \chapter
 [18
 
 ]
-Overfull \hbox (15.39293pt too wide) in paragraph at lines 1108--1115
+Overfull \hbox (15.39293pt too wide) in paragraph at lines 1110--1117
 \T1/ptm/m/n/12 A mo-dell out-put-já-nak (ki-me-ne-té-nek) fel-dol-go-zá-sa ( a 
 mos-ta-ni \T1/pcr/m/n/12 ModelOutputProcessor\T1/ptm/m/n/12 )
  []
@@ -1516,21 +1511,21 @@ mos-ta-ni \T1/pcr/m/n/12 ModelOutputProcessor\T1/ptm/m/n/12 )
 [21]
 
 [22]
-Overfull \hbox (21.26813pt too wide) in paragraph at lines 1227--1228
+Overfull \hbox (21.26813pt too wide) in paragraph at lines 1229--1230
 \OML/cmm/m/it/12 from[]pretrained\OT1/cmr/m/n/12 ()$ \T1/ptm/m/n/12 me-tó-du-sá
 -val tör-té-nik, amely ^^V amennyi-ben el-ér-he-t® ^^V \T1/pcr/m/n/12 safetenso
 rs
  []
 
 
-Overfull \hbox (13.38208pt too wide) in paragraph at lines 1229--1230
+Overfull \hbox (13.38208pt too wide) in paragraph at lines 1231--1232
 []\T1/ptm/m/n/12 A mo-dell és a to-ke-ni-zált be-me-net át-he-lye-zé-se a meg-f
 e-le-l® esz-köz-re a $\OML/cmm/m/it/12 model:to\OT1/cmr/m/n/12 (\OML/cmm/m/it/1
 2 device\OT1/cmr/m/n/12 )$
  []
 
 
-Overfull \hbox (18.8256pt too wide) in paragraph at lines 1229--1230
+Overfull \hbox (18.8256pt too wide) in paragraph at lines 1231--1232
 \T1/ptm/m/n/12 sal tör-té-nik, amely je-len kon-fi-gu-rá-ci-ó-ban pon-to-san eg
 y új to-kent ál-lít el® $\OML/cmm/m/it/12 max[]new[]tokens \OT1/cmr/m/n/12 =
  []
@@ -1542,13 +1537,13 @@ y új to-kent ál-lít el® $\OML/cmm/m/it/12 max[]new[]tokens \OT1/cmr/m/n/12 =
 [24]
 
 [25]
-Overfull \hbox (5.20848pt too wide) in paragraph at lines 1356--1356
+Overfull \hbox (5.20848pt too wide) in paragraph at lines 1358--1358
 []   \T1/pcr/m/n/12 pip install torch transformers accelerate huggingface_hub[]
  
  []
 
 
-Overfull \hbox (5.20848pt too wide) in paragraph at lines 1359--1359
+Overfull \hbox (5.20848pt too wide) in paragraph at lines 1361--1361
 []   \T1/pcr/m/n/12 pip install torch transformers accelerate huggingface_hub[]
  
  []
@@ -1556,13 +1551,13 @@ Overfull \hbox (5.20848pt too wide) in paragraph at lines 1359--1359
 
 
 [26]
-Overfull \hbox (12.40848pt too wide) in paragraph at lines 1393--1393
+Overfull \hbox (12.40848pt too wide) in paragraph at lines 1395--1395
 []    \T1/pcr/m/n/12 py -3.13 -m src.Framework.HuggingFaceModelInferencer.main[
 ] 
  []
 
 
-Overfull \hbox (19.60847pt too wide) in paragraph at lines 1397--1397
+Overfull \hbox (19.60847pt too wide) in paragraph at lines 1399--1399
 []    \T1/pcr/m/n/12 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 [] 
  []
@@ -1580,11 +1575,11 @@ Overfull \hbox (19.60847pt too wide) in paragraph at lines 1397--1397
 [30
 
 ]
-Overfull \hbox (7.36476pt too wide) in paragraph at lines 1468--1468
+Overfull \hbox (7.36476pt too wide) in paragraph at lines 1470--1470
 []\T1/ptm/b/n/17.28 Méret- és konzisztencia-arányban meg-fe-le-l® nyel-vi mo-
  []
 
-Package pgfplots info on input line 1519: Using 'lua backend=false' for axis: x
+Package pgfplots info on input line 1521: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 
 
@@ -1595,7 +1590,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1548 \chapter
+l.1550 \chapter
                {KonklÃºziÃ³} % TODO]
 6. fejezet.
 
@@ -1603,26 +1598,26 @@ l.1548 \chapter
 [33
 
 ]
-Overfull \hbox (26.12979pt too wide) in paragraph at lines 1563--1563
+Overfull \hbox (26.12979pt too wide) in paragraph at lines 1565--1565
 []$\T1/pcr/m/n/12 10 . 18653 / v1 / 2024 . findings -[] acl . 199$[]\T1/ptm/m/n
 /12 . \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : []$\T1/pcr/m/n/12 https : / / aclanth
 ology .
  []
 
 
-Overfull \hbox (5.49321pt too wide) in paragraph at lines 1563--1563
+Overfull \hbox (5.49321pt too wide) in paragraph at lines 1565--1565
 []\T1/ptm/m/n/12 Hugging Face. \T1/ptm/m/it/12 Hug-ging Face Open LLM Le-ader-b
 oard Mo-del Com-pa-ra-tor\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
 
 
-Overfull \hbox (4.95029pt too wide) in paragraph at lines 1563--1563
+Overfull \hbox (4.95029pt too wide) in paragraph at lines 1565--1565
 \T1/pcr/m/n/12 / / huggingface . co / spaces / open -[] llm -[] leaderboard / c
 omparator$[]\T1/ptm/m/n/12 .
  []
 
 
-Overfull \hbox (4.4157pt too wide) in paragraph at lines 1563--1563
+Overfull \hbox (4.4157pt too wide) in paragraph at lines 1565--1565
 []\T1/ptm/m/n/12 LM Stu-dio Team. \T1/ptm/m/it/12 LM Stu-dio: Desk-top app-li-c
 a-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
@@ -1632,19 +1627,19 @@ a-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
 [34
 
 ]
-Overfull \hbox (10.67581pt too wide) in paragraph at lines 1563--1563
+Overfull \hbox (10.67581pt too wide) in paragraph at lines 1565--1565
 \T1/ptm/m/it/12 gu-age Un-der-stand-ing Sys-tems\T1/ptm/m/n/12 . Utol-só meg-te
 -kin-tés: 2025-12-10. 2020. ar-Xiv: []$\T1/pcr/m/n/12 1905 .
  []
 
 
-Overfull \hbox (0.59474pt too wide) in paragraph at lines 1563--1563
+Overfull \hbox (0.59474pt too wide) in paragraph at lines 1565--1565
 []\T1/ptm/m/n/12 Mohammad Ta-her Pi-leh-var és Jo-se Camacho-Collados. ^^R  WiC
 : the Word-in-Context
  []
 
 
-Overfull \hbox (4.55653pt too wide) in paragraph at lines 1563--1563
+Overfull \hbox (4.55653pt too wide) in paragraph at lines 1565--1565
 \T1/ptm/m/n/12 meg-te-kin-tés: 2025-12-10. \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : 
 []$\T1/pcr/m/n/12 https : / / aclanthology . org / H94 -[] 1111/$[]\T1/ptm/m/n/
 12 . 
@@ -1665,7 +1660,7 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1563--1563
 [38
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251210181758 FAD58DE7366495DB465
+runsystem(latexminted cleantemp  --timestamp 20251210201618 FAD58DE7366495DB465
 0CFEFAC2FCD61)...executed.
 
  (main.aux)
@@ -1682,7 +1677,7 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Here is how much of TeX's memory you used:
  47174 strings out of 468079
  1082469 string characters out of 5425750
- 2089331 words of memory out of 5000000
+ 2090331 words of memory out of 5000000
  75036 multiletter control sequences out of 15000+600000
  693520 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1709,7 +1704,7 @@ in/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/adm
 in/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/ad
 min/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ad
 min/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (38 pages, 339182 bytes).
+Output written on main.pdf (38 pages, 339199 bytes).
 PDF statistics:
  708 PDF objects out of 1000 (max. 8388607)
  142 named destinations out of 1000 (max. 500000)

@@ -95,7 +95,8 @@
 
 %A címoldalra se fej- se lábléc nem kell:
     \thispagestyle{empty}
-
+    \begin{adjustwidth}{-1.2cm}{-1.2cm} % BAL és JOBB margó csökkentése
+    \begingroup
     \begin{center}
         \vspace*{1cm}
         {\Large\textbf Szegedi Tudományegyetem}
@@ -107,8 +108,7 @@
         \vspace*{3.8cm}
 
 
-        {\Large\textbf A nagy nyelvi modellek szemantikus képességeinek konzisztenciájának vizsgálata}
-        \vspace{0.5cm}
+        {\Large\textbf A nagy nyelvi modellek szemantikus képességeinek konzisztenciájának vizsgálata}\\[1.5cm]
         {\Large\textbf Analyzing the Consistency of Semantical Capabilities of Large Language Models}
 
         \vspace*{3.6cm}
@@ -116,7 +116,7 @@
 
         {\Large Szakdolgozat}
 
-        \vspace*{4cm}
+        \vspace*{3cm}
 
 %Értelemszerûen megváltoztatandó:
         {\large
@@ -137,7 +137,9 @@
         2025
         }
     \end{center}
-
+    \endgroup
+    \end{adjustwidth}
+    \newpage
 
 %A \chapter* parancs nem ad a fejezetnek sorszámot
 
