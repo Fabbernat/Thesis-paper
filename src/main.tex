@@ -1446,7 +1446,7 @@ py -3.13 -m src.Framework.globalMain
     Továbbá egy adatbázis a jelenlegi nyers szöveg-alapú adatkezelés helyett nagy előrelépés lenne.
 
 \chapter{Kísérlet}
-    A végső cél, amiért az egész szoftver keretrendszer készült, az volt, hogy modelleket összehasonlíthassunk nagy mennyiségű kérdésen is el lehessen végezni a konzisztencia vizsgálatot.
+    A végső cél, amiért az egész szoftver keretrendszer készült, az volt, hogy legalább 2 modellt összehasonlíthassunk minél nagyobb mennyiségű kérdésen.
 
 
     \section{Két konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
@@ -1456,14 +1456,14 @@ py -3.13 -m src.Framework.globalMain
     \section{Nehézségek}
     Akkor beszélhetünk egyáltalán konzisztenciáról, azt tekinthetjük a konzisztens viselkedés első szintjének, ha a modell \textit{reagál a bemenetre}, azaz a válaszának egyáltalán valami köze van a feltett kérdésekhez.
     A legnagyobb nehézséget a dolgozatomban egyértelműen a nem megfelelő formátumú és/vagy mennyiségű kimenet jelentette a modell válaszadás során, amely miatt gyakran az egészet meg kellett ismételni.
-    Ugyani ha nincs reláció a modell válasza és az egyes kérdések között, nem lehet egyértelműen megfeleltetni a válaszokat a kérdésekhez, így a kiértékelés sem lehetséges.
+    Ugyanis ha nincs reláció a modell válasza és az egyes kérdések között, nem lehet egyértelműen megfeleltetni a válaszokat a kérdésekhez, így a kiértékelés sem lehetséges.
     Ekkor az összes mérőszám 0.
 
 
     A vizsgált nyelvi modellek jelentős része nem képes stabil és konzisztens döntést hozni a WiC-feladat esetén.
     Ha a maximum output tokenek mennyisége nincs lekorlátozva 1-re, gyakran irreleváns generatív válaszokba esnek (pl.
     “Hello, how can I help you today?”), vagy repetitív tokenflooding jelenséget mutatnak, egy nagy valószínűségű tokenre “ragadva rá”, majd azt ismétli determinisztikusan, magas temperature nélkül (“Yes Yes Yes…” vagy “No No No…”).
-    Ez a \textit{mode collapse} egy tipikus megnyilvánulása, mely azt mutatja, hogy a modellek nem értik megfelelően az instrukciót, nem tartják a formátumot, és egyenes-fordított párok esetén extrém alacsony konzisztenciát adnak. Erre a megoldásom a \texttt{max\_new\_tokens} paraméter 1-re állítása volt a \texttt{transformers} könyvtár \texttt{\_BaseModelWithGenerate} típusának a \texttt{generate} metódusában.
+    Ez a \textit{mode collapse} egy tipikus megnyilvánulása, mely azt mutatja, hogy a modellek nem értik megfelelően az instrukciót, nem tartják a formátumot, és egyenes-fordított párok esetén extrém alacsony konzisztenciát adnak. Ezen jelentősen segített a \texttt{max\_new\_tokens} paraméter 1-re állítása a \texttt{transformers} könyvtár \texttt{\_BaseModelWithGenerate} típusának a \texttt{generate} metódusában.
     Ez minden esetben garantálta, hogy a modell pontosan 1 tokenben, 1 szóban válaszoljon.
 
 
@@ -1488,12 +1488,12 @@ py -3.13 -m src.Framework.globalMain
     A méretükhöz képest gazdag szókinccsel és jó nyelvérzékkel rendelkeznek.
 %    Mind a hármat közepes és nehéz kérdéseken, mindkét kérdésnehézséget egyenes és fordított sorrendben teszteltem. Ez így összesen \texttt{3*3*2=18} kiértékelést jelentett.
     Hangsúlyozom, hogy nem a {gemma-2b-it}, hanem a {gemma-\textit{2}-2b-it} változatot választottam.
-    Az elnevezési szabály megtévesztő lehet, ugyanis {gemma-\textit{x}b\ldots} kezdetű modellek első generációs változatok, míg a {gemma-2-\textit{x}b\ldots} a második, és a {gemma-3-\textit{x}b\ldots} a harmadik generációs modelleket jelöli.
 %    A modellek eredményeit összessítő táblázat a 4.1. táblázatban látható.\ref{tab:model-eval-summary}
 
-    \section{2 modell összehasonlítása 100 kérdésen}
+    \section{2 modell összehasonlítása 100 véletlenszerű kérdésen}
     Végül a \texttt{Qwen/Qwen2.5-0.5B-Instruct} és a \texttt{Google/Gemma-2-2b-it} modelleket hasonlítottam össze. Az előbbi az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük 2 eltérő méretű (0.5B vs 2B) és gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
-    Keretrendszerem érdeme, hogy végül sikerült a 2 modell hibátlan válaszadását 200 kérdésre elérni. A modellek hibátlanul csak "Yes" és "No" válaszokat adtak.
+    Keretrendszerem érdeme, hogy végül sikerült a 2 modell hibátlan válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) elérni. 
+    A modellek hibátlanul csak "Yes" és "No" válaszokat adtak.
     Az alábbi ábrában \texttt{n} modell összehasonlítása látható \texttt{m} véletlenszerűen kiválasztott kérdésen.
     % ide jön a táblázat
     \begin{figure}[H]
@@ -1530,7 +1530,7 @@ py -3.13 -m src.Framework.globalMain
             
             \end{axis}
         \end{tikzpicture}
-        \caption{Két modell kiértékelése 200 véletlenszerű kérdésen. Válaszarányok a modell kiértékelése során (Igaz/összes). A konzisztens válaszok aránya 84\%, a pontos válaszok aránya 70\%, míg a konzisztensen pontos válaszok aránya 54\% volt. Bizonytalan válaszok nem fordultak elő.}
+        \caption{Két modell kiértékelése 100-100 véletlenszerű kérdésen és a fordított párjaikon. Válaszarányok a modell kiértékelése során (Igaz/összes). A konzisztens válaszok aránya 84\%, a pontos válaszok aránya 70\%, míg a konzisztensen pontos válaszok aránya 54\% volt. Bizonytalan válaszok nem fordultak elő.}
         \label{fig:ModelEvalSummary}
     \end{figure}
 
