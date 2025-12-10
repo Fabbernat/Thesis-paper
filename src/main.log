@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.25)  10 DEC 2025 09:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.25)  10 DEC 2025 10:04
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1502,6 +1502,12 @@ l.599     \chapter
 [18
 
 ]
+Overfull \hbox (15.39293pt too wide) in paragraph at lines 1108--1115
+\T1/ptm/m/n/12 A mo-dell out-put-já-nak (ki-me-ne-té-nek) fel-dol-go-zá-sa ( a 
+mos-ta-ni \T1/pcr/m/n/12 ModelOutputProcessor\T1/ptm/m/n/12 )
+ []
+
+
 
 [19]
 
@@ -1570,65 +1576,67 @@ Overfull \hbox (19.60847pt too wide) in paragraph at lines 1395--1395
 [29]
 5. fejezet.
 
-Overfull \hbox (7.36476pt too wide) in paragraph at lines 1462--1462
+
+[30
+
+]
+Overfull \hbox (7.36476pt too wide) in paragraph at lines 1463--1463
 []\T1/ptm/b/n/17.28 Méret- és konzisztencia-arányban meg-fe-le-l® nyel-vi mo-
  []
 
 
 
-[30
-
-]
-
 [31]
+
+[32]
 6. fejezet.
 
 
-[32
+[33
 
 ]
-Overfull \hbox (26.12979pt too wide) in paragraph at lines 1511--1511
+Overfull \hbox (26.12979pt too wide) in paragraph at lines 1512--1512
 []$\T1/pcr/m/n/12 10 . 18653 / v1 / 2024 . findings -[] acl . 199$[]\T1/ptm/m/n
 /12 . \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : []$\T1/pcr/m/n/12 https : / / aclanth
 ology .
  []
 
 
-Overfull \hbox (5.49321pt too wide) in paragraph at lines 1511--1511
+Overfull \hbox (5.49321pt too wide) in paragraph at lines 1512--1512
 []\T1/ptm/m/n/12 Hugging Face. \T1/ptm/m/it/12 Hug-ging Face Open LLM Le-ader-b
 oard Mo-del Com-pa-ra-tor\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
 
 
-Overfull \hbox (4.95029pt too wide) in paragraph at lines 1511--1511
+Overfull \hbox (4.95029pt too wide) in paragraph at lines 1512--1512
 \T1/pcr/m/n/12 / / huggingface . co / spaces / open -[] llm -[] leaderboard / c
 omparator$[]\T1/ptm/m/n/12 .
  []
 
 
-Overfull \hbox (4.4157pt too wide) in paragraph at lines 1511--1511
+Overfull \hbox (4.4157pt too wide) in paragraph at lines 1512--1512
 []\T1/ptm/m/n/12 LM Stu-dio Team. \T1/ptm/m/it/12 LM Stu-dio: Desk-top app-li-c
 a-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
 
 
 
-[33
+[34
 
 ]
-Overfull \hbox (10.67581pt too wide) in paragraph at lines 1511--1511
+Overfull \hbox (10.67581pt too wide) in paragraph at lines 1512--1512
 \T1/ptm/m/it/12 gu-age Un-der-stand-ing Sys-tems\T1/ptm/m/n/12 . Utol-só meg-te
 -kin-tés: 2025-12-10. 2020. ar-Xiv: []$\T1/pcr/m/n/12 1905 .
  []
 
 
-Overfull \hbox (0.59474pt too wide) in paragraph at lines 1511--1511
+Overfull \hbox (0.59474pt too wide) in paragraph at lines 1512--1512
 []\T1/ptm/m/n/12 Mohammad Ta-her Pi-leh-var és Jo-se Camacho-Collados. ^^R  WiC
 : the Word-in-Context
  []
 
 
-Overfull \hbox (4.55653pt too wide) in paragraph at lines 1511--1511
+Overfull \hbox (4.55653pt too wide) in paragraph at lines 1512--1512
 \T1/ptm/m/n/12 meg-te-kin-tés: 2025-12-10. \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : 
 []$\T1/pcr/m/n/12 https : / / aclanthology . org / H94 -[] 1111/$[]\T1/ptm/m/n/
 12 . 
@@ -1636,11 +1644,7 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1511--1511
 
 
 
-[34]
-
-[35
-
-]
+[35]
 
 [36
 
@@ -1649,7 +1653,11 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1511--1511
 [37
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251210094743 FAD58DE7366495DB465
+
+[38
+
+]
+runsystem(latexminted cleantemp  --timestamp 20251210100410 FAD58DE7366495DB465
 0CFEFAC2FCD61)...executed.
 
  (main.aux)
@@ -1664,8 +1672,8 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47138 strings out of 468079
- 1081746 string characters out of 5425750
+ 47139 strings out of 468079
+ 1081753 string characters out of 5425750
  2089015 words of memory out of 5000000
  75004 multiletter control sequences out of 15000+600000
  693520 words of font info for 124 fonts, out of 8000000 for 9000
@@ -1693,9 +1701,9 @@ in/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/adm
 in/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/ad
 min/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ad
 min/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (37 pages, 331612 bytes).
+Output written on main.pdf (38 pages, 332780 bytes).
 PDF statistics:
- 692 PDF objects out of 1000 (max. 8388607)
- 138 named destinations out of 1000 (max. 500000)
+ 697 PDF objects out of 1000 (max. 8388607)
+ 139 named destinations out of 1000 (max. 500000)
  429 words of extra memory for PDF output out of 10000 (max. 10000000)
 

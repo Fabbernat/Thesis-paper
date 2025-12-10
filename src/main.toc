@@ -63,8 +63,8 @@
 \select@language {magyar} \contentsline {section}{\numberline {5.2}Nehézségek}{30}{section.5.2}%
 \select@language {magyar} \contentsline {section}{\numberline {5.3}Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}{31}{section.5.3}%
 \select@language {magyar} \contentsline {section}{\numberline {5.4}Google Colab futtatás}{31}{section.5.4}%
-\select@language {magyar} \contentsline {chapter}{\numberline {6}Konklúzió}{32}{chapter.6}%
+\select@language {magyar} \contentsline {chapter}{\numberline {6}Konklúzió}{33}{chapter.6}%
 \select@language {magyar} \ 
-\select@language {magyar} \contentsline {section}{Nyilatkozat}{35}{chapter*.24}%
-\select@language {magyar} \contentsline {section}{Köszönetnyilvánítás}{36}{chapter*.25}%
-\select@language {magyar} \contentsline {section}{Elektronikus mellékletek}{37}{chapter*.26}%
+\select@language {magyar} \contentsline {section}{Nyilatkozat}{36}{chapter*.24}%
+\select@language {magyar} \contentsline {section}{Köszönetnyilvánítás}{37}{chapter*.25}%
+\select@language {magyar} \contentsline {section}{Elektronikus mellékletek}{38}{chapter*.26}%
