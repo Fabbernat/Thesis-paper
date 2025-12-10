@@ -1484,6 +1484,8 @@ py -3.13 -m src.Framework.globalMain
     Az elnevezési szabály megtévesztő lehet, ugyanis {gemma-\textit{x}b\ldots} kezdetű modellek első generációs változatok, míg a {gemma-2-\textit{x}b\ldots} a második, és a {gemma-3-\textit{x}b\ldots} a harmadik generációs modelleket jelöli.
 %    A modellek eredményeit összessítő táblázat a 4.1. táblázatban látható.\ref{tab:model-eval-summary}
 
+    \section{100 kérdésen}
+    Végül sikerült 2 modell hibátlan válaszadását 200 kérdésre elérni. A modellek hibátlanul csak "Yes" és "No" válaszokat adtak.
     Az alábbi ábrában \texttt{n} modell összehasonlítása látható \texttt{m} véletlenszerűen kiválasztott kérdésen.
 
 
@@ -1501,6 +1503,10 @@ py -3.13 -m src.Framework.globalMain
 
 
 \chapter{Konklúzió} % TODO
+Tisztán látható, hogy a Qwen2.5-0.5B-Instruct modell előnyben részesíti a "nem" választ, amelynek fő oka valószínűleg az, hogy nincs elég lexikális tudása, hogy ezeknek a WiC adathalmazbeli ritka szavaknak a pontos jelentését emberi szinten modellezni tudja, így a megfelelő tudás hiányában a biztonságosabb "nem ugyanazt jelentik" predikcióba esik vissza. 
+Ezt az egyoldalúságot valószínűleg továbberősíti az adathalmaz mondatainak jellemző nem-köznyelvi jellege, hiszen nagyrészt régies, tudományos, irodalmi szövegeket tartalmaz.
+Ilyesfajta szövegeket egy ilyen kisméretű, köznyelvi angol megértésére szánt modell nem tud megfelelően ábrázolni és értelmezni.
+
 Habár nem sikerült olyan mértékben automatizálnom a keretrendszert, mint ahogy eredetileg megálmodtam, az elkészült keretrendszer jelentősen megkönnyítette a végső kísérlet elvégzését és így a saját munkámat. Részben így is manuálisan kellett feldolgozni az adatokat, de a munkafolyamatok túlnyomó többségét sikerült teljesen automatizálnom.
 Ha az elkészült munkámmal legalább egy embernek segítettem, akkor már megérte. Bízom benne, hogy a keretrendszerem és a kísérletem hasznos lesz a jövőben mások számára is.
 
