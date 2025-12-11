@@ -1451,6 +1451,7 @@ py -3.13 -m src.Framework.globalMain
 
     \section{Két konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
     Ahhoz, hogy módszertanilag helyes legyen és látszódjon, hogy az eredmények nincsenek beégetve a keretrendszerbe, a Témavezetőmmel megegyezve a kérdéseket random index generátor függvény segítségével véletlenszerűen választottam ki a WiC-adathalmaz bejegyzéseiből.
+    A kérdések között nincs ismétlődés és minden modell ugyanazt a kérdéskészletet kapja meg feladatként. A kérdések 100, véletlenszerűen kiválasztott WiC adathalmazbeli mintából származnak.
     
 
     \section{Nehézségek}
@@ -1492,47 +1493,69 @@ py -3.13 -m src.Framework.globalMain
 
     \section{2 modell összehasonlítása 100 véletlenszerű kérdésen}
     Végül a \texttt{Qwen/Qwen2.5-0.5B-Instruct} és a \texttt{Google/Gemma-2-2b-it} modelleket hasonlítottam össze. Az előbbi az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük 2 eltérő méretű (0.5B vs 2B) és gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
-    Keretrendszerem érdeme, hogy végül sikerült a 2 modell hibátlan válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) elérni. 
+    Keretrendszerem érdeme, hogy végül sikerült a 2 modell hibátlan válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) elérni.
     A modellek hibátlanul csak "Yes" és "No" válaszokat adtak.
     Az alábbi ábrában \texttt{n} modell összehasonlítása látható \texttt{m} véletlenszerűen kiválasztott kérdésen.
     % ide jön a táblázat
     \begin{figure}[H]
-        \centering
-        \begin{tikzpicture}
-            % Válaszarányok oszlopdiagram
-            \begin{axis}[
-                ybar,
-                bar width=0.8cm,
-                width=0.9\textwidth,
-                height=8cm,
-                ylabel={Arány (\%)},
-                symbolic x coords={Konzisztens, Pontos, Konzisztensen pontos, Bizonytalan, Konzisztensen bizonytalan},
-                xtick=data,
-                x tick label style={rotate=45, anchor=east, font=\small},
-                ymin=0,
-                ymax=100,
-                ymajorgrids=true,
-                grid style=dashed,
-                enlarge x limits=0.15,
-                legend style={at={(0.5,-0.25)}, anchor=north, legend columns=-1},
-                nodes near coords,
-                nodes near coords style={font=\footnotesize},
-                every node near coord/.append style={/pgf/number format/fixed, /pgf/number format/precision=2}
-            ]
-            
-            \addplot[fill=blue!60, draw=blue!80!black] coordinates {
-                (Konzisztens, 84.00)
-                (Pontos, 70.00)
-                (Konzisztensen pontos, 54.00)
-                (Bizonytalan, 0.00)
-                (Konzisztensen bizonytalan, 0.00)
-            };
-            
-            \end{axis}
-        \end{tikzpicture}
-        \caption{Két modell kiértékelése 100-100 véletlenszerű kérdésen és a fordított párjaikon. Válaszarányok a modell kiértékelése során (Igaz/összes). A konzisztens válaszok aránya 84\%, a pontos válaszok aránya 70\%, míg a konzisztensen pontos válaszok aránya 54\% volt. Bizonytalan válaszok nem fordultak elő.}
-        \label{fig:ModelEvalSummary}
-    \end{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ybar,
+            bar width=0.8cm,
+            width=0.9\textwidth,
+            height=8cm,
+            ylabel={Arány (\%)},
+            symbolic x coords={Konzisztens, Pontos, Konzisztensen pontos, Bizonytalan, Konzisztensen bizonytalan},
+            xtick=data,
+            x tick label style={rotate=45, anchor=east, font=\small},
+            ymin=0,
+            ymax=100,
+            ymajorgrids=true,
+            grid style=dashed,
+            enlarge x limits=0.15,
+            legend style={at={(0.5,-0.25)}, anchor=north, legend columns=-1},
+            nodes near coords,
+            nodes near coords style={font=\footnotesize},
+            every node near coord/.append style={/pgf/number format/fixed, /pgf/number format/precision=2}
+        ]
+
+        % Qwen 0.5B
+        \addplot[
+            fill=yellow!70!brown,
+            draw=yellow!50!black
+        ] coordinates {
+            (Konzisztens, 79.00)
+            (Pontos, 76.00)
+            (Konzisztensen pontos, 55.00)
+            (Bizonytalan, 0.00)
+            (Konzisztensen bizonytalan, 0.00)
+        };
+
+        % Gemma 2B
+        \addplot[
+            fill=blue!60,
+            draw=blue!80!black
+        ] coordinates {
+            (Konzisztens, 84.00)
+            (Pontos, 70.00)
+            (Konzisztensen pontos, 54.00)
+            (Bizonytalan, 0.00)
+            (Konzisztensen bizonytalan, 0.00)
+        };
+
+        \legend{
+            Qwen 0.5B,
+            Gemma 2B
+        }
+
+        \end{axis}
+    \end{tikzpicture}
+
+    \caption{Két modell kiértékelése 100-100 véletlenszerű kérdésen…}
+    \label{fig:ModelEvalSummary}
+\end{figure}
+
 
     \section{Google Colab futtatás}
     A középső modul egyszerűsített változata elérhető Google Colab-on, a mellékletben található linken.~\ref{att:colab}
