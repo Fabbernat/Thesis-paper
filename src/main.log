@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.25)  11 DEC 2025 14:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.25)  11 DEC 2025 15:27
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1539,34 +1539,34 @@ y új to-kent ál-lít el® $\OML/cmm/m/it/12 max[]new[]tokens \OT1/cmr/m/n/12 =
 [25]
 
 [26]
-Overfull \hbox (5.20848pt too wide) in paragraph at lines 1369--1369
-[]   \T1/pcr/m/n/12 pip install torch transformers accelerate huggingface_hub[]
- 
- []
-
-
-Overfull \hbox (5.20848pt too wide) in paragraph at lines 1372--1372
-[]   \T1/pcr/m/n/12 pip install torch transformers accelerate huggingface_hub[]
- 
- []
-
-
 
 [27]
-Overfull \hbox (12.40848pt too wide) in paragraph at lines 1406--1406
+Overfull \hbox (5.20848pt too wide) in paragraph at lines 1379--1379
+[]   \T1/pcr/m/n/12 pip install torch transformers accelerate huggingface_hub[]
+ 
+ []
+
+
+Overfull \hbox (5.20848pt too wide) in paragraph at lines 1382--1382
+[]   \T1/pcr/m/n/12 pip install torch transformers accelerate huggingface_hub[]
+ 
+ []
+
+
+Overfull \hbox (12.40848pt too wide) in paragraph at lines 1416--1416
 []    \T1/pcr/m/n/12 py -3.13 -m src.Framework.HuggingFaceModelInferencer.main[
 ] 
  []
 
 
-Overfull \hbox (19.60847pt too wide) in paragraph at lines 1410--1410
+
+[28]
+Overfull \hbox (19.60847pt too wide) in paragraph at lines 1420--1420
 []    \T1/pcr/m/n/12 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 [] 
  []
 
 
-
-[28]
 
 [29]
 
@@ -1577,11 +1577,11 @@ Overfull \hbox (19.60847pt too wide) in paragraph at lines 1410--1410
 [31
 
 ]
-Overfull \hbox (7.36476pt too wide) in paragraph at lines 1489--1489
+Overfull \hbox (7.36476pt too wide) in paragraph at lines 1499--1499
 []\T1/ptm/b/n/17.28 Méret- és konzisztencia-arányban meg-fe-le-l® nyel-vi mo-
  []
 
-Package pgfplots info on input line 1539: Using 'lua backend=false' for axis: x
+Package pgfplots info on input line 1549: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
 
 
@@ -1592,7 +1592,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1584 \chapter
+l.1594 \chapter
                {KonklÃºziÃ³} % TODO]
 6. fejezet.
 
@@ -1600,26 +1600,26 @@ l.1584 \chapter
 [34
 
 ]
-Overfull \hbox (26.12979pt too wide) in paragraph at lines 1599--1599
+Overfull \hbox (26.12979pt too wide) in paragraph at lines 1609--1609
 []$\T1/pcr/m/n/12 10 . 18653 / v1 / 2024 . findings -[] acl . 199$[]\T1/ptm/m/n
 /12 . \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : []$\T1/pcr/m/n/12 https : / / aclanth
 ology .
  []
 
 
-Overfull \hbox (5.49321pt too wide) in paragraph at lines 1599--1599
+Overfull \hbox (5.49321pt too wide) in paragraph at lines 1609--1609
 []\T1/ptm/m/n/12 Hugging Face. \T1/ptm/m/it/12 Hug-ging Face Open LLM Le-ader-b
 oard Mo-del Com-pa-ra-tor\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
 
 
-Overfull \hbox (4.95029pt too wide) in paragraph at lines 1599--1599
+Overfull \hbox (4.95029pt too wide) in paragraph at lines 1609--1609
 \T1/pcr/m/n/12 / / huggingface . co / spaces / open -[] llm -[] leaderboard / c
 omparator$[]\T1/ptm/m/n/12 .
  []
 
 
-Overfull \hbox (4.4157pt too wide) in paragraph at lines 1599--1599
+Overfull \hbox (4.4157pt too wide) in paragraph at lines 1609--1609
 []\T1/ptm/m/n/12 LM Stu-dio Team. \T1/ptm/m/it/12 LM Stu-dio: Desk-top app-li-c
 a-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
@@ -1629,19 +1629,19 @@ a-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
 [35
 
 ]
-Overfull \hbox (10.67581pt too wide) in paragraph at lines 1599--1599
+Overfull \hbox (10.67581pt too wide) in paragraph at lines 1609--1609
 \T1/ptm/m/it/12 gu-age Un-der-stand-ing Sys-tems\T1/ptm/m/n/12 . Utol-só meg-te
 -kin-tés: 2025-12-10. 2020. ar-Xiv: []$\T1/pcr/m/n/12 1905 .
  []
 
 
-Overfull \hbox (0.59474pt too wide) in paragraph at lines 1599--1599
+Overfull \hbox (0.59474pt too wide) in paragraph at lines 1609--1609
 []\T1/ptm/m/n/12 Mohammad Ta-her Pi-leh-var és Jo-se Camacho-Collados. ^^R  WiC
 : the Word-in-Context
  []
 
 
-Overfull \hbox (4.55653pt too wide) in paragraph at lines 1599--1599
+Overfull \hbox (4.55653pt too wide) in paragraph at lines 1609--1609
 \T1/ptm/m/n/12 meg-te-kin-tés: 2025-12-10. \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : 
 []$\T1/pcr/m/n/12 https : / / aclanthology . org / H94 -[] 1111/$[]\T1/ptm/m/n/
 12 . 
@@ -1662,7 +1662,7 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1599--1599
 [39
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251211142608 FAD58DE7366495DB465
+runsystem(latexminted cleantemp  --timestamp 20251211152750 FAD58DE7366495DB465
 0CFEFAC2FCD61)...executed.
 
  (main.aux)
@@ -1706,7 +1706,7 @@ in/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/adm
 in/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/ad
 min/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ad
 min/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (39 pages, 341804 bytes).
+Output written on main.pdf (39 pages, 342396 bytes).
 PDF statistics:
  711 PDF objects out of 1000 (max. 8388607)
  143 named destinations out of 1000 (max. 500000)

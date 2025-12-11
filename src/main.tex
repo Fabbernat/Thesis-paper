@@ -1281,10 +1281,10 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     \end{verbatim}
 
 
-    Tehát a main szkript meghívja a run szkriptet, amely továbbadja az irányítást a TernaryClassifier modulnak.
-    Ez végig megy az előző modulból inputként kapott modell válaszokon és soronként eldönti, hogy a "Yes", a "No", vagy a "?"  (nem egyértelmű) kategóriába sorolható-e be leginkább. Minden sor pontosan egy kategóriába soroltatik be.
+    Tehát a main szkript meghívja a run szkriptet, amely továbbadja az irányítást a \texttt{TernaryClassifier} szkriptnek. A szkript három kategóriába sorolja a válaszokat: "igen", "nem" és "talán" osztályokba.
+    Az osztályozás során végigmegy az előző modulból inputként kapott modell válaszokon és soronként eldönti, hogy a "Yes", a "No", vagy a "?"  (nem egyértelmű) kategóriába sorolható-e be a válasz. Minden sor pontosan egy kategóriába soroltatik be.
     Az eldöntési algoritmusnak több módszere is van, ezért választható itt az \texttt{AnswerAwareClassificationRule} és a \texttt{SentenceClassifier}, amelyet a config fájlban található \texttt{ADAPTIVE\_RUN} változóval lehet beállítani.
-    Ezután a kategóriákat a \texttt{TernaryResultsProcessor} összeveti a gold standardban szereplő értékekkel, majd az összevetés eredményei alapján készülnek el a run szkriptben a végeredmények.
+    Ezután a kategóriákat a \texttt{TernaryResultsProcessor} összeveti a gold standardban szereplő értékekkel, majd az összevetés eredményei alapján készülnek el a \texttt{run} szkriptben a végeredmények.
 
 
     A modul, és így az egész program végeredményeként az alábbi statisztikákat számolom ki.
@@ -1306,7 +1306,9 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 
 
 
-    \subsubsection{Konzisztencia}
+    \subsubsection{Konzisztens párok aránya}
+    Mivel a konzisztencia csak páronként értelmezhető, így a végeredménybe minden találat \textbf{1} értékkel kerül beszámításra.
+
     A program első lépésként végigmegy a válaszok sorain.
     Megnézi, hogy a modell mit válaszolt soronként.
     Ezt 3 kategóriába sorolja: \texttt{Yes}, \texttt{No} és \texttt{?}, azaz nem egyértelmű, "talán".
@@ -1314,24 +1316,32 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     Ha ez megvan, akkor összehasonlítja az egyenes és fordított kérdéseket páronként.
     Ez \texttt{n} kérdés esetén \texttt{n/2} összehasonlítást jelent.
     Az egyezések aránya adja meg a konzisztencia mértékét, amelyet százalékban fejezek ki.
-    Pl. 50\% esetén a válaszpárok fele egyezik, 90\% esetén 10-ből 9 válaszpár egyezik.
+    Ha pl. 100 kérdéspárra 50\% eredményt kapunk, akkor 50 kérdéspár megegyezik, 50 pár pedig nem.
 
 
-    \subsubsection{Pontosság}
+    \subsubsection{Pontos válaszok aránya}
+    Mivel a pontosság egyenként is értelmezhető, így a végeredménybe minden találat \textbf{0.5} értékkel kerül beszámításra.
+
     Önmagában az, hogy a válaszok konzisztensek, nem elég, hiszen lehet konzisztensen hibás az összes válasz is, amely nem egy kívánatos eredmény.
     Emiatt azt is meg kell vizsgálni, hogy a válasz megegyezik-e a gold standardbeli válasszal, függetlenül attól, hogy az egyenes vagy fordított.
     Ezért egy százalékban kifejezett mérőszámban eltároltam az egész adathalmazra levetített pontosság mértékét is.
     Pl. 50\% esetén a válaszok 50\%-a egyezik meg a gold standardbeli válasszal.
 
-    \subsubsection{Konzisztensen pontosság}
+    \subsubsection{Konzisztensen pontos párok aránya}
+    Mivel a konzisztensen pontosság csak páronként értelmezhető, így a végeredménybe minden találat \textbf{1} értékkel kerül beszámításra.
+
     A konzisztensen pontos válaszok egyszerűen azok, amelyek konzisztensek és pontosak is.
-    Magyarul azon túl, hogy az egyenes és a fordított kérdésre adott "igen" vagy "nem" válasz(ként generált token) megegyezik, mindez a gold standard válasszal is megegyezik.
+    Magyarul azon túl, hogy az egyenes és a fordított kérdésre adott válasz kategóriája ("igen" vagy "nem" vagy "talán") megegyezik, mindez a gold standard válasszal is összhangban van. Tehát a három válasz megegyezik.
     Emiatt ha a válasz nem "igen" vagy "nem", az automatikusan nem konzisztensen pontos.
 
-    \subsubsection{Bizonytalan}
+    \subsubsection{Bizonytalan párok aránya}
+    Mivel a bizonytalan páronként csak páronként értelmezhető, így a végeredménybe minden találat \textbf{1} értékkel kerül beszámításra.
+
     Ha egy egyenes-fordított kérdéspár \textbf{legalább egyikére} a válasz se nem "igen", se nem "nem", akkor azt a sort "bizonytalannak" számítom.
 
-    \subsubsection{Konzisztensen bizonytalan}
+    \subsubsection{Konzisztensen bizonytalan párok aránya}
+    Mivel a konzisztensen bizonytalan páronként csak páronként értelmezhető, így a végeredménybe minden találat \textbf{1} értékkel kerül beszámításra.
+
     Ha egy egyenes-fordított kérdéspár \textbf{mindkét kérdésére} a válasz se nem "igen", se nem "nem", akkor azt a sort "konzisztensen bizonytalannak" számítom.
 
     \subsubsection{LogFile}
@@ -1544,7 +1554,7 @@ py -3.13 -m src.Framework.globalMain
             draw=yellow!50!black
         ] coordinates {
             (Konzisztens, 79.00)
-            (Pontos, 76.00)
+            (Pontos, 65.50)
             (Konzisztensen pontos, 55.00)
             (Bizonytalan, 0.00)
             (Konzisztensen bizonytalan, 0.00)
@@ -1556,7 +1566,7 @@ py -3.13 -m src.Framework.globalMain
             draw=blue!80!black
         ] coordinates {
             (Konzisztens, 73.00)
-            (Pontos, 76.00)
+            (Pontos, 62.50)
             (Konzisztensen pontos, 49.00)
             (Bizonytalan, 0.00)
             (Konzisztensen bizonytalan, 0.00)
