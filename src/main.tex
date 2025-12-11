@@ -1450,9 +1450,15 @@ py -3.13 -m src.Framework.globalMain
     A végső cél, amiért az egész szoftver keretrendszer készült, az volt, hogy legalább 2 modellt összehasonlíthassunk minél nagyobb mennyiségű kérdésen.
 
     \section{Módszertan}
-    Ahhoz, hogy módszertanilag helyes legyen és látszódjon, hogy az eredmények nincsenek beégetve a keretrendszerbe, a Témavezetőmmel megegyezve a példákat random index választó függvény segítségével véletlenszerűen választottam ki a WiC-adathalmaz bejegyzéseiből, szigorúan figyelve az ismétlődő indexek elkerülésére. és ebben a random sorrendben tároltam el.
-    Az indexek, így a kérdések között sincs ismétlődés, mindegyik egyedi, és minden modell ugyanazt a kérdéskészletet kapja meg feladatként. Az így előállított kérdések mennyisége maximálisan 2800 darab lehet, mivel a WiC-adathalmazban ennyi bejegyzés található.
-    
+    Ahhoz, hogy módszertanilag helyes legyen és látszódjon, hogy az eredmények nincsenek beégetve a keretrendszerbe, a Témavezetőmmel megegyezve a példákat random index választó függvény segítségével véletlenszerűen választottam ki a WiC-adathalmaz bejegyzéseiből, szigorúan figyelve az ismétlődő indexek elkerülésére.
+    Az kérdések sorrendje az indexek alapján készült egyedi \texttt{GUID}-khoz vannak kötve, így a kérdések között sincs ismétlődés. Mindegyik egyedi, és minden modell ugyanazt a kérdéskészletet kapja meg feladatként. Az így előállított kérdések mennyisége maximálisan 2800 darab lehet, mivel a WiC-adathalmazban ennyi bejegyzés található.
+    Összefoglalva:
+    \begin{itemize}
+        \item A kérdések száma tetszőleges, maximum 2800
+        \item A kérdések sorrendje véletlenszerű
+        \item Nincs ismétlődés az elemek között
+        \item Minden modell ugyanazt a kérdéskészletet kapja meg
+    \end{itemize}
 
     \section{Nehézségek}
     Akkor beszélhetünk egyáltalán konzisztenciáról, azt tekinthetjük a konzisztens viselkedés első szintjének, ha a modell \textit{reagál a bemenetre}, azaz a válaszának egyáltalán valami köze van a feltett kérdésekhez.
