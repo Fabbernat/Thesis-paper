@@ -1,38 +1,38 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'main.blg'
-[236] biber-MSWIN64:342> INFO - === 
-[323] Biber.pm:421> INFO - Reading 'main.bcf'
-[506] Biber.pm:1002> INFO - Found 23 citekeys in bib section 0
-[530] Biber.pm:4487> INFO - Processing section 0
-[546] Biber.pm:4678> INFO - Looking for bibtex file 'references.bib' for section 0
-[6000] bibtex.pm:1713> INFO - LaTeX decoding ...
-[6017] bibtex.pm:1519> INFO - Found BibTeX data source 'C:/Users/admin/AppData/Local/Programs/MiKTeX/bibtex/bib/feupphdteses/references.bib'
-[6041] UCollate.pm:68> INFO - Overriding locale 'hu-HU' defaults 'variable = shifted' with 'variable = non-ignorable'
-[6042] UCollate.pm:68> INFO - Overriding locale 'hu-HU' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[6042] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'hu-HU'
-[6043] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[6044] bbl.pm:779> INFO - Output to main.bbl
-[6045] Biber.pm:132> WARN - I didn't find a database entry for 'martin2008cleancode' (section 0)
-[6046] Biber.pm:132> WARN - I didn't find a database entry for 'yang-etal-2024-enhancing' (section 0)
-[6046] Biber.pm:132> WARN - I didn't find a database entry for 'hf_llm_comparator' (section 0)
-[6047] Biber.pm:132> WARN - I didn't find a database entry for 'chiang2024chatbot' (section 0)
-[6047] Biber.pm:132> WARN - I didn't find a database entry for 'ollama' (section 0)
-[6048] Biber.pm:132> WARN - I didn't find a database entry for 'llama_cpp' (section 0)
-[6048] Biber.pm:132> WARN - I didn't find a database entry for 'kwon2023efficient' (section 0)
-[6048] Biber.pm:132> WARN - I didn't find a database entry for 'lmstudio' (section 0)
-[6049] Biber.pm:132> WARN - I didn't find a database entry for 'textgen_webui' (section 0)
-[6049] Biber.pm:132> WARN - I didn't find a database entry for 'gpt4all' (section 0)
-[6049] Biber.pm:132> WARN - I didn't find a database entry for 'lesk1986automatic' (section 0)
-[6050] Biber.pm:132> WARN - I didn't find a database entry for 'sarlin2020superglue' (section 0)
-[6050] Biber.pm:132> WARN - I didn't find a database entry for 'wang2020superglue' (section 0)
-[6050] Biber.pm:132> WARN - I didn't find a database entry for 'pilehvar2019wic' (section 0)
-[6051] Biber.pm:132> WARN - I didn't find a database entry for 'miller1994wordnet' (section 0)
-[6051] Biber.pm:132> WARN - I didn't find a database entry for 'holtzman2020curious' (section 0)
-[6051] Biber.pm:132> WARN - I didn't find a database entry for 'openai_context_window' (section 0)
-[6052] Biber.pm:132> WARN - I didn't find a database entry for 'berend2025phi' (section 0)
-[6052] Biber.pm:132> WARN - I didn't find a database entry for 'wolf2019huggingface' (section 0)
-[6052] Biber.pm:132> WARN - I didn't find a database entry for 'phi4mini2024' (section 0)
-[6052] Biber.pm:132> WARN - I didn't find a database entry for 'gemma22b2024' (section 0)
-[6053] Biber.pm:132> WARN - I didn't find a database entry for 'qwen15chat2024' (section 0)
-[6053] Biber.pm:132> WARN - I didn't find a database entry for 'qwen2.5' (section 0)
-[6053] Biber.pm:134> INFO - WARNINGS: 23
+[487] biber-MSWIN64:342> INFO - === 
+[672] Biber.pm:421> INFO - Reading 'main.bcf'
+[884] Biber.pm:1002> INFO - Found 23 citekeys in bib section 0
+[923] Biber.pm:4487> INFO - Processing section 0
+[952] Biber.pm:4678> INFO - Looking for bibtex file 'references.bib' for section 0
+[1444] bibtex.pm:1713> INFO - LaTeX decoding ...
+[1466] bibtex.pm:1519> INFO - Found BibTeX data source 'C:/Users/admin/AppData/Local/Programs/MiKTeX/bibtex/bib/feupphdteses/references.bib'
+[1487] UCollate.pm:68> INFO - Overriding locale 'hu-HU' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1487] UCollate.pm:68> INFO - Overriding locale 'hu-HU' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1488] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'hu-HU'
+[1489] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[1489] bbl.pm:779> INFO - Output to main.bbl
+[1490] Biber.pm:132> WARN - I didn't find a database entry for 'martin2008cleancode' (section 0)
+[1491] Biber.pm:132> WARN - I didn't find a database entry for 'yang-etal-2024-enhancing' (section 0)
+[1491] Biber.pm:132> WARN - I didn't find a database entry for 'hf_llm_comparator' (section 0)
+[1491] Biber.pm:132> WARN - I didn't find a database entry for 'chiang2024chatbot' (section 0)
+[1491] Biber.pm:132> WARN - I didn't find a database entry for 'ollama' (section 0)
+[1492] Biber.pm:132> WARN - I didn't find a database entry for 'llama_cpp' (section 0)
+[1492] Biber.pm:132> WARN - I didn't find a database entry for 'kwon2023efficient' (section 0)
+[1492] Biber.pm:132> WARN - I didn't find a database entry for 'lmstudio' (section 0)
+[1493] Biber.pm:132> WARN - I didn't find a database entry for 'textgen_webui' (section 0)
+[1493] Biber.pm:132> WARN - I didn't find a database entry for 'gpt4all' (section 0)
+[1493] Biber.pm:132> WARN - I didn't find a database entry for 'lesk1986automatic' (section 0)
+[1494] Biber.pm:132> WARN - I didn't find a database entry for 'sarlin2020superglue' (section 0)
+[1494] Biber.pm:132> WARN - I didn't find a database entry for 'wang2020superglue' (section 0)
+[1494] Biber.pm:132> WARN - I didn't find a database entry for 'pilehvar2019wic' (section 0)
+[1495] Biber.pm:132> WARN - I didn't find a database entry for 'miller1994wordnet' (section 0)
+[1495] Biber.pm:132> WARN - I didn't find a database entry for 'holtzman2020curious' (section 0)
+[1495] Biber.pm:132> WARN - I didn't find a database entry for 'openai_context_window' (section 0)
+[1495] Biber.pm:132> WARN - I didn't find a database entry for 'berend2025phi' (section 0)
+[1496] Biber.pm:132> WARN - I didn't find a database entry for 'wolf2019huggingface' (section 0)
+[1496] Biber.pm:132> WARN - I didn't find a database entry for 'phi4mini2024' (section 0)
+[1496] Biber.pm:132> WARN - I didn't find a database entry for 'gemma22b2024' (section 0)
+[1497] Biber.pm:132> WARN - I didn't find a database entry for 'qwen15chat2024' (section 0)
+[1497] Biber.pm:132> WARN - I didn't find a database entry for 'qwen2.5' (section 0)
+[1497] Biber.pm:134> INFO - WARNINGS: 23

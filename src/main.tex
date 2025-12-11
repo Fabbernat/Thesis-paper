@@ -1193,7 +1193,7 @@ The cat sat on the _ .
         \item szó,\item  szófaj, \item a szó pozíciói a mondatokban, \item az első mondat, \item a második mondat.
     \end{itemize}
     
-    Ebből nekünk csak a szó, első mondat és a második mondat szükséges, a többivel nem is fogunk foglalkozni. Először is a \texttt{randomsamples.py} szkriptem legenerál \texttt{n} darab - a \texttt{config.py}-ban meghatározott mennyiségű indexet. Ezek az indexek lesznek a kérdés-válasz párok azonosítói, én \texttt{guid}-nak neveztem el őket, amely a "globálisan egyedi azonosító" (globally unique identifier) rövidítése . Ezután megnyitjuk a fájlt, majd beolvassuk és minden egyes \texttt{guid}-adik indexű sorból eltároljuk a szót és a két mondatot egy listában. A guid értéke mindig 0 és 1399 között van, tehát az értéke pont megegyezik a teszthalmaz hosszával, így nem történhet túlindexelés. Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot. Végül ezt elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
+    Ebből nekünk csak a szó, első mondat és a második mondat szükséges, a többivel nem is fogunk foglalkozni. Először is a \texttt{randomsamples.py} szkriptem legenerál \texttt{n} darab - a \texttt{config.py}-ban meghatározott mennyiségű indexet. Ezek az indexek lesznek a kérdés-válasz párok azonosítói, én \texttt{GUID}-nak neveztem el őket, amely a "globálisan egyedi azonosító" (globally unique identifier) rövidítése . Ezután megnyitjuk a fájlt, majd beolvassuk és minden egyes \texttt{GUID}-adik indexű sorból eltároljuk a szót és a két mondatot egy listában. A GUID értéke mindig 0 és 1399 között van, tehát az értéke pont megegyezik a teszthalmaz hosszával, így nem történhet túlindexelés. Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot. Végül ezt elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
 
 
 
@@ -1332,11 +1332,11 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 
 
      \section{Indexer}
-    Ha megkaptuk az 5 értéket (Konzisztens, Pontos, Konzisztensen pontos, Bizonytalan, Konzisztensen bizonytalan) a megfelelő tartományban, akkor már nincs más dolgunk, mint ellenőrizni az alábbiakat:
-    Az {adathalmaz sor-kérdés-egyenes válasz-fordított válasz-gold standard sor} guid-jai \textbf{pontosan megegyeznek-e}. A guid az eredeti, WiC adathalmazban elfoglalt sorszám, amelyre indexként tekintünk a beolvasás után. A guid az indices.out fájlban található
+    Ha megkaptuk az 5 értéket (Konzisztens, Pontos, Konzisztensen pontos, Bizonytalan, Konzisztensen bizonytalan) a megfelelő tartományban, akkor már nincs más dolgunk, mint összeindexelni a kérdés-válasz párokat a Word-in-Context adathalmaz megegyező indexű mintapéldájával és az ahhoz tartozó gold standard helyes válasszal (mindegyik index meg kell hogy egyezzen). Ehhez nem árt ellenőrizni az alábbiakat:
+    Az {adathalmaz sor-kérdés-egyenes válasz-fordított válasz-gold standard sor} \texttt{GUID}-jai \textbf{pontosan megegyeznek-e}. A \texttt{GUID} az eredeti, WiC adathalmazban elfoglalt sorszám, amelyre indexként tekintünk a beolvasás után. A \texttt{GUID} az indices.out fájlban található.
     Ilyen nagy mennyiségű adat esetén komoly problémát jelent a manuális indexelés, kiváltképpen mivel a kérdések sorrendje eleve véletlenszerű.
     Ráadásul indexer nélkül körülményes a ModelOutputProcessor eredményinek validálása.
-    Éppen ezért a ModelOutputProcessor modulban létrehoztam egy indexer függvényt, amely az az egyenes kérdést, a fordított kérdést, az egyenes kérdésre adott választ, a fordított kérdésre adott választ, a gold standard választ, valamint a ModelInputPreparerben létrehozott kérdés \texttt{guid}-jait indexeli, kapcsolja össze.
+    Éppen ezért a ModelOutputProcessor modulban létrehoztam egy indexer függvényt, amely az az egyenes kérdést, a fordított kérdést, az egyenes kérdésre adott választ, a fordított kérdésre adott választ, a gold standard választ, valamint a ModelInputPreparerben létrehozott kérdés \texttt{GUID}-jait indexeli, kapcsolja össze.
     Így visszakereshetővé vált, hogy melyik választ melyik kérdésre adta a modell, és hogy az megegyezik-e a gold standarddal.
 
     
@@ -1445,13 +1445,13 @@ py -3.13 -m src.Framework.globalMain
     A Hugging Face Hub~\cite{huggingfacehub} alkalmas platform lehet erre.
     Továbbá egy adatbázis a jelenlegi nyers szöveg-alapú adatkezelés helyett nagy előrelépés lenne.
 
-\chapter{Kísérlet}
+\chapterwithdesc{Kísérlet}
+    {Két konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
     A végső cél, amiért az egész szoftver keretrendszer készült, az volt, hogy legalább 2 modellt összehasonlíthassunk minél nagyobb mennyiségű kérdésen.
 
-
-    \section{Két konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
-    Ahhoz, hogy módszertanilag helyes legyen és látszódjon, hogy az eredmények nincsenek beégetve a keretrendszerbe, a Témavezetőmmel megegyezve a kérdéseket random index generátor függvény segítségével véletlenszerűen választottam ki a WiC-adathalmaz bejegyzéseiből.
-    A kérdések között nincs ismétlődés és minden modell ugyanazt a kérdéskészletet kapja meg feladatként. A kérdések 100, véletlenszerűen kiválasztott WiC adathalmazbeli mintából származnak.
+    \section{Módszertan}
+    Ahhoz, hogy módszertanilag helyes legyen és látszódjon, hogy az eredmények nincsenek beégetve a keretrendszerbe, a Témavezetőmmel megegyezve a példákat random index választó függvény segítségével véletlenszerűen választottam ki a WiC-adathalmaz bejegyzéseiből, szigorúan figyelve az ismétlődő indexek elkerülésére. és ebben a random sorrendben tároltam el.
+    Az indexek, így a kérdések között sincs ismétlődés, mindegyik egyedi, és minden modell ugyanazt a kérdéskészletet kapja meg feladatként. Az így előállított kérdések mennyisége maximálisan 2800 darab lehet, mivel a WiC-adathalmazban ennyi bejegyzés található.
     
 
     \section{Nehézségek}
@@ -1552,7 +1552,7 @@ py -3.13 -m src.Framework.globalMain
         \end{axis}
     \end{tikzpicture}
 
-    \caption{Két modell kiértékelése 100-100 véletlenszerű kérdésen…}
+    \caption{Több modell összevetése véletlenszerű példafeladatokon}
     \label{fig:ModelEvalSummary}
 \end{figure}
 
