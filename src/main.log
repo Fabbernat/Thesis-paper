@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.25)  11 DEC 2025 14:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.25)  11 DEC 2025 14:24
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1662,7 +1662,7 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1599--1599
 [39
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251211140155 FAD58DE7366495DB465
+runsystem(latexminted cleantemp  --timestamp 20251211142435 FAD58DE7366495DB465
 0CFEFAC2FCD61)...executed.
 
  (main.aux)
@@ -1679,7 +1679,7 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Here is how much of TeX's memory you used:
  47204 strings out of 468079
  1083040 string characters out of 5425750
- 2090097 words of memory out of 5000000
+ 2091097 words of memory out of 5000000
  75065 multiletter control sequences out of 15000+600000
  693520 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1706,7 +1706,7 @@ in/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/adm
 in/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/ad
 min/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ad
 min/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (39 pages, 341778 bytes).
+Output written on main.pdf (39 pages, 341787 bytes).
 PDF statistics:
  711 PDF objects out of 1000 (max. 8388607)
  143 named destinations out of 1000 (max. 500000)

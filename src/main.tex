@@ -616,7 +616,7 @@ The cat sat on the _ .
     A középső modul egyszerűsített változata elérhető Google Colab-on, a mellékletben található linken.~\ref{att:colab}
 
     Mivel Google Colabot használtam, azon belül is GPU-s futtatókörnyezetet, így a kiértékelés gyorsabb volt.
-    A webes környezetben kikapcsolt valószínűségi változókkal dolgoztam és az inferenciák egyesével egymástól függetlenül történnek, emiatt elmondható, hogy a kiértékelés módja:
+    A webes környezetben kikapcsolt valószínűségi változókkal dolgoztam és az inferenciák egyesével egymástól függetlenül történnek, emiatt elmondható, hogy a modell válaszgenerálás módja:
     \begin{itemize}
         \item determinisztikus, tehát ugyanarra az inputra mindig ugyanaz lesz az output, nem függ a véletlentől,
         \item és izolált, azaz a modell egyik futtatásban sem "tud" semmit a korábbi bemeneteiről és válaszairól.
@@ -1532,7 +1532,7 @@ py -3.13 -m src.Framework.globalMain
             ymajorgrids=true,
             grid style=dashed,
             enlarge x limits=0.15,
-            legend style={at={(0.5,-0.60)}, anchor=north, legend columns=-1},
+            legend style={at={(0.5,-0.55)}, anchor=north, legend columns=-1},
             nodes near coords,
             nodes near coords style={font=\footnotesize},
             every node near coord/.append style={/pgf/number format/fixed, /pgf/number format/precision=2}
