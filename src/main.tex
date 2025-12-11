@@ -1522,11 +1522,12 @@ py -3.13 -m src.Framework.globalMain
             ]
             
             \addplot[fill=blue!60, draw=blue!80!black] coordinates {
-                (Konzisztens, 84.00)
-                (Pontos, 70.00)
-                (Konzisztensen pontos, 54.00)
-                (Bizonytalan, 0.00)
-                (Konzisztensen bizonytalan, 0.00)
+                {\sárga:qwen 0.5B; \kék:gemma 2B}
+                \sárga(Konzisztens, 79.00)
+                \sárga(Pontos, 76.00)
+                \sárga(Konzisztensen pontos, 55.00)
+                \sárga(Bizonytalan, 0.00)
+                \sárga(Konzisztensen bizonytalan, 0.00)
             };
             
             \end{axis}
