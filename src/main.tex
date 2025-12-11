@@ -612,6 +612,17 @@ The cat sat on the _ .
     Ám nem voltam elégedett a környezet adta korlátozásokkal, pl.\ session-alapú futtatókörnyezet, amely a session végével törli az adataimat, lassú csatlakozási idő a távoli hardverekhez, limitált erőforrás-hozzáférés, perzisztens adattárolási lehetőségek hiánya és egyéb korlátozások, amelyek csak előfizetéssel kerülhetőek ki.
     Emiatt PyCharm fejlesztői környezetet használtam a keretendszer elkészítésére.
 
+    \section{Google Colab futtatás}
+    A középső modul egyszerűsített változata elérhető Google Colab-on, a mellékletben található linken.~\ref{att:colab}
+
+    Mivel Google Colabot használtam, azon belül is GPU-s futtatókörnyezetet, így a kiértékelés gyorsabb volt.
+    A webes környezetben kikapcsolt valószínűségi változókkal dolgoztam és az inferenciák egyesével egymástól függetlenül történnek, emiatt elmondható, hogy a kiértékelés módja:
+    \begin{itemize}
+        \item determinisztikus, tehát ugyanarra az inputra mindig ugyanaz lesz az output, nem függ a véletlentől,
+        \item és izolált, azaz a modell egyik futtatásban sem "tud" semmit a korábbi bemeneteiről és válaszairól.
+    \end{itemize}
+    Ennek ellenére a Google Colab környezet nem egy hatékony módja a kiértékelésnek a korábban felsorolt gyengeségei miatt, helyette a lokális PyCharm keretrendszerem biztosít egy kényelmesebb és sokkal átláthatóbb környezetet.
+
 
 %    {\Large\textbf LMArena és Hugging Face modellek}
 
@@ -1458,6 +1469,7 @@ py -3.13 -m src.Framework.globalMain
         \item A kérdések sorrendje véletlenszerű
         \item Nincs ismétlődés az elemek között
         \item Minden modell ugyanazt a kérdéskészletet kapja meg
+        \item A modell nincsen tájékoztatva arról, hogy milyen arányban várhatóak igen és nem válaszok, sem egyéb részletekről a feladatot illetően
     \end{itemize}
 
     \section{Nehézségek}
@@ -1562,18 +1574,11 @@ py -3.13 -m src.Framework.globalMain
     \label{fig:ModelEvalSummary}
 \end{figure}
 
-
-    \section{Google Colab futtatás}
-    A középső modul egyszerűsített változata elérhető Google Colab-on, a mellékletben található linken.~\ref{att:colab}
-
-    Mivel Google Colabot használtam, azon belül is GPU-s futtatókörnyezetet, így a kiértékelés megfelelően gyors volt.
-    A webes környezet és a kikapcsolt valószínűségi változók és az inferenciák egyesével történő végigvárása miatt elmondható, hogy a kiértékelés módja:
-    \begin{itemize}
-        \item reprodukálható, azaz bárki meg tudja ismételni a kísérletet,
-        \item determinisztikus, tehát ugyanarra az inputra mindig ugyanaz lesz az output, nem függ a véletlentől,
+A kísérlet
+\begin{itemize}
+        \item reprodukálható, azaz a Python keretrendszer telepítése után bárki meg tudja ismételni a kísérletet,
         \item és izolált, azaz a modell egyik futtatásban sem "tud" semmit a korábbi bemeneteiről és válaszairól.
     \end{itemize}
-    Ennek ellenére a Google Colab környezet nem egy hatékony módja a kiértékelésnek a korábban felsorolt gyengeségei miatt, helyette a lokális PyCharm keretrendszerem biztosít egy kényelmesebb és sokkal átláthatóbb környezetet.
 
 
 \chapter{Konklúzió} % TODO
@@ -1581,7 +1586,7 @@ Tisztán látható, hogy a Qwen2.5-0.5B-Instruct modell előnyben részesíti a 
 Ezt az egyoldalúságot valószínűleg továbberősíti az adathalmaz mondatainak jellemző nem-köznyelvi jellege, hiszen nagyrészt régies, tudományos, irodalmi szövegeket tartalmaz.
 Ilyesfajta szövegeket egy ilyen kisméretű, köznyelvi angol megértésére szánt modell nem tud megfelelően ábrázolni és értelmezni.
 
-Említésre méltó az inferenciák időkülönbsége is a két modell között, amelyben viszont jelentősen nyert a Qwen. A Qwen modell esetén átlagosan 6 másodpercet vett igénybe egy kérdés megválaszolása, míg a Gemma modell esetén átlagosan kb. 35(!) másodperc volt.
+Említésre méltó az inferenciák időkülönbsége is a két modell között, amelyben viszont jelentősen nyert a Qwen fél milliárd paraméteres modellje. A $Qwen2.5-0.5B-Instruct$ modell esetén átlagosan 6 másodpercet vett igénybe egy kérdés megválaszolása, míg a Gemma modell esetén átlagosan kb. 35(!) másodperc volt.
 
 Habár nem sikerült olyan mértékben automatizálnom a keretrendszert, mint ahogy eredetileg megálmodtam, az elkészült keretrendszer jelentősen megkönnyítette a végső kísérlet elvégzését és így a saját munkámat. Részben így is manuálisan kellett feldolgozni az adatokat, de a munkafolyamatok túlnyomó többségét sikerült teljesen automatizálnom.
 Ha az elkészült munkámmal legalább egy embernek segítettem, akkor már megérte. Bízom benne, hogy a keretrendszerem és a kísérletem hasznos lesz a jövőben mások számára is.
