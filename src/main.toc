@@ -62,9 +62,9 @@
 \select@language {magyar} \contentsline {section}{\numberline {4.6}Jövőbeli tervek}{30}{section.4.6}%
 \select@language {magyar} \contentsline {chapter}{\numberline {5}Kísérlet}{31}{chapter.5}%
 \select@language {magyar} \contentsline {section}{\numberline {5.1}Módszertan}{31}{section.5.1}%
-\select@language {magyar} \contentsline {section}{\numberline {5.2}Nehézségek}{31}{section.5.2}%
+\select@language {magyar} \contentsline {section}{\numberline {5.2}Nehézségek}{32}{section.5.2}%
 \select@language {magyar} \contentsline {section}{\numberline {5.3}Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}{32}{section.5.3}%
-\select@language {magyar} \contentsline {section}{\numberline {5.4}2 modell összehasonlítása 100 véletlenszerű kérdésen}{32}{section.5.4}%
+\select@language {magyar} \contentsline {section}{\numberline {5.4}2 modell összehasonlítása 100 véletlenszerű kérdésen}{33}{section.5.4}%
 \select@language {magyar} \contentsline {chapter}{\numberline {6}Konklúzió}{34}{chapter.6}%
 \select@language {magyar} \ 
 \select@language {magyar} \contentsline {section}{Nyilatkozat}{37}{chapter*.24}%
