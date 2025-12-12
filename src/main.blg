@@ -1,16 +1,16 @@
-[3] Config.pm:308> INFO - This is Biber 2.20
-[6] Config.pm:311> INFO - Logfile is 'main.blg'
-[2020] biber-MSWIN64:340> INFO - === 
-[2503] Biber.pm:420> INFO - Reading 'main.bcf'
-[3452] Biber.pm:994> INFO - Found 24 citekeys in bib section 0
-[3532] Biber.pm:4463> INFO - Processing section 0
-[3564] Biber.pm:4654> INFO - Looking for bibtex file 'references.bib' for section 0
-[3727] bibtex.pm:1713> INFO - LaTeX decoding ...
-[3798] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
-[4093] UCollate.pm:68> INFO - Overriding locale 'hu-HU' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[4094] UCollate.pm:68> INFO - Overriding locale 'hu-HU' defaults 'variable = shifted' with 'variable = non-ignorable'
-[4094] Biber.pm:4283> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'hu-HU'
-[4131] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[4164] bbl.pm:779> INFO - Output to main.bbl
-[4165] Biber.pm:131> WARN - legacy month field 'September' in entry 'qwen2.5' is not an integer - this will probably not sort properly.
-[4165] Biber.pm:133> INFO - WARNINGS: 1
+[0] Config.pm:308> INFO - This is Biber 2.20
+[1] Config.pm:311> INFO - Logfile is 'main.blg'
+[261] biber-MSWIN64:340> INFO - === 
+[351] Biber.pm:420> INFO - Reading 'main.bcf'
+[570] Biber.pm:994> INFO - Found 24 citekeys in bib section 0
+[605] Biber.pm:4463> INFO - Processing section 0
+[627] Biber.pm:4654> INFO - Looking for bibtex file 'references.bib' for section 0
+[727] bibtex.pm:1713> INFO - LaTeX decoding ...
+[785] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
+[1112] UCollate.pm:68> INFO - Overriding locale 'hu-HU' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1112] UCollate.pm:68> INFO - Overriding locale 'hu-HU' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1112] Biber.pm:4283> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'hu-HU'
+[1137] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[1173] bbl.pm:779> INFO - Output to main.bbl
+[1174] Biber.pm:131> WARN - legacy month field 'September' in entry 'qwen2.5' is not an integer - this will probably not sort properly.
+[1174] Biber.pm:133> INFO - WARNINGS: 1

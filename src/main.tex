@@ -612,6 +612,17 @@ The cat sat on the _ .
     Ám nem voltam elégedett a környezet adta korlátozásokkal, pl.\ session-alapú futtatókörnyezet, amely a session végével törli az adataimat, lassú csatlakozási idő a távoli hardverekhez, limitált erőforrás-hozzáférés, perzisztens adattárolási lehetőségek hiánya és egyéb korlátozások, amelyek csak előfizetéssel kerülhetőek ki.
     Emiatt PyCharm fejlesztői környezetet használtam a keretendszer elkészítésére.
 
+    \section{Google Colab futtatás}
+    A középső modul egyszerűsített változata elérhető Google Colab-on, a mellékletben található linken.~\ref{att:colab}
+
+    Mivel Google Colabot használtam, azon belül is GPU-s futtatókörnyezetet, így a kiértékelés gyorsabb volt.
+    A webes környezetben kikapcsolt valószínűségi változókkal dolgoztam és az inferenciák egyesével egymástól függetlenül történnek, emiatt elmondható, hogy a modell válaszgenerálás módja:
+    \begin{itemize}
+        \item determinisztikus, tehát ugyanarra az inputra mindig ugyanaz lesz az output, nem függ a véletlentől,
+        \item és izolált, azaz a modell egyik futtatásban sem "tud" semmit a korábbi bemeneteiről és válaszairól.
+    \end{itemize}
+    Ennek ellenére a Google Colab környezet nem egy hatékony módja a kiértékelésnek a korábban felsorolt gyengeségei miatt, helyette a lokális PyCharm keretrendszerem biztosít egy kényelmesebb és sokkal átláthatóbb környezetet.
+
 
 %    {\Large\textbf LMArena és Hugging Face modellek}
 
@@ -1193,7 +1204,7 @@ The cat sat on the _ .
         \item szó,\item  szófaj, \item a szó pozíciói a mondatokban, \item az első mondat, \item a második mondat.
     \end{itemize}
     
-    Ebből nekünk csak a szó, első mondat és a második mondat szükséges, a többivel nem is fogunk foglalkozni. Először is a \texttt{randomsamples.py} szkriptem legenerál \texttt{n} darab - a \texttt{config.py}-ban meghatározott mennyiségű indexet. Ezek az indexek lesznek a kérdés-válasz párok azonosítói, én \texttt{guid}-nak neveztem el őket, amely a "globálisan egyedi azonosító" (globally unique identifier) rövidítése . Ezután megnyitjuk a fájlt, majd beolvassuk és minden egyes \texttt{guid}-adik indexű sorból eltároljuk a szót és a két mondatot egy listában. A guid értéke mindig 0 és 1399 között van, tehát az értéke pont megegyezik a teszthalmaz hosszával, így nem történhet túlindexelés. Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot. Végül ezt elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
+    Ebből nekünk csak a szó, első mondat és a második mondat szükséges, a többivel nem is fogunk foglalkozni. Először is a \texttt{randomsamples.py} szkriptem legenerál \texttt{n} darab - a \texttt{config.py}-ban meghatározott mennyiségű indexet. Ezek az indexek lesznek a kérdés-válasz párok azonosítói, én \texttt{GUID}-nak neveztem el őket, amely a "globálisan egyedi azonosító" (globally unique identifier) rövidítése . Ezután megnyitjuk a fájlt, majd beolvassuk és minden egyes \texttt{GUID}-adik indexű sorból eltároljuk a szót és a két mondatot egy listában. A GUID értéke mindig 0 és 1399 között van, tehát az értéke pont megegyezik a teszthalmaz hosszával, így nem történhet túlindexelés. Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot. Végül ezt elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
 
 
 
@@ -1270,10 +1281,10 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     \end{verbatim}
 
 
-    Tehát a main szkript meghívja a run szkriptet, amely továbbadja az irányítást a TernaryClassifier modulnak.
-    Ez végig megy az előző modulból inputként kapott modell válaszokon és soronként eldönti, hogy a "Yes", a "No", vagy a "?"  (nem egyértelmű) kategóriába sorolható-e be leginkább. Minden sor pontosan egy kategóriába soroltatik be.
+    Tehát a main szkript meghívja a run szkriptet, amely továbbadja az irányítást a \texttt{TernaryClassifier} szkriptnek. A szkript három kategóriába sorolja a válaszokat: "igen", "nem" és "talán" osztályokba.
+    Az osztályozás során végigmegy az előző modulból inputként kapott modell válaszokon és soronként eldönti, hogy a "Yes", a "No", vagy a "?"  (nem egyértelmű) kategóriába sorolható-e be a válasz. Minden sor pontosan egy kategóriába soroltatik be.
     Az eldöntési algoritmusnak több módszere is van, ezért választható itt az \texttt{AnswerAwareClassificationRule} és a \texttt{SentenceClassifier}, amelyet a config fájlban található \texttt{ADAPTIVE\_RUN} változóval lehet beállítani.
-    Ezután a kategóriákat a \texttt{TernaryResultsProcessor} összeveti a gold standardban szereplő értékekkel, majd az összevetés eredményei alapján készülnek el a run szkriptben a végeredmények.
+    Ezután a kategóriákat a \texttt{TernaryResultsProcessor} összeveti a gold standardban szereplő értékekkel, majd az összevetés eredményei alapján készülnek el a \texttt{run} szkriptben a végeredmények.
 
 
     A modul, és így az egész program végeredményeként az alábbi statisztikákat számolom ki.
@@ -1295,7 +1306,9 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 
 
 
-    \subsubsection{Konzisztencia}
+    \subsubsection{Konzisztens párok aránya}
+    Mivel a konzisztencia csak páronként értelmezhető, így a végeredménybe minden találat \textbf{1} értékkel kerül beszámításra.
+
     A program első lépésként végigmegy a válaszok sorain.
     Megnézi, hogy a modell mit válaszolt soronként.
     Ezt 3 kategóriába sorolja: \texttt{Yes}, \texttt{No} és \texttt{?}, azaz nem egyértelmű, "talán".
@@ -1303,24 +1316,32 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     Ha ez megvan, akkor összehasonlítja az egyenes és fordított kérdéseket páronként.
     Ez \texttt{n} kérdés esetén \texttt{n/2} összehasonlítást jelent.
     Az egyezések aránya adja meg a konzisztencia mértékét, amelyet százalékban fejezek ki.
-    Pl. 50\% esetén a válaszpárok fele egyezik, 90\% esetén 10-ből 9 válaszpár egyezik.
+    Ha pl. 100 kérdéspárra 50\% eredményt kapunk, akkor 50 kérdéspár megegyezik, 50 pár pedig nem.
 
 
-    \subsubsection{Pontosság}
+    \subsubsection{Pontos válaszok aránya}
+    Mivel a pontosság egyenként is értelmezhető, így a végeredménybe minden találat \textbf{0.5} értékkel kerül beszámításra.
+
     Önmagában az, hogy a válaszok konzisztensek, nem elég, hiszen lehet konzisztensen hibás az összes válasz is, amely nem egy kívánatos eredmény.
     Emiatt azt is meg kell vizsgálni, hogy a válasz megegyezik-e a gold standardbeli válasszal, függetlenül attól, hogy az egyenes vagy fordított.
     Ezért egy százalékban kifejezett mérőszámban eltároltam az egész adathalmazra levetített pontosság mértékét is.
     Pl. 50\% esetén a válaszok 50\%-a egyezik meg a gold standardbeli válasszal.
 
-    \subsubsection{Konzisztensen pontosság}
+    \subsubsection{Konzisztensen pontos párok aránya}
+    Mivel a konzisztensen pontosság csak páronként értelmezhető, így a végeredménybe minden találat \textbf{1} értékkel kerül beszámításra.
+
     A konzisztensen pontos válaszok egyszerűen azok, amelyek konzisztensek és pontosak is.
-    Magyarul azon túl, hogy az egyenes és a fordított kérdésre adott "igen" vagy "nem" válasz(ként generált token) megegyezik, mindez a gold standard válasszal is megegyezik.
+    Magyarul azon túl, hogy az egyenes és a fordított kérdésre adott válasz kategóriája ("igen" vagy "nem" vagy "talán") megegyezik, mindez a gold standard válasszal is összhangban van. Tehát a három válasz megegyezik.
     Emiatt ha a válasz nem "igen" vagy "nem", az automatikusan nem konzisztensen pontos.
 
-    \subsubsection{Bizonytalan}
+    \subsubsection{Bizonytalan párok aránya}
+    Mivel a bizonytalan páronként csak páronként értelmezhető, így a végeredménybe minden találat \textbf{1} értékkel kerül beszámításra.
+
     Ha egy egyenes-fordított kérdéspár \textbf{legalább egyikére} a válasz se nem "igen", se nem "nem", akkor azt a sort "bizonytalannak" számítom.
 
-    \subsubsection{Konzisztensen bizonytalan}
+    \subsubsection{Konzisztensen bizonytalan párok aránya}
+    Mivel a konzisztensen bizonytalan páronként csak páronként értelmezhető, így a végeredménybe minden találat \textbf{1} értékkel kerül beszámításra.
+
     Ha egy egyenes-fordított kérdéspár \textbf{mindkét kérdésére} a válasz se nem "igen", se nem "nem", akkor azt a sort "konzisztensen bizonytalannak" számítom.
 
     \subsubsection{LogFile}
@@ -1332,11 +1353,11 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 
 
      \section{Indexer}
-    Ha megkaptuk az 5 értéket (Konzisztens, Pontos, Konzisztensen pontos, Bizonytalan, Konzisztensen bizonytalan) a megfelelő tartományban, akkor már nincs más dolgunk, mint ellenőrizni az alábbiakat:
-    Az {adathalmaz sor-kérdés-egyenes válasz-fordított válasz-gold standard sor} guid-jai \textbf{pontosan megegyeznek-e}. A guid az eredeti, WiC adathalmazban elfoglalt sorszám, amelyre indexként tekintünk a beolvasás után. A guid az indices.out fájlban található
+    Ha megkaptuk az 5 értéket (Konzisztens, Pontos, Konzisztensen pontos, Bizonytalan, Konzisztensen bizonytalan) a megfelelő tartományban, akkor már nincs más dolgunk, mint összeindexelni a kérdés-válasz párokat a Word-in-Context adathalmaz megegyező indexű mintapéldájával és az ahhoz tartozó gold standard helyes válasszal (mindegyik index meg kell hogy egyezzen). Ehhez nem árt ellenőrizni az alábbiakat:
+    Az {adathalmaz sor-kérdés-egyenes válasz-fordított válasz-gold standard sor} \texttt{GUID}-jai \textbf{pontosan megegyeznek-e}. A \texttt{GUID} az eredeti, WiC adathalmazban elfoglalt sorszám, amelyre indexként tekintünk a beolvasás után. A \texttt{GUID} az indices.out fájlban található.
     Ilyen nagy mennyiségű adat esetén komoly problémát jelent a manuális indexelés, kiváltképpen mivel a kérdések sorrendje eleve véletlenszerű.
     Ráadásul indexer nélkül körülményes a ModelOutputProcessor eredményinek validálása.
-    Éppen ezért a ModelOutputProcessor modulban létrehoztam egy indexer függvényt, amely az az egyenes kérdést, a fordított kérdést, az egyenes kérdésre adott választ, a fordított kérdésre adott választ, a gold standard választ, valamint a ModelInputPreparerben létrehozott kérdés \texttt{guid}-jait indexeli, kapcsolja össze.
+    Éppen ezért a ModelOutputProcessor modulban létrehoztam egy indexer függvényt, amely az az egyenes kérdést, a fordított kérdést, az egyenes kérdésre adott választ, a fordított kérdésre adott választ, a gold standard választ, valamint a ModelInputPreparerben létrehozott kérdés \texttt{GUID}-jait indexeli, kapcsolja össze.
     Így visszakereshetővé vált, hogy melyik választ melyik kérdésre adta a modell, és hogy az megegyezik-e a gold standarddal.
 
     
@@ -1443,16 +1464,23 @@ py -3.13 -m src.Framework.globalMain
     Ehhez azonban még sok fejlesztési "mérföldkövet" kellene elérnem.
     Egy letisztult webes, vagy konzolos CLI felület sokat segítene, hogy a projekt szélesebb körben, több ember számára elérhető lehessen.
     A Hugging Face Hub~\cite{huggingfacehub} alkalmas platform lehet erre.
-    Továbbá egy adatbázis a jelenlegi nyers szöveg-alapú adatkezelés helyett nagy előrelépés lenne.
+    Továbbá egy adatbázis a jelenlegi nyers szöveg-alapú indexelés és adatkezelés helyett nagy előrelépés lenne.
 
-\chapter{Kísérlet}
+\chapterwithdesc{Kísérlet}
+    {Két konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
     A végső cél, amiért az egész szoftver keretrendszer készült, az volt, hogy legalább 2 modellt összehasonlíthassunk minél nagyobb mennyiségű kérdésen.
 
-
-    \section{Két konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
-    Ahhoz, hogy módszertanilag helyes legyen és látszódjon, hogy az eredmények nincsenek beégetve a keretrendszerbe, a Témavezetőmmel megegyezve a kérdéseket random index generátor függvény segítségével véletlenszerűen választottam ki a WiC-adathalmaz bejegyzéseiből.
-    A kérdések között nincs ismétlődés és minden modell ugyanazt a kérdéskészletet kapja meg feladatként. A kérdések 100, véletlenszerűen kiválasztott WiC adathalmazbeli mintából származnak.
-    
+    \section{Módszertan}
+    Ahhoz, hogy módszertanilag helyes legyen és látszódjon, hogy az eredmények nincsenek beégetve a keretrendszerbe, a Témavezetőmmel megegyezve a példákat random index választó függvény segítségével véletlenszerűen választottam ki a WiC-adathalmaz bejegyzéseiből, szigorúan figyelve az ismétlődő indexek elkerülésére.
+    Az kérdések sorrendje az indexek alapján készült egyedi \texttt{GUID}-khoz vannak kötve, így a kérdések között sincs ismétlődés. Mindegyik egyedi, és minden modell ugyanazt a kérdéskészletet kapja meg feladatként. Az így előállított kérdések mennyisége maximálisan 2800 darab lehet, mivel a WiC-adathalmazban ennyi bejegyzés található.
+    Összefoglalva:
+    \begin{itemize}
+        \item A kérdések száma tetszőleges, maximum 2800
+        \item A kérdések sorrendje véletlenszerű
+        \item Nincs ismétlődés az elemek között
+        \item Minden modell ugyanazt a kérdéskészletet kapja meg
+        \item A modell nincsen tájékoztatva arról, hogy milyen arányban várhatóak igen és nem válaszok, sem egyéb részletekről a feladatot illetően
+    \end{itemize}
 
     \section{Nehézségek}
     Akkor beszélhetünk egyáltalán konzisztenciáról, azt tekinthetjük a konzisztens viselkedés első szintjének, ha a modell \textit{reagál a bemenetre}, azaz a válaszának egyáltalán valami köze van a feltett kérdésekhez.
@@ -1514,7 +1542,7 @@ py -3.13 -m src.Framework.globalMain
             ymajorgrids=true,
             grid style=dashed,
             enlarge x limits=0.15,
-            legend style={at={(0.5,-0.25)}, anchor=north, legend columns=-1},
+            legend style={at={(0.5,-0.55)}, anchor=north, legend columns=-1},
             nodes near coords,
             nodes near coords style={font=\footnotesize},
             every node near coord/.append style={/pgf/number format/fixed, /pgf/number format/precision=2}
@@ -1526,7 +1554,7 @@ py -3.13 -m src.Framework.globalMain
             draw=yellow!50!black
         ] coordinates {
             (Konzisztens, 79.00)
-            (Pontos, 76.00)
+            (Pontos, 65.50)
             (Konzisztensen pontos, 55.00)
             (Bizonytalan, 0.00)
             (Konzisztensen bizonytalan, 0.00)
@@ -1549,9 +1577,9 @@ py -3.13 -m src.Framework.globalMain
             fill=blue!60,
             draw=blue!80!black
         ] coordinates {
-            (Konzisztens, 84.00)
-            (Pontos, 70.00)
-            (Konzisztensen pontos, 54.00)
+            (Konzisztens, 73.00)
+            (Pontos, 62.50)
+            (Konzisztensen pontos, 49.00)
             (Bizonytalan, 0.00)
             (Konzisztensen bizonytalan, 0.00)
         };
@@ -1565,22 +1593,15 @@ py -3.13 -m src.Framework.globalMain
         \end{axis}
     \end{tikzpicture}
 
-    \caption{Két modell kiértékelése 100-100 véletlenszerű kérdésen…}
+    \caption{Több modell összevetése véletlenszerű példafeladatokon}
     \label{fig:ModelEvalSummary}
 \end{figure}
 
-
-    \section{Google Colab futtatás}
-    A középső modul egyszerűsített változata elérhető Google Colab-on, a mellékletben található linken.~\ref{att:colab}
-
-    Mivel Google Colabot használtam, azon belül is GPU-s futtatókörnyezetet, így a kiértékelés megfelelően gyors volt.
-    A webes környezet és a kikapcsolt valószínűségi változók és az inferenciák egyesével történő végigvárása miatt elmondható, hogy a kiértékelés módja:
-    \begin{itemize}
-        \item reprodukálható, azaz bárki meg tudja ismételni a kísérletet,
-        \item determinisztikus, tehát ugyanarra az inputra mindig ugyanaz lesz az output, nem függ a véletlentől,
+A kísérlet
+\begin{itemize}
+        \item reprodukálható, azaz a Python keretrendszer telepítése után bárki meg tudja ismételni a kísérletet,
         \item és izolált, azaz a modell egyik futtatásban sem "tud" semmit a korábbi bemeneteiről és válaszairól.
     \end{itemize}
-    Ennek ellenére a Google Colab környezet nem egy hatékony módja a kiértékelésnek a korábban felsorolt gyengeségei miatt, helyette a lokális PyCharm keretrendszerem biztosít egy kényelmesebb és sokkal átláthatóbb környezetet.
 
 
 \chapter{Konklúzió} % TODO
@@ -1588,7 +1609,7 @@ Tisztán látható, hogy a Qwen2.5-0.5B-Instruct és a Qwen2.5-1.5B-Instruct mod
 Ezt az egyoldalúságot valószínűleg továbberősíti az adathalmaz mondatainak jellemző nem-köznyelvi jellege, hiszen nagyrészt régies, tudományos, irodalmi szövegeket tartalmaz.
 Ilyesfajta szövegeket egy ilyen kisméretű, köznyelvi angol megértésére szánt modell nem tud megfelelően ábrázolni és értelmezni. Ezzel szemben a Gemma-2-2b-it modell kiegyensúlyozottabb viselkedést mutatott adott, amely valószínűleg annak köszönhető, hogy a Google tanítási folyamata során jobb általánosító képességet ért el a modell, amely így kevésbé hajlamos a "nem" válasz túlsúlyára.
 
-Említésre méltó az inferenciák időkülönbsége is a két modell között, amelyben viszont jelentősen nyert a Qwen. A Qwen modell esetén átlagosan 6 másodpercet vett igénybe egy kérdés megválaszolása, míg a Gemma modell esetén átlagosan kb. 35(!) másodperc volt.
+Említésre méltó az inferenciák időkülönbsége is a két modell között, amelyben viszont jelentősen nyert a Qwen fél milliárd paraméteres modellje. A $Qwen2.5-0.5B-Instruct$ modell esetén átlagosan 6 másodpercet vett igénybe egy kérdés megválaszolása, míg a Gemma modell esetén átlagosan kb. 35(!) másodperc volt.
 
 Habár nem sikerült olyan mértékben automatizálnom a keretrendszert, mint ahogy eredetileg megálmodtam, az elkészült keretrendszer jelentősen megkönnyítette a végső kísérlet elvégzését és így a saját munkámat. Részben így is manuálisan kellett feldolgozni az adatokat, de a munkafolyamatok túlnyomó többségét sikerült teljesen automatizálnom.
 Ha az elkészült munkámmal legalább egy embernek segítettem, akkor már megérte. Bízom benne, hogy a keretrendszerem és a kísérletem hasznos lesz a jövőben mások számára is.
