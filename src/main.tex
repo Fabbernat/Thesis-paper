@@ -1532,6 +1532,18 @@ py -3.13 -m src.Framework.globalMain
             (Konzisztensen bizonytalan, 0.00)
         };
 
+        % Qwen 1.5B
+        \addplot[
+            fill=green!70!brown,
+            draw=green!50!black
+        ] coordinates {
+            (Konzisztens, 94.00)
+            (Pontos, 68.00)
+            (Konzisztensen pontos, 65.00)
+            (Bizonytalan, 0.00)
+            (Konzisztensen bizonytalan, 0.00)
+        };
+
         % Gemma 2B
         \addplot[
             fill=blue!60,
@@ -1546,6 +1558,7 @@ py -3.13 -m src.Framework.globalMain
 
         \legend{
             Qwen 0.5B,
+            Qwen 1.5B,
             Gemma 2B
         }
 
@@ -1571,9 +1584,9 @@ py -3.13 -m src.Framework.globalMain
 
 
 \chapter{Konklúzió} % TODO
-Tisztán látható, hogy a Qwen2.5-0.5B-Instruct modell előnyben részesíti a "nem" választ, amelynek fő oka valószínűleg az, hogy nincs elég lexikális tudása, hogy ezeknek a WiC adathalmazbeli ritka szavaknak a pontos jelentését emberi szinten modellezni tudja, így a megfelelő tudás hiányában a biztonságosabb "nem ugyanazt jelentik" predikcióba esik vissza. 
+Tisztán látható, hogy a Qwen2.5-0.5B-Instruct és a Qwen2.5-1.5B-Instruct modell is jelentősen előnyben részesíti a "nem" választ, amelynek fő oka valószínűleg az, hogy nincs elég lexikális tudása, hogy ezeknek a WiC adathalmazbeli ritka szavaknak a pontos jelentését emberi szinten modellezni tudja, így a megfelelő tudás hiányában a biztonságosabb "nem ugyanazt jelentik" predikcióba esik vissza. 
 Ezt az egyoldalúságot valószínűleg továbberősíti az adathalmaz mondatainak jellemző nem-köznyelvi jellege, hiszen nagyrészt régies, tudományos, irodalmi szövegeket tartalmaz.
-Ilyesfajta szövegeket egy ilyen kisméretű, köznyelvi angol megértésére szánt modell nem tud megfelelően ábrázolni és értelmezni.
+Ilyesfajta szövegeket egy ilyen kisméretű, köznyelvi angol megértésére szánt modell nem tud megfelelően ábrázolni és értelmezni. Ezzel szemben a Gemma-2-2b-it modell kiegyensúlyozottabb viselkedést mutatott adott, amely valószínűleg annak köszönhető, hogy a Google tanítási folyamata során jobb általánosító képességet ért el a modell, amely így kevésbé hajlamos a "nem" válasz túlsúlyára.
 
 Említésre méltó az inferenciák időkülönbsége is a két modell között, amelyben viszont jelentősen nyert a Qwen. A Qwen modell esetén átlagosan 6 másodpercet vett igénybe egy kérdés megválaszolása, míg a Gemma modell esetén átlagosan kb. 35(!) másodperc volt.
 
