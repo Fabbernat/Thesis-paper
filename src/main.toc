@@ -45,28 +45,29 @@
 \select@language {magyar} \contentsline {subsection}{\numberline {4.2.5}ModelOutputProcessor}{25}{subsection.4.2.5}%
 \select@language {magyar} \contentsline {subsubsection}{Konzisztens párok aránya}{26}{section*.17}%
 \select@language {magyar} \contentsline {subsubsection}{Pontos válaszok aránya}{26}{section*.18}%
-\select@language {magyar} \contentsline {subsubsection}{Konzisztensen pontos párok aránya}{26}{section*.19}%
-\select@language {magyar} \contentsline {subsubsection}{Bizonytalan párok aránya}{26}{section*.20}%
-\select@language {magyar} \contentsline {subsubsection}{Konzisztensen bizonytalan párok aránya}{26}{section*.21}%
-\select@language {magyar} \contentsline {subsubsection}{LogFile}{27}{section*.22}%
+\select@language {magyar} \contentsline {subsubsection}{Pontos válaszpárok aránya}{26}{section*.19}%
+\select@language {magyar} \contentsline {subsubsection}{Konzisztensen pontos párok aránya}{26}{section*.20}%
+\select@language {magyar} \contentsline {subsubsection}{Bizonytalan párok aránya}{27}{section*.21}%
+\select@language {magyar} \contentsline {subsubsection}{Konzisztensen bizonytalan párok aránya}{27}{section*.22}%
+\select@language {magyar} \contentsline {subsubsection}{LogFile}{27}{section*.23}%
 \select@language {magyar} \contentsline {section}{\numberline {4.3}Indexer}{27}{section.4.3}%
-\select@language {magyar} \contentsline {section}{\numberline {4.4}Tesztelés}{27}{section.4.4}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.4.1}A programok futtatása}{27}{subsection.4.4.1}%
+\select@language {magyar} \contentsline {section}{\numberline {4.4}Tesztelés}{28}{section.4.4}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.4.1}A programok futtatása}{28}{subsection.4.4.1}%
 \select@language {magyar} \contentsline {section}{\numberline {4.5}Egyebek}{29}{section.4.5}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.5.1}Elnevezési stílus}{29}{subsection.4.5.1}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.5.2}Hibakezelés}{29}{subsection.4.5.2}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.5.3}Dupla importok}{29}{subsection.4.5.3}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.5.2}Hibakezelés}{30}{subsection.4.5.2}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.5.3}Dupla importok}{30}{subsection.4.5.3}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.5.4}Kommentek}{30}{subsection.4.5.4}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.5.5}Platformfüggetlenség}{30}{subsection.4.5.5}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.5.6}Skálázhatóság, bővíthetőség}{30}{subsection.4.5.6}%
-\select@language {magyar} \contentsline {section}{\numberline {4.6}Jövőbeli tervek}{30}{section.4.6}%
-\select@language {magyar} \contentsline {chapter}{\numberline {5}Kísérlet}{31}{chapter.5}%
-\select@language {magyar} \contentsline {section}{\numberline {5.1}Módszertan}{31}{section.5.1}%
-\select@language {magyar} \contentsline {section}{\numberline {5.2}Nehézségek}{32}{section.5.2}%
-\select@language {magyar} \contentsline {section}{\numberline {5.3}Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}{32}{section.5.3}%
-\select@language {magyar} \contentsline {section}{\numberline {5.4}2 modell összehasonlítása 100 véletlenszerű kérdésen}{33}{section.5.4}%
-\select@language {magyar} \contentsline {chapter}{\numberline {6}Konklúzió}{34}{chapter.6}%
+\select@language {magyar} \contentsline {section}{\numberline {4.6}Jövőbeli tervek}{31}{section.4.6}%
+\select@language {magyar} \contentsline {chapter}{\numberline {5}Kísérlet}{32}{chapter.5}%
+\select@language {magyar} \contentsline {section}{\numberline {5.1}Módszertan}{32}{section.5.1}%
+\select@language {magyar} \contentsline {section}{\numberline {5.2}Nehézségek}{33}{section.5.2}%
+\select@language {magyar} \contentsline {section}{\numberline {5.3}Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}{33}{section.5.3}%
+\select@language {magyar} \contentsline {section}{\numberline {5.4}Három modell összehasonlítása 100 véletlenszerű kérdésen}{34}{section.5.4}%
+\select@language {magyar} \contentsline {chapter}{\numberline {6}Konklúzió}{35}{chapter.6}%
 \select@language {magyar} \ 
-\select@language {magyar} \contentsline {section}{Nyilatkozat}{37}{chapter*.24}%
-\select@language {magyar} \contentsline {section}{Köszönetnyilvánítás}{38}{chapter*.25}%
-\select@language {magyar} \contentsline {section}{Elektronikus mellékletek}{39}{chapter*.26}%
+\select@language {magyar} \contentsline {section}{Nyilatkozat}{38}{chapter*.25}%
+\select@language {magyar} \contentsline {section}{Köszönetnyilvánítás}{39}{chapter*.26}%
+\select@language {magyar} \contentsline {section}{Elektronikus mellékletek}{40}{chapter*.27}%

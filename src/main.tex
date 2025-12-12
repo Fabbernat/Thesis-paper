@@ -1293,14 +1293,16 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     Informatikusként természetesen szeretnénk az eredményeket számszerűsíteni.
     Különösen igaz ez a \texttt{ModelOutputProcessor}, esetén, hiszen az eredmények könnyen számszerűsíthetők.
     Ez talán a legkönnyedebb módja a különböző futtatások összehasonlításának és ez teszi lehetővé a következtetések levonását.
-    Éppen ezért minden eredményt egy 0 és 100\% közé normalizált számként fejez ki a programom.
+    Ehhez viszont tisztáznunk kell a pontosságfogalmakat.
+    Éppen ezért minden végeredményt egy 0 és 100\% közé normalizált számként fejez ki a programom.
     Az eredményként az alábbi statisztikai indikátor mérőszámokat számítja ki a modul:
     \begin{itemize}
-        \item Konzisztens válaszok aránya
+        \item Konzisztens válaszpárok aránya
         \item Pontos válaszok aránya
-        \item Konzisztensen pontos válaszok aránya
-        \item Bizonytalan válaszok aránya
-        \item Konzisztensen bizonytalan válaszok aránya
+        \item Pontos válaszpárok aránya
+        \item Konzisztensen pontos válaszpárok aránya
+        \item Bizonytalan válaszpárok aránya
+        \item Konzisztensen bizonytalan válaszpárok aránya
     \end{itemize}
 
 
@@ -1320,12 +1322,18 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 
 
     \subsubsection{Pontos válaszok aránya}
-    Mivel a pontosság egyenként is értelmezhető, így a végeredménybe minden találat \textbf{0.5} értékkel kerül beszámításra.
+    Mivel a pontosság egyenként is értelmezhető. Ez így nem összevethető a többi adattal, így ez egy külön mérőszám, amelybe minden találat \textbf{0.5} értékkel kerül beszámításra.
 
     Önmagában az, hogy a válaszok konzisztensek, nem elég, hiszen lehet konzisztensen hibás az összes válasz is, amely nem egy kívánatos eredmény.
     Emiatt azt is meg kell vizsgálni, hogy a válasz megegyezik-e a gold standardbeli válasszal, függetlenül attól, hogy az egyenes vagy fordított.
     Ezért egy százalékban kifejezett mérőszámban eltároltam az egész adathalmazra levetített pontosság mértékét is.
     Pl. 50\% esetén a válaszok 50\%-a egyezik meg a gold standardbeli válasszal.
+
+    \subsubsection{Pontos válaszpárok aránya}
+    Minden pontos válaszpár \textbf{1} értékkel kerül beszámításra.
+
+    Pontos válaszpárok alatt azt értjük, hogy egy egyenes-fordított kérdéspár legalább egyike megegyezik a gold standarddal.
+    Magyarán abban az esetben tekintünk jónak egy teszteset párost, ha az arra kapott válasz nem konzisztensen rossz (tehát legalább az egyik sorrendben helyes a megoldás).
 
     \subsubsection{Konzisztensen pontos párok aránya}
     Mivel a konzisztensen pontosság csak páronként értelmezhető, így a végeredménybe minden találat \textbf{1} értékkel kerül beszámításra.
@@ -1468,7 +1476,7 @@ py -3.13 -m src.Framework.globalMain
 
 \chapterwithdesc{Kísérlet}
     {Két konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
-    A végső cél, amiért az egész szoftver keretrendszer készült, az volt, hogy legalább 2 modellt összehasonlíthassunk minél nagyobb mennyiségű kérdésen.
+    A végső cél, amiért az egész szoftver keretrendszer készült, az volt, hogy legalább két modellt összehasonlíthassunk minél nagyobb mennyiségű kérdésen.
 
     \section{Módszertan}
     Ahhoz, hogy módszertanilag helyes legyen és látszódjon, hogy az eredmények nincsenek beégetve a keretrendszerbe, a Témavezetőmmel megegyezve a példákat random index választó függvény segítségével véletlenszerűen választottam ki a WiC-adathalmaz bejegyzéseiből, szigorúan figyelve az ismétlődő indexek elkerülésére.
@@ -1520,9 +1528,9 @@ py -3.13 -m src.Framework.globalMain
     Hangsúlyozom, hogy nem a {gemma-2b-it}, hanem a {gemma-\textit{2}-2b-it} változatot választottam.
 %    A modellek eredményeit összessítő táblázat a 4.1. táblázatban látható.\ref{tab:model-eval-summary}
 
-    \section{2 modell összehasonlítása 100 véletlenszerű kérdésen}
+    \section{Három modell összehasonlítása 100 véletlenszerű kérdésen}
     Végül a \texttt{Qwen/Qwen2.5-0.5B-Instruct} \texttt{Qwen/Qwen2.5-1.5B-Instruct} és a \texttt{Google/Gemma-2-2b-it} modelleket hasonlítottam össze. Az előbbi kettő az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük 2 eltérő méretű (0.5B vs 2B) és gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
-    Keretrendszerem érdeme, hogy végül sikerült a 2 modell hibátlan válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) elérni.
+    Keretrendszerem érdeme, hogy végül sikerült a három modell hibátlan válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) elérni.
     A modellek hibátlanul csak "Yes" és "No" válaszokat adtak.
     Az alábbi ábrában \texttt{n} modell összehasonlítása látható \texttt{m} véletlenszerűen kiválasztott kérdésen.
     % ide jön a táblázat
