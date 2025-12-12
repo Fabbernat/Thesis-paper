@@ -47,12 +47,12 @@
 \select@language {magyar} \contentsline {subsection}{\numberline {4.2.4}HuggingFaceModelInferencer}{24}{subsection.4.2.4}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.2.5}ModelOutputProcessor}{25}{subsection.4.2.5}%
 \select@language {magyar} \contentsline {subsubsection}{Konzisztens párok aránya}{26}{section*.20}%
-\select@language {magyar} \contentsline {subsubsection}{Pontos válaszok aránya}{27}{section*.21}%
+\select@language {magyar} \contentsline {subsubsection}{Pontos válaszok aránya}{26}{section*.21}%
 \select@language {magyar} \contentsline {subsubsection}{Pontos válaszpárok aránya}{27}{section*.22}%
 \select@language {magyar} \contentsline {subsubsection}{Konzisztensen pontos párok aránya}{27}{section*.23}%
 \select@language {magyar} \contentsline {subsubsection}{Bizonytalan párok aránya}{27}{section*.24}%
 \select@language {magyar} \contentsline {subsubsection}{Konzisztensen bizonytalan párok aránya}{27}{section*.25}%
-\select@language {magyar} \contentsline {subsubsection}{LogFile}{28}{section*.26}%
+\select@language {magyar} \contentsline {subsubsection}{LogFile}{27}{section*.26}%
 \select@language {magyar} \contentsline {section}{\numberline {4.3}Indexer}{28}{section.4.3}%
 \select@language {magyar} \contentsline {section}{\numberline {4.4}Tesztelés}{28}{section.4.4}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.4.1}A programok futtatása}{28}{subsection.4.4.1}%
@@ -60,8 +60,8 @@
 \select@language {magyar} \contentsline {subsection}{\numberline {4.5.1}Elnevezési stílus}{30}{subsection.4.5.1}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.5.2}Hibakezelés}{30}{subsection.4.5.2}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.5.3}Dupla importok}{30}{subsection.4.5.3}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.5.4}Kommentek}{31}{subsection.4.5.4}%
-\select@language {magyar} \contentsline {subsection}{\numberline {4.5.5}Platformfüggetlenség}{31}{subsection.4.5.5}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.5.4}Kommentek}{30}{subsection.4.5.4}%
+\select@language {magyar} \contentsline {subsection}{\numberline {4.5.5}Platformfüggetlenség}{30}{subsection.4.5.5}%
 \select@language {magyar} \contentsline {subsection}{\numberline {4.5.6}Skálázhatóság, bővíthetőség}{31}{subsection.4.5.6}%
 \select@language {magyar} \contentsline {section}{\numberline {4.6}Jövőbeli tervek}{31}{section.4.6}%
 \select@language {magyar} \contentsline {chapter}{\numberline {5}Kísérlet}{32}{chapter.5}%

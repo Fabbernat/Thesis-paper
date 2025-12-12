@@ -1211,7 +1211,7 @@ The cat sat on the _ .
     Az alapötlet a WiC-minták kérdéssé konvertálása mögött, hogy a mintákból immár kinyert szó, első mondat és a második mondat sztringeket mintaillesztéssel két előre meghatározott sablonba szúrjuk, amelyeknek egyike az egyenes, másik a fordított kérdést gyártja le.
     \begin{figure}
         \centering
-        \includegraphics{sentence_builders}
+        \includegraphics[width=1\linewidth]{sentence_builders}
         \caption{Jól látható, hogy a WiC-mintákat előre meghatározott mintákba szúrjuk be}
         \label{fig:sentence_builders}
     \end{figure}
@@ -1219,7 +1219,7 @@ The cat sat on the _ .
     Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot. Végül ezt elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
     
 
-    \subparagraph{Nyelvtani előfeldolgozás.}
+    \subparagraph{Nyelvtani előfeldolgozás.}\\
     Ugyan csak kényelmi dolog, de a mondatok az adathalmazban tokenizálva vannak, emiatt minden írásjel szóközzel van elválasztva az előtte szereplő tokentől  - vagyis pontosabban tabulátorral, de a programomban szóközt használok az egyes részek szeparálására. A lényeg, hogy az AI modellek hatékonyabb prompotolása miatt, és hogy számomra, ember számára is érthetőbb legyen, visszaalakítottam standard, nyelvtanilag helyes angol mondatokká. Ehhez csak egyszerűen minden írásjel és az aposztrófok elől el kellett tüntetnem a szóköz(öke)t. Ezáltal sokkal olvashatóbbá váltak a mondatok.
 
 
