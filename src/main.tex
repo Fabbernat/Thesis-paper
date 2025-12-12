@@ -1209,7 +1209,12 @@ The cat sat on the _ .
     \paragraph{A kérdések létrehozásának folyamata}
     \subparagraph{}
     Az alapötlet a WiC-minták kérdéssé konvertálása mögött, hogy a mintákból immár kinyert szó, első mondat és a második mondat sztringeket mintaillesztéssel két előre meghatározott sablonba szúrjuk, amelyeknek egyike az egyenes, másik a fordított kérdést gyártja le.
-    
+    \begin{figure}
+        \centering
+        \includegraphics{sentence_builders}
+        \caption{Jól látható, hogy a WiC-mintákat előre meghatározott mintákba szúrjuk be}
+        \label{fig:sentence_builders}
+    \end{figure}
 
     Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot. Végül ezt elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
     
