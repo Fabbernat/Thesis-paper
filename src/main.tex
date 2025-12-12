@@ -1647,7 +1647,7 @@ A kísérlet
 
 \chapter{Konklúzió} % TODO
 Tisztán látható, hogy a Qwen2.5-0.5B-Instruct és a Qwen2.5-1.5B-Instruct modell is jelentősen előnyben részesíti a "nem" választ, amelynek fő oka valószínűleg az, hogy nincs elég lexikális tudása, hogy ezeknek a WiC adathalmazbeli ritka szavaknak a pontos jelentését emberi szinten modellezni tudja, így a megfelelő tudás hiányában a biztonságosabb "nem ugyanazt jelentik" predikcióba esik vissza.
-Emiatt erre az egyszerűsített bináris döntési feladatra a modell válaszai rendkívül konzisztensnek tűnhetnek, ám ez legfőképpen csak a fent említett szerencsés torzításnak köszönhető.
+Emiatt erre az egyszerűsített bináris döntési feladatra a qwen modell válaszai jelentősen jóbbnak bizonyultak. (a Qwen2.5-1.5B-Instruct 94\%!).
 Ezt az egyoldalúságot valószínűleg továbberősíti az adathalmaz mondatainak jellemző nem-köznyelvi jellege, hiszen nagyrészt régies, tudományos, irodalmi szövegeket tartalmaz.
 Ilyesfajta szövegeket egy ilyen kisméretű, köznyelvi angol megértésére szánt modell nem tud megfelelően ábrázolni és értelmezni. Ezzel szemben a Gemma-2-2b-it modell kiegyensúlyozottabb viselkedést mutatott adott, amely valószínűleg annak köszönhető, hogy a Google tanítási folyamata során jobb általánosító képességet ért el a modell, amely így kevésbé hajlamos a "nem" válasz túlsúlyára.
 
