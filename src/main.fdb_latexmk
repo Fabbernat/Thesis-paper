@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1765507329.72886 "main.bcf" "main.bbl" "main" 1765539849.50674 0
-  "main.bcf" 1765539849 109803 f85d12e06a34a5832ae029d58463250d "pdflatex"
+["biber main"] 1765507329.72886 "main.bcf" "main.bbl" "main" 1765540343.51096 0
+  "main.bcf" 1765540342 109803 f85d12e06a34a5832ae029d58463250d "pdflatex"
   "references.bib" 1765324443 14637 fcb089654f7059f241b6add52b6f9db1 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1765539844.41836 "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" "main.pdf" "main" 1765539849.50747 0
+["pdflatex"] 1765540336.31136 "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" "main.pdf" "main" 1765540343.51463 0
   "C:/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
   "C:/MiKTeX/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136765053 1292 bd42be2f344128bff6d35d98474adfe3 ""
   "C:/MiKTeX/fonts/tfm/adobe/courier/pcrr8t.tfm" 1136765053 1384 4632f5e54900a7dadbb83f555bc61e56 ""
@@ -277,13 +277,13 @@
   "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1765234507 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tctt1200.pk" 1764887141 11368 22e1b848240ae33eb8dfe3755848aa08 ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1750612748 13218441 72e452d2d4da982476be41d8461887dd ""
-  "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" 1765539843 139643 269e55c9bc046408c86f9571b10d37a3 ""
-  "main.aux" 1765539849 17943 4297e6e2bc44c5c5733a9eb56bc35491 "pdflatex"
+  "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" 1765540335 139779 9da1708c73e276896520bab42c086318 ""
+  "main.aux" 1765540342 17943 4297e6e2bc44c5c5733a9eb56bc35491 "pdflatex"
   "main.bbl" 1765507334 45549 0398baeb5186bb0b1c91568c339c1d64 "biber main"
-  "main.out" 1765539849 10256 c390491e994dfc453779b9ccc9883707 "pdflatex"
-  "main.run.xml" 1765539849 2304 594eb205a07cc1738df7b0c71eafa9d5 "pdflatex"
-  "main.tex" 1765539843 139643 269e55c9bc046408c86f9571b10d37a3 ""
-  "main.toc" 1765539849 8002 bcd5785b7245b7790c7747fc4784103f "pdflatex"
+  "main.out" 1765540342 10256 c390491e994dfc453779b9ccc9883707 "pdflatex"
+  "main.run.xml" 1765540342 2304 594eb205a07cc1738df7b0c71eafa9d5 "pdflatex"
+  "main.tex" 1765540335 139779 9da1708c73e276896520bab42c086318 ""
+  "main.toc" 1765540342 8002 bcd5785b7245b7790c7747fc4784103f "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"
