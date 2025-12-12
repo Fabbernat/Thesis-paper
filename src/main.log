@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  12 DEC 2025 16:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  12 DEC 2025 21:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -787,7 +787,11 @@ Package pgfplots: loading complementary utilities for your pgf version...
 File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (C:\MiKTeX\tex/generic/pgf/libraries\pgflibraryplotmarks.code.tex
 File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (C:\MiKTeX\tex/latex/tools\indentfirst.sty
+))) (C:\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarypatterns.code.tex
+File: tikzlibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (C:\MiKTeX\tex/generic/pgf/libraries\pgflibrarypatterns.code.tex
+File: pgflibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (C:\MiKTeX\tex/latex/tools\indentfirst.sty
 Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
 ) (C:\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
@@ -929,30 +933,30 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'magyar'.
-LaTeX Font Info:    Trying to load font information for T1+ptm on input line 76.
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 77.
  (C:\MiKTeX\tex/latex/psnfss\t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 ) (main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
  (C:\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count518
@@ -985,9 +989,9 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (main.bbl)
-Package biblatex Info: Reference section=0 on input line 76.
-Package biblatex Info: Reference segment=0 on input line 76.
-Package hyperref Info: Link coloring OFF on input line 76.
+Package biblatex Info: Reference section=0 on input line 77.
+Package biblatex Info: Reference segment=0 on input line 77.
+Package hyperref Info: Link coloring OFF on input line 77.
  (main.out) (main.out)
 \@outlinefile=\write7
 \openout7 = `main.out'.
@@ -1001,12 +1005,12 @@ LaTeX Info: Redefining \cal on input line 577.
 LaTeX Info: Redefining \mit on input line 578.
 )
 Package babel Info: 'magyar' activates 'magyar' shorthands.
-(babel)             Reported  on input line 76.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 123.
+(babel)             Reported  on input line 77.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 124.
  (C:\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 123.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 124.
  (C:\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -1021,11 +1025,11 @@ Non-PDF special ignored!
 [2
 
 ]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 179.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 180.
  (C:\MiKTeX\tex/latex/psnfss\t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 195.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 196.
  (C:\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
@@ -1049,7 +1053,7 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ]
 1. fejezet.
 
-Overfull \hbox (12.40848pt too wide) in paragraph at lines 252--256
+Overfull \hbox (12.40848pt too wide) in paragraph at lines 253--257
 \T1/pcr/m/n/12 analyzing the semantical consistency of large language models
  []
 
@@ -1064,51 +1068,51 @@ Overfull \hbox (12.40848pt too wide) in paragraph at lines 252--256
 [9]
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 333.
+            Default family used instead on input line 334.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 333.
+            Default family used instead on input line 334.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 333.
+            Default family used instead on input line 334.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 333.
+            Default family used instead on input line 334.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 333.
+            Default family used instead on input line 334.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 333.
+            Default family used instead on input line 334.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 337.
+            Default family used instead on input line 338.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 337.
+            Default family used instead on input line 338.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 337.
+            Default family used instead on input line 338.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 337.
+            Default family used instead on input line 338.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 337.
+            Default family used instead on input line 338.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 337.
+            Default family used instead on input line 338.
 
 
 [10]
 
 [11]
-Underfull \hbox (badness 7168) in paragraph at lines 405--406
+Underfull \hbox (badness 7168) in paragraph at lines 406--407
 []|\T1/ptm/m/n/12 Any pe-netra-ti-on, howe-ver
  []
 
 
-Overfull \hbox (30.21132pt too wide) in paragraph at lines 399--409
+Overfull \hbox (30.21132pt too wide) in paragraph at lines 400--410
  [][] 
  []
 
@@ -1118,14 +1122,14 @@ Overfull \hbox (30.21132pt too wide) in paragraph at lines 399--409
 pdfTeX warning (ext4): destination with the same identifier (name{table.1.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.418 
+l.419 
       ]
 
 [13
 pdfTeX warning (ext4): destination with the same identifier (name{table.1.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.467     \clearpage
+l.468     \clearpage
                     ]
 2. fejezet.
 
@@ -1134,7 +1138,7 @@ l.467     \clearpage
 
 
 ]
-Package pgfplots info on input line 536: Using 'lua backend=false' for axis: x coord trafo unsupported.
+Package pgfplots info on input line 537: Using 'lua backend=false' for axis: x coord trafo unsupported.
 
 
 [15]
@@ -1143,7 +1147,7 @@ Package pgfplots info on input line 536: Using 'lua backend=false' for axis: x c
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.601     \chapter
+l.602     \chapter
                   {Google Colab}]
 3. fejezet.
 
@@ -1159,7 +1163,7 @@ l.601     \chapter
 [19
 
 ]
-Overfull \hbox (15.39293pt too wide) in paragraph at lines 1121--1128
+Overfull \hbox (15.39293pt too wide) in paragraph at lines 1122--1129
 \T1/ptm/m/n/12 A mo-dell out-put-já-nak (ki-me-ne-té-nek) fel-dol-go-zá-sa ( a mos-ta-ni \T1/pcr/m/n/12 ModelOutputProcessor\T1/ptm/m/n/12 )
  []
 
@@ -1173,7 +1177,7 @@ Overfull \hbox (15.39293pt too wide) in paragraph at lines 1121--1128
 <sentence_builders.png, id=466, 1392.20125pt x 189.70876pt>
 File: sentence_builders.png Graphic file (type png)
 <use sentence_builders.png>
-Package pdftex.def Info: sentence_builders.png  used on input line 1228.
+Package pdftex.def Info: sentence_builders.png  used on input line 1229.
 (pdftex.def)             Requested size: 426.79134pt x 58.15489pt.
 
 
@@ -1181,21 +1185,21 @@ Package pdftex.def Info: sentence_builders.png  used on input line 1228.
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1241 
+l.1242 
         <./sentence_builders.png (PNG copy)>]
 
 [24]
-Overfull \hbox (21.26813pt too wide) in paragraph at lines 1274--1275
+Overfull \hbox (21.26813pt too wide) in paragraph at lines 1275--1276
 \OML/cmm/m/it/12 from[]pretrained\OT1/cmr/m/n/12 ()$ \T1/ptm/m/n/12 me-tó-du-sá-val tör-té-nik, amely ^^V amennyi-ben el-ér-he-t® ^^V \T1/pcr/m/n/12 safetensors
  []
 
 
-Overfull \hbox (13.38208pt too wide) in paragraph at lines 1276--1277
+Overfull \hbox (13.38208pt too wide) in paragraph at lines 1277--1278
 []\T1/ptm/m/n/12 A mo-dell és a to-ke-ni-zált be-me-net át-he-lye-zé-se a meg-fe-le-l® esz-köz-re a $\OML/cmm/m/it/12 model:to\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 device\OT1/cmr/m/n/12 )$
  []
 
 
-Overfull \hbox (18.8256pt too wide) in paragraph at lines 1276--1277
+Overfull \hbox (18.8256pt too wide) in paragraph at lines 1277--1278
 \T1/ptm/m/n/12 sal tör-té-nik, amely je-len kon-fi-gu-rá-ci-ó-ban pon-to-san egy új to-kent ál-lít el® $\OML/cmm/m/it/12 max[]new[]tokens \OT1/cmr/m/n/12 =
  []
 
@@ -1208,24 +1212,24 @@ Overfull \hbox (18.8256pt too wide) in paragraph at lines 1276--1277
 [27]
 
 [28]
-Overfull \hbox (5.20848pt too wide) in paragraph at lines 1421--1421
+Overfull \hbox (5.20848pt too wide) in paragraph at lines 1422--1422
 []   \T1/pcr/m/n/12 pip install torch transformers accelerate huggingface_hub[] 
  []
 
 
-Overfull \hbox (5.20848pt too wide) in paragraph at lines 1424--1424
+Overfull \hbox (5.20848pt too wide) in paragraph at lines 1425--1425
 []   \T1/pcr/m/n/12 pip install torch transformers accelerate huggingface_hub[] 
  []
 
 
 
 [29]
-Overfull \hbox (12.40848pt too wide) in paragraph at lines 1458--1458
+Overfull \hbox (12.40848pt too wide) in paragraph at lines 1459--1459
 []    \T1/pcr/m/n/12 py -3.13 -m src.Framework.HuggingFaceModelInferencer.main[] 
  []
 
 
-Overfull \hbox (19.60847pt too wide) in paragraph at lines 1462--1462
+Overfull \hbox (19.60847pt too wide) in paragraph at lines 1463--1463
 []    \T1/pcr/m/n/12 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass[] 
  []
 
@@ -1242,73 +1246,77 @@ Overfull \hbox (19.60847pt too wide) in paragraph at lines 1462--1462
 [33
 
 ]
-Overfull \hbox (7.36476pt too wide) in paragraph at lines 1543--1543
+Overfull \hbox (7.36476pt too wide) in paragraph at lines 1544--1544
 []\T1/ptm/b/n/17.28 Méret- és konzisztencia-arányban meg-fe-le-l® nyel-vi mo-
  []
 
 
 
 [34]
-Package pgfplots info on input line 1593: Using 'lua backend=false' for axis: x coord trafo unsupported.
+Package pgfplots info on input line 1595: Using 'lua backend=false' for axis: x coord trafo unsupported.
+Package pgfplots info on input line 1680: Using 'lua backend=false' for axis: x coord trafo unsupported.
 
 
 [35
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1648 \chapter
-               {KonklÃºziÃ³} % TODO]
-6. fejezet.
-
+l.1738 
+       ]
 
 [36
-
-]
-Overfull \hbox (26.12979pt too wide) in paragraph at lines 1664--1664
-[]$\T1/pcr/m/n/12 10 . 18653 / v1 / 2024 . findings -[] acl . 199$[]\T1/ptm/m/n/12 . \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : []$\T1/pcr/m/n/12 https : / / aclanthology .
- []
-
-
-Overfull \hbox (5.49321pt too wide) in paragraph at lines 1664--1664
-[]\T1/ptm/m/n/12 Hugging Face. \T1/ptm/m/it/12 Hug-ging Face Open LLM Le-ader-board Mo-del Com-pa-ra-tor\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
- []
-
-
-Overfull \hbox (4.95029pt too wide) in paragraph at lines 1664--1664
-\T1/pcr/m/n/12 / / huggingface . co / spaces / open -[] llm -[] leaderboard / comparator$[]\T1/ptm/m/n/12 .
- []
-
-
-Overfull \hbox (4.4157pt too wide) in paragraph at lines 1664--1664
-[]\T1/ptm/m/n/12 LM Stu-dio Team. \T1/ptm/m/it/12 LM Stu-dio: Desk-top app-li-ca-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
- []
-
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1748 \chapter
+               {KonklÃºziÃ³} % TODO]
+6. fejezet.
 
 
 [37
 
 ]
-Overfull \hbox (10.67581pt too wide) in paragraph at lines 1664--1664
+Overfull \hbox (26.12979pt too wide) in paragraph at lines 1764--1764
+[]$\T1/pcr/m/n/12 10 . 18653 / v1 / 2024 . findings -[] acl . 199$[]\T1/ptm/m/n/12 . \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : []$\T1/pcr/m/n/12 https : / / aclanthology .
+ []
+
+
+Overfull \hbox (5.49321pt too wide) in paragraph at lines 1764--1764
+[]\T1/ptm/m/n/12 Hugging Face. \T1/ptm/m/it/12 Hug-ging Face Open LLM Le-ader-board Mo-del Com-pa-ra-tor\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
+ []
+
+
+Overfull \hbox (4.95029pt too wide) in paragraph at lines 1764--1764
+\T1/pcr/m/n/12 / / huggingface . co / spaces / open -[] llm -[] leaderboard / comparator$[]\T1/ptm/m/n/12 .
+ []
+
+
+Overfull \hbox (4.4157pt too wide) in paragraph at lines 1764--1764
+[]\T1/ptm/m/n/12 LM Stu-dio Team. \T1/ptm/m/it/12 LM Stu-dio: Desk-top app-li-ca-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
+ []
+
+
+
+[38
+
+]
+Overfull \hbox (10.67581pt too wide) in paragraph at lines 1764--1764
 \T1/ptm/m/it/12 gu-age Un-der-stand-ing Sys-tems\T1/ptm/m/n/12 . Utol-só meg-te-kin-tés: 2025-12-10. 2020. ar-Xiv: []$\T1/pcr/m/n/12 1905 .
  []
 
 
-Overfull \hbox (0.59474pt too wide) in paragraph at lines 1664--1664
+Overfull \hbox (0.59474pt too wide) in paragraph at lines 1764--1764
 []\T1/ptm/m/n/12 Mohammad Ta-her Pi-leh-var és Jo-se Camacho-Collados. ^^R  WiC: the Word-in-Context
  []
 
 
-Overfull \hbox (4.55653pt too wide) in paragraph at lines 1664--1664
+Overfull \hbox (4.55653pt too wide) in paragraph at lines 1764--1764
 \T1/ptm/m/n/12 meg-te-kin-tés: 2025-12-10. \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : []$\T1/pcr/m/n/12 https : / / aclanthology . org / H94 -[] 1111/$[]\T1/ptm/m/n/12 . 
  []
 
 
 
-[38]
-
-[39
-
-]
+[39]
 
 [40
 
@@ -1317,7 +1325,11 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1664--1664
 [41
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251212163932 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
+
+[42
+
+]
+runsystem(latexminted cleantemp  --timestamp 20251212214958 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
 
  (main.aux)
  ***********
@@ -1331,23 +1343,23 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47276 strings out of 468219
- 1067264 string characters out of 5449698
- 2086697 words of memory out of 5000000
- 74974 multiletter control sequences out of 15000+600000
+ 47420 strings out of 468219
+ 1071519 string characters out of 5449698
+ 2103825 words of memory out of 5000000
+ 75110 multiletter control sequences out of 15000+600000
  692624 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,19n,105p,1662b,2348s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,19n,105p,1662b,2383s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist, replaced by a fixed one
 
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
- <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1200.pk><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (41 pages, 388240 bytes).
+ <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1200.pk><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (42 pages, 410801 bytes).
 PDF statistics:
- 737 PDF objects out of 1000 (max. 8388607)
- 158 named destinations out of 1000 (max. 500000)
- 450 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 753 PDF objects out of 1000 (max. 8388607)
+ 160 named destinations out of 1000 (max. 500000)
+ 454 words of extra memory for PDF output out of 10000 (max. 10000000)
 

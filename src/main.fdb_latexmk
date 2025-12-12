@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1765542901.87591 "main.bcf" "main.bbl" "main" 1765553984.07805 0
-  "main.bcf" 1765553983 109803 f85d12e06a34a5832ae029d58463250d "pdflatex"
+["biber main"] 1765572435.86009 "main.bcf" "main.bbl" "main" 1765572604.51082 0
+  "main.bcf" 1765572604 109803 f85d12e06a34a5832ae029d58463250d "pdflatex"
   "references.bib" 1765324443 14637 fcb089654f7059f241b6add52b6f9db1 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1765553972.52546 "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" "main.pdf" "main" 1765553984.07928 0
+["pdflatex"] 1765572598.63703 "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" "main.pdf" "main" 1765572604.51153 0
   "C:/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
   "C:/MiKTeX/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136765053 1292 bd42be2f344128bff6d35d98474adfe3 ""
   "C:/MiKTeX/fonts/tfm/adobe/courier/pcrr8t.tfm" 1136765053 1384 4632f5e54900a7dadbb83f555bc61e56 ""
@@ -45,8 +45,10 @@
   "C:/MiKTeX/fonts/tfm/public/cm/cmsy8.tfm" 1136765053 1120 8b7d695260f3cff42e636090a8002094 ""
   "C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1247596667 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1247596667 36741 0ee9e374ec3e30da87cdfb0ea3575226 ""
+  "C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1247596666 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
   "C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1247596667 32722 d7379af29a190c3f453aba36302ff5a9 ""
+  "C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1247596667 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1247596667 32726 39f0f9e62e84beb801509898a605dbd5 ""
   "C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1247596667 32626 5abc8bb2f28aa647d4c70f8ea38cc0d3 ""
@@ -101,12 +103,14 @@
   "C:/MiKTeX/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex" 1673775190 5628 dc0ee4ba7f3e40acae5600067ce833de ""
   "C:/MiKTeX/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex" 1673775190 321 cdd11262840e01e25374a2d458f15e99 ""
   "C:/MiKTeX/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex" 1673775190 1319 0b2de5126c6cbc295f0eb77f7344b34d ""
+  "C:/MiKTeX/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.code.tex" 1673775190 770 82e332cc9cc48e06b8070d74393a185a ""
   "C:/MiKTeX/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotmarks.code.tex" 1673775190 325 36322b0789619b270aec5993d5a9ed08 ""
   "C:/MiKTeX/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex" 1673775190 11518 738408f795261b70ce8dd47459171309 ""
   "C:/MiKTeX/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex" 1673775190 186782 af500404a9edec4d362912fe762ded92 ""
   "C:/MiKTeX/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex" 1673775190 8843 5533436db3e30fbad1e0440db6027dac ""
   "C:/MiKTeX/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex" 1673775190 7474 f05a7223b140f230922562ac6a9fede5 ""
   "C:/MiKTeX/tex/generic/pgf/libraries/pgflibraryfpu.code.tex" 1673775190 85938 8e4ba97c5906e1c0d158aea81fe29af7 ""
+  "C:/MiKTeX/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex" 1673775190 7936 49e55444d57eb69a380c6baa35094828 ""
   "C:/MiKTeX/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex" 1673775190 32995 ac577023e12c0e4bd8aa420b2e852d1a ""
   "C:/MiKTeX/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex" 1673775190 14526 4bc184b12436aa7f6490b2d2036870ef ""
   "C:/MiKTeX/tex/generic/pgf/math/pgfint.code.tex" 1673775190 3063 8c415c68a0f3394e45cfeca0b65f6ee6 ""
@@ -277,13 +281,13 @@
   "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1765234507 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tctt1200.pk" 1764887141 11368 22e1b848240ae33eb8dfe3755848aa08 ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1750612748 13218441 72e452d2d4da982476be41d8461887dd ""
-  "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" 1765553963 141988 7ab4d5bbb972fa594f0676d0a5cbf3b6 ""
-  "main.aux" 1765553983 19777 5d021bfd9b8a1aad7a6b5aee750c8bef "pdflatex"
-  "main.bbl" 1765544857 45549 0398baeb5186bb0b1c91568c339c1d64 "biber main"
-  "main.out" 1765553983 10256 ba2184ba6a6e28475963c9fbe06d7a52 "pdflatex"
-  "main.run.xml" 1765553983 2304 594eb205a07cc1738df7b0c71eafa9d5 "pdflatex"
-  "main.tex" 1765553963 141988 7ab4d5bbb972fa594f0676d0a5cbf3b6 ""
-  "main.toc" 1765553983 9035 d07b6532e1ef885ca64a863a0ee12098 "pdflatex"
+  "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" 1765572589 144847 19c0642e346419f2aa7dbdf15a729ad1 ""
+  "main.aux" 1765572604 21214 3b977d9e88af956f5fc7802d6373c688 "pdflatex"
+  "main.bbl" 1765572440 45549 0398baeb5186bb0b1c91568c339c1d64 "biber main"
+  "main.out" 1765572604 10256 ba2184ba6a6e28475963c9fbe06d7a52 "pdflatex"
+  "main.run.xml" 1765572604 2304 594eb205a07cc1738df7b0c71eafa9d5 "pdflatex"
+  "main.tex" 1765572589 144847 19c0642e346419f2aa7dbdf15a729ad1 ""
+  "main.toc" 1765572604 9035 e3d13a25b06d74318fa3034fe73074a1 "pdflatex"
   "sentence_builders.png" 1765541830 36929 68d47002932edcb913bacbc332ed9893 ""
   (generated)
   "main.aux"

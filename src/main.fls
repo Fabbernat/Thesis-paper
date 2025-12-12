@@ -323,6 +323,10 @@ INPUT C:\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryplotmark
 INPUT C:\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryplotmarks.code.tex
 INPUT C:\MiKTeX\tex\generic\pgf\libraries\pgflibraryplotmarks.code.tex
 INPUT C:\MiKTeX\tex\generic\pgf\libraries\pgflibraryplotmarks.code.tex
+INPUT C:\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarypatterns.code.tex
+INPUT C:\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarypatterns.code.tex
+INPUT C:\MiKTeX\tex\generic\pgf\libraries\pgflibrarypatterns.code.tex
+INPUT C:\MiKTeX\tex\generic\pgf\libraries\pgflibrarypatterns.code.tex
 INPUT C:\MiKTeX\tex\latex\tools\indentfirst.sty
 INPUT C:\MiKTeX\tex\latex\tools\indentfirst.sty
 INPUT C:\MiKTeX\tex\latex\float\float.sty
@@ -546,10 +550,14 @@ INPUT C:\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi12.pfb
 INPUT C:\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi12.pfb
+INPUT C:\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi6.pfb
+INPUT C:\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi6.pfb
 INPUT C:\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
 INPUT C:\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
+INPUT C:\MiKTeX\fonts\type1\public\amsfonts\cm\cmr6.pfb
+INPUT C:\MiKTeX\fonts\type1\public\amsfonts\cm\cmr6.pfb
 INPUT C:\MiKTeX\fonts\type1\public\amsfonts\cm\cmr8.pfb
 INPUT C:\MiKTeX\fonts\type1\public\amsfonts\cm\cmr8.pfb
 INPUT C:\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
