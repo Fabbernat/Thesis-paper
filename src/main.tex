@@ -1204,25 +1204,42 @@ The cat sat on the _ .
         \item szó,\item  szófaj, \item a szó pozíciói a mondatokban, \item az első mondat, \item a második mondat.
     \end{itemize}
     
-    Ebből nekünk csak a szó, első mondat és a második mondat szükséges, a többivel nem is fogunk foglalkozni. Először is a \texttt{randomsamples.py} szkriptem legenerál \texttt{n} darab - a \texttt{config.py}-ban meghatározott mennyiségű indexet. Ezek az indexek lesznek a kérdés-válasz párok azonosítói, én \texttt{GUID}-nak neveztem el őket, amely a "globálisan egyedi azonosító" (globally unique identifier) rövidítése . Ezután megnyitjuk a fájlt, majd beolvassuk és minden egyes \texttt{GUID}-adik indexű sorból eltároljuk a szót és a két mondatot egy listában. A GUID értéke mindig 0 és 1399 között van, tehát az értéke pont megegyezik a teszthalmaz hosszával, így nem történhet túlindexelés. 
+    Ebből nekünk csak a szó, első mondat és a második mondat szükséges, a többivel nem is fogunk foglalkozni.
     
     \paragraph{A kérdések létrehozásának folyamata}
     \subparagraph{}
+
+    \subparagraph{LabelAdder: A WiC beolvasása és a random minták kisorsolása.}
+    \subparagraph{}
+    A WiC adathalmazt beolvassuk a $LabelAdder$ szkriptben, amely beolvassa a fájlt nyers szövegként, a sorokat tabulátor mentén felbontja, majd eltárolja egy listában.
+    Ezután meghívja a  $randomsamples.py$ szkriptet, amely legenerál \texttt{n} darab - a \texttt{config.py}-ban meghatározott mennyiségű indexet. Ezek az indexek lesznek a kérdés-válasz párok azonosítói, én \texttt{GUID}-nak neveztem el őket, amely a "globálisan egyedi azonosító" (globally unique identifier) rövidítése . Ezután megnyitjuk a fájlt, majd beolvassuk és minden egyes \texttt{GUID}-adik indexű sorból eltároljuk a szót és a két mondatot egy listában. A GUID értéke mindig 0 és 1399 között van, tehát az értéke pont megegyezik a teszthalmaz hosszával, így nem történhet túlindexelés. 
+    
+    \subparagraph{WordAndSentencesExtractor}
+    \subparagraph{}
+    Ezután a listát átadjuk a $WordAndSentencesExtractor$ szkriptnek, amely kinyeri belőlük a szót, az első mondatot és a második mondatot.
+    Mivel nekünk csak a szó, első mondat és a második mondat szükséges, ezeket a nyers szövegből listákba helyezzi át, a többi adatot eldobja a $WordAndSentencesExtractor$.
+
+    \subparagraph{}
+    \subparagraph{SentenceBuilder: A mintaillesztés}
+    \subparagraph{}
     Az alapötlet a WiC-minták kérdéssé konvertálása mögött, hogy a mintákból immár kinyert szó, első mondat és a második mondat sztringeket mintaillesztéssel két előre meghatározott sablonba szúrjuk, amelyeknek egyike az egyenes, másik a fordított kérdést gyártja le.
-    \begin{figure}
+    \begin{figure}[H]
         \centering
         \includegraphics[width=1\linewidth]{sentence_builders}
         \caption{Jól látható, hogy a WiC-mintákat előre meghatározott mintákba szúrjuk be}
         \label{fig:sentence_builders}
     \end{figure}
 
-    Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot. Végül ezt elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
+    Ezután kétszer végigmegyünk a listán. Először elkészítjük az egyenes kérdéseket, másodjára pedig a fordítottakat. A kérdéseket úgy készítjük el, hogy az angol nyelvű kérdést tartalmazó, úgynevezett Python f-sztringekbe (formázott sztringekbe) helyezzük a szót és a 2 mondatot, lásd \texttt{SentenceBuilder}.
     
 
-    \subparagraph{Nyelvtani előfeldolgozás.}\\
-    Ugyan csak kényelmi dolog, de a mondatok az adathalmazban tokenizálva vannak, emiatt minden írásjel szóközzel van elválasztva az előtte szereplő tokentől  - vagyis pontosabban tabulátorral, de a programomban szóközt használok az egyes részek szeparálására. A lényeg, hogy az AI modellek hatékonyabb prompotolása miatt, és hogy számomra, ember számára is érthetőbb legyen, visszaalakítottam standard, nyelvtanilag helyes angol mondatokká. Ehhez csak egyszerűen minden írásjel és az aposztrófok elől el kellett tüntetnem a szóköz(öke)t. Ezáltal sokkal olvashatóbbá váltak a mondatok.
+    \subparagraph{SentenceNormalizer: A nyelvtani előfeldolgozás}
+    \subparagraph{}
+    Ugyan csak kényelmi dolog, de a mondatok az adathalmazban tokenizálva vannak, emiatt minden írásjel szóközzel van elválasztva az előtte szereplő tokentől - vagyis pontosabban tabulátorral, de a programomban szóközt használok az egyes részek szeparálására. A lényeg, hogy az AI modellek hatékonyabb prompotolása miatt, és hogy számomra, ember számára is érthetőbb legyen, visszaalakítottam standard, nyelvtanilag helyes angol mondatokká.
+    Ehhez csak egyszerűen minden írásjel és az aposztrófok elől el kellett tüntetnem a szóköz(öke)t, amelyhez egy egyszerű sztringcsere műveleteket biztosító algoritmust írtam, lásd \texttt{SentenceNormalizer}. 
+    Ezáltal sokkal olvashatóbbá váltak a mondatok.
 
-
+    Végül a futás eredményét elmentjük egy fájlba, ahonnan majd a következő modul azt elérheti.
 
 
     A modul hívási verme a következő:
@@ -1550,7 +1567,7 @@ py -3.13 -m src.Framework.globalMain
     Végül a $Qwen/Qwen2.5-0.5B-Instruct$, a $Qwen/Qwen2.5-1.5B-Instruct$ és a $Google/Gemma-2-2b-it$ modelleket hasonlítottam össze. Az előbbi kettő az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük 2 eltérő méretű (0.5B vs 2B) és gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
     Keretrendszerem érdeme, hogy végül sikerült a három modell hibátlan válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) elérni.
     A modellek hibátlanul csak "Yes" és "No" válaszokat adtak, ezért a "konzisztensen bizonytalan" mérőszámot nem tüntettem fel, és a "bizonytalan" mutatót is csak vizuális kiemelésképpen.
-    Az alábbi ábrában \texttt{n} modell összehasonlítása látható \texttt{m} véletlenszerűen kiválasztott kérdésen.
+
     % ide jön a táblázat
     \begin{figure}[H]
     \centering
@@ -1581,7 +1598,7 @@ py -3.13 -m src.Framework.globalMain
             draw=yellow!50!black
         ] coordinates {
             (Konzisztens, 79.00)
-            (Pontos, 65.50)
+            (Pontos, 76.00)
             (Konzisztensen pontos, 55.00)
             (Bizonytalan, 0.00)
         };
@@ -1592,7 +1609,7 @@ py -3.13 -m src.Framework.globalMain
             draw=green!50!black
         ] coordinates {
             (Konzisztens, 94.00)
-            (Pontos, 68.00)
+            (Pontos, 71.00)
             (Konzisztensen pontos, 65.00)
             (Bizonytalan, 0.00)
         };
@@ -1603,7 +1620,7 @@ py -3.13 -m src.Framework.globalMain
             draw=blue!80!black
         ] coordinates {
             (Konzisztens, 73.00)
-            (Pontos, 62.50)
+            (Pontos, 76.00)
             (Konzisztensen pontos, 49.00)
             (Bizonytalan, 0.00)
         };
@@ -1636,7 +1653,7 @@ Ilyesfajta szövegeket egy ilyen kisméretű, köznyelvi angol megértésére sz
 
 Említésre méltó az inferenciák időkülönbsége is a két modell között, amelyben viszont jelentősen nyert a $Qwen2.5-0.5B-Instruct$. A $Qwen$ félmilliárd paraméteres modellje esetén átlagosan 6 másodpercet vett igénybe egy kérdés megválaszolása, a másfélmilliárd paraméteres modellje esetén már 16-30 másodpercet, míg a Gemma modell esetén az átlagos válaszidő kb. 35(!) másodperc volt.
 
-Habár nem sikerült olyan mértékben automatizálnom a keretrendszert, mint ahogy eredetileg megálmodtam, az elkészült keretrendszer jelentősen megkönnyítette a végső kísérlet elvégzését és így a saját munkámat. Arról nem is beszélve, hogy a keretrendszer nyomonkövethetővé és jól ellenőrizhetővé teszi az eredményeket. Részben így is manuálisan kellett feldolgozni az adatokat, de a munkafolyamatok túlnyomó többségét sikerült teljesen automatizálnom.
+Sikerült olyan mértékben automatizálnom a keretrendszert, hogy az elkészült szoftver jelentősen megkönnyítette a végső kísérlet elvégzését és így a saját munkámat. Arról nem is beszélve, hogy a keretrendszer nyomonkövethetővé és jól ellenőrizhetővé teszi az eredményeket. Részben így is manuálisan kellett feldolgozni az adatokat, de a munkafolyamatok túlnyomó többségét sikerült teljesen automatizálnom.
 Ha az elkészült munkámmal legalább egy embernek segítettem, akkor már megérte. Bízom benne, hogy a keretrendszerem és a kísérletem hasznos lesz a jövőben mások számára is.
 
 
