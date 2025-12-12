@@ -1569,7 +1569,7 @@ py -3.13 -m src.Framework.globalMain
     Keretrendszerem érdeme, hogy végül sikerült a három modell hibátlan válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) elérni.
     A modellek hibátlanul csak "Yes" és "No" válaszokat adtak, ezért a "konzisztensen bizonytalan" mérőszámot nem tüntettem fel, és a "bizonytalan" mutatót is csak vizuális kiemelésképpen.
 
-    % ide jön a táblázat
+    % ide jön a 3 ábra
 
     \begin{figure}[H]
     \centering
@@ -1584,7 +1584,7 @@ py -3.13 -m src.Framework.globalMain
             xtick=data,
             x tick label style={rotate=45, anchor=east, font=\small},
             ymin=0,
-            ymax=100,
+            ymax=150,
             ymajorgrids=true,
             grid style=dashed,
             enlarge x limits=0.15,
@@ -1594,35 +1594,35 @@ py -3.13 -m src.Framework.globalMain
             every node near coord/.append style={/pgf/number format/fixed, /pgf/number format/precision=2}
         ]
 
-        % Qwen 0.5B
+        % Qwen 0.5B (frissített)
         \addplot[
             fill=yellow!70!brown,
             draw=yellow!50!black
         ] coordinates {
-            (Konzisztens, 79)
-            (Pontos, 76)
-            (Konzisztensen pontos, 55)
-            (Bizonytalan, 0)
-        };
-
-        % Qwen 1.5B
-        \addplot[
-            fill=green!70!brown,
-            draw=green!50!black
-        ] coordinates {
             (Konzisztens, 94)
-            (Pontos, 71)
+            (Pontos, 136)
             (Konzisztensen pontos, 65)
             (Bizonytalan, 0)
         };
 
-        % Gemma 2B
+        % Qwen 1.5B (frissített)
+        \addplot[
+            fill=green!70!brown,
+            draw=green!50!black
+        ] coordinates {
+            (Konzisztens, 79)
+            (Pontos, 131)
+            (Konzisztensen pontos, 55.00000000000001)
+            (Bizonytalan, 0)
+        };
+
+        % Gemma 2B (frissített)
         \addplot[
             fill=blue!60,
             draw=blue!80!black
         ] coordinates {
             (Konzisztens, 73)
-            (Pontos, 76)
+            (Pontos, 125)
             (Konzisztensen pontos, 49)
             (Bizonytalan, 0)
         };
@@ -1639,6 +1639,7 @@ py -3.13 -m src.Framework.globalMain
     \caption{Három modell konzisztens, pontos és bizonytalan párjainak száma 100 kérdéspáron}
     \label{fig:ModelEvalSummary}
 \end{figure}
+
  
 
 \begin{figure}[H]
@@ -1661,7 +1662,7 @@ py -3.13 -m src.Framework.globalMain
         xtick=data,
         x tick label style={rotate=45, anchor=east, font=\scriptsize},
         ymin=0,
-        ymax=100,
+        ymax=150,
         ymajorgrids=true,
         grid style=dashed,
         enlarge x limits=0.08,
@@ -1679,37 +1680,40 @@ py -3.13 -m src.Framework.globalMain
         }
     ]
 
+    % Qwen 0.5B updated
     \addplot[
         fill=yellow!70!brown,
         draw=yellow!50!black
     ] coordinates {
         (Konzisztens párok, 94.00)
-        (Pontosak, 68.00)
+        (Pontosak, 136.00)
         (Pontos párok, 71.00)
         (Konzisztensen pontos, 65.00)
         (Bizonytalan párok, 0.00)
         (Konz. bizonytalan, 0.00)
     };
 
+    % Qwen 1.5B updated
     \addplot[
         fill=green!70!brown,
         draw=green!50!black,
         postaction={pattern=north east lines, pattern color=green!30!black}
     ] coordinates {
         (Konzisztens párok, 79.00)
-        (Pontosak, 65.50)
+        (Pontosak, 131.00)
         (Pontos párok, 76.00)
-        (Konzisztensen pontos, 55.00)
+        (Konzisztensen pontos, 55.00000000000001)
         (Bizonytalan párok, 0.00)
         (Konz. bizonytalan, 0.00)
     };
 
+    % Gemma updated
     \addplot[
         fill=blue!60,
         draw=blue!80!black
     ] coordinates {
         (Konzisztens párok, 73.00)
-        (Pontosak, 62.50)
+        (Pontosak, 125.00)
         (Pontos párok, 76.00)
         (Konzisztensen pontos, 49.00)
         (Bizonytalan párok, 0.00)
@@ -1724,16 +1728,81 @@ py -3.13 -m src.Framework.globalMain
     \end{axis}
     \end{tikzpicture}
 
-\caption{Három modell teljesítményének részletes összehasonlítása 100 véletlenszerű kérdéspáron, minden metrikával. 
-\textbf{Metrikák magyarázata:} 
-\emph{Konzisztens párok}: fordított kérdéspárokra ugyanaz a válasz (igen/nem konzisztencia); 
-\emph{Pontosak}: egyedi válaszok pontossága; 
-\emph{Pontos párok}: mindkét kérdés helyes válasza külön-külön; 
-\emph{Konzisztensen pontos}: fordított párokra is helyes és konzisztens válasz; 
-\emph{Bizonytalan párok}: ``I don't know'' típusú válaszok; 
-\emph{Konz. bizonytalan}: mindkét irányban bizonytalan.
-}
+\caption{Három modell teljesítményének részletes összehasonlítása 100 véletlenszerű kérdéspáron, minden metrikával.}
 \label{fig:ModelEvalSummaryComplete}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        ybar,
+        bar width=0.35cm,
+        width=\textwidth,
+        height=10cm,
+        ylabel={Darabszám},
+        symbolic x coords={Yes, No},
+        xtick=data,
+        x tick label style={font=\large},
+        ymin=0,
+        ymax=200,
+        ymajorgrids=true,
+        grid style=dashed,
+        enlarge x limits=0.15,
+        legend style={
+            at={(0.5,-0.25)}, 
+            anchor=north, 
+            legend columns=3,
+            font=\small
+        },
+        nodes near coords,
+        nodes near coords style={font=\small},
+        every node near coord/.append style={
+            /pgf/number format/fixed,
+            /pgf/number format/precision=0
+        }
+    ]
+
+    % Qwen 0.5B
+    \addplot[
+        fill=yellow!70!brown,
+        draw=yellow!50!black
+    ] coordinates {
+        (Yes, 12)
+        (No, 188)
+    };
+
+    % Qwen 1.5B
+    \addplot[
+        fill=green!70!brown,
+        draw=green!50!black,
+        postaction={pattern=north east lines, pattern color=green!30!black}
+    ] coordinates {
+        (Yes, 21)
+        (No, 179)
+    };
+
+    % Gemma 2B
+    \addplot[
+        fill=blue!60,
+        draw=blue!80!black
+    ] coordinates {
+        (Yes, 81)
+        (No, 119)
+    };
+
+    \legend{
+        Qwen 0.5B,
+        Qwen 1.5B,
+        Gemma 2B
+    }
+
+    \end{axis}
+\end{tikzpicture}
+
+\caption{A három modell "Yes" és "No" válaszainak darabszáma.}
+\label{fig:YesNoComparison}
 \end{figure}
 
 
