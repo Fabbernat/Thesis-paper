@@ -79,6 +79,6 @@
 \select@language {magyar} \contentsline {section}{\numberline {5.4}Három modell összehasonlítása 100 véletlenszerű kérdésen}{35}{section.5.4}%
 \select@language {magyar} \contentsline {chapter}{\numberline {6}Konklúzió}{38}{chapter.6}%
 \select@language {magyar} \ 
-\select@language {magyar} \contentsline {section}{Nyilatkozat}{41}{chapter*.36}%
-\select@language {magyar} \contentsline {section}{Köszönetnyilvánítás}{42}{chapter*.37}%
-\select@language {magyar} \contentsline {section}{Elektronikus mellékletek}{43}{chapter*.38}%
+\select@language {magyar} \contentsline {section}{Nyilatkozat}{42}{chapter*.36}%
+\select@language {magyar} \contentsline {section}{Köszönetnyilvánítás}{43}{chapter*.37}%
+\select@language {magyar} \contentsline {section}{Elektronikus mellékletek}{44}{chapter*.38}%

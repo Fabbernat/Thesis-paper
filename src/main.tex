@@ -1816,12 +1816,36 @@ A kísérlet
 
 
 \chapter{Konklúzió} % TODO
-Tisztán látható, hogy a Qwen2.5-0.5B-Instruct és a Qwen2.5-1.5B-Instruct modell is jelentősen előnyben részesíti a "nem" választ, amelynek fő oka valószínűleg az, hogy nincs elég lexikális tudása, hogy ezeknek a WiC adathalmazbeli ritka szavaknak a pontos jelentését emberi szinten modellezni tudja, így a megfelelő tudás hiányában a biztonságosabb "nem ugyanazt jelentik" predikcióba esik vissza.
-Emiatt erre az egyszerűsített bináris döntési feladatra a qwen modell válaszai jelentősen jóbbnak bizonyultak. (a Qwen2.5-1.5B-Instruct 94\%!).
+Tisztán látható, hogy a Qwen2.5-0.5B-Instruct és a Qwen2.5-1.5B-Instruct modell is jelentősen előnyben részesíti a "nem" választ (0.5B: 188 darab, 1.5B: 179 darab), míg a \texttt{Gemma-2-2b-it} 
+modell jóval kiegyensúlyozottabb eloszlást mutat (81 ``igen'' és 119 ``nem'' válasz). 
+A jelenség fő oka továbbra is az, hogy a kisebb méretű Qwen-modelleknek nincs elegendő 
+lexikális tudása a WiC-adathalmaz ritka szavainak magas szintű szemantikus 
+reprezentációjához, így biztonsági okokból a ``nem ugyanazt jelentik'' predikció felé 
+hajlanak.
+
+A páronkénti pontosság vizsgálata ugyanakkor árnyalja a képet: míg az 1.5B modell válasza
+76 pár esetében egyezett legalább félig a gold standarddal, addig a 0.5B modell esetén 71, a Gemma esetén pedig 76, vagyis a 
+nagyobb Qwen-modell és a Gemma modell közel azonos teljesítményt mutatott ezen a téren.
+
+A \texttt{Gemma-2-2b-it} modell az arányos válaszadás tekintetében sokkal stabilabbnak 
+bizonyult, mint a \texttt{Qwen} modellek, mivel nem torzult el egyetlen válaszkategória irányába sem, ami arra 
+utal, hogy a Google által alkalmazott tanítási eljárás jobb általánosító képességet 
+eredményez a bináris szemantikai döntési feladatokon.
+
+A konzisztensen pontos párok számában szintén megfigyelhető a különbség: 
+a 0.5B modell 65 egyezést adott, míg az 1.5B modell 55-öt, a Gemma pedig 49-et. 
+Ez annak a következménye, hogy a legkisebb Qwen-modell – a válaszainak erős ``nem''-túlsúlya 
+miatt – szinte minden "nem" választ eltalált a gold standarból. Ez rávilágít arra, hogy a magas konzisztencia és "konzisztens helyesség" mutató nem feltétlenül jelenti a szemantikai pontosság 
+javulását és nem jelenti azt, hogy a modell nehezebb feladatokra is következetesen érvelne.
+
+Emiatt erre az egyszerűsített bináris döntési feladatra a 0.5B modell jelentősen jobb mutatókat ért el. (a Qwen2.5-1.5B-Instruct 94\%!).
 Ezt az egyoldalúságot valószínűleg továbberősíti az adathalmaz mondatainak jellemző nem-köznyelvi jellege, hiszen nagyrészt régies, tudományos, irodalmi szövegeket tartalmaz.
 Ilyesfajta szövegeket egy ilyen kisméretű, köznyelvi angol megértésére szánt modell nem tud megfelelően ábrázolni és értelmezni. Ezzel szemben a Gemma-2-2b-it modell kiegyensúlyozottabb viselkedést mutatott adott, amely valószínűleg annak köszönhető, hogy a Google tanítási folyamata során jobb általánosító képességet ért el a modell, amely így kevésbé hajlamos a "nem" válasz túlsúlyára.
 
-Említésre méltó az inferenciák időkülönbsége is a két modell között, amelyben viszont jelentősen nyert a $Qwen2.5-0.5B-Instruct$. A $Qwen$ félmilliárd paraméteres modellje esetén átlagosan 6 másodpercet vett igénybe egy kérdés megválaszolása, a másfélmilliárd paraméteres modellje esetén már 16-30 másodpercet, míg a Gemma modell esetén az átlagos válaszidő kb. 35(!) másodperc volt.
+A modell-válaszok semleges (``bizonytalan'') kategóriába esése egyik modellnél sem 
+fordult elő.
+
+Említésre méltó az inferenciák időkülönbsége is a három modell között, amelyben viszont jelentősen nyert a $Qwen2.5-0.5B-Instruct$. A $Qwen$ félmilliárd paraméteres modellje esetén átlagosan 6 másodpercet vett igénybe egy kérdés megválaszolása, a másfélmilliárd paraméteres modellje esetén már 16-30 másodpercet, míg a Gemma modell esetén az átlagos válaszidő kb. 35(!) másodperc volt.
 
 Sikerült olyan mértékben automatizálnom a keretrendszert, hogy az elkészült szoftver jelentősen megkönnyítette a végső kísérlet elvégzését és így a saját munkámat. Arról nem is beszélve, hogy a keretrendszer nyomonkövethetővé és jól ellenőrizhetővé teszi az eredményeket. Részben így is manuálisan kellett feldolgozni az adatokat, de a munkafolyamatok túlnyomó többségét sikerült teljesen automatizálnom.
 Ha az elkészült munkámmal legalább egy embernek segítettem, akkor már megérte. Bízom benne, hogy a keretrendszerem és a kísérletem hasznos lesz a jövőben mások számára is.
