@@ -1,6 +1,6 @@
-PWD C:\Users\Bernát\PycharmProjects\Thesis-paper\src
+PWD c:\Users\Bernát\PycharmProjects\Thesis-paper\src
 INPUT C:\Users\Bernát\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT main.tex
+INPUT c:\Users\Bernát\PycharmProjects\Thesis-paper\src\main.tex
 OUTPUT main.log
 INPUT C:\MiKTeX\tex\latex\base\report.cls
 INPUT C:\MiKTeX\tex\latex\base\report.cls

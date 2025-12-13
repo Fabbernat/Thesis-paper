@@ -338,7 +338,7 @@ Does the word `w` mean the same thing in `s2` and `s1`?
     \end{verbatim}
 
     kérdésekre mindig ugyanazt kellene, hogy válaszolják (változatlan $w$, $s1$ és $s2$ esetén, ahol $w$ egy szó, $s1$ az első példamondat, és $s2$ a második példamondat).
-    Ezek az egyszerű logikai invariancia - a két mondat sorrendjének felcserélése - az ember számára könnyen felismerhető és belátható, hogy a kérdés értelmét nem módosítja, ám a nyelvi modelleket, főleg az alacsony, "csak" pár milliárd paraméterszámúakat könnyen összezavarja.
+    Ez az egyszerű logikai invariancia - a két mondat sorrendjének felcserélése - az ember számára könnyen felismerhető és belátható, hogy a kérdés értelmét nem módosítja, ám a nyelvi modelleket, főleg az alacsony, "csak" pár milliárd paraméterszámúakat könnyen összezavarja.
 
     A fenti felcserélés egy klasszikus logikai invariancia teszt. Ha $A \land B$ igaz, akkor $B \land A$-nak is igaznak kell lennie. Ebből következően ha a modell szerint a $w$ szó jelentése azonos $s1$ és $s2$ kontextusban, akkor az $s2$ és $s1$ sorrendben is azonosnak kell lennie.
 
@@ -797,13 +797,13 @@ The cat sat on the _ .
             SentenceNormalizer
     \end{verbatim}
 
-    A négy egymás alatt található szkript egymás után hívódnak meg és mind a run szkriptnek adják vissza az irányítást a befejeztük után.
+    A négy egymás alatt található szkript egymás után hívódik meg, és mind a run szkriptnek adják vissza az irányítást a befejeztük után.
 
     \subsection{HuggingFaceModelInferencer}
 A második modul a HuggingFaceModelInferencer (modell inferencia végrehajtó).
     Ebben a modulban történik a konkrét modell lefuttatása az előző modulban előállított kérdéseken.
 
-Az előző modulban láthattuk, hogy a kérdések legyártása viszonylag egyszerű fájl- és sztringfeldolgozó algoritmusokkal lehetséges. A modell futtatása a nagymérteű promptom és annak speciális felépítése miatt viszont nem egy triviális feladat. Még kisebb méretű Hugging Face modellek futtatása is rendkívül körülményes. Ez egy internetelérést és rendkívül sok időt és erőforrást (CPU, GPU, RAM) igénylő művelet. Így nem meglepő, hogy ennek a modulnak az elkészítése vette igénybe az idő túlnyomó részét a szoftver elkészítésében.
+Az előző modulban láthattuk, hogy a kérdések legyártása viszonylag egyszerű fájl- és sztringfeldolgozó algoritmusokkal lehetséges. A modell futtatása a nagyméretű promptom és annak speciális felépítése miatt viszont nem egy triviális feladat. Még kisebb méretű Hugging Face modellek futtatása is rendkívül körülményes. Ez egy internetelérést és rendkívül sok időt és erőforrást (CPU, GPU, RAM) igénylő művelet. Így nem meglepő, hogy ennek a modulnak az elkészítése vette igénybe az idő túlnyomó részét a szoftver elkészítésében.
 
 A program elindítása előtt érdemes a \texttt{\allowbreak config.py} és a \texttt{\allowbreak modelname.py} beállításait ellenőrizni és igény szerint módosítani. A modell tetszőleges lehet, de ajánlott a \texttt{\allowbreak modelname.py} fájlban található \texttt{\allowbreak supported\_models} lista a keretrendszerrel már tesztelt modelleket tartalmazza, ezért célszerű ezek közül választani. A \texttt{\allowbreak config.py} listában lévő modellek közül, annak is az első indexein elhelyezkedő modellek közül választani, mert ezek kompatibilisebbek a keretrendszerrel. A \texttt{\allowbreak config} fájlban lehetőség van a promptnak az utasítás részén változtatni, amely aztán a kérdések elé kerül a prompt-felépítés során. Ebben lehet adni, hogy hány kérdésre válaszoljon, milyen kulcsszavakkal, terjedelemben, stb. A konzolra történő kiíratások mennyiségét is itt lehet állítani.
 
@@ -862,7 +862,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 
 
     Tehát a main szkript meghívja a run szkriptet, amely továbbadja az irányítást a \texttt{\allowbreak TernaryClassifier} szkriptnek. A szkript három kategóriába sorolja a válaszokat: "igen", "nem" és "talán" osztályokba.
-    Az osztályozás során végigmegy az előző modulból inputként kapott modell válaszokon és soronként eldönti, hogy a "Yes", a "No", vagy a "?"  (nem egyértelmű) kategóriába sorolható-e be a válasz. Minden sor pontosan egy kategóriába soroltatik be.
+    Az osztályozás során végigmegy az előző modulból inputként kapott modell válaszokon és soronként eldönti, hogy a "Yes", a "No", vagy a "?"  (nem egyértelmű) kategóriába sorolható-e be a válasz. Minden sor pontosan egy kategóriába kerül besorolásra.
     Az eldöntési algoritmusnak több módszere is van, ezért választható itt az \texttt{\allowbreak AnswerAwareClassificationRule} és a \texttt{\allowbreak SentenceClassifier}, amelyet a config fájlban található \texttt{\allowbreak ADAPTIVE\_RUN} változóval lehet beállítani.
     Ezután a kategóriákat a \texttt{\allowbreak TernaryResultsProcessor} összeveti a gold standardban szereplő értékekkel, majd az összevetés eredményei alapján készülnek el a \texttt{\allowbreak run} szkriptben a végeredmények.
 
@@ -924,12 +924,12 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     Emiatt ha a válasz nem "igen" vagy "nem", az automatikusan nem konzisztensen pontos.
 
     \subsubsection{Bizonytalan párok aránya}
-    Mivel a bizonytalan páronként csak páronként értelmezhető, így a végeredménybe minden találat \textbf{1} értékkel kerül beszámításra.
+    Mivel a bizonytalan párok csak páronként értelmezhetőek, így a végeredménybe minden találat \textbf{1} értékkel kerül beszámításra.
 
     Ha egy egyenes-fordított kérdéspár \textbf{legalább egyikére} a válasz se nem "igen", se nem "nem", akkor azt a sort "bizonytalannak" számítom.
 
     \subsubsection{Konzisztensen bizonytalan párok aránya}
-    Mivel a konzisztensen bizonytalan páronként csak páronként értelmezhető, így a végeredménybe minden találat \textbf{1} értékkel kerül beszámításra.
+    Mivel a konzisztensen bizonytalan párok csak páronként értelmezhetőek, így a végeredménybe minden találat \textbf{1} értékkel kerül beszámításra.
 
     Ha egy egyenes-fordított kérdéspár \textbf{mindkét kérdésére} a válasz se nem "igen", se nem "nem", akkor azt a sort "konzisztensen bizonytalannak" számítom.
 
@@ -1036,7 +1036,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 
     \subsection{Dupla importok}
     A moduljaimban szinte minden fájlban észrevehető, hogy az importok egy try-catch blokkban vannak megadva.
-    Ez duplikált importálásnak tűnhet, ám nem az, hiszen a verzérlési szerkezet biztosítja, hogy ha az első elérési út megtalálása meghiúsul, akkor a másik útvonalról töltődjenek be a szükséges modulok.
+    Ez duplikált importálásnak tűnhet, ám nem az, hiszen a vezérlési szerkezet biztosítja, hogy ha az első elérési út megtalálása meghiúsul, akkor a másik útvonalról töltődjenek be a szükséges modulok.
     Erre azért volt szükség, mert mindenképpen el szerettem volna érni, hogy a projekt gyökérkönyvtárából és modul-szinten is futtathatóak legyenek a programok.
 
     \subsection{Kommentek}
@@ -1121,7 +1121,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     A keretrendszer éles próbájaként a $Qwen/Qwen2.5-0.5B-Instruct$, a\\ $Qwen/Qwen2.5-1.5B-Instruct$ és a $Google/Gemma-2-2b-it$ modelleket hasonlítottam össze. 
     Az előbbi kettő az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük három eltérő méretű (0.5B vs 1.5B vs 2B) és két eltérő gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
 
-    Mind a 600 választ egyesével generáltattam le, majd egyenként leelenőriztem, hogy a 4 adat, az egyenes válasz, a fordított válasz, az eredeti WiC-adathalmazbeli sor, az ehhez tartozó gold standard címke \texttt{GUID-ja} valóban megegyezik-e, felhasználva a \texttt{\allowbreak ModelOutputProcessor} modulom indexereit, így ügyelve a módszertan tisztaságára.
+    Mind a 600 választ egyesével generáltattam le, majd egyenként leellenőriztem, hogy a 4 adat, az egyenes válasz, a fordított válasz, az eredeti WiC-adathalmazbeli sor, az ehhez tartozó gold standard címke \texttt{GUID-ja} valóban megegyezik-e, felhasználva a \texttt{\allowbreak ModelOutputProcessor} modulom indexereit, így ügyelve a módszertan tisztaságára.
 
     Keretrendszerem érdeme, hogy végül sikerült a három modell válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) hiánytalanul elérni.
     A modellek sikeresen csak "Yes" és "No" válaszokat adtak, amely miatt az automatikusan 0 értékű "konzisztensen bizonytalan" mérőszámot nem tüntetem fel, és a "bizonytalan" mutatót is csak vizuális kiemelésképpen.
@@ -1198,7 +1198,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 \end{figure}
 
 Az ábrán látható, hogy meglepő módon a legkisebb modell, a Qwen 0.5B érte el a legjobb mutatókat a konzisztens és konzisztensen pontos párok számában is. Pontosságban viszont alulmaradt a Qwen 1.5B-hez és a Gemma 2B-hez képest is, melyek egyformán 76 pontos párt adtak.
-A Word-in-Context adathalmaz minden metszetében egyenlő arányban szerepelnek "True" (igaz) és "False" (hamis) címkék, így az alapként használt \texttt{test} metszetben is. A megindexelt válaszokhoz tartozó gold standardbeli címkék eloszlásának szummázásával kimutattam, hogy a választott 100 címke pont egy elég torz, 35 "True" és 65 "False" címkét tartalmazó minta volt. A \texttt{\allowbreak Qwen 0.5B} modellről pedig egyértelműen megállapítható volt, hogy a "nem" választ preferálja a döntéseiben. 
+A Word-in-Context adathalmaz minden metszetében egyenlő arányban szerepelnek "True" (igaz) és "False" (hamis) címkék, így az alapként használt \texttt{test} metszetben is. A megindexelt válaszokhoz tartozó gold standardbeli címkék eloszlásának szummázásával kimutattam, hogy a választott 100 kérdéspárhoz tartozó címke pont egy elég torz, 35 "True" és 65 "False" címkét tartalmazó mintapár volt. A \texttt{\allowbreak Qwen 0.5B} modellről pedig egyértelműen megállapítható volt, hogy a "nem" választ preferálja a döntéseiben. 
 Ez két tényező összeállása lehet a fő oka, hogy a Qwen 0.5B rendkívül jó konzisztens pontosságot ért el, ám feltételezhető, hogy egyenletes eloszlású címkék esetén romlana a teljesítménye, hiszen a pontos párok arányában viszont enyhén elmaradt a nagyobb paraméterszámú modellektől.
 Márpedig a pontos párok aránya jól mutatja az általános érvelési képességet, hiszen itt nincs figyelembe véve a konzisztencia, csak az, hogy a modell helyes választ adott-e a gold standarddal összevetve.
  
@@ -1369,14 +1369,15 @@ A kísérlet
 
 \chapter{Konklúzió} % TODO
 Mivel az értékelés csupán 200 egyedi kérdésen, vagyis 100 páron történt, így a következtetések csak korlátozottan általánosíthatóak és nem tekinthetjük teljesen reprezentatívnak.
-Azonban ebből a méretű adatból is érdekes megfigyeléseket lehet levonni. Az ábrákból leolvasható, hogy a Qwen2.5-0.5B-Instruct és a Qwen2.5-1.5B-Instruct modell is jelentősen előnyben részesíti a "nem" választ (0.5B: 188 darab, 1.5B: 179 darab), míg a \texttt{\allowbreak Gemma-2-2b-it} 
-modell jóval kiegyensúlyozottabb eloszlást mutat (81 ``igen'' és 119 ``nem'' válasz). 
+Azonban ebből a méretű adatból is érdekes megfigyeléseket lehet levonni. 
+Az ábrákból leolvasható, hogy a Qwen2.5-0.5B-Instruct és a Qwen2.5-1.5B-Instruct modell is jelentősen előnyben részesíti a "nem" választ az "igen" válaszaihoz képest (0.5B: 188 darab, 1.5B: 179 darab), míg a \texttt{\allowbreak Gemma-2-2b-it} 
+modell jóval kiegyensúlyozottabb eloszlást mutat (81 ``igen'' és 119 ``nem'' válasz). Tény, hogy a gold standard címkék eloszlása is torzított volt, a ``nem'' címkék aránya jelentősen felül volt reprezentálva (130 ``nem'' és csupán 70 ``igen'' címke), ám a Qwen-modellek válaszaránya még így is jelentősen eltért a várttól, különösen a kisebb, 0.5B modell esetén.
 A jelenség fő oka valószínűleg az, hogy a kisebb méretű Qwen-modelleknek nincs elegendő 
-lexikális tudása a WiC-adathalmazra jellemző egzotikus, speciális lexémáknak magas szintű szemantikus 
+lexikális tudása a WiC-adathalmazra jellemző egzotikus, speciális lexémáknak a magas szintű szemantikus 
 reprezentációjához, így biztonsági okokból a ``nem ugyanazt jelentik'' predikció felé 
 hajlanak.
 
-A páronkénti pontosság vizsgálata ugyanakkor árnyalja a képet: míg az 1.5B modell válasza
+A páronkénti pontosság vizsgálata ugyanakkor rávilágít, hogy mégiscsak várhatunk teljesítményjavulást nagyobb paraméterszámú modell választásával: míg az 1.5B modell válasza
 76 pár esetében egyezett legalább félig a gold standarddal, addig a 0.5B modell esetén 71, a Gemma esetén pedig 76, vagyis a 
 nagyobb Qwen-modell és a Gemma modell közel azonos teljesítményt mutatott ezen a téren, enyhén megelőzve a félmilliárd paraméteres modellt.
 
@@ -1388,18 +1389,15 @@ eredményez a bináris szemantikai döntési feladatokon.
 A konzisztensen pontos párok számában szintén megfigyelhető a különbség: 
 a 0.5B modell 65 egyezést adott, míg az 1.5B modell 55-öt, a Gemma pedig 49-et. 
 Ez elsősorban arra vezethető vissza, hogy a legkisebb Qwen-modell – a válaszainak erős ``nem''-túlsúlya 
-miatt – szinte minden "nem" címkét eltalált a gold standarból. A jelenség rávilágít arra, hogy a magas konzisztencia és "konzisztens helyesség" mutató nem feltétlenül jelenti a szemantikai megértés tényleges 
+miatt – szinte minden "nem" címkét eltalált a gold standardból. A jelenség rávilágít arra, hogy a magas konzisztencia és "konzisztens helyesség" mutató nem feltétlenül jelenti a szemantikai megértés tényleges 
 javulását, mivel a következetes negatív válaszadás torzítja a "konzisztensen pontos" mérőszámot. Bár ez a stratégia statisztikailag kedvező konzisztens viselkedést eredményez, nem szolgáltat bizonyítékot arra, hogy a modell összetettebb, jelentésérzékeny feladatok esetén is következetes és megalapozott döntéshozatalra képes.
 
-Emiatt erre az egyszerűsített bináris döntési feladatra a 0.5B modell jelentősen jobb mutatókat ért el. (a Qwen2.5-1.5B-Instruct 94\%!).
-Ezt az egyoldalúságot valószínűleg továbberősíti az adathalmaz mondatainak jellemző nem-köznyelvi jellege, hiszen nagyrészt régies, tudományos, irodalmi szövegeket tartalmaz.
-Ilyesfajta szövegeket egy ilyen kisméretű, köznyelvi angol megértésére szánt modell nem tud megfelelően ábrázolni és értelmezni. Ezzel szemben a Gemma-2-2b-it modell kiegyensúlyozottabb viselkedést mutatott adott, amely valószínűleg annak köszönhető, hogy a Google tanítási folyamata során jobb általánosító képességet ért el a modell, amely így kevésbé hajlamos a "nem" válasz túlsúlyára.
-A modell-válaszok semleges (``bizonytalan'') kategóriába esése egyik modellnél sem 
+A modell-válaszok semleges (``bizonytalan'') kategóriába esése az éles kísérleten egyik modellnél sem 
 fordult elő.
 
-Említésre méltó az inferenciák időkülönbsége is a három modell között, amelyben viszont jelentősen nyert a $Qwen2.5-0.5B-Instruct$. A $Qwen$ félmilliárd paraméteres modellje esetén átlagosan 6 másodpercet vett igénybe egy kérdés megválaszolása, a másfélmilliárd paraméteres modellje esetén már 16-30 másodpercet, míg a Gemma modell esetén az átlagos válaszidő kb. 35(!) másodperc volt. Megfigyelhető tehát, hogy a méret növekedésével az inferencia futásideje szuperlineárisan növekszik.
+Említésre méltó az inferenciák időkülönbsége is a három modell között, amelyben viszont jelentősen nyert a $Qwen2.5-0.5B-Instruct$. A $Qwen$ félmilliárd paraméteres modellje esetén átlagosan 6 másodpercet vett igénybe egy futtatás 1 darab kérdésre az inferenciával együtt, a másfélmilliárd paraméteres modellje esetén már 16-30 másodpercet, míg a Gemma modell esetén az átlagos válaszidő kb. 35(!) másodperc volt. Megfigyelhető tehát, hogy a méret növekedésével az inferencia futásideje szuperlineárisan növekszik.
 
-A hipotézisekre reagálva ugyan elmondható egyrészt, hogy a paraméterszám növekedésével a modellek páronkénti pontossága javul, ám a többi metrikában nem figyelhető meg egyértelmű javulás, sőt teljesítményromlás jellemző. 
+A hipotézisekre reagálva ugyan elmondható egyrészt, hogy a paraméterszám növekedésével a modellek páronkénti pontossága javul, ám a többi metrikában nem volt megfigyelhető egyértelmű javulás, sőt enyhe teljesítményromlás volt jellemző. 
 Másrészt a nagyobb Qwen modell paraméterszáma ugyan nem különbözik nagyban a Gemma modellétől, ám mégis jelentős eltérések mutatkoznak a válaszok eloszlásában és a konzisztens viselkedésben, amely arra utal, hogy a modell architektúrája és a tanítási eljárás is lényeges hatással van a teljesítményre, nem csupán a paraméterszám.
 
 Sikerült olyan mértékben automatizálnom a keretrendszert, hogy az elkészült szoftver jelentősen megkönnyítette a végső kísérlet elvégzését és így a saját munkámat. Arról nem is beszélve, hogy a keretrendszer nyomonkövethetővé és jól ellenőrizhetővé teszi az eredményeket. A munkafolyamatok túlnyomó többségét sikerült teljesen automatizálnom, megelőzve a manuális kiértékelést és ellenőrzést.
@@ -1454,7 +1452,7 @@ Ha az elkészült munkámmal legalább egy embernek segítettem, akkor már meg�
 
     Ezúton szeretnék köszönetet mondani a családomnak, barátaimnak, ismerőseimnek, tanáraimnak és egyetemi tanáraimnak, akik végigkísértek utamon és támogattak tanulmányaim alatt.
     Köszönetet szeretnék továbbá nyilvánítani szüleimnek, testvéreimnek és barátaimnak, hogy mindenben támogattak.
-    Külön köszönetet szeretnék mondani mindazoknak akik tesztelték és átnézték a munkámat.
+    Külön köszönetet szeretnék mondani mindazoknak, akik tesztelték és átnézték a munkámat.
 
     Végül, de nem utolsó sorban köszönetet szeretnék mondani \textbf{témavezetőmnek, Berend Gábornak}, hogy konzulensként és témavezetőként segített a szakdolgozatom megírásában.
 
