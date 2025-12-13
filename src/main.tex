@@ -1257,7 +1257,8 @@ The cat sat on the _ .
     A négy egymás alatt található szkript egymás után hívódnak meg és mind a run szkriptnek adják vissza az irányítást a befejeztük után.
 
     \subsection{HuggingFaceModelInferencer}
-Ebben a modulban történik a konkrét modell lefuttatása az előző modulban előállított kérdéseken.
+A második modul a HuggingFaceModelInferencer (modell inferencia végrehajtó).
+    Ebben a modulban történik a konkrét modell lefuttatása az előző modulban előállított kérdéseken.
 
 Az előző modulban láthattuk, hogy a kérdések legyártása viszonylag egyszerű fájl- és sztringfeldolgozó algoritmusokkal lehetséges. A modell futtatása a nagymérteű promptom és annak speciális felépítése miatt viszont nem egy triviális feladat. Még kisebb méretű Hugging Face modellek futtatása is rendkívül körülményes. Ez egy internetelérést és rendkívül sok időt és erőforrást (CPU, GPU, RAM) igénylő művelet. Így nem meglepő, hogy ennek a modulnak az elkészítése vette igénybe az idő túlnyomó részét a szoftver elkészítésében.
 
@@ -1265,7 +1266,7 @@ A program elindítása előtt érdemes a \texttt{config.py} és a \texttt{modeln
 
 A futás első lépéseként a program ellenőrzi, hogy az input kérdéssor helyes-e. Ha a bemenet páratlan számú sorból áll, akkor hibás, hiszen nem egyezik meg az egyenes és fordított kérdések száma. Ilyenkor a felhasználó figyelmeztetést kap, és dönthet, hogy kilép, vagy továbblép, és a program megpróbálja helyreállítani 1 sor kitörlésével a bementetet.
 
-Ezután a program azt is leellenőrzi, hogy tényleg a kérdések fele-e fordított, a most már biztosan páros hosszúságú kérdéshalmazból. Ezt úgy teszi, hogy n kérdés esetén összehasonlítja az 1. és az n/2+1. kérdésben szereplő 1. és 2. mondatot, hogy azok tényleg egymás fordítottjai-e. Hogyha nem, akkor figyelmezteti a felhasználót, hogy hibát talált a kérdéssorban. A felhasználó itt szintén választhat, hogy kilép a programból, vagy továbblép potenciálisan hibás input kérdésekkel.
+Ezután a program azt is leellenőrzi, hogy tényleg a kérdések fele-e fordított, a most már biztosan páros hosszúságú kérdéshalmazból. Ezt úgy teszi, hogy n kérdés esetén összehasonlítja az 1. és az \texttt{n/2+1}. kérdésben szereplő 1. és 2. mondatot, hogy azok tényleg egymás fordítottjai-e. Hogyha nem, akkor figyelmezteti a felhasználót, hogy hibát talált a kérdéssorban. A felhasználó itt szintén választhat, hogy kilép a programból, vagy továbblép potenciálisan hibás input kérdésekkel.
 
 Ezt követően történik a 3. féltől származó könyvtárak betöltése. A szükséges fő csomagok a \texttt{torch}, \texttt{transformers}, \texttt{accelerate} és \texttt{huggingface\_hub}, de bizonyos modellek további függőségeket is igényelnek. Ha valamelyik hiányzik, a Python futásidőben hibát jelez.
 
@@ -1295,6 +1296,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     Éppen ezért van szükség a ModelOutputProcessor modulra, amely érthetővé teszi az eredményeket.
 
     \subsection{ModelOutputProcessor}
+    A harmadik modul a ModelOutputProcessor (modell kimenet feldolgozó).
     A \texttt{ModelOutputProcessor} bemenete a HuggingFaceModelInferencerben futtatott modell válaszai.
     Természetesen itt is van validálás a program bemenetére.
     Ha a modell jól válaszolt, akkor \texttt{n} darab kérdés esetén a válaszok száma is \texttt{n} kell, hogy legyen.
@@ -1357,7 +1359,8 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 
 
     \subsubsection{Pontos válaszok aránya}
-    Mivel a pontosság egyenként is értelmezhető. Ez így nem összevethető a többi adattal, így ez egy külön mérőszám, amelybe minden találat \textbf{0.5} értékkel kerül beszámításra.
+    Megdaja a gold standarddal egyező válaszok számát.
+    Mivel a többi metrika páronként, emez pedig egyenként értelmezendő, így nem összevethető a többi metrikával.
 
     Önmagában az, hogy a válaszok konzisztensek, nem elég, hiszen lehet konzisztensen hibás az összes válasz is, amely nem egy kívánatos eredmény.
     Emiatt azt is meg kell vizsgálni, hogy a válasz megegyezik-e a gold standardbeli válasszal, függetlenül attól, hogy az egyenes vagy fordított.
@@ -1395,7 +1398,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     .
 
 
-     \section{Indexer}
+     \subsubsection{Indexer}
     Ha megkaptuk az 5 értéket (Konzisztens, Pontos, Konzisztensen pontos, Bizonytalan, Konzisztensen bizonytalan) a megfelelő tartományban, akkor már nincs más dolgunk, mint összeindexelni a kérdés-válasz párokat a Word-in-Context adathalmaz megegyező indexű mintapéldájával és az ahhoz tartozó gold standard helyes válasszal (mindegyik index meg kell hogy egyezzen). Ehhez nem árt ellenőrizni az alábbiakat:
     Az {adathalmaz sor-kérdés-egyenes válasz-fordított válasz-gold standard sor} \texttt{GUID}-jai \textbf{pontosan megegyeznek-e}. A \texttt{GUID} az eredeti, WiC adathalmazban elfoglalt sorszám, amelyre indexként tekintünk a beolvasás után. A \texttt{GUID} az indices.out fájlban található.
     Ilyen nagy mennyiségű adat esetén komoly problémát jelent a manuális indexelés, kiváltképpen mivel a kérdések sorrendje eleve véletlenszerű.
@@ -1653,12 +1656,7 @@ py -3.13 -m src.Framework.globalMain
         height=10cm,
         ylabel={Darabszám},
         symbolic x coords={
-            Konzisztens párok,
-            Pontosak,
-            Pontos párok,
-            Konzisztensen pontos,
-            Bizonytalan párok,
-            Konz. bizonytalan
+            Pontos válaszok (gold standarddal való egyezések)
         },
         xtick=data,
         x tick label style={rotate=45, anchor=east, font=\scriptsize},
@@ -1686,12 +1684,7 @@ py -3.13 -m src.Framework.globalMain
         fill=yellow!70!brown,
         draw=yellow!50!black
     ] coordinates {
-        (Konzisztens párok, 94.00)
-        (Pontosak, 136.00)
-        (Pontos párok, 71.00)
-        (Konzisztensen pontos, 65.00)
-        (Bizonytalan párok, 0.00)
-        (Konz. bizonytalan, 0.00)
+        (Pontos válaszok (gold standarddal való egyezések), 136.00)
     };
 
     % Qwen 1.5B updated
@@ -1700,12 +1693,8 @@ py -3.13 -m src.Framework.globalMain
         draw=green!50!black,
         postaction={pattern=north east lines, pattern color=green!30!black}
     ] coordinates {
-        (Konzisztens párok, 79.00)
-        (Pontosak, 131.00)
-        (Pontos párok, 76.00)
-        (Konzisztensen pontos, 55.00000000000001)
-        (Bizonytalan párok, 0.00)
-        (Konz. bizonytalan, 0.00)
+        (Pontos válaszok (gold standarddal való egyezések), 131.00)
+        
     };
 
     % Gemma updated
@@ -1713,12 +1702,7 @@ py -3.13 -m src.Framework.globalMain
         fill=blue!60,
         draw=blue!80!black
     ] coordinates {
-        (Konzisztens párok, 73.00)
-        (Pontosak, 125.00)
-        (Pontos párok, 76.00)
-        (Konzisztensen pontos, 49.00)
-        (Bizonytalan párok, 0.00)
-        (Konz. bizonytalan, 0.00)
+        (Pontos válaszok (gold standarddal való egyezések), 125.00)
     };
 
     \legend{
@@ -1897,7 +1881,7 @@ Ha az elkészült munkámmal legalább egy embernek segítettem, akkor már meg�
     \chapter*{Köszönetnyilvánítás}
     \addcontentsline{toc}{section}{Köszönetnyilvánítás}
 
-    Ezúton szeretnék köszönetet mondani a családomnak, barátaimnak, tanítóimnak, tanáraimnak és egyetemi tanáraimnak, akik végigkísértek utamon és támogattak tanulmányaim alatt.
+    Ezúton szeretnék köszönetet mondani a családomnak, barátaimnak, ismerőseimnek, tanáraimnak és egyetemi tanáraimnak, akik végigkísértek utamon és támogattak tanulmányaim alatt.
     Köszönetet szeretnék továbbá nyilvánítani szüleimnek, testvéreimnek és barátaimnak, hogy mindenben támogattak.
     Külön köszönetet szeretnék mondani mindazoknak akik tesztelték és átnézték a munkámat.
 

@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1765572435.86009 "main.bcf" "main.bbl" "main" 1765575884.74282 0
-  "main.bcf" 1765575884 109803 f85d12e06a34a5832ae029d58463250d "pdflatex"
+["biber main"] 1765589096.99718 "main.bcf" "main.bbl" "main" 1765589140.46732 0
+  "main.bcf" 1765589138 109803 f85d12e06a34a5832ae029d58463250d "pdflatex"
   "references.bib" 1765324443 14637 fcb089654f7059f241b6add52b6f9db1 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1765575877.12949 "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" "main.pdf" "main" 1765575884.74397 0
+["pdflatex"] 1765589121.29704 "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" "main.pdf" "main" 1765589140.47065 0
   "C:/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
   "C:/MiKTeX/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136765053 1292 bd42be2f344128bff6d35d98474adfe3 ""
   "C:/MiKTeX/fonts/tfm/adobe/courier/pcrr8t.tfm" 1136765053 1384 4632f5e54900a7dadbb83f555bc61e56 ""
@@ -280,13 +280,13 @@
   "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1765234507 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tctt1200.pk" 1764887141 11368 22e1b848240ae33eb8dfe3755848aa08 ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1750612748 13218441 72e452d2d4da982476be41d8461887dd ""
-  "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" 1765575876 147417 b76c7f2824f25c4408c342d9502cfe19 ""
-  "main.aux" 1765575884 20620 3e2d44f927f46e2bccf96b4eda5a9084 "pdflatex"
-  "main.bbl" 1765574669 45549 0398baeb5186bb0b1c91568c339c1d64 "biber main"
-  "main.out" 1765575884 10256 ba2184ba6a6e28475963c9fbe06d7a52 "pdflatex"
-  "main.run.xml" 1765575884 2304 594eb205a07cc1738df7b0c71eafa9d5 "pdflatex"
-  "main.tex" 1765575876 147417 b76c7f2824f25c4408c342d9502cfe19 ""
-  "main.toc" 1765575884 9035 5f16d1e4e9355c97e2a61510173e8013 "pdflatex"
+  "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" 1765589090 147050 b0155ad67660e95046b67fd7b9c92966 ""
+  "main.aux" 1765589138 20609 713c8c419d29cdb799fa654a5fcb8216 "pdflatex"
+  "main.bbl" 1765589103 45549 0398baeb5186bb0b1c91568c339c1d64 "biber main"
+  "main.out" 1765589138 10166 7b6555bf8370bb81e3f50334732a389e "pdflatex"
+  "main.run.xml" 1765589138 2304 594eb205a07cc1738df7b0c71eafa9d5 "pdflatex"
+  "main.tex" 1765589090 147050 b0155ad67660e95046b67fd7b9c92966 ""
+  "main.toc" 1765589138 9024 d713194b5810805ccfad7cdb4a879320 "pdflatex"
   "sentence_builders.png" 1765541830 36929 68d47002932edcb913bacbc332ed9893 ""
   (generated)
   "main.aux"
