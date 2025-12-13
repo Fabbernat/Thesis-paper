@@ -1127,19 +1127,19 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 \begin{tikzpicture}
     \begin{axis}[
         ybar,
-        bar width=0.8cm,
-        width=0.9\textwidth,
-        height=8cm,
+        bar width=0.28cm,
+        width=0.7\textwidth,
+        height=4.2cm,
         ylabel={Darabszám},
         symbolic x coords={Konzisztens, Pontos, Konzisztensen pontos, Bizonytalan},
         xtick=data,
-        x tick label style={rotate=45, anchor=east, font=\small},
+        x tick label style={rotate=90, anchor=east, font=\small},
         ymin=0,
-        ymax=100,
+        ymax=110,
         ymajorgrids=true,
         grid style=dashed,
         enlarge x limits=0.15,
-        legend style={at={(0.5,-0.55)}, anchor=north, legend columns=-1},
+        legend style={at={(0.5,-1.5)}, anchor=north, legend columns=-1},
         nodes near coords,
         nodes near coords style={font=\footnotesize},
         every node near coord/.append style={/pgf/number format/fixed, /pgf/number format/precision=2}
@@ -1199,13 +1199,11 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 \begin{tikzpicture}
     \begin{axis}[
         ybar,
-        bar width=1cm,
-        width=\textwidth,
-        height=10cm,
+        bar width=1.2cm,
+        width=0.7\textwidth,
+        height=4.2cm,
         ylabel={Darabszám},
-        symbolic x coords={
-            Pontos válaszok 
-        },
+        symbolic x coords={Pontos válaszok},
         xtick=data,
         x tick label style={
             rotate=0, 
@@ -1222,10 +1220,10 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
             at={(0.5,-0.25)}, 
             anchor=north, 
             legend columns=3,
-            font=\small
+            font=\footnotesize
         },
         nodes near coords,
-        nodes near coords style={font=\tiny},
+        nodes near coords style={font=\footnotesize},
         every node near coord/.append style={
             /pgf/number format/fixed, 
             /pgf/number format/precision=1
@@ -1235,26 +1233,23 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     \addplot[
         fill=yellow!70!brown,
         draw=yellow!50!black,
-        bar shift=-0.9cm
     ] coordinates {
-        (Pontos válaszok , 136.00)
+        (Pontos válaszok, 136.00)
     };
 
     \addplot[
         fill=green!70!brown,
         draw=green!50!black,
         postaction={pattern=north east lines, pattern color=green!30!black},
-        bar shift=0cm
     ] coordinates {
-        (Pontos válaszok , 131.00)
+        (Pontos válaszok, 131.00)
     };
 
     \addplot[
         fill=blue!60,
         draw=blue!80!black,
-        bar shift=0.9cm
     ] coordinates {
-        (Pontos válaszok , 125.00)
+        (Pontos válaszok, 125.00)
     };
 
 
@@ -1266,7 +1261,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     \end{axis}
 \end{tikzpicture}
 
-\caption{\scriptsize Három modell pontos válaszainak (gold standard címkékkel való egyezések) összehasonlítása 200 véletlenszerű kérdésen (100 kérdéspáron).}
+\caption{Három modell pontos válaszainak (gold standard címkékkel való egyezések) összehasonlítása 200 véletlenszerű kérdésen (100 kérdéspáron).}
 \label{fig:ModelEvalSummaryComplete}
 \end{figure}
 
@@ -1276,26 +1271,26 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 \begin{tikzpicture}
     \begin{axis}[
         ybar,
-        bar width=0.7cm,
-        width=\textwidth,
-        height=10cm,
+        bar width=0.56cm,
+        width=0.7\textwidth,
+        height=6cm,
+        enlarge x limits=0.45,
         ylabel={Darabszám},
         symbolic x coords={Yes, No},
         xtick=data,
         x tick label style={font=\large},
         ymin=0,
-        ymax=200,
+        ymax=220,
         ymajorgrids=true,
         grid style=dashed,
-        enlarge x limits=0.15,
         legend style={
             at={(0.5,-0.25)}, 
             anchor=north, 
             legend columns=3,
-            font=\small
+            font=\footnotesize
         },
         nodes near coords,
-        nodes near coords style={font=\small},
+        nodes near coords style={font=\footnotesize},
         every node near coord/.append style={
             /pgf/number format/fixed,
             /pgf/number format/precision=0
