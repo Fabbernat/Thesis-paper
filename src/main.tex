@@ -242,9 +242,8 @@
     Hogy majd az eredményekből következtetést lehessen levonni, két hipotézist fogalmazok meg.
     Egyrészt valószínűsíthető és feltételezem, hogy minél nagyobb paraméterszámú egy model, annál jobban fog teljesíteni a megfogalmazott feladatra.
     Továbbá méretnövekedéssel történő teljesítményjavulás mértéke is kérdéses és érdekel.
-    Másrészt azonos méretű modellek teljesítménye között is óriási különbség lehet, még akkor is, ha azok azonos célra, pl.\ utasítás-végrehajtásra készültek (\texttt{\allowbreak instruct} modellek).
-    Ez különösen igaz lehet a különböző cégek által gyártott modellekre.
-    Emiatt azt is feltételezem, hogy lesznek különbségek az ilyen azonos méretű, de eltérő architektúrájú modellek között.
+    Másrészt közel azonos méretű, de különböző cégek által fejlesztett modellek teljesítménye között is óriási különbség lehet, még akkor is, ha azok azonos célra, pl.\ utasítás-végrehajtásra készültek (\texttt{\allowbreak instruct} modellek).
+    Emiatt azt is feltételezem, hogy lesznek különbségek az ilyen hasonló méretű, de eltérő architektúrájú modellek között.
     A szakdolgozatom, pontosabban a szoftverem tesztelésének eredményei ezeket a hipotéziseket vagy megerősítik, vagy megcáfolják és ezekre a feltevésekre majd a konklúzió fejezetben reagálok.
 
     Ehhez szükség lesz egy - lehetőleg lokális környezetben futó - programra, ahol különböző modellek telepítése és használata lehetséges.
@@ -1356,14 +1355,14 @@ A kísérlet
 \chapter{Konklúzió} % TODO
 Tisztán látható, hogy a Qwen2.5-0.5B-Instruct és a Qwen2.5-1.5B-Instruct modell is jelentősen előnyben részesíti a "nem" választ (0.5B: 188 darab, 1.5B: 179 darab), míg a \texttt{\allowbreak Gemma-2-2b-it} 
 modell jóval kiegyensúlyozottabb eloszlást mutat (81 ``igen'' és 119 ``nem'' válasz). 
-A jelenség fő oka továbbra is az, hogy a kisebb méretű Qwen-modelleknek nincs elegendő 
-lexikális tudása a WiC-adathalmaz ritka szavainak magas szintű szemantikus 
+A jelenség fő oka valószínűleg az, hogy a kisebb méretű Qwen-modelleknek nincs elegendő 
+lexikális tudása a WiC-adathalmazra jellemző egzotikus, speciális lexémáknak magas szintű szemantikus 
 reprezentációjához, így biztonsági okokból a ``nem ugyanazt jelentik'' predikció felé 
 hajlanak.
 
 A páronkénti pontosság vizsgálata ugyanakkor árnyalja a képet: míg az 1.5B modell válasza
 76 pár esetében egyezett legalább félig a gold standarddal, addig a 0.5B modell esetén 71, a Gemma esetén pedig 76, vagyis a 
-nagyobb Qwen-modell és a Gemma modell közel azonos teljesítményt mutatott ezen a téren.
+nagyobb Qwen-modell és a Gemma modell közel azonos teljesítményt mutatott ezen a téren, enyhén megelőzve a félmilliárd paraméteres modellt.
 
 A \texttt{\allowbreak Gemma-2-2b-it} modell az arányos válaszadás tekintetében sokkal stabilabbnak 
 bizonyult, mint a \texttt{\allowbreak Qwen} modellek, mivel nem torzult el egyetlen válaszkategória irányába sem, ami arra 
@@ -1372,21 +1371,23 @@ eredményez a bináris szemantikai döntési feladatokon.
 
 A konzisztensen pontos párok számában szintén megfigyelhető a különbség: 
 a 0.5B modell 65 egyezést adott, míg az 1.5B modell 55-öt, a Gemma pedig 49-et. 
-Ez annak a következménye, hogy a legkisebb Qwen-modell – a válaszainak erős ``nem''-túlsúlya 
-miatt – szinte minden "nem" választ eltalált a gold standarból. Ez rávilágít arra, hogy a magas konzisztencia és "konzisztens helyesség" mutató nem feltétlenül jelenti a szemantikai pontosság 
-javulását és nem jelenti azt, hogy a modell nehezebb feladatokra is következetesen érvelne.
+Ez elsősorban arra vezethető vissza, hogy a legkisebb Qwen-modell – a válaszainak erős ``nem''-túlsúlya 
+miatt – szinte minden "nem" címkét eltalált a gold standarból. A jelenség rávilágít arra, hogy a magas konzisztencia és "konzisztens helyesség" mutató nem feltétlenül jelenti a szemantikai megértés tényleges 
+javulását, mivel a következetes negatív válaszadás torzítja a "konzisztensen pontos" mérőszámot. Bár ez a stratégia statisztikailag kedvező konzisztens viselkedést eredményez, nem szolgáltat bizonyítékot arra, hogy a modell összetettebb, jelentésérzékeny feladatok esetén is következetes és megalapozott döntéshozatalra képes.
 
 Emiatt erre az egyszerűsített bináris döntési feladatra a 0.5B modell jelentősen jobb mutatókat ért el. (a Qwen2.5-1.5B-Instruct 94\%!).
 Ezt az egyoldalúságot valószínűleg továbberősíti az adathalmaz mondatainak jellemző nem-köznyelvi jellege, hiszen nagyrészt régies, tudományos, irodalmi szövegeket tartalmaz.
 Ilyesfajta szövegeket egy ilyen kisméretű, köznyelvi angol megértésére szánt modell nem tud megfelelően ábrázolni és értelmezni. Ezzel szemben a Gemma-2-2b-it modell kiegyensúlyozottabb viselkedést mutatott adott, amely valószínűleg annak köszönhető, hogy a Google tanítási folyamata során jobb általánosító képességet ért el a modell, amely így kevésbé hajlamos a "nem" válasz túlsúlyára.
-
 A modell-válaszok semleges (``bizonytalan'') kategóriába esése egyik modellnél sem 
 fordult elő.
 
-Említésre méltó az inferenciák időkülönbsége is a három modell között, amelyben viszont jelentősen nyert a $Qwen2.5-0.5B-Instruct$. A $Qwen$ félmilliárd paraméteres modellje esetén átlagosan 6 másodpercet vett igénybe egy kérdés megválaszolása, a másfélmilliárd paraméteres modellje esetén már 16-30 másodpercet, míg a Gemma modell esetén az átlagos válaszidő kb. 35(!) másodperc volt.
+Említésre méltó az inferenciák időkülönbsége is a három modell között, amelyben viszont jelentősen nyert a $Qwen2.5-0.5B-Instruct$. A $Qwen$ félmilliárd paraméteres modellje esetén átlagosan 6 másodpercet vett igénybe egy kérdés megválaszolása, a másfélmilliárd paraméteres modellje esetén már 16-30 másodpercet, míg a Gemma modell esetén az átlagos válaszidő kb. 35(!) másodperc volt. Megfigyelhető tehát, hogy a méret növekedésével az inferencia futásideje szuperlineárisan növekszik.
 
-Sikerült olyan mértékben automatizálnom a keretrendszert, hogy az elkészült szoftver jelentősen megkönnyítette a végső kísérlet elvégzését és így a saját munkámat. Arról nem is beszélve, hogy a keretrendszer nyomonkövethetővé és jól ellenőrizhetővé teszi az eredményeket. Részben így is manuálisan kellett feldolgozni az adatokat, de a munkafolyamatok túlnyomó többségét sikerült teljesen automatizálnom.
-Ha az elkészült munkámmal legalább egy embernek segítettem, akkor már megérte. Bízom benne, hogy a keretrendszerem és a kísérletem hasznos lesz a jövőben mások számára is.
+A hipotézisekre reagálva ugyan elmondható egyrészt, hogy a paraméterszám növekedésével a modellek páronkénti pontossága javul, ám a többi metrikában nem figyelhető meg egyértelmű javulás, sőt teljesítményromlás jellemző. 
+Másrészt a nagyobb Qwen modell paraméterszáma ugyan nem különbözik nagyban a Gemma modellétől, ám mégis jelentős eltérések mutatkoznak a válaszok eloszlásában és a konzisztens viselkedésben, amely arra utal, hogy a modell architektúrája és a tanítási eljárás is lényeges hatással van a teljesítményre, nem csupán a paraméterszám.
+
+Sikerült olyan mértékben automatizálnom a keretrendszert, hogy az elkészült szoftver jelentősen megkönnyítette a végső kísérlet elvégzését és így a saját munkámat. Arról nem is beszélve, hogy a keretrendszer nyomonkövethetővé és jól ellenőrizhetővé teszi az eredményeket. A munkafolyamatok túlnyomó többségét sikerült teljesen automatizálnom, megelőzve a manuális kiértékelést és ellenőrzést.
+Ha az elkészült munkámmal legalább egy embernek segítettem, akkor már megérte elkészítenem. Bízom benne, hogy a keretrendszerem és a kísérletem hasznos lesz a jövőben mások számára is.
 
 
 

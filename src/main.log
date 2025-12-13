@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  13 DEC 2025 11:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  13 DEC 2025 12:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1063,51 +1063,51 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 [9]
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 335.
+            Default family used instead on input line 334.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 335.
+            Default family used instead on input line 334.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 335.
+            Default family used instead on input line 334.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 335.
+            Default family used instead on input line 334.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 335.
+            Default family used instead on input line 334.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 335.
+            Default family used instead on input line 334.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 339.
+            Default family used instead on input line 338.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 339.
+            Default family used instead on input line 338.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 339.
+            Default family used instead on input line 338.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 339.
+            Default family used instead on input line 338.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 339.
+            Default family used instead on input line 338.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 339.
+            Default family used instead on input line 338.
 
 
 [10]
 
 [11]
-Underfull \hbox (badness 7168) in paragraph at lines 407--408
+Underfull \hbox (badness 7168) in paragraph at lines 406--407
 []|\T1/ptm/m/n/12 Any pe-netra-ti-on, howe-ver
  []
 
 
-Overfull \hbox (30.21132pt too wide) in paragraph at lines 401--411
+Overfull \hbox (30.21132pt too wide) in paragraph at lines 400--410
  [][] 
  []
 
@@ -1117,14 +1117,14 @@ Overfull \hbox (30.21132pt too wide) in paragraph at lines 401--411
 pdfTeX warning (ext4): destination with the same identifier (name{table.1.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.420 
+l.419 
       ]
 
 [13
 pdfTeX warning (ext4): destination with the same identifier (name{table.1.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.469     \clearpage
+l.468     \clearpage
                     ]
 2. fejezet.
 
@@ -1133,7 +1133,7 @@ l.469     \clearpage
 
 
 ]
-Package pgfplots info on input line 538: Using 'lua backend=false' for axis: x coord trafo unsupported.
+Package pgfplots info on input line 537: Using 'lua backend=false' for axis: x coord trafo unsupported.
 
 
 [15]
@@ -1142,7 +1142,7 @@ Package pgfplots info on input line 538: Using 'lua backend=false' for axis: x c
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.603     \chapter
+l.602     \chapter
                   {Google Colab}]
 3. fejezet.
 
@@ -1159,7 +1159,7 @@ l.603     \chapter
 
 
 ]
-Overfull \hbox (15.39293pt too wide) in paragraph at lines 665--672
+Overfull \hbox (15.39293pt too wide) in paragraph at lines 664--671
 \T1/ptm/m/n/12 A mo-dell out-put-já-nak (ki-me-ne-té-nek) fel-dol-go-zá-sa ( a mos-ta-ni \T1/pcr/m/n/12 ModelOutputProcessor\T1/ptm/m/n/12 )
  []
 
@@ -1173,7 +1173,7 @@ Overfull \hbox (15.39293pt too wide) in paragraph at lines 665--672
 <sentence_builders.png, id=465, 1392.20125pt x 189.70876pt>
 File: sentence_builders.png Graphic file (type png)
 <use sentence_builders.png>
-Package pdftex.def Info: sentence_builders.png  used on input line 772.
+Package pdftex.def Info: sentence_builders.png  used on input line 771.
 (pdftex.def)             Requested size: 426.79134pt x 58.15489pt.
 
 
@@ -1181,7 +1181,7 @@ Package pdftex.def Info: sentence_builders.png  used on input line 772.
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.785 
+l.784 
        <./sentence_builders.png (PNG copy)>]
 
 [24]
@@ -1205,18 +1205,18 @@ l.785
 [32
 
 ]
-Overfull \hbox (7.36476pt too wide) in paragraph at lines 1096--1096
+Overfull \hbox (7.36476pt too wide) in paragraph at lines 1095--1095
 []\T1/ptm/b/n/17.28 Méret- és konzisztencia-arányban meg-fe-le-l® nyel-vi mo-
  []
 
 
 
 [33]
-Package pgfplots info on input line 1147: Using 'lua backend=false' for axis: x coord trafo unsupported.
-Package pgfplots info on input line 1234: Using 'lua backend=false' for axis: x coord trafo unsupported.
+Package pgfplots info on input line 1146: Using 'lua backend=false' for axis: x coord trafo unsupported.
+Package pgfplots info on input line 1233: Using 'lua backend=false' for axis: x coord trafo unsupported.
 
 
-Package pgfplots Warning: Axis range for axis x is approximately empty; enlarging it (it is [0.0:0.0]) on input line 1267.
+Package pgfplots Warning: Axis range for axis x is approximately empty; enlarging it (it is [0.0:0.0]) on input line 1266.
 
  [warning /pgfplots/warning/approx empty range enlarged]
 
@@ -1225,23 +1225,23 @@ Package pgfplots Warning: Axis range for axis x is approximately empty; enlargin
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1273 
+l.1272 
        ]
-Package pgfplots info on input line 1304: Using 'lua backend=false' for axis: x coord trafo unsupported.
+Package pgfplots info on input line 1303: Using 'lua backend=false' for axis: x coord trafo unsupported.
 
 
 [35
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1346 
+l.1345 
        ]
 
 [36
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1356 \chapter
+l.1355 \chapter
                {KonklÃºziÃ³} % TODO]
 6. fejezet.
 
@@ -1251,32 +1251,32 @@ l.1356 \chapter
 ]
 
 [38]
-Overfull \hbox (10.67581pt too wide) in paragraph at lines 1396--1396
+Overfull \hbox (10.67581pt too wide) in paragraph at lines 1397--1397
 \T1/ptm/m/it/12 gu-age Un-der-stand-ing Sys-tems\T1/ptm/m/n/12 . Utol-só meg-te-kin-tés: 2025-12-10. 2020. ar-Xiv: []$\T1/pcr/m/n/12 1905 .
  []
 
 
-Overfull \hbox (0.59474pt too wide) in paragraph at lines 1396--1396
+Overfull \hbox (0.59474pt too wide) in paragraph at lines 1397--1397
 []\T1/ptm/m/n/12 Mohammad Ta-her Pi-leh-var és Jo-se Camacho-Collados. ^^R  WiC: the Word-in-Context
  []
 
 
-Overfull \hbox (26.12979pt too wide) in paragraph at lines 1396--1396
+Overfull \hbox (26.12979pt too wide) in paragraph at lines 1397--1397
 []$\T1/pcr/m/n/12 10 . 18653 / v1 / 2024 . findings -[] acl . 199$[]\T1/ptm/m/n/12 . \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : []$\T1/pcr/m/n/12 https : / / aclanthology .
  []
 
 
-Overfull \hbox (5.49321pt too wide) in paragraph at lines 1396--1396
+Overfull \hbox (5.49321pt too wide) in paragraph at lines 1397--1397
 []\T1/ptm/m/n/12 Hugging Face. \T1/ptm/m/it/12 Hug-ging Face Open LLM Le-ader-board Mo-del Com-pa-ra-tor\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
 
 
-Overfull \hbox (4.95029pt too wide) in paragraph at lines 1396--1396
+Overfull \hbox (4.95029pt too wide) in paragraph at lines 1397--1397
 \T1/pcr/m/n/12 / / huggingface . co / spaces / open -[] llm -[] leaderboard / comparator$[]\T1/ptm/m/n/12 .
  []
 
 
-Overfull \hbox (4.4157pt too wide) in paragraph at lines 1396--1396
+Overfull \hbox (4.4157pt too wide) in paragraph at lines 1397--1397
 []\T1/ptm/m/n/12 LM Stu-dio Team. \T1/ptm/m/it/12 LM Stu-dio: Desk-top app-li-ca-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
  []
 
@@ -1285,7 +1285,7 @@ Overfull \hbox (4.4157pt too wide) in paragraph at lines 1396--1396
 [39
 
 ]
-Overfull \hbox (4.55653pt too wide) in paragraph at lines 1396--1396
+Overfull \hbox (4.55653pt too wide) in paragraph at lines 1397--1397
 \T1/ptm/m/n/12 meg-te-kin-tés: 2025-12-10. \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : []$\T1/pcr/m/n/12 https : / / aclanthology . org / H94 -[] 1111/$[]\T1/ptm/m/n/12 . 
  []
 
@@ -1304,7 +1304,7 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1396--1396
 [43
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251213114552 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
+runsystem(latexminted cleantemp  --timestamp 20251213125455 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
 
  (main.aux)
  ***********
@@ -1332,7 +1332,7 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist,
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
  <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1200.pk><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (43 pages, 409165 bytes).
+Output written on main.pdf (43 pages, 410136 bytes).
 PDF statistics:
  788 PDF objects out of 1000 (max. 8388607)
  191 named destinations out of 1000 (max. 500000)
