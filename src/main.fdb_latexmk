@@ -1,12 +1,11 @@
 # Fdb version 4
-["biber main"] 1765622972.09254 "main.bcf" "main.bbl" "main" 1765626900.98548 0
-  "main.bcf" 1765626900 110017 c906abcaaf824bed0b101ddf0d7fd780 "pdflatex"
-  "references.bib" 1765324443 14637 fcb089654f7059f241b6add52b6f9db1 ""
+["biber main"] 0 "main.bcf" "main.bbl" "main" 0 -1
+  "main.bcf" 1765631914 110017 c906abcaaf824bed0b101ddf0d7fd780 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1765626895.26557 "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" "main.pdf" "main" 1765626900.98657 0
+["pdflatex"] 1765631907.25283 "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" "main.pdf" "main" 1765631915.1468 2
   "C:/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
   "C:/MiKTeX/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136765053 1292 bd42be2f344128bff6d35d98474adfe3 ""
   "C:/MiKTeX/fonts/tfm/adobe/courier/pcrr8t.tfm" 1136765053 1384 4632f5e54900a7dadbb83f555bc61e56 ""
@@ -280,13 +279,12 @@
   "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1765234507 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tctt1200.pk" 1764887141 11368 22e1b848240ae33eb8dfe3755848aa08 ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1750612748 13218441 72e452d2d4da982476be41d8461887dd ""
-  "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" 1765626891 106753 cff59b42a39caef85ac4b50a43a61238 ""
-  "main.aux" 1765626900 20849 95458cf5cac3fe0ffd08be84887fbae2 "pdflatex"
+  "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" 1765630448 106628 6b84a11672a9c8d64b7c688a7890bbb5 ""
+  "main.aux" 1765631914 20872 1ff2733469bb75c8051cac5140e7c951 "pdflatex"
   "main.bbl" 1765622976 45549 278823bc51baeaf6495ffe2da028401f "biber main"
-  "main.out" 1765626900 10166 7b6555bf8370bb81e3f50334732a389e "pdflatex"
-  "main.run.xml" 1765626900 2304 594eb205a07cc1738df7b0c71eafa9d5 "pdflatex"
-  "main.tex" 1765626891 106753 cff59b42a39caef85ac4b50a43a61238 ""
-  "main.toc" 1765626900 9024 c8fee847fcd029e777fb4a2808780673 "pdflatex"
+  "main.out" 1765631914 10166 7b6555bf8370bb81e3f50334732a389e "pdflatex"
+  "main.tex" 1765630448 106628 6b84a11672a9c8d64b7c688a7890bbb5 ""
+  "main.toc" 1765631914 9022 b480f4547637f43bd8436aeb056e080a "pdflatex"
   "sentence_builders.png" 1765541830 36929 68d47002932edcb913bacbc332ed9893 ""
   (generated)
   "main.aux"

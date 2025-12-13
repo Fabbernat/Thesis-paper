@@ -1204,7 +1204,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
         height=10cm,
         ylabel={Darabszám},
         symbolic x coords={
-            Pontos válaszok (gold standarddal való egyezések)
+            Pontos válaszok 
         },
         xtick=data,
         x tick label style={
@@ -1237,7 +1237,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
         draw=yellow!50!black,
         bar shift=-0.9cm
     ] coordinates {
-        (Pontos válaszok (gold standarddal való egyezések), 136.00)
+        (Pontos válaszok , 136.00)
     };
 
     \addplot[
@@ -1246,7 +1246,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
         postaction={pattern=north east lines, pattern color=green!30!black},
         bar shift=0cm
     ] coordinates {
-        (Pontos válaszok (gold standarddal való egyezések), 131.00)
+        (Pontos válaszok , 131.00)
     };
 
     \addplot[
@@ -1254,7 +1254,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
         draw=blue!80!black,
         bar shift=0.9cm
     ] coordinates {
-        (Pontos válaszok (gold standarddal való egyezések), 125.00)
+        (Pontos válaszok , 125.00)
     };
 
 
@@ -1266,7 +1266,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     \end{axis}
 \end{tikzpicture}
 
-\caption{\scriptsize Három modell teljesítményének részletes összehasonlítása 200 kérdésen (100 véletlenszerű kérdéspáron), minden metrikával.}
+\caption{\scriptsize Három modell pontos válaszainak (gold standard címkékkel való egyezések) összehasonlítása 200 véletlenszerű kérdésen (100 kérdéspáron).}
 \label{fig:ModelEvalSummaryComplete}
 \end{figure}
 
@@ -1456,7 +1456,7 @@ Ha az elkészült munkámmal legalább egy embernek segítettem, akkor már meg�
         A modelleket futtató Google Colab jegyzetfüzetem:
         \href{https://colab.research.google.com/drive/1yA8IAd5z2oreKUXha-16Du2YrNhemNiU?usp=sharing}{ezen a linken}  található.
 
-        \item A nyelvi modellek tesztelésének és kiértékelésének régi eredményei ezen a
+        \item A nyelvi modellek tesztelésének és kiértékelésének régi eredményei ebben a
         \href{https://docs.google.com/spreadsheets/d/1y49lg52LHVFmTom-0ibCqYqWA1pKKhiUny-Pf3KVTIg/edit?usp=sharing}{Generative Language Models}
         táblázatban tekinthetőek meg.
     \end{itemize}
