@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1765633431.40621 "main.bcf" "main.bbl" "main" 1765634119.38403 0
-  "main.bcf" 1765634119 110017 c906abcaaf824bed0b101ddf0d7fd780 "pdflatex"
+["biber main"] 0 "main.bcf" "main.bbl" "main" 1765640738.58246 -1
+  "main.bcf" 1765640738 110017 c906abcaaf824bed0b101ddf0d7fd780 "pdflatex"
   "references.bib" 1765324443 14637 fcb089654f7059f241b6add52b6f9db1 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1765634114.27649 "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" "main.pdf" "main" 1765634119.3849 0
+["pdflatex"] 1765640733.3695 "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" "main.pdf" "main" 1765640738.58327 0
   "C:/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
   "C:/MiKTeX/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136765053 1292 bd42be2f344128bff6d35d98474adfe3 ""
   "C:/MiKTeX/fonts/tfm/adobe/courier/pcrr8t.tfm" 1136765053 1384 4632f5e54900a7dadbb83f555bc61e56 ""
@@ -17,6 +17,7 @@
   "C:/MiKTeX/fonts/tfm/adobe/times/ptmr8c.tfm" 1136768654 1352 fa28a7e6d323c65ce7d13d5342ff6be2 ""
   "C:/MiKTeX/fonts/tfm/adobe/times/ptmr8r.tfm" 1136768654 4408 25b74d011a4c66b7f212c0cc3c90061b ""
   "C:/MiKTeX/fonts/tfm/adobe/times/ptmr8t.tfm" 1136768654 6672 e3ab9e37e925f3045c9005e6d1473d56 ""
+  "C:/MiKTeX/fonts/tfm/adobe/times/ptmrc8t.tfm" 1136768654 16648 7e91c60ebf91b9c60e16ef52b3070f9c ""
   "C:/MiKTeX/fonts/tfm/adobe/times/ptmri8r.tfm" 1136768654 4640 532ca3305aad10cc01d769f3f91f1029 ""
   "C:/MiKTeX/fonts/tfm/adobe/times/ptmri8t.tfm" 1136768654 6944 94c55ad86e6ea2826f78ba2240d50df9 ""
   "C:/MiKTeX/fonts/tfm/jknappen/ec/ecrm1200.tfm" 993062126 3152 4850ff0163852b7fab34bd55e1197f28 ""
@@ -59,6 +60,7 @@
   "C:/MiKTeX/fonts/vf/adobe/times/ptmbi8t.vf" 1136768654 2324 51908dae6e03953a90119973962f0e4d ""
   "C:/MiKTeX/fonts/vf/adobe/times/ptmr8c.vf" 1136768654 3556 8a9a6dcbcd146ef985683f677f4758a6 ""
   "C:/MiKTeX/fonts/vf/adobe/times/ptmr8t.vf" 1136768654 2348 91706c542228501c410c266421fbe30c ""
+  "C:/MiKTeX/fonts/vf/adobe/times/ptmrc8t.vf" 1136768654 3608 eb048a634708cbf5eda8def0ce93c7bb ""
   "C:/MiKTeX/fonts/vf/adobe/times/ptmri8t.vf" 1136768654 2328 6cd7df782b09b29cfc4d93e55b6b9a59 ""
   "C:/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/MiKTeX/tex/generic/atbegshi/atbegshi.sty" 1575571100 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
@@ -277,13 +279,13 @@
   "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1765234507 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tctt1200.pk" 1764887141 11368 22e1b848240ae33eb8dfe3755848aa08 ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1750612748 13218441 72e452d2d4da982476be41d8461887dd ""
-  "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" 1765634107 106554 d714fff0afe488969163466517c74e25 ""
-  "main.aux" 1765634118 18914 cc43ab470e95ea958b6082371da87c59 "pdflatex"
-  "main.bbl" 1765633434 0 d41d8cd98f00b204e9800998ecf8427e "biber main"
-  "main.out" 1765634119 10166 6888403def0e759bc6c39033a4cf2598 "pdflatex"
-  "main.run.xml" 1765634119 2304 61107e09f36bba71085ef92484788e26 "pdflatex"
-  "main.tex" 1765634107 106554 d714fff0afe488969163466517c74e25 ""
-  "main.toc" 1765634119 9024 37289f0e961667bd979f25dcf2afef9a "pdflatex"
+  "c:/Users/Bernát/PycharmProjects/Thesis-paper/src/main.tex" 1765640725 106759 a53d32e47dad3594b50b88d1ca957e6d ""
+  "main.aux" 1765640738 20930 fc5d9070f84242a98bbcf82319317e70 "pdflatex"
+  "main.bbl" 1765637610 45549 278823bc51baeaf6495ffe2da028401f "biber main"
+  "main.out" 1765640738 10166 7b6555bf8370bb81e3f50334732a389e "pdflatex"
+  "main.run.xml" 1765640738 2304 594eb205a07cc1738df7b0c71eafa9d5 "pdflatex"
+  "main.tex" 1765640725 106759 a53d32e47dad3594b50b88d1ca957e6d ""
+  "main.toc" 1765640738 9024 672e1c2a62d84da80b09163fbb0cc709 "pdflatex"
   "sentence_builders.png" 1765541830 36929 68d47002932edcb913bacbc332ed9893 ""
   (generated)
   "main.aux"

@@ -536,6 +536,9 @@ INPUT .\sentence_builders.png
 INPUT .\sentence_builders.png
 INPUT .\sentence_builders.png
 INPUT C:\MiKTeX\fonts\tfm\adobe\times\ptmr8t.tfm
+INPUT C:\MiKTeX\fonts\tfm\adobe\times\ptmrc8t.tfm
+INPUT C:\MiKTeX\fonts\vf\adobe\times\ptmrc8t.vf
+INPUT C:\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
 INPUT main.aux
 INPUT .\main.out
 INPUT .\main.out
