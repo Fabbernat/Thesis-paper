@@ -173,9 +173,9 @@
 
     \subsubsection{\textit{A megoldási mód}}
     % Ez lényegében egy optimalizálási feladat, az optimalizálandó paraméterek a modellnek beadott prompt és a választott modell.
-    Akkor tekintjük helyesnek a megoldást, ha a program futtatásával a kiválasztott modell a kért mennyiségű, egyértelmű igen/nem választ képes generálni az eldöntendő kérdésekre.
+    Akkor tekintjük helyesnek a megoldást, ha a program futtatásával a kiválasztott modell a kért mennyiségű, egyértelmű igen/nem választ képes generálni az eldöntendő kérdésekre, továbbá a kérdéseket össze tudjuk vetni a fordított párjukkal és a gold standarddal.
     A válaszainak helyessége másodlagos, de nem elhanyagolható.
-    A nyelvi modelleket a Hugging Face platformról lesznek kiválasztva.
+    A nyelvi modellek a Hugging Face platformról lesznek kiválasztva.
 
     A program bemenete tetszőleges sornyi bejegyzés a Word-in-Context adathalmaz \texttt{\allowbreak test} splitjéből (vagy tetszőleges, ezzel megegyező formátumú kérdéshalmazból), és tetszőleges modell a Hugging Face platformról. A program során keletkező hibákat le kell kezelni.
 
@@ -206,8 +206,8 @@
 
     \subsubsection{\textit{Elért eredmények}}
 
-    Elkészült a keretrendszer, egy Python konzolos program, amely képes tetszőleges Hugging Face modell válaszra bírását automatizálni.
-    Egy kattintással vagy terminál paranccsal képes lefuttatni a modellt az inputként megadott adathalmazra és elvégezni a nyelvi konzisztencia tesztet, statisztikákat készítve az eredményekből.
+    Elkészült a keretrendszer, egy Python konzolos program, amely képes tetszőleges Hugging Face modell válaszra bírását, valamint kiértékelését automatizálni.
+    Egyetlen kattintással vagy terminál paranccsal képes elvégezni a modell inferenciákat az inputként megadott adathalmazon és elvégezni a nyelvi konzisztencia tesztet, statisztikákat készítve az eredményekből.
 
     \subsubsection{\textit{Kulcsszavak}}
 
@@ -225,12 +225,12 @@
 
     Az informatika és a nyelvtechnológia fejlődésével a generatív mesterséges intelligencia mindennapjaink részévé vált.
     A nyelvi modellek kiértékelésére számos teljesítményteszt (benchmark) fejlődött ki az évek során.
-    Az egyik legnépszerűbb ilyen teljesítményteszt a SuperGLUE Benchmark, amely 8, emberi nyelvi megértést igénylő nagyon nehéz érvelés-orientált feladat elé állítja a nyelvi modelleket.
-    A WiC (Word-in-Context) probléma a SuperGlue 8 feladatának egyike.
+    Az egyik legnépszerűbb ilyen teljesítményteszt a SuperGLUE Benchmark~\cite{wang2020superglue}, amely 8, emberi nyelvi megértést igénylő nagyon nehéz érvelés-orientált feladat elé állítja a nyelvi modelleket.
+    A WiC (Word-in-Context) probléma~\cite{pilehvar2019wic} a SuperGlue 8 feladatának egyike.
     Az emberi szöveget értő nyelvi modellek fejlesztése kiemelten fontos mind az akadémiai kutatásban, mind a gyakorlati alkalmazásokban.
     Az angol nyelvű szövegek feldolgozása nem csak az angolszász területeken releváns, hanem Magyarországon is, hiszen az angol nyelv használata a számítógépek világában mindennapjaink része.
     Az egyetem és a helyi vállalatok is aktívan foglalkoznak természetesnyelv-feldolgozási (NLP) megoldásokkal.
-    Az AI megoldások - például Hugging Face nyelvi modellek használatának - ismerete előnyt jelent mind a munkahelyeken, mind a magánéletben.
+    Az AI megoldások - például Hugging Face~\cite{huggingfacehub} nyelvi modellek használatának - ismerete előnyt jelent mind a munkahelyeken, mind a magánéletben.
     IT területen különösen nagy előnyt jelent az AI megfelelő használatának ismerete, például a munkafolyamatok automatizálásában.
     Egy hatékony szoftver, amely képes Hugging Face modelleket futtatni, tehát nemcsak tudományos értékkel bír, hanem gyakorlati alkalmazásokban is közvetlen hasznot hozhat, főleg a nyelvészeti informatikai területen dolgozók számára.
 
@@ -251,7 +251,7 @@
 
     \section{Hasonló megoldások}
     Az elmúlt években számtalan, a nagy nyelvi modellek szemantikus konzisztenciájával, illetve logikai stabilitásával kapcsolatos cikk jelent meg, jól mutatva, hogy a téma nagy népszerűségnek örvend.%
-    A Google Scholar például 22~100 találatot listáz az \texttt{\allowbreak analyzing the semantical consistency of large language models} kifejezésre, amelyeknek a java részét az elmúlt években publikálták.~\cite{yang-etal-2024-enhancing}.
+    A Google Scholar például 22~100 találatot listáz az \texttt{\allowbreak analyzing the semantical consistency of large language\\ models} kifejezésre, amelyeknek a java részét az elmúlt években publikálták.~\cite{yang-etal-2024-enhancing}.
     A törekvés, hogy generatív modellek lokális telepítésére, futtatására és összehasonlítására szolgáló eszközöket hozzunk létre nem újkeletű, hiszen egy jó modell jelentősen megkönnyíti a munkafolyamatokat, a lokalizálása pedig biztonságosabbá és olcsóbbá teszi a használatukat.
     Számos hasonló témájú és ötletű projekt született az elmúlt években.
     Az alábbiakban bemutatok párat. % TODO átnézni
@@ -1455,9 +1455,9 @@ Ha az elkészült munkámmal legalább egy embernek segítettem, akkor már meg�
         A modelleket futtató Google Colab jegyzetfüzetem:
         \href{https://colab.research.google.com/drive/1yA8IAd5z2oreKUXha-16Du2YrNhemNiU?usp=sharing}{ezen a linken}  található.
 
-        \item A nyelvi modellek tesztelésének és kiértékelésének régi eredményei a
+        \item A nyelvi modellek tesztelésének és kiértékelésének régi eredményei ezen a
         \href{https://docs.google.com/spreadsheets/d/1y49lg52LHVFmTom-0ibCqYqWA1pKKhiUny-Pf3KVTIg/edit?usp=sharing}{Generative Language Models}
-        táblázatban tekinthető meg.
+        táblázatban tekinthetőek meg.
     \end{itemize}
 
 

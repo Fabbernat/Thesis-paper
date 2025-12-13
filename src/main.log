@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  13 DEC 2025 03:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  13 DEC 2025 11:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1053,11 +1053,6 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ]
 1. fejezet.
 
-Overfull \hbox (12.40848pt too wide) in paragraph at lines 253--258
-\T1/pcr/m/n/12 analyzing the semantical consistency of large language models
- []
-
-
 
 [7
 
@@ -1175,7 +1170,7 @@ Overfull \hbox (15.39293pt too wide) in paragraph at lines 665--672
 [21]
 
 [22]
-<sentence_builders.png, id=461, 1392.20125pt x 189.70876pt>
+<sentence_builders.png, id=465, 1392.20125pt x 189.70876pt>
 File: sentence_builders.png Graphic file (type png)
 <use sentence_builders.png>
 Package pdftex.def Info: sentence_builders.png  used on input line 772.
@@ -1256,6 +1251,16 @@ l.1356 \chapter
 ]
 
 [38]
+Overfull \hbox (10.67581pt too wide) in paragraph at lines 1396--1396
+\T1/ptm/m/it/12 gu-age Un-der-stand-ing Sys-tems\T1/ptm/m/n/12 . Utol-só meg-te-kin-tés: 2025-12-10. 2020. ar-Xiv: []$\T1/pcr/m/n/12 1905 .
+ []
+
+
+Overfull \hbox (0.59474pt too wide) in paragraph at lines 1396--1396
+[]\T1/ptm/m/n/12 Mohammad Ta-her Pi-leh-var és Jo-se Camacho-Collados. ^^R  WiC: the Word-in-Context
+ []
+
+
 Overfull \hbox (26.12979pt too wide) in paragraph at lines 1396--1396
 []$\T1/pcr/m/n/12 10 . 18653 / v1 / 2024 . findings -[] acl . 199$[]\T1/ptm/m/n/12 . \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : []$\T1/pcr/m/n/12 https : / / aclanthology .
  []
@@ -1280,16 +1285,6 @@ Overfull \hbox (4.4157pt too wide) in paragraph at lines 1396--1396
 [39
 
 ]
-Overfull \hbox (10.67581pt too wide) in paragraph at lines 1396--1396
-\T1/ptm/m/it/12 gu-age Un-der-stand-ing Sys-tems\T1/ptm/m/n/12 . Utol-só meg-te-kin-tés: 2025-12-10. 2020. ar-Xiv: []$\T1/pcr/m/n/12 1905 .
- []
-
-
-Overfull \hbox (0.59474pt too wide) in paragraph at lines 1396--1396
-[]\T1/ptm/m/n/12 Mohammad Ta-her Pi-leh-var és Jo-se Camacho-Collados. ^^R  WiC: the Word-in-Context
- []
-
-
 Overfull \hbox (4.55653pt too wide) in paragraph at lines 1396--1396
 \T1/ptm/m/n/12 meg-te-kin-tés: 2025-12-10. \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : []$\T1/pcr/m/n/12 https : / / aclanthology . org / H94 -[] 1111/$[]\T1/ptm/m/n/12 . 
  []
@@ -1309,7 +1304,7 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1396--1396
 [43
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251213033045 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
+runsystem(latexminted cleantemp  --timestamp 20251213114552 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
 
  (main.aux)
  ***********
@@ -1325,7 +1320,7 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Here is how much of TeX's memory you used:
  47719 strings out of 468219
  1074048 string characters out of 5449698
- 2100496 words of memory out of 5000000
+ 2100497 words of memory out of 5000000
  75378 multiletter control sequences out of 15000+600000
  692624 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1337,9 +1332,9 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist,
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
  <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1200.pk><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (43 pages, 408449 bytes).
+Output written on main.pdf (43 pages, 409165 bytes).
 PDF statistics:
- 785 PDF objects out of 1000 (max. 8388607)
+ 788 PDF objects out of 1000 (max. 8388607)
  191 named destinations out of 1000 (max. 500000)
  446 words of extra memory for PDF output out of 10000 (max. 10000000)
 
