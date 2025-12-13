@@ -279,13 +279,13 @@
     A fent említett platformokhoz hasonlóan a megoldásom lehetővé teszi a nagy nyelvi modellek lokális telepítését, futtatását, továbbá az összehasonlítását is, ezáltal alkalmassá téve a szoftveremet konzisztens viselkedés hiányának a megállapítására.
     Az én projektem ugyan nem biztosít olyan kényelmes grafikus felületet, vagy a webes szolgáltatásokat, mint a legtöbb fent felsorolt projekt, ám abban nyújt többet, hogy a Word-in-Context benchmarkon való tesztelésre sokkal alkalmasabb, mint az előbbiek, hiszen kifejezetten erre készült.
     Aki kedveli a Python és konzolos alkalmazásokat, annak az én megoldásom kényelmesebb lehet.
-    Ráadásul nem csak egyesével lehet beadni a modelleknek a promptokat, hanem egy futtatásra tetszőlegesen sok inferenciát kiszámíttathatunk, - olyan, mintha mindegyik prompt "új chatbe" kerülne - amely jelentős előny a legtöbb felsorolt projekthez képest.
+    Ráadásul nem csak egyesével lehet beadni a modelleknek a promptokat, hanem egy futtatásra tetszőlegesen sok inferenciát kiszámíttathatunk, - olyan, mintha mindegyik prompt ``új chatbe'' kerülne - amely jelentős előny a legtöbb felsorolt projekthez képest.
     A megoldásom során törekedtem arra, hogy minél több modell támogatott legyen, továbbá a keretrendszer a bárki által ingyen kipróbálható legyen, ezért ingyenesen elérhető és nyílt forráskódú eszközöket (Python, GitHub, Hugging Face) használtam.
 
 
     \section{A többértelműség problémája a természetes nyelvekben}
     A természetes nyelvekben a programozási nyelvekkel ellentétben egy szónak több, egymástól teljesen elkülönülő jelentése is lehet.
-    Például az "egér" szó jelenthet egy számítógépes perifériát vagy egy állatot, és a helyes értelmezéshez a környező szavakat ismerni kell.
+    Például az ``egér'' szó jelenthet egy számítógépes perifériát vagy egy állatot, és a helyes értelmezéshez a környező szavakat ismerni kell.
     Az ilyen jellegű többértelműségek automatikus feloldása az egyik központi problémája a természetes nyelvi rendszerek fejlesztésének.
     Ez az alapja a Word-in-Context feladatnak is.
 
@@ -338,12 +338,12 @@ Does the word `w` mean the same thing in `s2` and `s1`?
     \end{verbatim}
 
     kérdésekre mindig ugyanazt kellene, hogy válaszolják (változatlan $w$, $s1$ és $s2$ esetén, ahol $w$ egy szó, $s1$ az első példamondat, és $s2$ a második példamondat).
-    Ez az egyszerű logikai invariancia - a két mondat sorrendjének felcserélése - az ember számára könnyen felismerhető és belátható, hogy a kérdés értelmét nem módosítja, ám a nyelvi modelleket, főleg az alacsony, "csak" pár milliárd paraméterszámúakat könnyen összezavarja.
+    Ez az egyszerű logikai invariancia - a két mondat sorrendjének felcserélése - az ember számára könnyen felismerhető és belátható, hogy a kérdés értelmét nem módosítja, ám a nyelvi modelleket, főleg az alacsony, ``csak'' pár milliárd paraméterszámúakat könnyen összezavarja.
 
     A fenti felcserélés egy klasszikus logikai invariancia teszt. Ha $A \land B$ igaz, akkor $B \land A$-nak is igaznak kell lennie. Ebből következően ha a modell szerint a $w$ szó jelentése azonos $s1$ és $s2$ kontextusban, akkor az $s2$ és $s1$ sorrendben is azonosnak kell lennie.
 
     A kérdéseket a fent látható formátumban egyenes és fordított sorrendben is fel fogom tenni a modelleknek.
-    A továbbiakban erre a formátumra fogok "egyenes" és "fordított" kérdésekként hivatkozni.
+    A továbbiakban erre a formátumra fogok ``egyenes'' és ``fordított'' kérdésekként hivatkozni.
     A keretrendszerem \textbf{minden esetben} így várja, és az egyenes és a fordított sorrendű kérdések száma is \textbf{minden esetben} szigorúan megegyezik.
     Ha mégsem teljesül a fentiek valamelyike az inputra (bemenetre), akkor a felhasználó arról feltétlenül értesítést kap.
 
@@ -484,7 +484,7 @@ Does the word `w` mean the same thing in `s2` and `s1`?
 
 
     \section{A prompt}
-    A prompt alatt generatív mesterséges intelligenciák esetében egy olyan inputot értünk, amelyre a modell egy kimenetet, "választ" generál, amely lehet determinisztikus (előre meghatározható) és részben véletlenszerű is.
+    A prompt alatt generatív mesterséges intelligenciák esetében egy olyan inputot értünk, amelyre a modell egy kimenetet, ``választ'' generál, amely lehet determinisztikus (előre meghatározható) és részben véletlenszerű is.
     A prompt jellemzően szöveges formájú \textbf{nyelvi modellek esetén}, mint ahogy a válasz is, de egyre elterjedtebbek a hangalapú bemeneti és kimeneti formák is.
 %       Működési elve némiben hasonlít, egy hagyományos konzolhoz, parancssori interfészhoz, például egy Windows rendszeren a PowerShellhoz, vagy Linuxon Bash terminálhoz, azonban prompt esetén a kommunikáció emberi nyelven történik.
     Egy jelentős előnye a promptolásnak, hogy nem csak egy előre meghatározott parancskészletet használhatunk, hanem bármit beírhatunk, nincsenek szintaktikai hibák vagy futtatási hibák, mivel a rendszer minden bemenetre képes választ generálni.\\
@@ -494,9 +494,9 @@ Does the word `w` mean the same thing in `s2` and `s1`?
     \section{Inferencia}
     Egy modell promptra adott válaszát inferenciának nevezzük, ami következtetést jelent.
     Általánosabban az inferencia azt a folyamatot jelenti, amikor a rendszerek a tanult adatok alapján következtetéseket vonnak le és képesek új döntéseket hozni.
-    A projektemben a generatív modellek inferenciájának folyamatára az egyszerűség kedvéért általában "a modell futattásaként" fogok hivatkozni.
+    A projektemben a generatív modellek inferenciájának folyamatára az egyszerűség kedvéért általában ``a modell futattásaként'' fogok hivatkozni.
 
-    Ez arra utal, hogy a modell a megtanult minták alapján futásidőben logikailag következtet a legvalószínűbb kimenetre, bonyolult statisztikai számítással, nem pedig csak szó szerint "visszadobva" a betanított adatokat.\\
+    Ez arra utal, hogy a modell a megtanult minták alapján futásidőben logikailag következtet a legvalószínűbb kimenetre, bonyolult statisztikai számítással, nem pedig csak szó szerint ``visszadobva'' a betanított adatokat.\\
     \textit{ Forrás:} \href{https://hu.wikipedia.org/wiki/Nagy_nyelvi_modell}{Wikipédia}
 
 
@@ -620,7 +620,7 @@ The cat sat on the _ .
     A webes környezetben kikapcsolt valószínűségi változókkal dolgoztam és az inferenciák egyesével egymástól függetlenül történnek, emiatt elmondható, hogy a modell válaszgenerálás módja:
     \begin{itemize}
         \item determinisztikus, tehát ugyanarra az inputra mindig ugyanaz lesz az output, nem függ a véletlentől,
-        \item és izolált, azaz a modell egyik futtatásban sem "tud" semmit a korábbi bemeneteiről és válaszairól.
+        \item és izolált, azaz a modell egyik futtatásban sem ``tud'' semmit a korábbi bemeneteiről és válaszairól.
     \end{itemize}
     Ennek ellenére a Google Colab környezet nem egy hatékony módja a kiértékelésnek a korábban felsorolt gyengeségei miatt, helyette a lokális PyCharm keretrendszerem biztosít egy kényelmesebb és sokkal átláthatóbb környezetet.
     \clearpage
@@ -663,7 +663,7 @@ The cat sat on the _ .
 
     Az eredeti beadott verzióval több gond is volt.
     A programot nem lehetett egy belépési ponttal futtatni.
-    Helyette nem forduló, kaotikus, gyakran egymástól teljesen független szkriptek szerepeltek rendezetlenül, amelyeknek a használatát csak én ismertem, ráadásul egy részük nem is működött, csak úgy "volt".
+    Helyette nem forduló, kaotikus, gyakran egymástól teljesen független szkriptek szerepeltek rendezetlenül, amelyeknek a használatát csak én ismertem, ráadásul egy részük nem is működött, csak úgy ``volt''.
     A program egyébként is csak a modell inputjainak előkészítését tudta, a modell inferenciát és a válasz feldolgozást már manuálisan kellett elvégezni.
     Csak a mostani \texttt{\allowbreak ModelInputPreparernek} megegyező rész funkcionalitásával rendelkezett standard Python környezetben.
     A Hugging Face modell inferenciájára (a mostani \texttt{\allowbreak HuggingFaceModelInferencer}~\ref{subsubsec:huggingfacemodelinferencer} modullal megegyező funkcionalitás) egy Jupyter Notebookban került sor, Google Colab környezetben.
@@ -678,7 +678,7 @@ The cat sat on the _ .
     Ezek az elvek alapján írtam meg teljesen üres vázlatból az új szakdolgozat szoftveremet.
     A szoftver egy keretrendszer, hiszen keretrendszert biztosít Hugging Face modellek lokális futtatására és azok válaszainak kiértékelésére, továbbá nincsen hozzá webes, mobilos, vagy desktop grafikus felület és nincsen hostolva sem.
     Helyette parancssorból indítható a program és a \texttt{\allowbreak config} fájlok beállításainak módosításával paraméterezhető.
-    Én általában csak "modulokként" hivatkozom a keretrendszerre, hiszen három, egymástól jól elkülönülő feladatú és funkciójú modulból áll.
+    Én általában csak ``modulokként'' hivatkozom a keretrendszerre, hiszen három, egymástól jól elkülönülő feladatú és funkciójú modulból áll.
     Így az egyes modulok egyedülállóan is futtathatóak, akkor is, ha a másik kettő nem létezik, vagy meghibásodik.
     Mindegyik modul egy fő futtatható állományt tartalmaz, egy-egy \texttt{\allowbreak main.py} fájt egy-egy \texttt{\allowbreak main} belépési ponttal.
 
@@ -696,7 +696,7 @@ The cat sat on the _ .
     A HuggingFaceModelInferencer inputként a ModelInputPreparer outputját kapja.
     Itt hajtódik végre a távoli Hugging Face modell(ek) letöltése, telepítése és futtatása.
     Feladata a modell futtatása az elkészített prompton, válasz generálása.
-    A generálási stratétiám lényege, hogy minden inferencia során 1 kérdést válaszoltatok meg, egymástól függetlenül, így elkerülve a modellek "emlékezőképességét", továbbá csak 1 output tokent engedélyezek, biztosítva, hogy a válasz csak egy "igen" vagy "nem" lesz.
+    A generálási stratétiám lényege, hogy minden inferencia során 1 kérdést válaszoltatok meg, egymástól függetlenül, így elkerülve a modellek ``emlékezőképességét'', továbbá csak 1 output tokent engedélyezek, biztosítva, hogy a válasz csak egy ``igen'' vagy ``nem'' lesz.
 
     \subsubsection{ModelOutputProcessor}
     A ModelOutputProcessor feladata a modell outputból adatkinyerés, majd azt a WiC adathalmazhoz készült gold standarddal összevetve statisztikák készítése.
@@ -709,7 +709,7 @@ The cat sat on the _ .
     \texttt{\allowbreak GlobalMain.py}: ebben a szkriptben található a fő belépési pont, amely egyszerre mind a három modult lefuttatja.
 
 
-        \texttt{\allowbreak GlobalData} mappa: Ez a GlobalMain futtatásakor használt "adatbázis", adattároló mappa. A modulok egyesével való futtatásakor nem ezt használják, hanem az adott modul gyökerében található \texttt{\allowbreak data} mappát. Mindegyik modulhoz tartozik ebből egy-egy külön.
+        \texttt{\allowbreak GlobalData} mappa: Ez a GlobalMain futtatásakor használt ``adatbázis'', adattároló mappa. A modulok egyesével való futtatásakor nem ezt használják, hanem az adott modul gyökerében található \texttt{\allowbreak data} mappát. Mindegyik modulhoz tartozik ebből egy-egy külön.
 
 
         \texttt{\allowbreak Data} mappák: az egyes modulokhoz tartozó input és output fájlok tárolását szolgálják.
@@ -718,7 +718,7 @@ The cat sat on the _ .
         \texttt{\allowbreak *.in} fájlok: az input fájlok egységes kiterjesztése. Ha \texttt{\allowbreak *.in} a kiterjesztése, akkor valamelyik fájl azt bemenetként használni fogja.
 
 
-        \texttt{\allowbreak .out} fájlok: az output fájlok egységes kiterjesztése. Általában "append", azaz hozzáfűző módban írat a program beléjük, hogy így meg legyenek őrizve a korábbi futtatások eredményei is.
+        \texttt{\allowbreak .out} fájlok: az output fájlok egységes kiterjesztése. Általában ``append'', azaz hozzáfűző módban írat a program beléjük, hogy így meg legyenek őrizve a korábbi futtatások eredményei is.
 
     \subsection{A modulok szerkezete}
 
@@ -756,7 +756,7 @@ The cat sat on the _ .
     \subparagraph{LabelAdder: A WiC beolvasása és a random minták kisorsolása.}
     \subparagraph{}
     A WiC adathalmazt beolvassuk a $LabelAdder$ szkriptben, amely beolvassa a fájlt nyers szövegként, a sorokat tabulátor mentén felbontja, majd eltárolja egy listában.
-    Ezután meghívja a  $randomsamples.py$ szkriptet, amely legenerál \texttt{\allowbreak n} darab - a \texttt{\allowbreak config.py}-ban meghatározott mennyiségű indexet. Ezek az indexek lesznek a kérdés-válasz párok azonosítói, én \texttt{\allowbreak GUID}-nak neveztem el őket, amely a "globálisan egyedi azonosító" (globally unique identifier) rövidítése . Ezután megnyitjuk a fájlt, majd beolvassuk és minden egyes \texttt{\allowbreak GUID}-adik indexű sorból eltároljuk a szót és a két mondatot egy listában. A GUID értéke mindig 0 és 1399 között van, tehát az értéke pont megegyezik a teszthalmaz hosszával, így nem történhet túlindexelés. 
+    Ezután meghívja a  $randomsamples.py$ szkriptet, amely legenerál \texttt{\allowbreak n} darab - a \texttt{\allowbreak config.py}-ban meghatározott mennyiségű indexet. Ezek az indexek lesznek a kérdés-válasz párok azonosítói, én \texttt{\allowbreak GUID}-nak neveztem el őket, amely a ``globálisan egyedi azonosító'' (globally unique identifier) rövidítése . Ezután megnyitjuk a fájlt, majd beolvassuk és minden egyes \texttt{\allowbreak GUID}-adik indexű sorból eltároljuk a szót és a két mondatot egy listában. A GUID értéke mindig 0 és 1399 között van, tehát az értéke pont megegyezik a teszthalmaz hosszával, így nem történhet túlindexelés. 
     
     \subparagraph{WordAndSentencesExtractor}
     \subparagraph{}
@@ -835,7 +835,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 
     Ha sikeresen lefutott a válaszgenerálás, akkor a kérdések hosszával megegyező számú választ kaptunk. 
     Ellenkező esetben sajnos meg kell ismételni a generálást, hiszen nem triviális, hogy melyik válasz melyik kérdéshez tartozott - kivéve ha kérdés-válasz párokként mentettük el az eredményt. 
-    Azonban az eredményként kapott modell válaszok még helyes válaszgenerálás esetén is csak egy halom "Yes" és "No", mindegyik új sorban, amelyből önmagában nehéz statisztikai következtetéseket levonni. 
+    Azonban az eredményként kapott modell válaszok még helyes válaszgenerálás esetén is csak egy halom ``Yes'' és ``No'', mindegyik új sorban, amelyből önmagában nehéz statisztikai következtetéseket levonni. 
     Éppen ezért van szükség a ModelOutputProcessor modulra, amely érthetővé teszi az eredményeket.
 
     \subsection{ModelOutputProcessor}
@@ -861,8 +861,8 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     \end{verbatim}
 
 
-    Tehát a main szkript meghívja a run szkriptet, amely továbbadja az irányítást a \texttt{\allowbreak TernaryClassifier} szkriptnek. A szkript három kategóriába sorolja a válaszokat: "igen", "nem" és "talán" osztályokba.
-    Az osztályozás során végigmegy az előző modulból inputként kapott modell válaszokon és soronként eldönti, hogy a "Yes", a "No", vagy a "?"  (nem egyértelmű) kategóriába sorolható-e be a válasz. Minden sor pontosan egy kategóriába kerül besorolásra.
+    Tehát a main szkript meghívja a run szkriptet, amely továbbadja az irányítást a \texttt{\allowbreak TernaryClassifier} szkriptnek. A szkript három kategóriába sorolja a válaszokat: ``igen'', ``nem'' és ``talán'' osztályokba.
+    Az osztályozás során végigmegy az előző modulból inputként kapott modell válaszokon és soronként eldönti, hogy a ``Yes'', a ``No'', vagy a ``?''  (nem egyértelmű) kategóriába sorolható-e be a válasz. Minden sor pontosan egy kategóriába kerül besorolásra.
     Az eldöntési algoritmusnak több módszere is van, ezért választható itt az \texttt{\allowbreak AnswerAwareClassificationRule} és a \texttt{\allowbreak SentenceClassifier}, amelyet a config fájlban található \texttt{\allowbreak ADAPTIVE\_RUN} változóval lehet beállítani.
     Ezután a kategóriákat a \texttt{\allowbreak TernaryResultsProcessor} összeveti a gold standardban szereplő értékekkel, majd az összevetés eredményei alapján készülnek el a \texttt{\allowbreak run} szkriptben a végeredmények.
 
@@ -893,8 +893,8 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 
     A program első lépésként végigmegy a válaszok sorain.
     Megnézi, hogy a modell mit válaszolt soronként.
-    Ezt 3 kategóriába sorolja: \texttt{\allowbreak Yes}, \texttt{\allowbreak No} és \texttt{\allowbreak ?}, azaz nem egyértelmű, "talán".
-    Ez utóbbi minden olyan válasz, amelynek nem egyértelműen "igen", vagy "nem" a jelentése.
+    Ezt 3 kategóriába sorolja: \texttt{\allowbreak Yes}, \texttt{\allowbreak No} és \texttt{\allowbreak ?}, azaz nem egyértelmű, ``talán''.
+    Ez utóbbi minden olyan válasz, amelynek nem egyértelműen ``igen'', vagy ``nem'' a jelentése.
     Ha ez megvan, akkor összehasonlítja az egyenes és fordított kérdéseket páronként.
     Ez \texttt{\allowbreak n} kérdés esetén \texttt{\allowbreak n/2} összehasonlítást jelent.
     Az egyezések aránya adja meg a konzisztencia mértékét, amelyet százalékban fejezek ki.
@@ -920,18 +920,18 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     Mivel a konzisztensen pontosság csak páronként értelmezhető, így a végeredménybe minden találat \textbf{1} értékkel kerül beszámításra.
 
     A konzisztensen pontos válaszok egyszerűen azok, amelyek konzisztensek és pontosak is.
-    Magyarul azon túl, hogy az egyenes és a fordított kérdésre adott válasz kategóriája ("igen" vagy "nem" vagy "talán") megegyezik, mindez a gold standard válasszal is összhangban van. Tehát a három válasz megegyezik.
-    Emiatt ha a válasz nem "igen" vagy "nem", az automatikusan nem konzisztensen pontos.
+    Magyarul azon túl, hogy az egyenes és a fordított kérdésre adott válasz kategóriája (``igen'' vagy ``nem'' vagy ``talán'') megegyezik, mindez a gold standard válasszal is összhangban van. Tehát a három válasz megegyezik.
+    Emiatt ha a válasz nem ``igen'' vagy ``nem'', az automatikusan nem konzisztensen pontos.
 
     \subsubsection{Bizonytalan párok aránya}
     Mivel a bizonytalan párok csak páronként értelmezhetőek, így a végeredménybe minden találat \textbf{1} értékkel kerül beszámításra.
 
-    Ha egy egyenes-fordított kérdéspár \textbf{legalább egyikére} a válasz se nem "igen", se nem "nem", akkor azt a sort "bizonytalannak" számítom.
+    Ha egy egyenes-fordított kérdéspár \textbf{legalább egyikére} a válasz se nem ``igen'', se nem ``nem'', akkor azt a sort ``bizonytalannak'' számítom.
 
     \subsubsection{Konzisztensen bizonytalan párok aránya}
     Mivel a konzisztensen bizonytalan párok csak páronként értelmezhetőek, így a végeredménybe minden találat \textbf{1} értékkel kerül beszámításra.
 
-    Ha egy egyenes-fordított kérdéspár \textbf{mindkét kérdésére} a válasz se nem "igen", se nem "nem", akkor azt a sort "konzisztensen bizonytalannak" számítom.
+    Ha egy egyenes-fordított kérdéspár \textbf{mindkét kérdésére} a válasz se nem ``igen'', se nem ``nem'', akkor azt a sort ``konzisztensen bizonytalannak'' számítom.
 
     \subsubsection{LogFile}
     A \texttt{\allowbreak ModelOutputProcessorban} található naplófájl, a logFile.txt tárolja a legutóbbi futtatások eredményeit.
@@ -960,7 +960,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 
 
     Futtatás 3 lépésben:\\
-    Elsőként klónozzuk a projekt forráskódját a gépünkre, pl. a \verb|~\PycharmProjects\| elérési útra. Ajánlott a projekt nevét "Thesis" néven hagyni.
+    Elsőként klónozzuk a projekt forráskódját a gépünkre, pl. a \verb|~\PycharmProjects\| elérési útra. Ajánlott a projekt nevét ``Thesis'' néven hagyni.
     Következő lépésként lépjünk a projekt gyökérmappájába. Adjuk ki a \begin{lstlisting}
 > & .\.venv\Scripts\Activate.ps1
     \end{lstlisting} parancsot a virtuális környezet aktiválásához. Majd adjuk ki a \begin{lstlisting}
@@ -1056,7 +1056,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 
     \section{Jövőbeli tervek}
     Hosszútávú célom egyszer közzétenni a keretrendszert.
-    Ehhez azonban még sok fejlesztési "mérföldkövet" kellene elérnem.
+    Ehhez azonban még sok fejlesztési ``mérföldkövet'' kellene elérnem.
     Egy letisztult webes, vagy konzolos CLI felület sokat segítene, hogy a projekt szélesebb körben, több ember számára elérhető lehessen.
     A Hugging Face Hub~\cite{huggingfacehub} alkalmas platform lehet erre.
     Továbbá egy adatbázis a jelenlegi nyers szöveg-alapú indexelés és adatkezelés helyett nagy előrelépés lenne.
@@ -1076,7 +1076,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
         \item Minden modell ugyanazt a kérdéskészletet kapja meg,
         \item A modell nincsen tájékoztatva arról, hogy milyen arányban várhatóak igen és nem válaszok, sem egyéb részletekről a feladatot illetően,
         \item Minden modell temperature, top-p és top-k értéke az alapértelmezett,
-        \item Az utasítás minden kérdés esetén a következő: \texttt{\allowbreak Answer the question with just a single `Yes` or `No`.} ("Válaszolj a kérdésre csak egyetlen "Igen" vagy "Nem" szóval."),
+        \item Az utasítás minden kérdés esetén a következő: \texttt{\allowbreak Answer the question with just a single `Yes` or `No`.} (Válaszolj a kérdésre csak egyetlen ``Igen'' vagy ``Nem'' szóval.),
         \item Ha a 4 adat, az egyenes válasz, a fordított válasz, az eredeti WiC-adathalmazbeli sor, az ehhez tartozó gold standard címke \texttt{GUID-ja} valamelyike nem egyezik a többivel, akkor hiba csúszott a rendszerbe, és újra kell kezdeni a legkésőbbi helyes állapottól.
     \end{itemize}
 
@@ -1097,7 +1097,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     \section{Méret- és konzisztencia-arányban megfelelő nyelvi modellek kiválasztása és összehasonlítása}
     A modelleket a Témavezetőm ajánlásával együtt választottam ki.
     Ő ajánlotta, hogy a \href{https://lmarena.ai/}{LMArena}~\cite{chiang2024chatbot} és a \href{https://huggingface.co}{Hugging Face}~\cite{wolf2019huggingface}  platformokon lévő modelleket vizsgáljam meg, de a konkrét modell példány kiválasztását rám bízta.
-    A modellek kiválasztásakor a cél az volt, hogy kellően kisméretűek legyenek ahhoz, hogy gyorsan lefussanak a lokális környezetben, ám korlátozott paraméterszámuk ellenére a lehető legjobb "konzisztens pontosságot" tudják elérni, azaz minél több kérdésre konzisztensen és a gold standard szerint válaszoljanak.
+    A modellek kiválasztásakor a cél az volt, hogy kellően kisméretűek legyenek ahhoz, hogy gyorsan lefussanak a lokális környezetben, ám korlátozott paraméterszámuk ellenére a lehető legjobb ``konzisztens pontosságot'' tudják elérni, azaz minél több kérdésre konzisztensen és a gold standard szerint válaszoljanak.
 
 
     %    \section{Kiválasztott Hugging Face modellek}
@@ -1124,7 +1124,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     Mind a 600 választ egyesével generáltattam le, majd egyenként leellenőriztem, hogy a 4 adat, az egyenes válasz, a fordított válasz, az eredeti WiC-adathalmazbeli sor, az ehhez tartozó gold standard címke \texttt{GUID-ja} valóban megegyezik-e, felhasználva a \texttt{\allowbreak ModelOutputProcessor} modulom indexereit, így ügyelve a módszertan tisztaságára.
 
     Keretrendszerem érdeme, hogy végül sikerült a három modell válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) hiánytalanul elérni.
-    A modellek sikeresen csak "Yes" és "No" válaszokat adtak, amely miatt az automatikusan 0 értékű "konzisztensen bizonytalan" mérőszámot nem tüntetem fel, és a "bizonytalan" mutatót is csak vizuális kiemelésképpen.
+    A modellek sikeresen csak ``Yes'' és ``No'' válaszokat adtak, amely miatt az automatikusan 0 értékű ``konzisztensen bizonytalan'' mérőszámot nem tüntetem fel, és a ``bizonytalan'' mutatót is csak vizuális kiemelésképpen.
 
     % ide jön a 3 ábra
 
@@ -1198,7 +1198,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 \end{figure}
 
 Az ábrán látható, hogy meglepő módon a legkisebb modell, a Qwen 0.5B érte el a legjobb mutatókat a konzisztens és konzisztensen pontos párok számában is. Pontosságban viszont alulmaradt a Qwen 1.5B-hez és a Gemma 2B-hez képest is, melyek egyformán 76 pontos párt adtak.
-A Word-in-Context adathalmaz minden metszetében egyenlő arányban szerepelnek "True" (igaz) és "False" (hamis) címkék, így az alapként használt \texttt{test} metszetben is. A megindexelt válaszokhoz tartozó gold standardbeli címkék eloszlásának szummázásával kimutattam, hogy a választott 100 kérdéspárhoz tartozó címke pont egy elég torz, 35 "True" és 65 "False" címkét tartalmazó mintapár volt. A \texttt{\allowbreak Qwen 0.5B} modellről pedig egyértelműen megállapítható volt, hogy a "nem" választ preferálja a döntéseiben. 
+A Word-in-Context adathalmaz minden metszetében egyenlő arányban szerepelnek ``True'' (igaz) és ``False'' (hamis) címkék, így az alapként használt \texttt{test} metszetben is. A megindexelt válaszokhoz tartozó gold standardbeli címkék eloszlásának szummázásával kimutattam, hogy a választott 100 kérdéspárhoz tartozó címke pont egy elég torz, 35 ``True'' és 65 ``False'' címkét tartalmazó mintapár volt. A \texttt{\allowbreak Qwen 0.5B} modellről pedig egyértelműen megállapítható volt, hogy a ``nem'' választ preferálja a döntéseiben. 
 Ez két tényező összeállása lehet a fő oka, hogy a Qwen 0.5B rendkívül jó konzisztens pontosságot ért el, ám feltételezhető, hogy egyenletes eloszlású címkék esetén romlana a teljesítménye, hiszen a pontos párok arányában viszont enyhén elmaradt a nagyobb paraméterszámú modellektől.
 Márpedig a pontos párok aránya jól mutatja az általános érvelési képességet, hiszen itt nincs figyelembe véve a konzisztencia, csak az, hogy a modell helyes választ adott-e a gold standarddal összevetve.
  
@@ -1354,7 +1354,7 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
     \end{axis}
 \end{tikzpicture}
 
-\caption{A három modell "Yes" és "No" válaszainak darabszáma ugyanerre a 200 egyenkénti kérdésre összevetve a gold standard címkék arányával. Mivel egy kérdésre az egyenes és a fordított válasznak is ugyanaz a gold címkéje, így az ábrához a "True" és "False" címkék darabszámát, amelyek megfeleltethetőek a model által adott "igen" és "nem" válaszoknak, duplán kell számolni.}
+\caption{A három modell ``Yes'' és ``No'' válaszainak darabszáma ugyanerre a 200 egyenkénti kérdésre összevetve a gold standard címkék arányával. Mivel egy kérdésre az egyenes és a fordított válasznak is ugyanaz a gold címkéje, így az ábrához a ``True'' és ``False'' címkék darabszámát, amelyek megfeleltethetőek a model által adott ``igen'' és ``nem'' válaszoknak, duplán kell számolni.}
 \label{fig:YesNoComparison}
 \end{figure}
 
@@ -1363,14 +1363,23 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
 A kísérlet
 \begin{itemize}
         \item reprodukálható, azaz a Python keretrendszer telepítése után bárki meg tudja ismételni a kísérletet,
-        \item és izolált, azaz a modell egyik futtatásban sem "tud" semmit a korábbi bemeneteiről és válaszairól.
+        \item és izolált, azaz a modell egyik futtatásban sem ``tud'' semmit a korábbi bemeneteiről és válaszairól.
     \end{itemize}
+
+    \section{Jövőbeli elgondolások a kísérlet továbbfejlesztésére}
+    A jelenleg elvégzett kísérletre vonatkozóan több ötletem is adótott a kutatás továbbmélyítésére és megbízhatóbbá tételére.
+
+    Az aktuális 100 kérdéspárból álló minta statisztikailag nem elegendő ahhoz, hogy szignifikáns következtetéseket lehessen levonni a modellek közötti teljesítménykülönbségekről.
+    Ha mindenképpen a jelenlegi 100 párból álló mintából szeretnénk kimutatni az összefüggést a modell növekvő paraméterszáma és a javuló teljesítménye között, akkor azt lenne értemes összeszámítani, hogy melyik modell válaszol többször konzisztensen helyesen az alulreprezentált - esetünkben az ``igen'' - oldalra. 
+    Érdekes lenne a ``konzisztensen helyes'' csoport kettébontása és az így kapott konzisztensen pontos párok súlyozása is az alapján, hogy mennyivel nagyobb az adott csoport a másiknál. 
+    Ám ennél valószínűsíthetően jobb módszer lenne újabb kérdéspárok hozzáadása a mintához. Segíthet teljesebb képet kapni továbbá újabb modellek bevonása, például a Phi-4-mini-instruct tesztelése, amellyel kompatibilis a keretrendszer, de a kiértékelése nem készült el teljeskörűen.
+    Az inferencia során többszörös futtatásokat lehetne végezni minden modellel (minimum 3-5 futtatás), hogy az véletlenségből adódó szórást meg lehessen határozni. Az eredmények átlagolásával még megbízhatóbb becsléseket kapnánk a modellek valódi teljesítményére.
 
 
 \chapter{Konklúzió} % TODO
 Mivel az értékelés csupán 200 egyedi kérdésen, vagyis 100 páron történt, így a következtetések csak korlátozottan általánosíthatóak és nem tekinthetjük teljesen reprezentatívnak.
 Azonban ebből a méretű adatból is érdekes megfigyeléseket lehet levonni. 
-Az ábrákból leolvasható, hogy a Qwen2.5-0.5B-Instruct és a Qwen2.5-1.5B-Instruct modell is jelentősen előnyben részesíti a "nem" választ az "igen" válaszaihoz képest (0.5B: 188 darab, 1.5B: 179 darab), míg a \texttt{\allowbreak Gemma-2-2b-it} 
+Az ábrákból leolvasható, hogy a Qwen2.5-0.5B-Instruct és a Qwen2.5-1.5B-Instruct modell is jelentősen előnyben részesíti a ``nem'' választ az ``igen'' válaszaihoz képest (0.5B: 188 darab, 1.5B: 179 darab), míg a \texttt{\allowbreak Gemma-2-2b-it} 
 modell jóval kiegyensúlyozottabb eloszlást mutat (81 ``igen'' és 119 ``nem'' válasz). Tény, hogy a gold standard címkék eloszlása is torzított volt, a ``nem'' címkék aránya jelentősen felül volt reprezentálva (130 ``nem'' és csupán 70 ``igen'' címke), ám a Qwen-modellek válaszaránya még így is jelentősen eltért a várttól, különösen a kisebb, 0.5B modell esetén.
 A jelenség fő oka valószínűleg az, hogy a kisebb méretű Qwen-modelleknek nincs elegendő 
 lexikális tudása a WiC-adathalmazra jellemző egzotikus, speciális lexémáknak a magas szintű szemantikus 
@@ -1389,8 +1398,8 @@ eredményez a bináris szemantikai döntési feladatokon.
 A konzisztensen pontos párok számában szintén megfigyelhető a különbség: 
 a 0.5B modell 65 egyezést adott, míg az 1.5B modell 55-öt, a Gemma pedig 49-et. 
 Ez elsősorban arra vezethető vissza, hogy a legkisebb Qwen-modell – a válaszainak erős ``nem''-túlsúlya 
-miatt – szinte minden "nem" címkét eltalált a gold standardból. A jelenség rávilágít arra, hogy a magas konzisztencia és "konzisztens helyesség" mutató nem feltétlenül jelenti a szemantikai megértés tényleges 
-javulását, mivel a következetes negatív válaszadás torzítja a "konzisztensen pontos" mérőszámot. Bár ez a stratégia statisztikailag kedvező konzisztens viselkedést eredményez, nem szolgáltat bizonyítékot arra, hogy a modell összetettebb, jelentésérzékeny feladatok esetén is következetes és megalapozott döntéshozatalra képes.
+miatt – szinte minden ``nem'' címkét eltalált a gold standardból. A jelenség rávilágít arra, hogy a magas konzisztencia és ``konzisztens helyesség'' mutató nem feltétlenül jelenti a szemantikai megértés tényleges 
+javulását, mivel a következetes negatív válaszadás torzítja a ``konzisztensen pontos'' mérőszámot. Bár ez a stratégia statisztikailag kedvező konzisztens viselkedést eredményez, nem szolgáltat bizonyítékot arra, hogy a modell összetettebb, jelentésérzékeny feladatok esetén is következetes és megalapozott döntéshozatalra képes.
 
 A modell-válaszok semleges (``bizonytalan'') kategóriába esése az éles kísérleten egyik modellnél sem 
 fordult elő.
