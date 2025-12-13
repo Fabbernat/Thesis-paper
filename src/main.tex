@@ -1334,16 +1334,27 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
         (No, 119)
     };
 
+    % Gold standard
+    \addplot[
+        fill=red!70!black,
+        draw=red!90!black,
+        postaction={pattern=crosshatch, pattern color=red!50!black}
+    ] coordinates {
+        (Yes, 70)
+        (No, 130)
+    };
+
     \legend{
         Qwen 0.5B,
         Qwen 1.5B,
-        Gemma 2B
+        Gemma 2B,
+        Gold standard
     }
 
     \end{axis}
 \end{tikzpicture}
 
-\caption{A három modell "Yes" és "No" válaszainak darabszáma ugyanerre a 200 egyenkénti kérdésre.}
+\caption{A három modell "Yes" és "No" válaszainak darabszáma ugyanerre a 200 egyenkénti kérdésre összevetve a gold standard címkék arányával. Mivel egy kérdésre az egyenes és a fordított válasznak is ugyanaz a gold címkéje, így az ábrához a "True" és "False" címkék darabszámát, amelyek megfeleltethetőek a model által adott "igen" és "nem" válaszoknak, duplán kell számolni.}
 \label{fig:YesNoComparison}
 \end{figure}
 
