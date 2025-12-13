@@ -1069,13 +1069,14 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     Az kérdések sorrendje az indexek alapján készült egyedi \texttt{\allowbreak GUID}-khoz vannak kötve, így a kérdések között sincs ismétlődés. Mindegyik egyedi, és minden modell ugyanazt a kérdéskészletet kapja meg feladatként. Az így előállított kérdések mennyisége maximálisan 2800 darab lehet, mivel a WiC-adathalmazban ennyi bejegyzés található.
     Összefoglalva:
     \begin{itemize}
-        \item A kérdések száma tetszőleges, maximum 2800
-        \item A kérdések sorrendje véletlenszerű
-        \item Nincs ismétlődés az elemek között
-        \item Minden modell ugyanazt a kérdéskészletet kapja meg
-        \item A modell nincsen tájékoztatva arról, hogy milyen arányban várhatóak igen és nem válaszok, sem egyéb részletekről a feladatot illetően
-        \item Minden modell temperature, top-p és top-k értéke az alapértelmezett
-        \item Az utasítás minden kérdés esetén a következő: \texttt{\allowbreak Answer the question with just a single `Yes` or `No`.} ("Válaszolj a kérdésre csak egyetlen "Igen" vagy "Nem" szóval.").
+        \item A kérdések száma tetszőleges, maximum 2800,
+        \item A kérdések sorrendje véletlenszerű,
+        \item Nincs ismétlődés az elemek között,
+        \item Minden modell ugyanazt a kérdéskészletet kapja meg,
+        \item A modell nincsen tájékoztatva arról, hogy milyen arányban várhatóak igen és nem válaszok, sem egyéb részletekről a feladatot illetően,
+        \item Minden modell temperature, top-p és top-k értéke az alapértelmezett,
+        \item Az utasítás minden kérdés esetén a következő: \texttt{\allowbreak Answer the question with just a single `Yes` or `No`.} ("Válaszolj a kérdésre csak egyetlen "Igen" vagy "Nem" szóval."),
+        \item Ha a 4 adat, az egyenes válasz, a fordított válasz, az eredeti WiC-adathalmazbeli sor, az ehhez tartozó gold standard címke \texttt{GUID-ja} valamelyike nem egyezik a többivel, akkor hiba csúszott a rendszerbe, és újra kell kezdeni a legkésőbbi helyes állapottól.
     \end{itemize}
 
     \section{Nehézségek}
@@ -1116,7 +1117,11 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 %    A modellek eredményeit összessítő táblázat a 4.1. táblázatban látható.\ref{tab:model-eval-summary}
 
     \section{Három modell összehasonlítása 100 véletlenszerű kérdésen}
-    Végül a $Qwen/Qwen2.5-0.5B-Instruct$, a $Qwen/Qwen2.5-1.5B-Instruct$ és a $Google/Gemma-2-2b-it$ modelleket hasonlítottam össze. Az előbbi kettő az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük 2 eltérő méretű (0.5B vs 2B) és gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
+    Végül a $Qwen/Qwen2.5-0.5B-Instruct$, a $Qwen/Qwen2.5-1.5B-Instruct$ és a $Google/Gemma-2-2b-it$ modelleket hasonlítottam össze. 
+    Az előbbi kettő az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük 2 eltérő méretű (0.5B vs 2B) és gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
+
+    Mind a 600 választ egyesével generáltattam le, majd egyenként leelenőriztem, hogy a 4 adat, az egyenes válasz, a fordított válasz, az eredeti WiC-adathalmazbeli sor, az ehhez tartozó gold standard címke \texttt{GUID-ja} valóban megegyezik-e, felhasználva a \texttt{\allowbreak ModelOutputProcessor} modulom indexereit, így ügyelve a módszertan tisztaságára.
+
     Keretrendszerem érdeme, hogy végül sikerült a három modell válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) hiánytalanul elérni.
     A modellek hibátlanul csak "Yes" és "No" válaszokat adtak, ezért a "konzisztensen bizonytalan" mérőszámot nem tüntettem fel, és a "bizonytalan" mutatót is csak vizuális kiemelésképpen.
 
