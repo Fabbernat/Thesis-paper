@@ -177,7 +177,7 @@
     A válaszainak helyessége másodlagos, de nem elhanyagolható.
     A nyelvi modellek a Hugging Face platformról lesznek kiválasztva.
 
-    A program bemenete tetszőleges sornyi bejegyzés a Word-in-Context adathalmaz \texttt{\allowbreak test} splitjéből (vagy tetszőleges, ezzel megegyező formátumú kérdéshalmazból), és tetszőleges modell a Hugging Face platformról. A program során keletkező hibákat le kell kezelni.
+    A program bemenete tetszőleges sornyi bejegyzés a Word-in-Context adathalmaz \texttt{\allowbreak test} metszetéből (vagy tetszőleges, ezzel megegyező formátumú kérdéshalmazból), és tetszőleges modell a Hugging Face platformról. A program során keletkező hibákat le kell kezelni.
 
     A megoldás kulcsa olyan szoftver fejlesztése, amely mindezt minél egyszerűbbé, automatizáltabbá és gördülékenyebbé teszi.
     %         \item Összehasonlító teljesítményvizsgálatot végeztem a
@@ -667,7 +667,7 @@ The cat sat on the _ .
     A program egyébként is csak a modell inputjainak előkészítését tudta, a modell inferenciát és a válasz feldolgozást már manuálisan kellett elvégezni.
     Csak a mostani \texttt{\allowbreak ModelInputPreparernek} megegyező rész funkcionalitásával rendelkezett standard Python környezetben.
     A Hugging Face modell inferenciájára (a mostani \texttt{\allowbreak HuggingFaceModelInferencer}~\ref{subsubsec:huggingfacemodelinferencer} modullal megegyező funkcionalitás) egy Jupyter Notebookban került sor, Google Colab környezetben.
-    A modell outputjának (kimenetének) feldolgozása ( a mostani \texttt{\allowbreak ModelOutputProcessor}) pedig megint egy harmadik környezetben, Google Apps Scriptben került feldolgozásra.
+    A modell outputjának (kimenetének) feldolgozása ( a mostani\\ \texttt{\allowbreak ModelOutputProcessor}) pedig megint egy harmadik környezetben, Google Apps Scriptben került feldolgozásra.
 
     Az újraírásnál első lépésem volt, hogy a platformot egyesítettem.
     Most az egész szoftver egy sima, standard Python futtatókörnyezetben fut, egyetlen könnyen megtalálható \texttt{\allowbreak main} fájl futtatásával, ipari standard szerint az src mappában lévő globális belépési ponttal, de egyenként is lehet futtathatni a 3 modult, mindegyikhez tartozván egy \texttt{\allowbreak main.py} fájlban található belépési pont.
@@ -690,7 +690,7 @@ The cat sat on the _ .
     \subsubsection{ModelInputPreparer}
     A \texttt{\allowbreak ModelInputPreparer} modul inputjai egy lokális adathalmaz és az elkészíteni kívánt kérdések száma.
     A program feladata a WiC adatokból a megadott számú az egyenes és fordított kérdés legyártása, amelyet majd a nyelvi modell inputként meg fog kapni.
-    Ez a program alapértelmezetten \texttt{\allowbreak Word-in-Context} adathalmaz \texttt{\allowbreak test} splitjének rekordjaiból hozza létre a kérdéseket, de saját, megegyező formátumú kérdésekre is működik. A ModelInputPreparer alapértelmezetten randomizálja az elkészített kérdések sorrendjét a tiszta kiértékelés érdekében. A kérdéseket mind egyenes, mind fordított sorrendben létrehozza, amelyekkel azután a modellek konzisztenciáját vizsgáljuk. Mivel az adathalmaz alapértelmezetten 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így alap beállításokkal 2800 kérdést kapunk, de ezen igény szerint lehet módosítani.
+    Ez a program alapértelmezetten \texttt{\allowbreak Word-in-Context} adathalmaz \texttt{\allowbreak test} metszetének rekordjaiból hozza létre a kérdéseket, de saját, megegyező formátumú kérdésekre is működik. A ModelInputPreparer alapértelmezetten randomizálja az elkészített kérdések sorrendjét a tiszta kiértékelés érdekében. A kérdéseket mind egyenes, mind fordított sorrendben létrehozza, amelyekkel azután a modellek konzisztenciáját vizsgáljuk. Mivel az adathalmaz alapértelmezetten 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így alap beállításokkal 2800 kérdést kapunk, de ezen igény szerint lehet módosítani.
 
     \subsubsection{HuggingFaceModelInferencer}\label{subsubsec:huggingfacemodelinferencer}
     A HuggingFaceModelInferencer inputként a ModelInputPreparer outputját kapja.
@@ -699,7 +699,8 @@ The cat sat on the _ .
     A generálási stratétiám lényege, hogy minden inferencia során 1 kérdést válaszoltatok meg, egymástól függetlenül, így elkerülve a modellek "emlékezőképességét", továbbá csak 1 output tokent engedélyezek, biztosítva, hogy a válasz csak egy "igen" vagy "nem" lesz.
 
     \subsubsection{ModelOutputProcessor}
-    A ModelOutputProcessor feladata a modell outputból adatkinyerés, majd azt a gold standarddal összevetve statisztikák készítése.
+    A ModelOutputProcessor feladata a modell outputból adatkinyerés, majd azt a WiC adathalmazhoz készült gold standarddal összevetve statisztikák készítése.
+    Ez a gold standard szakértők által lett hitelesítve, ezt elfogadjuk alapigazságnak a szakdolgozat erejéig és ehhez viszonyítjuk majd a modellek válaszait.
 
 
     \section{Fejlesztés}
@@ -741,7 +742,7 @@ The cat sat on the _ .
     Így a statisztikai elemző modul létrehozása előtt szükség volt ennek a két funkcionalitásnak a létrehozására.
 
     Az első modul a ModelInputPreparer (modell bemenet előkészítő), amely a WiC adathalmazból létrehozza a modellnek szánt inputot, a legfeljebb 2800 kérdést, igény szerint akár véletlenszerű sorrendben is.
-    Ez a \texttt{\allowbreak WiC} adathalmaz \texttt{\allowbreak test} splitjének összes rekordjából létre képes hozni egy-egy kérdést, mind egyenes, mind fordított sorrendben, hogy a modellek konzisztenciáját vizsgáljuk. Mivel 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így jön ki a 2800 kérdés. A létrehozás módja a következő:
+    Ez a \texttt{\allowbreak WiC} adathalmaz \texttt{\allowbreak test} metszetének összes rekordjából létre képes hozni egy-egy kérdést, mind egyenes, mind fordított sorrendben, hogy a modellek konzisztenciáját vizsgáljuk. Mivel 1400 rekordból áll, és rekordonként 2 kérdésünk (egyenes, fordított) van, így jön ki a 2800 kérdés. A létrehozás módja a következő:
     A WiC adathalmaz minden sora 5, tabulátorral elválasztott értéket tartalmaz:
     \begin{itemize}
         \item szó,\item  szófaj, \item a szó pozíciói a mondatokban, \item az első mondat, \item a második mondat.
@@ -1062,7 +1063,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 
 \chapterwithdesc{Kísérlet}
     {Három konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
-    A végső cél, amiért az egész szoftver keretrendszer készült, az volt, hogy legalább két modellt összehasonlíthassunk minél nagyobb mennyiségű kérdésen.
+    A végső cél, amiért az egész szoftver keretrendszer készült, az volt, hogy legalább két, de inkább több modellt összehasonlíthassunk minél nagyobb mennyiségű kérdésen.
 
     \section{Módszertan}
     Ahhoz, hogy módszertanilag helyes legyen és látszódjon, hogy az eredmények nincsenek beégetve a keretrendszerbe, a Témavezetőmmel megegyezve a példákat random index választó függvény segítségével véletlenszerűen választottam ki a WiC-adathalmaz bejegyzéseiből, szigorúan figyelve az ismétlődő indexek elkerülésére.
@@ -1113,17 +1114,17 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     modelleken teszteltem, melyek paraméterszáma 0.5 és 4 milliárd közötti.
     A méretükhöz képest gazdag szókinccsel és jó nyelvérzékkel rendelkeznek.
 %    Mind a hármat közepes és nehéz kérdéseken, mindkét kérdésnehézséget egyenes és fordított sorrendben teszteltem. Ez így összesen \texttt{\allowbreak 3*3*2=18} kiértékelést jelentett.
-    Hangsúlyozom, hogy nem a {gemma-2b-it}, hanem a {gemma-\textit{2}-2b-it} változatot választottam.
+    Hangsúlyozom, hogy nem a {gemma-2b-it}, hanem az újabb {gemma-\textit{2}-2b-it} változatot választottam.
 %    A modellek eredményeit összessítő táblázat a 4.1. táblázatban látható.\ref{tab:model-eval-summary}
 
     \section{Három modell összehasonlítása 100 véletlenszerű kérdésen}
-    Végül a $Qwen/Qwen2.5-0.5B-Instruct$, a $Qwen/Qwen2.5-1.5B-Instruct$ és a $Google/Gemma-2-2b-it$ modelleket hasonlítottam össze. 
-    Az előbbi kettő az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük 2 eltérő méretű (0.5B vs 2B) és gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
+    A keretrendszer éles próbájaként a $Qwen/Qwen2.5-0.5B-Instruct$, a\\ $Qwen/Qwen2.5-1.5B-Instruct$ és a $Google/Gemma-2-2b-it$ modelleket hasonlítottam össze. 
+    Az előbbi kettő az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük három eltérő méretű (0.5B vs 1.5B vs 2B) és két eltérő gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
 
     Mind a 600 választ egyesével generáltattam le, majd egyenként leelenőriztem, hogy a 4 adat, az egyenes válasz, a fordított válasz, az eredeti WiC-adathalmazbeli sor, az ehhez tartozó gold standard címke \texttt{GUID-ja} valóban megegyezik-e, felhasználva a \texttt{\allowbreak ModelOutputProcessor} modulom indexereit, így ügyelve a módszertan tisztaságára.
 
     Keretrendszerem érdeme, hogy végül sikerült a három modell válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) hiánytalanul elérni.
-    A modellek hibátlanul csak "Yes" és "No" válaszokat adtak, ezért a "konzisztensen bizonytalan" mérőszámot nem tüntettem fel, és a "bizonytalan" mutatót is csak vizuális kiemelésképpen.
+    A modellek sikeresen csak "Yes" és "No" válaszokat adtak, amely miatt az automatikusan 0 értékű "konzisztensen bizonytalan" mérőszámot nem tüntetem fel, és a "bizonytalan" mutatót is csak vizuális kiemelésképpen.
 
     % ide jön a 3 ábra
 
@@ -1192,11 +1193,14 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     \end{axis}
 \end{tikzpicture}
 
-\caption{Három modell konzisztens, pontos és bizonytalan párjainak száma 100 kérdéspáron}
+\caption{Három modell konzisztens, pontos és bizonytalan párjainak száma 100 kérdéspáron. A konzisztensen pontos párok száma a konzisztens és pontos párok matematikai metszete.}
 \label{fig:ModelEvalSummary}
 \end{figure}
 
-
+Az ábrán látható, hogy meglepő módon a legkisebb modell, a Qwen 0.5B érte el a legjobb mutatókat a konzisztens és konzisztensen pontos párok számában is. Pontosságban viszont alulmaradt a Qwen 1.5B-hez és a Gemma 2B-hez képest is, melyek egyformán 76 pontos párt adtak.
+A Word-in-Context adathalmaz minden metszetében egyenlő arányban szerepelnek "True" (igaz) és "False" (hamis) címkék, így az alapként használt \texttt{test} metszetben is. A megindexelt válaszokhoz tartozó gold standardbeli címkék eloszlásának szummázásával kimutattam, hogy a választott 100 címke pont egy elég torz, 35 "True" és 65 "False" címkét tartalmazó minta volt. A \texttt{\allowbreak Qwen 0.5B} modellről pedig egyértelműen megállapítható volt, hogy a "nem" választ preferálja a döntéseiben. 
+Ez két tényező összeállása lehet a fő oka, hogy a Qwen 0.5B rendkívül jó konzisztens pontosságot ért el, ám feltételezhető, hogy egyenletes eloszlású címkék esetén romlana a teljesítménye, hiszen a pontos párok arányában viszont enyhén elmaradt a nagyobb paraméterszámú modellektől.
+Márpedig a pontos párok aránya jól mutatja az általános érvelési képességet, hiszen itt nincs figyelembe véve a konzisztencia, csak az, hogy a modell helyes választ adott-e a gold standarddal összevetve.
  
 
 \begin{figure}[H]
@@ -1266,7 +1270,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     \end{axis}
 \end{tikzpicture}
 
-\caption{Három modell pontos egyenkénti válaszainak (gold standard címkékkel való egyezések) összehasonlítása ugyanezen a 200 véletlenszerű kérdésen.}
+\caption{Három modell pontos egyenkénti válaszainak (gold standard címkékkel való egyezések számának) összehasonlítása ugyanezen a 200 véletlenszerű kérdésen.}
 \label{fig:ModelEvalSummaryComplete}
 \end{figure}
 
