@@ -33,7 +33,7 @@
 \select@language {magyar} \contentsline {section}{\numberline {3.2}Google Colab futtatás}{17}{section.3.2}%
 \select@language {magyar} \contentsline {chapter}{\numberline {4}A szoftver: modellt futtató és kiértékelő keretrendszer fejlesztése PyCharmban}{19}{chapter.4}%
 \select@language {magyar} \contentsline {section}{\numberline {4.1}Tervezés}{19}{section.4.1}%
-\select@language {magyar} \contentsline {subsubsection}{ModelInputPreparer}{21}{section*.13}%
+\select@language {magyar} \contentsline {subsubsection}{ModelInputPreparer}{20}{section*.13}%
 \select@language {magyar} \contentsline {subsubsection}{HuggingFaceModelInferencer}{21}{section*.14}%
 \select@language {magyar} \contentsline {subsubsection}{ModelOutputProcessor}{21}{section*.15}%
 \select@language {magyar} \contentsline {section}{\numberline {4.2}Fejlesztés}{21}{section.4.2}%
