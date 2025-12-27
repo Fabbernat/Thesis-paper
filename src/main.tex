@@ -100,17 +100,17 @@
     \begingroup
     \begin{center}
         \vspace*{1cm}
-        {\Large\textbf Szegedi Tudományegyetem}
+        {\Large\bf Szegedi Tudományegyetem}
 
         \vspace{0.5cm}
 
-        {\Large\textbf Informatikai Intézet}
+        {\Large\bf Informatikai Intézet}
 
         \vspace*{3.8cm}
 
 
-        {\Large\textbf A nagy nyelvi modellek szemantikus képességeinek konzisztenciájának vizsgálata}\\[1.5cm]
-        {\Large\textbf Analyzing the Consistency of Semantical Capabilities of Large Language Models}
+        {\Large\bf A nagy nyelvi modellek szemantikus képességeinek konzisztenciájának vizsgálata}\\[1.5cm]
+        {\Large\bf Analyzing the Consistency of Semantical Capabilities of Large Language Models}
 
         \vspace*{3.6cm}
 
@@ -663,7 +663,7 @@ The cat sat on the _ .
 
     Az eredeti beadott verzióval több gond is volt.
     A programot nem lehetett egy belépési ponttal futtatni.
-    Helyette nem forduló, kaotikus, gyakran egymástól teljesen független szkriptek szerepeltek rendezetlenül, amelyeknek a használatát csak én ismertem, ráadásul egy részük nem is működött, csak úgy ``volt''.
+    Helyette nem forduló, kaotikus, gyakran egymástól teljesen független szkriptek szerepeltek rendezetlenül.
     A program egyébként is csak a modell inputjainak előkészítését tudta, a modell inferenciát és a válasz feldolgozást már manuálisan kellett elvégezni.
     Csak a mostani \texttt{\allowbreak ModelInputPreparernek} megegyező rész funkcionalitásával rendelkezett standard Python környezetben.
     A Hugging Face modell inferenciájára (a mostani \texttt{\allowbreak HuggingFaceModelInferencer}~\ref{subsubsec:huggingfacemodelinferencer} modullal megegyező funkcionalitás) egy Jupyter Notebookban került sor, Google Colab környezetben.
@@ -1184,10 +1184,22 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
         (Bizonytalan párok, 0)
     };
 
+    \addplot[
+    fill=purple!70,
+    draw=purple!90!black,
+    postaction={pattern=dots, pattern color=purple!40!black}
+    ] coordinates {
+        (Konzisztens párok, 67)
+        (Pontos párok, 84)
+        (Konzisztensen pontos párok, 51)
+        (Bizonytalan párok, 0)
+    };
+
     \legend{
         Qwen 0.5B,
         Qwen 1.5B,
-        Gemma 2B
+        Gemma 2B,
+        Phi 4B
     }
 
     \end{axis}
@@ -1261,11 +1273,19 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
         (Pontos egyenkénti válaszok, 125.00)
     };
 
+    \addplot[
+    fill=purple!70,
+    draw=purple!90!black,
+    postaction={pattern=dots, pattern color=purple!40!black}
+    ] coordinates {
+        (Pontos egyenkénti válaszok, 135.00)
+    };
 
     \legend{
         Qwen 0.5B (0.5B param.),
         Qwen 1.5B (1.5B param.),
-        Gemma 2B (2B param.)
+        Gemma 2B (2B param.),
+        Phi 4B (4B param.)
     }
     \end{axis}
 \end{tikzpicture}
@@ -1334,6 +1354,15 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
         (No, 119)
     };
 
+    \addplot[
+    fill=purple!70,
+    draw=purple!90!black,
+    postaction={pattern=dots, pattern color=purple!40!black}
+    ] coordinates {
+        (Yes, 61)
+        (No, 139)
+    };
+
     % Gold standard
     \addplot[
         fill=red!70!black,
@@ -1348,6 +1377,7 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
         Qwen 0.5B,
         Qwen 1.5B,
         Gemma 2B,
+        Phi 4B,
         Gold standard
     }
 
