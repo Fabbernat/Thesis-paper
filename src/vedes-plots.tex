@@ -6,6 +6,7 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.17}
 \usepackage{tikz}
+\usetikzlibrary{patterns}
 \usepackage{float} % [H] miatt
 \usepackage{caption}
 
@@ -15,12 +16,14 @@
 \centering
 \begin{tikzpicture}
     \begin{axis}[
+        title={Önmagával és a gold standard címkékkel részben vagy egészben megegyező válaszpárok eloszlása modellenként},
+        title style={font=\large, yshift=6pt},
         ybar,
         bar width=0.28cm,
         width=0.7\textwidth,
         height=4.2cm,
         ylabel={Darabszám},
-        symbolic x coords={Konzisztens párok, Pontos párok, Konzisztensen pontos párok, Bizonytalan párok},
+        symbolic x coords={Önmagával konzisztens párok, Részben pontos párok, Teljesen pontos párok, Bizonytalan párok},
         xtick=data,
         x tick label style={rotate=45, anchor=east, font=\small},
         ymin=0,
@@ -39,9 +42,9 @@
         fill=yellow!70!brown,
         draw=yellow!50!black
     ] coordinates {
-        (Konzisztens párok, 94)
-        (Pontos párok, 71)
-        (Konzisztensen pontos párok, 65)
+        (Önmagával konzisztens párok, 94)
+        (Részben pontos párok, 71)
+        (Teljesen pontos párok, 65)
         (Bizonytalan párok, 0)
     };
 
@@ -50,9 +53,9 @@
         fill=green!70!brown,
         draw=green!50!black
     ] coordinates {
-        (Konzisztens párok, 79)
-        (Pontos párok, 76)
-        (Konzisztensen pontos párok, 55)
+        (Önmagával konzisztens párok, 79)
+        (Részben pontos párok, 76)
+        (Teljesen pontos párok, 55)
         (Bizonytalan párok, 0)
     };
 
@@ -61,9 +64,9 @@
         fill=blue!60,
         draw=blue!80!black
     ] coordinates {
-        (Konzisztens párok, 73)
-        (Pontos párok, 76)
-        (Konzisztensen pontos párok, 49)
+        (Önmagával konzisztens párok, 73)
+        (Részben pontos párok, 76)
+        (Teljesen pontos párok, 49)
         (Bizonytalan párok, 0)
     };
 
@@ -72,9 +75,9 @@
     draw=purple!90!black,
     postaction={pattern=dots, pattern color=purple!40!black}
     ] coordinates {
-        (Konzisztens párok, 82)
-        (Pontos párok, 83)
-        (Konzisztensen pontos párok, 65)
+        (Önmagával konzisztens párok, 82)
+        (Részben pontos párok, 83)
+        (Teljesen pontos párok, 65)
         (Bizonytalan párok, 0)
     };
 
@@ -102,6 +105,8 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
 \centering
 \begin{tikzpicture}
     \begin{axis}[
+        title={Gold standarddal megegyező egyenkénti válaszok száma modellenként},
+        title style={font=\large, yshift=6pt},
         ybar,
         bar width=1.2cm,
         width=0.7\textwidth,
@@ -184,7 +189,6 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
     \begin{axis}[
         title={Gold standarddal egyező válaszok száma modellenként},
         title style={font=\large, yshift=6pt},
-        
         ybar,
         bar width=0.56cm,
         width=0.7\textwidth,
