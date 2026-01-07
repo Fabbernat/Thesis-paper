@@ -200,6 +200,9 @@ INPUT C:\MiKTeX\tex\latex\caption\caption3.sty
 INPUT C:\MiKTeX\tex\latex\caption\caption3.sty
 INPUT C:\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
 INPUT C:\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
+INPUT .\vedes-plots.aux
+INPUT .\vedes-plots.aux
+INPUT vedes-plots.aux
 OUTPUT vedes-plots.aux
 INPUT C:\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
