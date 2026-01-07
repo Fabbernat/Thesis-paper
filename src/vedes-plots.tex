@@ -16,25 +16,21 @@
 \centering
 \begin{tikzpicture}
     \begin{axis}[
-        title={
-        A modellek ``Yes''--``No'' válaszeloszlásának \\
-        eltérése az elvárt megoszlástól
-        },
-        title style={font=\large, yshift=6pt, align=center},
         ybar,
         bar width=0.8cm,
         width=0.7\textwidth,
         height=5cm,
         ylabel={Eltérés mértéke},
         symbolic x coords={
-            a,b,c,d
+            |,
+            Qwen1.5B,
+            Gemma2B,
+            Phi4B
         },
         xtick=data,
-        x tick label style={
-            font=\large
-        },
+        x tick label style={font=\fontsize{0}{0}\selectfont},
         ymin=0,
-        ymax=65,
+        ymax=100,
         ymajorgrids=true,
         grid style=dashed,
         enlarge x limits=1.5,
@@ -43,48 +39,37 @@
             anchor=north,
             legend columns=4,
             font=\footnotesize
-        },
-        nodes near coords,
-        nodes near coords style={
-            font=\footnotesize,
-            /pgf/number format/fixed,
-            /pgf/number format/precision=0
-        },
-        every node near coord/.append style={yshift=2pt}
+        }
     ]
 
-    % Qwen 0.5B
     \addplot[
         fill=yellow!70!brown,
         draw=yellow!50!black
     ] coordinates {
-        (a, 58)
+        (|, 58)
     };
 
-    % Qwen 1.5B
     \addplot[
         fill=green!70!brown,
         draw=green!50!black,
         postaction={pattern=north east lines, pattern color=green!30!black}
     ] coordinates {
-        (b, 49)
+        (Qwen1.5B, 49)
     };
 
-    % Gemma 2B
     \addplot[
         fill=blue!60,
         draw=blue!80!black
     ] coordinates {
-        (c, 11)
+        (Gemma2B, 11)
     };
 
-    % Phi 4B
     \addplot[
         fill=purple!70,
         draw=purple!90!black,
         postaction={pattern=dots, pattern color=purple!40!black}
     ] coordinates {
-        (d, 20)
+        (Phi4B, 20)
     };
 
     \legend{
@@ -96,12 +81,9 @@
 
     \end{axis}
 \end{tikzpicture}
-
-\caption{
-A modellek ``Yes'' és ``No'' válaszainak eloszlása és az elvárt (gold standard szerinti) megoszlás közötti eltérés mértéke. 
-Az eltérés szimmetrikus, azaz az elvárttól való túllépés és alullépés azonos súllyal szerepel.
-}
 \label{fig:YesNoDeviation}
 \end{figure}
+
+
 
 \end{document}
