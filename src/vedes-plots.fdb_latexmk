@@ -1,10 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1767803214.26134 "c:/LaTeXProjects/Thesis-paper/src/vedes-plots.tex" "vedes-plots.pdf" "vedes-plots" 1767803217.69642 0
+["pdflatex"] 1767803324.3076 "c:/LaTeXProjects/Thesis-paper/src/vedes-plots.tex" "vedes-plots.pdf" "vedes-plots" 1767803326.76 0
   "C:/MiKTeX/fonts/tfm/jknappen/ec/ecrm0800.tfm" 993062118 3152 11ecf5aad6aacf00ff18f394ab23a8b5 ""
-  "C:/MiKTeX/fonts/tfm/jknappen/ec/ecrm0900.tfm" 993062120 3156 6d4f5755d77638125f6f89de4f3bb757 ""
   "C:/MiKTeX/fonts/tfm/jknappen/ec/ecrm1000.tfm" 993062122 3148 7e594c8240c71e432203f65ab5f95a51 ""
   "C:/MiKTeX/fonts/tfm/jknappen/ec/ecrm1200.tfm" 993062126 3152 4850ff0163852b7fab34bd55e1197f28 ""
-  "C:/MiKTeX/fonts/tfm/jknappen/ec/ectt1000.tfm" 993062340 1348 d70ddf2d5d512b838e50a335e385e919 ""
   "C:/MiKTeX/fonts/tfm/public/cm/cmmi6.tfm" 1136765053 1512 f21f83efb36853c0b70002322c1ab3ad ""
   "C:/MiKTeX/fonts/tfm/public/cm/cmmi8.tfm" 1136765053 1520 eccf95517727cb11801f4f1aee3a21b4 ""
   "C:/MiKTeX/fonts/tfm/public/cm/cmr6.tfm" 1136765053 1300 b62933e007d01cfd073f79b963c01526 ""
@@ -142,14 +140,12 @@
   "C:/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1767604520 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm0800.pk" 1767604937 19080 74f412a2ad18743a84aaf18374eea7cd ""
-  "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm0900.pk" 1767604948 21356 62ef12f77b220df9ff71c5b5ad38d5d0 ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm1000.pk" 1767604945 23808 686c93d694597fc5bb0340817813c020 ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm1200.pk" 1767604943 28440 d8311f2de90c976adc563a174b1c120d ""
-  "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ectt1000.pk" 1767604941 20028 587c348e566ca9e39eeb09c962f8c3ed ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1750612748 13218441 72e452d2d4da982476be41d8461887dd ""
-  "c:/LaTeXProjects/Thesis-paper/src/vedes-plots.tex" 1767803203 11640 8d037713cfd8412ad6e896016b991208 ""
-  "vedes-plots.aux" 1767803217 1729 67074d902a5fa31eb0e6ecdf73beaa9d "pdflatex"
-  "vedes-plots.tex" 1767803203 11640 8d037713cfd8412ad6e896016b991208 ""
+  "c:/LaTeXProjects/Thesis-paper/src/vedes-plots.tex" 1767803320 2512 ede99a50380a3476899be5da8df7ba11 ""
+  "vedes-plots.aux" 1767803326 495 4e208890ea2633700aff9fcaf2105218 "pdflatex"
+  "vedes-plots.tex" 1767803320 2512 ede99a50380a3476899be5da8df7ba11 ""
   (generated)
   "vedes-plots.aux"
   "vedes-plots.log"
