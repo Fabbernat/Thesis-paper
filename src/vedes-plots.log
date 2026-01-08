@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  7 JAN 2026 17:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  8 JAN 2026 16:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -295,55 +295,38 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box65
 \@float@everytoks=\toks40
 \@floatcapt=\box66
-) (C:\MiKTeX\tex/latex/caption\caption.sty
-Package: caption 2023/08/05 v3.6o Customizing captions (AR)
- (C:\MiKTeX\tex/latex/caption\caption3.sty
-Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen271
-\captionmargin=\dimen272
-\caption@leftmargin=\dimen273
-\caption@rightmargin=\dimen274
-\caption@width=\dimen275
-\caption@indent=\dimen276
-\caption@parindent=\dimen277
-\caption@hangindent=\dimen278
-Package caption Info: Standard document class detected.
-)
-\c@caption@flags=\count312
-\c@continuedfloat=\count313
-Package caption Info: float package is loaded.
 ) (C:\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-04-14 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count314
+\l__color_backend_stack_int=\count312
 ) (vedes-plots.aux)
 \openout1 = `vedes-plots.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
  (C:\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count315
-\scratchdimen=\dimen279
+\scratchcounter=\count313
+\scratchdimen=\dimen271
 \scratchbox=\box67
-\nofMPsegments=\count316
-\nofMParguments=\count317
+\nofMPsegments=\count314
+\nofMParguments=\count315
 \everyMPshowfont=\toks41
-\MPscratchCnt=\count318
-\MPscratchDim=\dimen280
-\MPnumerator=\count319
-\makeMPintoPDFobject=\count320
+\MPscratchCnt=\count316
+\MPscratchDim=\dimen272
+\MPnumerator=\count317
+\makeMPintoPDFobject=\count318
 \everyMPtoPDFconversion=\toks42
 ) (C:\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -353,8 +336,6 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package pgfplots notification 'compat/show suggested version=true': you might benefit from \pgfplotsset{compat=1.18} (current compat level: 1.17).
 
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: End \AtBeginDocument code.
 Package pgfplots info on input line 43: Using 'lua backend=false' for axis: x coord trafo unsupported.
 
 LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <0> not available
@@ -364,11 +345,43 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 82.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 82.
+Package pgfplots info on input line 132: Using 'lua backend=false' for axis: x coord trafo unsupported.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 182.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 182.
+
+Overfull \hbox (230.2251pt too wide) in paragraph at lines 183--184
+ [][] 
+ []
+
 
 
 [1
 
-{C:/Users/BernÃ¡t/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (vedes-plots.aux)
+{C:/Users/BernÃ¡t/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+Package pgfplots info on input line 235: Using 'lua backend=false' for axis: x coord trafo unsupported.
+
+
+Package pgfplots Warning: Axis range for axis x is approximately empty; enlarging it (it is [0.0:0.0]) on input line 273.
+
+ [warning /pgfplots/warning/approx empty range enlarged]
+
+Overfull \hbox (20.55426pt too wide) in paragraph at lines 274--275
+ [][] 
+ []
+
+
+Underfull \hbox (badness 1043) in paragraph at lines 276--276
+\T1/cmr/m/n/10 való egyezések számá-nak) össze-ha-son-lítása ugyanezen a 200 véletlen-sz-er¶
+ []
+
+Package pgfplots info on input line 312: Using 'lua backend=false' for axis: x coord trafo unsupported.
+
+
+[2]
+
+[3] (vedes-plots.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-05-26>
@@ -380,17 +393,17 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 24033 strings out of 468219
- 627005 string characters out of 5449698
- 1120242 words of memory out of 5000000
- 52236 multiletter control sequences out of 15000+600000
- 629118 words of font info for 43 fonts, out of 8000000 for 9000
+ 22787 strings out of 468219
+ 603013 string characters out of 5449698
+ 1138242 words of memory out of 5000000
+ 50987 multiletter control sequences out of 15000+600000
+ 632783 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,19n,105p,766b,2421s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0500.pk><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on vedes-plots.pdf (1 page, 23189 bytes).
+ 99i,19n,105p,766b,2418s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0500.pk><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb>
+Output written on vedes-plots.pdf (3 pages, 84704 bytes).
 PDF statistics:
- 56 PDF objects out of 1000 (max. 8388607)
+ 203 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 25 words of extra memory for PDF output out of 10000 (max. 10000000)
 
