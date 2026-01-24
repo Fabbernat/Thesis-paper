@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  11 JAN 2026 13:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  12 JAN 2026 08:38
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -476,11 +476,11 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 Package pgfplots info on input line 131: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 177.
+(Font)              <8> on input line 178.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 177.
+(Font)              <6> on input line 178.
 
-Overfull \hbox (230.2251pt too wide) in paragraph at lines 178--179
+Overfull \hbox (230.2251pt too wide) in paragraph at lines 179--180
  [][] 
  []
 
@@ -489,26 +489,26 @@ Overfull \hbox (230.2251pt too wide) in paragraph at lines 178--179
 [1
 
 {C:/Users/BernÃ¡t/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-Package pgfplots info on input line 230: Using 'lua backend=false' for axis: x 
+Package pgfplots info on input line 231: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 
 
 Package pgfplots Warning: Axis range for axis x is approximately empty; enlargi
-ng it (it is [0.0:0.0]) on input line 268.
+ng it (it is [0.0:0.0]) on input line 269.
 
  [warning /pgfplots/warning/approx empty range enlarged]
 
-Overfull \hbox (20.55426pt too wide) in paragraph at lines 269--270
+Overfull \hbox (20.55426pt too wide) in paragraph at lines 270--271
  [][] 
  []
 
 
-Underfull \hbox (badness 1043) in paragraph at lines 271--271
+Underfull \hbox (badness 1043) in paragraph at lines 272--272
 \T1/cmr/m/n/10 való egyezések számá-nak) össze-ha-son-lítása ugyanezen a 200 vé
 letlen-sz-er¶
  []
 
-Package pgfplots info on input line 307: Using 'lua backend=false' for axis: x 
+Package pgfplots info on input line 308: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 
 
@@ -527,7 +527,7 @@ LaTeX Font Warning: Size substitutions with differences
  ) 
 Here is how much of TeX's memory you used:
  22783 strings out of 468219
- 602838 string characters out of 5449698
+ 602829 string characters out of 5449698
  1136242 words of memory out of 5000000
  50985 multiletter control sequences out of 15000+600000
  632783 words of font info for 52 fonts, out of 8000000 for 9000
@@ -541,9 +541,9 @@ ur/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts
 /pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\BernÃ¡t\AppData\Local\MiKT
 eX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0500.pk><C:/MiKTeX/fonts/type1/public
 /amsfonts/cm/cmr10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-Output written on vedes-plots.pdf (3 pages, 84458 bytes).
+Output written on vedes-plots.pdf (3 pages, 83693 bytes).
 PDF statistics:
- 203 PDF objects out of 1000 (max. 8388607)
+ 201 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  25 words of extra memory for PDF output out of 10000 (max. 10000000)
 

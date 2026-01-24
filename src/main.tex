@@ -971,7 +971,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
    hf_xetm optimum
     \end{lstlisting} az ajánlott parancs.
 
-    Itt kétféle opciónk van. Egyszerű mindhárom modellt lefuttató futtatásért adjuk ki a gyökérkönyvtárban - ahol a \texttt{\allowbreak /.git/} és az \texttt{\allowbreak /src/} mappa van - a
+    Itt kétféle opciónk van. Egyszerű mindhárom modult lefuttató futtatásért adjuk ki a gyökérkönyvtárban - ahol a \texttt{\allowbreak /.git/} és az \texttt{\allowbreak /src/} mappa van - a
     \begin{lstlisting}
 > py-m src.Framework.globalMain
     \end{lstlisting} parancsot. Vagy ha csak egy modult szeretnénk futtatni, akkor szintén a gyökérkönyvtárból adjuk ki a \begin{lstlisting}
@@ -1062,7 +1062,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     Továbbá egy adatbázis a jelenlegi nyers szöveg-alapú indexelés és adatkezelés helyett nagy előrelépés lenne.
 
 \chapterwithdesc{Kísérlet}
-    {Három konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
+    {Négy konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
     A végső cél, amiért az egész szoftver keretrendszer készült, az volt, hogy legalább két, de inkább több modellt összehasonlíthassunk minél nagyobb mennyiségű kérdésen.
 
     \section{Módszertan}
@@ -1117,13 +1117,13 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     Hangsúlyozom, hogy nem a {gemma-2b-it}, hanem az újabb {gemma-\textit{2}-2b-it} változatot választottam.
 %    A modellek eredményeit összessítő táblázat a 4.1. táblázatban látható.\ref{tab:model-eval-summary}
 
-    \section{Három modell összehasonlítása 100 véletlenszerű kérdésen}
+    \section{Négy modell összehasonlítása 100 véletlenszerű kérdésen}
     A keretrendszer éles próbájaként a $Qwen/Qwen2.5-0.5B-Instruct$, a\\ $Qwen/Qwen2.5-1.5B-Instruct$ és a $Google/Gemma-2-2b-it$ modelleket hasonlítottam össze. 
-    Az előbbi kettő az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük három eltérő méretű (0.5B vs 1.5B vs 2B) és két eltérő gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
+    Az előbbi kettő az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük négy eltérő méretű (0.5B vs 1.5B vs 2B) és két eltérő gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
 
     Mind a 600 választ egyesével generáltattam le, majd egyenként leellenőriztem, hogy a 4 adat, az egyenes válasz, a fordított válasz, az eredeti WiC-adathalmazbeli sor, az ehhez tartozó gold standard címke \texttt{GUID-ja} valóban megegyezik-e, felhasználva a \texttt{\allowbreak ModelOutputProcessor} modulom indexereit, így ügyelve a módszertan tisztaságára.
 
-    Keretrendszerem érdeme, hogy végül sikerült a három modell válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) hiánytalanul elérni.
+    Keretrendszerem érdeme, hogy végül sikerült a négy modell válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) hiánytalanul elérni.
     A modellek sikeresen csak ``Yes'' és ``No'' válaszokat adtak, amely miatt az automatikusan 0 értékű ``konzisztensen bizonytalan'' mérőszámot nem tüntetem fel, és a ``bizonytalan'' mutatót is csak vizuális kiemelésképpen.
 
     % ide jön a 3 ábra
@@ -1205,7 +1205,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     \end{axis}
 \end{tikzpicture}
 
-\caption{Három modell konzisztens, pontos és bizonytalan párjainak száma 100 kérdéspáron. A konzisztensen pontos párok száma a konzisztens és pontos párok matematikai metszete.}
+\caption{Négy modell konzisztens, pontos és bizonytalan párjainak száma 100 kérdéspáron. A konzisztensen pontos párok száma a konzisztens és pontos párok matematikai metszete.}
 \label{fig:ModelEvalSummary}
 \end{figure}
 
@@ -1290,7 +1290,7 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
     \end{axis}
 \end{tikzpicture}
 
-\caption{Három modell pontos egyenkénti válaszainak (gold standard címkékkel való egyezések számának) összehasonlítása ugyanezen a 200 véletlenszerű kérdésen.}
+\caption{Négy modell pontos egyenkénti válaszainak (gold standard címkékkel való egyezések számának) összehasonlítása ugyanezen a 200 véletlenszerű kérdésen.}
 \label{fig:ModelEvalSummaryComplete}
 \end{figure}
 
@@ -1384,7 +1384,7 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
     \end{axis}
 \end{tikzpicture}
 
-\caption{A három modell ``Yes'' és ``No'' válaszainak darabszáma ugyanerre a 200 egyenkénti kérdésre összevetve a gold standard címkék arányával. Mivel egy kérdésre az egyenes és a fordított válasznak is ugyanaz a gold címkéje, így az ábrához a ``True'' és ``False'' címkék darabszámát, amelyek megfeleltethetőek a model által adott ``igen'' és ``nem'' válaszoknak, duplán kell számolni.}
+\caption{A négy modell ``Yes'' és ``No'' válaszainak darabszáma ugyanerre a 200 egyenkénti kérdésre összevetve a gold standard címkék arányával. Mivel egy kérdésre az egyenes és a fordított válasznak is ugyanaz a gold címkéje, így az ábrához a ``True'' és ``False'' címkék darabszámát, amelyek megfeleltethetőek a model által adott ``igen'' és ``nem'' válaszoknak, duplán kell számolni.}
 \label{fig:YesNoComparison}
 \end{figure}
 
@@ -1434,7 +1434,7 @@ javulását, mivel a következetes negatív válaszadás torzítja a ``konziszte
 A modell-válaszok semleges (``bizonytalan'') kategóriába esése az éles kísérleten egyik modellnél sem 
 fordult elő.
 
-Említésre méltó az inferenciák időkülönbsége is a három modell között, amelyben viszont jelentősen nyert a $Qwen2.5-0.5B-Instruct$. A $Qwen$ félmilliárd paraméteres modellje esetén átlagosan 6 másodpercet vett igénybe egy futtatás 1 darab kérdésre az inferenciával együtt, a másfélmilliárd paraméteres modellje esetén már 16-30 másodpercet, míg a Gemma modell esetén az átlagos válaszidő kb. 35(!) másodperc volt. Megfigyelhető tehát, hogy a méret növekedésével az inferencia futásideje szuperlineárisan növekszik.
+Említésre méltó az inferenciák időkülönbsége is a négy modell között, amelyben viszont jelentősen nyert a $Qwen2.5-0.5B-Instruct$. A $Qwen$ félmilliárd paraméteres modellje esetén átlagosan 6 másodpercet vett igénybe egy futtatás 1 darab kérdésre az inferenciával együtt, a másfélmilliárd paraméteres modellje esetén már 16-30 másodpercet, míg a Gemma modell esetén az átlagos válaszidő kb. 35(!) másodperc volt. Megfigyelhető tehát, hogy a méret növekedésével az inferencia futásideje szuperlineárisan növekszik.
 
 A hipotézisekre reagálva ugyan elmondható egyrészt, hogy a paraméterszám növekedésével a modellek páronkénti pontossága javul, ám a többi metrikában nem volt megfigyelhető egyértelmű javulás, sőt enyhe teljesítményromlás volt jellemző. 
 Másrészt a nagyobb Qwen modell paraméterszáma ugyan nem különbözik nagyban a Gemma modellétől, ám mégis jelentős eltérések mutatkoznak a válaszok eloszlásában és a konzisztens viselkedésben, amely arra utal, hogy a modell architektúrája és a tanítási eljárás is lényeges hatással van a teljesítményre, nem csupán a paraméterszám.

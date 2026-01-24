@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1767604247.88822 "main.bcf" "main.bbl" "main" 1767604289.77901 0
-  "main.bcf" 1767604288 110017 c906abcaaf824bed0b101ddf0d7fd780 "pdflatex"
+["biber main"] 1767604247.88822 "main.bcf" "main.bbl" "main" 1769260948.93629 0
+  "main.bcf" 1769260948 110017 c906abcaaf824bed0b101ddf0d7fd780 "pdflatex"
   "references.bib" 1765324443 14637 fcb089654f7059f241b6add52b6f9db1 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1767604275.70526 "c:/LaTeXProjects/Thesis-paper/src/main.tex" "main.pdf" "main" 1767604289.79348 0
+["pdflatex"] 1769260942.60428 "c:/LaTeXProjects/Thesis-paper/src/main.tex" "main.pdf" "main" 1769260948.937 0
   "C:/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
   "C:/MiKTeX/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136765053 1292 bd42be2f344128bff6d35d98474adfe3 ""
   "C:/MiKTeX/fonts/tfm/adobe/courier/pcrr8t.tfm" 1136765053 1384 4632f5e54900a7dadbb83f555bc61e56 ""
@@ -276,16 +276,16 @@
   "C:/MiKTeX/tex/latex/upquote/upquote.sty" 1335534756 1088 517e01cde97c1c0baf72e69d43aa5a2e ""
   "C:/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1765234507 82507 a9eef8696c92627b87e9975edea03b2a ""
+  "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1767604520 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tctt1200.pk" 1764887141 11368 22e1b848240ae33eb8dfe3755848aa08 ""
   "C:/Users/Bernát/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1750612748 13218441 72e452d2d4da982476be41d8461887dd ""
-  "c:/LaTeXProjects/Thesis-paper/src/main.tex" 1767604247 112240 9e570412aef716cca039aef514e32531 ""
-  "main.aux" 1767604287 21960 431e86869d2fd81316cbd31222b3de04 "pdflatex"
+  "c:/LaTeXProjects/Thesis-paper/src/main.tex" 1769260935 112231 2900ab82e95cebc82ab4bd7e2ed5fa7a ""
+  "main.aux" 1769260948 21953 dd408be77c2bf53fd366b639212b78b6 "pdflatex"
   "main.bbl" 1767604255 45549 278823bc51baeaf6495ffe2da028401f "biber main"
-  "main.out" 1767604288 10517 7460a7481e6ec31da2381aa490286961 "pdflatex"
-  "main.run.xml" 1767604288 2304 594eb205a07cc1738df7b0c71eafa9d5 "pdflatex"
-  "main.tex" 1767604247 112240 9e570412aef716cca039aef514e32531 ""
-  "main.toc" 1767604288 9171 a2bd7cf7b43f277cf60b1904b31f61de "pdflatex"
+  "main.out" 1769260948 10512 8fd70c34cf3aa516d084886ab383721d "pdflatex"
+  "main.run.xml" 1769260948 2304 594eb205a07cc1738df7b0c71eafa9d5 "pdflatex"
+  "main.tex" 1769260935 112231 2900ab82e95cebc82ab4bd7e2ed5fa7a ""
+  "main.toc" 1769260948 9170 3f6bd7db4b10365bd6e6ae9379253d96 "pdflatex"
   "sentence_builders.png" 1765541830 36929 68d47002932edcb913bacbc332ed9893 ""
   (generated)
   "main.aux"

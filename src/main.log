@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  8 JAN 2026 16:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  24 JAN 2026 14:22
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1542,7 +1542,7 @@ Overfull \hbox (4.55653pt too wide) in paragraph at lines 1450--1450
 [43
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20260108164211 FAD58DE7366495DB465
+runsystem(latexminted cleantemp  --timestamp 20260124142233 FAD58DE7366495DB465
 0CFEFAC2FCD61)...executed.
 
  (main.aux)
@@ -1551,7 +1551,7 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-05-26>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 7460A7481E6EC31DA2381AA490286961;10517.
+(rerunfilecheck)             Checksum: 8FD70C34CF3AA516D084886AB383721D;10512.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
@@ -1559,7 +1559,7 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Here is how much of TeX's memory you used:
  47747 strings out of 468219
  1074310 string characters out of 5449698
- 2100983 words of memory out of 5000000
+ 2100980 words of memory out of 5000000
  75407 multiletter control sequences out of 15000+600000
  692624 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1581,7 +1581,7 @@ pe1/public/amsfonts/cm/cmr8.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy1
 1/urw/courier/ucrr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/MiKTeX
 /fonts/type1/urw/times/utmbi8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmr8a.pfb>
 <C:/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (43 pages, 406043 bytes).
+Output written on main.pdf (43 pages, 406022 bytes).
 PDF statistics:
  790 PDF objects out of 1000 (max. 8388607)
  192 named destinations out of 1000 (max. 500000)
