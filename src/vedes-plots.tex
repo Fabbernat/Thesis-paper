@@ -1,0 +1,371 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage{float}
+
+\begin{document}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        ybar,
+        bar width=0.8cm,
+        width=0.7\textwidth,
+        height=5cm,
+        ylabel={Eltérés mértéke},
+        symbolic x coords={
+            |,
+            Qwen1.5B,
+            Gemma2B,
+            Phi4B
+        },
+        xtick=data,
+        x tick label style={font=\fontsize{0}{0}\selectfont},
+        ymin=0,
+        ymax=100,
+        ymajorgrids=true,
+        grid style=dashed,
+        enlarge x limits=1.5,
+        nodes near coords,          % Ez jeleníti meg az értékeket a sávok felett
+        nodes near coords align={vertical}, % függőlegesen középre igazít
+        legend style={
+            at={(0.5,-0.25)},
+            anchor=north,
+            legend columns=4,
+            font=\footnotesize
+        }
+    ]
+
+    \addplot[
+        fill=yellow!70!brown,
+        draw=yellow!50!black
+    ] coordinates {
+        (|, 58)
+    };
+
+    \addplot[
+        fill=green!70!brown,
+        draw=green!50!black,
+        postaction={pattern=north east lines, pattern color=green!30!black}
+    ] coordinates {
+        (Qwen1.5B, 49)
+    };
+
+    \addplot[
+        fill=blue!60,
+        draw=blue!80!black
+    ] coordinates {
+        (Gemma2B, 11)
+    };
+
+    \addplot[
+        fill=purple!70,
+        draw=purple!90!black,
+        postaction={pattern=dots, pattern color=purple!40!black}
+    ] coordinates {
+        (Phi4B, 20)
+    };
+
+    \legend{
+        Qwen 0.5B,
+        Qwen 1.5B,
+        Gemma 2B,
+        Phi 4B
+    }
+
+    \end{axis}
+\end{tikzpicture}
+\label{fig:YesNoDeviation}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Önmagával és a gold standard címkékkel részben vagy egészben megegyező válaszpárok % ide kéne 1 sortörés
+        eloszlása modellenként},
+        title style={font=\large, yshift=6pt, align=center},
+        ybar,
+        bar width=0.3cm,
+        width=0.85\textwidth,
+        height=5cm,
+        ylabel={Darabszám},
+        symbolic x coords={
+            Önmagával konzisztens párok,
+            Részben pontos párok,
+            Teljesen pontos párok
+        },
+        xtick=data,
+        x tick label style={
+            rotate=45,
+            anchor=east,
+            font=\small,
+            align=center
+        },
+        ymin=0,
+        ymax=110,
+        ymajorgrids=true,
+        grid style=dashed,
+        enlarge x limits=0.15,
+        legend style={
+            at={(0.5,-0.75)},
+            anchor=north,
+            legend columns=4,
+            /tikz/every even column/.append style={column sep=0.5cm},
+            font=\footnotesize
+        },
+        nodes near coords,
+        nodes near coords style={
+            font=\footnotesize,
+            /pgf/number format/fixed,
+            /pgf/number format/precision=0
+        },
+        every node near coord/.append style={yshift=2pt}
+    ]
+
+    \addplot[
+        fill=yellow!70!brown,
+        draw=yellow!50!black
+    ] coordinates {
+        (Önmagával konzisztens párok, 94)
+        (Részben pontos párok, 71)
+        (Teljesen pontos párok, 65)
+    };
+
+    \addplot[
+        fill=green!70!brown,
+        draw=green!50!black,
+        postaction={pattern=north east lines, pattern color=green!30!black}
+    ] coordinates {
+        (Önmagával konzisztens párok, 79)
+        (Részben pontos párok, 76)
+        (Teljesen pontos párok, 55)
+    };
+
+    \addplot[
+        fill=blue!60,
+        draw=blue!80!black
+    ] coordinates {
+        (Önmagával konzisztens párok, 73)
+        (Részben pontos párok, 76)
+        (Teljesen pontos párok, 49)
+    };
+
+    \addplot[
+        fill=purple!70,
+        draw=purple!90!black,
+        postaction={pattern=dots, pattern color=purple!40!black}
+    ] coordinates {
+        (Önmagával konzisztens párok, 82)
+        (Részben pontos párok, 83)
+        (Teljesen pontos párok, 65)
+    };
+
+    \legend{
+        Qwen 0.5B,
+        Qwen 1.5B,
+        Gemma 2B,
+        Phi 4B
+    }
+
+    \end{axis}
+\end{tikzpicture}
+
+\caption{
+Három modell konzisztens, pontos és bizonytalan párjainak száma 100 kérdéspáron. 
+A konzisztensen pontos párok száma a konzisztens és pontos párok matematikai metszete.
+}
+\label{fig:ModelEvalSummary}
+\end{figure}
+
+
+Az ábrán látható, hogy meglepő módon a legkisebb modell, a Qwen 0.5B érte el a legjobb mutatókat a konzisztens és konzisztensen pontos párok számában is. Pontosságban viszont alulmaradt a Qwen 1.5B-hez és a Gemma 2B-hez képest is, melyek egyformán 76 pontos párt adtak.
+A Word-in-Context adathalmaz minden metszetében egyenlő arányban szerepelnek ``True'' (igaz) és ``False'' (hamis) címkék, így az alapként használt \texttt{test} metszetben is. A megindexelt válaszokhoz tartozó gold standardbeli címkék eloszlásának szummázásával kimutattam, hogy a választott 100 kérdéspárhoz tartozó címke pont egy elég torz, 35 ``True'' és 65 ``False'' címkét tartalmazó mintapár volt. A \texttt{\allowbreak Qwen 0.5B} modellről pedig egyértelműen megállapítható volt, hogy a ``nem'' választ preferálja a döntéseiben. 
+Ez két tényező összeállása lehet a fő oka, hogy a Qwen 0.5B rendkívül jó konzisztens pontosságot ért el, ám feltételezhető, hogy egyenletes eloszlású címkék esetén romlana a teljesítménye, hiszen a pontos párok arányában viszont enyhén elmaradt a nagyobb paraméterszámú modellektől.
+Márpedig a pontos párok aránya jól mutatja az általános érvelési képességet, hiszen itt nincs figyelembe véve a konzisztencia, csak az, hogy a modell helyes választ adott-e a gold standarddal összevetve.
+ 
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Gold standarddal megegyező egyenkénti válaszok száma modellenként},
+        title style={font=\large, yshift=6pt},
+        ybar,
+        bar width=1.2cm,
+        width=0.7\textwidth,
+        height=4.2cm,
+        ylabel={Darabszám},
+        symbolic x coords={Pontos egyenkénti válaszok},
+        xtick=data,
+        x tick label style={
+            rotate=0, 
+            anchor=north,
+            font=\large,
+            yshift=5pt   % távolabb a tengelyvonaltól
+        },
+        ymin=0,
+        ymax=200,
+        ymajorgrids=true,
+        grid style=dashed,
+        enlarge x limits=0.2,
+        legend style={
+            at={(0.5,-0.25)}, 
+            anchor=north, 
+            legend columns=3,
+            font=\footnotesize
+        },
+        nodes near coords,
+        nodes near coords style={font=\footnotesize},
+        every node near coord/.append style={
+            /pgf/number format/fixed, 
+            /pgf/number format/precision=1
+        }
+    ]
+
+    \addplot[
+        fill=yellow!70!brown,
+        draw=yellow!50!black,
+    ] coordinates {
+        (Pontos egyenkénti válaszok, 136.00)
+    };
+
+    \addplot[
+        fill=green!70!brown,
+        draw=green!50!black,
+        postaction={pattern=north east lines, pattern color=green!30!black}
+    ] coordinates {
+        (Pontos egyenkénti válaszok, 131.00)
+    };
+
+    \addplot[
+        fill=blue!60,
+        draw=blue!80!black,
+    ] coordinates {
+        (Pontos egyenkénti válaszok, 125.00)
+    };
+
+    \addplot[
+    fill=purple!70,
+    draw=purple!90!black,
+    postaction={pattern=dots, pattern color=purple!40!black}
+    ] coordinates {
+        (Pontos egyenkénti válaszok, 148.00)
+    };
+
+    \legend{
+        Qwen 0.5B,
+        Qwen 1.5B,
+        Gemma 2B,
+        Phi 4B
+    }
+    \end{axis}
+\end{tikzpicture}
+
+\caption{Három modell pontos egyenkénti válaszainak (gold standard címkékkel való egyezések számának) összehasonlítása ugyanezen a 200 véletlenszerű kérdésen.}
+\label{fig:ModelEvalSummaryComplete}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        title={Gold standarddal egyező válaszok száma modellenként},
+        title style={font=\large, yshift=6pt},
+        ybar,
+        bar width=0.56cm,
+        width=0.7\textwidth,
+        height=6cm,
+        enlarge x limits=0.45,
+        ylabel={Darabszám},
+        symbolic x coords={Yes, No},
+        xtick=data,
+        x tick label style={font=\large},
+        ymin=0,
+        ymax=220,
+        ymajorgrids=true,
+        grid style=dashed,
+        legend style={
+            at={(0.5,-0.25)}, 
+            anchor=north, 
+            legend columns=3,
+            font=\footnotesize
+        },
+        nodes near coords,
+        nodes near coords style={font=\footnotesize},
+        every node near coord/.append style={
+            /pgf/number format/fixed,
+            /pgf/number format/precision=0
+        }
+    ]
+
+    % Qwen 0.5B
+    \addplot[
+        fill=yellow!70!brown,
+        draw=yellow!50!black
+    ] coordinates {
+        (Yes, 12)
+        (No, 188)
+    };
+
+    % Qwen 1.5B
+    \addplot[
+        fill=green!70!brown,
+        draw=green!50!black,
+        postaction={pattern=north east lines, pattern color=green!30!black}
+    ] coordinates {
+        (Yes, 21)
+        (No, 179)
+    };
+
+    % Gemma 2B
+    \addplot[
+        fill=blue!60,
+        draw=blue!80!black
+    ] coordinates {
+        (Yes, 81)
+        (No, 119)
+    };
+
+    \addplot[
+    fill=purple!70,
+    draw=purple!90!black,
+    postaction={pattern=dots, pattern color=purple!40!black}
+    ] coordinates {
+        (Yes, 50)
+        (No, 150)
+    };
+
+    % Gold standard
+    \addplot[
+        fill=red!70!black,
+        draw=red!90!black,
+        postaction={pattern=crosshatch, pattern color=red!50!black}
+    ] coordinates {
+        (Yes, 70)
+        (No, 130)
+    };
+
+    \legend{
+        Qwen 0.5B,
+        Qwen 1.5B,
+        Gemma 2B,
+        Phi 4B,
+        Gold standard
+    }
+
+    \end{axis}
+\end{tikzpicture}
+
+\caption{A három modell ``Yes'' és ``No'' válaszainak darabszáma ugyanerre a 200 egyenkénti kérdésre összevetve a gold standard címkék arányával. Mivel egy kérdésre az egyenes és a fordított válasznak is ugyanaz a gold címkéje, így az ábrához a ``True'' és ``False'' címkék darabszámát, amelyek megfeleltethetőek a model által adott ``igen'' és ``nem'' válaszoknak, duplán kell számolni.}
+\label{fig:YesNoComparison}
+\end{figure}
+\end{document}

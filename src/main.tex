@@ -100,17 +100,17 @@
     \begingroup
     \begin{center}
         \vspace*{1cm}
-        {\Large\textbf Szegedi Tudományegyetem}
+        {\Large\bf Szegedi Tudományegyetem}
 
         \vspace{0.5cm}
 
-        {\Large\textbf Informatikai Intézet}
+        {\Large\bf Informatikai Intézet}
 
         \vspace*{3.8cm}
 
 
-        {\Large\textbf A nagy nyelvi modellek szemantikus képességeinek konzisztenciájának vizsgálata}\\[1.5cm]
-        {\Large\textbf Analyzing the Consistency of Semantical Capabilities of Large Language Models}
+        {\Large\bf A nagy nyelvi modellek szemantikus képességeinek konzisztenciájának vizsgálata}\\[1.5cm]
+        {\Large\bf Analyzing the Consistency of Semantical Capabilities of Large Language Models}
 
         \vspace*{3.6cm}
 
@@ -663,7 +663,7 @@ The cat sat on the _ .
 
     Az eredeti beadott verzióval több gond is volt.
     A programot nem lehetett egy belépési ponttal futtatni.
-    Helyette nem forduló, kaotikus, gyakran egymástól teljesen független szkriptek szerepeltek rendezetlenül, amelyeknek a használatát csak én ismertem, ráadásul egy részük nem is működött, csak úgy ``volt''.
+    Helyette nem forduló, kaotikus, gyakran egymástól teljesen független szkriptek szerepeltek rendezetlenül.
     A program egyébként is csak a modell inputjainak előkészítését tudta, a modell inferenciát és a válasz feldolgozást már manuálisan kellett elvégezni.
     Csak a mostani \texttt{\allowbreak ModelInputPreparernek} megegyező rész funkcionalitásával rendelkezett standard Python környezetben.
     A Hugging Face modell inferenciájára (a mostani \texttt{\allowbreak HuggingFaceModelInferencer}~\ref{subsubsec:huggingfacemodelinferencer} modullal megegyező funkcionalitás) egy Jupyter Notebookban került sor, Google Colab környezetben.
@@ -971,7 +971,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
    hf_xetm optimum
     \end{lstlisting} az ajánlott parancs.
 
-    Itt kétféle opciónk van. Egyszerű mindhárom modellt lefuttató futtatásért adjuk ki a gyökérkönyvtárban - ahol a \texttt{\allowbreak /.git/} és az \texttt{\allowbreak /src/} mappa van - a
+    Itt kétféle opciónk van. Egyszerű mindhárom modult lefuttató futtatásért adjuk ki a gyökérkönyvtárban - ahol a \texttt{\allowbreak /.git/} és az \texttt{\allowbreak /src/} mappa van - a
     \begin{lstlisting}
 > py-m src.Framework.globalMain
     \end{lstlisting} parancsot. Vagy ha csak egy modult szeretnénk futtatni, akkor szintén a gyökérkönyvtárból adjuk ki a \begin{lstlisting}
@@ -1062,7 +1062,7 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     Továbbá egy adatbázis a jelenlegi nyers szöveg-alapú indexelés és adatkezelés helyett nagy előrelépés lenne.
 
 \chapterwithdesc{Kísérlet}
-    {Három konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
+    {Négy konkrét modell kiértékelése véletlenszerű mintahalmazon a keretrendszerben}
     A végső cél, amiért az egész szoftver keretrendszer készült, az volt, hogy legalább két, de inkább több modellt összehasonlíthassunk minél nagyobb mennyiségű kérdésen.
 
     \section{Módszertan}
@@ -1117,83 +1117,114 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     Hangsúlyozom, hogy nem a {gemma-2b-it}, hanem az újabb {gemma-\textit{2}-2b-it} változatot választottam.
 %    A modellek eredményeit összessítő táblázat a 4.1. táblázatban látható.\ref{tab:model-eval-summary}
 
-    \section{Három modell összehasonlítása 100 véletlenszerű kérdésen}
+    \section{Négy modell összehasonlítása 100 véletlenszerű kérdésen}
     A keretrendszer éles próbájaként a $Qwen/Qwen2.5-0.5B-Instruct$, a\\ $Qwen/Qwen2.5-1.5B-Instruct$ és a $Google/Gemma-2-2b-it$ modelleket hasonlítottam össze. 
-    Az előbbi kettő az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük három eltérő méretű (0.5B vs 1.5B vs 2B) és két eltérő gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
+    Az előbbi kettő az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük négy eltérő méretű (0.5B vs 1.5B vs 2B) és két eltérő gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
 
     Mind a 600 választ egyesével generáltattam le, majd egyenként leellenőriztem, hogy a 4 adat, az egyenes válasz, a fordított válasz, az eredeti WiC-adathalmazbeli sor, az ehhez tartozó gold standard címke \texttt{GUID-ja} valóban megegyezik-e, felhasználva a \texttt{\allowbreak ModelOutputProcessor} modulom indexereit, így ügyelve a módszertan tisztaságára.
 
-    Keretrendszerem érdeme, hogy végül sikerült a három modell válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) hiánytalanul elérni.
+    Keretrendszerem érdeme, hogy végül sikerült a négy modell válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) hiánytalanul elérni.
     A modellek sikeresen csak ``Yes'' és ``No'' válaszokat adtak, amely miatt az automatikusan 0 értékű ``konzisztensen bizonytalan'' mérőszámot nem tüntetem fel, és a ``bizonytalan'' mutatót is csak vizuális kiemelésképpen.
 
-    % ide jön a 3 ábra
+    % ide jönnek az ábrák
 
-    \begin{figure}[H]
+   \begin{figure}[H]
 \centering
 \begin{tikzpicture}
     \begin{axis}[
+        title={Önmagával és az elvárt címkékkel részben vagy egészben megegyező válaszpárok % ide kéne 1 sortörés
+        eloszlása modellenként},
+        title style={font=\large, yshift=6pt, align=center},
         ybar,
-        bar width=0.28cm,
-        width=0.7\textwidth,
-        height=4.2cm,
+        bar width=0.3cm,
+        width=0.85\textwidth,
+        height=5cm,
         ylabel={Darabszám},
-        symbolic x coords={Konzisztens párok, Pontos párok, Konzisztensen pontos párok, Bizonytalan párok},
+        symbolic x coords={
+            Önmagával konzisztens párok,
+            Részben pontos párok,
+            Teljesen pontos párok
+        },
         xtick=data,
-        x tick label style={rotate=45, anchor=east, font=\small},
+        x tick label style={
+            rotate=45,
+            anchor=east,
+            font=\small,
+            align=center
+        },
         ymin=0,
         ymax=110,
         ymajorgrids=true,
         grid style=dashed,
         enlarge x limits=0.15,
-        legend style={at={(0.5,-1.5)}, anchor=north, legend columns=-1},
+        legend style={
+            at={(0.5,-0.75)},
+            anchor=north,
+            legend columns=4,
+            /tikz/every even column/.append style={column sep=0.5cm},
+            font=\footnotesize
+        },
         nodes near coords,
-        nodes near coords style={font=\footnotesize},
-        every node near coord/.append style={/pgf/number format/fixed, /pgf/number format/precision=2}
+        nodes near coords style={
+            font=\footnotesize,
+            /pgf/number format/fixed,
+            /pgf/number format/precision=0
+        },
+        every node near coord/.append style={yshift=2pt}
     ]
 
-    % Qwen 0.5B – pontos PÁROK: 71
     \addplot[
         fill=yellow!70!brown,
         draw=yellow!50!black
     ] coordinates {
-        (Konzisztens párok, 94)
-        (Pontos párok, 71)
-        (Konzisztensen pontos párok, 65)
-        (Bizonytalan párok, 0)
+        (Önmagával konzisztens párok, 94)
+        (Részben pontos párok, 71)
+        (Teljesen pontos párok, 65)
     };
 
-    % Qwen 1.5B – pontos PÁROK: 76
     \addplot[
         fill=green!70!brown,
-        draw=green!50!black
+        draw=green!50!black,
+        postaction={pattern=north east lines, pattern color=green!30!black}
     ] coordinates {
-        (Konzisztens párok, 79)
-        (Pontos párok, 76)
-        (Konzisztensen pontos párok, 55)
-        (Bizonytalan párok, 0)
+        (Önmagával konzisztens párok, 79)
+        (Részben pontos párok, 76)
+        (Teljesen pontos párok, 55)
     };
 
-    % Gemma 2B – pontos PÁROK: 76
     \addplot[
         fill=blue!60,
         draw=blue!80!black
     ] coordinates {
-        (Konzisztens párok, 73)
-        (Pontos párok, 76)
-        (Konzisztensen pontos párok, 49)
-        (Bizonytalan párok, 0)
+        (Önmagával konzisztens párok, 73)
+        (Részben pontos párok, 76)
+        (Teljesen pontos párok, 49)
+    };
+
+    \addplot[
+        fill=purple!70,
+        draw=purple!90!black,
+        postaction={pattern=dots, pattern color=purple!40!black}
+    ] coordinates {
+        (Önmagával konzisztens párok, 82)
+        (Részben pontos párok, 83)
+        (Teljesen pontos párok, 65)
     };
 
     \legend{
         Qwen 0.5B,
         Qwen 1.5B,
-        Gemma 2B
+        Gemma 2B,
+        Phi 4B
     }
 
     \end{axis}
 \end{tikzpicture}
 
-\caption{Három modell konzisztens, pontos és bizonytalan párjainak száma 100 kérdéspáron. A konzisztensen pontos párok száma a konzisztens és pontos párok matematikai metszete.}
+\caption{
+Négy modell konzisztens, pontos és bizonytalan párjainak száma a 100 kérdéspáron. 
+A konzisztensen pontos párok száma a konzisztens és pontos párok matematikai metszete.
+}
 \label{fig:ModelEvalSummary}
 \end{figure}
 
@@ -1207,6 +1238,8 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
 \centering
 \begin{tikzpicture}
     \begin{axis}[
+        title={Az elvárttal megegyező egyenkénti válaszok száma modellenként},
+        title style={font=\large, yshift=6pt},
         ybar,
         bar width=1.2cm,
         width=0.7\textwidth,
@@ -1249,7 +1282,7 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
     \addplot[
         fill=green!70!brown,
         draw=green!50!black,
-        postaction={pattern=north east lines, pattern color=green!30!black},
+        postaction={pattern=north east lines, pattern color=green!30!black}
     ] coordinates {
         (Pontos egyenkénti válaszok, 131.00)
     };
@@ -1261,24 +1294,35 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
         (Pontos egyenkénti válaszok, 125.00)
     };
 
+    \addplot[
+    fill=purple!70,
+    draw=purple!90!black,
+    postaction={pattern=dots, pattern color=purple!40!black}
+    ] coordinates {
+        (Pontos egyenkénti válaszok, 148.00)
+    };
 
     \legend{
-        Qwen 0.5B (0.5B param.),
-        Qwen 1.5B (1.5B param.),
-        Gemma 2B (2B param.)
+        Qwen 0.5B,
+        Qwen 1.5B,
+        Gemma 2B,
+        Phi 4B
     }
     \end{axis}
 \end{tikzpicture}
 
-\caption{Három modell pontos egyenkénti válaszainak (gold standard címkékkel való egyezések számának) összehasonlítása ugyanezen a 200 véletlenszerű kérdésen.}
+\caption{Négy modell pontos egyenkénti válaszainak (gold standard címkékkel való egyezések számának) összehasonlítása ugyanezen a 200 véletlenszerű kérdésen.}
 \label{fig:ModelEvalSummaryComplete}
 \end{figure}
+
 
 
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}
     \begin{axis}[
+        title={Az elvárttal megegyező válaszok száma modellenként},
+        title style={font=\large, yshift=6pt},
         ybar,
         bar width=0.56cm,
         width=0.7\textwidth,
@@ -1334,6 +1378,15 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
         (No, 119)
     };
 
+    \addplot[
+    fill=purple!70,
+    draw=purple!90!black,
+    postaction={pattern=dots, pattern color=purple!40!black}
+    ] coordinates {
+        (Yes, 50)
+        (No, 150)
+    };
+
     % Gold standard
     \addplot[
         fill=red!70!black,
@@ -1348,17 +1401,99 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
         Qwen 0.5B,
         Qwen 1.5B,
         Gemma 2B,
+        Phi 4B,
         Gold standard
     }
 
     \end{axis}
 \end{tikzpicture}
 
-\caption{A három modell ``Yes'' és ``No'' válaszainak darabszáma ugyanerre a 200 egyenkénti kérdésre összevetve a gold standard címkék arányával. Mivel egy kérdésre az egyenes és a fordított válasznak is ugyanaz a gold címkéje, így az ábrához a ``True'' és ``False'' címkék darabszámát, amelyek megfeleltethetőek a model által adott ``igen'' és ``nem'' válaszoknak, duplán kell számolni.}
+\caption{A négy modell ``Yes'' és ``No'' válaszainak darabszáma ugyanerre a 200 egyenkénti kérdésre összevetve a gold standard címkék arányával. Mivel egy kérdésre az egyenes és a fordított válasznak is ugyanaz a gold címkéje, így az ábrához a ``True'' és ``False'' címkék darabszámát, amelyek megfeleltethetőek a model által adott ``igen'' és ``nem'' válaszoknak, duplán kell számolni.}
 \label{fig:YesNoComparison}
 \end{figure}
 
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        title={A generált címkék különbözete az elvárttól},
+        ybar,
+        bar width=0.8cm,
+        width=0.7\textwidth,
+        height=5cm,
+        ylabel={Eltérés mértéke},
+        symbolic x coords={
+            |,
+            Qwen1.5B,
+            Gemma2B,
+            Phi4B
+        },
+        xtick=data,
+        ymin=0,
+        ymax=100,
+        ymajorgrids=true,
+        grid style=dashed,
+        enlarge x limits=1.5,
+        nodes near coords,          % Ez jeleníti meg az értékeket a sávok felett
+        nodes near coords align={vertical}, % függőlegesen középre igazít
+        legend style={
+            at={(0.5,-0.25)},
+            anchor=north,
+            legend columns=4,
+            font=\footnotesize
+        }
+    ]
+
+    \addplot[
+        fill=yellow!70!brown,
+        draw=yellow!50!black
+    ] coordinates {
+        (|, 58)
+    };
+
+    \addplot[
+        fill=green!70!brown,
+        draw=green!50!black,
+        postaction={pattern=north east lines, pattern color=green!30!black}
+    ] coordinates {
+        (Qwen1.5B, 49)
+    };
+
+    \addplot[
+        fill=blue!60,
+        draw=blue!80!black
+    ] coordinates {
+        (Gemma2B, 11)
+    };
+
+    \addplot[
+        fill=purple!70,
+        draw=purple!90!black,
+        postaction={pattern=dots, pattern color=purple!40!black}
+    ] coordinates {
+        (Phi4B, 20)
+    };
+
+    \legend{
+        Qwen 0.5B,
+        Qwen 1.5B,
+        Gemma 2B,
+        Phi 4B
+    }
+
+    \end{axis}
+\end{tikzpicture}
+\caption{A  négy modell ``Yes''-``No'' válaszainak eloszlásának különbözete (különbségének abszolút értéke) az elvárt eloszláshoz képest.
+}
+\label{fig:YesNoDeviation}
+\end{figure}
+
+Az ábra az elvárt eloszlástól való szimmetrikus eltérést mutatja - annak abszolút értékét. Az ábrán még szebben látszik, hogy a Qwen modellek milyen nagy mértékben eltérnek a címkék elvárt eloszlásától, míg a nagyobb modelleknek sikerült jobban eltalálniuk az arányt.
+A legkisebb modell 58-szor többször tippelte az egyik címkét a kelleténél, míg a legnagyobb modell csak 20-szor. Alapul véve ezt, és a pontosságaik arányát, elmondható, hogy a nagyobb modell teljesítménye megbízhatóbb.
+Inkább az eltérés mérete lényeges és érdekes. Annak előjele másodlagos, így azzal nem foglalkozunk.
+
+    \section{Kísérlet jellemzői}
 
 A kísérlet
 \begin{itemize}
@@ -1404,7 +1539,7 @@ javulását, mivel a következetes negatív válaszadás torzítja a ``konziszte
 A modell-válaszok semleges (``bizonytalan'') kategóriába esése az éles kísérleten egyik modellnél sem 
 fordult elő.
 
-Említésre méltó az inferenciák időkülönbsége is a három modell között, amelyben viszont jelentősen nyert a $Qwen2.5-0.5B-Instruct$. A $Qwen$ félmilliárd paraméteres modellje esetén átlagosan 6 másodpercet vett igénybe egy futtatás 1 darab kérdésre az inferenciával együtt, a másfélmilliárd paraméteres modellje esetén már 16-30 másodpercet, míg a Gemma modell esetén az átlagos válaszidő kb. 35(!) másodperc volt. Megfigyelhető tehát, hogy a méret növekedésével az inferencia futásideje szuperlineárisan növekszik.
+Említésre méltó az inferenciák időkülönbsége is a négy modell között, amelyben viszont jelentősen nyert a $Qwen2.5-0.5B-Instruct$. A $Qwen$ félmilliárd paraméteres modellje esetén átlagosan 6 másodpercet vett igénybe egy futtatás 1 darab kérdésre az inferenciával együtt, a másfélmilliárd paraméteres modellje esetén már 16-30 másodpercet, míg a Gemma modell esetén az átlagos válaszidő kb. 35(!) másodperc volt. Megfigyelhető tehát, hogy a méret növekedésével az inferencia futásideje szuperlineárisan növekszik.
 
 A hipotézisekre reagálva ugyan elmondható egyrészt, hogy a paraméterszám növekedésével a modellek páronkénti pontossága javul, ám a többi metrikában nem volt megfigyelhető egyértelmű javulás, sőt enyhe teljesítményromlás volt jellemző. 
 Másrészt a nagyobb Qwen modell paraméterszáma ugyan nem különbözik nagyban a Gemma modellétől, ám mégis jelentős eltérések mutatkoznak a válaszok eloszlásában és a konzisztens viselkedésben, amely arra utal, hogy a modell architektúrája és a tanítási eljárás is lényeges hatással van a teljesítményre, nem csupán a paraméterszám.

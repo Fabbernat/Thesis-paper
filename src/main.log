@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  13 DEC 2025 23:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.22)  24 JAN 2026 15:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/BernÃ¡t/PycharmProjects/Thesis-paper/src/main.tex
-(c:/Users/BernÃ¡t/PycharmProjects/Thesis-paper/src/main.tex
+**c:/LaTeXProjects/Thesis-paper/src/main.tex
+(c:/LaTeXProjects/Thesis-paper/src/main.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-05-26>
 (C:\MiKTeX\tex/latex/base\report.cls
@@ -1165,7 +1165,7 @@ l.602     \chapter
 [21]
 
 [22]
-<sentence_builders.png, id=468, 1392.20125pt x 189.70876pt>
+<sentence_builders.png, id=473, 1392.20125pt x 189.70876pt>
 File: sentence_builders.png Graphic file (type png)
 <use sentence_builders.png>
 Package pdftex.def Info: sentence_builders.png  used on input line 772.
@@ -1207,99 +1207,115 @@ Overfull \hbox (7.36476pt too wide) in paragraph at lines 1097--1097
 
 
 [33]
-Package pgfplots info on input line 1152: Using 'lua backend=false' for axis: x coord trafo unsupported.
+Package pgfplots info on input line 1174: Using 'lua backend=false' for axis: x coord trafo unsupported.
+
+Overfull \hbox (192.71199pt too wide) in paragraph at lines 1222--1223
+ [][] 
+ []
 
 
-[34
-pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.1204 
-       ]
-Package pgfplots info on input line 1240: Using 'lua backend=false' for axis: x coord trafo unsupported.
+
+[34]
+Package pgfplots info on input line 1273: Using 'lua backend=false' for axis: x coord trafo unsupported.
 
 
-Package pgfplots Warning: Axis range for axis x is approximately empty; enlarging it (it is [0.0:0.0]) on input line 1270.
+Package pgfplots Warning: Axis range for axis x is approximately empty; enlarging it (it is [0.0:0.0]) on input line 1311.
 
  [warning /pgfplots/warning/approx empty range enlarged]
-Package pgfplots info on input line 1307: Using 'lua backend=false' for axis: x coord trafo unsupported.
 
 
 [35
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1317 
+       ]
+Package pgfplots info on input line 1351: Using 'lua backend=false' for axis: x coord trafo unsupported.
+Package pgfplots info on input line 1446: Using 'lua backend=false' for axis: x coord trafo unsupported.
+
+
+[36
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1360 
-       ]
-
-[36
+l.1491 
+       
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1379 \chapter
-               {KonklÃºziÃ³} % TODO]
-6. fejezet.
-
+l.1491 
+       ]
 
 [37
-
-]
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5.4}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1512 
+       ]
 
 [38]
-Overfull \hbox (10.67581pt too wide) in paragraph at lines 1420--1420
-\T1/ptm/m/it/12 gu-age Un-der-stand-ing Sys-tems\T1/ptm/m/n/12 . Utol-só meg-te-kin-tés: 2025-12-10. 2020. ar-Xiv: []$\T1/pcr/m/n/12 1905 .
- []
-
-
-Overfull \hbox (0.59474pt too wide) in paragraph at lines 1420--1420
-[]\T1/ptm/m/n/12 Mohammad Ta-her Pi-leh-var és Jo-se Camacho-Collados. ^^R  WiC: the Word-in-Context
- []
-
-
-Overfull \hbox (26.12979pt too wide) in paragraph at lines 1420--1420
-[]$\T1/pcr/m/n/12 10 . 18653 / v1 / 2024 . findings -[] acl . 199$[]\T1/ptm/m/n/12 . \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : []$\T1/pcr/m/n/12 https : / / aclanthology .
- []
-
-
-Overfull \hbox (5.49321pt too wide) in paragraph at lines 1420--1420
-[]\T1/ptm/m/n/12 Hugging Face. \T1/ptm/m/it/12 Hug-ging Face Open LLM Le-ader-board Mo-del Com-pa-ra-tor\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
- []
-
-
-Overfull \hbox (4.95029pt too wide) in paragraph at lines 1420--1420
-\T1/pcr/m/n/12 / / huggingface . co / spaces / open -[] llm -[] leaderboard / comparator$[]\T1/ptm/m/n/12 .
- []
-
-
-Overfull \hbox (4.4157pt too wide) in paragraph at lines 1420--1420
-[]\T1/ptm/m/n/12 LM Stu-dio Team. \T1/ptm/m/it/12 LM Stu-dio: Desk-top app-li-ca-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
- []
-
+6. fejezet.
 
 
 [39
 
 ]
-Overfull \hbox (4.55653pt too wide) in paragraph at lines 1420--1420
+
+[40]
+Overfull \hbox (10.67581pt too wide) in paragraph at lines 1555--1555
+\T1/ptm/m/it/12 gu-age Un-der-stand-ing Sys-tems\T1/ptm/m/n/12 . Utol-só meg-te-kin-tés: 2025-12-10. 2020. ar-Xiv: []$\T1/pcr/m/n/12 1905 .
+ []
+
+
+Overfull \hbox (0.59474pt too wide) in paragraph at lines 1555--1555
+[]\T1/ptm/m/n/12 Mohammad Ta-her Pi-leh-var és Jo-se Camacho-Collados. ^^R  WiC: the Word-in-Context
+ []
+
+
+Overfull \hbox (26.12979pt too wide) in paragraph at lines 1555--1555
+[]$\T1/pcr/m/n/12 10 . 18653 / v1 / 2024 . findings -[] acl . 199$[]\T1/ptm/m/n/12 . \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : []$\T1/pcr/m/n/12 https : / / aclanthology .
+ []
+
+
+Overfull \hbox (5.49321pt too wide) in paragraph at lines 1555--1555
+[]\T1/ptm/m/n/12 Hugging Face. \T1/ptm/m/it/12 Hug-ging Face Open LLM Le-ader-board Mo-del Com-pa-ra-tor\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
+ []
+
+
+Overfull \hbox (4.95029pt too wide) in paragraph at lines 1555--1555
+\T1/pcr/m/n/12 / / huggingface . co / spaces / open -[] llm -[] leaderboard / comparator$[]\T1/ptm/m/n/12 .
+ []
+
+
+Overfull \hbox (4.4157pt too wide) in paragraph at lines 1555--1555
+[]\T1/ptm/m/n/12 LM Stu-dio Team. \T1/ptm/m/it/12 LM Stu-dio: Desk-top app-li-ca-ti-on for run-ning lo-cal LLMs\T1/ptm/m/n/12 . []$\T1/pcr/m/n/12 https :
+ []
+
+
+
+[41
+
+]
+Overfull \hbox (4.55653pt too wide) in paragraph at lines 1555--1555
 \T1/ptm/m/n/12 meg-te-kin-tés: 2025-12-10. \T1/ptm/m/sc/12 url\T1/ptm/m/n/12 : []$\T1/pcr/m/n/12 https : / / aclanthology . org / H94 -[] 1111/$[]\T1/ptm/m/n/12 . 
  []
 
 
 
-[40]
-
-[41
-
-]
-
-[42
-
-]
+[42]
 
 [43
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251213230517 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
+
+[44
+
+]
+
+[45
+
+]
+runsystem(latexminted cleantemp  --timestamp 20260124150652 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
 
  (main.aux)
  ***********
@@ -1307,19 +1323,19 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-05-26>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 7460A7481E6EC31DA2381AA490286961;10517.
+(rerunfilecheck)             Checksum: FD53B194F16E8C15F6E795C264123C2F;10669.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47731 strings out of 468219
- 1074206 string characters out of 5449698
- 2098970 words of memory out of 5000000
- 75389 multiletter control sequences out of 15000+600000
+ 47774 strings out of 468219
+ 1074877 string characters out of 5449698
+ 2112139 words of memory out of 5000000
+ 75428 multiletter control sequences out of 15000+600000
  692624 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,19n,105p,1662b,2377s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,19n,105p,1646b,2384s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist, replaced by a fixed one
 
@@ -1327,9 +1343,9 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist,
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
  <C:\Users\BernÃ¡t\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1200.pk><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (43 pages, 404998 bytes).
+Output written on main.pdf (45 pages, 410925 bytes).
 PDF statistics:
- 789 PDF objects out of 1000 (max. 8388607)
- 192 named destinations out of 1000 (max. 500000)
- 458 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 805 PDF objects out of 1000 (max. 8388607)
+ 196 named destinations out of 1000 (max. 500000)
+ 470 words of extra memory for PDF output out of 10000 (max. 10000000)
 
