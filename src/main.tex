@@ -1128,71 +1128,87 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 
     % ide jönnek az ábrák
 
-    \begin{figure}[H]
+   \begin{figure}[H]
 \centering
 \begin{tikzpicture}
     \begin{axis}[
+        title={Önmagával és az elvárt címkékkel részben vagy egészben megegyező válaszpárok % ide kéne 1 sortörés
+        eloszlása modellenként},
+        title style={font=\large, yshift=6pt, align=center},
         ybar,
-        bar width=0.28cm,
-        width=0.7\textwidth,
-        height=4.2cm,
+        bar width=0.3cm,
+        width=0.85\textwidth,
+        height=5cm,
         ylabel={Darabszám},
-        symbolic x coords={Konzisztens párok, Pontos párok, Konzisztensen pontos párok, Bizonytalan párok},
+        symbolic x coords={
+            Önmagával konzisztens párok,
+            Részben pontos párok,
+            Teljesen pontos párok
+        },
         xtick=data,
-        x tick label style={rotate=45, anchor=east, font=\small},
+        x tick label style={
+            rotate=45,
+            anchor=east,
+            font=\small,
+            align=center
+        },
         ymin=0,
         ymax=110,
         ymajorgrids=true,
         grid style=dashed,
         enlarge x limits=0.15,
-        legend style={at={(0.5,-1.5)}, anchor=north, legend columns=-1},
+        legend style={
+            at={(0.5,-0.75)},
+            anchor=north,
+            legend columns=4,
+            /tikz/every even column/.append style={column sep=0.5cm},
+            font=\footnotesize
+        },
         nodes near coords,
-        nodes near coords style={font=\footnotesize},
-        every node near coord/.append style={/pgf/number format/fixed, /pgf/number format/precision=2}
+        nodes near coords style={
+            font=\footnotesize,
+            /pgf/number format/fixed,
+            /pgf/number format/precision=0
+        },
+        every node near coord/.append style={yshift=2pt}
     ]
 
-    % Qwen 0.5B – pontos PÁROK: 71
     \addplot[
         fill=yellow!70!brown,
         draw=yellow!50!black
     ] coordinates {
-        (Konzisztens párok, 94)
-        (Pontos párok, 71)
-        (Konzisztensen pontos párok, 65)
-        (Bizonytalan párok, 0)
+        (Önmagával konzisztens párok, 94)
+        (Részben pontos párok, 71)
+        (Teljesen pontos párok, 65)
     };
 
-    % Qwen 1.5B – pontos PÁROK: 76
     \addplot[
         fill=green!70!brown,
-        draw=green!50!black
+        draw=green!50!black,
+        postaction={pattern=north east lines, pattern color=green!30!black}
     ] coordinates {
-        (Konzisztens párok, 79)
-        (Pontos párok, 76)
-        (Konzisztensen pontos párok, 55)
-        (Bizonytalan párok, 0)
+        (Önmagával konzisztens párok, 79)
+        (Részben pontos párok, 76)
+        (Teljesen pontos párok, 55)
     };
 
-    % Gemma 2B – pontos PÁROK: 76
     \addplot[
         fill=blue!60,
         draw=blue!80!black
     ] coordinates {
-        (Konzisztens párok, 73)
-        (Pontos párok, 76)
-        (Konzisztensen pontos párok, 49)
-        (Bizonytalan párok, 0)
+        (Önmagával konzisztens párok, 73)
+        (Részben pontos párok, 76)
+        (Teljesen pontos párok, 49)
     };
 
     \addplot[
-    fill=purple!70,
-    draw=purple!90!black,
-    postaction={pattern=dots, pattern color=purple!40!black}
+        fill=purple!70,
+        draw=purple!90!black,
+        postaction={pattern=dots, pattern color=purple!40!black}
     ] coordinates {
-        (Konzisztens párok, 82)
-        (Pontos párok, 83)
-        (Konzisztensen pontos párok, 65)
-        (Bizonytalan párok, 0)
+        (Önmagával konzisztens párok, 82)
+        (Részben pontos párok, 83)
+        (Teljesen pontos párok, 65)
     };
 
     \legend{
@@ -1205,7 +1221,10 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
     \end{axis}
 \end{tikzpicture}
 
-\caption{Négy modell konzisztens, pontos és bizonytalan párjainak száma 100 kérdéspáron. A konzisztensen pontos párok száma a konzisztens és pontos párok matematikai metszete.}
+\caption{
+Négy modell konzisztens, pontos és bizonytalan párjainak száma a 100 kérdéspáron. 
+A konzisztensen pontos párok száma a konzisztens és pontos párok matematikai metszete.
+}
 \label{fig:ModelEvalSummary}
 \end{figure}
 
@@ -1219,12 +1238,14 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
 \centering
 \begin{tikzpicture}
     \begin{axis}[
+        title={Az elvárttal megegyező egyenkénti válaszok száma modellenként},
+        title style={font=\large, yshift=6pt},
         ybar,
         bar width=1.2cm,
         width=0.7\textwidth,
         height=4.2cm,
         ylabel={Darabszám},
-        symbolic x coords={A gold standarddal megegyező egyenkénti válaszok},
+        symbolic x coords={Pontos egyenkénti válaszok},
         xtick=data,
         x tick label style={
             rotate=0, 
@@ -1255,22 +1276,22 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
         fill=yellow!70!brown,
         draw=yellow!50!black,
     ] coordinates {
-        (A gold standarddal megegyező egyenkénti válaszok, 136.00)
+        (Pontos egyenkénti válaszok, 136.00)
     };
 
     \addplot[
         fill=green!70!brown,
         draw=green!50!black,
-        postaction={pattern=north east lines, pattern color=green!30!black},
+        postaction={pattern=north east lines, pattern color=green!30!black}
     ] coordinates {
-        (A gold standarddal megegyező egyenkénti válaszok, 131.00)
+        (Pontos egyenkénti válaszok, 131.00)
     };
 
     \addplot[
         fill=blue!60,
         draw=blue!80!black,
     ] coordinates {
-        (A gold standarddal megegyező egyenkénti válaszok, 125.00)
+        (Pontos egyenkénti válaszok, 125.00)
     };
 
     \addplot[
@@ -1278,7 +1299,7 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
     draw=purple!90!black,
     postaction={pattern=dots, pattern color=purple!40!black}
     ] coordinates {
-        (A gold standarddal megegyező egyenkénti válaszok, 148.00)
+        (Pontos egyenkénti válaszok, 148.00)
     };
 
     \legend{
@@ -1295,10 +1316,13 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
 \end{figure}
 
 
+
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}
     \begin{axis}[
+        title={Az elvárttal megegyező válaszok száma modellenként},
+        title style={font=\large, yshift=6pt},
         ybar,
         bar width=0.56cm,
         width=0.7\textwidth,
@@ -1393,6 +1417,7 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
 \centering
 \begin{tikzpicture}
     \begin{axis}[
+        title={A generált címkék különbözete az elvárttól},
         ybar,
         bar width=0.8cm,
         width=0.7\textwidth,
@@ -1459,7 +1484,7 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
 
     \end{axis}
 \end{tikzpicture}
-\caption{A generált címkék különbözete az elvárttól. A  négy modell ``Yes''-``No'' válaszainak eloszlásának különbözete (különbségének abszolút értéke) az elvárt eloszláshoz képest.
+\caption{A  négy modell ``Yes''-``No'' válaszainak eloszlásának különbözete (különbségének abszolút értéke) az elvárt eloszláshoz képest.
 }
 \label{fig:YesNoDeviation}
 \end{figure}
