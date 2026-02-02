@@ -1119,9 +1119,9 @@ A futás végén megtörténik a modell válaszainak fájlba írása, továbbá 
 
     \section{Négy modell összehasonlítása 100 véletlenszerű kérdésen}
     A keretrendszer éles próbájaként a $Qwen/Qwen2.5-0.5B-Instruct$, a\\ $Qwen/Qwen2.5-1.5B-Instruct$ és a $Google/Gemma-2-2b-it$ modelleket hasonlítottam össze. 
-    Az előbbi kettő az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük négy eltérő méretű (0.5B vs 1.5B vs 2B) és két eltérő gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
+    Az előbbi kettő az Alibaba Cloud gyártmánya, míg utóbbi a Google szüleménye. A választással megfigyelhetjük négy eltérő méretű (0.5B vs 1.5B vs 2B vs 4B) és két eltérő gyártójú, ezáltal architektúrájukban is némileg különböző \textit{instruct} modell különbségét. 
 
-    Mind a 600 választ egyesével generáltattam le, majd egyenként leellenőriztem, hogy a 4 adat, az egyenes válasz, a fordított válasz, az eredeti WiC-adathalmazbeli sor, az ehhez tartozó gold standard címke \texttt{GUID-ja} valóban megegyezik-e, felhasználva a \texttt{\allowbreak ModelOutputProcessor} modulom indexereit, így ügyelve a módszertan tisztaságára.
+    Mind a 800 választ egyesével generáltattam le, majd egyenként leellenőriztem, hogy a 4 adat, az egyenes válasz, a fordított válasz, az eredeti WiC-adathalmazbeli sor, az ehhez tartozó gold standard címke \texttt{GUID-ja} valóban megegyezik-e, felhasználva a \texttt{\allowbreak ModelOutputProcessor} modulom indexereit, így ügyelve a módszertan tisztaságára.
 
     Keretrendszerem érdeme, hogy végül sikerült a négy modell válaszadását 100 véletlenszerű kérdésre (és a fordított párjukra) hiánytalanul elérni.
     A modellek sikeresen csak ``Yes'' és ``No'' válaszokat adtak, amely miatt az automatikusan 0 értékű ``konzisztensen bizonytalan'' mérőszámot nem tüntetem fel, és a ``bizonytalan'' mutatót is csak vizuális kiemelésképpen.
@@ -1321,7 +1321,7 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
 \centering
 \begin{tikzpicture}
     \begin{axis}[
-        title={Az elvárttal megegyező válaszok száma modellenként},
+        title={A prediktált és az elvárt címkeeloszlás modellenként},
         title style={font=\large, yshift=6pt},
         ybar,
         bar width=0.56cm,
@@ -1417,7 +1417,7 @@ Márpedig a pontos párok aránya jól mutatja az általános érvelési képess
 \centering
 \begin{tikzpicture}
     \begin{axis}[
-        title={A generált címkék különbözete az elvárttól},
+        title={A prediktált címkeeloszlás különbözete az elvárttól modellenként},
         ybar,
         bar width=0.8cm,
         width=0.7\textwidth,
