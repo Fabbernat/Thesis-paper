@@ -6,7 +6,7 @@
 \select@language {magyar} \contentsline {subsubsection}{\textit {Az alkalmazott eszközök, módszerek}}{3}{section*.6}%
 \select@language {magyar} \contentsline {subsubsection}{\textit {Elért eredmények}}{3}{section*.7}%
 \select@language {magyar} \contentsline {subsubsection}{\textit {Kulcsszavak}}{3}{section*.8}%
-\select@language {magyar} \contentsline {section}{Motiváció}{6}{chapter*.10}%
+\select@language {magyar} \contentsline {section}{Alfonz}{6}{chapter*.10}%
 \select@language {magyar} \contentsline {chapter}{\numberline {1}Elméleti háttér}{7}{chapter.1}%
 \select@language {magyar} \contentsline {section}{\numberline {1.1}Problémafelvetés}{7}{section.1.1}%
 \select@language {magyar} \contentsline {section}{\numberline {1.2}Hasonló megoldások}{7}{section.1.2}%
